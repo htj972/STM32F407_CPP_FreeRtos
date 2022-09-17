@@ -1280,6 +1280,30 @@ HARDWARE/Src/Out_In_Put.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.s
 .PHONY : HARDWARE/Src/Out_In_Put.cpp.s
 
+HARDWARE/Src/SPI.obj: HARDWARE/Src/SPI.cpp.obj
+.PHONY : HARDWARE/Src/SPI.obj
+
+# target to build an object file
+HARDWARE/Src/SPI.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+.PHONY : HARDWARE/Src/SPI.cpp.obj
+
+HARDWARE/Src/SPI.i: HARDWARE/Src/SPI.cpp.i
+.PHONY : HARDWARE/Src/SPI.i
+
+# target to preprocess a source file
+HARDWARE/Src/SPI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.i
+.PHONY : HARDWARE/Src/SPI.cpp.i
+
+HARDWARE/Src/SPI.s: HARDWARE/Src/SPI.cpp.s
+.PHONY : HARDWARE/Src/SPI.s
+
+# target to generate assembly for a file
+HARDWARE/Src/SPI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.s
+.PHONY : HARDWARE/Src/SPI.cpp.s
+
 HARDWARE/Src/USART.obj: HARDWARE/Src/USART.cpp.obj
 .PHONY : HARDWARE/Src/USART.obj
 
@@ -1633,6 +1657,9 @@ help:
 	@echo ... HARDWARE/Src/Out_In_Put.obj
 	@echo ... HARDWARE/Src/Out_In_Put.i
 	@echo ... HARDWARE/Src/Out_In_Put.s
+	@echo ... HARDWARE/Src/SPI.obj
+	@echo ... HARDWARE/Src/SPI.i
+	@echo ... HARDWARE/Src/SPI.s
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s

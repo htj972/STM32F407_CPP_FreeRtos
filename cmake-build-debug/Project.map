@@ -3143,6 +3143,56 @@ Discarded input sections
                 0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .ARM.exidx.text._ZNK7_InPut_14get_NVIC_stateEv
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
+ .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .text._ZN3SPI6configEP12GPIO_TypeDefmS1_mS1_m
+                0x00000000       0x4a CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.extab.text._ZN3SPI6configEP12GPIO_TypeDefmS1_mS1_m
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.exidx.text._ZN3SPI6configEP12GPIO_TypeDefmS1_mS1_m
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .text._ZN3SPI6configEhhh
+                0x00000000       0x52 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.extab.text._ZN3SPI6configEhhh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.exidx.text._ZN3SPI6configEhhh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .text._ZN3SPI14default_configEv
+                0x00000000       0xe8 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.extab.text._ZN3SPI14default_configEv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.exidx.text._ZN3SPI14default_configEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .text._ZN3SPI4initEP11SPI_TypeDefth
+                0x00000000       0xe0 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.extab.text._ZN3SPI4initEP11SPI_TypeDefth
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.exidx.text._ZN3SPI4initEP11SPI_TypeDefth
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .text._ZN3SPI8SetSpeedEh
+                0x00000000       0x4a CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.extab.text._ZN3SPI8SetSpeedEh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.exidx.text._ZN3SPI8SetSpeedEh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .text._ZN3SPI13ReadWriteDATAEt
+                0x00000000       0x6a CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.extab.text._ZN3SPI13ReadWriteDATAEt
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.exidx.text._ZN3SPI13ReadWriteDATAEt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .debug_info    0x00000000      0xcfe CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .debug_abbrev  0x00000000      0x234 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .debug_aranges
+                0x00000000       0x48 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .debug_ranges  0x00000000       0x38 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .debug_line    0x00000000      0x391 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .debug_str     0x00000000      0xd42 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .debug_frame   0x00000000       0xe8 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
+ .ARM.attributes
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
  .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
  .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
  .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
@@ -11841,6 +11891,7 @@ LOAD CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj
 LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
+LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
 LOAD CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
