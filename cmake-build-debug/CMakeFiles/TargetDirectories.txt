@@ -1,0 +1,3 @@
+C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/cmake-build-debug/CMakeFiles/Project.elf.dir
+C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/cmake-build-debug/CMakeFiles/rebuild_cache.dir

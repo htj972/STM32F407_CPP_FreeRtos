@@ -1,0 +1,347 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.33.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: h tj, 1, LIC=PE7DL-0YRAC-WFGI7-EH89Z-TN50Z-8UAW1
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.33.0.0
+Toolchain Path:  F:\MDK\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.33.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      UL2CM3.DLL V1.163.9.0
+Dialog DLL:      TCM.DLL V1.48.0.0
+ 
+<h2>Project:</h2>
+C:\Users\53105\Desktop\F4_FreeRtos\MDK\project.uvprojx
+Project File Date:  09/14/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'F:\MDK\ARM\ARMCC\Bin'
+Build target 'Project'
+assembling startup_stm32f407xx.s...
+compiling event_groups.c...
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\FreeRTOS\FreeRTOS_CORE\event_groups.c(255): error:  #18: expected a ")"
+  			portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\event_groups.c(403): error:  #18: expected a ")"
+  			portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\event_groups.c: 2 warnings, 7 errors
+compiling delay.c...
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\SYSTEM\Src\delay.c: 2 warnings, 5 errors
+compiling list.c...
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\FreeRTOS\FreeRTOS_CORE\list.c: 2 warnings, 5 errors
+compiling queue.c...
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\FreeRTOS\FreeRTOS_CORE\queue.c(281): error:  #18: expected a ")"
+  					queueYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\queue.c(791): error:  #18: expected a ")"
+  							queueYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\queue.c(810): error:  #18: expected a ")"
+  								queueYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\queue.c(823): error:  #18: expected a ")"
+  							queueYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\queue.c(927): error:  #18: expected a ")"
+  					portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\queue.c(1323): error:  #18: expected a ")"
+  						queueYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\queue.c(1382): error:  #18: expected a ")"
+  					portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\queue.c(1485): error:  #18: expected a ")"
+  						queueYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\queue.c(1573): error:  #18: expected a ")"
+  					portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\queue.c(1689): error:  #18: expected a ")"
+  						queueYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\queue.c(1749): error:  #18: expected a ")"
+  					portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\queue.c: 2 warnings, 16 errors
+compiling croutine.c...
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\FreeRTOS\FreeRTOS_CORE\croutine.c: 2 warnings, 5 errors
+compiling stream_buffer.c...
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\FreeRTOS\FreeRTOS_CORE\stream_buffer.c: 2 warnings, 5 errors
+compiling USART.cpp...
+..\HARDWARE\Inc\USART.h(18): error:  #321: data member initializer is not allowed
+      uint8_t  config_flag=0;
+..\HARDWARE\Inc\USART.h(19): error:  #321: data member initializer is not allowed
+      uint8_t  extern_flag=0;
+..\HARDWARE\Src\USART.cpp(184): error:  #260-D: explicit type is missing ("int" assumed)
+      const auto len = vsnprintf(nullptr, 0, fmt, args);
+..\HARDWARE\Src\USART.cpp(184): error:  #20: identifier "nullptr" is undefined
+      const auto len = vsnprintf(nullptr, 0, fmt, args);
+..\HARDWARE\Src\USART.cpp(189): error:  #135: class "std::basic_string<char, std::char_traits<char>, std::allocator<char>>"  has no member "front"
+      vsnprintf(&r.front(), len + 1, fmt, args);
+..\HARDWARE\Src\USART.cpp(204): error:  #260-D: explicit type is missing ("int" assumed)
+      const auto len = vsnprintf(nullptr, 0, fmt, args);
+..\HARDWARE\Src\USART.cpp(204): error:  #20: identifier "nullptr" is undefined
+      const auto len = vsnprintf(nullptr, 0, fmt, args);
+..\HARDWARE\Src\USART.cpp(209): error:  #135: class "std::basic_string<char, std::char_traits<char>, std::allocator<char>>"  has no member "front"
+      vsnprintf(&r.front(), len + 1, fmt, args);
+..\HARDWARE\Src\USART.cpp(12): warning:  #550-D: variable "U1_link"  was set but never used
+  static void (*U1_link)();
+..\HARDWARE\Src\USART.cpp(13): warning:  #550-D: variable "U2_link"  was set but never used
+  static void (*U2_link)();
+..\HARDWARE\Src\USART.cpp(14): warning:  #550-D: variable "U3_link"  was set but never used
+  static void (*U3_link)();
+..\HARDWARE\Src\USART.cpp(15): warning:  #550-D: variable "U4_link"  was set but never used
+  static void (*U4_link)();
+..\HARDWARE\Src\USART.cpp(16): warning:  #550-D: variable "U5_link"  was set but never used
+  static void (*U5_link)();
+..\HARDWARE\Src\USART.cpp(17): warning:  #550-D: variable "U6_link"  was set but never used
+  static void (*U6_link)();
+..\HARDWARE\Src\USART.cpp: 6 warnings, 8 errors
+compiling main.cpp...
+..\HARDWARE\Inc\USART.h(18): error:  #321: data member initializer is not allowed
+      uint8_t  config_flag=0;
+..\HARDWARE\Inc\USART.h(19): error:  #321: data member initializer is not allowed
+      uint8_t  extern_flag=0;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\USER\Src\main.cpp(23): error:  #169: expected a declaration
+  [[noreturn]] void task1_task(void *pvParameters);
+..\USER\Src\main.cpp(32): error:  #169: expected a declaration
+  [[noreturn]] void task2_task(void *pvParameters);
+..\USER\Src\main.cpp(53): error:  #20: identifier "nullptr" is undefined
+                  (void*          )nullptr,                  //传递给任务函数的参数
+..\USER\Src\main.cpp(64): error:  #20: identifier "task1_task" is undefined
+      xTaskCreate((TaskFunction_t )task1_task,
+..\USER\Src\main.cpp(67): error:  #20: identifier "nullptr" is undefined
+                  (void*          )nullptr,
+..\USER\Src\main.cpp(71): error:  #20: identifier "task2_task" is undefined
+      xTaskCreate((TaskFunction_t )task2_task,
+..\USER\Src\main.cpp(82): error:  #169: expected a declaration
+  [[noreturn]] void task1_task(void *pvParameters)
+..\USER\Src\main.cpp(109): warning: At end of source:  #12-D: parsing restarts here after previous syntax error
+..\USER\Src\main.cpp: 3 warnings, 14 errors
+compiling cmsis_os.c...
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\FreeRTOS\FreeRTOS_PORTABLE\cmsis_os.c(68): error:  #5: cannot open source input file "cmsis_armcc.h": No such file or directory
+    #include "cmsis_armcc.h"
+..\FreeRTOS\FreeRTOS_PORTABLE\cmsis_os.c: 2 warnings, 6 errors
+compiling timers.c...
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\FreeRTOS\FreeRTOS_CORE\timers.c(628): error:  #18: expected a ")"
+  					portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\timers.c: 2 warnings, 6 errors
+compiling tasks.c...
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(1146): error:  #18: expected a ")"
+  			taskYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(1243): error:  #18: expected a ")"
+  				portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(1328): error:  #18: expected a ")"
+  			portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(1373): error:  #18: expected a ")"
+  			portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(1684): error:  #18: expected a ")"
+  					taskYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(1773): error:  #18: expected a ")"
+  				portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(1879): error:  #18: expected a ")"
+  						taskYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(2127): error:  #18: expected a ")"
+  	portMEMORY_BARRIER();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(2285): error:  #18: expected a ")"
+  					taskYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(3434): error:  #18: expected a ")"
+  				taskYIELD();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(4656): error:  #18: expected a ")"
+  					portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(4729): error:  #18: expected a ")"
+  					portYIELD_WITHIN_API();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c(4875): error:  #18: expected a ")"
+  					taskYIELD_IF_USING_PREEMPTION();
+..\FreeRTOS\FreeRTOS_CORE\tasks.c: 2 warnings, 18 errors
+compiling port.c...
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\FreeRTOS\FreeRTOS_PORTABLE\port.c(37): error:  #35: #error directive: This port can only be used when the project options are configured to enable hardware floating point support.
+  	#error This port can only be used when the project options are configured to enable hardware floating point support.
+..\FreeRTOS\FreeRTOS_PORTABLE\port.c: 2 warnings, 6 errors
+compiling heap_4.c...
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(134): error:  #18: expected a ")"
+  		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(175): error:  #18: expected a ")"
+  	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(201): error:  #18: expected a ")"
+  		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(193): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(218): error:  #18: expected a ")"
+  		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(209): warning:  #177-D: variable "ulNewBASEPRI"  was declared but never referenced
+  uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+..\FreeRTOS\FreeRTOS_Inc\portmacro.h(231): error:  #18: expected a ")"
+  		"	msr basepri, %0	" :: "r" ( ulNewMaskValue ) : "memory"
+..\FreeRTOS\FreeRTOS_PORTABLE\heap_4.c: 2 warnings, 5 errors
+".\Objects\project.axf" - 106 Error(s), 31 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.14.0.pack
+                Keil.STM32F4xx_DFP.2.14.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  F:\MDK\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+Target not created.
+Build Time Elapsed:  00:00:07
+</pre>
+</body>
+</html>
