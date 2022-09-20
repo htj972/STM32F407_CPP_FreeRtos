@@ -34,6 +34,7 @@ TaskHandle_t Task2Task_Handler;
 _OutPut_ led;
 _USART_  U1;
 
+uint32_t wi_crc[3]={0x00000001};
 
 int main()
 {
@@ -43,7 +44,22 @@ int main()
     U1.init(USART1,115200);
     led.init(GPIOD3,LOW);
     //U1.set_send_DMA();
-    U1.write("adsda321s3a1d3a1sd3sd");
+    U1.write("adsda321s3a1d3a1sd3sd\r\n");
+
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_CRC, ENABLE);
+    CRC_ResetDR();
+    uint32_t crc_res=CRC_CalcBlockCRC(wi_crc,1);
+    U1.println("result:%x",crc_res);
+
+    wi_crc[0]=0x00000000;
+    CRC_ResetDR();
+     crc_res=CRC_CalcBlockCRC(wi_crc,1);
+    U1.println("result:%x",crc_res);
+
+    wi_crc[0]=0xFFFFFFFF;
+    CRC_ResetDR();
+     crc_res=CRC_CalcBlockCRC(wi_crc,1);
+    U1.println("result:%x",crc_res);
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,            //任务函数

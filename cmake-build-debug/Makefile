@@ -1208,6 +1208,30 @@ FreeRTOS/FreeRTOS_PORTABLE/port.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.s
 .PHONY : FreeRTOS/FreeRTOS_PORTABLE/port.c.s
 
+HARDWARE/Src/CRC.obj: HARDWARE/Src/CRC.cpp.obj
+.PHONY : HARDWARE/Src/CRC.obj
+
+# target to build an object file
+HARDWARE/Src/CRC.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+.PHONY : HARDWARE/Src/CRC.cpp.obj
+
+HARDWARE/Src/CRC.i: HARDWARE/Src/CRC.cpp.i
+.PHONY : HARDWARE/Src/CRC.i
+
+# target to preprocess a source file
+HARDWARE/Src/CRC.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.i
+.PHONY : HARDWARE/Src/CRC.cpp.i
+
+HARDWARE/Src/CRC.s: HARDWARE/Src/CRC.cpp.s
+.PHONY : HARDWARE/Src/CRC.s
+
+# target to generate assembly for a file
+HARDWARE/Src/CRC.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.s
+.PHONY : HARDWARE/Src/CRC.cpp.s
+
 HARDWARE/Src/GPIO.obj: HARDWARE/Src/GPIO.cpp.obj
 .PHONY : HARDWARE/Src/GPIO.obj
 
@@ -1648,6 +1672,9 @@ help:
 	@echo ... FreeRTOS/FreeRTOS_PORTABLE/port.obj
 	@echo ... FreeRTOS/FreeRTOS_PORTABLE/port.i
 	@echo ... FreeRTOS/FreeRTOS_PORTABLE/port.s
+	@echo ... HARDWARE/Src/CRC.obj
+	@echo ... HARDWARE/Src/CRC.i
+	@echo ... HARDWARE/Src/CRC.s
 	@echo ... HARDWARE/Src/GPIO.obj
 	@echo ... HARDWARE/Src/GPIO.i
 	@echo ... HARDWARE/Src/GPIO.s

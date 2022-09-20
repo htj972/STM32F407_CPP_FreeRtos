@@ -89,6 +89,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/heap_4.c.obj.d"
   "CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj"
   "CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj.d"
+  "CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj"
+  "CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj"
