@@ -48,6 +48,7 @@ public:
     string read_data(const string& str) const ;
 
     void write(const char *str,uint16_t len);
+    void write(uint8_t *str,uint16_t len);
     void write(string String);
     uint16_t print(const char *fmt, ...);
     uint16_t print(const string& String);

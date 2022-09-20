@@ -249,6 +249,10 @@ void _USART_::write(const char *str, uint16_t len) {
     }
 }
 
+void _USART_::write(uint8_t *str, uint16_t len) {
+    this->write((char*)str,len);
+}
+
 void _USART_::write(std::string String) {
     const char* p=String.c_str();
     this->write(p,String.length());

@@ -1352,6 +1352,30 @@ HARDWARE/Src/USART.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s
 .PHONY : HARDWARE/Src/USART.cpp.s
 
+HARDWARE/Src/modbus.obj: HARDWARE/Src/modbus.cpp.obj
+.PHONY : HARDWARE/Src/modbus.obj
+
+# target to build an object file
+HARDWARE/Src/modbus.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+.PHONY : HARDWARE/Src/modbus.cpp.obj
+
+HARDWARE/Src/modbus.i: HARDWARE/Src/modbus.cpp.i
+.PHONY : HARDWARE/Src/modbus.i
+
+# target to preprocess a source file
+HARDWARE/Src/modbus.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.i
+.PHONY : HARDWARE/Src/modbus.cpp.i
+
+HARDWARE/Src/modbus.s: HARDWARE/Src/modbus.cpp.s
+.PHONY : HARDWARE/Src/modbus.s
+
+# target to generate assembly for a file
+HARDWARE/Src/modbus.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.s
+.PHONY : HARDWARE/Src/modbus.cpp.s
+
 SYSTEM/Src/DMA.obj: SYSTEM/Src/DMA.c.obj
 .PHONY : SYSTEM/Src/DMA.obj
 
@@ -1690,6 +1714,9 @@ help:
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s
+	@echo ... HARDWARE/Src/modbus.obj
+	@echo ... HARDWARE/Src/modbus.i
+	@echo ... HARDWARE/Src/modbus.s
 	@echo ... SYSTEM/Src/DMA.obj
 	@echo ... SYSTEM/Src/DMA.i
 	@echo ... SYSTEM/Src/DMA.s

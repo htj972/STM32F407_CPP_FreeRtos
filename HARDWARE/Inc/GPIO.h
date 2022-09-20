@@ -15,12 +15,12 @@ private:
             .GPIO_PuPd	= GPIO_PuPd_UP,
     };
     uint8_t     init_flag=0;
-    void RCC_ENABLE();
+    void RCC_ENABLE() const;
 public:
     GPIO_TypeDef* PORTx;
     uint32_t      GPIOx;
     uint32_t      Pinx;
-    uint8_t get_PORTx_num();
+    uint8_t get_PORTx_num() const;
     uint8_t get_pinx_num() const;
 
     void init(GPIO_TypeDef* PORT,uint32_t Pin,GPIOMode_TypeDef Mode);
@@ -30,11 +30,11 @@ public:
     void set_OTYPE(GPIOOType_TypeDef OType);
     void set_PuPD(GPIOPuPd_TypeDef PuPd);
     void set_pinmode(GPIOMode_TypeDef Mode);
-    void set_output(uint8_t Hi_Lo);
-    uint8_t get_output();
-    uint8_t get_input();
+    void set_output(uint8_t Hi_Lo) const;
+    uint8_t get_output() const;
+    uint8_t get_input() const;
 
-    void set_AFConfig(uint8_t AF_MODE);
+    void set_AFConfig(uint8_t AF_MODE) const;
 };
 
 

@@ -101,6 +101,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj"
+  "CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj.d"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj"
