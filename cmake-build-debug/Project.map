@@ -2770,6 +2770,14 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .rodata._ZStL19piecewise_construct
+                0x00000000        0x1 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .text._ZL20__gthread_key_deletei
+                0x00000000       0x16 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .ARM.extab.text._ZL20__gthread_key_deletei
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .ARM.exidx.text._ZL20__gthread_key_deletei
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  .text._ZN11CRC32_MPEG2C2Ev
                 0x00000000       0x2c CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  .ARM.extab.text._ZN11CRC32_MPEG2C2Ev
@@ -2810,15 +2818,27 @@ Discarded input sections
                 0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  .ARM.exidx.text._ZN12CRC16_Modbus7ComputeEPht
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
- .debug_info    0x00000000      0x331 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
- .debug_abbrev  0x00000000      0x1c4 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .text._ZN12CRC16_Modbus7ComputeENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEt
+                0x00000000       0x20 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .ARM.extab.text._ZN12CRC16_Modbus7ComputeENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEt
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .ARM.exidx.text._ZN12CRC16_Modbus7ComputeENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .text._ZN12CRC16_Modbus7ComputeENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+                0x00000000       0x24 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .ARM.extab.text._ZN12CRC16_Modbus7ComputeENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .ARM.exidx.text._ZN12CRC16_Modbus7ComputeENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .debug_info    0x00000000     0x4c7c CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .debug_abbrev  0x00000000      0x6ff CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  .debug_aranges
-                0x00000000       0x48 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
- .debug_ranges  0x00000000       0x38 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
- .debug_line    0x00000000      0x20b CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
- .debug_str     0x00000000      0x3aa CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+                0x00000000       0x60 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .debug_ranges  0x00000000       0x50 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .debug_line    0x00000000      0x682 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .debug_str     0x00000000     0x5c36 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
- .debug_frame   0x00000000       0xe4 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
+ .debug_frame   0x00000000      0x154 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  .ARM.attributes
                 0x00000000       0x34 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
@@ -2916,7 +2936,7 @@ Discarded input sections
  .ARM.exidx.text._ZN12Software_IIC7SCL_OFFEv
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
  .text._ZNK12Software_IIC5delayEv
-                0x00000000       0x36 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
+                0x00000000       0x30 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
  .ARM.extab.text._ZNK12Software_IIC5delayEv
                 0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
  .ARM.exidx.text._ZNK12Software_IIC5delayEv
@@ -3089,12 +3109,12 @@ Discarded input sections
                 0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
  .ARM.exidx.text._ZN8HARD_IIC13Read_One_ByteEhh
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
- .debug_info    0x00000000     0x17ea CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
- .debug_abbrev  0x00000000      0x2e3 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
+ .debug_info    0x00000000     0x17e7 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
+ .debug_abbrev  0x00000000      0x2de CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
  .debug_aranges
                 0x00000000      0x138 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
  .debug_ranges  0x00000000      0x128 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
- .debug_line    0x00000000      0x7e3 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
+ .debug_line    0x00000000      0x7e0 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
  .debug_str     0x00000000     0x1201 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
  .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
  .debug_frame   0x00000000      0x52c CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
@@ -3367,6 +3387,8 @@ Discarded input sections
                 0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
  .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
@@ -3379,13 +3401,13 @@ Discarded input sections
  .ARM.exidx.text._ZL20__gthread_key_deletei
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .text._ZN6modbusC2Ev
-                0x00000000       0x54 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x5a CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbusC2Ev
                 0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbusC2Ev
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .text._ZN6modbusD2Ev
-                0x00000000       0x2a CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbusD2Ev
                 0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbusD2Ev
@@ -3408,11 +3430,47 @@ Discarded input sections
                 0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus10write_dataEPhS0_
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZNK6modbus15modbus_wait_recEv
+                0x00000000       0x40 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZNK6modbus15modbus_wait_recEv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZNK6modbus15modbus_wait_recEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .text._ZN6modbus4initEPttt
                 0x00000000       0x40 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus4initEPttt
                 0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus4initEPttt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus6configEP7_USART_hhtt
+                0x00000000       0x56 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus6configEP7_USART_hhtt
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus6configEP7_USART_hhtt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus6set_idEh
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus6set_idEh
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus6set_idEh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus8set_modeEh
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus8set_modeEh
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus8set_modeEh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus12set_freetimeEt
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus12set_freetimeEt
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus12set_freetimeEt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus11set_timeoutEt
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus11set_timeoutEt
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus11set_timeoutEt
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .text._ZN21modbus_Slave_03_send_C2Ev
                 0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
@@ -3427,22 +3485,100 @@ Discarded input sections
  .ARM.exidx.text._ZN21modbus_Slave_03_send_D2Ev
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .text._ZN6modbus24modbus_Slave_03_uncodingEv
-                0x00000000      0x158 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000      0x1a0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus24modbus_Slave_03_uncodingEv
-                0x00000000       0x1b CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x26 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus24modbus_Slave_03_uncodingEv
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .text._ZN6modbus21modbus_Host_03_codingEhtt
-                0x00000000       0x7c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x82 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus21modbus_Host_03_codingEhtt
                 0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus21modbus_Host_03_codingEhtt
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .text._ZN6modbus18modbus_03_uncodingEv
-                0x00000000       0xb4 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .ARM.extab.text._ZN6modbus18modbus_03_uncodingEv
+ .text._ZN6modbus23modbus_Host_03_uncodingEv
+                0x00000000      0x100 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus23modbus_Host_03_uncodingEv
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus23modbus_Host_03_uncodingEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus24modbus_Slave_06_uncodingEv
+                0x00000000       0x84 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus24modbus_Slave_06_uncodingEv
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus24modbus_Slave_06_uncodingEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus21modbus_Host_06_codingEhtt
+                0x00000000       0x54 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus21modbus_Host_06_codingEhtt
                 0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .ARM.exidx.text._ZN6modbus18modbus_03_uncodingEv
+ .ARM.exidx.text._ZN6modbus21modbus_Host_06_codingEhtt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus23modbus_Host_06_uncodingEv
+                0x00000000       0x60 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus23modbus_Host_06_uncodingEv
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus23modbus_Host_06_uncodingEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus24modbus_Slave_10_uncodingEv
+                0x00000000      0x114 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus24modbus_Slave_10_uncodingEv
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus24modbus_Slave_10_uncodingEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN19modbus_Host_16_sendC2Ev
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN19modbus_Host_16_sendC2Ev
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN19modbus_Host_16_sendC2Ev
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN19modbus_Host_16_sendD2Ev
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN19modbus_Host_16_sendD2Ev
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN19modbus_Host_16_sendD2Ev
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus21modbus_Host_10_codingEhtPtt
+                0x00000000      0x13e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus21modbus_Host_10_codingEhtPtt
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus21modbus_Host_10_codingEhtPtt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus23modbus_Host_10_uncodingEv
+                0x00000000       0x72 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus23modbus_Host_10_uncodingEv
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus23modbus_Host_10_uncodingEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus14modbus_03_sendEhtt
+                0x00000000       0x46 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus14modbus_03_sendEhtt
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus14modbus_03_sendEhtt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus14modbus_06_sendEhtt
+                0x00000000       0x46 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus14modbus_06_sendEhtt
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus14modbus_06_sendEhtt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus14modbus_10_sendEhtPtt
+                0x00000000       0x42 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus14modbus_10_sendEhtPtt
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus14modbus_10_sendEhtPtt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus20modbus_receive_upsetEv
+                0x00000000       0x98 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus20modbus_receive_upsetEv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus20modbus_receive_upsetEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .text._ZN6modbus20receive_data_channelEv
+                0x00000000       0xd0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.extab.text._ZN6modbus20receive_data_channelEv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .ARM.exidx.text._ZN6modbus20receive_data_channelEv
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .ARM.extab.text._Z41__static_initialization_and_destruction_0ii
                 0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
@@ -20052,7 +20188,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
 LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000    0x1cddd
+.debug_info     0x00000000    0x1ddc1
  .debug_info    0x00000000      0x55c CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
  .debug_info    0x0000055c      0x780 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_dma.c.obj
  .debug_info    0x00000cdc      0x340 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_exti.c.obj
@@ -20068,16 +20204,16 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_info    0x000076d8      0x8d7 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
  .debug_info    0x00007faf      0xf45 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .debug_info    0x00008ef4     0x6a4c CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .debug_info    0x0000f940     0x6172 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .debug_info    0x00015ab2      0x3b2 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
- .debug_info    0x00015e64      0x3d4 CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
- .debug_info    0x00016238      0x27c CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
- .debug_info    0x000164b4     0x620d CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
- .debug_info    0x0001c6c1       0xd8 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
- .debug_info    0x0001c799      0x622 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
- .debug_info    0x0001cdbb       0x22 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_info    0x0000f940     0x7156 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .debug_info    0x00016a96      0x3b2 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
+ .debug_info    0x00016e48      0x3d4 CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
+ .debug_info    0x0001721c      0x27c CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
+ .debug_info    0x00017498     0x620d CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
+ .debug_info    0x0001d6a5       0xd8 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
+ .debug_info    0x0001d77d      0x622 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
+ .debug_info    0x0001dd9f       0x22 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_abbrev   0x00000000     0x3c05
+.debug_abbrev   0x00000000     0x3cdb
  .debug_abbrev  0x00000000      0x170 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
  .debug_abbrev  0x00000170      0x166 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_dma.c.obj
  .debug_abbrev  0x000002d6      0x1c4 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_exti.c.obj
@@ -20093,16 +20229,16 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_abbrev  0x000015a1      0x24d CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
  .debug_abbrev  0x000017ee      0x2fb CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .debug_abbrev  0x00001ae9      0x975 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .debug_abbrev  0x0000245e      0x8ae CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .debug_abbrev  0x00002d0c      0x13d CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
- .debug_abbrev  0x00002e49      0x16a CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
- .debug_abbrev  0x00002fb3      0x12c CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
- .debug_abbrev  0x000030df      0x96b CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
- .debug_abbrev  0x00003a4a       0x44 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
- .debug_abbrev  0x00003a8e      0x165 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
- .debug_abbrev  0x00003bf3       0x12 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_abbrev  0x0000245e      0x984 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .debug_abbrev  0x00002de2      0x13d CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
+ .debug_abbrev  0x00002f1f      0x16a CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
+ .debug_abbrev  0x00003089      0x12c CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
+ .debug_abbrev  0x000031b5      0x96b CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
+ .debug_abbrev  0x00003b20       0x44 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
+ .debug_abbrev  0x00003b64      0x165 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
+ .debug_abbrev  0x00003cc9       0x12 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_aranges  0x00000000      0xeb0
+.debug_aranges  0x00000000      0xf48
  .debug_aranges
                 0x00000000       0x40 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
  .debug_aranges
@@ -20134,23 +20270,23 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_aranges
                 0x00000b20      0x108 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
  .debug_aranges
-                0x00000c28       0x88 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000c28      0x120 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
  .debug_aranges
-                0x00000cb0       0x30 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
+                0x00000d48       0x30 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
  .debug_aranges
-                0x00000ce0       0x80 CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
+                0x00000d78       0x80 CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
  .debug_aranges
-                0x00000d60       0x40 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
+                0x00000df8       0x40 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
  .debug_aranges
-                0x00000da0       0x70 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
+                0x00000e38       0x70 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
  .debug_aranges
-                0x00000e10       0x48 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
+                0x00000ea8       0x48 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
  .debug_aranges
-                0x00000e58       0x30 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
+                0x00000ef0       0x30 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
  .debug_aranges
-                0x00000e88       0x28 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
+                0x00000f20       0x28 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_ranges   0x00000000      0xd48
+.debug_ranges   0x00000000      0xde0
  .debug_ranges  0x00000000       0x30 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
  .debug_ranges  0x00000030       0xa0 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_dma.c.obj
  .debug_ranges  0x000000d0       0x48 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_exti.c.obj
@@ -20166,16 +20302,16 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_ranges  0x00000938       0x78 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
  .debug_ranges  0x000009b0       0x90 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .debug_ranges  0x00000a40       0xf8 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .debug_ranges  0x00000b38       0x78 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .debug_ranges  0x00000bb0       0x20 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
- .debug_ranges  0x00000bd0       0x70 CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
- .debug_ranges  0x00000c40       0x30 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
- .debug_ranges  0x00000c70       0x60 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
- .debug_ranges  0x00000cd0       0x38 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
- .debug_ranges  0x00000d08       0x20 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
- .debug_ranges  0x00000d28       0x20 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_ranges  0x00000b38      0x110 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .debug_ranges  0x00000c48       0x20 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
+ .debug_ranges  0x00000c68       0x70 CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
+ .debug_ranges  0x00000cd8       0x30 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
+ .debug_ranges  0x00000d08       0x60 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
+ .debug_ranges  0x00000d68       0x38 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
+ .debug_ranges  0x00000da0       0x20 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
+ .debug_ranges  0x00000dc0       0x20 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_line     0x00000000     0x94c1
+.debug_line     0x00000000     0x9a4e
  .debug_line    0x00000000      0x2e5 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
  .debug_line    0x000002e5      0x62d CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_dma.c.obj
  .debug_line    0x00000912      0x336 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_exti.c.obj
@@ -20191,16 +20327,16 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_line    0x00005bd6      0x3f9 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
  .debug_line    0x00005fcf      0x518 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .debug_line    0x000064e7      0xe45 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .debug_line    0x0000732c      0x9dc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .debug_line    0x00007d08      0x25e CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
- .debug_line    0x00007f66      0x47d CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
- .debug_line    0x000083e3      0x2de CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
- .debug_line    0x000086c1      0x92a CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
- .debug_line    0x00008feb       0xee CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
- .debug_line    0x000090d9      0x33c CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
- .debug_line    0x00009415       0xac CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_line    0x0000732c      0xf69 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .debug_line    0x00008295      0x25e CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
+ .debug_line    0x000084f3      0x47d CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
+ .debug_line    0x00008970      0x2de CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
+ .debug_line    0x00008c4e      0x92a CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
+ .debug_line    0x00009578       0xee CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
+ .debug_line    0x00009666      0x33c CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
+ .debug_line    0x000099a2       0xac CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_str      0x00000000     0xb6d3
+.debug_str      0x00000000     0xbc5e
  .debug_str     0x00000000      0x3d2 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
                                 0x43f (size before relaxing)
  .debug_str     0x000003d2      0x399 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_dma.c.obj
@@ -20227,25 +20363,25 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
                                 0x47b (size before relaxing)
  .debug_str     0x00003870      0x458 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
                                 0x7b0 (size before relaxing)
- .debug_str     0x00003cc8      0x888 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
+ .debug_str     0x00003cc8      0x880 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
                                0x1113 (size before relaxing)
- .debug_str     0x00004550     0x65cb CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
+ .debug_str     0x00004548     0x65cb CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
                                0x781c (size before relaxing)
- .debug_str     0x0000ab1b      0x3cf CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
-                               0x6dce (size before relaxing)
- .debug_str     0x0000aeea       0x80 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
+ .debug_str     0x0000ab13      0x962 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                               0x7863 (size before relaxing)
+ .debug_str     0x0000b475       0x80 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
                                 0x3bc (size before relaxing)
- .debug_str     0x0000af6a      0x12d CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
+ .debug_str     0x0000b4f5      0x12d CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
                                 0x3ba (size before relaxing)
- .debug_str     0x0000b097       0x9d CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
+ .debug_str     0x0000b622       0x9d CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
                                 0x2aa (size before relaxing)
- .debug_str     0x0000b134      0x3db CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
+ .debug_str     0x0000b6bf      0x3db CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
                                0x7237 (size before relaxing)
- .debug_str     0x0000b50f       0xab CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
+ .debug_str     0x0000ba9a       0xab CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
                                 0x245 (size before relaxing)
- .debug_str     0x0000b5ba       0xbf CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
+ .debug_str     0x0000bb45       0xbf CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
                                 0x43a (size before relaxing)
- .debug_str     0x0000b679       0x5a CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_str     0x0000bc04       0x5a CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
                                  0x9a (size before relaxing)
 
 .comment        0x00000000       0x49
@@ -20273,7 +20409,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .comment       0x00000049       0x4a CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
  .comment       0x00000049       0x4a CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
 
-.debug_frame    0x00000000    0x19e80
+.debug_frame    0x00000000    0x1a148
  .debug_frame   0x00000000       0xd8 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
  .debug_frame   0x000000d8      0x308 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_dma.c.obj
  .debug_frame   0x000003e0      0x148 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_exti.c.obj
@@ -20289,241 +20425,241 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_frame   0x00002a50      0x214 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
  .debug_frame   0x00002c64      0x288 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .debug_frame   0x00002eec      0x488 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .debug_frame   0x00003374      0x218 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .debug_frame   0x0000358c       0x7c CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
- .debug_frame   0x00003608      0x1ac CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
- .debug_frame   0x000037b4       0xc0 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
- .debug_frame   0x00003874      0x198 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
- .debug_frame   0x00003a0c       0xb0 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
- .debug_frame   0x00003abc       0x7c CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
- .debug_frame   0x00003b38       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(atexit_arm.o)
- .debug_frame   0x00003b58       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_op.o)
- .debug_frame   0x00003b78       0x78 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_arm.o)
- .debug_frame   0x00003bf0       0xf0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_exception.o)
- .debug_frame   0x00003ce0       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_globals.o)
- .debug_frame   0x00003d10      0x128 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_personality.o)
- .debug_frame   0x00003e38       0xb0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_terminate.o)
- .debug_frame   0x00003ee8       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(pure.o)
- .debug_frame   0x00003f28       0xd8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(si_class_type_info.o)
- .debug_frame   0x00004000       0x80 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(tinfo.o)
- .debug_frame   0x00004080       0x70 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(allocator-inst.o)
- .debug_frame   0x000040f0      0x12c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ios_init.o)
- .debug_frame   0x0000421c      0x260 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(locale.o)
- .debug_frame   0x0000447c       0xe4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(locale_init.o)
- .debug_frame   0x00004560      0x140 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(monetary_members.o)
- .debug_frame   0x000046a0      0x218 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(monetary_members_cow.o)
- .debug_frame   0x000048b8       0xa8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(numeric_members.o)
- .debug_frame   0x00004960      0x108 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(numeric_members_cow.o)
- .debug_frame   0x00004a68      0xa98 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(lt1-codecvt.o)
- .debug_frame   0x00005500       0xb8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cow-locale_init.o)
- .debug_frame   0x000055b8      0xb08 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cow-shim_facets.o)
- .debug_frame   0x000060c0     0x1238 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cow-string-inst.o)
- .debug_frame   0x000072f8     0x120c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cow-wstring-inst.o)
- .debug_frame   0x00008504      0x194 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ctype.o)
- .debug_frame   0x00008698       0xb0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ctype_configure_char.o)
- .debug_frame   0x00008748      0x220 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ctype_members.o)
- .debug_frame   0x00008968     0x149c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cxx11-locale-inst.o)
- .debug_frame   0x00009e04      0xb60 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cxx11-shim_facets.o)
- .debug_frame   0x0000a964     0x1478 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cxx11-wlocale-inst.o)
- .debug_frame   0x0000bddc      0x4dc f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ext11-inst.o)
- .debug_frame   0x0000c2b8      0x170 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(functexcept.o)
- .debug_frame   0x0000c428      0x5b4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ios-inst.o)
- .debug_frame   0x0000c9dc      0x130 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ios.o)
- .debug_frame   0x0000cb0c     0x1084 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(istream-inst.o)
- .debug_frame   0x0000db90     0x21e8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(locale-inst.o)
- .debug_frame   0x0000fd78      0xec4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ostream-inst.o)
- .debug_frame   0x00010c3c       0x78 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(snprintf_lite.o)
- .debug_frame   0x00010cb4      0x7b4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(streambuf-inst.o)
- .debug_frame   0x00011468     0x119c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(string-inst.o)
- .debug_frame   0x00012604     0x21dc f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(wlocale-inst.o)
- .debug_frame   0x000147e0     0x11b8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(wstring-inst.o)
- .debug_frame   0x00015998       0xd8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(class_type_info.o)
- .debug_frame   0x00015a70       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_ops.o)
- .debug_frame   0x00015a90       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_opv.o)
- .debug_frame   0x00015ab0       0x38 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(dyncast.o)
- .debug_frame   0x00015ae8       0x58 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_aux_runtime.o)
- .debug_frame   0x00015b40       0x54 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_call.o)
- .debug_frame   0x00015b94       0x8c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_catch.o)
- .debug_frame   0x00015c20       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(guard.o)
- .debug_frame   0x00015c60       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(new_handler.o)
- .debug_frame   0x00015c90       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(new_op.o)
- .debug_frame   0x00015cb8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(new_opv.o)
- .debug_frame   0x00015cd8      0x10c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(vmi_class_type_info.o)
- .debug_frame   0x00015de4       0xe0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(c++locale.o)
- .debug_frame   0x00015ec4      0x158 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(codecvt.o)
- .debug_frame   0x0001601c       0xb8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(codecvt_members.o)
- .debug_frame   0x000160d4       0x60 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(collate_members.o)
- .debug_frame   0x00016134       0x60 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(collate_members_cow.o)
- .debug_frame   0x00016194       0x6c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ios_locale.o)
- .debug_frame   0x00016200       0x5c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(locale_facets.o)
- .debug_frame   0x0001625c       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(messages_members.o)
- .debug_frame   0x0001629c       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(messages_members_cow.o)
- .debug_frame   0x000162dc      0x2f8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(misc-inst.o)
- .debug_frame   0x000165d4       0x90 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(time_members.o)
- .debug_frame   0x00016664      0x200 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cxx11-ios_failure.o)
- .debug_frame   0x00016864      0x1d4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(system_error.o)
- .debug_frame   0x00016a38      0x6a8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cow-stdexcept.o)
- .debug_frame   0x000170e0       0xac f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x0001718c       0xc4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
- .debug_frame   0x00017250       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x0001727c       0x34 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x000172b0      0x2d4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
- .debug_frame   0x00017584      0x104 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(pr-support.o)
- .debug_frame   0x00017688       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-abort.o)
- .debug_frame   0x000176b0       0x38 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-btowc.o)
- .debug_frame   0x000176e8       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-cxa_atexit.o)
- .debug_frame   0x00017710       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x00017730       0x5c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fflush.o)
- .debug_frame   0x0001778c      0x14c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-findfp.o)
- .debug_frame   0x000178d8       0x54 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fread.o)
- .debug_frame   0x0001792c       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fseek.o)
- .debug_frame   0x0001795c       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fseeko.o)
- .debug_frame   0x0001799c       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-ftell.o)
- .debug_frame   0x000179cc       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-ftello.o)
- .debug_frame   0x00017a08       0x54 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fwalk.o)
- .debug_frame   0x00017a5c       0x4c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fwrite.o)
- .debug_frame   0x00017aa8       0x48 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-getc.o)
- .debug_frame   0x00017af0       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-getwc.o)
- .debug_frame   0x00017b20       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
- .debug_frame   0x00017b4c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswctype.o)
- .debug_frame   0x00017b6c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswdigit.o)
- .debug_frame   0x00017b8c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswgraph.o)
- .debug_frame   0x00017bac       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswgraph_l.o)
- .debug_frame   0x00017bd8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswlower.o)
- .debug_frame   0x00017bf8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswlower_l.o)
- .debug_frame   0x00017c18       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswprint.o)
- .debug_frame   0x00017c38       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswprint_l.o)
- .debug_frame   0x00017c58       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswpunct.o)
- .debug_frame   0x00017c78       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswpunct_l.o)
- .debug_frame   0x00017c98       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswspace.o)
- .debug_frame   0x00017cb8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswspace_l.o)
- .debug_frame   0x00017cd8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswupper.o)
- .debug_frame   0x00017cf8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswupper_l.o)
- .debug_frame   0x00017d18       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswxdigit.o)
- .debug_frame   0x00017d38       0x48 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-locale.o)
- .debug_frame   0x00017d80       0xb0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-lock.o)
- .debug_frame   0x00017e30       0x58 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-makebuf.o)
- .debug_frame   0x00017e88       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-malloc.o)
- .debug_frame   0x00017eb8       0x48 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-mbrtowc.o)
- .debug_frame   0x00017f00       0x48 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-mbtowc_r.o)
- .debug_frame   0x00017f48       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcmp.o)
- .debug_frame   0x00017f70       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x00017f98       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memmove.o)
- .debug_frame   0x00017fc0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
- .debug_frame   0x00017fe0       0x38 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x00018018       0x4c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x00018064       0x74 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-printf.o)
- .debug_frame   0x000180d8       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-putc.o)
- .debug_frame   0x00018114       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-putwc.o)
- .debug_frame   0x00018144       0x5c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-reent.o)
- .debug_frame   0x000181a0       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-refill.o)
- .debug_frame   0x000181e0       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-rget.o)
- .debug_frame   0x0001821c       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x00018248       0xcc f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-signal.o)
- .debug_frame   0x00018314       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-signalr.o)
- .debug_frame   0x00018350       0x78 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-sscanf.o)
- .debug_frame   0x000183c8       0x88 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-stdio.o)
- .debug_frame   0x00018450       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcmp.o)
- .debug_frame   0x00018470       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcoll.o)
- .debug_frame   0x00018490       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcpy.o)
- .debug_frame   0x000184b0       0x48 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strerror.o)
- .debug_frame   0x000184f8       0x70 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strftime.o)
- .debug_frame   0x00018568      0x12c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strtod.o)
- .debug_frame   0x00018694       0x64 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strtoul.o)
- .debug_frame   0x000186f8       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strxfrm.o)
- .debug_frame   0x00018724       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-timelocal.o)
- .debug_frame   0x00018744       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-towlower.o)
- .debug_frame   0x00018764       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-towupper.o)
- .debug_frame   0x00018784       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-tzlock.o)
- .debug_frame   0x000187b4       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-tzset.o)
- .debug_frame   0x000187f0       0x5c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-tzset_r.o)
- .debug_frame   0x0001884c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-u_strerr.o)
- .debug_frame   0x0001886c       0x5c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-ungetc.o)
- .debug_frame   0x000188c8       0x60 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-ungetwc.o)
- .debug_frame   0x00018928       0x4c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-vsnprintf.o)
- .debug_frame   0x00018974       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wbuf.o)
- .debug_frame   0x000189b4       0x44 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcrtomb.o)
- .debug_frame   0x000189f8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcscoll.o)
- .debug_frame   0x00018a18       0x8c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcsftime.o)
- .debug_frame   0x00018aa4       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcslen.o)
- .debug_frame   0x00018ac4       0x84 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcstoul.o)
- .debug_frame   0x00018b48       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcsxfrm.o)
- .debug_frame   0x00018b68       0x34 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wctob.o)
- .debug_frame   0x00018b9c       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wctomb_r.o)
- .debug_frame   0x00018bd8       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wctype.o)
- .debug_frame   0x00018c14       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wmemchr.o)
- .debug_frame   0x00018c40       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wmemcpy.o)
- .debug_frame   0x00018c60       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wmemmove.o)
- .debug_frame   0x00018c80       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wmemset.o)
- .debug_frame   0x00018ca0       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-writer.o)
- .debug_frame   0x00018ccc       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wsetup.o)
- .debug_frame   0x00018cf8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-abs.o)
- .debug_frame   0x00018d18       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-assert.o)
- .debug_frame   0x00018d58       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-closer.o)
- .debug_frame   0x00018d84       0x78 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fgetwc.o)
- .debug_frame   0x00018dfc       0x64 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fprintf.o)
- .debug_frame   0x00018e60       0x7c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fputwc.o)
- .debug_frame   0x00018edc       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fstatr.o)
- .debug_frame   0x00018f08       0x84 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-gdtoa-gethex.o)
- .debug_frame   0x00018f8c       0x74 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-gdtoa-hexnan.o)
- .debug_frame   0x00019000       0x50 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-getenv_r.o)
- .debug_frame   0x00019050       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-gettzinfo.o)
- .debug_frame   0x00019070       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-isattyr.o)
- .debug_frame   0x0001909c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswalnum.o)
- .debug_frame   0x000190bc       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswalnum_l.o)
- .debug_frame   0x000190dc       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswalpha.o)
- .debug_frame   0x000190fc       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswalpha_l.o)
- .debug_frame   0x0001911c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswblank.o)
- .debug_frame   0x0001913c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswblank_l.o)
- .debug_frame   0x0001915c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswcntrl.o)
- .debug_frame   0x0001917c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswcntrl_l.o)
- .debug_frame   0x0001919c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-labs.o)
- .debug_frame   0x000191bc       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-lnumeric.o)
- .debug_frame   0x000191dc       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-lseekr.o)
- .debug_frame   0x00019208       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-mbstowcs.o)
- .debug_frame   0x00019230       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-mlock.o)
- .debug_frame   0x00019260      0x25c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-mprec.o)
- .debug_frame   0x000194bc       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-callocr.o)
- .debug_frame   0x000194ec       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-reallocr.o)
- .debug_frame   0x00019528       0x90 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-svfprintf.o)
- .debug_frame   0x000195b8       0x74 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-svfscanf.o)
- .debug_frame   0x0001962c       0xac f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-vfprintf.o)
- .debug_frame   0x000196d8       0x60 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_frame   0x00019738       0x64 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-vfscanf_i.o)
- .debug_frame   0x0001979c       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-readr.o)
- .debug_frame   0x000197c8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-s_nan.o)
- .debug_frame   0x000197e8       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-sccl.o)
- .debug_frame   0x00019814       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-sf_nan.o)
- .debug_frame   0x00019834       0x7c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-snprintf.o)
- .debug_frame   0x000198b0       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strncmp.o)
- .debug_frame   0x000198d8       0x64 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strtol.o)
- .debug_frame   0x0001993c       0x7c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-swprintf.o)
- .debug_frame   0x000199b8       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-tzcalc_limits.o)
- .debug_frame   0x000199f4       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcscmp.o)
- .debug_frame   0x00019a14       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcscpy.o)
- .debug_frame   0x00019a34       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcslcpy.o)
- .debug_frame   0x00019a5c       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-envlock.o)
- .debug_frame   0x00019a8c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-msizer.o)
- .debug_frame   0x00019aac       0x8c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-svfwprintf.o)
- .debug_frame   0x00019b38       0x88 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-dtoa.o)
- .debug_frame   0x00019bc0       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-localeconv.o)
- .debug_frame   0x00019c00       0x50 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00019c50       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_unorddf2.o)
- .debug_frame   0x00019c70       0x24 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
- .debug_frame   0x00019c94       0x24 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixunsdfsi.o)
- .debug_frame   0x00019cb8       0x24 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x00019cdc       0x38 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixdfdi.o)
- .debug_frame   0x00019d14       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixunsdfdi.o)
- .debug_frame   0x00019d40       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(close.o)
- .debug_frame   0x00019d60       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(fstat.o)
- .debug_frame   0x00019d80       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(getpid.o)
- .debug_frame   0x00019da0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(isatty.o)
- .debug_frame   0x00019dc0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(kill.o)
- .debug_frame   0x00019de0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(lseek.o)
- .debug_frame   0x00019e00       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(read.o)
- .debug_frame   0x00019e20       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(sbrk.o)
- .debug_frame   0x00019e40       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(write.o)
- .debug_frame   0x00019e60       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
+ .debug_frame   0x00003374      0x4e0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .debug_frame   0x00003854       0x7c CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
+ .debug_frame   0x000038d0      0x1ac CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
+ .debug_frame   0x00003a7c       0xc0 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
+ .debug_frame   0x00003b3c      0x198 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
+ .debug_frame   0x00003cd4       0xb0 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
+ .debug_frame   0x00003d84       0x7c CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
+ .debug_frame   0x00003e00       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(atexit_arm.o)
+ .debug_frame   0x00003e20       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_op.o)
+ .debug_frame   0x00003e40       0x78 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_arm.o)
+ .debug_frame   0x00003eb8       0xf0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_exception.o)
+ .debug_frame   0x00003fa8       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_globals.o)
+ .debug_frame   0x00003fd8      0x128 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_personality.o)
+ .debug_frame   0x00004100       0xb0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_terminate.o)
+ .debug_frame   0x000041b0       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(pure.o)
+ .debug_frame   0x000041f0       0xd8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(si_class_type_info.o)
+ .debug_frame   0x000042c8       0x80 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(tinfo.o)
+ .debug_frame   0x00004348       0x70 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(allocator-inst.o)
+ .debug_frame   0x000043b8      0x12c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ios_init.o)
+ .debug_frame   0x000044e4      0x260 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(locale.o)
+ .debug_frame   0x00004744       0xe4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(locale_init.o)
+ .debug_frame   0x00004828      0x140 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(monetary_members.o)
+ .debug_frame   0x00004968      0x218 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(monetary_members_cow.o)
+ .debug_frame   0x00004b80       0xa8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(numeric_members.o)
+ .debug_frame   0x00004c28      0x108 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(numeric_members_cow.o)
+ .debug_frame   0x00004d30      0xa98 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(lt1-codecvt.o)
+ .debug_frame   0x000057c8       0xb8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cow-locale_init.o)
+ .debug_frame   0x00005880      0xb08 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cow-shim_facets.o)
+ .debug_frame   0x00006388     0x1238 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cow-string-inst.o)
+ .debug_frame   0x000075c0     0x120c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cow-wstring-inst.o)
+ .debug_frame   0x000087cc      0x194 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ctype.o)
+ .debug_frame   0x00008960       0xb0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ctype_configure_char.o)
+ .debug_frame   0x00008a10      0x220 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ctype_members.o)
+ .debug_frame   0x00008c30     0x149c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cxx11-locale-inst.o)
+ .debug_frame   0x0000a0cc      0xb60 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cxx11-shim_facets.o)
+ .debug_frame   0x0000ac2c     0x1478 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cxx11-wlocale-inst.o)
+ .debug_frame   0x0000c0a4      0x4dc f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ext11-inst.o)
+ .debug_frame   0x0000c580      0x170 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(functexcept.o)
+ .debug_frame   0x0000c6f0      0x5b4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ios-inst.o)
+ .debug_frame   0x0000cca4      0x130 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ios.o)
+ .debug_frame   0x0000cdd4     0x1084 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(istream-inst.o)
+ .debug_frame   0x0000de58     0x21e8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(locale-inst.o)
+ .debug_frame   0x00010040      0xec4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ostream-inst.o)
+ .debug_frame   0x00010f04       0x78 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(snprintf_lite.o)
+ .debug_frame   0x00010f7c      0x7b4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(streambuf-inst.o)
+ .debug_frame   0x00011730     0x119c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(string-inst.o)
+ .debug_frame   0x000128cc     0x21dc f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(wlocale-inst.o)
+ .debug_frame   0x00014aa8     0x11b8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(wstring-inst.o)
+ .debug_frame   0x00015c60       0xd8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(class_type_info.o)
+ .debug_frame   0x00015d38       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_ops.o)
+ .debug_frame   0x00015d58       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_opv.o)
+ .debug_frame   0x00015d78       0x38 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(dyncast.o)
+ .debug_frame   0x00015db0       0x58 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_aux_runtime.o)
+ .debug_frame   0x00015e08       0x54 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_call.o)
+ .debug_frame   0x00015e5c       0x8c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_catch.o)
+ .debug_frame   0x00015ee8       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(guard.o)
+ .debug_frame   0x00015f28       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(new_handler.o)
+ .debug_frame   0x00015f58       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(new_op.o)
+ .debug_frame   0x00015f80       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(new_opv.o)
+ .debug_frame   0x00015fa0      0x10c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(vmi_class_type_info.o)
+ .debug_frame   0x000160ac       0xe0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(c++locale.o)
+ .debug_frame   0x0001618c      0x158 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(codecvt.o)
+ .debug_frame   0x000162e4       0xb8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(codecvt_members.o)
+ .debug_frame   0x0001639c       0x60 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(collate_members.o)
+ .debug_frame   0x000163fc       0x60 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(collate_members_cow.o)
+ .debug_frame   0x0001645c       0x6c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(ios_locale.o)
+ .debug_frame   0x000164c8       0x5c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(locale_facets.o)
+ .debug_frame   0x00016524       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(messages_members.o)
+ .debug_frame   0x00016564       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(messages_members_cow.o)
+ .debug_frame   0x000165a4      0x2f8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(misc-inst.o)
+ .debug_frame   0x0001689c       0x90 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(time_members.o)
+ .debug_frame   0x0001692c      0x200 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cxx11-ios_failure.o)
+ .debug_frame   0x00016b2c      0x1d4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(system_error.o)
+ .debug_frame   0x00016d00      0x6a8 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cow-stdexcept.o)
+ .debug_frame   0x000173a8       0xac f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00017454       0xc4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x00017518       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00017544       0x34 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00017578      0x2d4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
+ .debug_frame   0x0001784c      0x104 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(pr-support.o)
+ .debug_frame   0x00017950       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-abort.o)
+ .debug_frame   0x00017978       0x38 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-btowc.o)
+ .debug_frame   0x000179b0       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-cxa_atexit.o)
+ .debug_frame   0x000179d8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x000179f8       0x5c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fflush.o)
+ .debug_frame   0x00017a54      0x14c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-findfp.o)
+ .debug_frame   0x00017ba0       0x54 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fread.o)
+ .debug_frame   0x00017bf4       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fseek.o)
+ .debug_frame   0x00017c24       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fseeko.o)
+ .debug_frame   0x00017c64       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-ftell.o)
+ .debug_frame   0x00017c94       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-ftello.o)
+ .debug_frame   0x00017cd0       0x54 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fwalk.o)
+ .debug_frame   0x00017d24       0x4c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fwrite.o)
+ .debug_frame   0x00017d70       0x48 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-getc.o)
+ .debug_frame   0x00017db8       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-getwc.o)
+ .debug_frame   0x00017de8       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00017e14       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswctype.o)
+ .debug_frame   0x00017e34       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswdigit.o)
+ .debug_frame   0x00017e54       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswgraph.o)
+ .debug_frame   0x00017e74       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswgraph_l.o)
+ .debug_frame   0x00017ea0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswlower.o)
+ .debug_frame   0x00017ec0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswlower_l.o)
+ .debug_frame   0x00017ee0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswprint.o)
+ .debug_frame   0x00017f00       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswprint_l.o)
+ .debug_frame   0x00017f20       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswpunct.o)
+ .debug_frame   0x00017f40       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswpunct_l.o)
+ .debug_frame   0x00017f60       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswspace.o)
+ .debug_frame   0x00017f80       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswspace_l.o)
+ .debug_frame   0x00017fa0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswupper.o)
+ .debug_frame   0x00017fc0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswupper_l.o)
+ .debug_frame   0x00017fe0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswxdigit.o)
+ .debug_frame   0x00018000       0x48 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-locale.o)
+ .debug_frame   0x00018048       0xb0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-lock.o)
+ .debug_frame   0x000180f8       0x58 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-makebuf.o)
+ .debug_frame   0x00018150       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-malloc.o)
+ .debug_frame   0x00018180       0x48 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-mbrtowc.o)
+ .debug_frame   0x000181c8       0x48 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-mbtowc_r.o)
+ .debug_frame   0x00018210       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcmp.o)
+ .debug_frame   0x00018238       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00018260       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memmove.o)
+ .debug_frame   0x00018288       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x000182a8       0x38 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x000182e0       0x4c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x0001832c       0x74 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-printf.o)
+ .debug_frame   0x000183a0       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-putc.o)
+ .debug_frame   0x000183dc       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-putwc.o)
+ .debug_frame   0x0001840c       0x5c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-reent.o)
+ .debug_frame   0x00018468       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-refill.o)
+ .debug_frame   0x000184a8       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-rget.o)
+ .debug_frame   0x000184e4       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x00018510       0xcc f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-signal.o)
+ .debug_frame   0x000185dc       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-signalr.o)
+ .debug_frame   0x00018618       0x78 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-sscanf.o)
+ .debug_frame   0x00018690       0x88 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-stdio.o)
+ .debug_frame   0x00018718       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcmp.o)
+ .debug_frame   0x00018738       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcoll.o)
+ .debug_frame   0x00018758       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcpy.o)
+ .debug_frame   0x00018778       0x48 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strerror.o)
+ .debug_frame   0x000187c0       0x70 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strftime.o)
+ .debug_frame   0x00018830      0x12c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strtod.o)
+ .debug_frame   0x0001895c       0x64 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strtoul.o)
+ .debug_frame   0x000189c0       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strxfrm.o)
+ .debug_frame   0x000189ec       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-timelocal.o)
+ .debug_frame   0x00018a0c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-towlower.o)
+ .debug_frame   0x00018a2c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-towupper.o)
+ .debug_frame   0x00018a4c       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-tzlock.o)
+ .debug_frame   0x00018a7c       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-tzset.o)
+ .debug_frame   0x00018ab8       0x5c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-tzset_r.o)
+ .debug_frame   0x00018b14       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-u_strerr.o)
+ .debug_frame   0x00018b34       0x5c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-ungetc.o)
+ .debug_frame   0x00018b90       0x60 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-ungetwc.o)
+ .debug_frame   0x00018bf0       0x4c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-vsnprintf.o)
+ .debug_frame   0x00018c3c       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wbuf.o)
+ .debug_frame   0x00018c7c       0x44 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcrtomb.o)
+ .debug_frame   0x00018cc0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcscoll.o)
+ .debug_frame   0x00018ce0       0x8c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcsftime.o)
+ .debug_frame   0x00018d6c       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcslen.o)
+ .debug_frame   0x00018d8c       0x84 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcstoul.o)
+ .debug_frame   0x00018e10       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcsxfrm.o)
+ .debug_frame   0x00018e30       0x34 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wctob.o)
+ .debug_frame   0x00018e64       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00018ea0       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wctype.o)
+ .debug_frame   0x00018edc       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wmemchr.o)
+ .debug_frame   0x00018f08       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wmemcpy.o)
+ .debug_frame   0x00018f28       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wmemmove.o)
+ .debug_frame   0x00018f48       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wmemset.o)
+ .debug_frame   0x00018f68       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-writer.o)
+ .debug_frame   0x00018f94       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wsetup.o)
+ .debug_frame   0x00018fc0       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-abs.o)
+ .debug_frame   0x00018fe0       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-assert.o)
+ .debug_frame   0x00019020       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-closer.o)
+ .debug_frame   0x0001904c       0x78 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fgetwc.o)
+ .debug_frame   0x000190c4       0x64 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fprintf.o)
+ .debug_frame   0x00019128       0x7c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fputwc.o)
+ .debug_frame   0x000191a4       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fstatr.o)
+ .debug_frame   0x000191d0       0x84 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-gdtoa-gethex.o)
+ .debug_frame   0x00019254       0x74 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-gdtoa-hexnan.o)
+ .debug_frame   0x000192c8       0x50 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-getenv_r.o)
+ .debug_frame   0x00019318       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-gettzinfo.o)
+ .debug_frame   0x00019338       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-isattyr.o)
+ .debug_frame   0x00019364       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswalnum.o)
+ .debug_frame   0x00019384       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswalnum_l.o)
+ .debug_frame   0x000193a4       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswalpha.o)
+ .debug_frame   0x000193c4       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswalpha_l.o)
+ .debug_frame   0x000193e4       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswblank.o)
+ .debug_frame   0x00019404       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswblank_l.o)
+ .debug_frame   0x00019424       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswcntrl.o)
+ .debug_frame   0x00019444       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-iswcntrl_l.o)
+ .debug_frame   0x00019464       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-labs.o)
+ .debug_frame   0x00019484       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-lnumeric.o)
+ .debug_frame   0x000194a4       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-lseekr.o)
+ .debug_frame   0x000194d0       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-mbstowcs.o)
+ .debug_frame   0x000194f8       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-mlock.o)
+ .debug_frame   0x00019528      0x25c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-mprec.o)
+ .debug_frame   0x00019784       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-callocr.o)
+ .debug_frame   0x000197b4       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x000197f0       0x90 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x00019880       0x74 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-svfscanf.o)
+ .debug_frame   0x000198f4       0xac f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-vfprintf.o)
+ .debug_frame   0x000199a0       0x60 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x00019a00       0x64 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-vfscanf_i.o)
+ .debug_frame   0x00019a64       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-readr.o)
+ .debug_frame   0x00019a90       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-s_nan.o)
+ .debug_frame   0x00019ab0       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-sccl.o)
+ .debug_frame   0x00019adc       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-sf_nan.o)
+ .debug_frame   0x00019afc       0x7c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-snprintf.o)
+ .debug_frame   0x00019b78       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strncmp.o)
+ .debug_frame   0x00019ba0       0x64 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strtol.o)
+ .debug_frame   0x00019c04       0x7c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-swprintf.o)
+ .debug_frame   0x00019c80       0x3c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-tzcalc_limits.o)
+ .debug_frame   0x00019cbc       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcscmp.o)
+ .debug_frame   0x00019cdc       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcscpy.o)
+ .debug_frame   0x00019cfc       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-wcslcpy.o)
+ .debug_frame   0x00019d24       0x30 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-envlock.o)
+ .debug_frame   0x00019d54       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x00019d74       0x8c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-svfwprintf.o)
+ .debug_frame   0x00019e00       0x88 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-dtoa.o)
+ .debug_frame   0x00019e88       0x40 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-localeconv.o)
+ .debug_frame   0x00019ec8       0x50 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00019f18       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_unorddf2.o)
+ .debug_frame   0x00019f38       0x24 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
+ .debug_frame   0x00019f5c       0x24 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixunsdfsi.o)
+ .debug_frame   0x00019f80       0x24 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00019fa4       0x38 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixdfdi.o)
+ .debug_frame   0x00019fdc       0x2c f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixunsdfdi.o)
+ .debug_frame   0x0001a008       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(close.o)
+ .debug_frame   0x0001a028       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(fstat.o)
+ .debug_frame   0x0001a048       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(getpid.o)
+ .debug_frame   0x0001a068       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(isatty.o)
+ .debug_frame   0x0001a088       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(kill.o)
+ .debug_frame   0x0001a0a8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(lseek.o)
+ .debug_frame   0x0001a0c8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(read.o)
+ .debug_frame   0x0001a0e8       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(sbrk.o)
+ .debug_frame   0x0001a108       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(write.o)
+ .debug_frame   0x0001a128       0x20 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
 
 .stab           0x00000000       0xcc
  .stab          0x00000000       0x24 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(close.o)

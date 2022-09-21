@@ -2349,7 +2349,110 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj: ../HARDWARE/Src/CRC.cpp \
   ../FWLIB/inc/stm32f4xx_can.h \
   ../FWLIB/inc/stm32f4xx_dac.h \
   ../FWLIB/inc/stm32f4xx_dcmi.h \
-  ../FWLIB/inc/stm32f4xx_fsmc.h
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/string \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++config.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/os_defines.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/cpu_defines.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stringfwd.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/memoryfwd.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/char_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/functexcept.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/exception_defines.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/cpp_type_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/type_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/numeric_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/move.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/type_traits \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator_base_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator_base_funcs.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/concept_check.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/debug/assertions.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/ptr_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/debug/debug.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/postypes.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cwchar \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/wchar.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano/newlib.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/config.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/reent.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/lock.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/assert.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/cdefs.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_locale.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdint \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/allocator.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++allocator.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/new_allocator.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/new \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/exception \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/exception.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/cxxabi_init_exception.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/typeinfo \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/hash_bytes.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/nested_exception.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/localefwd.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++locale.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/clocale \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/locale.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/iosfwd \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cctype \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/ctype.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/ostream_insert.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/cxxabi_forced.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_function.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/backward/binders.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/range_access.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/initializer_list \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/iterator_concepts.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/concepts \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/range_cmp.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/atomicity.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/gthr.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/gthr-default.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/atomic_word.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/alloc_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/alloc_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_construct.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/string_conversions.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdlib \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdlib.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/stdlib.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/alloca.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdio \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdio.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/endian.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_endian.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/select.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_sigset.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_timeval.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/timespec.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_timespec.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_pthreadtypes.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/sched.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/stdio.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cerrno \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/errno.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/errno.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/charconv.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/functional_hash.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/basic_string.tcc
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj: ../HARDWARE/Src/GPIO.cpp \
   ../HARDWARE/Inc/GPIO.h \
@@ -2754,8 +2857,6 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj: ../HARDWARE/Src/modbus.c
   ../FWLIB/inc/stm32f4xx_dac.h \
   ../FWLIB/inc/stm32f4xx_dcmi.h \
   ../FWLIB/inc/stm32f4xx_fsmc.h \
-  ../HARDWARE/Inc/USART.h \
-  ../HARDWARE/Inc/GPIO.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/string \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++config.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/os_defines.h \
@@ -2859,6 +2960,8 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj: ../HARDWARE/Src/modbus.c
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/charconv.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/functional_hash.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/basic_string.tcc \
+  ../HARDWARE/Inc/USART.h \
+  ../HARDWARE/Inc/GPIO.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/iostream \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ostream \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ios \
@@ -2881,7 +2984,16 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj: ../HARDWARE/Src/modbus.c
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/basic_ios.tcc \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/ostream.tcc \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/istream \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/istream.tcc
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/istream.tcc \
+  ../FreeRTOS/FreeRTOS_Inc/FreeRTOS.h \
+  ../FreeRTOS/FreeRTOS_Inc/FreeRTOSConfig.h \
+  ../FreeRTOS/FreeRTOS_Inc/projdefs.h \
+  ../FreeRTOS/FreeRTOS_Inc/portable.h \
+  ../FreeRTOS/FreeRTOS_Inc/deprecated_definitions.h \
+  ../FreeRTOS/FreeRTOS_Inc/portmacro.h \
+  ../FreeRTOS/FreeRTOS_Inc/mpu_wrappers.h \
+  ../FreeRTOS/FreeRTOS_Inc/task.h \
+  ../FreeRTOS/FreeRTOS_Inc/list.h
 
 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj: ../SYSTEM/Src/DMA.c \
   ../SYSTEM/Inc/DMA.h \
@@ -3632,9 +3744,9 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_sigset.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/timespec.h:
 
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/range_cmp.h:
-
 ../HARDWARE/Src/SPI.cpp:
+
+F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/range_cmp.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_timespec.h:
 
@@ -3704,32 +3816,6 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ios:
 
 ../HARDWARE/Inc/CRC.h:
 
-../HARDWARE/Src/GPIO.cpp:
-
-../HARDWARE/Src/IIC.cpp:
-
-../SYSTEM/Src/sys.c:
-
-../SYSTEM/Inc/DMA.h:
-
-../HARDWARE/Inc/IIC.h:
-
-../HARDWARE/Inc/modbus.h:
-
-../SYSTEM/Inc/delay.h:
-
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/cxxabi_forced.h:
-
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/functexcept.h:
-
-../HARDWARE/Inc/Out_In_Put.h:
-
-../SYSTEM/Inc/IRQHandler.h:
-
-../HARDWARE/Src/USART.cpp:
-
-../HARDWARE/Inc/USART.h:
-
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/string:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++config.h:
@@ -3743,6 +3829,12 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/s
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/memoryfwd.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/char_traits.h:
+
+../HARDWARE/Inc/Out_In_Put.h:
+
+F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/cxxabi_forced.h:
+
+F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/functexcept.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/exception_defines.h:
 
@@ -3843,6 +3935,26 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdli
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/functional_hash.h:
+
+../HARDWARE/Src/GPIO.cpp:
+
+../HARDWARE/Src/IIC.cpp:
+
+../SYSTEM/Src/sys.c:
+
+../SYSTEM/Inc/DMA.h:
+
+../HARDWARE/Inc/IIC.h:
+
+../HARDWARE/Inc/modbus.h:
+
+../SYSTEM/Inc/delay.h:
+
+../SYSTEM/Inc/IRQHandler.h:
+
+../HARDWARE/Src/USART.cpp:
+
+../HARDWARE/Inc/USART.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ostream:
 

@@ -13,9 +13,10 @@ class Software_IIC {
 private:
     _GPIO_ SCL;
     _GPIO_ SDA;
-    const uint8_t msec=1;
-    const uint8_t usec=0;
-
+    enum {
+        msec=1,
+        usec=0,
+    };
     uint16_t err_times = 200;
     uint16_t delay_time= 1;
     uint8_t dalay_mode= Software_IIC::usec;

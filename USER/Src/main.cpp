@@ -44,7 +44,6 @@ int main()
     //U1.set_send_DMA();
     U1.write("adsda321s3a1d3a1sd3sd\r\n");
 
-
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,            //任务函数
                 (const char*    )"start_task",          //任务名称

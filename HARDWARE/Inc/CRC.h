@@ -8,6 +8,7 @@
 #define Kokirika_CRC_H
 
 #include "sys.h"
+#include "string"
 
 class CRC32_MPEG2 {
 private:
@@ -23,6 +24,9 @@ public:
 class CRC16_Modbus{
 public:
     static uint16_t Compute(uint8_t *puchMsg, uint16_t usDataLen);
+    static uint16_t Compute(std::string str, uint16_t Len);
+    static uint16_t Compute(std::string str);
 };
+
 
 #endif //Kokirika_CRC_H
