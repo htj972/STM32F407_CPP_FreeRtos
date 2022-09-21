@@ -214,7 +214,7 @@ void modbus::modbus_Slave_03_uncoding() {
     uint8_t * modbus_send_data;
     modbus_Slave_03_receive_ *modebus_data_temp;	//声明接受结构体指针
     modbus_Slave_03_send_    send_data_temp;		//声明发送结构体
-    modebus_data_temp=(modbus_Slave_03_receive_*)&this->modbus_receive_data;
+    modebus_data_temp=(modbus_Slave_03_receive_*)this->modbus_receive_data.data();
     crc16_check=modbus::Compute(modbus_receive_data,6);
     if(crc16_check==(modebus_data_temp->CRC16[1]<<8)+(modebus_data_temp->CRC16[0]))//比较校验
     {
@@ -260,7 +260,7 @@ void modbus::modbus_Host_03_coding(uint8_t ID,uint16_t address,uint16_t num) {
 
 void modbus::modbus_Host_03_uncoding() {
     modbus_Host_03_receive *modbus_03_receive;
-    modbus_03_receive=(modbus_Host_03_receive*)&this->modbus_receive_data;
+    modbus_03_receive=(modbus_Host_03_receive*)this->modbus_receive_data.data();
     uint8_t num=modbus_03_receive->num;
     uint16_t crc16_check=modbus::Compute(this->modbus_receive_data,5+num);
     if(crc16_check==(modbus_03_receive->CRC16[0]<<8)+(modbus_03_receive->CRC16[1]))//比较校验
@@ -283,11 +283,11 @@ void modbus::modbus_Host_03_uncoding() {
 void modbus::modbus_Slave_06_uncoding() {
     uint8_t * modbus_send_data;
     modbus_Slave_06_send_receive_ *modebus_data_temp;				//声明接受结构体指针
-    modebus_data_temp=(modbus_Slave_06_send_receive_*)&this->modbus_receive_data;//接收数据放入结构体指针
+    modebus_data_temp=(modbus_Slave_06_send_receive_*)this->modbus_receive_data.data();//接收数据放入结构体指针
     uint16_t crc16_check=modbus::Compute(modbus_receive_data,8);									//计算接收数据校验
     if(crc16_check==(modebus_data_temp->CRC16[1]<<8)+(modebus_data_temp->CRC16[0]))//比较校验
     {
-        modbus_send_data=(uint8_t*)&modbus_receive_data;					//发送结构体放入数组指针
+        modbus_send_data=(uint8_t*)this->modbus_receive_data.data();					//发送结构体放入数组指针
         this->write_data(modebus_data_temp->address,modebus_data_temp->data);//写入数据
         this->send_data_fun(modbus_send_data,10);		//发送
     }
@@ -308,7 +308,7 @@ void modbus::modbus_Host_06_coding(uint8_t ID, uint16_t address, uint16_t data) 
 
 void modbus::modbus_Host_06_uncoding() {
     modbus_Host_06_send_receive_ *modebus_data_temp;				//声明接受结构体指针
-    modebus_data_temp=(modbus_Host_06_send_receive_*)&this->modbus_receive_data;    //接收数据放入结构体指针
+    modebus_data_temp=(modbus_Host_06_send_receive_*)this->modbus_receive_data.data();    //接收数据放入结构体指针
     uint16_t crc16_check=modbus::Compute(this->modbus_receive_data,8);									//计算接收数据校验
     if(crc16_check==modebus_data_temp->CRC16)//比较校验
     {
@@ -322,7 +322,7 @@ void modbus::modbus_Slave_10_uncoding() {
     uint8_t * modbus_send_data;
     modbus_Slave_16_receive_    *modebus_data_temp;	//声明接受结构体指针
     modbus_Slave_16_send_       send_data_temp;		//声明发送结构体
-    modebus_data_temp=(modbus_Slave_16_receive_*)&this->modbus_receive_data; //接收数据放入结构体指针
+    modebus_data_temp=(modbus_Slave_16_receive_*)this->modbus_receive_data.data(); //接收数据放入结构体指针
     uint16_t crc16_check=modbus::Compute(this->modbus_receive_data,6);//计算接收数据校验
     if(crc16_check==(modbus_receive_data[modebus_data_temp->num+6]<<8)+
                     modbus_receive_data[modebus_data_temp->num+6+1])//比较校验
@@ -369,7 +369,7 @@ void modbus::modbus_Host_10_coding(uint8_t ID,uint16_t address,uint16_t *data,ui
 void modbus::modbus_Host_10_uncoding() {
     u8 ii;
     modbus_Host_16_receive *modbus_16_receive;
-    modbus_16_receive=(modbus_Host_16_receive*)&this->modbus_receive_data;
+    modbus_16_receive=(modbus_Host_16_receive*)this->modbus_receive_data.data();
     uint8_t  crc16_check=modbus::Compute(modbus_receive_data,6);
     if(modbus_16_receive->CRC16=crc16_check)
     {

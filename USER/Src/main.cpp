@@ -34,6 +34,8 @@ TaskHandle_t Task2Task_Handler;
 _OutPut_ led;
 _USART_  U1;
 
+std::string asdasd="123456";
+
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
@@ -43,6 +45,7 @@ int main()
     led.init(GPIOD3,LOW);
     //U1.set_send_DMA();
     U1.write("adsda321s3a1d3a1sd3sd\r\n");
+    U1.write((uint8_t *)asdasd.data(),5);
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,            //任务函数
