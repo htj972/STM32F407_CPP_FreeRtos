@@ -3130,50 +3130,6 @@ CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj: ../SYSTEM/Src/DMA.c \
   ../FWLIB/inc/stm32f4xx_dcmi.h \
   ../FWLIB/inc/stm32f4xx_fsmc.h
 
-CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj: ../SYSTEM/Src/IRQHandler.c \
-  ../SYSTEM/Inc/IRQHandler.h \
-  ../SYSTEM/Inc/sys.h \
-  ../USER/Inc/stm32f4xx.h \
-  ../CORE/Inc/core_cm4.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
-  ../CORE/Inc/core_cmInstr.h \
-  ../CORE/Inc/core_cmFunc.h \
-  ../CORE/Inc/core_cm4_simd.h \
-  ../USER/Inc/system_stm32f4xx.h \
-  ../USER/Inc/stm32f4xx_conf.h \
-  ../FWLIB/inc/stm32f4xx_adc.h \
-  ../FWLIB/inc/stm32f4xx_crc.h \
-  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
-  ../FWLIB/inc/stm32f4xx_dma.h \
-  ../FWLIB/inc/stm32f4xx_exti.h \
-  ../FWLIB/inc/stm32f4xx_flash.h \
-  ../FWLIB/inc/stm32f4xx_gpio.h \
-  ../FWLIB/inc/stm32f4xx_i2c.h \
-  ../FWLIB/inc/stm32f4xx_iwdg.h \
-  ../FWLIB/inc/stm32f4xx_pwr.h \
-  ../FWLIB/inc/stm32f4xx_rcc.h \
-  ../FWLIB/inc/stm32f4xx_rtc.h \
-  ../FWLIB/inc/stm32f4xx_sdio.h \
-  ../FWLIB/inc/stm32f4xx_spi.h \
-  ../FWLIB/inc/stm32f4xx_syscfg.h \
-  ../FWLIB/inc/stm32f4xx_tim.h \
-  ../FWLIB/inc/stm32f4xx_usart.h \
-  ../FWLIB/inc/stm32f4xx_wwdg.h \
-  ../FWLIB/inc/misc.h \
-  ../FWLIB/inc/stm32f4xx_cryp.h \
-  ../FWLIB/inc/stm32f4xx_hash.h \
-  ../FWLIB/inc/stm32f4xx_rng.h \
-  ../FWLIB/inc/stm32f4xx_can.h \
-  ../FWLIB/inc/stm32f4xx_dac.h \
-  ../FWLIB/inc/stm32f4xx_dcmi.h \
-  ../FWLIB/inc/stm32f4xx_fsmc.h
-
 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj: ../SYSTEM/Src/delay.c \
   ../SYSTEM/Inc/delay.h \
   ../SYSTEM/Inc/sys.h \
@@ -4090,8 +4046,6 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/s
 ../MIDDLEWARE/Inc/modbus.h:
 
 ../SYSTEM/Src/DMA.c:
-
-../SYSTEM/Src/IRQHandler.c:
 
 ../USER/Src/main.cpp:
 

@@ -109,8 +109,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj.d"
-  "CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj"
-  "CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj.d"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj.d"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj"

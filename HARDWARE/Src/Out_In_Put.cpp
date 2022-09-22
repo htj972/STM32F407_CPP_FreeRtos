@@ -5,8 +5,6 @@
 **/
 
 #include "Out_In_Put.h"
-#include "IRQHandler.h"
-
 
 void _OutPut_::init(GPIO_TypeDef* PORTx,uint32_t Pinx,uint8_t Hi_Lo) {
     this->GPIO.init(PORTx,Pinx,GPIO_Mode_OUT);
@@ -54,6 +52,11 @@ uint8_t _OutPut_::get() const {
 static bool DOWN_STATE[16];
 static uint8_t extern_flag=0;
 void EXIT_RUN_VOID(uint8_t) {}
+struct _EXIT_STRUCT_{
+    void (*EXIT_IRQ_link)(uint8_t channel);
+    void (*extern_IRQ_link)(uint8_t channel);
+}EXIT_IQR;
+//extern _EXIT_STRUCT_ EXIT_IQR;
 
 void _InPut_::init(GPIO_TypeDef *PORTx, uint32_t Pinx, uint8_t Hi_Lo) {
     this->Down_level=Hi_Lo;
@@ -142,3 +145,102 @@ bool _InPut_::get_NVIC_state() const {
 
 
 
+extern "C" void EXTI0_IRQHandler(){                    //外部中断0
+    if(EXTI_GetITStatus(EXTI_Line0)==SET){
+        EXIT_IQR.EXIT_IRQ_link(0);
+        EXIT_IQR.extern_IRQ_link(0);
+        EXTI_ClearITPendingBit(EXTI_Line0);
+    }
+}
+
+extern "C" void EXTI1_IRQHandler(){                    //外部中断0
+    if(EXTI_GetITStatus(EXTI_Line1)==SET){
+        EXIT_IQR.EXIT_IRQ_link(1);
+        EXIT_IQR.extern_IRQ_link(1);
+        EXTI_ClearITPendingBit(EXTI_Line1);
+    }
+}
+
+extern "C" void EXTI2_IRQHandler(){                    //外部中断0
+    if(EXTI_GetITStatus(EXTI_Line2)==SET){
+        EXIT_IQR.EXIT_IRQ_link(2);
+        EXIT_IQR.extern_IRQ_link(2);
+        EXTI_ClearITPendingBit(EXTI_Line2);
+    }
+}
+
+extern "C" void EXTI3_IRQHandler(){                    //外部中断0
+    if(EXTI_GetITStatus(EXTI_Line3)==SET){
+        EXIT_IQR.EXIT_IRQ_link(3);
+        EXIT_IQR.extern_IRQ_link(3);
+        EXTI_ClearITPendingBit(EXTI_Line3);
+    }
+}
+extern "C" void EXTI4_IRQHandler(){                    //外部中断0
+    if(EXTI_GetITStatus(EXTI_Line4)==SET){
+        EXIT_IQR.EXIT_IRQ_link(4);
+        EXIT_IQR.extern_IRQ_link(4);
+        EXTI_ClearITPendingBit(EXTI_Line4);
+    }
+}
+
+extern "C" void EXTI9_5_IRQHandler(){                    //外部中断0
+    if(EXTI_GetITStatus(EXTI_Line5)==SET){
+        EXIT_IQR.EXIT_IRQ_link(5);
+        EXIT_IQR.extern_IRQ_link(5);
+        EXTI_ClearITPendingBit(EXTI_Line5);
+    }
+    if(EXTI_GetITStatus(EXTI_Line6)==SET){
+        EXIT_IQR.EXIT_IRQ_link(6);
+        EXIT_IQR.extern_IRQ_link(6);
+        EXTI_ClearITPendingBit(EXTI_Line6);
+    }
+    if(EXTI_GetITStatus(EXTI_Line7)==SET){
+        EXIT_IQR.EXIT_IRQ_link(7);
+        EXIT_IQR.extern_IRQ_link(7);
+        EXTI_ClearITPendingBit(EXTI_Line7);
+    }
+    if(EXTI_GetITStatus(EXTI_Line8)==SET){
+        EXIT_IQR.EXIT_IRQ_link(8);
+        EXIT_IQR.extern_IRQ_link(8);
+        EXTI_ClearITPendingBit(EXTI_Line8);
+    }
+    if(EXTI_GetITStatus(EXTI_Line9)==SET){
+        EXIT_IQR.EXIT_IRQ_link(9);
+        EXIT_IQR.extern_IRQ_link(9);
+        EXTI_ClearITPendingBit(EXTI_Line9);
+    }
+}
+
+extern "C" void EXTI15_10_IRQHandler(){                    //外部中断0
+    if(EXTI_GetITStatus(EXTI_Line10)==SET){
+        EXIT_IQR.EXIT_IRQ_link(10);
+        EXIT_IQR.extern_IRQ_link(10);
+        EXTI_ClearITPendingBit(EXTI_Line10);
+    }
+    if(EXTI_GetITStatus(EXTI_Line11)==SET){
+        EXIT_IQR.EXIT_IRQ_link(11);
+        EXIT_IQR.extern_IRQ_link(11);
+        EXTI_ClearITPendingBit(EXTI_Line11);
+    }
+    if(EXTI_GetITStatus(EXTI_Line12)==SET){
+        EXIT_IQR.EXIT_IRQ_link(12);
+        EXIT_IQR.extern_IRQ_link(12);
+        EXTI_ClearITPendingBit(EXTI_Line12);
+    }
+    if(EXTI_GetITStatus(EXTI_Line13)==SET){
+        EXIT_IQR.EXIT_IRQ_link(13);
+        EXIT_IQR.extern_IRQ_link(13);
+        EXTI_ClearITPendingBit(EXTI_Line13);
+    }
+    if(EXTI_GetITStatus(EXTI_Line14)==SET){
+        EXIT_IQR.EXIT_IRQ_link(14);
+        EXIT_IQR.extern_IRQ_link(14);
+        EXTI_ClearITPendingBit(EXTI_Line14);
+    }
+    if(EXTI_GetITStatus(EXTI_Line15)==SET){
+        EXIT_IQR.EXIT_IRQ_link(15);
+        EXIT_IQR.extern_IRQ_link(15);
+        EXTI_ClearITPendingBit(EXTI_Line15);
+    }
+}

@@ -1448,30 +1448,6 @@ SYSTEM/Src/DMA.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.s
 .PHONY : SYSTEM/Src/DMA.c.s
 
-SYSTEM/Src/IRQHandler.obj: SYSTEM/Src/IRQHandler.c.obj
-.PHONY : SYSTEM/Src/IRQHandler.obj
-
-# target to build an object file
-SYSTEM/Src/IRQHandler.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
-.PHONY : SYSTEM/Src/IRQHandler.c.obj
-
-SYSTEM/Src/IRQHandler.i: SYSTEM/Src/IRQHandler.c.i
-.PHONY : SYSTEM/Src/IRQHandler.i
-
-# target to preprocess a source file
-SYSTEM/Src/IRQHandler.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.i
-.PHONY : SYSTEM/Src/IRQHandler.c.i
-
-SYSTEM/Src/IRQHandler.s: SYSTEM/Src/IRQHandler.c.s
-.PHONY : SYSTEM/Src/IRQHandler.s
-
-# target to generate assembly for a file
-SYSTEM/Src/IRQHandler.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.s
-.PHONY : SYSTEM/Src/IRQHandler.c.s
-
 SYSTEM/Src/delay.obj: SYSTEM/Src/delay.c.obj
 .PHONY : SYSTEM/Src/delay.obj
 
@@ -1774,9 +1750,6 @@ help:
 	@echo ... SYSTEM/Src/DMA.obj
 	@echo ... SYSTEM/Src/DMA.i
 	@echo ... SYSTEM/Src/DMA.s
-	@echo ... SYSTEM/Src/IRQHandler.obj
-	@echo ... SYSTEM/Src/IRQHandler.i
-	@echo ... SYSTEM/Src/IRQHandler.s
 	@echo ... SYSTEM/Src/delay.obj
 	@echo ... SYSTEM/Src/delay.i
 	@echo ... SYSTEM/Src/delay.s

@@ -7,13 +7,17 @@
 #include "USART.h"
 #include <cstdarg>
 #include <sstream>
-#include "IRQHandler.h"
 #include "DMA.h"
 
 static string RX_buffer[6];
 static uint16_t RX_MAX_LEN[6]={1024,1024,1024,1024,1024,1024};
 static uint8_t  extern_flag=0;
 void USART_RUN_VOID(uint8_t channel,uint8_t data) {}
+struct _IRQ_STRUCT_ {
+    void (*Usart_IRQ_link)(uint8_t channel,uint8_t data);
+    void (*extern_IRQ_link)(uint8_t channel,uint8_t data);
+}HARD_IQR;
+
 
 void _USART_::config(GPIO_TypeDef *PORT_Tx, uint32_t Pin_Tx, GPIO_TypeDef *PORT_Rx, uint32_t Pin_Rx) {
     this->TX_GPIO.init(PORT_Tx,Pin_Tx,GPIO_Mode_AF);
@@ -78,7 +82,7 @@ void _USART_::init(USART_TypeDef* USARTx,int32_t bound) {
     if(extern_flag==0) {
         _USART_::upload_extern_fun(USART_RUN_VOID);
     }
-        HARD_IQR.Usart_IRQ_link=_USART_::send_to_fifo;
+    HARD_IQR.Usart_IRQ_link=_USART_::send_to_fifo;
     this->default_config();
     if(USARTx==USART1)
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);
@@ -337,3 +341,62 @@ void  _USART_::set_send_DMA(FunctionalState enable) {
     }
 }
 
+extern "C" void USART1_IRQHandler()  {              	//串口1中断服务程序
+    u8 Res;
+    if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET){
+        Res =USART_ReceiveData(USART1);	//读取接收到的数据
+        HARD_IQR.Usart_IRQ_link(0,Res);
+        HARD_IQR.extern_IRQ_link(0,Res);
+    }
+    USART_ClearITPendingBit(USART1,USART_IT_RXNE);
+}
+
+extern "C" void USART2_IRQHandler() {               	//串口2中断服务程序
+    u8 Res;
+    if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET){
+        Res =USART_ReceiveData(USART2);	//读取接收到的数据
+        HARD_IQR.Usart_IRQ_link(1,Res);
+        HARD_IQR.extern_IRQ_link(1,Res);
+    }
+    USART_ClearFlag(USART2,USART_IT_RXNE);
+}
+
+extern "C" void USART3_IRQHandler()  {              	//串口3中断服务程序
+    u8 Res;
+    if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET){
+        Res =USART_ReceiveData(USART3);	//读取接收到的数据
+        HARD_IQR.Usart_IRQ_link(2,Res);
+        HARD_IQR.extern_IRQ_link(2,Res);
+    }
+    USART_ClearFlag(USART3,USART_IT_RXNE);
+}
+
+extern "C" void UART4_IRQHandler() {              	//串口4中断服务程序
+    u8 Res;
+    if(USART_GetITStatus(UART4, USART_IT_RXNE) != RESET){
+        Res =USART_ReceiveData(UART4);	//读取接收到的数据
+        HARD_IQR.Usart_IRQ_link(3,Res);
+        HARD_IQR.extern_IRQ_link(3,Res);
+    }
+    USART_ClearFlag(UART4,USART_IT_RXNE);
+}
+
+extern "C" void UART5_IRQHandler() {                	//串口5中断服务程序
+    u8 Res;
+    if(USART_GetITStatus(UART5, USART_IT_RXNE) != RESET){
+        Res =USART_ReceiveData(UART5);	//读取接收到的数据
+        HARD_IQR.Usart_IRQ_link(4,Res);
+        HARD_IQR.extern_IRQ_link(4,Res);
+    }
+    USART_ClearFlag(UART5,USART_IT_RXNE);
+}
+
+extern "C" void USART6_IRQHandler() {                	//串口6中断服务程序
+    u8 Res;
+    if(USART_GetITStatus(USART6, USART_IT_RXNE) != RESET){
+        Res =USART_ReceiveData(USART6);	//读取接收到的数据
+        HARD_IQR.Usart_IRQ_link(5,Res);
+        HARD_IQR.extern_IRQ_link(5,Res);
+    }
+    USART_ClearFlag(USART6,USART_IT_RXNE);
+}
