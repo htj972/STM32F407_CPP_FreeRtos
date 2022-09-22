@@ -142,7 +142,7 @@ uint16_t _ADC_::Get_Adc_Average(uint16_t times) {
     uint32_t temp_val=0;
     for(uint16_t t=0;t<times;t++)
     {
-        temp_val+=get_value();
+        temp_val+=this->get_value();
         this->delay();
     }
     return temp_val/times;
@@ -150,6 +150,16 @@ uint16_t _ADC_::Get_Adc_Average(uint16_t times) {
 
 void _ADC_::set_delay_time(uint16_t delay) {
     this->delay_time=delay;
+}
+
+uint16_t _ADC_::Get_mv_value() {
+    float value=this->Get_v_value();
+    return (uint16_t)(value*1000);
+}
+
+float _ADC_::Get_v_value() {
+    float value=this->get_value();
+    return (value/4096.0f*3.3f);
 }
 
 

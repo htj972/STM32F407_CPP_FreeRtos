@@ -26,6 +26,8 @@ public:
     uint16_t get_value();
     void set_delay_time(uint16_t delay);
     uint16_t Get_Adc_Average(uint16_t times=5);
+    uint16_t Get_mv_value();
+    float    Get_v_value();
 };
 
 

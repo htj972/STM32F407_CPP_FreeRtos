@@ -1256,6 +1256,30 @@ HARDWARE/Src/CRC.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.s
 .PHONY : HARDWARE/Src/CRC.cpp.s
 
+HARDWARE/Src/DAC.obj: HARDWARE/Src/DAC.cpp.obj
+.PHONY : HARDWARE/Src/DAC.obj
+
+# target to build an object file
+HARDWARE/Src/DAC.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.obj
+.PHONY : HARDWARE/Src/DAC.cpp.obj
+
+HARDWARE/Src/DAC.i: HARDWARE/Src/DAC.cpp.i
+.PHONY : HARDWARE/Src/DAC.i
+
+# target to preprocess a source file
+HARDWARE/Src/DAC.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.i
+.PHONY : HARDWARE/Src/DAC.cpp.i
+
+HARDWARE/Src/DAC.s: HARDWARE/Src/DAC.cpp.s
+.PHONY : HARDWARE/Src/DAC.s
+
+# target to generate assembly for a file
+HARDWARE/Src/DAC.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.s
+.PHONY : HARDWARE/Src/DAC.cpp.s
+
 HARDWARE/Src/GPIO.obj: HARDWARE/Src/GPIO.cpp.obj
 .PHONY : HARDWARE/Src/GPIO.obj
 
@@ -1726,6 +1750,9 @@ help:
 	@echo ... HARDWARE/Src/CRC.obj
 	@echo ... HARDWARE/Src/CRC.i
 	@echo ... HARDWARE/Src/CRC.s
+	@echo ... HARDWARE/Src/DAC.obj
+	@echo ... HARDWARE/Src/DAC.i
+	@echo ... HARDWARE/Src/DAC.s
 	@echo ... HARDWARE/Src/GPIO.obj
 	@echo ... HARDWARE/Src/GPIO.i
 	@echo ... HARDWARE/Src/GPIO.s

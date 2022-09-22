@@ -93,6 +93,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.obj"
+  "CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj"
