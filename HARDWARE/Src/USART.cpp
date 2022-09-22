@@ -241,8 +241,8 @@ void _USART_::write(const char *str, uint16_t len) {
         }
     }
     else {
-        if(this->DMA_send_flag==0)
-            this->DMA_send_flag=1;
+        if(!this->DMA_send_flag)
+            this->DMA_send_flag = true;
         else if(DMA_GetFlagStatus(this->DMAy_Streamx,this->DMA_FLAG)!=RESET)//等待DMA2_Steam7传输完成
             {
                 DMA_ClearFlag(this->DMAy_Streamx, this->DMA_FLAG);//清除DMA2_Steam7传输完成标志

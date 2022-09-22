@@ -25,7 +25,7 @@ private:
     uint32_t DMA_CHANNEL;
     uint8_t USART_Num=0;
     uint8_t DMA_Enable=OFF;
-    uint8_t DMA_send_flag=0;
+    bool DMA_send_flag= false;
     void default_config();
 
 public:

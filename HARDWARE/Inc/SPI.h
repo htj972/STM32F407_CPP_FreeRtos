@@ -17,6 +17,11 @@ private:
     SPI_TypeDef* SPIx;
     SPI_InitTypeDef SPI_InitStructure;
     uint8_t config_flag=0;
+    uint8_t DMA_Enable=OFF;
+    DMA_Stream_TypeDef* DMAy_Streamx;
+    uint32_t DMA_FLAG;
+    uint32_t DMA_CHANNEL;
+    bool DMA_send_flag= false;
 
     void default_config();
 
@@ -29,6 +34,9 @@ public:
     void SetSpeed(uint8_t SPI_BaudRatePrescaler);
     uint16_t ReadWriteDATA(uint16_t TxData);
 
+    void set_send_DMA(FunctionalState enable);
+    void set_dma_streamx(DMA_Stream_TypeDef* DMAy_Stream);
+    void DMA_WriteData(uint16_t *TxData,uint16_t len);
 
 };
 

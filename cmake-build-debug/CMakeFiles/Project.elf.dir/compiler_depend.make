@@ -2678,9 +2678,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj: ../HARDWARE/Src/Out_
   ../FWLIB/inc/stm32f4xx_can.h \
   ../FWLIB/inc/stm32f4xx_dac.h \
   ../FWLIB/inc/stm32f4xx_dcmi.h \
-  ../FWLIB/inc/stm32f4xx_fsmc.h \
-  ../SYSTEM/Inc/IRQHandler.h \
-  ../SYSTEM/Inc/sys.h
+  ../FWLIB/inc/stm32f4xx_fsmc.h
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj: ../HARDWARE/Src/SPI.cpp \
   ../HARDWARE/Inc/SPI.h \
@@ -2725,7 +2723,9 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj: ../HARDWARE/Src/SPI.cpp \
   ../FWLIB/inc/stm32f4xx_can.h \
   ../FWLIB/inc/stm32f4xx_dac.h \
   ../FWLIB/inc/stm32f4xx_dcmi.h \
-  ../FWLIB/inc/stm32f4xx_fsmc.h
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../SYSTEM/Inc/DMA.h \
+  ../SYSTEM/Inc/sys.h
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj: ../HARDWARE/Src/USART.cpp \
   ../HARDWARE/Inc/USART.h \
@@ -2900,9 +2900,8 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj: ../HARDWARE/Src/USART.cpp
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdarg \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/sstream \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/sstream.tcc \
-  ../SYSTEM/Inc/IRQHandler.h \
-  ../SYSTEM/Inc/sys.h \
-  ../SYSTEM/Inc/DMA.h
+  ../SYSTEM/Inc/DMA.h \
+  ../SYSTEM/Inc/sys.h
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj: ../MIDDLEWARE/Src/modbus.cpp \
   ../MIDDLEWARE/Inc/modbus.h \
@@ -4002,8 +4001,6 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/f
 ../SYSTEM/Inc/DMA.h:
 
 ../HARDWARE/Inc/IIC.h:
-
-../SYSTEM/Inc/IRQHandler.h:
 
 ../HARDWARE/Src/USART.cpp:
 

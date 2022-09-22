@@ -5,6 +5,7 @@
 **/
 
 #include "SPI.h"
+#include "DMA.h"
 
 void SPI::config(GPIO_TypeDef *PORT_SCK,uint32_t Pin_SCK,\
                 GPIO_TypeDef *PORT_MISO,uint32_t Pin_MISO,\
@@ -86,6 +87,42 @@ uint16_t SPI::ReadWriteDATA(uint16_t TxData)
     SPI_I2S_SendData(this->SPIx, TxData); //通过外设SPIx发送一个byte  数据
     while (SPI_I2S_GetFlagStatus(this->SPIx, SPI_I2S_FLAG_RXNE) == RESET){} //等待接收完一个byte
     return SPI_I2S_ReceiveData(this->SPIx); //返回通过SPIx最近接收的数据
+}
+
+void SPI::set_send_DMA(FunctionalState enable) {
+    SPI_I2S_DMACmd(this->SPIx,SPI_I2S_DMAReq_Tx,enable);  //使能串口1的DMA发送
+    this->DMA_Enable=(enable==ENABLE)?ON:OFF;
+    if(this->SPIx==SPI1){
+        this->DMAy_Streamx=DMA2_Stream3;
+        this->DMA_FLAG=DMA_FLAG_TCIF3;
+        this->DMA_CHANNEL=DMA_Channel_3;
+    }
+    else if(this->SPIx==SPI2){
+        this->DMAy_Streamx=DMA1_Stream4;
+        this->DMA_FLAG=DMA_FLAG_TCIF4;
+        this->DMA_CHANNEL=DMA_Channel_0;
+    }
+    else if(this->SPIx==SPI3){
+        this->DMAy_Streamx=DMA1_Stream5;
+        this->DMA_FLAG=DMA_FLAG_TCIF5;
+        this->DMA_CHANNEL=DMA_Channel_0;
+    }
+}
+
+void SPI::set_dma_streamx(DMA_Stream_TypeDef *DMAy_Stream) {
+    this->DMAy_Streamx=DMAy_Stream;
+}
+
+void SPI::DMA_WriteData(uint16_t *TxData, uint16_t len) {
+    if(!this->DMA_send_flag)
+        this->DMA_send_flag= true;
+    else if(DMA_GetFlagStatus(this->DMAy_Streamx,this->DMA_FLAG)!=RESET)//等待DMA2_Steam7传输完成
+    {
+        DMA_ClearFlag(this->DMAy_Streamx, this->DMA_FLAG);//清除DMA2_Steam7传输完成标志
+    }
+    DMA_send(this->DMAy_Streamx,this->DMA_CHANNEL,\
+        (u32)&this->SPIx->DR,(uint32_t)TxData,len,\
+        DMA_DIR_MemoryToPeripheral,8);
 }
 
 
