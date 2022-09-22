@@ -36,6 +36,7 @@
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -69,6 +70,7 @@
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -410,6 +412,9 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_PORTABLE/port.c">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/ADC.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/CRC.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -428,7 +433,7 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/USART.h">
 			<Option target="Project.elf"/>
 		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/modbus.h">
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/ADC.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/CRC.cpp">
@@ -449,7 +454,10 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/USART.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/modbus.cpp">
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/modbus.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/modbus.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/STM32F407VGTx_FLASH.ld">

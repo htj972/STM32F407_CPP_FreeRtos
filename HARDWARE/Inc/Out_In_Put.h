@@ -4,8 +4,8 @@
 * @Date 2022-09-13
 **/
 
-#ifndef OUT_IN_PUT_H
-#define OUT_IN_PUT_H
+#ifndef Kokirika_OUT_IN_PUT_H
+#define Kokirika_OUT_IN_PUT_H
 
 #include "GPIO.h"
 
@@ -46,4 +46,4 @@ public:
 };
 
 
-#endif //OUT_IN_PUT_H
+#endif //Kokirika_OUT_IN_PUT_H

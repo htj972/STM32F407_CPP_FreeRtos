@@ -37,9 +37,9 @@ set(CMAKE_CXX_STANDARD 11)
 #add_definitions(-DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__FPU_PRESENT=1)
 add_definitions(-DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx)
 
-file(GLOB_RECURSE SOURCES "startup/*.*" "USER/*.*" "CORE/*.*" "FWLIB/*.*" "SYSTEM/*.*" "HARDWARE/*.*" "FreeRTOS/*.*")
+file(GLOB_RECURSE SOURCES "startup/*.*" "USER/*.*" "CORE/*.*" "FWLIB/*.*" "SYSTEM/*.*" "HARDWARE/*.*" "FreeRTOS/*.*" "MIDDLEWARE/*.*")
 
-include_directories(Core/Inc FWLIB/inc SYSTEM/Inc USER/Inc HARDWARE/Inc FreeRTOS/FreeRTOS_Inc)
+include_directories(Core/Inc FWLIB/inc SYSTEM/Inc USER/Inc HARDWARE/Inc FreeRTOS/FreeRTOS_Inc MIDDLEWARE/Inc)
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 

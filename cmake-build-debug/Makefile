@@ -1208,6 +1208,30 @@ FreeRTOS/FreeRTOS_PORTABLE/port.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.s
 .PHONY : FreeRTOS/FreeRTOS_PORTABLE/port.c.s
 
+HARDWARE/Src/ADC.obj: HARDWARE/Src/ADC.cpp.obj
+.PHONY : HARDWARE/Src/ADC.obj
+
+# target to build an object file
+HARDWARE/Src/ADC.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+.PHONY : HARDWARE/Src/ADC.cpp.obj
+
+HARDWARE/Src/ADC.i: HARDWARE/Src/ADC.cpp.i
+.PHONY : HARDWARE/Src/ADC.i
+
+# target to preprocess a source file
+HARDWARE/Src/ADC.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.i
+.PHONY : HARDWARE/Src/ADC.cpp.i
+
+HARDWARE/Src/ADC.s: HARDWARE/Src/ADC.cpp.s
+.PHONY : HARDWARE/Src/ADC.s
+
+# target to generate assembly for a file
+HARDWARE/Src/ADC.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.s
+.PHONY : HARDWARE/Src/ADC.cpp.s
+
 HARDWARE/Src/CRC.obj: HARDWARE/Src/CRC.cpp.obj
 .PHONY : HARDWARE/Src/CRC.obj
 
@@ -1352,29 +1376,29 @@ HARDWARE/Src/USART.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s
 .PHONY : HARDWARE/Src/USART.cpp.s
 
-HARDWARE/Src/modbus.obj: HARDWARE/Src/modbus.cpp.obj
-.PHONY : HARDWARE/Src/modbus.obj
+MIDDLEWARE/Src/modbus.obj: MIDDLEWARE/Src/modbus.cpp.obj
+.PHONY : MIDDLEWARE/Src/modbus.obj
 
 # target to build an object file
-HARDWARE/Src/modbus.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
-.PHONY : HARDWARE/Src/modbus.cpp.obj
+MIDDLEWARE/Src/modbus.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
+.PHONY : MIDDLEWARE/Src/modbus.cpp.obj
 
-HARDWARE/Src/modbus.i: HARDWARE/Src/modbus.cpp.i
-.PHONY : HARDWARE/Src/modbus.i
+MIDDLEWARE/Src/modbus.i: MIDDLEWARE/Src/modbus.cpp.i
+.PHONY : MIDDLEWARE/Src/modbus.i
 
 # target to preprocess a source file
-HARDWARE/Src/modbus.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.i
-.PHONY : HARDWARE/Src/modbus.cpp.i
+MIDDLEWARE/Src/modbus.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.i
+.PHONY : MIDDLEWARE/Src/modbus.cpp.i
 
-HARDWARE/Src/modbus.s: HARDWARE/Src/modbus.cpp.s
-.PHONY : HARDWARE/Src/modbus.s
+MIDDLEWARE/Src/modbus.s: MIDDLEWARE/Src/modbus.cpp.s
+.PHONY : MIDDLEWARE/Src/modbus.s
 
 # target to generate assembly for a file
-HARDWARE/Src/modbus.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.s
-.PHONY : HARDWARE/Src/modbus.cpp.s
+MIDDLEWARE/Src/modbus.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.s
+.PHONY : MIDDLEWARE/Src/modbus.cpp.s
 
 SYSTEM/Src/DMA.obj: SYSTEM/Src/DMA.c.obj
 .PHONY : SYSTEM/Src/DMA.obj
@@ -1696,6 +1720,9 @@ help:
 	@echo ... FreeRTOS/FreeRTOS_PORTABLE/port.obj
 	@echo ... FreeRTOS/FreeRTOS_PORTABLE/port.i
 	@echo ... FreeRTOS/FreeRTOS_PORTABLE/port.s
+	@echo ... HARDWARE/Src/ADC.obj
+	@echo ... HARDWARE/Src/ADC.i
+	@echo ... HARDWARE/Src/ADC.s
 	@echo ... HARDWARE/Src/CRC.obj
 	@echo ... HARDWARE/Src/CRC.i
 	@echo ... HARDWARE/Src/CRC.s
@@ -1714,9 +1741,9 @@ help:
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s
-	@echo ... HARDWARE/Src/modbus.obj
-	@echo ... HARDWARE/Src/modbus.i
-	@echo ... HARDWARE/Src/modbus.s
+	@echo ... MIDDLEWARE/Src/modbus.obj
+	@echo ... MIDDLEWARE/Src/modbus.i
+	@echo ... MIDDLEWARE/Src/modbus.s
 	@echo ... SYSTEM/Src/DMA.obj
 	@echo ... SYSTEM/Src/DMA.i
 	@echo ... SYSTEM/Src/DMA.s

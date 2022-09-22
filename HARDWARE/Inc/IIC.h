@@ -4,8 +4,8 @@
 * @Date 2022-09-15
 **/
 
-#ifndef IIC_H
-#define IIC_H
+#ifndef Kokirika_IIC_H
+#define Kokirika_IIC_H
 
 #include "GPIO.h"
 
@@ -77,7 +77,7 @@ public:
 };
 
 
-#endif //IIC_H
+#endif //Kokirika_IIC_H
 
 
 

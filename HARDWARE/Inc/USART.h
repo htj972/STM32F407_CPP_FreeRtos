@@ -3,8 +3,8 @@
 * @Name UASRT
 * @Date 2022-09-14
 **/
-#ifndef _USART_H_
-#define _USART_H_
+#ifndef Kokirika_USART_H_
+#define Kokirika_USART_H_
 
 #include "GPIO.h"
 #include "string"
@@ -81,4 +81,4 @@ public:
 };
 
 
-#endif //_USART_H_
+#endif //Kokirika_USART_H_

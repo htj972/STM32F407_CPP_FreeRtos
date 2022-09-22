@@ -3,7 +3,7 @@ Archive member included to satisfy reference by file (symbol)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(atexit_arm.o)
                               CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj (__aeabi_atexit)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_op.o)
-                              CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj (operator delete(void*))
+                              CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj (operator delete(void*))
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_arm.o)
                               CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj (__cxa_end_cleanup)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(eh_exception.o)
@@ -2767,6 +2767,62 @@ Discarded input sections
                 0x00000000        0x4 CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj
  .text.vPortEndScheduler
                 0x00000000       0x2c CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj
+ .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .text._ZN5_ADC_14default_configEv
+                0x00000000      0x210 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.extab.text._ZN5_ADC_14default_configEv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.exidx.text._ZN5_ADC_14default_configEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .text._ZN5_ADC_10RCC_configEv
+                0x00000000       0x98 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.extab.text._ZN5_ADC_10RCC_configEv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.exidx.text._ZN5_ADC_10RCC_configEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .text._ZNK5_ADC_5delayEv
+                0x00000000       0x1a CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.extab.text._ZNK5_ADC_5delayEv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.exidx.text._ZNK5_ADC_5delayEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .text._ZN5_ADC_4initEP11ADC_TypeDefh
+                0x00000000       0x98 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.extab.text._ZN5_ADC_4initEP11ADC_TypeDefh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.exidx.text._ZN5_ADC_4initEP11ADC_TypeDefh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .text._ZN5_ADC_9get_valueEv
+                0x00000000       0x54 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.extab.text._ZN5_ADC_9get_valueEv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.exidx.text._ZN5_ADC_9get_valueEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .text._ZN5_ADC_15Get_Adc_AverageEt
+                0x00000000       0x4c CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.extab.text._ZN5_ADC_15Get_Adc_AverageEt
+                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.exidx.text._ZN5_ADC_15Get_Adc_AverageEt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .text._ZN5_ADC_14set_delay_timeEt
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.extab.text._ZN5_ADC_14set_delay_timeEt
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.exidx.text._ZN5_ADC_14set_delay_timeEt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .debug_info    0x00000000      0xcd3 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .debug_abbrev  0x00000000      0x23d CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .debug_aranges
+                0x00000000       0x50 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .debug_ranges  0x00000000       0x40 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .debug_line    0x00000000      0x449 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .debug_str     0x00000000      0xda0 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .debug_frame   0x00000000      0x114 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ .ARM.attributes
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
  .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
@@ -3379,205 +3435,205 @@ Discarded input sections
                 0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
  .ARM.extab.text._GLOBAL__sub_I__Z14USART_RUN_VOIDhh
                 0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
+ .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
+ .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
+ .group         0x00000000       0x18 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
+ .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
+ .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
+ .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .rodata._ZStL19piecewise_construct
-                0x00000000        0x1 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x1 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZL20__gthread_key_deletei
-                0x00000000       0x16 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x16 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZL20__gthread_key_deletei
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZL20__gthread_key_deletei
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbusC2Ev
-                0x00000000       0x5a CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x5a CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbusC2Ev
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbusC2Ev
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbusD2Ev
-                0x00000000       0x34 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbusD2Ev
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbusD2Ev
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus13send_data_funEPht
-                0x00000000       0x2c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x2c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus13send_data_funEPht
-                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus13send_data_funEPht
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus9read_dataEPKh
-                0x00000000       0x5c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x5c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus9read_dataEPKh
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus9read_dataEPKh
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus10write_dataEPhS0_
-                0x00000000       0x76 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x76 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus10write_dataEPhS0_
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus10write_dataEPhS0_
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZNK6modbus15modbus_wait_recEv
-                0x00000000       0x40 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x40 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZNK6modbus15modbus_wait_recEv
-                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZNK6modbus15modbus_wait_recEv
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus4initEPttt
-                0x00000000       0x40 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x40 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus4initEPttt
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus4initEPttt
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus6configEP7_USART_hhtt
-                0x00000000       0x56 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x56 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus6configEP7_USART_hhtt
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus6configEP7_USART_hhtt
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus6set_idEh
-                0x00000000       0x34 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus6set_idEh
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus6set_idEh
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus8set_modeEh
-                0x00000000       0x1e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus8set_modeEh
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus8set_modeEh
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus12set_freetimeEt
-                0x00000000       0x1e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus12set_freetimeEt
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus12set_freetimeEt
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus11set_timeoutEt
-                0x00000000       0x1e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus11set_timeoutEt
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus11set_timeoutEt
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN21modbus_Slave_03_send_C2Ev
-                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN21modbus_Slave_03_send_C2Ev
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN21modbus_Slave_03_send_C2Ev
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN21modbus_Slave_03_send_D2Ev
-                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN21modbus_Slave_03_send_D2Ev
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN21modbus_Slave_03_send_D2Ev
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus24modbus_Slave_03_uncodingEv
-                0x00000000      0x1a6 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000      0x1a6 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus24modbus_Slave_03_uncodingEv
-                0x00000000       0x26 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x26 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus24modbus_Slave_03_uncodingEv
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus21modbus_Host_03_codingEhtt
-                0x00000000       0x82 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x82 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus21modbus_Host_03_codingEhtt
-                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus21modbus_Host_03_codingEhtt
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus23modbus_Host_03_uncodingEv
-                0x00000000      0x106 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000      0x106 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus23modbus_Host_03_uncodingEv
-                0x00000000       0x1e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus23modbus_Host_03_uncodingEv
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus24modbus_Slave_06_uncodingEv
-                0x00000000       0x8a CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x90 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus24modbus_Slave_06_uncodingEv
-                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus24modbus_Slave_06_uncodingEv
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus21modbus_Host_06_codingEhtt
-                0x00000000       0x54 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x54 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus21modbus_Host_06_codingEhtt
-                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus21modbus_Host_06_codingEhtt
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus23modbus_Host_06_uncodingEv
-                0x00000000       0x66 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x66 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus23modbus_Host_06_uncodingEv
-                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus23modbus_Host_06_uncodingEv
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus24modbus_Slave_10_uncodingEv
-                0x00000000      0x11a CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000      0x11a CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus24modbus_Slave_10_uncodingEv
-                0x00000000       0x1e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus24modbus_Slave_10_uncodingEv
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN19modbus_Host_16_sendC2Ev
-                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN19modbus_Host_16_sendC2Ev
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN19modbus_Host_16_sendC2Ev
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN19modbus_Host_16_sendD2Ev
-                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN19modbus_Host_16_sendD2Ev
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN19modbus_Host_16_sendD2Ev
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus21modbus_Host_10_codingEhtPtt
-                0x00000000      0x13e CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000      0x13e CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus21modbus_Host_10_codingEhtPtt
-                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus21modbus_Host_10_codingEhtPtt
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus23modbus_Host_10_uncodingEv
-                0x00000000       0x78 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x78 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus23modbus_Host_10_uncodingEv
-                0x00000000       0x1c CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus23modbus_Host_10_uncodingEv
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus14modbus_03_sendEhtt
-                0x00000000       0x46 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x46 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus14modbus_03_sendEhtt
-                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus14modbus_03_sendEhtt
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus14modbus_06_sendEhtt
-                0x00000000       0x46 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x46 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus14modbus_06_sendEhtt
-                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus14modbus_06_sendEhtt
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus14modbus_10_sendEhtPtt
-                0x00000000       0x42 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x42 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus14modbus_10_sendEhtPtt
-                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus14modbus_10_sendEhtPtt
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus20modbus_receive_upsetEv
-                0x00000000       0x98 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0x98 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus20modbus_receive_upsetEv
-                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus20modbus_receive_upsetEv
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._ZN6modbus20receive_data_channelEv
-                0x00000000       0xd0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000       0xd0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._ZN6modbus20receive_data_channelEv
-                0x00000000        0xc CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.exidx.text._ZN6modbus20receive_data_channelEv
-                0x00000000        0x8 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._Z41__static_initialization_and_destruction_0ii
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.extab.text._GLOBAL__sub_I__ZN6modbusC2Ev
-                0x00000000        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
  .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
  .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
@@ -12157,13 +12213,14 @@ LOAD CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_CORE/timers.c.obj
 LOAD CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/cmsis_os.c.obj
 LOAD CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/heap_4.c.obj
 LOAD CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj
+LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
-LOAD CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+LOAD CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
 LOAD CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
 LOAD CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
@@ -12650,9 +12707,9 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .text._GLOBAL__sub_I__Z14USART_RUN_VOIDhh
                 0x08005c6c       0x10 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
  .text._Z41__static_initialization_and_destruction_0ii
-                0x08005c7c       0x40 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x08005c7c       0x40 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text._GLOBAL__sub_I__ZN6modbusC2Ev
-                0x08005cbc       0x10 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x08005cbc       0x10 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .text.DMA_Config
                 0x08005ccc       0xd8 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
                 0x08005ccc                DMA_Config
@@ -18864,10 +18921,10 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
                 0x0802d818        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z41__static_initialization_and_destruction_0ii
-                0x0802d818        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x0802d818        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._GLOBAL__sub_I__ZN6modbusC2Ev
-                0x0802d818        0x0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x0802d818        0x0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN7_USART_lsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
                 0x0802d818        0x8 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
@@ -18914,7 +18971,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  *(.init_array*)
  .init_array    0x0802d858        0x4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  .init_array    0x0802d85c        0x4 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .init_array    0x0802d860        0x4 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .init_array    0x0802d860        0x4 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .init_array    0x0802d864        0x4 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
  .init_array    0x0802d868        0x4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cxx11-locale-inst.o)
  .init_array    0x0802d86c        0x4 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(cxx11-wlocale-inst.o)
@@ -19104,7 +19161,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
                 0x20005770        0x1 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
  *fill*         0x20005771        0x3 
  .bss._ZStL8__ioinit
-                0x20005774        0x1 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x20005774        0x1 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  *fill*         0x20005775        0x3 
  .bss.HARD_IQR  0x20005778        0x8 CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
                 0x20005778                HARD_IQR
@@ -19690,7 +19747,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .ARM.attributes
                 0x0000032a       0x34 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
  .ARM.attributes
-                0x0000035e       0x34 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x0000035e       0x34 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .ARM.attributes
                 0x00000392       0x34 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
  .ARM.attributes
@@ -20209,7 +20266,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_info    0x000076d8      0x8d7 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
  .debug_info    0x00007faf      0xf45 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .debug_info    0x00008ef4     0x6a4c CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .debug_info    0x0000f940     0x7156 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .debug_info    0x0000f940     0x7156 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .debug_info    0x00016a96      0x3b2 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
  .debug_info    0x00016e48      0x3d4 CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
  .debug_info    0x0001721c      0x27c CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
@@ -20234,7 +20291,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_abbrev  0x000015a1      0x24d CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
  .debug_abbrev  0x000017ee      0x2fb CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .debug_abbrev  0x00001ae9      0x975 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .debug_abbrev  0x0000245e      0x984 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .debug_abbrev  0x0000245e      0x984 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .debug_abbrev  0x00002de2      0x13d CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
  .debug_abbrev  0x00002f1f      0x16a CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
  .debug_abbrev  0x00003089      0x12c CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
@@ -20275,7 +20332,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_aranges
                 0x00000b20      0x108 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
  .debug_aranges
-                0x00000c28      0x120 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+                0x00000c28      0x120 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .debug_aranges
                 0x00000d48       0x30 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
  .debug_aranges
@@ -20307,7 +20364,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_ranges  0x00000938       0x78 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
  .debug_ranges  0x000009b0       0x90 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .debug_ranges  0x00000a40       0xf8 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .debug_ranges  0x00000b38      0x110 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .debug_ranges  0x00000b38      0x110 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .debug_ranges  0x00000c48       0x20 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
  .debug_ranges  0x00000c68       0x70 CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
  .debug_ranges  0x00000cd8       0x30 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
@@ -20316,7 +20373,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_ranges  0x00000da0       0x20 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
  .debug_ranges  0x00000dc0       0x20 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_line     0x00000000     0x9a76
+.debug_line     0x00000000     0x9ab5
  .debug_line    0x00000000      0x2e5 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
  .debug_line    0x000002e5      0x62d CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_dma.c.obj
  .debug_line    0x00000912      0x336 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_exti.c.obj
@@ -20332,16 +20389,16 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_line    0x00005bd6      0x3f9 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
  .debug_line    0x00005fcf      0x518 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .debug_line    0x000064e7      0xe45 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .debug_line    0x0000732c      0xf69 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- .debug_line    0x00008295      0x25e CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
- .debug_line    0x000084f3      0x47d CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
- .debug_line    0x00008970      0x2de CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
- .debug_line    0x00008c4e      0x952 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
- .debug_line    0x000095a0       0xee CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
- .debug_line    0x0000968e      0x33c CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
- .debug_line    0x000099ca       0xac CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_line    0x0000732c      0xfa8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
+ .debug_line    0x000082d4      0x25e CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
+ .debug_line    0x00008532      0x47d CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
+ .debug_line    0x000089af      0x2de CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
+ .debug_line    0x00008c8d      0x952 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
+ .debug_line    0x000095df       0xee CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
+ .debug_line    0x000096cd      0x33c CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
+ .debug_line    0x00009a09       0xac CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_str      0x00000000     0xbc76
+.debug_str      0x00000000     0xbc78
  .debug_str     0x00000000      0x3d2 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
                                 0x43f (size before relaxing)
  .debug_str     0x000003d2      0x399 CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_dma.c.obj
@@ -20372,21 +20429,21 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
                                0x1113 (size before relaxing)
  .debug_str     0x00004548     0x65cb CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
                                0x781c (size before relaxing)
- .debug_str     0x0000ab13      0x962 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
-                               0x7863 (size before relaxing)
- .debug_str     0x0000b475       0x80 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
+ .debug_str     0x0000ab13      0x964 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
+                               0x7865 (size before relaxing)
+ .debug_str     0x0000b477       0x80 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
                                 0x3bc (size before relaxing)
- .debug_str     0x0000b4f5      0x12d CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
+ .debug_str     0x0000b4f7      0x12d CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
                                 0x3ba (size before relaxing)
- .debug_str     0x0000b622       0x9d CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
+ .debug_str     0x0000b624       0x9d CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
                                 0x2aa (size before relaxing)
- .debug_str     0x0000b6bf      0x3f3 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
+ .debug_str     0x0000b6c1      0x3f3 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
                                0x724f (size before relaxing)
- .debug_str     0x0000bab2       0xab CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
+ .debug_str     0x0000bab4       0xab CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
                                 0x245 (size before relaxing)
- .debug_str     0x0000bb5d       0xbf CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
+ .debug_str     0x0000bb5f       0xbf CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
                                 0x43a (size before relaxing)
- .debug_str     0x0000bc1c       0x5a CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_str     0x0000bc1e       0x5a CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
                                  0x9a (size before relaxing)
 
 .comment        0x00000000       0x49
@@ -20406,7 +20463,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .comment       0x00000049       0x4a CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
  .comment       0x00000049       0x4a CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .comment       0x00000049       0x4a CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .comment       0x00000049       0x4a CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .comment       0x00000049       0x4a CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .comment       0x00000049       0x4a CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
  .comment       0x00000049       0x4a CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
  .comment       0x00000049       0x4a CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
@@ -20430,7 +20487,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_frame   0x00002a50      0x214 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj
  .debug_frame   0x00002c64      0x288 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
  .debug_frame   0x00002eec      0x488 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
- .debug_frame   0x00003374      0x4e0 CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
+ .debug_frame   0x00003374      0x4e0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
  .debug_frame   0x00003854       0x7c CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
  .debug_frame   0x000038d0      0x1ac CMakeFiles/Project.elf.dir/SYSTEM/Src/IRQHandler.c.obj
  .debug_frame   0x00003a7c       0xc0 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj

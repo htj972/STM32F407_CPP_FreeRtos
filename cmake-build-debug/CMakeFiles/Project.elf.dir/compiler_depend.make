@@ -2307,6 +2307,51 @@ CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj: ../FreeRTOS/Fr
   ../FreeRTOS/FreeRTOS_Inc/task.h \
   ../FreeRTOS/FreeRTOS_Inc/list.h
 
+CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj: ../HARDWARE/Src/ADC.cpp \
+  ../HARDWARE/Inc/ADC.h \
+  ../HARDWARE/Inc/GPIO.h \
+  ../SYSTEM/Inc/sys.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h
+
 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj: ../HARDWARE/Src/CRC.cpp \
   ../HARDWARE/Inc/CRC.h \
   ../SYSTEM/Inc/sys.h \
@@ -2813,8 +2858,8 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj: ../HARDWARE/Src/USART.cpp
   ../SYSTEM/Inc/sys.h \
   ../SYSTEM/Inc/DMA.h
 
-CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj: ../HARDWARE/Src/modbus.cpp \
-  ../HARDWARE/Inc/modbus.h \
+CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj: ../MIDDLEWARE/Src/modbus.cpp \
+  ../MIDDLEWARE/Inc/modbus.h \
   ../HARDWARE/Inc/CRC.h \
   ../SYSTEM/Inc/sys.h \
   ../USER/Inc/stm32f4xx.h \
@@ -3474,8 +3519,6 @@ CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj: ../USER/Src/system_s
   ../FWLIB/inc/stm32f4xx_fsmc.h
 
 
-../HARDWARE/Src/modbus.cpp:
-
 ../FWLIB/inc/stm32f4xx_iwdg.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdint:
@@ -3556,6 +3599,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/a
 
 ../FWLIB/inc/stm32f4xx_dma.h:
 
+../HARDWARE/Inc/ADC.h:
+
 ../FWLIB/inc/stm32f4xx_exti.h:
 
 ../FreeRTOS/FreeRTOS_PORTABLE/cmsis_os.c:
@@ -3607,6 +3652,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cctype
 ../FWLIB/inc/stm32f4xx_can.h:
 
 ../FWLIB/inc/stm32f4xx_fsmc.h:
+
+../MIDDLEWARE/Src/modbus.cpp:
 
 ../FWLIB/src/stm32f4xx_adc.c:
 
@@ -3812,6 +3859,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ios:
 
 ../FreeRTOS/FreeRTOS_PORTABLE/heap_4.c:
 
+../HARDWARE/Src/ADC.cpp:
+
 ../HARDWARE/Src/CRC.cpp:
 
 ../HARDWARE/Inc/CRC.h:
@@ -3946,8 +3995,6 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/f
 
 ../HARDWARE/Inc/IIC.h:
 
-../HARDWARE/Inc/modbus.h:
-
 ../SYSTEM/Inc/delay.h:
 
 ../SYSTEM/Inc/IRQHandler.h:
@@ -3989,6 +4036,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdar
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/sstream:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/sstream.tcc:
+
+../MIDDLEWARE/Inc/modbus.h:
 
 ../SYSTEM/Src/DMA.c:
 

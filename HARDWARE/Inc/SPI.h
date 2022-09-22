@@ -4,8 +4,8 @@
 * @Date 2022-09-17
 **/
 
-#ifndef SPI_H
-#define SPI_H
+#ifndef Kokirika_SPI_H
+#define Kokirika_SPI_H
 
 #include "GPIO.h"
 
@@ -33,4 +33,4 @@ public:
 };
 
 
-#endif //SPI_H
+#endif //Kokirika_SPI_H

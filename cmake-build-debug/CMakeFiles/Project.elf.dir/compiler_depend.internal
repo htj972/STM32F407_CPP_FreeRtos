@@ -2352,6 +2352,52 @@ CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj
  C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_Inc/task.h
  C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_Inc/list.h
 
+CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/ADC.cpp
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/ADC.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/GPIO.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Inc/sys.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Inc/stm32f4xx.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/CORE/Inc/core_cm4.h
+ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h
+ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h
+ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h
+ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h
+ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h
+ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/CORE/Inc/core_cmInstr.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/CORE/Inc/core_cmFunc.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/CORE/Inc/core_cm4_simd.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Inc/system_stm32f4xx.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Inc/stm32f4xx_conf.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_adc.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_crc.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_dbgmcu.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_dma.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_exti.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_flash.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_gpio.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_i2c.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_iwdg.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_pwr.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_rcc.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_rtc.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_sdio.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_spi.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_syscfg.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_tim.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_usart.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_wwdg.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/misc.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_cryp.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_hash.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_rng.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_can.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_dac.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_dcmi.h
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_fsmc.h
+
 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
  C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/CRC.cpp
  C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/CRC.h
@@ -2864,9 +2910,9 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
  C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Inc/sys.h
  C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Inc/DMA.h
 
-CMakeFiles/Project.elf.dir/HARDWARE/Src/modbus.cpp.obj
- C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/modbus.cpp
- C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/modbus.h
+CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/modbus.cpp
+ C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/modbus.h
  C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/CRC.h
  C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Inc/sys.h
  C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Inc/stm32f4xx.h

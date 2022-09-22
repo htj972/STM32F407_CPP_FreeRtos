@@ -3,8 +3,8 @@
 * @Name GPIO
 * @Date 2022-09-13
 **/
-#ifndef _GPIO_H_
-#define _GPIO_H_
+#ifndef Kokirika_GPIO_H_
+#define Kokirika_GPIO_H_
 
 #include "sys.h"
 
@@ -39,4 +39,4 @@ public:
 
 
 
-#endif //_GPIO_H_
+#endif //Kokirika_GPIO_H_
