@@ -379,8 +379,8 @@ void modbus::modbus_Host_10_uncoding() {
         this->send_flag=0;
 }
 
-uint8_t modbus::modbus_03_send(uint8_t ID, uint16_t address, uint16_t num) {
-    modbus_Host_03_coding(ID,address,num);
+uint8_t modbus::modbus_03_send(uint16_t address, uint16_t num) {
+    modbus_Host_03_coding(this->slave_id,address,num);
     if(this->modbus_wait_rec())
         return modbus::modbus_success;
     else
@@ -390,8 +390,8 @@ uint8_t modbus::modbus_03_send(uint8_t ID, uint16_t address, uint16_t num) {
     }
 }
 
-uint8_t modbus::modbus_06_send(uint8_t ID, uint16_t address, uint16_t data) {
-    modbus_Host_06_coding(ID,address,data);
+uint8_t modbus::modbus_06_send(uint16_t address, uint16_t data) {
+    modbus_Host_06_coding(this->slave_id,address,data);
     if(this->modbus_wait_rec())
         return modbus::modbus_success;
     else
@@ -401,8 +401,8 @@ uint8_t modbus::modbus_06_send(uint8_t ID, uint16_t address, uint16_t data) {
     }
 }
 
-uint8_t modbus::modbus_10_send(uint8_t ID, uint16_t address, uint16_t *data, uint16_t num) {
-    modbus_Host_10_coding(ID,address,data,num);
+uint8_t modbus::modbus_10_send(uint16_t address, uint16_t *data, uint16_t num) {
+    modbus_Host_10_coding(this->slave_id,address,data,num);
     if(this->modbus_wait_rec())
         return modbus::modbus_success;
     else

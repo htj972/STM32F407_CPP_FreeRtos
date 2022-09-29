@@ -59,9 +59,9 @@ public:
     void modbus_Host_10_coding(uint8_t ID,uint16_t address,uint16_t *data,uint16_t num);
     void modbus_Host_10_uncoding();
 
-    uint8_t modbus_03_send(uint8_t ID,uint16_t address,uint16_t num);
-    uint8_t modbus_06_send(uint8_t ID,uint16_t address,uint16_t data);
-    uint8_t modbus_10_send(uint8_t ID,uint16_t address,uint16_t *data,uint16_t num);
+    uint8_t modbus_03_send(uint16_t address,uint16_t num);
+    uint8_t modbus_06_send(uint16_t address,uint16_t data);
+    uint8_t modbus_10_send(uint16_t address,uint16_t *data,uint16_t num);
 
     void modbus_receive_upset();
     void receive_data_channel();

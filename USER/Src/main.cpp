@@ -4,6 +4,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "Out_In_Put.h"
+#include "modbus.h"
 //任务优先级
 #define START_TASK_PRIO		1
 //任务堆栈大小
@@ -34,6 +35,7 @@ TaskHandle_t Task2Task_Handler;
 _OutPut_ led;
 _USART_  U1;
 
+
 std::string asdasd="123456";
 
 int main()
@@ -42,6 +44,7 @@ int main()
     delay_init(168);					//初始化延时函数
 
     U1.init(USART1,115200);
+    U1.config(GPIOA9,GPIOA10);
     led.init(GPIOD3,LOW);
     //U1.set_send_DMA();
     U1.write("adsda321s3a1d3a1sd3sd\r\n");
