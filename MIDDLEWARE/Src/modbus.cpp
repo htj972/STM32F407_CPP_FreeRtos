@@ -371,7 +371,7 @@ void modbus::modbus_Host_10_uncoding() {
     modbus_Host_16_receive *modbus_16_receive;
     modbus_16_receive=(modbus_Host_16_receive*)this->modbus_receive_data.data();
     uint8_t  crc16_check=modbus::Compute(modbus_receive_data,6);
-    if(modbus_16_receive->CRC16=crc16_check)
+    if(modbus_16_receive->CRC16==crc16_check)
     {
 
     }
