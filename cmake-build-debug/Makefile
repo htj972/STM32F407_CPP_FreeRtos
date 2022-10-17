@@ -1400,6 +1400,54 @@ HARDWARE/Src/USART.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s
 .PHONY : HARDWARE/Src/USART.cpp.s
 
+MIDDLEWARE/Src/OLED_BASE.obj: MIDDLEWARE/Src/OLED_BASE.cpp.obj
+.PHONY : MIDDLEWARE/Src/OLED_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/Src/OLED_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.obj
+.PHONY : MIDDLEWARE/Src/OLED_BASE.cpp.obj
+
+MIDDLEWARE/Src/OLED_BASE.i: MIDDLEWARE/Src/OLED_BASE.cpp.i
+.PHONY : MIDDLEWARE/Src/OLED_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/OLED_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.i
+.PHONY : MIDDLEWARE/Src/OLED_BASE.cpp.i
+
+MIDDLEWARE/Src/OLED_BASE.s: MIDDLEWARE/Src/OLED_BASE.cpp.s
+.PHONY : MIDDLEWARE/Src/OLED_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/OLED_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.s
+.PHONY : MIDDLEWARE/Src/OLED_BASE.cpp.s
+
+MIDDLEWARE/Src/OLED_SSD1306.obj: MIDDLEWARE/Src/OLED_SSD1306.cpp.obj
+.PHONY : MIDDLEWARE/Src/OLED_SSD1306.obj
+
+# target to build an object file
+MIDDLEWARE/Src/OLED_SSD1306.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj
+.PHONY : MIDDLEWARE/Src/OLED_SSD1306.cpp.obj
+
+MIDDLEWARE/Src/OLED_SSD1306.i: MIDDLEWARE/Src/OLED_SSD1306.cpp.i
+.PHONY : MIDDLEWARE/Src/OLED_SSD1306.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/OLED_SSD1306.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.i
+.PHONY : MIDDLEWARE/Src/OLED_SSD1306.cpp.i
+
+MIDDLEWARE/Src/OLED_SSD1306.s: MIDDLEWARE/Src/OLED_SSD1306.cpp.s
+.PHONY : MIDDLEWARE/Src/OLED_SSD1306.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/OLED_SSD1306.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.s
+.PHONY : MIDDLEWARE/Src/OLED_SSD1306.cpp.s
+
 MIDDLEWARE/Src/modbus.obj: MIDDLEWARE/Src/modbus.cpp.obj
 .PHONY : MIDDLEWARE/Src/modbus.obj
 
@@ -1744,6 +1792,12 @@ help:
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s
+	@echo ... MIDDLEWARE/Src/OLED_BASE.obj
+	@echo ... MIDDLEWARE/Src/OLED_BASE.i
+	@echo ... MIDDLEWARE/Src/OLED_BASE.s
+	@echo ... MIDDLEWARE/Src/OLED_SSD1306.obj
+	@echo ... MIDDLEWARE/Src/OLED_SSD1306.i
+	@echo ... MIDDLEWARE/Src/OLED_SSD1306.s
 	@echo ... MIDDLEWARE/Src/modbus.obj
 	@echo ... MIDDLEWARE/Src/modbus.i
 	@echo ... MIDDLEWARE/Src/modbus.s

@@ -4,7 +4,8 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "Out_In_Put.h"
-#include "modbus.h"
+#include "OLED_SSD1306.h"
+
 //任务优先级
 #define START_TASK_PRIO		1
 //任务堆栈大小
@@ -34,6 +35,8 @@ TaskHandle_t Task2Task_Handler;
 
 _OutPut_ led;
 _USART_  U1;
+Software_IIC SIIC1;
+OLED_SSD1306 MOLED=OLED_SSD1306(&SIIC1,2);
 
 
 std::string asdasd="123456";
@@ -49,6 +52,11 @@ int main()
     //U1.set_send_DMA();
     U1.write("adsda321s3a1d3a1sd3sd\r\n");
     U1.write((uint8_t *)asdasd.data(),5);
+    SIIC1.init(GPIOF1,GPIOF2);
+    MOLED.init();
+    MOLED.Fill(0xff);
+    delay_ms(1000);
+    MOLED.Fill(0x00);
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,            //任务函数
@@ -108,6 +116,7 @@ void start_task(void *pvParameters)
         taskEXIT_CRITICAL();            //退出临界区
         vTaskDelay(1000/portTICK_RATE_MS );
         U1<<U1.read_data();
+        MOLED.Print(0,0,"%03d",task2_num);
     }
 }
 
