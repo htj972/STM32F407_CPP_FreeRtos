@@ -14,18 +14,19 @@ private:
     _GPIO_ SCK;
     _GPIO_ MISO;
     _GPIO_ MOSI;
-    SPI_TypeDef* SPIx;
-    SPI_InitTypeDef SPI_InitStructure;
+    SPI_TypeDef* SPIx{};
+    SPI_InitTypeDef SPI_InitStructure{};
     uint8_t config_flag=0;
     uint8_t DMA_Enable=OFF;
-    DMA_Stream_TypeDef* DMAy_Streamx;
-    uint32_t DMA_FLAG;
-    uint32_t DMA_CHANNEL;
+    DMA_Stream_TypeDef* DMAy_Streamx{};
+    uint32_t DMA_FLAG{};
+    uint32_t DMA_CHANNEL{};
     bool DMA_send_flag= false;
 
     void default_config();
 
 public:
+    explicit SPI(SPI_TypeDef* SPI,uint16_t DataSize=SPI_DataSize_8b,uint8_t SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_8);
     void init(SPI_TypeDef* SPI,uint16_t DataSize=SPI_DataSize_8b,uint8_t SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_8);
     void config(GPIO_TypeDef *PORT_SCK,uint32_t Pin_SCK,\
                 GPIO_TypeDef *PORT_MISO,uint32_t Pin_MISO,\

@@ -7,6 +7,10 @@
 #include "SPI.h"
 #include "DMA.h"
 
+SPI::SPI(SPI_TypeDef* SPI,uint16_t DataSize,uint8_t SPI_BaudRatePrescaler) {
+    this->init(SPI,DataSize,SPI_BaudRatePrescaler);
+}
+
 void SPI::config(GPIO_TypeDef *PORT_SCK,uint32_t Pin_SCK,\
                 GPIO_TypeDef *PORT_MISO,uint32_t Pin_MISO,\
                 GPIO_TypeDef *PORT_MOSI,uint32_t Pin_MOSI){

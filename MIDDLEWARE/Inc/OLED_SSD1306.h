@@ -15,10 +15,10 @@ private:
     Software_IIC *IICX{};
     uint8_t wait_time=255;
     uint8_t OWNADD{};
-    uint8_t X_offset=0;
+    int X_offset=0;
 public:
-    explicit OLED_SSD1306(Software_IIC *IIC,uint8_t Xoffset=0,uint8_t addr=0x78);
-    void config(Software_IIC *IIC,uint8_t Xoffset=0,uint8_t addr=0x78);
+    explicit OLED_SSD1306(Software_IIC *IIC,int Xoffset=0,uint8_t addr=0x78);
+    void config(Software_IIC *IIC,int Xoffset=0,uint8_t addr=0x78);
     bool init() override;
     void SetPos(uint16_t x, uint16_t y) override;
     void Fill(uint8_t fill_Data) override;

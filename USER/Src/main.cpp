@@ -5,6 +5,7 @@
 #include "task.h"
 #include "Out_In_Put.h"
 #include "OLED_SSD1306.h"
+#include "W25QXX.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -33,10 +34,12 @@ TaskHandle_t Task2Task_Handler;
 //任务函数
 [[noreturn]] void task2_task(void *pvParameters);
 
-_OutPut_ led(GPIOE6);
-_USART_  U1(USART1,115200);
-Software_IIC SIIC1(GPIOD0,GPIOD1);
-OLED_SSD1306 MOLED(&SIIC1,2);
+_OutPut_        led(GPIOE6);
+_USART_         U1(USART1,115200);
+Software_IIC    SIIC1(GPIOD0,GPIOD1);
+OLED_SSD1306    MOLED(&SIIC1,2);
+SPI             spiline1(SPI1);
+W25QXX          flash(&spiline1,GPIOC5);
 
 std::string asdasd="123456";
 
@@ -48,10 +51,14 @@ int main()
     //U1.set_send_DMA();
     U1.write("adsda321s3a1d3a1sd3sd\r\n");
     U1.write((uint8_t *)asdasd.data(),5);
+    flash.writestr(0,asdasd);
+    flash.readstr(0,&asdasd,10);
     MOLED.init();
     MOLED.Fill(0xff);
     delay_ms(1000);
     MOLED.Fill(0x00);
+
+    //asdas.writestr(151,&asdasd,125);
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数

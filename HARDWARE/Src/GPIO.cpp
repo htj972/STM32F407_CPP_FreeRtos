@@ -33,7 +33,7 @@ uint8_t _GPIO_::get_GPIOx_num() const {
     return ii;
 }
 
-uint32_t _GPIO_::get_pinx_num() const {
+uint8_t _GPIO_::get_pinx_num() const {
     return this->get_PORTx_num()*0x10+this->get_GPIOx_num();
 }
 

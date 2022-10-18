@@ -19,10 +19,10 @@ private:
 public:
     GPIO_TypeDef* PORTx;
     uint32_t      GPIOx;
-    uint32_t      Pinx=0xff;
+    uint8_t       Pinx=0xff;
     uint8_t get_PORTx_num() const;
     uint8_t get_GPIOx_num() const;
-    uint32_t get_pinx_num() const;
+    uint8_t get_pinx_num() const;
 
     void init(GPIO_TypeDef* PORT,uint32_t Pin,GPIOMode_TypeDef Mode);
     void init(uint8_t Pin, GPIOMode_TypeDef Mode);

@@ -6,11 +6,11 @@
 
 #include "OLED_SSD1306.h"
 
-OLED_SSD1306::OLED_SSD1306(Software_IIC *IIC,uint8_t Xoffset,uint8_t addr) {
+OLED_SSD1306::OLED_SSD1306(Software_IIC *IIC,int Xoffset,uint8_t addr) {
     this->config(IIC,Xoffset,addr);
 }
 
-void OLED_SSD1306::config(Software_IIC *IIC,uint8_t Xoffset,uint8_t addr) {
+void OLED_SSD1306::config(Software_IIC *IIC,int Xoffset,uint8_t addr) {
     if(IIC!= nullptr)
         this->IICX=IIC;
     this->OWNADD=addr;

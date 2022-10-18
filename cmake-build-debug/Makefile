@@ -1400,6 +1400,30 @@ HARDWARE/Src/USART.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s
 .PHONY : HARDWARE/Src/USART.cpp.s
 
+MIDDLEWARE/Inc/W25QXX.obj: MIDDLEWARE/Inc/W25QXX.cpp.obj
+.PHONY : MIDDLEWARE/Inc/W25QXX.obj
+
+# target to build an object file
+MIDDLEWARE/Inc/W25QXX.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.obj
+.PHONY : MIDDLEWARE/Inc/W25QXX.cpp.obj
+
+MIDDLEWARE/Inc/W25QXX.i: MIDDLEWARE/Inc/W25QXX.cpp.i
+.PHONY : MIDDLEWARE/Inc/W25QXX.i
+
+# target to preprocess a source file
+MIDDLEWARE/Inc/W25QXX.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.i
+.PHONY : MIDDLEWARE/Inc/W25QXX.cpp.i
+
+MIDDLEWARE/Inc/W25QXX.s: MIDDLEWARE/Inc/W25QXX.cpp.s
+.PHONY : MIDDLEWARE/Inc/W25QXX.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Inc/W25QXX.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.s
+.PHONY : MIDDLEWARE/Inc/W25QXX.cpp.s
+
 MIDDLEWARE/Src/OLED_BASE.obj: MIDDLEWARE/Src/OLED_BASE.cpp.obj
 .PHONY : MIDDLEWARE/Src/OLED_BASE.obj
 
@@ -1447,6 +1471,30 @@ MIDDLEWARE/Src/OLED_SSD1306.s: MIDDLEWARE/Src/OLED_SSD1306.cpp.s
 MIDDLEWARE/Src/OLED_SSD1306.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.s
 .PHONY : MIDDLEWARE/Src/OLED_SSD1306.cpp.s
+
+MIDDLEWARE/Src/Storage_BASE.obj: MIDDLEWARE/Src/Storage_BASE.cpp.obj
+.PHONY : MIDDLEWARE/Src/Storage_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/Src/Storage_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.obj
+.PHONY : MIDDLEWARE/Src/Storage_BASE.cpp.obj
+
+MIDDLEWARE/Src/Storage_BASE.i: MIDDLEWARE/Src/Storage_BASE.cpp.i
+.PHONY : MIDDLEWARE/Src/Storage_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/Storage_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.i
+.PHONY : MIDDLEWARE/Src/Storage_BASE.cpp.i
+
+MIDDLEWARE/Src/Storage_BASE.s: MIDDLEWARE/Src/Storage_BASE.cpp.s
+.PHONY : MIDDLEWARE/Src/Storage_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/Storage_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.s
+.PHONY : MIDDLEWARE/Src/Storage_BASE.cpp.s
 
 MIDDLEWARE/Src/modbus.obj: MIDDLEWARE/Src/modbus.cpp.obj
 .PHONY : MIDDLEWARE/Src/modbus.obj
@@ -1792,12 +1840,18 @@ help:
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s
+	@echo ... MIDDLEWARE/Inc/W25QXX.obj
+	@echo ... MIDDLEWARE/Inc/W25QXX.i
+	@echo ... MIDDLEWARE/Inc/W25QXX.s
 	@echo ... MIDDLEWARE/Src/OLED_BASE.obj
 	@echo ... MIDDLEWARE/Src/OLED_BASE.i
 	@echo ... MIDDLEWARE/Src/OLED_BASE.s
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.obj
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.i
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.s
+	@echo ... MIDDLEWARE/Src/Storage_BASE.obj
+	@echo ... MIDDLEWARE/Src/Storage_BASE.i
+	@echo ... MIDDLEWARE/Src/Storage_BASE.s
 	@echo ... MIDDLEWARE/Src/modbus.obj
 	@echo ... MIDDLEWARE/Src/modbus.i
 	@echo ... MIDDLEWARE/Src/modbus.s
