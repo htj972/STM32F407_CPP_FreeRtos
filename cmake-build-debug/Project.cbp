@@ -37,6 +37,7 @@
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -71,6 +72,7 @@
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -460,16 +462,19 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/USART.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/OLED_SSD1306.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/OLED_BASE.h">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/OLED_SSD1306.h">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/Storage_BASE.h">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/W25QXX.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/W25QXX.h">
@@ -478,13 +483,10 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/modbus.h">
 			<Option target="Project.elf"/>
 		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/OLED_BASE.cpp">
-			<Option target="Project.elf"/>
-		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/OLED_SSD1306.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/Storage_BASE.cpp">
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/W25QXX.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/modbus.cpp">

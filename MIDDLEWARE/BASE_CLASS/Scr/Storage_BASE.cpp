@@ -4,11 +4,11 @@
 * @Date 2022-10-18
 **/
 
-#include "Storage_BASE.h"
+#include "../Inc/Storage_BASE.h"
 
-bool Storage_BASE::init() {
-    return false;
-}
+//bool Storage_BASE::init() {
+//    return false;
+//}
 
 uint16_t Storage_BASE::write(uint32_t addr, uint8_t data) {
     return 1;

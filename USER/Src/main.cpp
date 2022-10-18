@@ -4,7 +4,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "Out_In_Put.h"
-#include "OLED_SSD1306.h"
+#include "../../MIDDLEWARE/BASE_CLASS/Inc/OLED_SSD1306.h"
 #include "W25QXX.h"
 
 //任务优先级
@@ -51,8 +51,8 @@ int main()
     //U1.set_send_DMA();
     U1.write("adsda321s3a1d3a1sd3sd\r\n");
     U1.write((uint8_t *)asdasd.data(),5);
-    flash.writestr(0,asdasd);
-    flash.readstr(0,&asdasd,10);
+//    flash.writestr(0,asdasd);
+//    flash.readstr(0,&asdasd,10);
     MOLED.init();
     MOLED.Fill(0xff);
     delay_ms(1000);
@@ -110,15 +110,15 @@ void start_task(void *pvParameters)
 //task2任务函数
 [[noreturn]] void task2_task(void *pvParameters)
 {
-    u8 task2_num=0;
+    uint16_t task2_num=0;
     while(true)
     {
         task2_num++;					//任务2执行次数加1 注意task2_num1加到255的时候会清零！！
         taskENTER_CRITICAL();           //进入临界区
         taskEXIT_CRITICAL();            //退出临界区
-        vTaskDelay(1000/portTICK_RATE_MS );
+        vTaskDelay(200/portTICK_RATE_MS );
         U1<<U1.read_data();
-        MOLED.Print(0,0,"%03d",task2_num);
+        MOLED.Print(0,0,"%04d",task2_num);
     }
 }
 

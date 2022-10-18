@@ -810,33 +810,33 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\USART.cpp -o CMakeFiles\Project.elf.dir\HARDWARE\Src\USART.cpp.s
 
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.obj: ../MIDDLEWARE/Inc/W25QXX.cpp
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.obj"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Inc\W25QXX.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Inc\W25QXX.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Inc\W25QXX.cpp
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\OLED_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\OLED_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\OLED_BASE.cpp
 
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.i"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Inc\W25QXX.cpp > CMakeFiles\Project.elf.dir\MIDDLEWARE\Inc\W25QXX.cpp.i
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.i"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\OLED_BASE.cpp > CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\OLED_BASE.cpp.i
 
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.s"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Inc\W25QXX.cpp -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Inc\W25QXX.cpp.s
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\OLED_BASE.cpp -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\OLED_BASE.cpp.s
 
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.obj: ../MIDDLEWARE/Src/OLED_BASE.cpp
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.obj"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\OLED_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\OLED_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\OLED_BASE.cpp
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Storage_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Storage_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Storage_BASE.cpp
 
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.i"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\OLED_BASE.cpp > CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\OLED_BASE.cpp.i
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.i"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Storage_BASE.cpp > CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Storage_BASE.cpp.i
 
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.s"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\OLED_BASE.cpp -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\OLED_BASE.cpp.s
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.s"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Storage_BASE.cpp -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Storage_BASE.cpp.s
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj: ../MIDDLEWARE/Src/OLED_SSD1306.cpp
@@ -852,19 +852,19 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.s"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\OLED_SSD1306.cpp -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\OLED_SSD1306.cpp.s
 
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.obj: ../MIDDLEWARE/Src/Storage_BASE.cpp
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.obj"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\Storage_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\Storage_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\Storage_BASE.cpp
+CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
+CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj: ../MIDDLEWARE/Src/W25QXX.cpp
+CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\W25QXX.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\W25QXX.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\W25QXX.cpp
 
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.i"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\Storage_BASE.cpp > CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\Storage_BASE.cpp.i
+CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.i"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\W25QXX.cpp > CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\W25QXX.cpp.i
 
-CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.s"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\Storage_BASE.cpp -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\Storage_BASE.cpp.s
+CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.s"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\W25QXX.cpp -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\W25QXX.cpp.s
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj: ../MIDDLEWARE/Src/modbus.cpp
@@ -1032,10 +1032,10 @@ Project_elf_OBJECTS = \
 "CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj" \
-"CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.obj" \
-"CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.obj" \
+"CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj" \
+"CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj" \
 "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj" \
-"CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.obj" \
+"CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj" \
 "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj" \
 "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj" \
 "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj" \
@@ -1101,10 +1101,10 @@ Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj
-Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/W25QXX.cpp.obj
-Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_BASE.cpp.obj
+Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj
+Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj
-Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Storage_BASE.cpp.obj
+Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
 Project.elf: CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
