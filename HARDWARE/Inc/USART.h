@@ -29,9 +29,13 @@ private:
     void default_config();
 
 public:
-    void init(USART_TypeDef* USARTx,int32_t bound);
+    explicit _USART_(USART_TypeDef* USARTx,int32_t bound=115200);
+    _USART_()=default;
+    ~_USART_()=default;
+    void init(USART_TypeDef* USARTx,int32_t bound=115200);
     void config(GPIO_TypeDef* PORT_Tx,uint32_t Pin_Tx,GPIO_TypeDef* PORT_Rx,uint32_t Pin_Rx);
     void config(uint8_t Pin_Tx,uint8_t Pin_Rx);
+    void setBound(int32_t bound);
     void setNVIC(uint8_t Priority=3,uint8_t SubPriority=3,bool EnAble=true);
     void setNVIC_ENABLE(bool EnAble=true);
     void setCmd_ENABLE(bool EnAble=true);

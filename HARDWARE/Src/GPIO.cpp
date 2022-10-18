@@ -23,7 +23,7 @@ uint8_t _GPIO_::get_PORTx_num() const
     return (((uint32_t)this->PORTx-(uint32_t)GPIOA)/0x400);
 }
 
-uint8_t _GPIO_::get_pinx_num() const {
+uint8_t _GPIO_::get_GPIOx_num() const {
     u8 ii=0;
     for(;ii<16;ii++)
     {
@@ -31,6 +31,10 @@ uint8_t _GPIO_::get_pinx_num() const {
             break;
     }
     return ii;
+}
+
+uint32_t _GPIO_::get_pinx_num() const {
+    return this->get_PORTx_num()*0x10+this->get_GPIOx_num();
 }
 
 void _GPIO_::init(GPIO_TypeDef* PORT,uint32_t Pin,GPIOMode_TypeDef Mode) {
@@ -41,7 +45,7 @@ void _GPIO_::init(GPIO_TypeDef* PORT,uint32_t Pin,GPIOMode_TypeDef Mode) {
     this->GPIO_InitStructure.GPIO_Speed = GPIO_High_Speed;
     this->GPIO_InitStructure.GPIO_Pin = this->GPIOx;
     this->GPIO_InitStructure.GPIO_Mode= Mode;
-    this->Pinx=this->get_PORTx_num()*0x10+this->get_pinx_num();
+    this->Pinx=this->get_pinx_num();
     GPIO_Init(this->PORTx, &this->GPIO_InitStructure);
 }
 
@@ -98,7 +102,7 @@ uint8_t _GPIO_::get_input() const {
 }
 
 void _GPIO_::set_AFConfig(uint8_t AF_MODE) const {
-    uint16_t Pin_Source=this->get_pinx_num();
+    uint16_t Pin_Source=this->get_GPIOx_num();
     GPIO_PinAFConfig(this->PORTx,Pin_Source,AF_MODE);
 }
 

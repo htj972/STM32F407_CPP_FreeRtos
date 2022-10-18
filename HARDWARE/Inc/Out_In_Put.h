@@ -12,9 +12,15 @@
 class _OutPut_ {
 private:
     _GPIO_ GPIO;
-    uint8_t default_mode;
-    uint8_t value;
+    uint8_t default_mode{};
+    uint8_t value{};
+    bool setted;
 public:
+    _OutPut_(GPIO_TypeDef* PORTx,uint32_t Pinx,uint8_t Hi_Lo=LOW);
+    explicit _OutPut_(uint8_t Pinx,uint8_t Hi_Lo=LOW);
+    _OutPut_();
+    ~_OutPut_()=default;
+    void init();
     void init(GPIO_TypeDef* PORTx,uint32_t Pinx,uint8_t Hi_Lo);
     void init(uint8_t Pinx,uint8_t Hi_Lo);
     void set(uint8_t ON_OFF);
@@ -30,9 +36,15 @@ private:
     EXTI_InitTypeDef   EXTI_InitStructure;
     uint8_t Down_level;
     uint8_t pin_num;
+    bool setted;
 public:
+    _InPut_(GPIO_TypeDef* PORTx,uint32_t Pinx,uint8_t Hi_Lo=LOW);
+    explicit _InPut_(uint8_t Pinx,uint8_t Hi_Lo=LOW);
+    _InPut_();
+    ~_InPut_()=default;
     void init(GPIO_TypeDef* PORTx,uint32_t Pinx,uint8_t Hi_Lo);
     void init(uint8_t Pinx,uint8_t Hi_Lo);
+    void init();
     void set_EXTI();
     void setNVIC(uint8_t Priority=3,uint8_t SubPriority=3,bool EnAble=true);
     void setNVIC_ENABLE(bool EnAble=true) ;

@@ -29,6 +29,10 @@ private:
     void SCL_OFF();
     void delay() const;
 public:
+    Software_IIC(GPIO_TypeDef *PORT_csl,uint32_t Pin_csl,GPIO_TypeDef *PORT_sda,uint32_t Pin_sda);
+    Software_IIC(uint8_t Pin_Scl, uint8_t Pin_Sda);
+    Software_IIC()=default;
+    ~Software_IIC()=default;
     void init(GPIO_TypeDef *PORT_csl,uint32_t Pin_csl,GPIO_TypeDef *PORT_sda,uint32_t Pin_sda);
     void init(uint8_t Pin_Scl, uint8_t Pin_Sda);
     void config(uint16_t wait,uint16_t delay=1,uint8_t mode=0);

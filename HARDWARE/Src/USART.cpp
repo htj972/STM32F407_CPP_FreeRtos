@@ -18,6 +18,10 @@ struct _IRQ_STRUCT_ {
     void (*extern_IRQ_link)(uint8_t channel,uint8_t data);
 }HARD_IQR;
 
+_USART_::_USART_(USART_TypeDef* USARTx,int32_t bound){
+    this->init(USARTx,bound);
+}
+
 
 void _USART_::config(GPIO_TypeDef *PORT_Tx, uint32_t Pin_Tx, GPIO_TypeDef *PORT_Rx, uint32_t Pin_Rx) {
     this->TX_GPIO.init(PORT_Tx,Pin_Tx,GPIO_Mode_AF);
@@ -132,6 +136,13 @@ void _USART_::init(USART_TypeDef* USARTx,int32_t bound) {
     this->NVIC_InitStructure.NVIC_IRQChannelSubPriority =3;		//子优先级3
     this->NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
 	NVIC_Init(&this->NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器、
+}
+
+void _USART_::setBound(int32_t bound){
+    USART_Cmd(this->USART, DISABLE);  //使能串口
+    this->USART_InitStructure.USART_BaudRate = this->Bound;//波特率设置
+    USART_Init(this->USART, &USART_InitStructure); //初始化串口
+    USART_Cmd(this->USART, ENABLE);  //使能串口
 }
 
 void _USART_::setNVIC(uint8_t Priority, uint8_t SubPriority, bool EnAble) {

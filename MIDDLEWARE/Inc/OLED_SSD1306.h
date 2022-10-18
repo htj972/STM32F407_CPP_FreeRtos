@@ -30,4 +30,5 @@ public:
 };
 
 
+
 #endif //KOKIRIKA_OLED_SSD1306_H

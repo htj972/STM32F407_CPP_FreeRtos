@@ -33,11 +33,10 @@ TaskHandle_t Task2Task_Handler;
 //任务函数
 [[noreturn]] void task2_task(void *pvParameters);
 
-_OutPut_ led;
-_USART_  U1;
-Software_IIC SIIC1;
-OLED_SSD1306 MOLED=OLED_SSD1306(&SIIC1,2);
-
+_OutPut_ led(GPIOE6);
+_USART_  U1(USART1,115200);
+Software_IIC SIIC1(GPIOD0,GPIOD1);
+OLED_SSD1306 MOLED(&SIIC1,2);
 
 std::string asdasd="123456";
 
@@ -46,23 +45,19 @@ int main()
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);					//初始化延时函数
 
-    U1.init(USART1,115200);
-    U1.config(GPIOA9,GPIOA10);
-    led.init(GPIOD3,LOW);
     //U1.set_send_DMA();
     U1.write("adsda321s3a1d3a1sd3sd\r\n");
     U1.write((uint8_t *)asdasd.data(),5);
-    SIIC1.init(GPIOF1,GPIOF2);
     MOLED.init();
     MOLED.Fill(0xff);
     delay_ms(1000);
     MOLED.Fill(0x00);
 
     //创建开始任务
-    xTaskCreate((TaskFunction_t )start_task,            //任务函数
-                (const char*    )"start_task",          //任务名称
-                (uint16_t       )START_STK_SIZE,        //任务堆栈大小
-                (void*          )nullptr,                  //传递给任务函数的参数
+    xTaskCreate((TaskFunction_t )start_task,          //任务函数
+                (const char*    )"start_task",           //任务名称
+                (uint16_t       )START_STK_SIZE,     //任务堆栈大小
+                (void*          )nullptr,            //传递给任务函数的参数
                 (UBaseType_t    )START_TASK_PRIO,       //任务优先级
                 (TaskHandle_t*  )&StartTask_Handler);   //任务句柄
     vTaskStartScheduler();          //开启任务调度

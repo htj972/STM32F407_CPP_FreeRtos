@@ -42,6 +42,14 @@ void Software_IIC::delay() const {
         delay_ms(this->delay_time);
 }
 
+Software_IIC::Software_IIC(GPIO_TypeDef *PORT_csl, uint32_t Pin_csl, GPIO_TypeDef *PORT_sda, uint32_t Pin_sda) {
+    this->init(PORT_csl,Pin_csl,PORT_sda, Pin_sda);
+}
+
+Software_IIC::Software_IIC(uint8_t Pin_Scl, uint8_t Pin_Sda) {
+    this->init(Pin_Scl,Pin_Sda);
+}
+
 void Software_IIC::init(GPIO_TypeDef *PORT_csl,uint32_t Pin_csl,GPIO_TypeDef *PORT_sda,uint32_t Pin_sda) {
     this->SCL.init(PORT_csl,Pin_csl,GPIO_Mode_OUT);
     this->SDA.init(PORT_sda,Pin_sda,GPIO_Mode_OUT);

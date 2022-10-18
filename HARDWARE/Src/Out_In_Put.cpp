@@ -6,16 +6,40 @@
 
 #include "Out_In_Put.h"
 
+_OutPut_::_OutPut_(GPIO_TypeDef *PORTx, uint32_t Pinx, uint8_t Hi_Lo) {
+    this->init(PORTx,Pinx,Hi_Lo);
+}
+
+_OutPut_::_OutPut_(uint8_t Pinx,uint8_t Hi_Lo) {
+    this->init(Pinx,Hi_Lo);
+}
+
+_OutPut_::_OutPut_(){
+    this->setted = false;
+}
+
+void _OutPut_::init(){
+    if(this->setted)
+    {
+        if(this->GPIO.Pinx==0xff)
+            this->GPIO.get_pinx_num();
+        this->GPIO.init(this->GPIO.Pinx,GPIO_Mode_OUT);
+        this->GPIO.set_output(!this->default_mode);
+    }
+}
+
 void _OutPut_::init(GPIO_TypeDef* PORTx,uint32_t Pinx,uint8_t Hi_Lo) {
     this->GPIO.init(PORTx,Pinx,GPIO_Mode_OUT);
     this->default_mode=Hi_Lo;
     this->GPIO.set_output(!this->default_mode);
+    this->setted = true;
 }
 
 void _OutPut_::init(uint8_t Pinx, uint8_t Hi_Lo) {
     this->GPIO.init(Pinx,GPIO_Mode_OUT);
     this->default_mode=Hi_Lo;
     this->GPIO.set_output(!this->default_mode);
+    this->setted = true;
 }
 
 void _OutPut_::set(uint8_t ON_OFF) {
@@ -58,11 +82,33 @@ struct _EXIT_STRUCT_{
 }EXIT_IQR;
 //extern _EXIT_STRUCT_ EXIT_IQR;
 
+_InPut_::_InPut_(GPIO_TypeDef *PORTx, uint32_t Pinx, uint8_t Hi_Lo) {
+    this->init(PORTx,Pinx,Hi_Lo);
+}
+
+_InPut_::_InPut_(uint8_t Pinx, uint8_t Hi_Lo) {
+    this->init(Pinx,Hi_Lo);
+}
+
+_InPut_::_InPut_() {
+    this->setted= false;
+}
+
+void _InPut_::init(){
+    if(this->setted)
+    {
+        if(this->GPIO.Pinx==0xff)
+            this->GPIO.get_pinx_num();
+        this->GPIO.init(this->GPIO.Pinx,GPIO_Mode_IN);
+    }
+}
+
 void _InPut_::init(GPIO_TypeDef *PORTx, uint32_t Pinx, uint8_t Hi_Lo) {
     this->Down_level=Hi_Lo;
     if(this->Down_level!=LOW)
         this->GPIO.set_PuPD(GPIO_PuPd_DOWN);
     this->GPIO.init(PORTx,Pinx,GPIO_Mode_IN);
+    this->setted= true;
 }
 
 void _InPut_::init(uint8_t Pinx, uint8_t Hi_Lo) {
@@ -70,12 +116,13 @@ void _InPut_::init(uint8_t Pinx, uint8_t Hi_Lo) {
     if(this->Down_level!=LOW)
         this->GPIO.set_PuPD(GPIO_PuPd_DOWN);
     this->GPIO.init(Pinx,GPIO_Mode_IN);
+    this->setted= true;
 }
 
 void _InPut_::set_EXTI() {
     if(this->GPIO.get_PORTx_num()!=0)
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);//Ê¹ÄÜSYSCFGÊ±ÖÓ
-    this->pin_num=this->GPIO.get_pinx_num();
+    this->pin_num=this->GPIO.get_GPIOx_num();
     SYSCFG_EXTILineConfig(this->GPIO.get_PORTx_num(),this->pin_num);
 
     if(extern_flag==0) {
