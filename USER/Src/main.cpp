@@ -4,8 +4,9 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "Out_In_Put.h"
-#include "../../MIDDLEWARE/BASE_CLASS/Inc/OLED_SSD1306.h"
+#include "OLED_SSD1306.h"
 #include "W25QXX.h"
+#include "FM24Cxx.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -38,11 +39,11 @@ _OutPut_        led(GPIOE6);
 _USART_         U1(USART1,115200);
 Software_IIC    SIIC1(GPIOD0,GPIOD1);
 OLED_SSD1306    MOLED(&SIIC1,2);
-SPI             spiline1(SPI1);
-W25QXX          flash(&spiline1,GPIOC5);
+Software_IIC    SIIC2(GPIOE4,GPIOE5);
+FM24Cxx         FM24C64(&SIIC2);
 
 std::string asdasd="123456";
-
+std::string eprom="FM24C64 text";
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
@@ -51,12 +52,16 @@ int main()
     //U1.set_send_DMA();
     U1.write("adsda321s3a1d3a1sd3sd\r\n");
     U1.write((uint8_t *)asdasd.data(),5);
-//    flash.writestr(0,asdasd);
-//    flash.readstr(0,&asdasd,10);
+
+    FM24C64.init();
+    FM24C64.writestr(0,eprom);
+    std::string text;
+    FM24C64.readstr(0,&text,eprom.length());
     MOLED.init();
     MOLED.Fill(0xff);
     delay_ms(1000);
     MOLED.Fill(0x00);
+    MOLED.Print(0,2,text);
 
     //asdas.writestr(151,&asdasd,125);
 

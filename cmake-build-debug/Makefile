@@ -1424,6 +1424,30 @@ MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s
 
+MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj
+
+MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.i: MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.i
+
+MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s
+
 MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.obj
 
@@ -1447,6 +1471,54 @@ MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE
 MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.s
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.s
+
+MIDDLEWARE/Inc/RTC_DS3231.obj: MIDDLEWARE/Inc/RTC_DS3231.cpp.obj
+.PHONY : MIDDLEWARE/Inc/RTC_DS3231.obj
+
+# target to build an object file
+MIDDLEWARE/Inc/RTC_DS3231.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/RTC_DS3231.cpp.obj
+.PHONY : MIDDLEWARE/Inc/RTC_DS3231.cpp.obj
+
+MIDDLEWARE/Inc/RTC_DS3231.i: MIDDLEWARE/Inc/RTC_DS3231.cpp.i
+.PHONY : MIDDLEWARE/Inc/RTC_DS3231.i
+
+# target to preprocess a source file
+MIDDLEWARE/Inc/RTC_DS3231.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/RTC_DS3231.cpp.i
+.PHONY : MIDDLEWARE/Inc/RTC_DS3231.cpp.i
+
+MIDDLEWARE/Inc/RTC_DS3231.s: MIDDLEWARE/Inc/RTC_DS3231.cpp.s
+.PHONY : MIDDLEWARE/Inc/RTC_DS3231.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Inc/RTC_DS3231.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/RTC_DS3231.cpp.s
+.PHONY : MIDDLEWARE/Inc/RTC_DS3231.cpp.s
+
+MIDDLEWARE/Src/FM24Cxx.obj: MIDDLEWARE/Src/FM24Cxx.cpp.obj
+.PHONY : MIDDLEWARE/Src/FM24Cxx.obj
+
+# target to build an object file
+MIDDLEWARE/Src/FM24Cxx.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj
+.PHONY : MIDDLEWARE/Src/FM24Cxx.cpp.obj
+
+MIDDLEWARE/Src/FM24Cxx.i: MIDDLEWARE/Src/FM24Cxx.cpp.i
+.PHONY : MIDDLEWARE/Src/FM24Cxx.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/FM24Cxx.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.i
+.PHONY : MIDDLEWARE/Src/FM24Cxx.cpp.i
+
+MIDDLEWARE/Src/FM24Cxx.s: MIDDLEWARE/Src/FM24Cxx.cpp.s
+.PHONY : MIDDLEWARE/Src/FM24Cxx.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/FM24Cxx.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.s
+.PHONY : MIDDLEWARE/Src/FM24Cxx.cpp.s
 
 MIDDLEWARE/Src/OLED_SSD1306.obj: MIDDLEWARE/Src/OLED_SSD1306.cpp.obj
 .PHONY : MIDDLEWARE/Src/OLED_SSD1306.obj
@@ -1843,9 +1915,18 @@ help:
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.s
+	@echo ... MIDDLEWARE/Inc/RTC_DS3231.obj
+	@echo ... MIDDLEWARE/Inc/RTC_DS3231.i
+	@echo ... MIDDLEWARE/Inc/RTC_DS3231.s
+	@echo ... MIDDLEWARE/Src/FM24Cxx.obj
+	@echo ... MIDDLEWARE/Src/FM24Cxx.i
+	@echo ... MIDDLEWARE/Src/FM24Cxx.s
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.obj
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.i
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.s

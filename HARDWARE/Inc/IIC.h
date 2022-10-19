@@ -43,7 +43,7 @@ public:
 
     void Start();
     void Stop();
-    uint8_t Wait_Ack();
+    bool Wait_Ack();
     void Ack();
     void NAck();
     void Send_Byte(uint8_t data);

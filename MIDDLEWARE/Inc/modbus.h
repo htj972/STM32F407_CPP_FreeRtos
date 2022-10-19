@@ -44,7 +44,7 @@ public:
     modbus();
     ~modbus();
     void init(uint16_t* address,uint16_t len,uint16_t start=0);
-    void config(_USART_* USART,uint8_t mode =0,uint8_t id=1,uint16_t timeout=500,uint16_t freetime=50);
+    void config(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t timeout=500,uint16_t freetime=50);
     void set_id(uint8_t id=1);
     void set_mode(uint8_t mode =0);
     void set_freetime(uint16_t freetime);

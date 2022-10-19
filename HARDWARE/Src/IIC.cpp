@@ -105,7 +105,7 @@ void Software_IIC::Stop() {
     this->delay();
 }
 
-uint8_t Software_IIC::Wait_Ack() {
+bool Software_IIC::Wait_Ack() {
     uint8_t err_temp=this->err_times;
     this->SCL_OFF();
     this->SDA_IN();      //SDA设置为输入
@@ -117,11 +117,11 @@ uint8_t Software_IIC::Wait_Ack() {
         if(err_temp>0)
         {
             this->Stop();
-            return 1;
+            return true;
         }
     }
     this->SCL_OFF(); 	//时钟输出0
-    return 0;
+    return false;
 }
 
 void Software_IIC::Ack() {
@@ -161,6 +161,7 @@ void Software_IIC::Send_Byte(uint8_t data) {
         this->SCL_OFF();
         this->delay();
     }
+    this->SDA_ON();
 }
 
 uint8_t Software_IIC::Read_Byte(uint8_t ack) {

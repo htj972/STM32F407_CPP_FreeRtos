@@ -8,17 +8,20 @@
 #include "delay.h"
 
 W25QXX::W25QXX(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx, uint16_t BaudRate) {
-    this->init(SPIx,PORTx,Pinx,BaudRate);
+    this->BaudRatex=BaudRate;
+    this->spix=SPIx;
+    this->CSPin.init(PORTx,Pinx,GPIO_Mode_OUT);
 }
 
 W25QXX::W25QXX(SPI *SPIx, uint8_t CSpin, uint16_t BaudRate) {
-    this->init(SPIx,CSpin,BaudRate);
+    this->BaudRatex=BaudRate;
+    this->spix=SPIx;
+    this->CSPin.init(CSpin,GPIO_Mode_OUT);
 }
 
 void W25QXX::init() {
     if((this->spix!= nullptr)&&(this->CSPin.Pinx!=0xff))
     {
-        this->CSPin.init(this->CSPin.Pinx,GPIO_Mode_OUT);
         this->CSPin.set_output(HIGH);
         this->spix->SetSpeed(this->BaudRatex);
         W25QXX_TYPE=this->ReadID();	//∂¡»°FLASH ID.
