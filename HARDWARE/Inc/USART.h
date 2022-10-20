@@ -56,8 +56,12 @@ public:
     void write(string String);
     uint16_t print(const char *fmt, ...);
     uint16_t print(const string& String);
+    uint16_t print(const char *s);
+    uint16_t print(int integer);
     uint16_t println(const char *fmt, ...);
     uint16_t println(string String);
+    uint16_t println(const char *s);
+    uint16_t println(int integer);
 
     void set_send_DMA(FunctionalState enable=ENABLE);
 

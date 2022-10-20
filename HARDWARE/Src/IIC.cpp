@@ -42,22 +42,24 @@ void Software_IIC::delay() const {
         delay_ms(this->delay_time);
 }
 
-Software_IIC::Software_IIC(GPIO_TypeDef *PORT_csl, uint32_t Pin_csl, GPIO_TypeDef *PORT_sda, uint32_t Pin_sda) {
-    this->init(PORT_csl,Pin_csl,PORT_sda, Pin_sda);
+Software_IIC::Software_IIC(GPIO_TypeDef *PORT_csl, uint32_t Pin_csl, GPIO_TypeDef *PORT_sda, uint32_t Pin_sda,Queue mode) {
+    this->init(PORT_csl,Pin_csl,PORT_sda, Pin_sda,mode);
 }
 
-Software_IIC::Software_IIC(uint8_t Pin_Scl, uint8_t Pin_Sda) {
-    this->init(Pin_Scl,Pin_Sda);
+Software_IIC::Software_IIC(uint8_t Pin_Scl, uint8_t Pin_Sda,Queue mode) {
+    this->init(Pin_Scl,Pin_Sda,mode);
 }
 
-void Software_IIC::init(GPIO_TypeDef *PORT_csl,uint32_t Pin_csl,GPIO_TypeDef *PORT_sda,uint32_t Pin_sda) {
+void Software_IIC::init(GPIO_TypeDef *PORT_csl,uint32_t Pin_csl,GPIO_TypeDef *PORT_sda,uint32_t Pin_sda,Queue mode) {
     this->SCL.init(PORT_csl,Pin_csl,GPIO_Mode_OUT);
     this->SDA.init(PORT_sda,Pin_sda,GPIO_Mode_OUT);
+    this->set_Queue_mode(mode);
 }
 
-void Software_IIC::init(uint8_t Pin_Scl, uint8_t Pin_Sda) {
+void Software_IIC::init(uint8_t Pin_Scl, uint8_t Pin_Sda,Queue mode) {
     this->SCL.init(Pin_Scl,GPIO_Mode_OUT);
     this->SDA.init(Pin_Sda,GPIO_Mode_OUT);
+    this->set_Queue_mode(mode);
 }
 
 void Software_IIC::config(uint16_t wait, uint16_t delay, uint8_t mode) {
@@ -198,7 +200,7 @@ void Software_IIC::Write_One_Byte(u8 daddr,u8 addr,u8 data)
     this->Stop();//产生一个停止条件
 }
 
-uint8_t Software_IIC::Read_One_Byte(uint8_t daddr,uint8_t addr)
+uint8_t Software_IIC::Read_One_Byte(uint8_t daddr, uint8_t addr,uint8_t draddr)
 {
     uint8_t ret;
     this->Start();
@@ -206,9 +208,16 @@ uint8_t Software_IIC::Read_One_Byte(uint8_t daddr,uint8_t addr)
     this->Wait_Ack();
     this->Send_Byte(addr);   //发送低地址
     this->Wait_Ack();
+    this->Start();
+    this->Send_Byte(draddr);
+    this->Wait_Ack();
     ret=this->Read_Byte(0);
     this->Stop();//产生一个停止条件
     return ret;
+}
+
+uint8_t Software_IIC::Read_One_Byte(uint8_t daddr,uint8_t addr){
+    return this->Read_One_Byte(daddr,addr,daddr+1);
 }
 
 

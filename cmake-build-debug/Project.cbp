@@ -38,6 +38,7 @@
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Inc"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -73,6 +74,7 @@
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Inc"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -412,6 +414,12 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_PORTABLE/port.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Inc/HARD_BASE.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/ADC.h">

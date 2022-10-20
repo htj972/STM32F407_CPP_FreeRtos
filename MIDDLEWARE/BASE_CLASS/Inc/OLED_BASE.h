@@ -25,6 +25,8 @@ public:
     void SHOW_CN_str(uint8_t x, uint8_t y,const char *ch);
     uint16_t Print(uint8_t x,uint8_t y,const char *fmt, ...);
     void Print(uint8_t x, uint8_t y, const std::string& String);
+    void Print(uint8_t x, uint8_t y,const char *s);
+    void Print(uint8_t x, uint8_t y,int integer);
     void set_font_library(bool(*fun)(uint8_t *,uint8_t *));
 
 private:

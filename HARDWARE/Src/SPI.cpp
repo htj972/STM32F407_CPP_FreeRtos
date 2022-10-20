@@ -7,8 +7,8 @@
 #include "SPI.h"
 #include "DMA.h"
 
-SPI::SPI(SPI_TypeDef* SPI,uint16_t DataSize,uint8_t SPI_BaudRatePrescaler) {
-    this->init(SPI,DataSize,SPI_BaudRatePrescaler);
+SPI::SPI(SPI_TypeDef* SPI,Queue mode,uint16_t DataSize,uint8_t SPI_BaudRatePrescaler) {
+    this->init(SPI,mode,DataSize,SPI_BaudRatePrescaler);
 }
 
 void SPI::config(GPIO_TypeDef *PORT_SCK,uint32_t Pin_SCK,\
@@ -51,8 +51,9 @@ void SPI::default_config() {
     }
 }
 
-void SPI::init(SPI_TypeDef* SPI,uint16_t DataSize,uint8_t SPI_BaudRatePrescaler) {
+void SPI::init(SPI_TypeDef* SPI,Queue mode,uint16_t DataSize,uint8_t SPI_BaudRatePrescaler) {
     this->SPIx=SPI;
+    this->set_Queue_mode( mode);
     this->default_config();
     if(SPI==SPI1)
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
@@ -128,5 +129,9 @@ void SPI::DMA_WriteData(uint16_t *TxData, uint16_t len) {
         (u32)&this->SPIx->DR,(uint32_t)TxData,len,\
         DMA_DIR_MemoryToPeripheral,8);
 }
+
+
+
+
 
 

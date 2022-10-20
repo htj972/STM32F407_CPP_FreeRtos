@@ -8,8 +8,9 @@
 #define Kokirika_IIC_H
 
 #include "GPIO.h"
+#include "HARD_BASE.h"
 
-class Software_IIC {
+class Software_IIC: public HARD_BASE {
 private:
     _GPIO_ SCL;
     _GPIO_ SDA;
@@ -29,12 +30,12 @@ private:
     void SCL_OFF();
     void delay() const;
 public:
-    Software_IIC(GPIO_TypeDef *PORT_csl,uint32_t Pin_csl,GPIO_TypeDef *PORT_sda,uint32_t Pin_sda);
-    Software_IIC(uint8_t Pin_Scl, uint8_t Pin_Sda);
+    Software_IIC(GPIO_TypeDef *PORT_csl,uint32_t Pin_csl,GPIO_TypeDef *PORT_sda,uint32_t Pin_sda,Queue mode =Queue::OWN_Queue);
+    Software_IIC(uint8_t Pin_Scl, uint8_t Pin_Sda,Queue mode =Queue::OWN_Queue);
     Software_IIC()=default;
     ~Software_IIC()=default;
-    void init(GPIO_TypeDef *PORT_csl,uint32_t Pin_csl,GPIO_TypeDef *PORT_sda,uint32_t Pin_sda);
-    void init(uint8_t Pin_Scl, uint8_t Pin_Sda);
+    void init(GPIO_TypeDef *PORT_csl,uint32_t Pin_csl,GPIO_TypeDef *PORT_sda,uint32_t Pin_sda,Queue mode =Queue::OWN_Queue);
+    void init(uint8_t Pin_Scl, uint8_t Pin_Sda,Queue mode =Queue::OWN_Queue);
     void config(uint16_t wait,uint16_t delay=1,uint8_t mode=0);
     void pin_config(GPIOOType_TypeDef Pin_mode);
     void pin_config(GPIOOType_TypeDef SCL_mode,GPIOOType_TypeDef SDA_mode);
@@ -49,16 +50,16 @@ public:
     void Send_Byte(uint8_t data);
     uint8_t Read_Byte(uint8_t ack);
     void Write_One_Byte(uint8_t daddr,uint8_t addr,uint8_t data);
+    uint8_t Read_One_Byte(uint8_t daddr,uint8_t addr,uint8_t draddr);
     uint8_t Read_One_Byte(uint8_t daddr,uint8_t addr);
-
 };
 
 class HARD_IIC{
 private:
     _GPIO_ SCL;
     _GPIO_ SDA;
-    I2C_TypeDef* IIC;
-    I2C_InitTypeDef I2C_InitStructure;
+    I2C_TypeDef* IIC{};
+    I2C_InitTypeDef I2C_InitStructure{};
     uint8_t config_flag=0;
     uint16_t err_times = 1000;
 

@@ -8,8 +8,10 @@
 #define Kokirika_SPI_H
 
 #include "GPIO.h"
+#include "HARD_BASE.h"
 
-class SPI {
+class SPI: public HARD_BASE{
+
 private:
     _GPIO_ SCK;
     _GPIO_ MISO;
@@ -26,8 +28,9 @@ private:
     void default_config();
 
 public:
-    explicit SPI(SPI_TypeDef* SPI,uint16_t DataSize=SPI_DataSize_8b,uint8_t SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_8);
-    void init(SPI_TypeDef* SPI,uint16_t DataSize=SPI_DataSize_8b,uint8_t SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_8);
+    explicit SPI(SPI_TypeDef* SPI,Queue mode =Queue::OWN_Queue,uint16_t DataSize=SPI_DataSize_8b,uint8_t SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_8);
+    ~SPI()=default;
+    void init(SPI_TypeDef* SPI,Queue mode =Queue::OWN_Queue,uint16_t DataSize=SPI_DataSize_8b,uint8_t SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_8);
     void config(GPIO_TypeDef *PORT_SCK,uint32_t Pin_SCK,\
                 GPIO_TypeDef *PORT_MISO,uint32_t Pin_MISO,\
                 GPIO_TypeDef *PORT_MOSI,uint32_t Pin_MOSI);

@@ -101,6 +101,14 @@ void OLED_BASE::Print(uint8_t x, uint8_t y, const std::string& String) {
     this->SHOW_CN_str(x,y,p);
 }
 
+void OLED_BASE::Print(uint8_t x, uint8_t y,const char *s) {
+    this->Print(x,y,"%s",s);
+}
+
+void OLED_BASE::Print(uint8_t x, uint8_t y,int integer) {
+    this->Print(x,y,"%d",integer);
+}
+
 void OLED_BASE::set_font_library(bool (*fun)(uint8_t *, uint8_t *)) {
     this->check_font_library=fun;
 }

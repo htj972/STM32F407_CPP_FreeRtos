@@ -24,15 +24,9 @@ void RTCBASE::hour_change() {
         }
 }
 
-void RTCBASE::week_change() {
+uint8_t RTCBASE::week_change() {
     this->week=RTCBASE::calculate_week(this->year,this->month,this->day,this->week_mode);
-    if(this->week_mode==RTCBASE::WEEK_MODE::Monday_First)
-        this->name=RTCBASE::Day_Name::Mon+this->week-1;
-    else{
-        uint8_t week_n= this->week-1;
-        if ( week_n == 0 ) week_n = 7;
-        this->name=RTCBASE::Day_Name::Mon+week_n-1;
-    }
+    return this->week;
 }
 
 uint8_t RTCBASE::calculate_week(uint16_t ny,uint8_t nm,uint8_t nd,uint8_t weekmode) {
@@ -62,6 +56,11 @@ uint8_t RTCBASE::calculate_week(uint16_t ny,uint8_t nm,uint8_t nd,uint8_t weekmo
         week_t++;
     }
     return week_t;
+}
+
+uint8_t RTCBASE::calculate_week(RTCBASE *own, uint8_t weekmode) {
+    return RTCBASE::calculate_week(own->get_year(),own->get_month(),
+                                   own->get_day(),weekmode);
 }
 
 uint8_t RTCBASE::get_week() {
@@ -149,6 +148,14 @@ void RTCBASE::set_hour(uint8_t h,uint8_t ap) {
     hour_change();
 }
 
+void RTCBASE::set_hour(uint8_t h) {
+    this->hour=h;
+    if(this->hour>=13)
+        this->apm=RTCBASE::DAY_APM::PM;
+    else
+        this->apm=RTCBASE::DAY_APM::AM;
+}
+
 void RTCBASE::set_apm(uint8_t ap) {
     this->apm=ap;
     if(this->hour_mode==RTCBASE::HOUR_MODE::_12H_MODE)
@@ -179,11 +186,24 @@ void RTCBASE::set_time(uint8_t h, uint8_t m, uint8_t s,uint8_t ap) {
     this->set_sec(s);
 }
 
-uint8_t RTCBASE::get_name() const {
+void RTCBASE::set_time(uint8_t h, uint8_t m, uint8_t s) {
+    this->set_hour(h);
+    this->set_min(m);
+    this->set_sec(s);
+}
+
+uint8_t RTCBASE::get_name() {
+    if(this->week_mode==RTCBASE::WEEK_MODE::Monday_First)
+        this->name=RTCBASE::Day_Name::Mon+this->get_week()-1;
+    else{
+        uint8_t week_n= this->get_week()-1;
+        if ( week_n == 0 ) week_n = 7;
+        this->name=RTCBASE::Day_Name::Mon+week_n-1;
+    }
     return this->name;
 }
 
-std::string RTCBASE::get_name_str(name_mode mode) const {
+std::string RTCBASE::get_name_str(name_mode mode) {
     if(mode == RTCBASE::name_mode::EN)
         switch(this->get_name())
         {
@@ -210,5 +230,9 @@ std::string RTCBASE::get_name_str(name_mode mode) const {
         }
     return "name error";
 }
+
+
+
+
 
 

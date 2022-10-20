@@ -293,6 +293,14 @@ uint16_t _USART_::print(const std::string& String) {
     return String.length();
 }
 
+uint16_t _USART_::print(const char *s) {
+    return this->print("%s",s);
+}
+
+uint16_t _USART_::print(int integer) {
+    return this->print("%d",integer);
+}
+
 uint16_t _USART_::println(const char *fmt, ...) {
     va_list args;
     va_start(args, fmt);
@@ -313,6 +321,14 @@ uint16_t _USART_::println(std::string String) {
     String.append("\r\n");
     this->write(String);
     return String.length();
+}
+
+uint16_t _USART_::println(const char *s) {
+    return this->println("%s",s);
+}
+
+uint16_t _USART_::println(int integer) {
+    return this->println("%d",integer);
 }
 
 void  _USART_::set_send_DMA(FunctionalState enable) {

@@ -1208,6 +1208,30 @@ FreeRTOS/FreeRTOS_PORTABLE/port.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.s
 .PHONY : FreeRTOS/FreeRTOS_PORTABLE/port.c.s
 
+HARDWARE/BASE_CLASS/Src/HARD_BASE.obj: HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj
+.PHONY : HARDWARE/BASE_CLASS/Src/HARD_BASE.obj
+
+# target to build an object file
+HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj
+.PHONY : HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj
+
+HARDWARE/BASE_CLASS/Src/HARD_BASE.i: HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.i
+.PHONY : HARDWARE/BASE_CLASS/Src/HARD_BASE.i
+
+# target to preprocess a source file
+HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.i
+.PHONY : HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.i
+
+HARDWARE/BASE_CLASS/Src/HARD_BASE.s: HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.s
+.PHONY : HARDWARE/BASE_CLASS/Src/HARD_BASE.s
+
+# target to generate assembly for a file
+HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.s
+.PHONY : HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.s
+
 HARDWARE/Src/ADC.obj: HARDWARE/Src/ADC.cpp.obj
 .PHONY : HARDWARE/Src/ADC.obj
 
@@ -1888,6 +1912,9 @@ help:
 	@echo ... FreeRTOS/FreeRTOS_PORTABLE/port.obj
 	@echo ... FreeRTOS/FreeRTOS_PORTABLE/port.i
 	@echo ... FreeRTOS/FreeRTOS_PORTABLE/port.s
+	@echo ... HARDWARE/BASE_CLASS/Src/HARD_BASE.obj
+	@echo ... HARDWARE/BASE_CLASS/Src/HARD_BASE.i
+	@echo ... HARDWARE/BASE_CLASS/Src/HARD_BASE.s
 	@echo ... HARDWARE/Src/ADC.obj
 	@echo ... HARDWARE/Src/ADC.i
 	@echo ... HARDWARE/Src/ADC.s

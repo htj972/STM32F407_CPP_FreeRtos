@@ -7,6 +7,7 @@
 #include "OLED_SSD1306.h"
 #include "W25QXX.h"
 #include "FM24Cxx.h"
+#include "RTC_DS3231.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -41,6 +42,9 @@ Software_IIC    SIIC1(GPIOD0,GPIOD1);
 OLED_SSD1306    MOLED(&SIIC1,2);
 Software_IIC    SIIC2(GPIOE4,GPIOE5);
 FM24Cxx         FM24C64(&SIIC2);
+Software_IIC    SIIC3(GPIOE2,GPIOE3);
+RTC_DS32xx      time1(&SIIC3);
+
 
 std::string asdasd="123456";
 std::string eprom="FM24C64 text";
@@ -52,7 +56,6 @@ int main()
     //U1.set_send_DMA();
     U1.write("adsda321s3a1d3a1sd3sd\r\n");
     U1.write((uint8_t *)asdasd.data(),5);
-
     FM24C64.init();
     FM24C64.writestr(0,eprom);
     std::string text;
@@ -61,7 +64,18 @@ int main()
     MOLED.Fill(0xff);
     delay_ms(1000);
     MOLED.Fill(0x00);
-    MOLED.Print(0,2,text);
+    time1.set_date(2022,10,20);
+    time1.set_time(11,12,15);
+    MOLED.Print(0,2,"%d",time1.get_week());
+    MOLED.Print(0,4,"%d",time1.get_name());
+    //MOLED.Print(0,4,time1.get_name_str());
+    MOLED.Print(0,6,time1.get_name_str());
+//    QueueHandle_t xQueue1 = nullptr;
+//    {
+//
+//        xSemaphoreTake(xQueue1,portMAX_DELAY);
+//        xSemaphoreGive(xQueue1);
+//    }
 
     //asdas.writestr(151,&asdasd,125);
 
