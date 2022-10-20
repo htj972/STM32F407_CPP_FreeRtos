@@ -12,8 +12,10 @@ void HARD_BASE::set_Queue_mode(Queue mode) {
 }
 
 void HARD_BASE::Queue_star() {
-    if(this->lock_mode==Queue::OWN_Queue)
+    if(this->lock_mode==Queue::OWN_Queue){
+        while(this->lock_flag);
         this->lock_flag=true;
+    }
     else{
 #if SYSTEM_SUPPORT_OS == ON
         xSemaphoreTake(spi_Queue,portMAX_DELAY);

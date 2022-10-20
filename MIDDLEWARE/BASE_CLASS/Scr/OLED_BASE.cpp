@@ -7,6 +7,10 @@
 #include "OLED_BASE.h"
 #include <cstdarg>
 
+OLED_BASE::OLED_BASE(HARD_BASE::Queue mode) {
+    this->set_Queue_mode(mode);
+}
+
 void OLED_BASE::ShowCHR(uint8_t x, uint8_t y, char ch, uint8_t TextSize) {
     unsigned char c,i;
     switch(TextSize)

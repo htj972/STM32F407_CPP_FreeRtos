@@ -22,7 +22,7 @@ private:
     uint8_t  sec{};
     uint8_t  name{};
     uint8_t  week_mode=WEEK_MODE::Monday_First;
-    uint8_t  hour_mode=HOUR_MODE::_12H_MODE;
+    uint8_t  hour_mode=HOUR_MODE::_24H_MODE;
     void     hour_change();
 
 protected:

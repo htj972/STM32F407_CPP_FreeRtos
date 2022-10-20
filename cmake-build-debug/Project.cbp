@@ -470,6 +470,9 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/USART.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Humidity_BASE.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/OLED_BASE.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -477,6 +480,15 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Temp_Humi_BASE.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Temperature_BASE.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp">
@@ -488,13 +500,16 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/FM24Cxx.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/OLED_SSD1306.h">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/RTC_DS3231.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/RTC_DS3231.h">
@@ -510,6 +525,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/OLED_SSD1306.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RTC_DS3231.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/W25QXX.cpp">

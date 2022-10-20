@@ -1424,6 +1424,30 @@ HARDWARE/Src/USART.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s
 .PHONY : HARDWARE/Src/USART.cpp.s
 
+MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj
+
+MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.i: MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.i
+
+MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.s
+
 MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.obj
 
@@ -1496,29 +1520,53 @@ MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.s
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.s
 
-MIDDLEWARE/Inc/RTC_DS3231.obj: MIDDLEWARE/Inc/RTC_DS3231.cpp.obj
-.PHONY : MIDDLEWARE/Inc/RTC_DS3231.obj
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.obj
 
 # target to build an object file
-MIDDLEWARE/Inc/RTC_DS3231.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/RTC_DS3231.cpp.obj
-.PHONY : MIDDLEWARE/Inc/RTC_DS3231.cpp.obj
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj
 
-MIDDLEWARE/Inc/RTC_DS3231.i: MIDDLEWARE/Inc/RTC_DS3231.cpp.i
-.PHONY : MIDDLEWARE/Inc/RTC_DS3231.i
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.i: MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.i
 
 # target to preprocess a source file
-MIDDLEWARE/Inc/RTC_DS3231.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/RTC_DS3231.cpp.i
-.PHONY : MIDDLEWARE/Inc/RTC_DS3231.cpp.i
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.i
 
-MIDDLEWARE/Inc/RTC_DS3231.s: MIDDLEWARE/Inc/RTC_DS3231.cpp.s
-.PHONY : MIDDLEWARE/Inc/RTC_DS3231.s
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.s
 
 # target to generate assembly for a file
-MIDDLEWARE/Inc/RTC_DS3231.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Inc/RTC_DS3231.cpp.s
-.PHONY : MIDDLEWARE/Inc/RTC_DS3231.cpp.s
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.s
+
+MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj
+
+MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.i: MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.i
+
+MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.s
 
 MIDDLEWARE/Src/FM24Cxx.obj: MIDDLEWARE/Src/FM24Cxx.cpp.obj
 .PHONY : MIDDLEWARE/Src/FM24Cxx.obj
@@ -1567,6 +1615,30 @@ MIDDLEWARE/Src/OLED_SSD1306.s: MIDDLEWARE/Src/OLED_SSD1306.cpp.s
 MIDDLEWARE/Src/OLED_SSD1306.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.s
 .PHONY : MIDDLEWARE/Src/OLED_SSD1306.cpp.s
+
+MIDDLEWARE/Src/RTC_DS3231.obj: MIDDLEWARE/Src/RTC_DS3231.cpp.obj
+.PHONY : MIDDLEWARE/Src/RTC_DS3231.obj
+
+# target to build an object file
+MIDDLEWARE/Src/RTC_DS3231.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj
+.PHONY : MIDDLEWARE/Src/RTC_DS3231.cpp.obj
+
+MIDDLEWARE/Src/RTC_DS3231.i: MIDDLEWARE/Src/RTC_DS3231.cpp.i
+.PHONY : MIDDLEWARE/Src/RTC_DS3231.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/RTC_DS3231.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.i
+.PHONY : MIDDLEWARE/Src/RTC_DS3231.cpp.i
+
+MIDDLEWARE/Src/RTC_DS3231.s: MIDDLEWARE/Src/RTC_DS3231.cpp.s
+.PHONY : MIDDLEWARE/Src/RTC_DS3231.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/RTC_DS3231.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.s
+.PHONY : MIDDLEWARE/Src/RTC_DS3231.cpp.s
 
 MIDDLEWARE/Src/W25QXX.obj: MIDDLEWARE/Src/W25QXX.cpp.obj
 .PHONY : MIDDLEWARE/Src/W25QXX.obj
@@ -1939,6 +2011,9 @@ help:
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.s
@@ -1948,15 +2023,21 @@ help:
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.s
-	@echo ... MIDDLEWARE/Inc/RTC_DS3231.obj
-	@echo ... MIDDLEWARE/Inc/RTC_DS3231.i
-	@echo ... MIDDLEWARE/Inc/RTC_DS3231.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.s
 	@echo ... MIDDLEWARE/Src/FM24Cxx.obj
 	@echo ... MIDDLEWARE/Src/FM24Cxx.i
 	@echo ... MIDDLEWARE/Src/FM24Cxx.s
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.obj
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.i
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.s
+	@echo ... MIDDLEWARE/Src/RTC_DS3231.obj
+	@echo ... MIDDLEWARE/Src/RTC_DS3231.i
+	@echo ... MIDDLEWARE/Src/RTC_DS3231.s
 	@echo ... MIDDLEWARE/Src/W25QXX.obj
 	@echo ... MIDDLEWARE/Src/W25QXX.i
 	@echo ... MIDDLEWARE/Src/W25QXX.s

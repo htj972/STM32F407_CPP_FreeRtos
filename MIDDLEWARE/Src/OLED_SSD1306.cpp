@@ -6,7 +6,8 @@
 
 #include "OLED_SSD1306.h"
 
-OLED_SSD1306::OLED_SSD1306(Software_IIC *IIC,int Xoffset,uint8_t addr) {
+OLED_SSD1306::OLED_SSD1306(Software_IIC *IIC,HARD_BASE::Queue mode,int Xoffset,uint8_t addr) {
+    this->set_Queue_mode(mode);
     this->config(IIC,Xoffset,addr);
 }
 

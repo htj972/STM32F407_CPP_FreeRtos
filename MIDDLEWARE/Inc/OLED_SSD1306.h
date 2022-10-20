@@ -17,7 +17,7 @@ private:
     uint8_t OWNADD{};
     int X_offset=0;
 public:
-    explicit OLED_SSD1306(Software_IIC *IIC,int Xoffset=0,uint8_t addr=0x78);
+    explicit OLED_SSD1306(Software_IIC *IIC,HARD_BASE::Queue mode=HARD_BASE::Queue::OWN_Queue,int Xoffset=0,uint8_t addr=0x78);
     void config(Software_IIC *IIC,int Xoffset=0,uint8_t addr=0x78);
     bool init() override;
     void SetPos(uint16_t x, uint16_t y) override;

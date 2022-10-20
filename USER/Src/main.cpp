@@ -38,8 +38,8 @@ TaskHandle_t Task2Task_Handler;
 
 _OutPut_        led(GPIOE6);
 _USART_         U1(USART1,115200);
-Software_IIC    SIIC1(GPIOD0,GPIOD1);
-OLED_SSD1306    MOLED(&SIIC1,2);
+Software_IIC    SIIC1(GPIOB4,GPIOB5);
+OLED_SSD1306    MOLED(&SIIC1,OLED_SSD1306::Queue::OWN_Queue,2);
 Software_IIC    SIIC2(GPIOE4,GPIOE5);
 FM24Cxx         FM24C64(&SIIC2);
 Software_IIC    SIIC3(GPIOE2,GPIOE3);
@@ -65,17 +65,8 @@ int main()
     delay_ms(1000);
     MOLED.Fill(0x00);
     time1.set_date(2022,10,20);
-    time1.set_time(11,12,15);
-    MOLED.Print(0,2,"%d",time1.get_week());
-    MOLED.Print(0,4,"%d",time1.get_name());
-    //MOLED.Print(0,4,time1.get_name_str());
-    MOLED.Print(0,6,time1.get_name_str());
-//    QueueHandle_t xQueue1 = nullptr;
-//    {
-//
-//        xSemaphoreTake(xQueue1,portMAX_DELAY);
-//        xSemaphoreGive(xQueue1);
-//    }
+//    time1.set_time(16,37,15);
+
 
     //asdas.writestr(151,&asdasd,125);
 
@@ -114,15 +105,22 @@ void start_task(void *pvParameters)
 //task1任务函数
 [[noreturn]] void task1_task(void *pvParameters)
 {
-    u8 task1_num=0;
+    uint8_t sec_t=0;
     while(true)
     {
-        task1_num++;					//任务1执行次数加1 注意task1_num1加到255的时候会清零！！
         taskENTER_CRITICAL();           //进入临界区
         taskEXIT_CRITICAL();            //退出临界区
         led.change();
-        vTaskDelay(500/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-        //U1<<"sadasd:"<<15<<asdd;
+        vTaskDelay(250/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+        if(sec_t!=time1.get_sec())
+        {
+            sec_t=time1.get_sec();
+            MOLED.Queue_star();
+            MOLED.Print(0,2,"%4d-%02d-%02d",time1.get_year(),time1.get_month(),time1.get_day());
+            MOLED.Print(0,4,time1.get_name_str());
+            MOLED.Print(0,6,"%02d:%02d:%02d",time1.get_hour(),time1.get_min(),sec_t);
+            MOLED.Queue_end();
+        }
     }
 }
 
@@ -137,7 +135,9 @@ void start_task(void *pvParameters)
         taskEXIT_CRITICAL();            //退出临界区
         vTaskDelay(200/portTICK_RATE_MS );
         U1<<U1.read_data();
+        MOLED.Queue_star();
         MOLED.Print(0,0,"%04d",task2_num);
+        MOLED.Queue_end();
     }
 }
 

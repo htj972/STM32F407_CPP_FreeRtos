@@ -9,10 +9,13 @@
 
 #include "sys.h"
 #include "string"
+#include "HARD_BASE.h"
 
-class OLED_BASE {
+
+class OLED_BASE: public HARD_BASE {
 
 public:
+    explicit OLED_BASE(HARD_BASE::Queue mode=HARD_BASE::Queue::OWN_Queue);
     virtual bool init();
     virtual void SetPos(uint16_t x, uint16_t y);
     virtual void Fill(uint8_t fill_Data);
