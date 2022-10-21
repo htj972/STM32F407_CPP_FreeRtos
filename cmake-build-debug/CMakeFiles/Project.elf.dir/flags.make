@@ -14,11 +14,11 @@ C_DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DSTM32F4
 
 C_INCLUDES = -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\Core\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\FWLIB\inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SYSTEM\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USER\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\FreeRTOS\FreeRTOS_Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\BASE_CLASS\Inc
 
-C_FLAGS = -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections     -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs -std=gnu99 -g
+C_FLAGS = -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections     -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs -u _printf_float -std=gnu99 -g
 
 CXX_DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT=1
 
 CXX_INCLUDES = -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\Core\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\FWLIB\inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SYSTEM\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USER\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\FreeRTOS\FreeRTOS_Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Inc -IC:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\BASE_CLASS\Inc
 
-CXX_FLAGS = -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections     -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs -std=c++11 -g -std=gnu++11
+CXX_FLAGS = -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections     -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs -u _printf_float -std=c++11 -g -std=gnu++11
 

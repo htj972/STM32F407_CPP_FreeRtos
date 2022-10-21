@@ -62,7 +62,7 @@ void OLED_SSD1306::SetPos(uint16_t x, uint16_t y) {
 }
 
 void OLED_SSD1306::Fill(uint8_t fill_Data) {
-    unsigned char m,n;
+    int m,n;
     for(m=0;m<8;m++)
     {
         this->SetPos(0,m);

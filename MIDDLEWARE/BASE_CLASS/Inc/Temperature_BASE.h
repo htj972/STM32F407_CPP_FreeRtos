@@ -14,6 +14,7 @@ private:
 
 public:
     explicit Temperature_BASE(float offset=0);
+    ~Temperature_BASE()=default;
     float get_temp();
     virtual float get_sensor_temp();
     void  set_temp_offset(float offset);

@@ -25,7 +25,7 @@ add_definitions(-DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__F
 
 SET(COMMON_FLAGS
     "-mcpu=cortex-m4 ${FPU_FLAGS} -mthumb -mthumb-interwork -ffunction-sections -fdata-sections \
-    -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs")
+    -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs -u _printf_float")
 
 SET(CMAKE_CXX_FLAGS_INIT "${COMMON_FLAGS} -std=c++11")
 SET(CMAKE_C_FLAGS_INIT "${COMMON_FLAGS} -std=gnu99")

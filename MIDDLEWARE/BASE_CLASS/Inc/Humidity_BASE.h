@@ -14,6 +14,7 @@ private:
 
 public:
     explicit Humidity_BASE(float offset=0);
+    ~Humidity_BASE()=default;
     float get_humi();
     virtual float get_sensor_humi();
     void  set_humi_offset(float offset);

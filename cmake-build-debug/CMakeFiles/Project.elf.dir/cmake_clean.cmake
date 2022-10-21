@@ -125,6 +125,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj"

@@ -1640,6 +1640,30 @@ MIDDLEWARE/Src/RTC_DS3231.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.s
 .PHONY : MIDDLEWARE/Src/RTC_DS3231.cpp.s
 
+MIDDLEWARE/Src/SHT3x.obj: MIDDLEWARE/Src/SHT3x.cpp.obj
+.PHONY : MIDDLEWARE/Src/SHT3x.obj
+
+# target to build an object file
+MIDDLEWARE/Src/SHT3x.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj
+.PHONY : MIDDLEWARE/Src/SHT3x.cpp.obj
+
+MIDDLEWARE/Src/SHT3x.i: MIDDLEWARE/Src/SHT3x.cpp.i
+.PHONY : MIDDLEWARE/Src/SHT3x.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/SHT3x.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.i
+.PHONY : MIDDLEWARE/Src/SHT3x.cpp.i
+
+MIDDLEWARE/Src/SHT3x.s: MIDDLEWARE/Src/SHT3x.cpp.s
+.PHONY : MIDDLEWARE/Src/SHT3x.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/SHT3x.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.s
+.PHONY : MIDDLEWARE/Src/SHT3x.cpp.s
+
 MIDDLEWARE/Src/W25QXX.obj: MIDDLEWARE/Src/W25QXX.cpp.obj
 .PHONY : MIDDLEWARE/Src/W25QXX.obj
 
@@ -2038,6 +2062,9 @@ help:
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.obj
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.i
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.s
+	@echo ... MIDDLEWARE/Src/SHT3x.obj
+	@echo ... MIDDLEWARE/Src/SHT3x.i
+	@echo ... MIDDLEWARE/Src/SHT3x.s
 	@echo ... MIDDLEWARE/Src/W25QXX.obj
 	@echo ... MIDDLEWARE/Src/W25QXX.i
 	@echo ... MIDDLEWARE/Src/W25QXX.s

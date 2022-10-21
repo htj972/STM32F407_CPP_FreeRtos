@@ -5,9 +5,9 @@
 #include "task.h"
 #include "Out_In_Put.h"
 #include "OLED_SSD1306.h"
-#include "W25QXX.h"
 #include "FM24Cxx.h"
 #include "RTC_DS3231.h"
+#include "SHT3x.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -21,7 +21,7 @@ void start_task(void *pvParameters);
 //任务优先级
 #define TASK1_TASK_PRIO		2
 //任务堆栈大小
-#define TASK1_STK_SIZE 		128
+#define TASK1_STK_SIZE 		512
 //任务句柄
 TaskHandle_t Task1Task_Handler;
 //任务函数
@@ -44,6 +44,8 @@ Software_IIC    SIIC2(GPIOE4,GPIOE5);
 FM24Cxx         FM24C64(&SIIC2);
 Software_IIC    SIIC3(GPIOE2,GPIOE3);
 RTC_DS32xx      time1(&SIIC3);
+Software_IIC    SIIC4(GPIOD1,GPIOD0);
+SHT3x           SHT35(&SIIC4);
 
 
 std::string asdasd="123456";
@@ -66,6 +68,8 @@ int main()
     MOLED.Fill(0x00);
     time1.set_date(2022,10,20);
 //    time1.set_time(16,37,15);
+    SHT35.init();
+
 
 
     //asdas.writestr(151,&asdasd,125);
@@ -103,7 +107,7 @@ void start_task(void *pvParameters)
 }
 
 //task1任务函数
-[[noreturn]] void task1_task(void *pvParameters)
+[[noreturn]] void task1_task(void *pvParameters)//alignas(8)
 {
     uint8_t sec_t=0;
     while(true)
@@ -117,7 +121,10 @@ void start_task(void *pvParameters)
             sec_t=time1.get_sec();
             MOLED.Queue_star();
             MOLED.Print(0,2,"%4d-%02d-%02d",time1.get_year(),time1.get_month(),time1.get_day());
-            MOLED.Print(0,4,time1.get_name_str());
+//            MOLED.Print(0,4,time1.get_name_str());
+            float T=2.5,H=3.4;
+            SHT35.get_sensor_temp_humi(&T,&H);
+            MOLED.Print(0,4,"T:%3.1lf H:%3.1lf",T,H);
             MOLED.Print(0,6,"%02d:%02d:%02d",time1.get_hour(),time1.get_min(),sec_t);
             MOLED.Queue_end();
         }

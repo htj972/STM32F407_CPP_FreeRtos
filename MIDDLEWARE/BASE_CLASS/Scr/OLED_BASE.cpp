@@ -109,6 +109,10 @@ void OLED_BASE::Print(uint8_t x, uint8_t y,const char *s) {
     this->Print(x,y,"%s",s);
 }
 
+void OLED_BASE::Print(uint8_t x, uint8_t y,char *s) {
+    this->Print(x,y,"%s",s);
+}
+
 void OLED_BASE::Print(uint8_t x, uint8_t y,int integer) {
     this->Print(x,y,"%d",integer);
 }

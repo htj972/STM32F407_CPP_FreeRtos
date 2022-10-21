@@ -106,7 +106,9 @@ void Software_IIC::Stop() {
     this->SDA_ON();	    //发送I2C总线结束信号
     this->delay();
 }
-
+//等待应答信号到来
+//返回值：false，接收应答失败
+//       true，接收应答成功
 bool Software_IIC::Wait_Ack() {
     uint8_t err_temp=this->err_times;
     this->SCL_OFF();
@@ -119,11 +121,11 @@ bool Software_IIC::Wait_Ack() {
         if(err_temp>0)
         {
             this->Stop();
-            return true;
+            return false;
         }
     }
     this->SCL_OFF(); 	//时钟输出0
-    return false;
+    return true;
 }
 
 void Software_IIC::Ack() {
@@ -157,7 +159,7 @@ void Software_IIC::Send_Byte(uint8_t data) {
         else
             this->SDA_OFF();
         data<<=1;
-        this->delay();   //对TEA5767这三个延时都是必须的
+        this->delay();
         this->SCL_ON();
         this->delay();
         this->SCL_OFF();
@@ -193,31 +195,52 @@ void Software_IIC::Write_One_Byte(u8 daddr,u8 addr,u8 data)
     this->Start();
     this->Send_Byte(daddr);
     this->Wait_Ack();
-    this->Send_Byte(addr);   //发送低地址
+    this->Send_Byte(addr);
     this->Wait_Ack();
-    this->Send_Byte(data);        //发送字节
+    this->Send_Byte(data);
     this->Wait_Ack();
-    this->Stop();//产生一个停止条件
+    this->Stop();
 }
 
 uint8_t Software_IIC::Read_One_Byte(uint8_t daddr, uint8_t addr,uint8_t draddr)
 {
     uint8_t ret;
     this->Start();
-    this->Send_Byte(daddr);   //发送器件地址0XA0,写数据
+    this->Send_Byte(daddr);
     this->Wait_Ack();
-    this->Send_Byte(addr);   //发送低地址
+    this->Send_Byte(addr);
     this->Wait_Ack();
     this->Start();
     this->Send_Byte(draddr);
     this->Wait_Ack();
     ret=this->Read_Byte(0);
-    this->Stop();//产生一个停止条件
+    this->Stop();
     return ret;
 }
 
 uint8_t Software_IIC::Read_One_Byte(uint8_t daddr,uint8_t addr){
     return this->Read_One_Byte(daddr,addr,daddr+1);
+}
+
+bool Software_IIC::Read_Data(uint8_t daddr, uint8_t addr, uint8_t draddr, uint8_t *data, uint8_t len) {
+    this->Start();
+    this->Send_Byte(daddr);
+    if(!this->Wait_Ack())goto false_label;
+    this->Send_Byte(addr);
+    if(!this->Wait_Ack())goto false_label;
+    this->Start();
+    this->Send_Byte(draddr);
+    if(!this->Wait_Ack())goto false_label;
+    for(uint8_t ii=0;ii<len;ii++)
+        data[ii]=this->Read_Byte((ii==len-1)?0:1);
+    this->Stop();
+    return true;
+    false_label:
+    return false;
+}
+
+bool Software_IIC::Read_Data(uint8_t daddr, uint8_t addr, uint8_t *data, uint8_t len) {
+    return this->Read_Data(daddr,addr,daddr+1,data,len);
 }
 
 

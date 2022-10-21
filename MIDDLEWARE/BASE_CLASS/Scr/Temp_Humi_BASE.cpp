@@ -6,6 +6,11 @@
 
 #include "Temp_Humi_BASE.h"
 
+Temp_Humi_BASE::Temp_Humi_BASE(float Toffset,float Hoffset) {
+    this->set_humi_offset(0);
+    this->set_temp_offset(0);
+}
+
 float Temp_Humi_BASE::get_sensor_temp() {
     return Temperature_BASE::get_sensor_temp();
 }
@@ -34,5 +39,7 @@ void Temp_Humi_BASE::set_offset(float Toffset, float Hoffset) {
 
 void Temp_Humi_BASE::calculate_offset(float Temp, float Humi) {
     this->calculate_temp_offset(Temp);
-    this->calculate_humi_offset(Humi)
+    this->calculate_humi_offset(Humi);
 }
+
+
