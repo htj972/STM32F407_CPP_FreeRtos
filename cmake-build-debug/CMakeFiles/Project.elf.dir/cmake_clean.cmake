@@ -121,6 +121,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj"

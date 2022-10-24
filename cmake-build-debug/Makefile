@@ -1592,6 +1592,30 @@ MIDDLEWARE/Src/FM24Cxx.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.s
 .PHONY : MIDDLEWARE/Src/FM24Cxx.cpp.s
 
+MIDDLEWARE/Src/MAX31865.obj: MIDDLEWARE/Src/MAX31865.cpp.obj
+.PHONY : MIDDLEWARE/Src/MAX31865.obj
+
+# target to build an object file
+MIDDLEWARE/Src/MAX31865.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
+.PHONY : MIDDLEWARE/Src/MAX31865.cpp.obj
+
+MIDDLEWARE/Src/MAX31865.i: MIDDLEWARE/Src/MAX31865.cpp.i
+.PHONY : MIDDLEWARE/Src/MAX31865.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/MAX31865.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.i
+.PHONY : MIDDLEWARE/Src/MAX31865.cpp.i
+
+MIDDLEWARE/Src/MAX31865.s: MIDDLEWARE/Src/MAX31865.cpp.s
+.PHONY : MIDDLEWARE/Src/MAX31865.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/MAX31865.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.s
+.PHONY : MIDDLEWARE/Src/MAX31865.cpp.s
+
 MIDDLEWARE/Src/OLED_SSD1306.obj: MIDDLEWARE/Src/OLED_SSD1306.cpp.obj
 .PHONY : MIDDLEWARE/Src/OLED_SSD1306.obj
 
@@ -2056,6 +2080,9 @@ help:
 	@echo ... MIDDLEWARE/Src/FM24Cxx.obj
 	@echo ... MIDDLEWARE/Src/FM24Cxx.i
 	@echo ... MIDDLEWARE/Src/FM24Cxx.s
+	@echo ... MIDDLEWARE/Src/MAX31865.obj
+	@echo ... MIDDLEWARE/Src/MAX31865.i
+	@echo ... MIDDLEWARE/Src/MAX31865.s
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.obj
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.i
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.s

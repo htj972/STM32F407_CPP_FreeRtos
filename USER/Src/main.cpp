@@ -71,9 +71,6 @@ int main()
     SHT35.init();
 
 
-
-    //asdas.writestr(151,&asdasd,125);
-
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
                 (const char*    )"start_task",           //任务名称

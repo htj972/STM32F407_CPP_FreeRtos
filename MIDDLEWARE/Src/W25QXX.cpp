@@ -7,6 +7,24 @@
 #include "W25QXX.h"
 #include "delay.h"
 
+#define     W25X_WriteStatusReg		0x01
+#define     W25X_PageProgram		0x02
+#define     W25X_ReadData			0x03
+#define     W25X_WriteDisable		0x04
+#define     W25X_ReadStatusReg		0x05
+#define     W25X_WriteEnable		0x06
+#define     W25X_FastReadData		0x0B
+#define     W25X_SectorErase		0x20
+#define     W25X_FastReadDual		0x3B
+#define     W25X_ManufactDeviceID	0x90
+#define     W25X_JedecDeviceID		0x9F
+#define     W25X_ReleasePowerDown	0xAB
+#define     W25X_DeviceID			0xAB
+#define     W25X_PowerDown			0xB9
+#define     W25X_ChipErase			0xC7
+#define     W25X_BlockErase			0xD8
+
+
 W25QXX::W25QXX(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx, uint16_t BaudRate) {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
@@ -51,7 +69,7 @@ uint16_t W25QXX::ReadID() const
 {
     uint16_t Temp = 0;
     this->CSPin.set_output(LOW);
-    this->spix->ReadWriteDATA(W25QXX::COMMON::W25X_ManufactDeviceID);//发送读取ID命令
+    this->spix->ReadWriteDATA(W25X_ManufactDeviceID);//发送读取ID命令
     this->spix->ReadWriteDATA(0x00);
     this->spix->ReadWriteDATA(0x00);
     this->spix->ReadWriteDATA(0x00);
@@ -73,7 +91,7 @@ uint16_t W25QXX::ReadID() const
 uint8_t W25QXX::ReadSR() const
 {
     this->CSPin.set_output(LOW);         //使能器件
-    this->spix->ReadWriteDATA(W25QXX::COMMON::W25X_ReadStatusReg);//发送读取状态寄存器命令
+    this->spix->ReadWriteDATA(W25X_ReadStatusReg);//发送读取状态寄存器命令
     uint8_t byte=this->spix->ReadWriteDATA(0Xff);//读取一个字节
     this->CSPin.set_output(HIGH);        //取消片选
     return byte;
@@ -83,7 +101,7 @@ uint8_t W25QXX::ReadSR() const
 void W25QXX::Write_SR(uint8_t sr) const
 {
     this->CSPin.set_output(LOW);         //使能器件
-    this->spix->ReadWriteDATA(W25QXX::COMMON::W25X_WriteStatusReg);//发送写取状态寄存器命令
+    this->spix->ReadWriteDATA(W25X_WriteStatusReg);//发送写取状态寄存器命令
     this->spix->ReadWriteDATA(sr);       //写入一个字节
     this->CSPin.set_output(HIGH);       //取消片选
 }
@@ -92,7 +110,7 @@ void W25QXX::Write_SR(uint8_t sr) const
 void W25QXX::Write_Enable() const
 {
     this->CSPin.set_output(LOW);         //使能器件
-    this->spix->ReadWriteDATA(W25QXX::COMMON::W25X_WriteEnable);//发送写使能
+    this->spix->ReadWriteDATA(W25X_WriteEnable);//发送写使能
     this->CSPin.set_output(HIGH);        //取消片选
 }
 //W25QXX写禁止
@@ -100,7 +118,7 @@ void W25QXX::Write_Enable() const
 void W25QXX::Write_Disable() const
 {
     this->CSPin.set_output(LOW);         //使能器件
-    this->spix->ReadWriteDATA(W25QXX::COMMON::W25X_WriteDisable);//发送写禁止指令
+    this->spix->ReadWriteDATA(W25X_WriteDisable);//发送写禁止指令
     this->CSPin.set_output(HIGH);        //取消片选
 }
 
@@ -124,7 +142,7 @@ void W25QXX::Erase_Chip() const
     this->Write_Enable();                 //设置写使能
     this->Wait_Busy();
     this->CSPin.set_output(LOW);    //使能器件
-    this->spix->ReadWriteDATA(W25QXX::COMMON::W25X_ChipErase);//发送片擦除命令
+    this->spix->ReadWriteDATA(W25X_ChipErase);//发送片擦除命令
     this->CSPin.set_output(HIGH);   //取消片选
     this->Wait_Busy();   				  //等待芯片擦除结束
 }
@@ -137,7 +155,7 @@ void W25QXX::Erase_Sector(uint32_t Dst_Addr) const
     this->Write_Enable();                  //SET WEL
     this->Wait_Busy();
     this->CSPin.set_output(LOW);    //使能器件
-    this->spix->ReadWriteDATA(W25QXX::COMMON::W25X_SectorErase);      //发送扇区擦除指令
+    this->spix->ReadWriteDATA(W25X_SectorErase);      //发送扇区擦除指令
     this->spix->ReadWriteDATA((uint8_t)((Dst_Addr)>>16));  //发送24bit地址
     this->spix->ReadWriteDATA((uint8_t)((Dst_Addr)>>8));
     this->spix->ReadWriteDATA((uint8_t)Dst_Addr);
@@ -148,7 +166,7 @@ void W25QXX::Erase_Sector(uint32_t Dst_Addr) const
 void W25QXX::PowerDown() const
 {
     this->CSPin.set_output(LOW);    //使能器件
-    this->spix->ReadWriteDATA(W25QXX::COMMON::W25X_PowerDown);        //发送掉电命令
+    this->spix->ReadWriteDATA(W25X_PowerDown);        //发送掉电命令
     this->CSPin.set_output(HIGH);   //取消片选
     delay_us(3);                     //等待TPD
 }
@@ -156,7 +174,7 @@ void W25QXX::PowerDown() const
 void W25QXX::WAKEUP() const
 {
     this->CSPin.set_output(LOW);    //使能器件
-    this->spix->ReadWriteDATA(W25QXX::COMMON::W25X_ReleasePowerDown);   //  send W25X_PowerDown command 0xAB
+    this->spix->ReadWriteDATA(W25X_ReleasePowerDown);   //  send W25X_PowerDown command 0xAB
     this->CSPin.set_output(HIGH);   //取消片选
     delay_us(3);                     //等待TRES1
 }
@@ -173,7 +191,7 @@ void W25QXX::Write_Page(uint32_t Addr, uint8_t* pBuffer, uint16_t NumByte) const
 {
     this->Write_Enable();                  //SET WEL
     this->CSPin.set_output(LOW);     //使能器件
-    this->spix->ReadWriteDATA(W25QXX::COMMON::W25X_PageProgram);//发送写页命令
+    this->spix->ReadWriteDATA(W25X_PageProgram);//发送写页命令
     this->spix->ReadWriteDATA((uint8_t)((Addr)>>16)); //发送24bit地址
     this->spix->ReadWriteDATA((uint8_t)((Addr)>>8));
     this->spix->ReadWriteDATA((uint8_t)Addr);
@@ -268,7 +286,7 @@ uint16_t W25QXX::write(uint32_t addr, uint8_t data) {
 //NumByteToRead:要读取的字节数(最大65535)
 void W25QXX::read(uint32_t Addr , uint8_t *pBuffer, uint16_t NumByte) {
     this->CSPin.set_output(LOW);     //使能器件
-    this->spix->ReadWriteDATA(W25QXX::COMMON::W25X_ReadData);     //发送读取命令
+    this->spix->ReadWriteDATA(W25X_ReadData);     //发送读取命令
     this->spix->ReadWriteDATA((u8)((Addr)>>16));  //发送24bit地址
     this->spix->ReadWriteDATA((u8)((Addr)>>8));
     this->spix->ReadWriteDATA((u8)Addr);

@@ -25,24 +25,6 @@ public:
         W25Q64 	=0XEF16,
         W25Q128	=0XEF17,
     };
-    enum COMMON{
-        W25X_WriteStatusReg		=0x01,
-        W25X_PageProgram		=0x02,
-        W25X_ReadData			=0x03,
-        W25X_WriteDisable		=0x04,
-        W25X_ReadStatusReg		=0x05,
-        W25X_WriteEnable		=0x06,
-        W25X_FastReadData		=0x0B,
-        W25X_SectorErase		=0x20,
-        W25X_FastReadDual		=0x3B,
-        W25X_ManufactDeviceID	=0x90,
-        W25X_JedecDeviceID		=0x9F,
-        W25X_ReleasePowerDown	=0xAB,
-        W25X_DeviceID			=0xAB,
-        W25X_PowerDown			=0xB9,
-        W25X_ChipErase			=0xC7,
-        W25X_BlockErase			=0xD8,
-    };
     _GPIO_ CSPin;
     SPI    *spix{};
 
