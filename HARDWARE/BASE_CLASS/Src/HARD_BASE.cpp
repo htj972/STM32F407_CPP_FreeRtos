@@ -16,21 +16,21 @@ void HARD_BASE::Queue_star() {
         while(this->lock_flag);
         this->lock_flag=true;
     }
-    else{
 #if SYSTEM_SUPPORT_OS == ON
+    else{
         xSemaphoreTake(spi_Queue,portMAX_DELAY);
-#endif
     }
+#endif
 }
 
 void HARD_BASE::Queue_end() {
     if(this->lock_mode==Queue::OWN_Queue)
         this->lock_flag= false;
-    else{
 #if SYSTEM_SUPPORT_OS == ON
+    else{
         xSemaphoreGive(spi_Queue);
-#endif
     }
+#endif
 }
 
 bool HARD_BASE::get_Lock() const {

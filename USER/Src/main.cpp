@@ -66,8 +66,8 @@ int main()
     MOLED.Fill(0xff);
     delay_ms(1000);
     MOLED.Fill(0x00);
-    time1.set_date(2022,10,20);
-//    time1.set_time(16,37,15);
+//    time1.set_date(2022,10,24);
+//    time1.set_time(16,50,15);
     SHT35.init();
 
 

@@ -35,18 +35,18 @@
 #define MAX31865_FAULT_RTDINLOW       0x08
 #define MAX31865_FAULT_OVUV           0x04
 
-MAX31865::MAX31865(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx, uint16_t BaudRate) {
+MAX31865::MAX31865(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx,numwires wires, uint16_t BaudRate) {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
+    this->wire_num=wires;
     this->CSPin.init(PORTx,Pinx,GPIO_Mode_OUT);
-    this->default_config();
 }
 
-MAX31865::MAX31865(SPI *SPIx, uint8_t CSpin, uint16_t BaudRate) {
+MAX31865::MAX31865(SPI *SPIx, uint8_t CSpin,numwires wires, uint16_t BaudRate) {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
+    this->wire_num=wires;
     this->CSPin.init(CSpin,GPIO_Mode_OUT);
-    this->default_config();
 }
 
 void MAX31865::init() {
@@ -54,36 +54,46 @@ void MAX31865::init() {
     {
         this->CSPin.set_output(HIGH);
         this->spix->SetSpeed(this->BaudRatex);
-        writeRegister8(0x00, 0x00);                 //清除配置寄存器
-        enableBias(1);                              //使能偏置电压
-        delay_ms(10);                               //等待10ms使得RTDIN的滤波电容充电
-        setWires(MAX31865_3WIRE);                   //使能PT1000 三线工作模式
-        clearFault();                               //清除故障检测位
+        this->sensor_init();
         this->default_config();
     }
 }
 
-void MAX31865::init(SPI *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx, uint16_t BaudRate) {
+void MAX31865::init(SPI *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx,numwires wires, uint16_t BaudRate) {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
+    this->wire_num=wires;
     this->CSPin.init(PORTx,Pinx,GPIO_Mode_OUT);
     this->CSPin.set_output(HIGH);
     this->spix->SetSpeed(BaudRate);
+    this->sensor_init();
     this->default_config();
 }
 
-void MAX31865::init(SPI *SPIx,uint8_t CSpin,uint16_t BaudRate)
+void MAX31865::init(SPI *SPIx,uint8_t CSpin,numwires wires,uint16_t BaudRate)
 {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
+    this->wire_num=wires;
     this->CSPin.init(CSpin,GPIO_Mode_OUT);
     this->CSPin.set_output(HIGH);
     this->spix->SetSpeed(BaudRate);
+    this->sensor_init();
     this->default_config();
 }
 
 void MAX31865::default_config(){
     this->config(MAX31865::MODE::PT100);
+}
+
+void MAX31865::sensor_init() {
+    this->spix->Queue_star();
+    writeRegister8(0x00, 0x00);
+    enableBias(1);
+    delay_ms(10);
+    setWires(this->wire_num);
+    clearFault();
+    this->spix->Queue_end();
 }
 
 void MAX31865::config(MAX31865::MODE mode, float RTDAx, float RTDBx) {
@@ -147,6 +157,18 @@ uint16_t MAX31865::readRegister16(uint8_t addr) const
     ret |=  buffer[1];
     return ret;
 }
+
+void MAX31865::setWires(MAX31865::numwires wires)
+{
+    uint8_t t = this->readRegister8(MAX31856_CONFIG_REG);
+    if (wires == MAX31865::numwires::_3WIRE) {
+        t |= MAX31856_CONFIG_3WIRE;
+    } else {
+        // 2 or 4 wire
+        t &= ~MAX31856_CONFIG_3WIRE;
+    }
+    this->writeRegister8(MAX31856_CONFIG_REG, t);
+}
 //清除故障标志位
 void MAX31865::clearFault()
 {
@@ -154,6 +176,11 @@ void MAX31865::clearFault()
     t &= ~0x2C;
     t |= MAX31856_CONFIG_FAULTSTAT;
     this->writeRegister8(MAX31856_CONFIG_REG, t);
+}
+
+uint8_t MAX31865::readFault()
+{
+    return this->readRegister8(MAX31856_FAULTSTAT_REG);
 }
 //RTD数据读取
 uint16_t MAX31865::readRTD()
@@ -168,20 +195,6 @@ uint16_t MAX31865::readRTD()
     rtd >>= 1;
     this->spix->Queue_end();
     return rtd;
-}
-
-void MAX31865::setWires(MAX31865::numwires wires)
-{
-    this->spix->Queue_star();
-    uint8_t t = this->readRegister8(MAX31856_CONFIG_REG);
-    if (wires == MAX31865_3WIRE) {
-        t |= MAX31856_CONFIG_3WIRE;
-    } else {
-        // 2 or 4 wire
-        t &= ~MAX31856_CONFIG_3WIRE;
-    }
-    this->writeRegister8(MAX31856_CONFIG_REG, t);
-    this->spix->Queue_end();
 }
 //温度计算
 float MAX31865::get_sensor_temp()
@@ -216,5 +229,7 @@ float MAX31865::get_sensor_temp()
 
     return temp;
 }
+
+
 
 
