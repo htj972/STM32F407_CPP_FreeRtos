@@ -18,6 +18,7 @@ public:
     float get_humi();
     virtual float get_sensor_humi();
     void  set_humi_offset(float offset);
+    float get_humi_offset() const;
     void  calculate_humi_offset(float humi);
 };
 

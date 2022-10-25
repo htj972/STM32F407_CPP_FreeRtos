@@ -16,6 +16,7 @@ private:
     uint8_t sht_data[6]{};
     static int crc8_compute(const uint8_t *check_data);
     static bool crc8_check(uint8_t *p, uint8_t CrcData);
+    bool get_sensor_data();
 public:
     Software_IIC *IIC{};
 
@@ -25,7 +26,6 @@ public:
     void init(Software_IIC *IICx,uint8_t Add=0x88);
     bool init() const;
 
-    bool get_sensor_data();
     bool get_sensor_temp_humi(float* Temp,float *Humi) override;
     float get_sensor_temp() override;
     float get_sensor_humi() override;

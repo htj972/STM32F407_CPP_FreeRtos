@@ -22,6 +22,10 @@ void Temperature_BASE::set_temp_offset(float offset) {
     this->temp_offset=offset;
 }
 
+float Temperature_BASE::get_temp_offset() const {
+    return this->temp_offset;
+}
+
 void Temperature_BASE::calculate_temp_offset(float temp) {
     this->temp_offset=this->get_sensor_temp()-temp;
 }

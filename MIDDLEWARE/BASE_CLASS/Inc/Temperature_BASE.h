@@ -18,6 +18,7 @@ public:
     float get_temp();
     virtual float get_sensor_temp();
     void  set_temp_offset(float offset);
+    float get_temp_offset() const;
     void  calculate_temp_offset(float temp);
 };
 

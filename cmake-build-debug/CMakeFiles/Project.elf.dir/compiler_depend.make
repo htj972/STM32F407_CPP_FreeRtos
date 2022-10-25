@@ -3060,6 +3060,11 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj: ../HARDWARE/Src/USART.cpp
   ../SYSTEM/Inc/DMA.h \
   ../SYSTEM/Inc/sys.h
 
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp \
+  ../MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.h \
+  ../MIDDLEWARE/BASE_CLASS/Inc/Pressure_BASE.h \
+  ../MIDDLEWARE/BASE_CLASS/Inc/Temperature_BASE.h
+
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp \
   ../MIDDLEWARE/BASE_CLASS/Inc/Humidity_BASE.h
 
@@ -3222,6 +3227,9 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj: ../MIDDL
   ../FreeRTOS/FreeRTOS_Inc/task.h \
   ../FreeRTOS/FreeRTOS_Inc/list.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdarg
+
+CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp \
+  ../MIDDLEWARE/BASE_CLASS/Inc/Pressure_BASE.h
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp \
   ../MIDDLEWARE/BASE_CLASS/Inc/RTCBASE.h \
@@ -3783,6 +3791,94 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj: ../MIDDLEWARE/Src/MA
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdlib.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/stdlib.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/alloca.h
+
+CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj: ../MIDDLEWARE/Src/MS5805.cpp \
+  ../MIDDLEWARE/Inc/MS5805.h \
+  ../MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.h \
+  ../MIDDLEWARE/BASE_CLASS/Inc/Pressure_BASE.h \
+  ../MIDDLEWARE/BASE_CLASS/Inc/Temperature_BASE.h \
+  ../HARDWARE/Inc/IIC.h \
+  ../HARDWARE/Inc/GPIO.h \
+  ../SYSTEM/Inc/sys.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h \
+  ../FreeRTOS/FreeRTOS_Inc/FreeRTOS.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  ../FreeRTOS/FreeRTOS_Inc/FreeRTOSConfig.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdio.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano/newlib.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/config.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/cdefs.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/reent.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/lock.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/assert.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/endian.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_endian.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/select.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_sigset.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_timeval.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/timespec.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_timespec.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_pthreadtypes.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/sched.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/stdio.h \
+  ../FreeRTOS/FreeRTOS_Inc/projdefs.h \
+  ../FreeRTOS/FreeRTOS_Inc/portable.h \
+  ../FreeRTOS/FreeRTOS_Inc/deprecated_definitions.h \
+  ../FreeRTOS/FreeRTOS_Inc/portmacro.h \
+  ../FreeRTOS/FreeRTOS_Inc/mpu_wrappers.h \
+  ../FreeRTOS/FreeRTOS_Inc/semphr.h \
+  ../FreeRTOS/FreeRTOS_Inc/queue.h \
+  ../FreeRTOS/FreeRTOS_Inc/task.h \
+  ../FreeRTOS/FreeRTOS_Inc/list.h \
+  ../SYSTEM/Inc/delay.h
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj: ../MIDDLEWARE/Src/OLED_SSD1306.cpp \
   ../MIDDLEWARE/Inc/OLED_SSD1306.h \
@@ -4902,7 +4998,10 @@ CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: ../USER/Src/main.cpp \
   ../MIDDLEWARE/Inc/SHT3x.h \
   ../MIDDLEWARE/BASE_CLASS/Inc/Temp_Humi_BASE.h \
   ../MIDDLEWARE/BASE_CLASS/Inc/Temperature_BASE.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/Humidity_BASE.h
+  ../MIDDLEWARE/BASE_CLASS/Inc/Humidity_BASE.h \
+  ../MIDDLEWARE/Inc/MS5805.h \
+  ../MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.h \
+  ../MIDDLEWARE/BASE_CLASS/Inc/Pressure_BASE.h
 
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj: ../USER/Src/stm32f4xx_it.c \
   ../USER/Inc/stm32f4xx_it.h \
@@ -5005,6 +5104,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/s
 
 ../FWLIB/src/misc.c:
 
+../MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.h:
+
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/alloc_traits.h:
 
 ../FWLIB/inc/stm32f4xx_dbgmcu.h:
@@ -5053,6 +5154,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h:
 
 ../CORE/Inc/core_cmInstr.h:
 
+../MIDDLEWARE/Src/MS5805.cpp:
+
 ../CORE/Inc/core_cmFunc.h:
 
 ../FWLIB/src/stm32f4xx_dac.c:
@@ -5074,6 +5177,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/a
 ../HARDWARE/Inc/ADC.h:
 
 ../FWLIB/inc/stm32f4xx_exti.h:
+
+../MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp:
 
 ../FreeRTOS/FreeRTOS_PORTABLE/cmsis_os.c:
 
@@ -5541,11 +5646,15 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/sstrea
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/sstream.tcc:
 
+../MIDDLEWARE/BASE_CLASS/Inc/Pressure_BASE.h:
+
 ../MIDDLEWARE/BASE_CLASS/Inc/Humidity_BASE.h:
 
 ../MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp:
 
 ../MIDDLEWARE/BASE_CLASS/Inc/OLED_BASE.h:
+
+../MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp:
 
 ../MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp:
 
@@ -5559,6 +5668,10 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/s
 
 ../MIDDLEWARE/Inc/FM24Cxx.h:
 
+../MIDDLEWARE/Inc/modbus.h:
+
+../MIDDLEWARE/Inc/MS5805.h:
+
 ../MIDDLEWARE/Src/OLED_SSD1306.cpp:
 
 ../MIDDLEWARE/Inc/OLED_SSD1306.h:
@@ -5566,8 +5679,6 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/s
 ../MIDDLEWARE/Inc/SHT3x.h:
 
 ../MIDDLEWARE/Src/W25QXX.cpp:
-
-../MIDDLEWARE/Inc/modbus.h:
 
 ../SYSTEM/Src/DMA.c:
 

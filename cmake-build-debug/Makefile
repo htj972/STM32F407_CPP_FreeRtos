@@ -1424,6 +1424,30 @@ HARDWARE/Src/USART.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s
 .PHONY : HARDWARE/Src/USART.cpp.s
 
+MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.obj: MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.obj
+
+MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.i: MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.i
+
+MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.s: MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.s
+
 MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj
 
@@ -1471,6 +1495,30 @@ MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s
 MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s
+
+MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj
+
+MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.i: MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.i
+
+MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.s
 
 MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj
@@ -1615,6 +1663,30 @@ MIDDLEWARE/Src/MAX31865.s: MIDDLEWARE/Src/MAX31865.cpp.s
 MIDDLEWARE/Src/MAX31865.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.s
 .PHONY : MIDDLEWARE/Src/MAX31865.cpp.s
+
+MIDDLEWARE/Src/MS5805.obj: MIDDLEWARE/Src/MS5805.cpp.obj
+.PHONY : MIDDLEWARE/Src/MS5805.obj
+
+# target to build an object file
+MIDDLEWARE/Src/MS5805.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj
+.PHONY : MIDDLEWARE/Src/MS5805.cpp.obj
+
+MIDDLEWARE/Src/MS5805.i: MIDDLEWARE/Src/MS5805.cpp.i
+.PHONY : MIDDLEWARE/Src/MS5805.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/MS5805.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.i
+.PHONY : MIDDLEWARE/Src/MS5805.cpp.i
+
+MIDDLEWARE/Src/MS5805.s: MIDDLEWARE/Src/MS5805.cpp.s
+.PHONY : MIDDLEWARE/Src/MS5805.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/MS5805.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.s
+.PHONY : MIDDLEWARE/Src/MS5805.cpp.s
 
 MIDDLEWARE/Src/OLED_SSD1306.obj: MIDDLEWARE/Src/OLED_SSD1306.cpp.obj
 .PHONY : MIDDLEWARE/Src/OLED_SSD1306.obj
@@ -2059,12 +2131,18 @@ help:
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.s
@@ -2083,6 +2161,9 @@ help:
 	@echo ... MIDDLEWARE/Src/MAX31865.obj
 	@echo ... MIDDLEWARE/Src/MAX31865.i
 	@echo ... MIDDLEWARE/Src/MAX31865.s
+	@echo ... MIDDLEWARE/Src/MS5805.obj
+	@echo ... MIDDLEWARE/Src/MS5805.i
+	@echo ... MIDDLEWARE/Src/MS5805.s
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.obj
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.i
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.s

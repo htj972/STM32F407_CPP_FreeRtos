@@ -14,17 +14,23 @@ SHT3x::SHT3x(Software_IIC *IICx, uint8_t Add) {
 void SHT3x::init(Software_IIC *IICx,uint8_t Add) {
     this->IIC=IICx;
     this->addr=Add;
+    this->IIC->Queue_star();
     this->IIC->Write_One_Byte(this->addr,0x21,0x30);
+    this->IIC->Queue_end();
 }
 
 bool SHT3x::init() const {
-    if(this->IIC!= nullptr)
-        this->IIC->Write_One_Byte(this->addr,0x21,0x30);
+    if(this->IIC!= nullptr) {
+        this->IIC->Queue_star();
+        this->IIC->Write_One_Byte(this->addr, 0x21, 0x30);
+        this->IIC->Queue_end();
+    }
     else return false;
     return true;
 }
 
 bool SHT3x::get_sensor_data() {
+    this->IIC->Queue_star();
     this->IIC->Start();
     this->IIC->Send_Byte(this->addr);
     if(!this->IIC->Wait_Ack())goto false_label;
@@ -38,8 +44,11 @@ bool SHT3x::get_sensor_data() {
     for(uint8_t ii=0;ii<6;ii++)
         this->sht_data[ii]=this->IIC->Read_Byte((ii==6-1)?0:1);
     this->IIC->Stop();
+    this->IIC->Queue_end();
     return true;
     false_label:
+    this->IIC->Stop();
+    this->IIC->Queue_end();
     return false;
 }
 

@@ -22,7 +22,7 @@ private:
     HARD_BASE::Queue lock_mode;
     bool lock_flag{};
 #if SYSTEM_SUPPORT_OS == ON
-    QueueHandle_t spi_Queue{};
+    QueueHandle_t HARD_Queue{};
 #endif
 public:
     void set_Queue_mode(Queue mode);

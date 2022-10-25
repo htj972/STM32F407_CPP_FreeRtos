@@ -202,6 +202,15 @@ void Software_IIC::Write_One_Byte(u8 daddr,u8 addr,u8 data)
     this->Stop();
 }
 
+void Software_IIC::Write_One_CMD(uint8_t daddr, uint8_t cmd) {
+    this->Start();
+    this->Send_Byte(daddr);
+    this->Wait_Ack();
+    this->Send_Byte(cmd);
+    this->Wait_Ack();
+    this->Stop();
+}
+
 uint8_t Software_IIC::Read_One_Byte(uint8_t daddr, uint8_t addr,uint8_t draddr)
 {
     uint8_t ret;
@@ -242,7 +251,6 @@ bool Software_IIC::Read_Data(uint8_t daddr, uint8_t addr, uint8_t draddr, uint8_
 bool Software_IIC::Read_Data(uint8_t daddr, uint8_t addr, uint8_t *data, uint8_t len) {
     return this->Read_Data(daddr,addr,daddr+1,data,len);
 }
-
 
 /*******************************************************/
 

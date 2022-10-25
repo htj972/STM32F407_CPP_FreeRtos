@@ -8,6 +8,7 @@
 #include "FM24Cxx.h"
 #include "RTC_DS3231.h"
 #include "SHT3x.h"
+#include "MS5805.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -46,6 +47,8 @@ Software_IIC    SIIC3(GPIOE2,GPIOE3);
 RTC_DS32xx      time1(&SIIC3);
 Software_IIC    SIIC4(GPIOD1,GPIOD0);
 SHT3x           SHT35(&SIIC4);
+Software_IIC    SIIC5(GPIOD11,GPIOD10);
+MS5805          MMS5805(&SIIC5);
 
 
 std::string asdasd="123456";
@@ -69,6 +72,7 @@ int main()
 //    time1.set_date(2022,10,24);
 //    time1.set_time(16,50,15);
     SHT35.init();
+    MMS5805.init();
 
 
     //创建开始任务
@@ -111,16 +115,18 @@ void start_task(void *pvParameters)
     {
         taskENTER_CRITICAL();           //进入临界区
         taskEXIT_CRITICAL();            //退出临界区
-        led.change();
         vTaskDelay(250/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         if(sec_t!=time1.get_sec())
         {
+            led.change();
             sec_t=time1.get_sec();
             MOLED.Queue_star();
-            MOLED.Print(0,2,"%4d-%02d-%02d",time1.get_year(),time1.get_month(),time1.get_day());
-//            MOLED.Print(0,4,time1.get_name_str());
+            float MT=2.5,MP=3.4;
+            MMS5805.get_temp_pres(&MT,&MP);
+            MOLED.Print(0,2,"T:%3.1lf P:%5.1f",MT,MP);
+
             float T=2.5,H=3.4;
-            SHT35.get_sensor_temp_humi(&T,&H);
+            SHT35.get_temp_humi(&T,&H);
             MOLED.Print(0,4,"T:%3.1lf H:%3.1lf",T,H);
             MOLED.Print(0,6,"%02d:%02d:%02d",time1.get_hour(),time1.get_min(),sec_t);
             MOLED.Queue_end();

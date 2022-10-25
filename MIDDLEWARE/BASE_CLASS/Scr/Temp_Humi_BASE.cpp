@@ -24,12 +24,11 @@ bool Temp_Humi_BASE::get_sensor_temp_humi(float *Temp, float *Humi) {
 }
 
 bool Temp_Humi_BASE::get_temp_humi(float *Temp, float *Humi) {
-    *Temp=this->get_temp();
-    *Humi=this->get_humi();
-    if((*Temp!=0)&&(*Humi!=0))
-        return true;
-    else
-        return false;
+    float GT,GH;
+    bool ret =get_sensor_temp_humi(&GT,&GH);
+    *Temp=GT- this->get_temp_offset();
+    *Humi=GH- this->get_humi_offset();
+    return ret;
 }
 
 void Temp_Humi_BASE::set_offset(float Toffset, float Hoffset) {
