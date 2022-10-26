@@ -22,17 +22,45 @@ _USART_::_USART_(USART_TypeDef* USARTx,int32_t bound){
     this->init(USARTx,bound);
 }
 
+void _USART_::GPIO_AF_config(){
+    if(this->USART==USART1){
+        this->TX_GPIO.set_AFConfig(GPIO_AF_USART1);
+        this->RX_GPIO.set_AFConfig(GPIO_AF_USART1);
+    }
+    else if(this->USART==USART2) {
+        this->TX_GPIO.set_AFConfig(GPIO_AF_USART2);
+        this->RX_GPIO.set_AFConfig(GPIO_AF_USART2);
+    }
+    else if(this->USART==USART3) {
+        this->TX_GPIO.set_AFConfig(GPIO_AF_USART3);
+        this->RX_GPIO.set_AFConfig(GPIO_AF_USART3);
+    }
+    else if(this->USART==UART4) {
+        this->TX_GPIO.set_AFConfig(GPIO_AF_UART4);
+        this->RX_GPIO.set_AFConfig(GPIO_AF_UART4);
+    }
+    else if(this->USART==UART5) {
+        this->TX_GPIO.set_AFConfig(GPIO_AF_UART5);
+        this->RX_GPIO.set_AFConfig(GPIO_AF_UART5);
+    }
+    else if(this->USART==USART6) {
+        this->TX_GPIO.set_AFConfig(GPIO_AF_USART6);
+        this->RX_GPIO.set_AFConfig(GPIO_AF_USART6);
+    }
+}
 
 void _USART_::config(GPIO_TypeDef *PORT_Tx, uint32_t Pin_Tx, GPIO_TypeDef *PORT_Rx, uint32_t Pin_Rx) {
     this->TX_GPIO.init(PORT_Tx,Pin_Tx,GPIO_Mode_AF);
     this->RX_GPIO.init(PORT_Rx,Pin_Rx,GPIO_Mode_AF);
     this->config_flag=1;
+    this->GPIO_AF_config();
 }
 
 void _USART_::config(uint8_t Pin_Tx, uint8_t Pin_Rx) {
     this->TX_GPIO.init(Pin_Tx,GPIO_Mode_AF);
     this->RX_GPIO.init(Pin_Rx,GPIO_Mode_AF);
     this->config_flag=1;
+    this->GPIO_AF_config();
 }
 
 void _USART_::default_config() {
@@ -40,43 +68,31 @@ void _USART_::default_config() {
         this->USART_Num=0;
         if(this->config_flag==0)
             this->config(GPIOA9,GPIOA10);
-        this->TX_GPIO.set_AFConfig(GPIO_AF_USART1);
-        this->RX_GPIO.set_AFConfig(GPIO_AF_USART1);
     }
     else if(this->USART==USART2) {
         this->USART_Num = 1;
         if(this->config_flag==0)
             this->config(GPIOA2, GPIOA3);
-        this->TX_GPIO.set_AFConfig(GPIO_AF_USART2);
-        this->RX_GPIO.set_AFConfig(GPIO_AF_USART2);
     }
     else if(this->USART==USART3) {
         this->USART_Num = 2;
         if(this->config_flag==0)
             this->config(GPIOB10, GPIOB11);
-        this->TX_GPIO.set_AFConfig(GPIO_AF_USART3);
-        this->RX_GPIO.set_AFConfig(GPIO_AF_USART3);
     }
     else if(this->USART==UART4) {
         this->USART_Num = 3;
         if(this->config_flag==0)
             this->config(GPIOC10, GPIOC11);
-        this->TX_GPIO.set_AFConfig(GPIO_AF_UART4);
-        this->RX_GPIO.set_AFConfig(GPIO_AF_UART4);
     }
     else if(this->USART==UART5) {
         this->USART_Num = 4;
         if(this->config_flag==0)
             this->config(GPIOC12, GPIOD2);
-        this->TX_GPIO.set_AFConfig(GPIO_AF_UART5);
-        this->RX_GPIO.set_AFConfig(GPIO_AF_UART5);
     }
     else if(this->USART==USART6) {
         this->USART_Num = 5;
         if(this->config_flag==0)
             this->config(GPIOC6, GPIOC7);
-        this->TX_GPIO.set_AFConfig(GPIO_AF_USART6);
-        this->RX_GPIO.set_AFConfig(GPIO_AF_USART6);
     }
 }
 
@@ -295,6 +311,10 @@ uint16_t _USART_::print(const std::string& String) {
 
 uint16_t _USART_::print(const char *s) {
     return this->print("%s",s);
+}
+
+uint16_t _USART_::print(char s) {
+    return this->print("%c",s);
 }
 
 uint16_t _USART_::print(int integer) {

@@ -27,6 +27,7 @@ private:
     uint8_t DMA_Enable=OFF;
     bool DMA_send_flag= false;
     void default_config();
+    void GPIO_AF_config();
 
 public:
     explicit _USART_(USART_TypeDef* USARTx,int32_t bound=115200);
@@ -57,6 +58,7 @@ public:
     uint16_t print(const char *fmt, ...);
     uint16_t print(const string& String);
     uint16_t print(const char *s);
+    uint16_t print(char s);
     uint16_t print(int integer);
     uint16_t println(const char *fmt, ...);
     uint16_t println(string String);

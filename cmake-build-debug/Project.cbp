@@ -437,6 +437,9 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/IIC.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/ONE_Wire.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/Out_In_Put.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -461,6 +464,9 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/IIC.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/ONE_Wire.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/Out_In_Put.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -479,6 +485,12 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Pressure_BASE.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Printer_BASE.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Printer_usart_BASE.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/RTCBASE.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -486,9 +498,6 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Temp_Humi_BASE.h">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.h">
@@ -506,6 +515,12 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -515,7 +530,16 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/DHTxx.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/DS18B20.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/FM24Cxx.h">
@@ -530,6 +554,9 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/OLED_SSD1306.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/RS485.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/RTC_DS3231.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -542,6 +569,12 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/modbus.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/DHTxx.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/DS18B20.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/FM24Cxx.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -552,6 +585,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/OLED_SSD1306.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RS485.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RTC_DS3231.cpp">

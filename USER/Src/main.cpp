@@ -9,6 +9,7 @@
 #include "RTC_DS3231.h"
 #include "SHT3x.h"
 #include "MS5805.h"
+#include "DS18B20.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -39,6 +40,7 @@ TaskHandle_t Task2Task_Handler;
 
 _OutPut_        led(GPIOE6);
 _USART_         U1(USART1,115200);
+_USART_         U4(UART4,9600);
 Software_IIC    SIIC1(GPIOB4,GPIOB5);
 OLED_SSD1306    MOLED(&SIIC1,OLED_SSD1306::Queue::OWN_Queue,2);
 Software_IIC    SIIC2(GPIOE4,GPIOE5);
@@ -49,6 +51,7 @@ Software_IIC    SIIC4(GPIOD1,GPIOD0);
 SHT3x           SHT35(&SIIC4);
 Software_IIC    SIIC5(GPIOD11,GPIOD10);
 MS5805          MMS5805(&SIIC5);
+DS18B20         DHT11(GPIOD7);
 
 
 std::string asdasd="123456";
@@ -73,6 +76,27 @@ int main()
 //    time1.set_time(16,50,15);
     SHT35.init();
     MMS5805.init();
+    DHT11.init();
+
+    U4.config(GPIOA0,GPIOA1);
+    uint8_t str[8];
+    unsigned char Order = 9;
+    str[0] = 0x1B;
+    str[1] = 0x44;
+    str[2] = 2;//距第1列1个字符间距
+    str[3] = 9;//距第1列7个字符间距
+    str[4] = 14;//距第1列15个字符间距
+    str[5] = 0; //结束
+    U4.write(str,6);
+    U4.write (&Order,1);
+    U4.write ("HT1",3);
+    U4.write (&Order,1);
+    U4.print ("HT2",3);
+    U4.write (&Order,1);
+    U4.print ("HT3",3);
+    Order = 0x0D;
+    U4.write (&Order,1);
+    U4.write ("所发生的\r");
 
 
     //创建开始任务
@@ -118,6 +142,8 @@ void start_task(void *pvParameters)
         vTaskDelay(250/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         if(sec_t!=time1.get_sec())
         {
+//            U4.println("%4d-%2d-%2d",time1.get_year(),time1.get_month(),time1.get_day());
+//            U4.println("%2d:%2d:%2d",time1.get_hour(),time1.get_min(),time1.get_sec());
             led.change();
             sec_t=time1.get_sec();
             MOLED.Queue_star();
@@ -129,6 +155,9 @@ void start_task(void *pvParameters)
             SHT35.get_temp_humi(&T,&H);
             MOLED.Print(0,4,"T:%3.1lf H:%3.1lf",T,H);
             MOLED.Print(0,6,"%02d:%02d:%02d",time1.get_hour(),time1.get_min(),sec_t);
+
+            MOLED.Print(0,0,"T:%4.1lf",DHT11.get_sensor_temp());
+
             MOLED.Queue_end();
         }
     }
@@ -146,7 +175,7 @@ void start_task(void *pvParameters)
         vTaskDelay(200/portTICK_RATE_MS );
         U1<<U1.read_data();
         MOLED.Queue_star();
-        MOLED.Print(0,0,"%04d",task2_num);
+        //MOLED.Print(0,0,"%04d",task2_num);
         MOLED.Queue_end();
     }
 }

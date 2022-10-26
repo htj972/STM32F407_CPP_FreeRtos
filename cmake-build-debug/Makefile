@@ -1352,6 +1352,30 @@ HARDWARE/Src/IIC.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.s
 .PHONY : HARDWARE/Src/IIC.cpp.s
 
+HARDWARE/Src/ONE_Wire.obj: HARDWARE/Src/ONE_Wire.cpp.obj
+.PHONY : HARDWARE/Src/ONE_Wire.obj
+
+# target to build an object file
+HARDWARE/Src/ONE_Wire.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.obj
+.PHONY : HARDWARE/Src/ONE_Wire.cpp.obj
+
+HARDWARE/Src/ONE_Wire.i: HARDWARE/Src/ONE_Wire.cpp.i
+.PHONY : HARDWARE/Src/ONE_Wire.i
+
+# target to preprocess a source file
+HARDWARE/Src/ONE_Wire.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.i
+.PHONY : HARDWARE/Src/ONE_Wire.cpp.i
+
+HARDWARE/Src/ONE_Wire.s: HARDWARE/Src/ONE_Wire.cpp.s
+.PHONY : HARDWARE/Src/ONE_Wire.s
+
+# target to generate assembly for a file
+HARDWARE/Src/ONE_Wire.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.s
+.PHONY : HARDWARE/Src/ONE_Wire.cpp.s
+
 HARDWARE/Src/Out_In_Put.obj: HARDWARE/Src/Out_In_Put.cpp.obj
 .PHONY : HARDWARE/Src/Out_In_Put.obj
 
@@ -1423,30 +1447,6 @@ HARDWARE/Src/USART.s: HARDWARE/Src/USART.cpp.s
 HARDWARE/Src/USART.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s
 .PHONY : HARDWARE/Src/USART.cpp.s
-
-MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.obj: MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.obj
-.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.obj
-
-# target to build an object file
-MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.obj
-.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.obj
-
-MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.i: MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.i
-.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.i
-
-# target to preprocess a source file
-MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.i
-.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.i
-
-MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.s: MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.s
-.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.s
-
-# target to generate assembly for a file
-MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.s
-.PHONY : MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.cpp.s
 
 MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj
@@ -1520,6 +1520,54 @@ MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.s
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.s
 
+MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj
+
+MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.i: MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.i
+
+MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.s
+
+MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj
+
+MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.i: MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.i
+
+MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.s
+
 MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj
 
@@ -1592,6 +1640,30 @@ MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.s
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.s
 
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.obj
+
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.i: MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.i
+
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.s
+
 MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.obj
 
@@ -1615,6 +1687,54 @@ MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/Temperat
 MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.s
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.s
+
+MIDDLEWARE/Src/DHTxx.obj: MIDDLEWARE/Src/DHTxx.cpp.obj
+.PHONY : MIDDLEWARE/Src/DHTxx.obj
+
+# target to build an object file
+MIDDLEWARE/Src/DHTxx.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.obj
+.PHONY : MIDDLEWARE/Src/DHTxx.cpp.obj
+
+MIDDLEWARE/Src/DHTxx.i: MIDDLEWARE/Src/DHTxx.cpp.i
+.PHONY : MIDDLEWARE/Src/DHTxx.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/DHTxx.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.i
+.PHONY : MIDDLEWARE/Src/DHTxx.cpp.i
+
+MIDDLEWARE/Src/DHTxx.s: MIDDLEWARE/Src/DHTxx.cpp.s
+.PHONY : MIDDLEWARE/Src/DHTxx.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/DHTxx.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.s
+.PHONY : MIDDLEWARE/Src/DHTxx.cpp.s
+
+MIDDLEWARE/Src/DS18B20.obj: MIDDLEWARE/Src/DS18B20.cpp.obj
+.PHONY : MIDDLEWARE/Src/DS18B20.obj
+
+# target to build an object file
+MIDDLEWARE/Src/DS18B20.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.obj
+.PHONY : MIDDLEWARE/Src/DS18B20.cpp.obj
+
+MIDDLEWARE/Src/DS18B20.i: MIDDLEWARE/Src/DS18B20.cpp.i
+.PHONY : MIDDLEWARE/Src/DS18B20.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/DS18B20.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.i
+.PHONY : MIDDLEWARE/Src/DS18B20.cpp.i
+
+MIDDLEWARE/Src/DS18B20.s: MIDDLEWARE/Src/DS18B20.cpp.s
+.PHONY : MIDDLEWARE/Src/DS18B20.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/DS18B20.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.s
+.PHONY : MIDDLEWARE/Src/DS18B20.cpp.s
 
 MIDDLEWARE/Src/FM24Cxx.obj: MIDDLEWARE/Src/FM24Cxx.cpp.obj
 .PHONY : MIDDLEWARE/Src/FM24Cxx.obj
@@ -1711,6 +1831,30 @@ MIDDLEWARE/Src/OLED_SSD1306.s: MIDDLEWARE/Src/OLED_SSD1306.cpp.s
 MIDDLEWARE/Src/OLED_SSD1306.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.s
 .PHONY : MIDDLEWARE/Src/OLED_SSD1306.cpp.s
+
+MIDDLEWARE/Src/RS485.obj: MIDDLEWARE/Src/RS485.cpp.obj
+.PHONY : MIDDLEWARE/Src/RS485.obj
+
+# target to build an object file
+MIDDLEWARE/Src/RS485.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj
+.PHONY : MIDDLEWARE/Src/RS485.cpp.obj
+
+MIDDLEWARE/Src/RS485.i: MIDDLEWARE/Src/RS485.cpp.i
+.PHONY : MIDDLEWARE/Src/RS485.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/RS485.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.i
+.PHONY : MIDDLEWARE/Src/RS485.cpp.i
+
+MIDDLEWARE/Src/RS485.s: MIDDLEWARE/Src/RS485.cpp.s
+.PHONY : MIDDLEWARE/Src/RS485.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/RS485.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.s
+.PHONY : MIDDLEWARE/Src/RS485.cpp.s
 
 MIDDLEWARE/Src/RTC_DS3231.obj: MIDDLEWARE/Src/RTC_DS3231.cpp.obj
 .PHONY : MIDDLEWARE/Src/RTC_DS3231.obj
@@ -2122,6 +2266,9 @@ help:
 	@echo ... HARDWARE/Src/IIC.obj
 	@echo ... HARDWARE/Src/IIC.i
 	@echo ... HARDWARE/Src/IIC.s
+	@echo ... HARDWARE/Src/ONE_Wire.obj
+	@echo ... HARDWARE/Src/ONE_Wire.i
+	@echo ... HARDWARE/Src/ONE_Wire.s
 	@echo ... HARDWARE/Src/Out_In_Put.obj
 	@echo ... HARDWARE/Src/Out_In_Put.i
 	@echo ... HARDWARE/Src/Out_In_Put.s
@@ -2131,9 +2278,6 @@ help:
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s
-	@echo ... MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.obj
-	@echo ... MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.i
-	@echo ... MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.s
@@ -2143,6 +2287,12 @@ help:
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.s
@@ -2152,9 +2302,18 @@ help:
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.s
+	@echo ... MIDDLEWARE/Src/DHTxx.obj
+	@echo ... MIDDLEWARE/Src/DHTxx.i
+	@echo ... MIDDLEWARE/Src/DHTxx.s
+	@echo ... MIDDLEWARE/Src/DS18B20.obj
+	@echo ... MIDDLEWARE/Src/DS18B20.i
+	@echo ... MIDDLEWARE/Src/DS18B20.s
 	@echo ... MIDDLEWARE/Src/FM24Cxx.obj
 	@echo ... MIDDLEWARE/Src/FM24Cxx.i
 	@echo ... MIDDLEWARE/Src/FM24Cxx.s
@@ -2167,6 +2326,9 @@ help:
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.obj
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.i
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.s
+	@echo ... MIDDLEWARE/Src/RS485.obj
+	@echo ... MIDDLEWARE/Src/RS485.i
+	@echo ... MIDDLEWARE/Src/RS485.s
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.obj
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.i
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.s
