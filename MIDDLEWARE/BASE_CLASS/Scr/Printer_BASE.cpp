@@ -29,14 +29,19 @@ uint16_t Printer_BASE::get_Paper_length() const {
 }
 
 void Printer_BASE::write(const char *str, uint16_t len) {
+    this->write((uint8_t *)str,len);
 }
 
 void Printer_BASE::write(uint8_t *str, uint16_t len) {
-    this->write((char*)str,len);
+
 }
 
 void Printer_BASE::write(const std::string &String) {
     this->write(String.c_str(),String.length());
+}
+
+void Printer_BASE::write(int integer) {
+
 }
 
 uint16_t Printer_BASE::print(const char *fmt, ...) {
@@ -70,3 +75,5 @@ uint16_t Printer_BASE::print(char s) {
 uint16_t Printer_BASE::print(int integer) {
     return this->print("%d",integer);
 }
+
+

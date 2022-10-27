@@ -29,6 +29,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "../SYSTEM/Inc"
   "../USER/Inc"
   "../HARDWARE/Inc"
+  "../FATFS/Inc"
   "../FreeRTOS/FreeRTOS_Inc"
   "../MIDDLEWARE/Inc"
   "../MIDDLEWARE/BASE_CLASS/Inc"
@@ -37,6 +38,13 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/Font.c" "CMakeFiles/Project.elf.dir/FATFS/Src/Font.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FATFS/Src/Font.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/cc936.c" "CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/diskio.c" "CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/exfuns.c" "CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/fattester.c" "CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/ff.c" "CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/fontupd.c" "CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/src/misc.c" "CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/src/stm32f4xx_adc.c" "CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_adc.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_adc.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/src/stm32f4xx_can.c" "CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_can.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_can.c.obj.d"
@@ -84,6 +92,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_PORTABLE/port.c" "CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/DMA.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/delay.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/malloc.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/sys.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/stm32f4xx_it.c" "CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/system_stm32f4xx.c" "CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj.d"
@@ -113,6 +122,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/MAX31865.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/MS5805.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/OLED_SSD1306.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RD_EH32.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RS485.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RTC_DS3231.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/SHT3x.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj.d"

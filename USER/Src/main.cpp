@@ -10,6 +10,7 @@
 #include "SHT3x.h"
 #include "MS5805.h"
 #include "DS18B20.h"
+#include "RD_EH32.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -52,6 +53,7 @@ SHT3x           SHT35(&SIIC4);
 Software_IIC    SIIC5(GPIOD11,GPIOD10);
 MS5805          MMS5805(&SIIC5);
 DS18B20         DHT11(GPIOD7);
+RD_EH32         MRDEH32(&U4);
 
 
 std::string asdasd="123456";
@@ -79,25 +81,13 @@ int main()
     DHT11.init();
 
     U4.config(GPIOA0,GPIOA1);
-    uint8_t str[8];
-    unsigned char Order = 9;
-    str[0] = 0x1B;
-    str[1] = 0x44;
-    str[2] = 2;//距第1列1个字符间距
-    str[3] = 9;//距第1列7个字符间距
-    str[4] = 14;//距第1列15个字符间距
-    str[5] = 0; //结束
-    U4.write(str,6);
-    U4.write (&Order,1);
-    U4.write ("HT1",3);
-    U4.write (&Order,1);
-    U4.print ("HT2",3);
-    U4.write (&Order,1);
-    U4.print ("HT3",3);
-    Order = 0x0D;
-    U4.write (&Order,1);
-    U4.write ("所发生的\r");
-
+    {
+        MRDEH32.Reset();
+        MRDEH32.Reverse();
+        MRDEH32.set_magnification(4,4);
+        MRDEH32.Drow_Raster_bitmap();
+    }
+    MRDEH32.Move(10);
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数

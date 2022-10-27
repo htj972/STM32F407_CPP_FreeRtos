@@ -15,8 +15,13 @@ private:
     _USART_ *UART{};
 public:
     void init(_USART_ *UARTx);
+    void write(uint8_t *str,uint16_t len) override;
     void write(const char *str,uint16_t len) override;
+    void write(const std::string& String) override;
+    void write(int integer) override;
 };
+
+
 
 
 #endif //KOKIRIKA_PRINTER_USART_BASE_H

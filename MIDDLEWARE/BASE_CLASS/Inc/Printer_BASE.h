@@ -22,8 +22,9 @@ public:
     uint16_t get_Paper_length() const;
 
     virtual void write(const char *str,uint16_t len);
-    void write(uint8_t *str,uint16_t len);
-    void write(const std::string& String);
+    virtual void write(uint8_t *str,uint16_t len);
+    virtual void write(const std::string& String);
+    virtual void write(int integer);
     uint16_t print(const char *fmt, ...);
     uint16_t print(const std::string& String);
     uint16_t print(const char *s);

@@ -25,7 +25,7 @@ void OLED_BASE::ShowCHR(uint8_t x, uint8_t y, char ch, uint8_t TextSize) {
             }
             this->SetPos(x,y);
             for(i=0;i<6;i++)
-                this->WriteDat(this->F6x8[c][i]);
+                this->WriteDat(kokirika_F6x8[c][i]);
         }break;
         case 32:case 2:
         {
@@ -37,10 +37,10 @@ void OLED_BASE::ShowCHR(uint8_t x, uint8_t y, char ch, uint8_t TextSize) {
             }
             this->SetPos(x,y);
             for(i=0;i<8;i++)
-                this->WriteDat(this->F8X16[c*16+i]);
+                this->WriteDat(kokirika_F8X16[c*16+i]);
             this->SetPos(x,y+1);
             for(i=0;i<8;i++)
-                this->WriteDat(this->F8X16[c*16+i+8]);
+                this->WriteDat(kokirika_F8X16[c*16+i+8]);
         }break;
         default:break;
     }

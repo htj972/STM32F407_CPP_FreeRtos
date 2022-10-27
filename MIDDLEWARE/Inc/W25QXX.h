@@ -7,7 +7,7 @@
 #ifndef KOKIRIKA_W25QXX_H
 #define KOKIRIKA_W25QXX_H
 
-#include "../BASE_CLASS/Inc/Storage_BASE.h"
+#include "Storage_BASE.h"
 #include "GPIO.h"
 #include "SPI.h"
 
