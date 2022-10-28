@@ -105,6 +105,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj.d"
   "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj"
   "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj"
+  "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj"

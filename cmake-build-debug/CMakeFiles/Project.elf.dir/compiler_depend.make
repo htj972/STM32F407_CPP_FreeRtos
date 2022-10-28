@@ -95,19 +95,7 @@ CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj: ../FATFS/Src/diskio.c \
   ../FWLIB/inc/stm32f4xx_fsmc.h \
   ../FATFS/Inc/diskio.h \
   ../FATFS/Inc/integer.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/malloc.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano/newlib.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/config.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/reent.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_types.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_types.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/lock.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/assert.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/malloc.h
+  ../SYSTEM/Inc/malloc.h
 
 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj: ../FATFS/Src/exfuns.c \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h \
@@ -171,7 +159,6 @@ CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj: ../FATFS/Src/exfuns.c \
   ../FATFS/Inc/ff.h \
   ../FATFS/Inc/integer.h \
   ../FATFS/Inc/ffconf.h \
-  ../FATFS/Inc/fattester.h \
   ../SYSTEM/Inc/malloc.h
 
 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj: ../FATFS/Src/fattester.c \
@@ -221,25 +208,8 @@ CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj: ../FATFS/Src/fattester.c \
   ../FATFS/Inc/integer.h \
   ../FATFS/Inc/ffconf.h \
   ../FATFS/Inc/exfuns.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/malloc.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano/newlib.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/config.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/reent.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_types.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_types.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/lock.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/assert.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/malloc.h \
-  ../FATFS/Inc/ff.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/cdefs.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_locale.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/strings.h \
-  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h
+  ../SYSTEM/Inc/malloc.h \
+  ../FATFS/Inc/ff.h
 
 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj: ../FATFS/Src/ff.c \
   ../FATFS/Inc/ff.h \
@@ -2700,6 +2670,88 @@ CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj: ../HARDWAR
   ../FreeRTOS/FreeRTOS_Inc/task.h \
   ../FreeRTOS/FreeRTOS_Inc/list.h
 
+CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj: ../HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp \
+  ../HARDWARE/BASE_CLASS/Inc/SPI_BASE.h \
+  ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h \
+  ../FreeRTOS/FreeRTOS_Inc/FreeRTOS.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../FreeRTOS/FreeRTOS_Inc/FreeRTOSConfig.h \
+  ../SYSTEM/Inc/sys.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdio.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano/newlib.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/config.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/cdefs.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/reent.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/lock.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/assert.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/endian.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_endian.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/select.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_sigset.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_timeval.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/timespec.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_timespec.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_pthreadtypes.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/sched.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/stdio.h \
+  ../FreeRTOS/FreeRTOS_Inc/projdefs.h \
+  ../FreeRTOS/FreeRTOS_Inc/portable.h \
+  ../FreeRTOS/FreeRTOS_Inc/deprecated_definitions.h \
+  ../FreeRTOS/FreeRTOS_Inc/portmacro.h \
+  ../FreeRTOS/FreeRTOS_Inc/mpu_wrappers.h \
+  ../FreeRTOS/FreeRTOS_Inc/semphr.h \
+  ../FreeRTOS/FreeRTOS_Inc/queue.h \
+  ../FreeRTOS/FreeRTOS_Inc/task.h \
+  ../FreeRTOS/FreeRTOS_Inc/list.h
+
 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj: ../HARDWARE/Src/ADC.cpp \
   ../HARDWARE/Inc/ADC.h \
   ../HARDWARE/Inc/GPIO.h \
@@ -3201,6 +3253,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj: ../HARDWARE/Src/SPI.cpp \
   ../FWLIB/inc/stm32f4xx_dac.h \
   ../FWLIB/inc/stm32f4xx_dcmi.h \
   ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../HARDWARE/BASE_CLASS/Inc/SPI_BASE.h \
   ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h \
   ../FreeRTOS/FreeRTOS_Inc/FreeRTOS.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
@@ -3240,7 +3293,8 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj: ../HARDWARE/Src/SPI.cpp \
   ../FreeRTOS/FreeRTOS_Inc/task.h \
   ../FreeRTOS/FreeRTOS_Inc/list.h \
   ../SYSTEM/Inc/DMA.h \
-  ../SYSTEM/Inc/sys.h
+  ../SYSTEM/Inc/sys.h \
+  ../SYSTEM/Inc/delay.h
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj: ../HARDWARE/Src/USART.cpp \
   ../HARDWARE/Inc/USART.h \
@@ -4589,6 +4643,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj: ../MIDDLEWARE/Src/MA
   ../FWLIB/inc/stm32f4xx_dac.h \
   ../FWLIB/inc/stm32f4xx_dcmi.h \
   ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../HARDWARE/BASE_CLASS/Inc/SPI_BASE.h \
   ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h \
   ../FreeRTOS/FreeRTOS_Inc/FreeRTOS.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
@@ -5639,6 +5694,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj: ../MIDDLEWARE/Src/W25Q
   ../HARDWARE/Inc/GPIO.h \
   ../HARDWARE/Inc/SPI.h \
   ../HARDWARE/Inc/GPIO.h \
+  ../HARDWARE/BASE_CLASS/Inc/SPI_BASE.h \
   ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h \
   ../FreeRTOS/FreeRTOS_Inc/FreeRTOS.h \
   ../FreeRTOS/FreeRTOS_Inc/FreeRTOSConfig.h \
@@ -6250,7 +6306,11 @@ CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: ../USER/Src/main.cpp \
   ../MIDDLEWARE/BASE_CLASS/Inc/Temperature_BASE.h \
   ../MIDDLEWARE/Inc/RD_EH32.h \
   ../MIDDLEWARE/BASE_CLASS/Inc/Printer_usart_BASE.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/Printer_BASE.h
+  ../MIDDLEWARE/BASE_CLASS/Inc/Printer_BASE.h \
+  ../MIDDLEWARE/Inc/MAX31865.h \
+  ../HARDWARE/Inc/SPI.h \
+  ../HARDWARE/BASE_CLASS/Inc/SPI_BASE.h \
+  ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h
 
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj: ../USER/Src/stm32f4xx_it.c \
   ../USER/Inc/stm32f4xx_it.h \
@@ -6405,13 +6465,13 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h:
 
-../FWLIB/inc/stm32f4xx_sdio.h:
-
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h:
+
+F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h:
 
 ../SYSTEM/Inc/malloc.h:
 
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h:
+../FWLIB/inc/stm32f4xx_sdio.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h:
 
@@ -6509,7 +6569,9 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano/newli
 
 ../FATFS/Inc/fontupd.h:
 
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/malloc.h:
+F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/istream:
+
+F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h:
 
@@ -6524,14 +6586,6 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/reent.h:
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_types.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/lock.h:
-
-../FreeRTOS/FreeRTOS_Inc/task.h:
-
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/malloc.h:
-
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/istream:
-
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/cdefs.h:
 
@@ -6549,11 +6603,11 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/types.h:
 
 ../FATFS/Inc/exfuns.h:
 
-../FATFS/Inc/fattester.h:
-
 ../FWLIB/src/stm32f4xx_dma2d.c:
 
 ../FATFS/Src/fattester.c:
+
+../FATFS/Inc/fattester.h:
 
 ../MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp:
 
@@ -6709,6 +6763,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/stdio.h:
 
 ../FreeRTOS/FreeRTOS_Inc/deprecated_definitions.h:
 
+../FreeRTOS/FreeRTOS_Inc/task.h:
+
 ../FreeRTOS/FreeRTOS_Inc/list.h:
 
 ../FreeRTOS/FreeRTOS_CORE/event_groups.c:
@@ -6752,6 +6808,12 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ios:
 ../HARDWARE/Src/GPIO.cpp:
 
 ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h:
+
+../HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp:
+
+F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/atomicity.h:
+
+../HARDWARE/BASE_CLASS/Inc/SPI_BASE.h:
 
 ../HARDWARE/Src/ADC.cpp:
 
@@ -6864,8 +6926,6 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/i
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/concepts:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h:
-
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/atomicity.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/gthr.h:
 

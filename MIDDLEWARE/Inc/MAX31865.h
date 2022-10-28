@@ -41,15 +41,15 @@ private:
 
 public:
     _GPIO_ CSPin;
-    SPI *spix;
+    SPI_BASE *spix;
 
-    MAX31865(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx,numwires wires=numwires::_3WIRE,uint16_t BaudRate=SPI_BaudRatePrescaler_64);
-    MAX31865(SPI *SPIx,uint8_t CSpin,numwires wires=numwires::_3WIRE,uint16_t BaudRate=SPI_BaudRatePrescaler_64);
+    MAX31865(SPI_BASE *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx,numwires wires=numwires::_3WIRE,uint16_t BaudRate=SPI_BaudRatePrescaler_64);
+    MAX31865(SPI_BASE *SPIx,uint8_t CSpin,numwires wires=numwires::_3WIRE,uint16_t BaudRate=SPI_BaudRatePrescaler_64);
     void init();
-    void init(SPI *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx,numwires wires=numwires::_3WIRE, uint16_t BaudRate=SPI_BaudRatePrescaler_64);
-    void init(SPI *SPIx,uint8_t CSpin,numwires wires=numwires::_3WIRE,uint16_t BaudRate=SPI_BaudRatePrescaler_64);
-    void config(MAX31865::MODE mode,float RTDAx,float RTDBx);
-    void config(MAX31865::MODE mode);
+    void init(SPI_BASE *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx,numwires wires=numwires::_3WIRE, uint16_t BaudRate=SPI_BaudRatePrescaler_64);
+    void init(SPI_BASE *SPIx,uint8_t CSpin,numwires wires=numwires::_3WIRE,uint16_t BaudRate=SPI_BaudRatePrescaler_64);
+    void config(MAX31865::MODE mode,float RTDAx,float RTDBx,uint16_t ref);
+    void config(MAX31865::MODE mode,uint16_t ref);
     float get_sensor_temp() override;
 
 };

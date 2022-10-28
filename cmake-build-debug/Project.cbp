@@ -466,7 +466,13 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Inc/HARD_BASE.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Inc/SPI_BASE.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/ADC.h">

@@ -1400,6 +1400,30 @@ HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.s
 .PHONY : HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.s
 
+HARDWARE/BASE_CLASS/Src/SPI_BASE.obj: HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj
+.PHONY : HARDWARE/BASE_CLASS/Src/SPI_BASE.obj
+
+# target to build an object file
+HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj
+.PHONY : HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj
+
+HARDWARE/BASE_CLASS/Src/SPI_BASE.i: HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.i
+.PHONY : HARDWARE/BASE_CLASS/Src/SPI_BASE.i
+
+# target to preprocess a source file
+HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.i
+.PHONY : HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.i
+
+HARDWARE/BASE_CLASS/Src/SPI_BASE.s: HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.s
+.PHONY : HARDWARE/BASE_CLASS/Src/SPI_BASE.s
+
+# target to generate assembly for a file
+HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.s
+.PHONY : HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.s
+
 HARDWARE/Src/ADC.obj: HARDWARE/Src/ADC.cpp.obj
 .PHONY : HARDWARE/Src/ADC.obj
 
@@ -2488,6 +2512,9 @@ help:
 	@echo ... HARDWARE/BASE_CLASS/Src/HARD_BASE.obj
 	@echo ... HARDWARE/BASE_CLASS/Src/HARD_BASE.i
 	@echo ... HARDWARE/BASE_CLASS/Src/HARD_BASE.s
+	@echo ... HARDWARE/BASE_CLASS/Src/SPI_BASE.obj
+	@echo ... HARDWARE/BASE_CLASS/Src/SPI_BASE.i
+	@echo ... HARDWARE/BASE_CLASS/Src/SPI_BASE.s
 	@echo ... HARDWARE/Src/ADC.obj
 	@echo ... HARDWARE/Src/ADC.i
 	@echo ... HARDWARE/Src/ADC.s

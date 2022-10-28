@@ -6,6 +6,7 @@
 
 #include "SPI.h"
 #include "DMA.h"
+#include "delay.h"
 
 SPI::SPI(SPI_TypeDef* SPI,Queue mode,uint16_t DataSize,uint8_t SPI_BaudRatePrescaler) {
     this->init(SPI,mode,DataSize,SPI_BaudRatePrescaler);
@@ -78,6 +79,15 @@ void SPI::init(SPI_TypeDef* SPI,Queue mode,uint16_t DataSize,uint8_t SPI_BaudRat
     SPI_Cmd(this->SPIx, ENABLE); //使能SPI外设
 }
 
+void SPI::init(Queue mode) {
+    if(this->SPIx){
+        this->set_Queue_mode( mode);
+        SPI_I2S_DeInit(this->SPIx);
+        SPI_Init(this->SPIx, &SPI_InitStructure);  //根据SPI_InitStruct中指定的参数初始化外设SPIx寄存器
+        SPI_Cmd(this->SPIx, ENABLE); //使能SPI外设
+    }
+}
+
 void SPI::SetSpeed(uint8_t SPI_BaudRatePrescaler)
 {
     assert_param(IS_SPI_BAUDRATE_PRESCALER(SPI_BaudRatePrescaler));
@@ -129,6 +139,161 @@ void SPI::DMA_WriteData(uint16_t *TxData, uint16_t len) {
         (u32)&this->SPIx->DR,(uint32_t)TxData,len,\
         DMA_DIR_MemoryToPeripheral,8);
 }
+
+
+
+
+SPI_S::SPI_S(uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI,HARD_BASE::Queue mode) {
+    this->init(Pin_SCK, Pin_MISO,Pin_MOSI,mode);
+}
+
+SPI_S::SPI_S(GPIO_TypeDef *PORT_SCK, uint32_t Pin_SCK, GPIO_TypeDef *PORT_MISO, uint32_t Pin_MISO,
+               GPIO_TypeDef *PORT_MOSI, uint32_t Pin_MOSI, HARD_BASE::Queue mode) {
+    this->init(PORT_SCK,Pin_SCK,PORT_MISO,Pin_MISO,PORT_MOSI,Pin_MOSI,mode);
+}
+
+void SPI_S::init(Queue mode) {
+    this->set_Queue_mode( mode);
+    this->config(SPI_S::CP::OL_0_HA_0);
+    this->SetSpeed(SPI_BaudRatePrescaler_8);
+}
+
+void SPI_S::init(uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI,HARD_BASE::Queue mode) {
+    this->SCK.init(Pin_SCK,GPIO_Mode_OUT);
+    this->MISO.init(Pin_MISO,GPIO_Mode_IN);
+    this->MOSI.init(Pin_MOSI,GPIO_Mode_OUT);
+    this->SCK.set_output(HIGH);
+    this->MOSI.set_output(HIGH);
+    this->set_Queue_mode( mode);
+    this->config(SPI_S::CP::OL_0_HA_0);
+    this->SetSpeed(SPI_BaudRatePrescaler_8);
+}
+
+void SPI_S::init(GPIO_TypeDef *PORT_SCK, uint32_t Pin_SCK, GPIO_TypeDef *PORT_MISO, uint32_t Pin_MISO,
+                  GPIO_TypeDef *PORT_MOSI, uint32_t Pin_MOSI, HARD_BASE::Queue mode) {
+    this->SCK.init(PORT_SCK,Pin_SCK,GPIO_Mode_OUT);
+    this->MISO.init(PORT_MISO,Pin_MISO,GPIO_Mode_IN);
+    this->MOSI.init(PORT_MOSI,Pin_MOSI,GPIO_Mode_OUT);
+    this->SCK.set_output(HIGH);
+    this->MOSI.set_output(HIGH);
+    this->set_Queue_mode( mode);
+    this->config(SPI_S::CP::OL_0_HA_0);
+    this->SetSpeed(SPI_BaudRatePrescaler_8);
+}
+/* CPOL = 0, CPHA = 0, MSB first */
+uint8_t SPI_S::SOFT_SPI_RW_MODE0( uint8_t write_dat )
+{
+    uint8_t read_dat=0;
+    for(uint8_t i = 0; i < 8; i++ )
+    {
+        if( write_dat & 0x80 )
+            this->MOSI.set_output(HIGH);
+        else
+            this->MOSI.set_output(LOW);
+        write_dat <<= 1;
+        delay_us(10);
+        this->SCK.set_output(HIGH);
+        read_dat <<= 1;
+        if( this->MISO.get_input() )
+            read_dat++;
+        delay_us(10);
+        this->SCK.set_output(LOW);
+        delay_us(10);
+        //asm("nop");//__asm__("nop");
+    }
+    return read_dat;
+}
+/* CPOL=0，CPHA=1, MSB first */
+uint8_t SPI_S::SOFT_SPI_RW_MODE1(uint8_t write_dat)
+{
+    uint8_t Temp=0;
+    for(uint8_t i=0;i<8;i++)     // 循环8次
+    {
+        this->SCK.set_output(HIGH);     //拉高时钟
+        if(write_dat&0x80)
+        {
+            this->MOSI.set_output(HIGH);  //若最到位为高，则输出高
+        }
+        else
+        {
+            this->MOSI.set_output(LOW);   //若最到位为低，则输出低
+        }
+        write_dat <<= 1;     // 低一位移位到最高位
+        delay_us(10);
+        this->SCK.set_output(LOW);     //拉低时钟
+        Temp <<= 1;     //数据左移
+        if( this->MISO.get_input() )
+            Temp++;     //若从从机接收到高电平，数据自加一
+        delay_us(10);
+    }
+    return (Temp);     //返回数据
+}
+/* CPOL=1，CPHA=0, MSB first */
+uint8_t SPI_S::SOFT_SPI_RW_MODE2(uint8_t write_dat)
+{
+    uint8_t Temp=0;
+    for(uint8_t i=0;i<8;i++)     // 循环8次
+    {
+        if(write_dat&0x80)
+        {
+            this->MOSI.set_output(HIGH);  //若最到位为高，则输出高
+        }
+        else
+        {
+            this->MOSI.set_output(LOW);   //若最到位为低，则输出低
+        }
+        write_dat <<= 1;     // 低一位移位到最高位
+        delay_us(10);
+        this->SCK.set_output(LOW);     //拉低时钟
+        Temp <<= 1;     //数据左移
+        if( this->MISO.get_input() )
+            Temp++;     //若从从机接收到高电平，数据自加一
+        delay_us(10);
+        this->SCK.set_output(HIGH);     //拉高时钟
+    }
+    return (Temp);     //返回数据
+}
+/* CPOL = 1, CPHA = 1, MSB first */
+uint8_t SPI_S::SOFT_SPI_RW_MODE3( uint8_t write_dat )
+{
+    uint8_t read_dat=0;
+    for(uint8_t i = 0; i < 8; i++ )
+    {
+        this->SCK.set_output(LOW);
+        if( write_dat & 0x80 )
+            this->MOSI.set_output(HIGH);
+        else
+            this->MOSI.set_output(LOW);
+        write_dat <<= 1;
+        delay_us(10);
+        this->SCK.set_output(HIGH);
+        read_dat <<= 1;
+        if(  this->MISO.get_input()  )
+            read_dat++;
+        delay_us(10);
+        //asm("nop");//__asm__("nop");
+    }
+    return read_dat;
+}
+
+void SPI_S::config(CP RWmode) {
+    this->RW_mode=RWmode;
+}
+
+void SPI_S::SetSpeed(uint8_t SPI_BaudRatePrescaler) {
+    this->BaudRate=SPI_BaudRatePrescaler;
+}
+
+uint16_t SPI_S::ReadWriteDATA(uint16_t TxData) {
+    switch (this->RW_mode) {
+        case 0:return this->SOFT_SPI_RW_MODE0(TxData);
+        case 1:return this->SOFT_SPI_RW_MODE1(TxData);
+        case 2:return this->SOFT_SPI_RW_MODE2(TxData);
+        case 3:return this->SOFT_SPI_RW_MODE3(TxData);
+        default:return 0;
+    }
+}
+
 
 
 

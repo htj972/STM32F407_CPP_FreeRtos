@@ -97,6 +97,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/stm32f4xx_it.c" "CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/system_stm32f4xx.c" "CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/ADC.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/CRC.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/DAC.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.obj.d"

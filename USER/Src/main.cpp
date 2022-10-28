@@ -11,6 +11,7 @@
 #include "MS5805.h"
 #include "DS18B20.h"
 #include "RD_EH32.h"
+#include "MAX31865.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -54,7 +55,8 @@ Software_IIC    SIIC5(GPIOD11,GPIOD10);
 MS5805          MMS5805(&SIIC5);
 DS18B20         DHT11(GPIOD7);
 RD_EH32         MRDEH32(&U4);
-
+SPI_S           MSPI(GPIOC0,GPIOC2,GPIOC3);
+MAX31865        M865(&MSPI,GPIOC1);
 
 std::string asdasd="123456";
 std::string eprom="FM24C64 text";
@@ -80,14 +82,10 @@ int main()
     MMS5805.init();
     DHT11.init();
 
-    U4.config(GPIOA0,GPIOA1);
-    {
-        MRDEH32.Reset();
-        MRDEH32.Reverse();
-        MRDEH32.set_magnification(4,4);
-        MRDEH32.Drow_Raster_bitmap();
-    }
-    MRDEH32.Move(10);
+    MSPI.config(SPI_S::CP::OL_0_HA_0);
+    M865.init();
+    M865.config(MAX31865::PT100,390);
+
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -144,7 +142,10 @@ void start_task(void *pvParameters)
             float T=2.5,H=3.4;
             SHT35.get_temp_humi(&T,&H);
             MOLED.Print(0,4,"T:%3.1lf H:%3.1lf",T,H);
-            MOLED.Print(0,6,"%02d:%02d:%02d",time1.get_hour(),time1.get_min(),sec_t);
+
+
+            MOLED.Print(0,6,"T:%4.1lf",M865.get_sensor_temp());
+//            MOLED.Print(0,6,"%02d:%02d:%02d",time1.get_hour(),time1.get_min(),sec_t);
 
             MOLED.Print(0,0,"T:%4.1lf",DHT11.get_sensor_temp());
 

@@ -35,14 +35,14 @@
 #define MAX31865_FAULT_RTDINLOW       0x08
 #define MAX31865_FAULT_OVUV           0x04
 
-MAX31865::MAX31865(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx,numwires wires, uint16_t BaudRate) {
+MAX31865::MAX31865(SPI_BASE *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx,numwires wires, uint16_t BaudRate) {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
     this->wire_num=wires;
     this->CSPin.init(PORTx,Pinx,GPIO_Mode_OUT);
 }
 
-MAX31865::MAX31865(SPI *SPIx, uint8_t CSpin,numwires wires, uint16_t BaudRate) {
+MAX31865::MAX31865(SPI_BASE *SPIx, uint8_t CSpin,numwires wires, uint16_t BaudRate) {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
     this->wire_num=wires;
@@ -59,7 +59,7 @@ void MAX31865::init() {
     }
 }
 
-void MAX31865::init(SPI *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx,numwires wires, uint16_t BaudRate) {
+void MAX31865::init(SPI_BASE *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx,numwires wires, uint16_t BaudRate) {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
     this->wire_num=wires;
@@ -70,7 +70,7 @@ void MAX31865::init(SPI *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx,numwires wires
     this->default_config();
 }
 
-void MAX31865::init(SPI *SPIx,uint8_t CSpin,numwires wires,uint16_t BaudRate)
+void MAX31865::init(SPI_BASE *SPIx,uint8_t CSpin,numwires wires,uint16_t BaudRate)
 {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
@@ -83,7 +83,7 @@ void MAX31865::init(SPI *SPIx,uint8_t CSpin,numwires wires,uint16_t BaudRate)
 }
 
 void MAX31865::default_config(){
-    this->config(MAX31865::MODE::PT100);
+    this->config(MAX31865::MODE::PT100,430);
 }
 
 void MAX31865::sensor_init() {
@@ -96,13 +96,14 @@ void MAX31865::sensor_init() {
     this->spix->Queue_end();
 }
 
-void MAX31865::config(MAX31865::MODE mode, float RTDAx, float RTDBx) {
+void MAX31865::config(MAX31865::MODE mode, float RTDAx, float RTDBx,uint16_t ref) {
     this->modex=mode;
     this->RTD_A=RTDAx;
     this->RTD_B=RTDBx;
+    this->REF=ref;
 }
 
-void MAX31865::config(MAX31865::MODE mode) {
+void MAX31865::config(MAX31865::MODE mode,uint16_t ref) {
     this->modex=mode;
     if(mode==MAX31865::MODE::PT100)
     {
@@ -112,6 +113,7 @@ void MAX31865::config(MAX31865::MODE mode) {
         this->RTD_A= 3.9083e-3;
         this->RTD_B=-5.775e-7;
     }
+    this->REF=ref;
 }
 //Ê¹ÄÜÆ«Ö´µçÑ¹
 void MAX31865::enableBias(uint8_t b)
