@@ -10,8 +10,8 @@
 #include "SHT3x.h"
 #include "MS5805.h"
 #include "DS18B20.h"
-#include "RD_EH32.h"
 #include "MAX31865.h"
+#include "Timer.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -42,11 +42,8 @@ TaskHandle_t Task2Task_Handler;
 
 _OutPut_        led(GPIOE6);
 _USART_         U1(USART1,115200);
-_USART_         U4(UART4,9600);
 Software_IIC    SIIC1(GPIOB4,GPIOB5);
 OLED_SSD1306    MOLED(&SIIC1,OLED_SSD1306::Queue::OWN_Queue,2);
-Software_IIC    SIIC2(GPIOE4,GPIOE5);
-FM24Cxx         FM24C64(&SIIC2);
 Software_IIC    SIIC3(GPIOE2,GPIOE3);
 RTC_DS32xx      time1(&SIIC3);
 Software_IIC    SIIC4(GPIOD1,GPIOD0);
@@ -54,38 +51,39 @@ SHT3x           SHT35(&SIIC4);
 Software_IIC    SIIC5(GPIOD11,GPIOD10);
 MS5805          MMS5805(&SIIC5);
 DS18B20         DHT11(GPIOD7);
-RD_EH32         MRDEH32(&U4);
 SPI_S           MSPI(GPIOC0,GPIOC2,GPIOC3);
 MAX31865        M865(&MSPI,GPIOC1);
+Timer           MTIM(TIM2,5000-1,8400-1);
 
 std::string asdasd="123456";
-std::string eprom="FM24C64 text";
+
+void asda()
+{
+    led.change();
+}
+
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);					//初始化延时函数
 
-    //U1.set_send_DMA();
-    U1.write("adsda321s3a1d3a1sd3sd\r\n");
     U1.write((uint8_t *)asdasd.data(),5);
-    FM24C64.init();
-    FM24C64.writestr(0,eprom);
-    std::string text;
-    FM24C64.readstr(0,&text,eprom.length());
     MOLED.init();
     MOLED.Fill(0xff);
     delay_ms(1000);
     MOLED.Fill(0x00);
-//    time1.set_date(2022,10,24);
-//    time1.set_time(16,50,15);
     SHT35.init();
     MMS5805.init();
     DHT11.init();
 
+    MTIM.upload_extern_fun(asda);
+
+    MTIM.Timer_extern_fun(std::bind(&_OutPut_::change, &led));
+
     MSPI.config(SPI_S::CP::OL_0_HA_0);
     M865.init();
     M865.config(MAX31865::PT100,390);
-
+    MTIM.set_NVIC(true);
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -132,7 +130,6 @@ void start_task(void *pvParameters)
         {
 //            U4.println("%4d-%2d-%2d",time1.get_year(),time1.get_month(),time1.get_day());
 //            U4.println("%2d:%2d:%2d",time1.get_hour(),time1.get_min(),time1.get_sec());
-            led.change();
             sec_t=time1.get_sec();
             MOLED.Queue_star();
             float MT=2.5,MP=3.4;

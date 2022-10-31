@@ -1616,6 +1616,30 @@ HARDWARE/Src/SPI.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.s
 .PHONY : HARDWARE/Src/SPI.cpp.s
 
+HARDWARE/Src/Timer.obj: HARDWARE/Src/Timer.cpp.obj
+.PHONY : HARDWARE/Src/Timer.obj
+
+# target to build an object file
+HARDWARE/Src/Timer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.obj
+.PHONY : HARDWARE/Src/Timer.cpp.obj
+
+HARDWARE/Src/Timer.i: HARDWARE/Src/Timer.cpp.i
+.PHONY : HARDWARE/Src/Timer.i
+
+# target to preprocess a source file
+HARDWARE/Src/Timer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.i
+.PHONY : HARDWARE/Src/Timer.cpp.i
+
+HARDWARE/Src/Timer.s: HARDWARE/Src/Timer.cpp.s
+.PHONY : HARDWARE/Src/Timer.s
+
+# target to generate assembly for a file
+HARDWARE/Src/Timer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.s
+.PHONY : HARDWARE/Src/Timer.cpp.s
+
 HARDWARE/Src/USART.obj: HARDWARE/Src/USART.cpp.obj
 .PHONY : HARDWARE/Src/USART.obj
 
@@ -2539,6 +2563,9 @@ help:
 	@echo ... HARDWARE/Src/SPI.obj
 	@echo ... HARDWARE/Src/SPI.i
 	@echo ... HARDWARE/Src/SPI.s
+	@echo ... HARDWARE/Src/Timer.obj
+	@echo ... HARDWARE/Src/Timer.i
+	@echo ... HARDWARE/Src/Timer.s
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s

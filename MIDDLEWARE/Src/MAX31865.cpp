@@ -150,7 +150,7 @@ uint16_t MAX31865::readRegister16(uint8_t addr) const
     uint8_t buffer[2] = {0, 0};
     addr &= 0x7F;                             // make sure top bit is 0
     this->CSPin.set_output(LOW);
-    this->spix->ReadWriteDATA(addr);                  //发送读取状态寄存器命令
+    this->spix->ReadWriteDATA(addr);   //发送读取状态寄存器命令
     buffer[0] = this->spix->ReadWriteDATA(0Xff);
     buffer[1] = this->spix->ReadWriteDATA(0Xff);
     this->CSPin.set_output(HIGH);
@@ -191,7 +191,7 @@ uint16_t MAX31865::readRTD()
     uint8_t t = this->readRegister8(MAX31856_CONFIG_REG);
     t |= MAX31856_CONFIG_1SHOT;
     this->writeRegister8(MAX31856_CONFIG_REG, t);
-    delay_ms(70);                                   //单次转换读取时间在片选信号拉高后在50HZ工作模式下需要约62ms，60hz约52ms
+    delay_ms(70);//单次转换读取时间在片选信号拉高后在50HZ工作模式下需要约62ms，60hz约52ms
     uint16_t rtd = this->readRegister16(MAX31856_RTDMSB_REG);
     // remove fault
     rtd >>= 1;

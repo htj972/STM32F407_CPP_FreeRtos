@@ -191,14 +191,14 @@ uint8_t SPI_S::SOFT_SPI_RW_MODE0( uint8_t write_dat )
         else
             this->MOSI.set_output(LOW);
         write_dat <<= 1;
-        delay_us(10);
+        delay_us(1);
         this->SCK.set_output(HIGH);
         read_dat <<= 1;
         if( this->MISO.get_input() )
             read_dat++;
-        delay_us(10);
+        delay_us(1);
         this->SCK.set_output(LOW);
-        delay_us(10);
+        delay_us(1);
         //asm("nop");//__asm__("nop");
     }
     return read_dat;
@@ -219,12 +219,12 @@ uint8_t SPI_S::SOFT_SPI_RW_MODE1(uint8_t write_dat)
             this->MOSI.set_output(LOW);   //若最到位为低，则输出低
         }
         write_dat <<= 1;     // 低一位移位到最高位
-        delay_us(10);
+        delay_us(1);
         this->SCK.set_output(LOW);     //拉低时钟
         Temp <<= 1;     //数据左移
         if( this->MISO.get_input() )
             Temp++;     //若从从机接收到高电平，数据自加一
-        delay_us(10);
+        delay_us(1);
     }
     return (Temp);     //返回数据
 }
@@ -243,12 +243,12 @@ uint8_t SPI_S::SOFT_SPI_RW_MODE2(uint8_t write_dat)
             this->MOSI.set_output(LOW);   //若最到位为低，则输出低
         }
         write_dat <<= 1;     // 低一位移位到最高位
-        delay_us(10);
+        delay_us(1);
         this->SCK.set_output(LOW);     //拉低时钟
         Temp <<= 1;     //数据左移
         if( this->MISO.get_input() )
             Temp++;     //若从从机接收到高电平，数据自加一
-        delay_us(10);
+        delay_us(1);
         this->SCK.set_output(HIGH);     //拉高时钟
     }
     return (Temp);     //返回数据
@@ -265,12 +265,12 @@ uint8_t SPI_S::SOFT_SPI_RW_MODE3( uint8_t write_dat )
         else
             this->MOSI.set_output(LOW);
         write_dat <<= 1;
-        delay_us(10);
+        delay_us(1);
         this->SCK.set_output(HIGH);
         read_dat <<= 1;
         if(  this->MISO.get_input()  )
             read_dat++;
-        delay_us(10);
+        delay_us(1);
         //asm("nop");//__asm__("nop");
     }
     return read_dat;
