@@ -32,11 +32,11 @@ public:
 class _InPut_ {
 private:
     _GPIO_ GPIO;
-    NVIC_InitTypeDef   NVIC_InitStructure;
-    EXTI_InitTypeDef   EXTI_InitStructure;
-    uint8_t Down_level;
-    uint8_t pin_num;
-    bool setted;
+    NVIC_InitTypeDef   NVIC_InitStructure{};
+    EXTI_InitTypeDef   EXTI_InitStructure{};
+    uint8_t Down_level{};
+    uint8_t pin_num{};
+    bool setted{};
 public:
     _InPut_(GPIO_TypeDef* PORTx,uint32_t Pinx,uint8_t Hi_Lo=LOW);
     explicit _InPut_(uint8_t Pinx,uint8_t Hi_Lo=LOW);

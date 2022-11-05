@@ -8,10 +8,10 @@
 #include "FM24Cxx.h"
 #include "RTC_DS3231.h"
 #include "SHT3x.h"
-#include "MS5805.h"
-#include "DS18B20.h"
 #include "MAX31865.h"
-#include "Timer.h"
+#include "PWM.h"
+#include "Temp_ctrl.h"
+#include "SD_CARD.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -48,19 +48,15 @@ Software_IIC    SIIC3(GPIOE2,GPIOE3);
 RTC_DS32xx      time1(&SIIC3);
 Software_IIC    SIIC4(GPIOD1,GPIOD0);
 SHT3x           SHT35(&SIIC4);
-Software_IIC    SIIC5(GPIOD11,GPIOD10);
-MS5805          MMS5805(&SIIC5);
-DS18B20         DHT11(GPIOD7);
 SPI_S           MSPI(GPIOC0,GPIOC2,GPIOC3);
 MAX31865        M865(&MSPI,GPIOC1);
-Timer           MTIM(TIM2,5000-1,8400-1);
+PWM_H           MPWM(TIM10,100);
+Temp_ctrl       MCTRL(&M865,&MPWM,1);
+SPI             spi2(SPI2);
+SD_CARD         SD1(&spi2,GPIOB12);
 
 std::string asdasd="123456";
 
-void asda()
-{
-    led.change();
-}
 
 int main()
 {
@@ -73,17 +69,32 @@ int main()
     delay_ms(1000);
     MOLED.Fill(0x00);
     SHT35.init();
-    MMS5805.init();
-    DHT11.init();
+    MPWM.config(1);
 
-    MTIM.upload_extern_fun(asda);
-
-    MTIM.Timer_extern_fun(std::bind(&_OutPut_::change, &led));
+    MCTRL.PID_ENABLE_Range(1);
+    MCTRL.init();
+    MCTRL.set_target(40);
 
     MSPI.config(SPI_S::CP::OL_0_HA_0);
     M865.init();
     M865.config(MAX31865::PT100,390);
-    MTIM.set_NVIC(true);
+
+//    spi2.config(GPIOB13,GPIOB14,GPIOB15);
+//    spi2.init(SPI2);
+    spi2.ReadWriteDATA(0xff);
+    uint8_t ret=SD1.init();
+    while(ret)//检测不到SD卡
+    {
+        MOLED.Print(0,0,"r:%x",ret);
+        ret=SD1.init();
+        delay_ms(200);
+        led.change();
+    }
+    MOLED.Print(0,2,"S:%d",SD1.GetSectorCount());//得到扇区数
+    SD1.writestr(5,asdasd);
+    uint8_t data[20];
+    SD1.read(5,data,asdasd.length());
+    MOLED.Print(0,0,"D:%s",data);
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -123,28 +134,19 @@ void start_task(void *pvParameters)
     uint8_t sec_t=0;
     while(true)
     {
-        taskENTER_CRITICAL();           //进入临界区
-        taskEXIT_CRITICAL();            //退出临界区
         vTaskDelay(250/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         if(sec_t!=time1.get_sec())
         {
-//            U4.println("%4d-%2d-%2d",time1.get_year(),time1.get_month(),time1.get_day());
-//            U4.println("%2d:%2d:%2d",time1.get_hour(),time1.get_min(),time1.get_sec());
+            led.change();
             sec_t=time1.get_sec();
             MOLED.Queue_star();
-            float MT=2.5,MP=3.4;
-            MMS5805.get_temp_pres(&MT,&MP);
-            MOLED.Print(0,2,"T:%3.1lf P:%5.1f",MT,MP);
 
             float T=2.5,H=3.4;
             SHT35.get_temp_humi(&T,&H);
             MOLED.Print(0,4,"T:%3.1lf H:%3.1lf",T,H);
 
-
             MOLED.Print(0,6,"T:%4.1lf",M865.get_sensor_temp());
 //            MOLED.Print(0,6,"%02d:%02d:%02d",time1.get_hour(),time1.get_min(),sec_t);
-
-            MOLED.Print(0,0,"T:%4.1lf",DHT11.get_sensor_temp());
 
             MOLED.Queue_end();
         }
@@ -158,9 +160,10 @@ void start_task(void *pvParameters)
     while(true)
     {
         task2_num++;					//任务2执行次数加1 注意task2_num1加到255的时候会清零！！
-        taskENTER_CRITICAL();           //进入临界区
-        taskEXIT_CRITICAL();            //退出临界区
         vTaskDelay(200/portTICK_RATE_MS );
+
+        MCTRL.upset();
+
         U1<<U1.read_data();
         MOLED.Queue_star();
         //MOLED.Print(0,0,"%04d",task2_num);

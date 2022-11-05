@@ -17,6 +17,9 @@ private:
     uint16_t wait_times=500;
     uint16_t BaudRatex{};
     std::string get_data;
+protected:
+    _GPIO_ CSPin;
+    SPI    *spix{};
 public:
     enum TYPE{
         W25Q80 	=0XEF13,
@@ -25,8 +28,6 @@ public:
         W25Q64 	=0XEF16,
         W25Q128	=0XEF17,
     };
-    _GPIO_ CSPin;
-    SPI    *spix{};
 
     W25QXX(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx,uint16_t BaudRate=0);
     W25QXX(SPI *SPIx,uint8_t CSpin,uint16_t BaudRate=0);

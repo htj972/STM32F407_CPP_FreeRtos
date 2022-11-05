@@ -10,6 +10,11 @@
 
 SPI::SPI(SPI_TypeDef* SPI,Queue mode,uint16_t DataSize,uint8_t SPI_BaudRatePrescaler) {
     this->init(SPI,mode,DataSize,SPI_BaudRatePrescaler);
+    this->config_flag = 0;
+}
+
+SPI::SPI() {
+    this->config_flag = 0;
 }
 
 void SPI::config(GPIO_TypeDef *PORT_SCK,uint32_t Pin_SCK,\
@@ -25,30 +30,35 @@ void SPI::config(uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI) {
     this->SCK.init(Pin_SCK,GPIO_Mode_AF);
     this->MISO.init(Pin_MISO,GPIO_Mode_AF);
     this->MOSI.init(Pin_MOSI,GPIO_Mode_AF);
-    this->config_flag=1;
-}
-
-void SPI::default_config() {
     if (this->SPIx == SPI1) {
-        if (this->config_flag == 0)
-            this->config(GPIOA5,GPIOA6,GPIOA7);
         this->SCK.set_AFConfig(GPIO_AF_SPI1);
         this->MISO.set_AFConfig(GPIO_AF_SPI1);
         this->MOSI.set_AFConfig(GPIO_AF_SPI1);
     }
     else if (this->SPIx == SPI2) {
-        if (this->config_flag == 0)
-            this->config(GPIOB10,GPIOC2,GPIOC3);
         this->SCK.set_AFConfig(GPIO_AF_SPI2);
         this->MISO.set_AFConfig(GPIO_AF_SPI2);
         this->MOSI.set_AFConfig(GPIO_AF_SPI2);
     }
     else if (this->SPIx == SPI3) {
-        if (this->config_flag == 0)
-            this->config(GPIOC10,GPIOC11,GPIOC12);
         this->SCK.set_AFConfig(GPIO_AF_SPI3);
         this->MISO.set_AFConfig(GPIO_AF_SPI3);
         this->MOSI.set_AFConfig(GPIO_AF_SPI3);
+    }
+    this->config_flag=1;
+}
+
+void SPI::default_config() {
+    if (this->config_flag == 0) {
+        if (this->SPIx == SPI1) {
+            this->config(GPIOA5, GPIOA6, GPIOA7);
+        } else if (this->SPIx == SPI2) {
+
+//            this->config(GPIOB10, GPIOC2, GPIOC3);
+            this->config(GPIOB13,GPIOB14,GPIOB15);
+        } else if (this->SPIx == SPI3) {
+            this->config(GPIOC10, GPIOC11, GPIOC12);
+        }
     }
 }
 

@@ -125,7 +125,6 @@ typedef enum
 }BitAction;
 #define IS_GPIO_BIT_ACTION(ACTION) (((ACTION) == Bit_RESET) || ((ACTION) == Bit_SET))
 
-
 /** 
   * @brief   GPIO Init structure definition  
   */ 

@@ -37,11 +37,12 @@ set(CMAKE_CXX_STANDARD 11)
 add_definitions(-DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx)
 
 file(GLOB_RECURSE SOURCES "startup/*.*" "USER/*.*" "CORE/*.*" "FWLIB/*.*" "FATFS/*.*"
-                          "SYSTEM/*.*" "HARDWARE/*.*" "FreeRTOS/*.*" "MIDDLEWARE/*.*")
+                          "SYSTEM/*.*" "HARDWARE/*.*" "FreeRTOS/*.*" "MIDDLEWARE/*.*"
+                          "SOFTWARE/*.*")
 
 include_directories(Core/Inc FWLIB/inc SYSTEM/Inc USER/Inc HARDWARE/Inc FATFS/Inc
                     FreeRTOS/FreeRTOS_Inc MIDDLEWARE/Inc MIDDLEWARE/BASE_CLASS/Inc
-                    HARDWARE/BASE_CLASS/Inc)
+                    HARDWARE/BASE_CLASS/Inc SOFTWARE/Inc)
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 

@@ -57,10 +57,7 @@ void _OutPut_::set_value(uint8_t Hi_Lo) {
 
 void _OutPut_::change() {
     this->value=!this->value;
-    if(this->value==OFF)
-        this->GPIO.set_output(this->default_mode);
-    else
-        this->GPIO.set_output(!this->default_mode);
+    this->GPIO.set_change();
 }
 
 uint8_t _OutPut_::get() const {

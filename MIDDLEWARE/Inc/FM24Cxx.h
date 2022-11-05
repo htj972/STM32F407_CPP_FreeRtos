@@ -13,8 +13,9 @@
 class FM24Cxx: public Storage_BASE{
 private:
     uint16_t  EE_TYPE=0;
-public:
+protected:
     Software_IIC *IIC{};
+public:
     enum TYPE{
         AT24C01		=127,
         AT24C02		=255,

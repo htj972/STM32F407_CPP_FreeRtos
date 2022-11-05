@@ -42,17 +42,20 @@ void RD_EH32::Reverse(bool sata) {
 }
 
 void RD_EH32::Hori_table(int n,...) {
-    unsigned char str[256]={0x1B,0x44};
+    unsigned char str[32]={0x1B,0x44};
+    for(auto & ii : str)
+        ii=0;
     uint8_t data_num=0;
     va_list arg_ptr;
     int nArgValue;
     va_start(arg_ptr, n);
+    str[2+data_num++]=n;
     do
     {
         nArgValue = va_arg(arg_ptr, int);
         if(nArgValue<0)nArgValue=0;
-        str[2+data_num++]=nArgValue;
-        if(data_num>256-3-1)break;
+        else str[2+data_num++]=nArgValue;
+        if(data_num>32-3-1)break;
     } while (nArgValue != 0);
     str[2+data_num]=0;
     va_end(arg_ptr);

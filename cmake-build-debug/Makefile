@@ -1400,6 +1400,30 @@ HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.s
 .PHONY : HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.s
 
+HARDWARE/BASE_CLASS/Src/PWM_BASE.obj: HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.obj
+.PHONY : HARDWARE/BASE_CLASS/Src/PWM_BASE.obj
+
+# target to build an object file
+HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.obj
+.PHONY : HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.obj
+
+HARDWARE/BASE_CLASS/Src/PWM_BASE.i: HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.i
+.PHONY : HARDWARE/BASE_CLASS/Src/PWM_BASE.i
+
+# target to preprocess a source file
+HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.i
+.PHONY : HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.i
+
+HARDWARE/BASE_CLASS/Src/PWM_BASE.s: HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.s
+.PHONY : HARDWARE/BASE_CLASS/Src/PWM_BASE.s
+
+# target to generate assembly for a file
+HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.s
+.PHONY : HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.s
+
 HARDWARE/BASE_CLASS/Src/SPI_BASE.obj: HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj
 .PHONY : HARDWARE/BASE_CLASS/Src/SPI_BASE.obj
 
@@ -1592,6 +1616,30 @@ HARDWARE/Src/Out_In_Put.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.s
 .PHONY : HARDWARE/Src/Out_In_Put.cpp.s
 
+HARDWARE/Src/PWM.obj: HARDWARE/Src/PWM.cpp.obj
+.PHONY : HARDWARE/Src/PWM.obj
+
+# target to build an object file
+HARDWARE/Src/PWM.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.obj
+.PHONY : HARDWARE/Src/PWM.cpp.obj
+
+HARDWARE/Src/PWM.i: HARDWARE/Src/PWM.cpp.i
+.PHONY : HARDWARE/Src/PWM.i
+
+# target to preprocess a source file
+HARDWARE/Src/PWM.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.i
+.PHONY : HARDWARE/Src/PWM.cpp.i
+
+HARDWARE/Src/PWM.s: HARDWARE/Src/PWM.cpp.s
+.PHONY : HARDWARE/Src/PWM.s
+
+# target to generate assembly for a file
+HARDWARE/Src/PWM.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.s
+.PHONY : HARDWARE/Src/PWM.cpp.s
+
 HARDWARE/Src/SPI.obj: HARDWARE/Src/SPI.cpp.obj
 .PHONY : HARDWARE/Src/SPI.obj
 
@@ -1664,6 +1712,30 @@ HARDWARE/Src/USART.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s
 .PHONY : HARDWARE/Src/USART.cpp.s
 
+MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.obj: MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.obj
+
+# target to build an object file
+MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj
+
+MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.i: MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.i
+
+# target to preprocess a source file
+MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.i
+
+MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.s: MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.s
+
+# target to generate assembly for a file
+MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.s
+
 MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj
 
@@ -1711,6 +1783,30 @@ MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s
 MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s
+
+MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj
+
+MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.i: MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.i
+
+MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.s
 
 MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.obj
@@ -2120,6 +2216,30 @@ MIDDLEWARE/Src/RTC_DS3231.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.s
 .PHONY : MIDDLEWARE/Src/RTC_DS3231.cpp.s
 
+MIDDLEWARE/Src/SD_CARD.obj: MIDDLEWARE/Src/SD_CARD.cpp.obj
+.PHONY : MIDDLEWARE/Src/SD_CARD.obj
+
+# target to build an object file
+MIDDLEWARE/Src/SD_CARD.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj
+.PHONY : MIDDLEWARE/Src/SD_CARD.cpp.obj
+
+MIDDLEWARE/Src/SD_CARD.i: MIDDLEWARE/Src/SD_CARD.cpp.i
+.PHONY : MIDDLEWARE/Src/SD_CARD.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/SD_CARD.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.i
+.PHONY : MIDDLEWARE/Src/SD_CARD.cpp.i
+
+MIDDLEWARE/Src/SD_CARD.s: MIDDLEWARE/Src/SD_CARD.cpp.s
+.PHONY : MIDDLEWARE/Src/SD_CARD.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/SD_CARD.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.s
+.PHONY : MIDDLEWARE/Src/SD_CARD.cpp.s
+
 MIDDLEWARE/Src/SHT3x.obj: MIDDLEWARE/Src/SHT3x.cpp.obj
 .PHONY : MIDDLEWARE/Src/SHT3x.obj
 
@@ -2191,6 +2311,30 @@ MIDDLEWARE/Src/modbus.s: MIDDLEWARE/Src/modbus.cpp.s
 MIDDLEWARE/Src/modbus.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.s
 .PHONY : MIDDLEWARE/Src/modbus.cpp.s
+
+SOFTWARE/Src/Temp_ctrl.obj: SOFTWARE/Src/Temp_ctrl.cpp.obj
+.PHONY : SOFTWARE/Src/Temp_ctrl.obj
+
+# target to build an object file
+SOFTWARE/Src/Temp_ctrl.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.obj
+.PHONY : SOFTWARE/Src/Temp_ctrl.cpp.obj
+
+SOFTWARE/Src/Temp_ctrl.i: SOFTWARE/Src/Temp_ctrl.cpp.i
+.PHONY : SOFTWARE/Src/Temp_ctrl.i
+
+# target to preprocess a source file
+SOFTWARE/Src/Temp_ctrl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.i
+.PHONY : SOFTWARE/Src/Temp_ctrl.cpp.i
+
+SOFTWARE/Src/Temp_ctrl.s: SOFTWARE/Src/Temp_ctrl.cpp.s
+.PHONY : SOFTWARE/Src/Temp_ctrl.s
+
+# target to generate assembly for a file
+SOFTWARE/Src/Temp_ctrl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.s
+.PHONY : SOFTWARE/Src/Temp_ctrl.cpp.s
 
 SYSTEM/Src/DMA.obj: SYSTEM/Src/DMA.c.obj
 .PHONY : SYSTEM/Src/DMA.obj
@@ -2536,6 +2680,9 @@ help:
 	@echo ... HARDWARE/BASE_CLASS/Src/HARD_BASE.obj
 	@echo ... HARDWARE/BASE_CLASS/Src/HARD_BASE.i
 	@echo ... HARDWARE/BASE_CLASS/Src/HARD_BASE.s
+	@echo ... HARDWARE/BASE_CLASS/Src/PWM_BASE.obj
+	@echo ... HARDWARE/BASE_CLASS/Src/PWM_BASE.i
+	@echo ... HARDWARE/BASE_CLASS/Src/PWM_BASE.s
 	@echo ... HARDWARE/BASE_CLASS/Src/SPI_BASE.obj
 	@echo ... HARDWARE/BASE_CLASS/Src/SPI_BASE.i
 	@echo ... HARDWARE/BASE_CLASS/Src/SPI_BASE.s
@@ -2560,6 +2707,9 @@ help:
 	@echo ... HARDWARE/Src/Out_In_Put.obj
 	@echo ... HARDWARE/Src/Out_In_Put.i
 	@echo ... HARDWARE/Src/Out_In_Put.s
+	@echo ... HARDWARE/Src/PWM.obj
+	@echo ... HARDWARE/Src/PWM.i
+	@echo ... HARDWARE/Src/PWM.s
 	@echo ... HARDWARE/Src/SPI.obj
 	@echo ... HARDWARE/Src/SPI.i
 	@echo ... HARDWARE/Src/SPI.s
@@ -2569,12 +2719,18 @@ help:
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.s
@@ -2626,6 +2782,9 @@ help:
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.obj
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.i
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.s
+	@echo ... MIDDLEWARE/Src/SD_CARD.obj
+	@echo ... MIDDLEWARE/Src/SD_CARD.i
+	@echo ... MIDDLEWARE/Src/SD_CARD.s
 	@echo ... MIDDLEWARE/Src/SHT3x.obj
 	@echo ... MIDDLEWARE/Src/SHT3x.i
 	@echo ... MIDDLEWARE/Src/SHT3x.s
@@ -2635,6 +2794,9 @@ help:
 	@echo ... MIDDLEWARE/Src/modbus.obj
 	@echo ... MIDDLEWARE/Src/modbus.i
 	@echo ... MIDDLEWARE/Src/modbus.s
+	@echo ... SOFTWARE/Src/Temp_ctrl.obj
+	@echo ... SOFTWARE/Src/Temp_ctrl.i
+	@echo ... SOFTWARE/Src/Temp_ctrl.s
 	@echo ... SYSTEM/Src/DMA.obj
 	@echo ... SYSTEM/Src/DMA.i
 	@echo ... SYSTEM/Src/DMA.s

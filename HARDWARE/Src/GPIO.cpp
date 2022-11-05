@@ -93,6 +93,10 @@ void _GPIO_::set_output(uint8_t Hi_Lo) const {
         GPIO_SetBits(this->PORTx,this->GPIOx);
 }
 
+void _GPIO_::set_change() const{
+    GPIO_ToggleBits(this->PORTx,this->GPIOx);
+}
+
 uint8_t _GPIO_::get_output() const {
     return GPIO_ReadOutputDataBit(this->PORTx, this->GPIOx);
 }

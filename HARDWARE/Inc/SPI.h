@@ -11,11 +11,7 @@
 #include "SPI_BASE.h"
 
 class SPI: public SPI_BASE{
-
 private:
-    _GPIO_ SCK;
-    _GPIO_ MISO;
-    _GPIO_ MOSI;
     SPI_TypeDef* SPIx{};
     SPI_InitTypeDef SPI_InitStructure{};
     uint8_t config_flag=0;
@@ -27,8 +23,14 @@ private:
 
     void default_config();
 
+protected:
+    _GPIO_ SCK;
+    _GPIO_ MISO;
+    _GPIO_ MOSI;
+
 public:
     explicit SPI(SPI_TypeDef* SPI,Queue mode =Queue::OWN_Queue,uint16_t DataSize=SPI_DataSize_8b,uint8_t SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_8);
+    SPI();
     ~SPI()=default;
     void init(SPI_TypeDef* SPI,Queue mode =Queue::OWN_Queue,uint16_t DataSize=SPI_DataSize_8b,uint8_t SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_8);
     void init(Queue mode =Queue::OWN_Queue);
@@ -42,7 +44,6 @@ public:
     void set_send_DMA(FunctionalState enable);
     void set_dma_streamx(DMA_Stream_TypeDef* DMAy_Stream);
     void DMA_WriteData(uint16_t *TxData,uint16_t len);
-
 };
 
 class SPI_S: public SPI_BASE{

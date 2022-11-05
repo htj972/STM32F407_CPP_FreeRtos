@@ -6,8 +6,6 @@
 
 #include "Timer.h"
 
-#include <utility>
-
 #define Timer_Max_num 14
 
 
@@ -15,10 +13,15 @@ Timer::Timer(TIM_TypeDef *TIMx, uint32_t arr, uint16_t psc, bool nvic) {
     this->init(TIMx, arr, psc, nvic);
 }
 
-void Timer::init(TIM_TypeDef* TIMx,uint32_t arr,uint16_t psc,bool nvic) {
+Timer::Timer() {
+    this->config_flag= false;
+}
 
+void Timer::init(TIM_TypeDef* TIMx,uint32_t arr,uint16_t psc,bool nvic) {
     this->Timx=TIMx;
+    this->timer_num=0;
     this->RCC_init();
+    this->config_flag= true;
     Timer::Timer_extern_init();
     TIM_TimeBaseInitStructure.TIM_Period = arr; 	//自动重装载值
     TIM_TimeBaseInitStructure.TIM_Prescaler=psc;  //定时器分频
@@ -155,6 +158,10 @@ void Timer::Timer_extern_fun(std::function<void()> fun) {
     TIMER_STRUCT.funCPP[this->timer_num%Timer_Max_num]=std::move(fun);
     TIMER_STRUCT.run_mode[this->timer_num%Timer_Max_num]=extern_MODE::CPP_fun;
 //    test[this->timer_num>=Timer_Max_num+1?this->timer_num:Timer_Max_num]=std::move(localfunc);
+}
+
+bool Timer::get_config() const {
+    return this->config_flag;
 }
 
 

@@ -32,6 +32,7 @@ public:
     void set_PuPD(GPIOPuPd_TypeDef PuPd);
     void set_pinmode(GPIOMode_TypeDef Mode);
     void set_output(uint8_t Hi_Lo) const;
+    void set_change() const;
     uint8_t get_output() const;
     uint8_t get_input() const;
 

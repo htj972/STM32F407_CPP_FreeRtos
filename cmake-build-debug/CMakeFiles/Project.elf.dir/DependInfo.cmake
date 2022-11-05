@@ -34,6 +34,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "../MIDDLEWARE/Inc"
   "../MIDDLEWARE/BASE_CLASS/Inc"
   "../HARDWARE/BASE_CLASS/Inc"
+  "../SOFTWARE/Inc"
   )
 
 # The set of dependency files which are needed:
@@ -97,6 +98,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/stm32f4xx_it.c" "CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/system_stm32f4xx.c" "CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/ADC.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/CRC.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj.d"
@@ -105,11 +107,14 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/IIC.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/ONE_Wire.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/Out_In_Put.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/PWM.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/SPI.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/Timer.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/USART.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj.d"
@@ -127,9 +132,11 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RD_EH32.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RS485.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RTC_DS3231.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/SD_CARD.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/SHT3x.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/W25QXX.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/modbus.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Temp_ctrl.cpp" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/main.cpp" "CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj.d"
   )
 
