@@ -28,13 +28,19 @@
 W25QXX::W25QXX(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx, uint16_t BaudRate) {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
+    this->set_wait_time(20000);
     this->CSPin.init(PORTx,Pinx,GPIO_Mode_OUT);
 }
 
 W25QXX::W25QXX(SPI *SPIx, uint8_t CSpin, uint16_t BaudRate) {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
+    this->set_wait_time(20000);
     this->CSPin.init(CSpin,GPIO_Mode_OUT);
+}
+
+W25QXX::W25QXX() {
+    this->set_wait_time(20000);
 }
 
 void W25QXX::init() {
@@ -42,6 +48,8 @@ void W25QXX::init() {
     {
         this->CSPin.set_output(HIGH);
         this->spix->SetSpeed(this->BaudRatex);
+        this->PowerDown();
+        this->WAKEUP();
         W25QXX_TYPE=this->ReadID();	//读取FLASH ID.
     }
 }
@@ -52,6 +60,8 @@ void W25QXX::init(SPI *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx, uint16_t BaudRa
     this->CSPin.init(PORTx,Pinx,GPIO_Mode_OUT);
     this->CSPin.set_output(HIGH);
     this->spix->SetSpeed(BaudRate);
+    this->PowerDown();
+    this->WAKEUP();
     W25QXX_TYPE=this->ReadID();	//读取FLASH ID.
 }
 
@@ -62,6 +72,8 @@ void W25QXX::init(SPI *SPIx,uint8_t CSpin,uint16_t BaudRate)
     this->CSPin.init(CSpin,GPIO_Mode_OUT);
     this->CSPin.set_output(HIGH);
     this->spix->SetSpeed(BaudRate);
+    this->PowerDown();
+    this->WAKEUP();
     W25QXX_TYPE=this->ReadID();	//读取FLASH ID.
 }
 
@@ -126,13 +138,17 @@ void W25QXX::Write_Disable() const
 void W25QXX::Wait_Busy() const
 {
     uint16_t wait_times_t=this->wait_times;
-    while(wait_times_t){// 等待BUSY位清空
-        if((this->ReadSR()&0x01)==0x01)
-            break;
-        wait_times_t-=10;
-        if(wait_times_t<10)
-            break;
-        delay_ms(10);
+    uint16_t times_t=0;
+    while((this->ReadSR()&0x01)==0x01){// 等待BUSY位清空
+        times_t++;
+        if(times_t>=1000)
+        {
+            wait_times_t--;
+            times_t=0;
+            if(wait_times_t==0)
+                break;
+        }
+//        delay_us(1);
     }
 }
 //擦除整个芯片
@@ -181,6 +197,10 @@ void W25QXX::WAKEUP() const
 
 uint16_t W25QXX::GetID() const {
     return this->W25QXX_TYPE;
+}
+
+void W25QXX::set_wait_time(uint16_t time) {
+    this->wait_times=time;
 }
 //SPI在一页(0~65535)内写入少于256个字节的数据
 //在指定地址开始写入最大256字节的数据
@@ -233,6 +253,7 @@ void W25QXX::Write_NoCheck(uint32_t Addr,uint8_t* pBuffer,uint16_t NumByte) cons
 //pBuffer:数据存储区
 //WriteAddr:开始写入的地址(24bit)
 //NumByteToWrite:要写入的字节数(最大65535)
+//u8 W25QXX_BUFFER[4096];
 uint16_t W25QXX::write(uint32_t Addr, uint8_t *pBuffer, uint16_t NumByte) {
     uint32_t secpos;
     uint16_t secoff;
@@ -241,23 +262,24 @@ uint16_t W25QXX::write(uint32_t Addr, uint8_t *pBuffer, uint16_t NumByte) {
     secpos=Addr/4096;//扇区地址
     secoff=Addr%4096;//在扇区内的偏移
     secremain=4096-secoff;//扇区剩余空间大小
+    uint8_t W25QXX_BUF[4096];
     if(NumByte<=secremain)secremain=NumByte;//不大于4096个字节
+    this->spix->SetSpeed(BaudRatex);
     while(true)
     {
-        //this->read(secpos*4096,(uint8_t*)this->get_data.data(),4096);//读出整个扇区的内容
-        this->readstr(secpos*4096,&this->get_data,4096);
+        this->read(secpos*4096,W25QXX_BUF,4096);//读出整个扇区的内容
         for(i=0;i<secremain;i++)//校验数据
         {
-            if(this->get_data[secoff+i]!=0XFF)break;//需要擦除
+            if(W25QXX_BUF[secoff+i]!=0XFF)break;//需要擦除
         }
         if(i<secremain)//需要擦除
         {
             this->Erase_Sector(secpos);//擦除这个扇区
             for(i=0;i<secremain;i++)	   //复制
             {
-                this->get_data[i+secoff]=pBuffer[i];
+                W25QXX_BUF[i+secoff]=pBuffer[i];
             }
-            this->Write_NoCheck(secpos*4096,(uint8_t*)this->get_data.data(),4096);//写入整个扇区
+            this->Write_NoCheck(secpos*4096,W25QXX_BUF,4096);//写入整个扇区
 
         }else this->Write_NoCheck(Addr,pBuffer,secremain);//写已经擦除了的,直接写入扇区剩余区间.
         if(NumByte==secremain)break;//写入结束了
@@ -287,9 +309,9 @@ uint16_t W25QXX::write(uint32_t addr, uint8_t data) {
 void W25QXX::read(uint32_t Addr , uint8_t *pBuffer, uint16_t NumByte) {
     this->CSPin.set_output(LOW);     //使能器件
     this->spix->ReadWriteDATA(W25X_ReadData);     //发送读取命令
-    this->spix->ReadWriteDATA((u8)((Addr)>>16));  //发送24bit地址
-    this->spix->ReadWriteDATA((u8)((Addr)>>8));
-    this->spix->ReadWriteDATA((u8)Addr);
+    this->spix->ReadWriteDATA((uint8_t)((Addr)>>16));  //发送24bit地址
+    this->spix->ReadWriteDATA((uint8_t)((Addr)>>8));
+    this->spix->ReadWriteDATA((uint8_t)Addr);
     for(uint16_t i=0;i<NumByte;i++)
     {
         pBuffer[i]=this->spix->ReadWriteDATA(0XFF);//循环读数
@@ -306,6 +328,7 @@ uint8_t W25QXX::read(uint32_t addr) {
 void W25QXX::read(uint32_t addr, uint8_t *data) {
     this->read(addr,data,1);
 }
+
 
 
 

@@ -147,6 +147,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj"

@@ -1,10 +1,10 @@
 /**
 * @Author kokirika
-* @Name SD_CARD
+* @Name SD_SPI
 * @Date 2022-11-05
 **/
 
-#include "SD_CARD.h"
+#include "SD_SPI.h"
 
 // SD卡类型定义
 #define SD_TYPE_ERR     0X00
@@ -46,54 +46,55 @@
 #define MSD_RESPONSE_FAILURE       0xFF
 
 
-SD_CARD::SD_CARD(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx) {
+SD_SPI::SD_SPI(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx) {
     this->CSPinx.init(PORTx,Pinx,GPIO_Mode_OUT);
     this->spix=SPIx;
 }
 
-SD_CARD::SD_CARD(SPI *SPIx, uint8_t CSpin) {
+SD_SPI::SD_SPI(SPI *SPIx, uint8_t CSpin) {
     this->CSPinx.init(CSpin,GPIO_Mode_OUT);
     this->spix=SPIx;
 }
 
-uint8_t SD_CARD::init(SPI *SPIx,uint8_t CSpin)
+uint8_t SD_SPI::init(SPI *SPIx,uint8_t CSpin)
 {
     this->CSPinx.init(CSpin,GPIO_Mode_OUT);
     this->spix=SPIx;
     return this->Initialize();
 }
 
-uint8_t SD_CARD::init(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx) {
+uint8_t SD_SPI::init(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx) {
     this->CSPinx.init(PORTx,Pinx,GPIO_Mode_OUT);
     this->spix=SPIx;
     return this->Initialize();
 }
 
-uint8_t SD_CARD::init()
+uint8_t SD_SPI::init()
 {
     if(this->spix!= nullptr) {
+        this->DisSelect();
         return this->Initialize();
     }
     else return 0xaf;
 }
 //SD卡初始化的时候,需要低速
-void SD_CARD::SpeedLow()
+void SD_SPI::SpeedLow()
 {
     this->spix->SetSpeed(SPI_BaudRatePrescaler_256);//设置到低速模式
 }
 //SD卡正常工作的时候,可以高速了
-void SD_CARD::SpeedHigh()
+void SD_SPI::SpeedHigh()
 {
     this->spix->SetSpeed(SPI_BaudRatePrescaler_2);//设置到高速模式
 }
 //取消选择,释放SPI总线
-void SD_CARD::DisSelect()
+void SD_SPI::DisSelect()
 {
     this->CSPinx.set_output(HIGH);
     this->spix->ReadWriteDATA(0xff);
 }
 //选择sd卡,并且等待卡准备OK
-bool SD_CARD::Select()
+bool SD_SPI::Select()
 {
     this->CSPinx.set_output(LOW);
     if(this->WaitReady())return true;//等待成功
@@ -101,7 +102,7 @@ bool SD_CARD::Select()
     return false;
 }
 
-bool SD_CARD::WaitReady()
+bool SD_SPI::WaitReady()
 {
     uint32_t t=0;
     do
@@ -113,7 +114,7 @@ bool SD_CARD::WaitReady()
     return false;
 }
 //等待SD卡回应
-uint8_t SD_CARD::GetResponse(uint8_t Response)
+uint8_t SD_SPI::GetResponse(uint8_t Response)
 {
     uint16_t Count=0xFFFF;//等待次数
     while ((this->spix->ReadWriteDATA(0XFF)!=Response)&&Count)Count--;//等待得到准确的回应
@@ -123,9 +124,9 @@ uint8_t SD_CARD::GetResponse(uint8_t Response)
 //从sd卡读取一个数据包的内容
 //buf:数据缓存区
 //len:要读取的数据长度.
-bool SD_CARD::RecvData(uint8_t *buf,uint16_t len)
+bool SD_SPI::RecvData(uint8_t *buf,uint16_t len)
 {
-    if(this->GetResponse(0xFE))return false;//等待SD卡发回数据起始令牌0xFE
+    if(this->GetResponse(0xFE)!=MSD_RESPONSE_NO_ERROR)return false;//等待SD卡发回数据起始令牌0xFE
     while(len--)//开始接收数据
     {
         *buf=this->spix->ReadWriteDATA(0xFF);
@@ -139,10 +140,10 @@ bool SD_CARD::RecvData(uint8_t *buf,uint16_t len)
 //向sd卡写入一个数据包的内容 512字节
 //buf:数据缓存区
 //cmd:指令
-bool SD_CARD::SendBlock(uint8_t *buf,uint8_t cmd)
+bool SD_SPI::SendBlock(uint8_t *buf,uint8_t cmd)
 {
     uint16_t t;
-    if(this->WaitReady())return false;//等待准备失效
+    if(!this->WaitReady())return false;//等待准备失效
     this->spix->ReadWriteDATA(cmd);
     if(cmd!=0XFD)//不是结束指令
     {
@@ -158,7 +159,7 @@ bool SD_CARD::SendBlock(uint8_t *buf,uint8_t cmd)
 //输入: u8 cmd   命令
 //      u32 arg  命令参数
 //      u8 crc   crc校验值
-uint8_t SD_CARD::SendCmd(uint8_t cmd, uint32_t arg, uint8_t crc)
+uint8_t SD_SPI::SendCmd(uint8_t cmd, uint32_t arg, uint8_t crc)
 {
     uint8_t r1;
     uint8_t Retry;
@@ -183,7 +184,7 @@ uint8_t SD_CARD::SendCmd(uint8_t cmd, uint32_t arg, uint8_t crc)
 }
 //获取SD卡的CID信息，包括制造商信息
 //输入: u8 *cid_data(存放CID的内存，至少16Byte）
-bool SD_CARD::GetCID(uint8_t *cid_data)
+bool SD_SPI::GetCID(uint8_t *cid_data)
 {
     bool r1;
     //发CMD10命令，读CID
@@ -197,20 +198,21 @@ bool SD_CARD::GetCID(uint8_t *cid_data)
 }
 //获取SD卡的CSD信息，包括容量和速度信息
 //输入:u8 *cid_data(存放CID的内存，至少16Byte）
-bool SD_CARD::GetCSD(uint8_t *csd_data) {
-    bool r1;
+bool SD_SPI::GetCSD(uint8_t *csd_data) {
+    uint8_t r1;
     r1 = this->SendCmd(CMD9, 0, 0x01);//发CMD9命令，读CSD
     if (r1) {
         r1 = this->RecvData(csd_data, 16);//接收16个字节的数据
     }
     this->DisSelect();//取消片选
-    return r1;
+    if(r1>0)return false;
+    else return true;
 }
 //获取SD卡的总扇区数（扇区数）
 //返回值:0： 取容量出错
 //       其他:SD卡的容量(扇区数/512字节)
 //每扇区的字节数必为512，因为如果不是512，则初始化不能通过.
-uint32_t SD_CARD::GetSectorCount()
+uint32_t SD_SPI::GetSectorCount()
 {
     uint8_t csd[16];
     uint32_t Capacity;
@@ -232,7 +234,7 @@ uint32_t SD_CARD::GetSectorCount()
     return Capacity;
 }
 //初始化SD卡
-uint8_t SD_CARD::Initialize()
+uint8_t SD_SPI::Initialize()
 {
     uint8_t r1;      // 存放SD卡的返回值
     uint16_t retry;  // 用来进行超时计数
@@ -302,7 +304,7 @@ uint8_t SD_CARD::Initialize()
 //sector:扇区
 //cnt:扇区数
 //返回值:0,ok;其他,失败.
-uint8_t SD_CARD::ReadDisk(uint8_t *buf,uint8_t sector,uint8_t cnt)
+uint8_t SD_SPI::ReadDisk(uint8_t *buf,uint32_t sector,uint8_t cnt)
 {
     uint8_t r1;
     if(this->SD_Type!=SD_TYPE_V2HC)sector =0;//转换为字节地址
@@ -315,7 +317,7 @@ uint8_t SD_CARD::ReadDisk(uint8_t *buf,uint8_t sector,uint8_t cnt)
         }
     }else
     {
-        r1=this->SendCmd(CMD18,sector,0X01);//连续读命令
+        this->SendCmd(CMD18,sector,0X01);//连续读命令
         do
         {
             r1=this->RecvData(buf,512);//接收512个字节
@@ -331,7 +333,7 @@ uint8_t SD_CARD::ReadDisk(uint8_t *buf,uint8_t sector,uint8_t cnt)
 //sector:起始扇区
 //cnt:扇区数
 //返回值:0,ok;其他,失败.
-uint8_t SD_CARD::WriteDisk(uint8_t*buf,uint32_t sector,uint8_t cnt)
+uint8_t SD_SPI::WriteDisk(uint8_t*buf,uint32_t sector,uint8_t cnt)
 {
     uint8_t r1;
     if(SD_Type!=SD_TYPE_V2HC)sector *= 512;//转换为字节地址
@@ -364,31 +366,35 @@ uint8_t SD_CARD::WriteDisk(uint8_t*buf,uint32_t sector,uint8_t cnt)
     return r1;//
 }
 
-uint16_t SD_CARD::write(uint32_t addr, uint8_t data) {
+uint16_t SD_SPI::write(uint32_t addr, uint8_t data) {
     if(this->WriteDisk(&data,addr,1)==0)
         return 1;
     else return 0;
 }
 
-uint16_t SD_CARD::write(uint32_t addr, uint8_t *data, uint16_t len) {
+uint16_t SD_SPI::write(uint32_t addr, uint8_t *data, uint16_t len) {
     if(this->WriteDisk(data,addr,1)==0)
         return len;
     else return 0;
 }
 
-uint8_t SD_CARD::read(uint32_t addr) {
+uint8_t SD_SPI::read(uint32_t addr) {
     uint8_t data;
     if(this->ReadDisk(&data,addr,1)==0)
         return data;
     else return 0;
 }
 
-void SD_CARD::read(uint32_t addr, uint8_t *data) {
+void SD_SPI::read(uint32_t addr, uint8_t *data) {
     this->ReadDisk(data,addr,1);
 }
 
-void SD_CARD::read(uint32_t addr, uint8_t *data, uint16_t len) {
+void SD_SPI::read(uint32_t addr, uint8_t *data, uint16_t len) {
     this->ReadDisk(data,addr,len);
+}
+
+uint8_t SD_SPI::FAT_init() {
+    return this->init();
 }
 
 

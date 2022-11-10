@@ -1904,6 +1904,30 @@ MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s
 
+MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.obj
+
+# target to build an object file
+MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj
+
+MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.i: MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.i
+
+# target to preprocess a source file
+MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.i
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.i
+
+MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.s
+
+# target to generate assembly for a file
+MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.s
+.PHONY : MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.s
+
 MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.obj
 
@@ -2743,6 +2767,9 @@ help:
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.s
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.obj
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.i
+	@echo ... MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.s

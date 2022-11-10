@@ -10,7 +10,7 @@
 #include "GPIO.h"
 #include "SPI_BASE.h"
 
-class SPI: public SPI_BASE{
+class SPI: public SPI_BASE{//Ó²¼þSPI
 private:
     SPI_TypeDef* SPIx{};
     SPI_InitTypeDef SPI_InitStructure{};
@@ -20,7 +20,7 @@ private:
     uint32_t DMA_FLAG{};
     uint32_t DMA_CHANNEL{};
     bool DMA_send_flag= false;
-
+    uint32_t error_times{};
     void default_config();
 
 protected:
@@ -38,6 +38,7 @@ public:
                 GPIO_TypeDef *PORT_MISO,uint32_t Pin_MISO,\
                 GPIO_TypeDef *PORT_MOSI,uint32_t Pin_MOSI);
     void config(uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI);
+    void set_error_times(uint32_t times);
     void SetSpeed(uint8_t SPI_BaudRatePrescaler) override;
     uint16_t ReadWriteDATA(uint16_t TxData) override;
 
@@ -46,7 +47,7 @@ public:
     void DMA_WriteData(uint16_t *TxData,uint16_t len);
 };
 
-class SPI_S: public SPI_BASE{
+class SPI_S: public SPI_BASE{//Èí¼þSPI
 public:
     enum CP:uint8_t{
         OL_0_HA_0   =   0,

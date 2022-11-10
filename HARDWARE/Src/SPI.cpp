@@ -27,6 +27,12 @@ void SPI::config(GPIO_TypeDef *PORT_SCK,uint32_t Pin_SCK,\
 }
 
 void SPI::config(uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI) {
+    this->SCK.set_pinmode(GPIO_Mode_IN);
+    this->MISO.set_pinmode(GPIO_Mode_IN);
+    this->MOSI.set_pinmode(GPIO_Mode_IN);
+    this->SCK.set_PuPD(GPIO_PuPd_NOPULL);
+    this->MISO.set_PuPD(GPIO_PuPd_NOPULL);
+    this->MOSI.set_PuPD(GPIO_PuPd_NOPULL);
     this->SCK.init(Pin_SCK,GPIO_Mode_AF);
     this->MISO.init(Pin_MISO,GPIO_Mode_AF);
     this->MOSI.init(Pin_MOSI,GPIO_Mode_AF);
@@ -53,9 +59,7 @@ void SPI::default_config() {
         if (this->SPIx == SPI1) {
             this->config(GPIOA5, GPIOA6, GPIOA7);
         } else if (this->SPIx == SPI2) {
-
-//            this->config(GPIOB10, GPIOC2, GPIOC3);
-            this->config(GPIOB13,GPIOB14,GPIOB15);
+            this->config(GPIOB10, GPIOC2, GPIOC3);
         } else if (this->SPIx == SPI3) {
             this->config(GPIOC10, GPIOC11, GPIOC12);
         }
@@ -66,6 +70,7 @@ void SPI::init(SPI_TypeDef* SPI,Queue mode,uint16_t DataSize,uint8_t SPI_BaudRat
     this->SPIx=SPI;
     this->set_Queue_mode( mode);
     this->default_config();
+    this->set_error_times(0xffff);
     if(SPI==SPI1)
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
     if(SPI==SPI2)
@@ -74,6 +79,7 @@ void SPI::init(SPI_TypeDef* SPI,Queue mode,uint16_t DataSize,uint8_t SPI_BaudRat
         RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI3, ENABLE);
 
     SPI_I2S_DeInit(this->SPIx);
+    SPI_Cmd(this->SPIx, DISABLE); //使能SPI外设
 
     this->SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;  //设置SPI单向或者双向的数据模式:SPI设置为双线双向全双工
     this->SPI_InitStructure.SPI_Mode = SPI_Mode_Master;		//设置SPI工作模式:设置为主SPI
@@ -98,6 +104,10 @@ void SPI::init(Queue mode) {
     }
 }
 
+void SPI::set_error_times(uint32_t times) {
+    this->error_times=times;
+}
+
 void SPI::SetSpeed(uint8_t SPI_BaudRatePrescaler)
 {
     assert_param(IS_SPI_BAUDRATE_PRESCALER(SPI_BaudRatePrescaler));
@@ -108,9 +118,15 @@ void SPI::SetSpeed(uint8_t SPI_BaudRatePrescaler)
 
 uint16_t SPI::ReadWriteDATA(uint16_t TxData)
 {
-    while (SPI_I2S_GetFlagStatus(this->SPIx, SPI_I2S_FLAG_TXE) == RESET){}//等待发送区空
+    uint32_t error_num=this->error_times;
+    while (SPI_I2S_GetFlagStatus(this->SPIx, SPI_I2S_FLAG_TXE) == RESET){
+        error_num--;if(error_num==0)break;
+    }//等待发送区空
     SPI_I2S_SendData(this->SPIx, TxData); //通过外设SPIx发送一个byte  数据
-    while (SPI_I2S_GetFlagStatus(this->SPIx, SPI_I2S_FLAG_RXNE) == RESET){} //等待接收完一个byte
+    error_num=this->error_times;
+    while (SPI_I2S_GetFlagStatus(this->SPIx, SPI_I2S_FLAG_RXNE) == RESET){
+        error_num--;if(error_num==0)break;
+    } //等待接收完一个byte
     return SPI_I2S_ReceiveData(this->SPIx); //返回通过SPIx最近接收的数据
 }
 
@@ -149,8 +165,6 @@ void SPI::DMA_WriteData(uint16_t *TxData, uint16_t len) {
         (u32)&this->SPIx->DR,(uint32_t)TxData,len,\
         DMA_DIR_MemoryToPeripheral,8);
 }
-
-
 
 
 SPI_S::SPI_S(uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI,HARD_BASE::Queue mode) {

@@ -113,6 +113,10 @@ void OLED_BASE::Print(uint8_t x, uint8_t y,char *s) {
     this->Print(x,y,"%s",s);
 }
 
+void OLED_BASE::Print(uint8_t x, uint8_t y,uint8_t  *s) {
+    this->Print(x,y,"%s",s);
+}
+
 void OLED_BASE::Print(uint8_t x, uint8_t y,int integer) {
     this->Print(x,y,"%d",integer);
 }
@@ -152,4 +156,5 @@ void OLED_BASE::WriteCmd(uint8_t Command) {
 void OLED_BASE::WriteDat(uint8_t Data) {
 
 }
+
 

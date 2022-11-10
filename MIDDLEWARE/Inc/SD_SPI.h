@@ -7,10 +7,10 @@
 #ifndef KOKIRIKA_SD_CARD_H
 #define KOKIRIKA_SD_CARD_H
 
-#include "Storage_BASE.h"
+#include "SD_BASE.h"
 #include "SPI.h"
 
-class SD_CARD: public Storage_BASE {
+class SD_SPI: public SD_BASE {
 private:
     uint8_t  SD_Type{};
     void SpeedLow();
@@ -25,20 +25,21 @@ private:
     bool GetCID(uint8_t *cid_data);
     bool GetCSD(uint8_t *csd_data);
     uint8_t Initialize();
-    uint8_t ReadDisk(uint8_t *buf,uint8_t sector,uint8_t cnt);
+    uint8_t ReadDisk(uint8_t *buf,uint32_t sector,uint8_t cnt);
     uint8_t WriteDisk(uint8_t *buf,uint32_t sector,uint8_t cnt);
 protected:
     _GPIO_ CSPinx;
     SPI    *spix{};
 public:
-    SD_CARD(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx);
-    SD_CARD(SPI *SPIx,uint8_t CSpin);
-    SD_CARD()=default;
+    SD_SPI(SPI *SPIx, GPIO_TypeDef* PORTx, uint32_t Pinx);
+    SD_SPI(SPI *SPIx, uint8_t CSpin);
+    SD_SPI()=default;
     uint8_t init(SPI *SPIx,uint8_t CSpin);
     uint8_t init(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx);
     uint8_t init();
-
     uint32_t GetSectorCount();
+
+    uint8_t FAT_init() override;
     uint16_t write(uint32_t addr ,uint8_t data) override;
     uint16_t write(uint32_t addr ,uint8_t *data,uint16_t len) override;
     uint8_t  read(uint32_t addr) override;

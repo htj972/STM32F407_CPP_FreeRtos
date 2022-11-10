@@ -153,7 +153,7 @@ void Timer::upload_extern_fun(void (*fun)()) {
     this->extern_IRQ_link=fun;
 }
 
-void Timer::Timer_extern_fun(std::function<void()> fun) {
+void Timer::upload_extern_fun(std::function<void()> fun) {
     this->localfunxx=fun;
     TIMER_STRUCT.funCPP[this->timer_num%Timer_Max_num]=std::move(fun);
     TIMER_STRUCT.run_mode[this->timer_num%Timer_Max_num]=extern_MODE::CPP_fun;

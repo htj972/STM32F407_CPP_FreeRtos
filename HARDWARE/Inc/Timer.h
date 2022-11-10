@@ -32,7 +32,7 @@ public:
     void (*extern_IRQ_link)(){};
     void upload_extern_fun(void(* fun)());
     std::function<void()> localfunxx;
-    void Timer_extern_fun(std::function<void()> fun);
+    void upload_extern_fun(std::function<void()> fun);
 
     static void Timer_extern_upset(uint8_t num);
 };

@@ -45,6 +45,8 @@ void _GPIO_::init(GPIO_TypeDef* PORT,uint32_t Pin,GPIOMode_TypeDef Mode) {
     this->GPIO_InitStructure.GPIO_Speed = GPIO_High_Speed;
     this->GPIO_InitStructure.GPIO_Pin = this->GPIOx;
     this->GPIO_InitStructure.GPIO_Mode= Mode;
+    this->GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;//ÍÆÍìÊä³ö
+    this->GPIO_InitStructure.GPIO_PuPd= GPIO_PuPd_UP;
     this->Pinx=this->get_pinx_num();
     GPIO_Init(this->PORTx, &this->GPIO_InitStructure);
 }
