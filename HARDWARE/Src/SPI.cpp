@@ -118,6 +118,7 @@ void SPI::SetSpeed(uint8_t SPI_BaudRatePrescaler)
 
 uint16_t SPI::ReadWriteDATA(uint16_t TxData)
 {
+    this->Queue_star();
     uint32_t error_num=this->error_times;
     while (SPI_I2S_GetFlagStatus(this->SPIx, SPI_I2S_FLAG_TXE) == RESET){
         error_num--;if(error_num==0)break;
@@ -127,7 +128,9 @@ uint16_t SPI::ReadWriteDATA(uint16_t TxData)
     while (SPI_I2S_GetFlagStatus(this->SPIx, SPI_I2S_FLAG_RXNE) == RESET){
         error_num--;if(error_num==0)break;
     } //等待接收完一个byte
-    return SPI_I2S_ReceiveData(this->SPIx); //返回通过SPIx最近接收的数据
+    uint16_t data=SPI_I2S_ReceiveData(this->SPIx); //返回通过SPIx最近接收的数据
+    this->Queue_end();
+    return data;
 }
 
 void SPI::set_send_DMA(FunctionalState enable) {
@@ -309,13 +312,17 @@ void SPI_S::SetSpeed(uint8_t SPI_BaudRatePrescaler) {
 }
 
 uint16_t SPI_S::ReadWriteDATA(uint16_t TxData) {
+    this->Queue_star();
+    uint16_t data;
     switch (this->RW_mode) {
-        case 0:return this->SOFT_SPI_RW_MODE0(TxData);
-        case 1:return this->SOFT_SPI_RW_MODE1(TxData);
-        case 2:return this->SOFT_SPI_RW_MODE2(TxData);
-        case 3:return this->SOFT_SPI_RW_MODE3(TxData);
-        default:return 0;
+        case 0:data= this->SOFT_SPI_RW_MODE0(TxData);break;
+        case 1:data= this->SOFT_SPI_RW_MODE1(TxData);break;
+        case 2:data= this->SOFT_SPI_RW_MODE2(TxData);break;
+        case 3:data= this->SOFT_SPI_RW_MODE3(TxData);break;
+        default:data= 0xffff;
     }
+    this->Queue_end();
+    return data;
 }
 
 

@@ -13,8 +13,9 @@
 class OLED_SSD1306:public OLED_BASE {
 private:
     Software_IIC *IICX{};
-    uint8_t wait_time=255;
+    uint16_t wait_time{};
     uint8_t OWNADD{};
+    bool fill_mode;
     int X_offset=0;
 public:
     explicit OLED_SSD1306(Software_IIC *IIC,HARD_BASE::Queue mode=HARD_BASE::Queue::OWN_Queue,int Xoffset=0,uint8_t addr=0x78);

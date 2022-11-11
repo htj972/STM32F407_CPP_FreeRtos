@@ -8,6 +8,7 @@
 
 OLED_SSD1306::OLED_SSD1306(Software_IIC *IIC,HARD_BASE::Queue mode,int Xoffset,uint8_t addr) {
     this->set_Queue_mode(mode);
+    this->wait_time=0xffff;
     this->config(IIC,Xoffset,addr);
 }
 
@@ -15,15 +16,20 @@ void OLED_SSD1306::config(Software_IIC *IIC,int Xoffset,uint8_t addr) {
     if(IIC!= nullptr)
         this->IICX=IIC;
     this->OWNADD=addr;
+    this->wait_time=0xffff;
     this->X_offset=Xoffset;
 }
 
 bool OLED_SSD1306::init() {
+    this->IICX->Queue_star();
     this->IICX->Start();
     this->IICX->Send_Byte(this->OWNADD);
-    while(this->IICX->Wait_Ack()&&this->wait_time--);
+    while(this->IICX->Wait_Ack()&&--this->wait_time);
     this->IICX->Stop();
-    if(this->wait_time<1)return false;
+    if(this->wait_time<1){
+        this->IICX->Queue_end();
+        return false;
+    }
     this->WriteCmd(0xAE); //display off
     this->WriteCmd(0x20); //Set Memory Addressing Mode
     this->WriteCmd(0x10); //00,Horizontal Addressing Mode;01,Vertical Addressing Mode;10,Page Addressing Mode (RESET);11,Invalid
@@ -52,17 +58,24 @@ bool OLED_SSD1306::init() {
     this->WriteCmd(0x8d); //--set DC-DC enable
     this->WriteCmd(0x14); //
     this->WriteCmd(0xaf); //--turn on oled panel
+    this->IICX->Queue_end();
     return true;
 }
 
 void OLED_SSD1306::SetPos(uint16_t x, uint16_t y) {
+    if(!this->fill_mode)
+        this->IICX->Queue_star();
     this->WriteCmd(0xb0+y);
     this->WriteCmd(((x&0xf0)>>4)|0x10);
     this->WriteCmd((x&0x0f)|0x01);
+    if(!this->fill_mode)
+        this->IICX->Queue_end();
 }
 
 void OLED_SSD1306::Fill(uint8_t fill_Data) {
     int m,n;
+    this->IICX->Queue_star();
+    this->fill_mode= true;
     for(m=0;m<8;m++)
     {
         this->SetPos(0,m);
@@ -71,6 +84,8 @@ void OLED_SSD1306::Fill(uint8_t fill_Data) {
             this->WriteDat(fill_Data);
         }
     }
+    this->fill_mode= false;
+    this->IICX->Queue_end();
 }
 
 void OLED_SSD1306::CLS() {
@@ -78,15 +93,19 @@ void OLED_SSD1306::CLS() {
 }
 
 void OLED_SSD1306::TurnON() {
+    this->IICX->Queue_star();
     this->WriteCmd(0X8D);  //ÉèÖÃµçºÉ±Ã
     this->WriteCmd(0X14);  //¿ªÆôµçºÉ±Ã
     this->WriteCmd(0XAF);  //OLED»½ÐÑ
+    this->IICX->Queue_end();
 }
 
 void OLED_SSD1306::TurnOFF() {
+    this->IICX->Queue_star();
     this->WriteCmd(0X8D);  //ÉèÖÃµçºÉ±Ã
     this->WriteCmd(0X10);  //¹Ø±ÕµçºÉ±Ã
     this->WriteCmd(0XAE);  //OLEDÐÝÃß
+    this->IICX->Queue_end();
 }
 
 void OLED_SSD1306::WriteCmd(uint8_t Command) {

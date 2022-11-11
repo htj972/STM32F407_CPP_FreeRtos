@@ -18,7 +18,7 @@ void HARD_BASE::Queue_star() {
     }
 #if SYSTEM_SUPPORT_OS == ON
     else{
-        xSemaphoreTake(HARD_Queue,portMAX_DELAY);
+        xSemaphoreTake(this->HARD_Queue,portMAX_DELAY);
     }
 #endif
 }
@@ -28,7 +28,7 @@ void HARD_BASE::Queue_end() {
         this->lock_flag= false;
 #if SYSTEM_SUPPORT_OS == ON
     else{
-        xSemaphoreGive(HARD_Queue);
+        xSemaphoreGive(this->HARD_Queue);
     }
 #endif
 }

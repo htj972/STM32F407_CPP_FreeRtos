@@ -55,6 +55,7 @@ uint8_t FM24Cxx::read(uint32_t Addr)
 //    OS_ERR err;
 //    OSMutexPend (&IIC_MUTEX,0,OS_OPT_PEND_BLOCKING,0,&err);//请求互斥信号量
     uint8_t temp=0;
+    this->IIC->Queue_star();
     this->IIC->Start();
     if(this->EE_TYPE>FM24Cxx::TYPE::AT24C16)
     {
@@ -70,6 +71,7 @@ uint8_t FM24Cxx::read(uint32_t Addr)
     this->IIC->Wait_Ack();
     temp=this->IIC->Read_Byte(0);
     this->IIC->Stop();//产生一个停止条件
+    this->IIC->Queue_end();
 //    OSMutexPost(&IIC_MUTEX,OS_OPT_POST_NONE,&err);			//释放互斥信号量
     return temp;
 }
@@ -97,6 +99,7 @@ uint16_t FM24Cxx::write(uint32_t Addr,uint8_t Data)
 {
 //    OS_ERR err;
 //    OSMutexPend (&IIC_MUTEX,0,OS_OPT_PEND_BLOCKING,0,&err);//请求互斥信号量
+    this->IIC->Queue_star();
     this->IIC->Start();
     if(this->EE_TYPE>FM24Cxx::TYPE::AT24C16)
     {
@@ -113,6 +116,7 @@ uint16_t FM24Cxx::write(uint32_t Addr,uint8_t Data)
     this->IIC->Send_Byte(Data);     //发送字节
     this->IIC->Wait_Ack();
     this->IIC->Stop();//产生一个停止条件
+    this->IIC->Queue_end();
     //delay_ms(10);
 //    OSMutexPost(&IIC_MUTEX,OS_OPT_POST_NONE,&err);			//释放互斥信号量
     return 1;

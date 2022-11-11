@@ -13,3 +13,4 @@ uint16_t SPI_BASE::ReadWriteDATA(uint16_t TxData) {
 void SPI_BASE::SetSpeed(uint8_t SPI_BaudRatePrescaler) {
 
 }
+
