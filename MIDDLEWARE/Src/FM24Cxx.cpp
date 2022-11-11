@@ -21,10 +21,7 @@ bool FM24Cxx::init(Software_IIC *IICx, uint16_t TYPE) {
 bool FM24Cxx::init() {
     if(this->EE_TYPE)
     {
-        if(this->check()>0)
-            return true;
-        else
-            return false;
+        return this->check();
     }
     return false;
 }
@@ -33,18 +30,18 @@ bool FM24Cxx::init() {
 //如果用其他24C系列,这个地址要修改
 //返回1:检测失败
 //返回0:检测成功
-uint8_t FM24Cxx::check()
+bool FM24Cxx::check()
 {
     uint8_t temp;
     temp=this->read(this->EE_TYPE);//避免每次开机都写AT24CXX
-    if(temp==0X55)return 2;
+    if(temp==0X55)return true;
     else//排除第一次初始化的情况
     {
         this->write(this->EE_TYPE,0X55);
         temp=this->read(this->EE_TYPE);
-        if(temp==0X55)return 1;
+        if(temp==0X55)return true;
     }
-    return 0;
+    return false;
 }
 
 //在AT24CXX指定地址读出一个数据
@@ -136,4 +133,5 @@ uint16_t FM24Cxx::write(uint32_t Addr,uint8_t *pBuffer,uint16_t Num)
     }
     return Num;
 }
+
 

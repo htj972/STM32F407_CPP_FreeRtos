@@ -18,20 +18,20 @@ WCHAR ff_convert (	/* Converted code, 0 means conversion error */
 	{
  		if(dir)	//GBK 2 UNICODE
 		{
-			gbk2uni_offset=get_font_gbk_size()/2;
+			gbk2uni_offset=Storage_Link::get_font_gbk_size()/2;
 		}else	//UNICODE 2 GBK  
 		{   
 			gbk2uni_offset=0;	
 		}    
 		/* Unicode to OEMCP */
-		hi=get_font_gbk_size()/2;//对半开.
+		hi=Storage_Link::get_font_gbk_size()/2;//对半开.
 		hi =hi / 4 - 1;
 		li = 0;
 		for (n = 16; n; n--)
 		{
 			i = li + (hi - li) / 2;	
 //			W25QXX_Read((u8*)&t,ftinfo.ugbkaddr+i*4+gbk2uni_offset,4);//读出4个字节
-            font_read(get_font_gbk_ADD()+i*4+gbk2uni_offset,(uint8_t *)&t,4);
+            Storage_Link::font_read(Storage_Link::get_font_gbk_ADD()+i*4+gbk2uni_offset,(uint8_t *)&t,4);
 			if (src == t[0]) break;
 			if (src > t[0])li = i;  
 			else hi = i;    

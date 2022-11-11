@@ -32,7 +32,7 @@ public:
     ~FM24Cxx()=default;
     bool init(Software_IIC *IICx,uint16_t TYPE=TYPE::AT24C64);
     bool init();
-    uint8_t check();
+    bool check();
 
     uint8_t read(uint32_t Addr) override;
     void    read(uint32_t Addr,uint8_t *data) override;

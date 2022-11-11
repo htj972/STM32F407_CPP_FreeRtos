@@ -121,7 +121,6 @@ void _InPut_::set_EXTI() {
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);//Ê¹ÄÜSYSCFGÊ±ÖÓ
     this->pin_num=this->GPIO.get_GPIOx_num();
     SYSCFG_EXTILineConfig(this->GPIO.get_PORTx_num(),this->pin_num);
-
     if(extern_flag==0) {
         _InPut_::upload_extern_fun(EXIT_RUN_VOID);
     }

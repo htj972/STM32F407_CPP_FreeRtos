@@ -189,7 +189,7 @@ f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thu
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
                               f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o) (__udivmoddi4)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
-                              CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj (__aeabi_unwind_cpp_pr0)
+                              CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj (__aeabi_unwind_cpp_pr0)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(libunwind.o)
                               f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o) (restore_core_regs)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(pr-support.o)
@@ -334,18 +334,20 @@ f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../
                               f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(c++locale.o) (sscanf)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-stdio.o)
                               f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-fdopen.o) (__sread)
+f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcat.o)
+                              CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj (strcat)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcmp.o)
-                              CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj (strcmp)
+                              CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj (strcmp)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcoll.o)
                               f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(collate_members.o) (strcoll)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcpy.o)
-                              CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj (strcpy)
+                              CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj (strcpy)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strerror.o)
                               f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(system_error.o) (strerror)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strftime.o)
                               f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(time_members.o) (strftime)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strlen.o)
-                              CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj (strlen)
+                              CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_CORE/tasks.c.obj (strlen)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strtod.o)
                               f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(c++locale.o) (strtod)
 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strtoul.o)
@@ -567,149 +569,313 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/Font.c.obj
  .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/Font.c.obj
  .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/Font.c.obj
- .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
+ .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .rodata._ZStL19piecewise_construct
+                0x00000000        0x1 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .text._ZL20__gthread_key_deletei
+                0x00000000       0x16 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .ARM.extab.text._ZL20__gthread_key_deletei
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .ARM.exidx.text._ZL20__gthread_key_deletei
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .rodata._ZStL13allocator_arg
+                0x00000000        0x1 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .rodata._ZStL6ignore
+                0x00000000        0x1 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
  .text.ff_convert
-                0x00000000       0xba CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
+                0x00000000       0xb8 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .ARM.extab.text.ff_convert
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .ARM.exidx.text.ff_convert
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .rodata._ZZ11ff_wtoupperE9tbl_lower
+                0x00000000      0x1e0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .rodata._ZZ11ff_wtoupperE9tbl_upper
+                0x00000000      0x1e0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
  .text.ff_wtoupper
-                0x00000000       0x5c CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .rodata.tbl_lower.1
-                0x00000000      0x1e0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .rodata.tbl_upper.0
-                0x00000000      0x1e0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .debug_info    0x00000000      0x1ec CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .debug_abbrev  0x00000000       0xc8 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
+                0x00000000       0x60 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .ARM.extab.text.ff_wtoupper
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .ARM.exidx.text.ff_wtoupper
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .debug_info    0x00000000     0x242f CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .debug_abbrev  0x00000000      0x4f5 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
  .debug_aranges
-                0x00000000       0x28 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .debug_ranges  0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .debug_line    0x00000000      0x234 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .debug_str     0x00000000      0x25e CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .debug_frame   0x00000000       0x5c CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
+                0x00000000       0x30 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .debug_ranges  0x00000000       0x20 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .debug_line    0x00000000      0x5a1 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .debug_str     0x00000000     0x13a5 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .debug_frame   0x00000000       0x84 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
  .ARM.attributes
-                0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
- .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+ .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
  .data.FLASH_SECTOR_COUNT
-                0x00000000        0x2 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
+                0x00000000        0x2 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
  .text.disk_initialize
-                0x00000000       0x1c CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.extab.text.disk_initialize
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.exidx.text.disk_initialize
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
  .text.disk_status
-                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
+                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.extab.text.disk_status
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.exidx.text.disk_status
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
  .text.disk_read
-                0x00000000       0x3a CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
+                0x00000000       0x3a CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.extab.text.disk_read
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.exidx.text.disk_read
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
  .text.disk_write
-                0x00000000       0x3a CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
+                0x00000000       0x3a CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.extab.text.disk_write
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.exidx.text.disk_write
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
  .text.disk_ioctl
-                0x00000000       0x1e CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .text.get_fattime
-                0x00000000       0x10 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .text.ff_memalloc
-                0x00000000       0x16 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .text.ff_memfree
-                0x00000000       0x14 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .debug_info    0x00000000      0x316 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .debug_abbrev  0x00000000      0x164 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
+                0x00000000       0x1e CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.extab.text.disk_ioctl
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.exidx.text.disk_ioctl
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .text._Z11get_fattimev
+                0x00000000       0x10 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.extab.text._Z11get_fattimev
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.exidx.text._Z11get_fattimev
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .text._Z11ff_memallocj
+                0x00000000       0x1a CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.extab.text._Z11ff_memallocj
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.exidx.text._Z11ff_memallocj
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .text._Z10ff_memfreePv
+                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.extab.text._Z10ff_memfreePv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .ARM.exidx.text._Z10ff_memfreePv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .debug_info    0x00000000      0x3ad CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .debug_abbrev  0x00000000      0x18f CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
  .debug_aranges
-                0x00000000       0x58 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .debug_ranges  0x00000000       0x48 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .debug_line    0x00000000      0x24e CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .debug_str     0x00000000      0x2e0 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .debug_frame   0x00000000      0x148 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
+                0x00000000       0x58 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .debug_ranges  0x00000000       0x48 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .debug_line    0x00000000      0x2a4 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .debug_str     0x00000000      0x3a4 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .debug_frame   0x00000000      0x140 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
  .ARM.attributes
-                0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
- .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .rodata        0x00000000       0x44 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .rodata.FILE_TYPE_TBL
-                0x00000000       0x70 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .bss.fs        0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .bss.file      0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .bss.ftemp     0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .bss.br        0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .bss.bw        0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .bss.fileinfo  0x00000000       0x20 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .bss.dir       0x00000000       0x24 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .bss.fatbuf    0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .text.exfuns_init
-                0x00000000       0xa8 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .text.char_upper
-                0x00000000       0x30 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .text.f_typetell
-                0x00000000      0x11c CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .text.exf_getfree
-                0x00000000       0x64 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .debug_info    0x00000000      0x670 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .debug_abbrev  0x00000000      0x1a0 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+ .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .rodata        0x00000000       0x44 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .rodata._ZL13FILE_TYPE_TBL
+                0x00000000       0x70 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .bss.fs        0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .bss.file      0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .bss.ftemp     0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .bss.br        0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .bss.bw        0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .bss.fileinfo  0x00000000       0x20 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .bss.dir       0x00000000       0x24 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .bss.fatbuf    0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .text._Z11exfuns_initv
+                0x00000000       0xa8 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .ARM.extab.text._Z11exfuns_initv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .ARM.exidx.text._Z11exfuns_initv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .text._Z10char_upperh
+                0x00000000       0x30 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .ARM.extab.text._Z10char_upperh
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .ARM.exidx.text._Z10char_upperh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .text._Z10f_typetellPh
+                0x00000000      0x118 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .ARM.extab.text._Z10f_typetellPh
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .ARM.exidx.text._Z10f_typetellPh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .text._Z11exf_getfreePhPmS0_
+                0x00000000       0x64 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .ARM.extab.text._Z11exf_getfreePhPmS0_
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .ARM.exidx.text._Z11exf_getfreePhPmS0_
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .debug_info    0x00000000      0x730 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .debug_abbrev  0x00000000      0x1ce CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
  .debug_aranges
-                0x00000000       0x38 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .debug_ranges  0x00000000       0x28 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .debug_line    0x00000000      0x31d CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .debug_str     0x00000000      0x3a8 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .debug_frame   0x00000000       0xac CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
+                0x00000000       0x38 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .debug_ranges  0x00000000       0x28 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .debug_line    0x00000000      0x382 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .debug_str     0x00000000      0x4b6 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .debug_frame   0x00000000       0xac CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
  .ARM.attributes
-                0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
- .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_mount
-                0x00000000       0x28 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_open  0x00000000       0x2c CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_close
-                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_read  0x00000000       0x94 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_write
-                0x00000000       0x30 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_opendir
-                0x00000000       0x20 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_closedir
-                0x00000000       0x14 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_readdir
-                0x00000000       0x80 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_scan_files
-                0x00000000       0x94 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_showfree
-                0x00000000       0x56 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_lseek
-                0x00000000       0x24 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_tell  0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_size  0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_mkdir
-                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_fmkfs
-                0x00000000       0x26 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_unlink
-                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_rename
-                0x00000000       0x1c CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_getlabel
-                0x00000000       0x2a CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_setlabel
-                0x00000000       0x1a CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_gets  0x00000000       0x2c CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_putc  0x00000000       0x28 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .text.mf_puts  0x00000000       0x24 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .debug_info    0x00000000      0x9b7 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .debug_abbrev  0x00000000      0x1ef CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+ .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z8mf_mountPhh
+                0x00000000       0x28 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z8mf_mountPhh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z8mf_mountPhh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z7mf_openPhh
+                0x00000000       0x2c CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z7mf_openPhh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z7mf_openPhh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z8mf_closev
+                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z8mf_closev
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z8mf_closev
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z7mf_readt
+                0x00000000       0x90 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z7mf_readt
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z7mf_readt
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z8mf_writePht
+                0x00000000       0x30 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z8mf_writePht
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z8mf_writePht
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z10mf_opendirPh
+                0x00000000       0x20 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z10mf_opendirPh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z10mf_opendirPh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z11mf_closedirv
+                0x00000000       0x14 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z11mf_closedirv
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z11mf_closedirv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z10mf_readdirv
+                0x00000000       0x80 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z10mf_readdirv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z10mf_readdirv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z13mf_scan_filesPh
+                0x00000000       0x94 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z13mf_scan_filesPh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z13mf_scan_filesPh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z11mf_showfreePh
+                0x00000000       0x56 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z11mf_showfreePh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z11mf_showfreePh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z8mf_lseekm
+                0x00000000       0x24 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z8mf_lseekm
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z8mf_lseekm
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z7mf_tellv
+                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z7mf_tellv
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z7mf_tellv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z7mf_sizev
+                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z7mf_sizev
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z7mf_sizev
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z8mf_mkdirPh
+                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z8mf_mkdirPh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z8mf_mkdirPh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z8mf_fmkfsPhht
+                0x00000000       0x26 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z8mf_fmkfsPhht
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z8mf_fmkfsPhht
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z9mf_unlinkPh
+                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z9mf_unlinkPh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z9mf_unlinkPh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z9mf_renamePhS_
+                0x00000000       0x1c CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z9mf_renamePhS_
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z9mf_renamePhS_
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z11mf_getlabelPh
+                0x00000000       0x2a CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z11mf_getlabelPh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z11mf_getlabelPh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z11mf_setlabelPh
+                0x00000000       0x1a CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z11mf_setlabelPh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z11mf_setlabelPh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z7mf_getst
+                0x00000000       0x30 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z7mf_getst
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z7mf_getst
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z7mf_putch
+                0x00000000       0x28 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z7mf_putch
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z7mf_putch
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .text._Z7mf_putsPh
+                0x00000000       0x24 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.extab.text._Z7mf_putsPh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .ARM.exidx.text._Z7mf_putsPh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .debug_info    0x00000000      0xa30 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .debug_abbrev  0x00000000      0x1f5 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
  .debug_aranges
-                0x00000000       0xc8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .debug_ranges  0x00000000       0xb8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .debug_line    0x00000000      0x49a CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .debug_str     0x00000000      0x599 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
- .debug_frame   0x00000000      0x310 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
+                0x00000000       0xc8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .debug_ranges  0x00000000       0xb8 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .debug_line    0x00000000      0x49d CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .debug_str     0x00000000      0x71b CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+ .debug_frame   0x00000000      0x310 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
  .ARM.attributes
-                0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
  .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .bss.FatFs     0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .bss.Fsid      0x00000000        0x2 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .bss.CurrVol   0x00000000        0x1 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.mem_cpy  0x00000000       0x3e CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.mem_set  0x00000000       0x36 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.mem_cmp  0x00000000       0x4e CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
@@ -721,8 +887,8 @@ Discarded input sections
  .text.sync_fs  0x00000000      0x144 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.clust2sect
                 0x00000000       0x3e CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
- .text.get_fat  0x00000000      0x168 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
- .text.put_fat  0x00000000      0x206 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .text.get_fat  0x00000000      0x16c CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .text.put_fat  0x00000000      0x20e CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.remove_chain
                 0x00000000       0xa6 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.create_chain
@@ -750,24 +916,24 @@ Discarded input sections
  .text.dir_find
                 0x00000000      0x168 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.dir_read
-                0x00000000      0x136 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+                0x00000000      0x130 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.dir_register
-                0x00000000      0x1f0 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+                0x00000000      0x200 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.dir_remove
                 0x00000000       0xa6 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.get_fileinfo
                 0x00000000      0x1ac CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .rodata        0x00000000       0x58 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.create_name
-                0x00000000      0x3e8 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+                0x00000000      0x47c CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.follow_path
-                0x00000000       0xd0 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+                0x00000000      0x106 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.get_ldnumber
-                0x00000000       0x88 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+                0x00000000       0x90 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.check_fs
                 0x00000000       0xd0 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.find_volume
-                0x00000000      0x55c CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+                0x00000000      0x564 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.validate
                 0x00000000       0x5a CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.f_mount  0x00000000       0x88 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
@@ -776,6 +942,11 @@ Discarded input sections
  .text.f_write  0x00000000      0x2ee CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.f_sync   0x00000000      0x150 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.f_close  0x00000000       0x3c CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .text.f_chdrive
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .text.f_chdir  0x00000000       0xb4 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .text.f_getcwd
+                0x00000000      0x238 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.f_lseek  0x00000000      0x428 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.f_opendir
                 0x00000000       0xda CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
@@ -789,14 +960,14 @@ Discarded input sections
  .text.f_truncate
                 0x00000000      0x146 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.f_unlink
-                0x00000000      0x170 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
- .text.f_mkdir  0x00000000      0x262 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
- .text.f_chmod  0x00000000       0xc8 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
- .text.f_utime  0x00000000       0xd0 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+                0x00000000      0x198 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .text.f_mkdir  0x00000000      0x27e CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .text.f_chmod  0x00000000       0xe4 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .text.f_utime  0x00000000       0xec CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.f_rename
-                0x00000000      0x1f2 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+                0x00000000      0x20e CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.f_getlabel
-                0x00000000      0x136 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+                0x00000000      0x13c CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.f_setlabel
                 0x00000000      0x2dc CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .text.f_mkfs   0x00000000      0x940 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
@@ -809,57 +980,101 @@ Discarded input sections
                 0x00000000      0x430 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .rodata.vst.1  0x00000000       0x16 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .rodata.cst.0  0x00000000       0x16 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
- .debug_info    0x00000000     0x253b CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .debug_info    0x00000000     0x26cf CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .debug_abbrev  0x00000000      0x254 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .debug_aranges
-                0x00000000      0x1f8 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
- .debug_ranges  0x00000000      0x1e8 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
- .debug_line    0x00000000     0x310e CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
- .debug_str     0x00000000      0x7b0 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+                0x00000000      0x210 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .debug_ranges  0x00000000      0x200 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .debug_line    0x00000000     0x347c CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .debug_str     0x00000000      0x7d8 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
- .debug_frame   0x00000000      0x900 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
+ .debug_frame   0x00000000      0x978 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
  .ARM.attributes
                 0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
- .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .bss.ftinfo    0x00000000       0x21 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .bss.FLASH_Interface
-                0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .rodata        0x00000000       0x60 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .rodata.GBK24_PATH
-                0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .rodata.GBK16_PATH
-                0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .rodata.GBK12_PATH
-                0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .rodata.UNIGBK_PATH
-                0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .text.fupd_prog
-                0x00000000       0x8c CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .text.updata_fontx
-                0x00000000      0x1d4 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .text.update_font
-                0x00000000      0x484 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .text.font_read
-                0x00000000       0x28 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .text.get_font_gbk_size
-                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .text.get_font_gbk_ADD
-                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .text.font_init
-                0x00000000       0x60 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .debug_info    0x00000000      0x794 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .debug_abbrev  0x00000000      0x1b0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
+ .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .rodata._ZStL19piecewise_construct
+                0x00000000        0x1 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .text._ZL20__gthread_key_deletei
+                0x00000000       0x16 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.extab.text._ZL20__gthread_key_deletei
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.exidx.text._ZL20__gthread_key_deletei
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .rodata._ZStL13allocator_arg
+                0x00000000        0x1 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .rodata._ZStL6ignore
+                0x00000000        0x1 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .bss.ftinfo    0x00000000       0x21 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .rodata        0x00000000       0x60 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .data.GBK24_PATH
+                0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .data.GBK16_PATH
+                0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .data.GBK12_PATH
+                0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .data.UNIGBK_PATH
+                0x00000000        0x4 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .text._ZN12Storage_Link9fupd_progEttmm
+                0x00000000       0x88 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.extab.text._ZN12Storage_Link9fupd_progEttmm
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.exidx.text._ZN12Storage_Link9fupd_progEttmm
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .text._ZN12Storage_Link12updata_fontxEttPhh
+                0x00000000      0x1e4 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.extab.text._ZN12Storage_Link12updata_fontxEttPhh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.exidx.text._ZN12Storage_Link12updata_fontxEttPhh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .text._ZN12Storage_Link11update_fontEtthPh
+                0x00000000      0x380 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.extab.text._ZN12Storage_Link11update_fontEtthPh
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.exidx.text._ZN12Storage_Link11update_fontEtthPh
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .text._ZN12Storage_Link9font_readEmPht
+                0x00000000       0x30 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.extab.text._ZN12Storage_Link9font_readEmPht
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.exidx.text._ZN12Storage_Link9font_readEmPht
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .text._ZN12Storage_Link17get_font_gbk_sizeEv
+                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.extab.text._ZN12Storage_Link17get_font_gbk_sizeEv
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.exidx.text._ZN12Storage_Link17get_font_gbk_sizeEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .text._ZN12Storage_Link16get_font_gbk_ADDEv
+                0x00000000       0x18 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.extab.text._ZN12Storage_Link16get_font_gbk_ADDEv
+                0x00000000        0x0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.exidx.text._ZN12Storage_Link16get_font_gbk_ADDEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .text._ZN12Storage_Link9font_initEv
+                0x00000000       0x60 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.extab.text._ZN12Storage_Link9font_initEv
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.exidx.text._ZN12Storage_Link9font_initEv
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .text._ZN12Storage_Link9font_initEP6W25QXX
+                0x00000000       0x20 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.extab.text._ZN12Storage_Link9font_initEP6W25QXX
+                0x00000000        0xc CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .ARM.exidx.text._ZN12Storage_Link9font_initEP6W25QXX
+                0x00000000        0x8 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .debug_info    0x00000000     0x29c0 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .debug_abbrev  0x00000000      0x55d CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
  .debug_aranges
-                0x00000000       0x50 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .debug_ranges  0x00000000       0x40 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .debug_line    0x00000000      0x460 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .debug_str     0x00000000      0x58b CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
- .debug_frame   0x00000000      0x114 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
+                0x00000000       0x60 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .debug_ranges  0x00000000       0x50 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .debug_line    0x00000000      0x824 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .debug_str     0x00000000     0x1682 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+ .debug_frame   0x00000000      0x164 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
  .ARM.attributes
-                0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
+                0x00000000       0x34 CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
  .text          0x00000000        0x0 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
  .data          0x00000000        0x0 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
  .bss           0x00000000        0x0 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
@@ -5510,7 +5725,7 @@ Discarded input sections
  .ARM.exidx.text._ZN7FM24Cxx4initEP12Software_IICt
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj
  .text._ZN7FM24Cxx4initEv
-                0x00000000       0x38 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj
+                0x00000000       0x24 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj
  .ARM.extab.text._ZN7FM24Cxx4initEv
                 0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj
  .ARM.exidx.text._ZN7FM24Cxx4initEv
@@ -6874,7 +7089,7 @@ Discarded input sections
  .text.my_mem_perused
                 0x00000000       0x64 CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
  .text.my_mem_malloc
-                0x00000000       0xe4 CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
+                0x00000000       0xe0 CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
  .text.my_mem_free
                 0x00000000       0x90 CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
  .text.myfree   0x00000000       0x3c CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
@@ -6887,7 +7102,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x60 CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
  .debug_ranges  0x00000000       0x50 CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
- .debug_line    0x00000000      0x43e CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
+ .debug_line    0x00000000      0x43b CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
  .debug_str     0x00000000      0x31e CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
  .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
  .debug_frame   0x00000000      0x160 CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj
@@ -15011,6 +15226,13 @@ Discarded input sections
  .text          0x00000000        0x0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-stdio.o)
  .data          0x00000000        0x0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-stdio.o)
  .bss           0x00000000        0x0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-stdio.o)
+ .text          0x00000000        0x0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcat.o)
+ .data          0x00000000        0x0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcat.o)
+ .bss           0x00000000        0x0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcat.o)
+ .text.strcat   0x00000000       0x1e f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcat.o)
+ .debug_frame   0x00000000       0x28 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcat.o)
+ .ARM.attributes
+                0x00000000       0x34 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcat.o)
  .data          0x00000000        0x0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcmp.o)
  .bss           0x00000000        0x0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcmp.o)
  .text          0x00000000        0x0 f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-strcoll.o)
@@ -15443,12 +15665,12 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
 LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
 LOAD CMakeFiles/Project.elf.dir/FATFS/Src/Font.c.obj
-LOAD CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
-LOAD CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
-LOAD CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
-LOAD CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
+LOAD CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+LOAD CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+LOAD CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+LOAD CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.obj
-LOAD CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
+LOAD CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
 LOAD CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
 LOAD CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_adc.c.obj
 LOAD CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_can.c.obj
@@ -24828,7 +25050,7 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_aranges
                 0x00001df8       0x28 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_line     0x00000000    0x13a00
+.debug_line     0x00000000    0x139f9
  .debug_line    0x00000000       0xa1 CMakeFiles/Project.elf.dir/FATFS/Src/Font.c.obj
  .debug_line    0x000000a1      0x2e5 CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.obj
  .debug_line    0x00000386      0x62d CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4xx_dma.c.obj
@@ -24857,18 +25079,18 @@ LOAD f:/cubemx/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.
  .debug_line    0x0000ca14      0x841 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj
  .debug_line    0x0000d255      0x54a CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj
  .debug_line    0x0000d79f      0x6ea CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj
- .debug_line    0x0000de89      0x8b9 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj
- .debug_line    0x0000e742      0x916 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj
- .debug_line    0x0000f058      0xea5 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj
- .debug_line    0x0000fefd      0x918 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj
- .debug_line    0x00010815      0xed0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj
- .debug_line    0x000116e5      0xf9c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
- .debug_line    0x00012681      0x25e CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
- .debug_line    0x000128df      0x2de CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
- .debug_line    0x00012bbd      0x96d CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
- .debug_line    0x0001352a       0xee CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
- .debug_line    0x00013618      0x33c CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
- .debug_line    0x00013954       0xac CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_line    0x0000de89      0x8b2 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj
+ .debug_line    0x0000e73b      0x916 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj
+ .debug_line    0x0000f051      0xea5 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj
+ .debug_line    0x0000fef6      0x918 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj
+ .debug_line    0x0001080e      0xed0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj
+ .debug_line    0x000116de      0xf9c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj
+ .debug_line    0x0001267a      0x25e CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj
+ .debug_line    0x000128d8      0x2de CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj
+ .debug_line    0x00012bb6      0x96d CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj
+ .debug_line    0x00013523       0xee CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj
+ .debug_line    0x00013611      0x33c CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj
+ .debug_line    0x0001394d       0xac CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
 
 .debug_str      0x00000000    0x1426d
  .debug_str     0x00000000      0x180 CMakeFiles/Project.elf.dir/FATFS/Src/Font.c.obj

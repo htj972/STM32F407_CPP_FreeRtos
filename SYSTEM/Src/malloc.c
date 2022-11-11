@@ -82,7 +82,7 @@ uint8_t my_mem_perused(uint8_t memx)
 //返回值:0XFFFFFFFF,代表错误;其他,内存偏移地址
 uint32_t my_mem_malloc(uint8_t memx,uint32_t size)
 {
-    signed long offset=0;
+    signed long offset;
     uint32_t nmemb;	//需要的内存块数
     uint32_t cmemb=0;//连续空内存块数
     uint32_t i;

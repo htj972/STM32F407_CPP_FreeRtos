@@ -152,101 +152,101 @@ FATFS/Src/Font.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/Font.c.s
 .PHONY : FATFS/Src/Font.c.s
 
-FATFS/Src/cc936.obj: FATFS/Src/cc936.c.obj
+FATFS/Src/cc936.obj: FATFS/Src/cc936.cpp.obj
 .PHONY : FATFS/Src/cc936.obj
 
 # target to build an object file
-FATFS/Src/cc936.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.obj
-.PHONY : FATFS/Src/cc936.c.obj
+FATFS/Src/cc936.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj
+.PHONY : FATFS/Src/cc936.cpp.obj
 
-FATFS/Src/cc936.i: FATFS/Src/cc936.c.i
+FATFS/Src/cc936.i: FATFS/Src/cc936.cpp.i
 .PHONY : FATFS/Src/cc936.i
 
 # target to preprocess a source file
-FATFS/Src/cc936.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.i
-.PHONY : FATFS/Src/cc936.c.i
+FATFS/Src/cc936.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.i
+.PHONY : FATFS/Src/cc936.cpp.i
 
-FATFS/Src/cc936.s: FATFS/Src/cc936.c.s
+FATFS/Src/cc936.s: FATFS/Src/cc936.cpp.s
 .PHONY : FATFS/Src/cc936.s
 
 # target to generate assembly for a file
-FATFS/Src/cc936.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/cc936.c.s
-.PHONY : FATFS/Src/cc936.c.s
+FATFS/Src/cc936.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.s
+.PHONY : FATFS/Src/cc936.cpp.s
 
-FATFS/Src/diskio.obj: FATFS/Src/diskio.c.obj
+FATFS/Src/diskio.obj: FATFS/Src/diskio.cpp.obj
 .PHONY : FATFS/Src/diskio.obj
 
 # target to build an object file
-FATFS/Src/diskio.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.obj
-.PHONY : FATFS/Src/diskio.c.obj
+FATFS/Src/diskio.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj
+.PHONY : FATFS/Src/diskio.cpp.obj
 
-FATFS/Src/diskio.i: FATFS/Src/diskio.c.i
+FATFS/Src/diskio.i: FATFS/Src/diskio.cpp.i
 .PHONY : FATFS/Src/diskio.i
 
 # target to preprocess a source file
-FATFS/Src/diskio.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.i
-.PHONY : FATFS/Src/diskio.c.i
+FATFS/Src/diskio.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.i
+.PHONY : FATFS/Src/diskio.cpp.i
 
-FATFS/Src/diskio.s: FATFS/Src/diskio.c.s
+FATFS/Src/diskio.s: FATFS/Src/diskio.cpp.s
 .PHONY : FATFS/Src/diskio.s
 
 # target to generate assembly for a file
-FATFS/Src/diskio.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/diskio.c.s
-.PHONY : FATFS/Src/diskio.c.s
+FATFS/Src/diskio.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.s
+.PHONY : FATFS/Src/diskio.cpp.s
 
-FATFS/Src/exfuns.obj: FATFS/Src/exfuns.c.obj
+FATFS/Src/exfuns.obj: FATFS/Src/exfuns.cpp.obj
 .PHONY : FATFS/Src/exfuns.obj
 
 # target to build an object file
-FATFS/Src/exfuns.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.obj
-.PHONY : FATFS/Src/exfuns.c.obj
+FATFS/Src/exfuns.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
+.PHONY : FATFS/Src/exfuns.cpp.obj
 
-FATFS/Src/exfuns.i: FATFS/Src/exfuns.c.i
+FATFS/Src/exfuns.i: FATFS/Src/exfuns.cpp.i
 .PHONY : FATFS/Src/exfuns.i
 
 # target to preprocess a source file
-FATFS/Src/exfuns.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.i
-.PHONY : FATFS/Src/exfuns.c.i
+FATFS/Src/exfuns.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.i
+.PHONY : FATFS/Src/exfuns.cpp.i
 
-FATFS/Src/exfuns.s: FATFS/Src/exfuns.c.s
+FATFS/Src/exfuns.s: FATFS/Src/exfuns.cpp.s
 .PHONY : FATFS/Src/exfuns.s
 
 # target to generate assembly for a file
-FATFS/Src/exfuns.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.c.s
-.PHONY : FATFS/Src/exfuns.c.s
+FATFS/Src/exfuns.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.s
+.PHONY : FATFS/Src/exfuns.cpp.s
 
-FATFS/Src/fattester.obj: FATFS/Src/fattester.c.obj
+FATFS/Src/fattester.obj: FATFS/Src/fattester.cpp.obj
 .PHONY : FATFS/Src/fattester.obj
 
 # target to build an object file
-FATFS/Src/fattester.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.obj
-.PHONY : FATFS/Src/fattester.c.obj
+FATFS/Src/fattester.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
+.PHONY : FATFS/Src/fattester.cpp.obj
 
-FATFS/Src/fattester.i: FATFS/Src/fattester.c.i
+FATFS/Src/fattester.i: FATFS/Src/fattester.cpp.i
 .PHONY : FATFS/Src/fattester.i
 
 # target to preprocess a source file
-FATFS/Src/fattester.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.i
-.PHONY : FATFS/Src/fattester.c.i
+FATFS/Src/fattester.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.i
+.PHONY : FATFS/Src/fattester.cpp.i
 
-FATFS/Src/fattester.s: FATFS/Src/fattester.c.s
+FATFS/Src/fattester.s: FATFS/Src/fattester.cpp.s
 .PHONY : FATFS/Src/fattester.s
 
 # target to generate assembly for a file
-FATFS/Src/fattester.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fattester.c.s
-.PHONY : FATFS/Src/fattester.c.s
+FATFS/Src/fattester.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.s
+.PHONY : FATFS/Src/fattester.cpp.s
 
 FATFS/Src/ff.obj: FATFS/Src/ff.c.obj
 .PHONY : FATFS/Src/ff.obj
@@ -272,29 +272,29 @@ FATFS/Src/ff.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.s
 .PHONY : FATFS/Src/ff.c.s
 
-FATFS/Src/fontupd.obj: FATFS/Src/fontupd.c.obj
+FATFS/Src/fontupd.obj: FATFS/Src/fontupd.cpp.obj
 .PHONY : FATFS/Src/fontupd.obj
 
 # target to build an object file
-FATFS/Src/fontupd.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.obj
-.PHONY : FATFS/Src/fontupd.c.obj
+FATFS/Src/fontupd.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
+.PHONY : FATFS/Src/fontupd.cpp.obj
 
-FATFS/Src/fontupd.i: FATFS/Src/fontupd.c.i
+FATFS/Src/fontupd.i: FATFS/Src/fontupd.cpp.i
 .PHONY : FATFS/Src/fontupd.i
 
 # target to preprocess a source file
-FATFS/Src/fontupd.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.i
-.PHONY : FATFS/Src/fontupd.c.i
+FATFS/Src/fontupd.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.i
+.PHONY : FATFS/Src/fontupd.cpp.i
 
-FATFS/Src/fontupd.s: FATFS/Src/fontupd.c.s
+FATFS/Src/fontupd.s: FATFS/Src/fontupd.cpp.s
 .PHONY : FATFS/Src/fontupd.s
 
 # target to generate assembly for a file
-FATFS/Src/fontupd.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.c.s
-.PHONY : FATFS/Src/fontupd.c.s
+FATFS/Src/fontupd.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.s
+.PHONY : FATFS/Src/fontupd.cpp.s
 
 FWLIB/src/misc.obj: FWLIB/src/misc.c.obj
 .PHONY : FWLIB/src/misc.obj
