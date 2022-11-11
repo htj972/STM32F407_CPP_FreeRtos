@@ -201,12 +201,12 @@ bool SD_SPI::GetCID(uint8_t *cid_data)
 bool SD_SPI::GetCSD(uint8_t *csd_data) {
     uint8_t r1;
     r1 = this->SendCmd(CMD9, 0, 0x01);//发CMD9命令，读CSD
-    if (r1) {
+    if (r1==0) {
         r1 = this->RecvData(csd_data, 16);//接收16个字节的数据
     }
     this->DisSelect();//取消片选
-    if(r1>0)return false;
-    else return true;
+    if(r1>0)return true;
+    else return false;
 }
 //获取SD卡的总扇区数（扇区数）
 //返回值:0： 取容量出错

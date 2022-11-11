@@ -72,7 +72,7 @@ int main()
     }
     MOLED.Print(0,0,(uint8_t*)"init OK!");
 
-    MOLED.Print(0,2,SD1.GetSectorCount()/1048576);
+    MOLED.Print(0,2,SD1.GetSectorCount()>>11);
 //    SD1.writestr(1000,asdasd);
 //    MOLED.Print(0,4,sdaasda);
 //    SD1.readstr(1000,&sdaasda,asdasd.length());
