@@ -41,7 +41,7 @@ Software_IIC    SIIC1(GPIOB4,GPIOB5);
 OLED_SSD1306    MOLED(&SIIC1,OLED_SSD1306::Queue::OWN_Queue);
 
 SPI             spi2(SPI2);
-SD_SPI         SD1(&spi2, GPIOB12);
+SD_SPI          SD1(&spi2, GPIOB12);
 
 std::string asdasd="123456";
 std::string sdaasda="564";

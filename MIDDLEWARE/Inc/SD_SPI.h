@@ -10,7 +10,7 @@
 #include "SD_BASE.h"
 #include "SPI.h"
 
-class SD_SPI: public SD_BASE {
+class SD_SPI: public SD_BASE{
 private:
     uint8_t  SD_Type{};
     void SpeedLow();
@@ -31,15 +31,16 @@ protected:
     _GPIO_ CSPinx;
     SPI    *spix{};
 public:
-    SD_SPI(SPI *SPIx, GPIO_TypeDef* PORTx, uint32_t Pinx);
-    SD_SPI(SPI *SPIx, uint8_t CSpin);
-    SD_SPI()=default;
+    SD_SPI(SPI *SPIx, GPIO_TypeDef* PORTx, uint32_t Pinx,Queue mode=Queue::OWN_Queue);
+    SD_SPI(SPI *SPIx, uint8_t CSpin,Queue mode=Queue::OWN_Queue);
+    explicit SD_SPI(Queue mode=Queue::OWN_Queue);
+    ~SD_SPI()=default;
     uint8_t init(SPI *SPIx,uint8_t CSpin);
     uint8_t init(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx);
     uint8_t init();
-    uint32_t GetSectorCount();
+    uint32_t GetSectorCount() override;
 
-    uint8_t FAT_init() override;
+    bool FAT_init() override;
     uint16_t write(uint32_t addr ,uint8_t data) override;
     uint16_t write(uint32_t addr ,uint8_t *data,uint16_t len) override;
     uint8_t  read(uint32_t addr) override;

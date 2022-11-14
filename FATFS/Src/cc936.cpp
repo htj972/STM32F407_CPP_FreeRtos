@@ -1,6 +1,6 @@
 #include "ff.h"
 #include "sys.h"
-#include "fontupd.h"
+#include "Storage_Link.h"
 
 WCHAR ff_convert (	/* Converted code, 0 means conversion error */
 	WCHAR	src,	/* Character code to be converted */
@@ -29,8 +29,7 @@ WCHAR ff_convert (	/* Converted code, 0 means conversion error */
 		li = 0;
 		for (n = 16; n; n--)
 		{
-			i = li + (hi - li) / 2;	
-//			W25QXX_Read((u8*)&t,ftinfo.ugbkaddr+i*4+gbk2uni_offset,4);//¶Á³ö4¸ö×Ö½Ú
+			i = li + (hi - li) / 2;
             Storage_Link::font_read(Storage_Link::get_font_gbk_ADD()+i*4+gbk2uni_offset,(uint8_t *)&t,4);
 			if (src == t[0]) break;
 			if (src > t[0])li = i;  

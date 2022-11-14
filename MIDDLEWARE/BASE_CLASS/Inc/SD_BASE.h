@@ -11,12 +11,13 @@
 
 class SD_BASE: public Storage_BASE {
 public:
-    virtual uint8_t FAT_init();
+    bool FAT_init() override;
     uint16_t write(uint32_t addr ,uint8_t data) override;
     uint16_t write(uint32_t addr ,uint8_t *data,uint16_t len) override;
     uint8_t  read(uint32_t addr) override;
     void     read(uint32_t addr,uint8_t *data) override;
     void     read(uint32_t addr,uint8_t *data,uint16_t len) override;
+    uint32_t GetSectorCount() override;
 };
 
 

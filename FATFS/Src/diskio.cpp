@@ -6,60 +6,19 @@
 /* This is an example of glue functions to attach various exsisting      */
 /* storage control module to the FatFs module with a defined API.        */
 /*-----------------------------------------------------------------------*/
-#include "sys.h"
 #include "diskio.h"		/* FatFs lower layer API */
-#if	SD_drive	==	ON
-#include "sdio_sdcard.h"
-#endif
-#if	USB_drive	==	ON
-#include "usbh_usr.h"
-#endif
-
-//#include "w25qxx.h"
-#include "malloc.h"		
-
-
-
-#define SD_CARD	 0  //SD卡,卷标为0
-#define EX_FLASH 1	//外部flash,卷标为1
-#if	USB_drive	==	ON
-#define USB_DISK 2	//外部flash,卷标为2
-#endif
-
-#define FLASH_SECTOR_SIZE 	512			  
-//对于W25Q128
-//前12M字节给fatfs用,12M字节后,用于存放字库,字库占用3.09M.	剩余部分,给客户自己用	 			    
-uint16_t 	    FLASH_SECTOR_COUNT=2048*10;	//W25Q1218,前12M字节给FATFS占用
-#define FLASH_BLOCK_SIZE   	8     	//每个BLOCK有8个扇区
+#include "Storage_Link.h"
+#include "malloc.h"
 
 //初始化磁盘
 DSTATUS disk_initialize (
 	BYTE pdrv				/* Physical drive nmuber (0..) */
 )
 {
-	uint8_t res=0;
-	switch(pdrv)
-	{
-		#if	SD_drive	==	ON
-		case SD_CARD://SD卡
-			res=SD_Init();//SD卡初始化 
-  			break;
-		#endif
-		#if	FLASH_drive	==	ON
-		case EX_FLASH://外部flash
-			W25QXX_Init();
-			FLASH_SECTOR_COUNT=2048*10;//W25Q1218,前12M字节给FATFS占用 
- 			break;
-		#endif
-		#if	USB_drive	==	ON
-			case USB_DISK://U盘
-	  		if(USBH_UDISK_Status())return 0;	//U?????,???1.????0		  
-			else return 1;	
-		#endif
-		default:
-            return  STA_NOINIT;
-	}
-	return 0; //初始化成功
+    if(Storage_Link::disk_init(pdrv))
+	    return 0; //初始化成功
+    else
+        return  STA_NOINIT;
 }  
 
 //获得磁盘状态
@@ -82,43 +41,10 @@ DRESULT disk_read (
 	UINT count		/* Number of sectors to read (1..128) */
 )
 {
-	uint8_t res=0;
     if (!count)return RES_PARERR;//count不能等于0，否则返回参数错误		 	 
-	switch(pdrv)
-	{
-		#if	SD_drive	==	ON
-		case SD_CARD://SD卡
-			res=SD_ReadDisk(buff,sector,count);	 
-			while(res)//读出错
-			{
-				SD_Init();	//重新初始化SD卡
-				res=SD_ReadDisk(buff,sector,count);	
-				//printf("sd rd error:%d\r\n",res);
-			}
-			break;
-			#endif
-			#if	FLASH_drive	==	ON
-		case EX_FLASH://外部flash
-			for(;count>0;count--)
-			{
-				W25QXX_Read(buff,sector*FLASH_SECTOR_SIZE,FLASH_SECTOR_SIZE);
-				sector++;
-				buff+=FLASH_SECTOR_SIZE;
-			}
-			res=0;
-			break;
-			#endif
-		#if	USB_drive	==	ON	
-			case USB_DISK://U盘
-			res=USBH_UDISK_Read(buff,sector,count);	  
-			break;
-		#endif
-		default:
-			res=1; 
-	}
-   //处理返回值，将SPI_SD_driver.c的返回值转成ff.c的返回值
-    if(res==0x00)return RES_OK;	 
-    else return RES_ERROR;	   
+    if(Storage_Link::disk_read(pdrv,buff,sector,count))
+        return RES_OK;
+    return RES_ERROR;
 }
 
 //写扇区
@@ -136,41 +62,9 @@ DRESULT disk_write (
 {
 	uint8_t res=0;
     if (!count)return RES_PARERR;//count不能等于0，否则返回参数错误		 	 
-	switch(pdrv)
-	{
-		#if	SD_drive	==	ON
-		case SD_CARD://SD卡
-			res=SD_WriteDisk((uint8_t*)buff,sector,count);
-			while(res)//写出错
-			{
-				SD_Init();	//重新初始化SD卡
-				res=SD_WriteDisk((uint8_t*)buff,sector,count);
-				//printf("sd wr error:%d\r\n",res);
-			}
-			break;
-		#endif
-		#if	FLASH_drive	==	ON
-		case EX_FLASH://外部flash
-			for(;count>0;count--)
-			{										    
-				W25QXX_Write((uint8_t*)buff,sector*FLASH_SECTOR_SIZE,FLASH_SECTOR_SIZE);
-				sector++;
-				buff+=FLASH_SECTOR_SIZE;
-			}
-			res=0;
-			break;
-		#endif
-		#if	USB_drive	==	ON		
-		case USB_DISK://U盘
-			res=USBH_UDISK_Write((uint8_t*)buff,sector,count);
-			break;
-		#endif
-		default:
-			res=1; 
-	}
-    //处理返回值，将SPI_SD_driver.c的返回值转成ff.c的返回值
-    if(res == 0x00)return RES_OK;	 
-    else return RES_ERROR;	
+    if(Storage_Link::disk_write(pdrv,buff,sector,count))
+        return RES_OK;
+    return RES_ERROR;
 }
 #endif
 
@@ -186,87 +80,9 @@ DRESULT disk_ioctl (
 	void *buff		/* Buffer to send/receive control data */
 )
 {
-	DRESULT res;
-#if	SD_drive	==	ON
-	if(pdrv==SD_CARD)//SD卡
-	{
-	    switch(cmd)
-	    {
-		    case CTRL_SYNC:
-				res = RES_OK; 
-		        break;	 
-		    case GET_SECTOR_SIZE:
-				*(DWORD*)buff = 512; 
-		        res = RES_OK;
-		        break;	 
-		    case GET_BLOCK_SIZE:
-				*(WORD*)buff = SDCardInfo.CardBlockSize;
-		        res = RES_OK;
-		        break;	 
-		    case GET_SECTOR_COUNT:
-		        *(DWORD*)buff = SDCardInfo.CardCapacity/512;
-		        res = RES_OK;
-		        break;
-		    default:
-		        res = RES_PARERR;
-		        break;
-	    }
-	} else
-#endif
-#if	FLASH_drive	==	ON
-	 if(pdrv==EX_FLASH)	//外部FLASH  
-	{
-	    switch(cmd)
-	    {
-		    case CTRL_SYNC:
-				res = RES_OK; 
-		        break;	 
-		    case GET_SECTOR_SIZE:
-		        *(WORD*)buff = FLASH_SECTOR_SIZE;
-		        res = RES_OK;
-		        break;	 
-		    case GET_BLOCK_SIZE:
-		        *(WORD*)buff = FLASH_BLOCK_SIZE;
-		        res = RES_OK;
-		        break;	 
-		    case GET_SECTOR_COUNT:
-		        *(DWORD*)buff = FLASH_SECTOR_COUNT;
-		        res = RES_OK;
-		        break;
-		    default:
-		        res = RES_PARERR;
-		        break;
-	    }
-	}
-#endif
-			#if	USB_drive	==	ON		
-				else if(pdrv==USB_DISK)	//U盘
-				{
-						switch(cmd)
-						{
-							case CTRL_SYNC:
-							res = RES_OK; 
-									break;	 
-							case GET_SECTOR_SIZE:
-									*(WORD*)buff=512;
-									res = RES_OK;
-									break;	 
-							case GET_BLOCK_SIZE:
-									*(WORD*)buff=512;
-									res = RES_OK;
-									break;	 
-							case GET_SECTOR_COUNT:
-									*(DWORD*)buff=USBH_MSC_Param.MSCapacity;
-									res = RES_OK;
-									break;
-							default:
-									res = RES_PARERR;
-									break;
-						}		
-				}
-			#endif
-//	else 	res=RES_ERROR;//其他的不支持
-    return res;
+    if(Storage_Link::disk_ioctl(pdrv,cmd,buff))
+        return RES_OK;
+    return RES_ERROR;
 }
 #endif
 //获得时间

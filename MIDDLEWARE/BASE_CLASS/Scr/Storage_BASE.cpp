@@ -41,4 +41,23 @@ void Storage_BASE::readstr(uint32_t addr, std::string *data, uint16_t len) {
     this->read(addr,(uint8_t *)data->data(),len);
 }
 
+bool Storage_BASE::get_init_flag() const {
+    return this->init_flag;
+}
+
+bool Storage_BASE::FAT_init() {
+    this->init_flag= true;
+    return true;
+}
+
+bool Storage_BASE::to_init() {
+    if(!this->init_flag)
+        return this->FAT_init();
+    return true;
+}
+
+uint32_t Storage_BASE::GetSectorCount() {
+    return 0;
+}
+
 

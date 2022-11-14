@@ -129,13 +129,10 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Inc/Font.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Inc/Storage_Link.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Inc/diskio.h">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Inc/exfuns.h">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Inc/fattester.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Inc/ff.h">
@@ -144,13 +141,13 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Inc/ffconf.h">
 			<Option target="Project.elf"/>
 		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Inc/fontupd.h">
-			<Option target="Project.elf"/>
-		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Inc/integer.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/Font.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/Storage_Link.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/cc936.cpp">
@@ -159,16 +156,7 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/diskio.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/exfuns.cpp">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/fattester.cpp">
-			<Option target="Project.elf"/>
-		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/ff.c">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/fontupd.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FWLIB/inc/misc.h">

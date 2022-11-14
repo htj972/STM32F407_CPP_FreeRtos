@@ -46,34 +46,59 @@
 #define MSD_RESPONSE_FAILURE       0xFF
 
 
-SD_SPI::SD_SPI(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx) {
+SD_SPI::SD_SPI(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx,Queue mode) {
+    this->set_Queue_mode(mode);
     this->CSPinx.init(PORTx,Pinx,GPIO_Mode_OUT);
     this->spix=SPIx;
 }
 
-SD_SPI::SD_SPI(SPI *SPIx, uint8_t CSpin) {
+SD_SPI::SD_SPI(SPI *SPIx, uint8_t CSpin,Queue mode) {
+    this->set_Queue_mode(mode);
     this->CSPinx.init(CSpin,GPIO_Mode_OUT);
     this->spix=SPIx;
+}
+
+SD_SPI::SD_SPI(Queue mode)
+{
+    this->set_Queue_mode(mode);
 }
 
 uint8_t SD_SPI::init(SPI *SPIx,uint8_t CSpin)
 {
+    this->Queue_star();
+    this->spix->Queue_star();
     this->CSPinx.init(CSpin,GPIO_Mode_OUT);
     this->spix=SPIx;
-    return this->Initialize();
+    uint8_t ret=this->Initialize();
+    this->spix->Queue_end();
+    this->Queue_end();
+    this->init_flag= true;
+    return ret;
 }
 
 uint8_t SD_SPI::init(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx) {
+    this->Queue_star();
+    this->spix->Queue_star();
     this->CSPinx.init(PORTx,Pinx,GPIO_Mode_OUT);
     this->spix=SPIx;
-    return this->Initialize();
+    uint8_t ret=this->Initialize();
+    this->spix->Queue_end();
+    this->Queue_end();
+    this->init_flag= true;
+    return ret;
 }
 
 uint8_t SD_SPI::init()
 {
     if(this->spix!= nullptr) {
+        this->Queue_star();
+        this->spix->Queue_star();
         this->DisSelect();
-        return this->Initialize();
+        uint8_t ret=this->Initialize();
+        this->spix->Queue_end();
+        this->Queue_end();
+        this->init_flag= true;
+        return ret;
     }
     else return 0xaf;
 }
@@ -307,6 +332,8 @@ uint8_t SD_SPI::Initialize()
 uint8_t SD_SPI::ReadDisk(uint8_t *buf,uint32_t sector,uint8_t cnt)
 {
     uint8_t r1;
+    this->Queue_star();
+    this->spix->Queue_star();
     if(this->SD_Type!=SD_TYPE_V2HC)sector =0;//转换为字节地址
     if(cnt==1)
     {
@@ -326,6 +353,8 @@ uint8_t SD_SPI::ReadDisk(uint8_t *buf,uint32_t sector,uint8_t cnt)
         this->SendCmd(CMD12,0,0X01);	//发送停止命令
     }
     this->DisSelect();//取消片选
+    this->spix->Queue_end();
+    this->Queue_end();
     return r1;//
 }
 //写SD卡
@@ -336,6 +365,8 @@ uint8_t SD_SPI::ReadDisk(uint8_t *buf,uint32_t sector,uint8_t cnt)
 uint8_t SD_SPI::WriteDisk(uint8_t*buf,uint32_t sector,uint8_t cnt)
 {
     uint8_t r1;
+    this->Queue_star();
+    this->spix->Queue_star();
     if(SD_Type!=SD_TYPE_V2HC)sector *= 512;//转换为字节地址
     if(cnt==1)
     {
@@ -363,6 +394,8 @@ uint8_t SD_SPI::WriteDisk(uint8_t*buf,uint32_t sector,uint8_t cnt)
         }
     }
     this->DisSelect();//取消片选
+    this->spix->Queue_end();
+    this->Queue_end();
     return r1;//
 }
 
@@ -393,9 +426,11 @@ void SD_SPI::read(uint32_t addr, uint8_t *data, uint16_t len) {
     this->ReadDisk(data,addr,len);
 }
 
-uint8_t SD_SPI::FAT_init() {
-    return this->init();
+bool SD_SPI::FAT_init() {
+    if(this->init())return false;
+    return true;
 }
+
 
 
 

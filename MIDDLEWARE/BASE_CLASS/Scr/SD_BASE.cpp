@@ -6,8 +6,8 @@
 
 #include "SD_BASE.h"
 
-uint8_t SD_BASE::FAT_init() {
-    return 0;
+bool SD_BASE::FAT_init() {
+    return this->init_flag;
 }
 
 uint16_t SD_BASE::write(uint32_t addr, uint8_t data) {
@@ -28,4 +28,8 @@ void SD_BASE::read(uint32_t addr, uint8_t *data) {
 
 void SD_BASE::read(uint32_t addr, uint8_t *data, uint16_t len) {
     Storage_BASE::read(addr, data, len);
+}
+
+uint32_t SD_BASE::GetSectorCount() {
+    return Storage_BASE::GetSectorCount();
 }

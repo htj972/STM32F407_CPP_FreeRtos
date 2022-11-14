@@ -152,6 +152,30 @@ FATFS/Src/Font.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/Font.c.s
 .PHONY : FATFS/Src/Font.c.s
 
+FATFS/Src/Storage_Link.obj: FATFS/Src/Storage_Link.cpp.obj
+.PHONY : FATFS/Src/Storage_Link.obj
+
+# target to build an object file
+FATFS/Src/Storage_Link.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/Storage_Link.cpp.obj
+.PHONY : FATFS/Src/Storage_Link.cpp.obj
+
+FATFS/Src/Storage_Link.i: FATFS/Src/Storage_Link.cpp.i
+.PHONY : FATFS/Src/Storage_Link.i
+
+# target to preprocess a source file
+FATFS/Src/Storage_Link.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/Storage_Link.cpp.i
+.PHONY : FATFS/Src/Storage_Link.cpp.i
+
+FATFS/Src/Storage_Link.s: FATFS/Src/Storage_Link.cpp.s
+.PHONY : FATFS/Src/Storage_Link.s
+
+# target to generate assembly for a file
+FATFS/Src/Storage_Link.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/Storage_Link.cpp.s
+.PHONY : FATFS/Src/Storage_Link.cpp.s
+
 FATFS/Src/cc936.obj: FATFS/Src/cc936.cpp.obj
 .PHONY : FATFS/Src/cc936.obj
 
@@ -200,54 +224,6 @@ FATFS/Src/diskio.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.s
 .PHONY : FATFS/Src/diskio.cpp.s
 
-FATFS/Src/exfuns.obj: FATFS/Src/exfuns.cpp.obj
-.PHONY : FATFS/Src/exfuns.obj
-
-# target to build an object file
-FATFS/Src/exfuns.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.obj
-.PHONY : FATFS/Src/exfuns.cpp.obj
-
-FATFS/Src/exfuns.i: FATFS/Src/exfuns.cpp.i
-.PHONY : FATFS/Src/exfuns.i
-
-# target to preprocess a source file
-FATFS/Src/exfuns.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.i
-.PHONY : FATFS/Src/exfuns.cpp.i
-
-FATFS/Src/exfuns.s: FATFS/Src/exfuns.cpp.s
-.PHONY : FATFS/Src/exfuns.s
-
-# target to generate assembly for a file
-FATFS/Src/exfuns.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/exfuns.cpp.s
-.PHONY : FATFS/Src/exfuns.cpp.s
-
-FATFS/Src/fattester.obj: FATFS/Src/fattester.cpp.obj
-.PHONY : FATFS/Src/fattester.obj
-
-# target to build an object file
-FATFS/Src/fattester.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.obj
-.PHONY : FATFS/Src/fattester.cpp.obj
-
-FATFS/Src/fattester.i: FATFS/Src/fattester.cpp.i
-.PHONY : FATFS/Src/fattester.i
-
-# target to preprocess a source file
-FATFS/Src/fattester.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.i
-.PHONY : FATFS/Src/fattester.cpp.i
-
-FATFS/Src/fattester.s: FATFS/Src/fattester.cpp.s
-.PHONY : FATFS/Src/fattester.s
-
-# target to generate assembly for a file
-FATFS/Src/fattester.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fattester.cpp.s
-.PHONY : FATFS/Src/fattester.cpp.s
-
 FATFS/Src/ff.obj: FATFS/Src/ff.c.obj
 .PHONY : FATFS/Src/ff.obj
 
@@ -271,30 +247,6 @@ FATFS/Src/ff.s: FATFS/Src/ff.c.s
 FATFS/Src/ff.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/ff.c.s
 .PHONY : FATFS/Src/ff.c.s
-
-FATFS/Src/fontupd.obj: FATFS/Src/fontupd.cpp.obj
-.PHONY : FATFS/Src/fontupd.obj
-
-# target to build an object file
-FATFS/Src/fontupd.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.obj
-.PHONY : FATFS/Src/fontupd.cpp.obj
-
-FATFS/Src/fontupd.i: FATFS/Src/fontupd.cpp.i
-.PHONY : FATFS/Src/fontupd.i
-
-# target to preprocess a source file
-FATFS/Src/fontupd.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.i
-.PHONY : FATFS/Src/fontupd.cpp.i
-
-FATFS/Src/fontupd.s: FATFS/Src/fontupd.cpp.s
-.PHONY : FATFS/Src/fontupd.s
-
-# target to generate assembly for a file
-FATFS/Src/fontupd.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FATFS/Src/fontupd.cpp.s
-.PHONY : FATFS/Src/fontupd.cpp.s
 
 FWLIB/src/misc.obj: FWLIB/src/misc.c.obj
 .PHONY : FWLIB/src/misc.obj
@@ -2548,24 +2500,18 @@ help:
 	@echo ... FATFS/Src/Font.obj
 	@echo ... FATFS/Src/Font.i
 	@echo ... FATFS/Src/Font.s
+	@echo ... FATFS/Src/Storage_Link.obj
+	@echo ... FATFS/Src/Storage_Link.i
+	@echo ... FATFS/Src/Storage_Link.s
 	@echo ... FATFS/Src/cc936.obj
 	@echo ... FATFS/Src/cc936.i
 	@echo ... FATFS/Src/cc936.s
 	@echo ... FATFS/Src/diskio.obj
 	@echo ... FATFS/Src/diskio.i
 	@echo ... FATFS/Src/diskio.s
-	@echo ... FATFS/Src/exfuns.obj
-	@echo ... FATFS/Src/exfuns.i
-	@echo ... FATFS/Src/exfuns.s
-	@echo ... FATFS/Src/fattester.obj
-	@echo ... FATFS/Src/fattester.i
-	@echo ... FATFS/Src/fattester.s
 	@echo ... FATFS/Src/ff.obj
 	@echo ... FATFS/Src/ff.i
 	@echo ... FATFS/Src/ff.s
-	@echo ... FATFS/Src/fontupd.obj
-	@echo ... FATFS/Src/fontupd.i
-	@echo ... FATFS/Src/fontupd.s
 	@echo ... FWLIB/src/misc.obj
 	@echo ... FWLIB/src/misc.i
 	@echo ... FWLIB/src/misc.s

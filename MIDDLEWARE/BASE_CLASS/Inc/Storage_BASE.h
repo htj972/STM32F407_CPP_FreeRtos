@@ -9,9 +9,16 @@
 
 #include "sys.h"
 #include "string"
+#include "HARD_BASE.h"
 
-class Storage_BASE {
+class Storage_BASE: public HARD_BASE {
+protected:
+    bool init_flag{};
 public:
+    bool get_init_flag() const;
+    bool to_init();
+    virtual bool FAT_init();
+    virtual uint32_t GetSectorCount();
     virtual uint16_t write(uint32_t addr ,uint8_t data);
     virtual uint16_t write(uint32_t addr ,uint8_t *data,uint16_t len);
     uint16_t writestr(uint32_t addr ,const std::string& data);
