@@ -4180,6 +4180,8 @@ FRESULT f_mkfs (
 			if (disk_write(pdrv, tbl, wsect++, 1))
 				return FR_DISK_ERR;
 		}
+//        if (disk_write(pdrv, tbl, wsect, n_fat-1))
+//            return FR_DISK_ERR;
 	}
 
 	/* Initialize root directory */

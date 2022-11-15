@@ -60,4 +60,24 @@ uint32_t Storage_BASE::GetSectorCount() {
     return 0;
 }
 
+bool Storage_BASE::WaitReady() {
+    return true;
+}
+
+uint32_t Storage_BASE::Get_Sector_Size() const {
+    return this->SECTOR_SIZE;
+}
+
+uint32_t Storage_BASE::Get_Block_Size() const {
+    return this->BLOCK_SIZE;
+}
+
+void Storage_BASE::Set_Sector_Size(uint32_t SECTOR) {
+    this->SECTOR_SIZE=SECTOR;
+}
+
+void Storage_BASE::Set_Block_Size(uint32_t BLOCK) {
+    this->BLOCK_SIZE=BLOCK;
+}
+
 

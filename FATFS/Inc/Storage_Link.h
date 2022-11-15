@@ -31,7 +31,7 @@ public:
 
     ERR0R = 0xff,
     };
-protected:
+public:
     static W25QXX *W25Q_Link;
     static Storage_BASE *Storage_L[_VOLUMES];
     static FATFS *fs[_VOLUMES];
@@ -54,13 +54,13 @@ public:
     static uint8_t  f_typetell(uint8_t *fname);
     static uint8_t  exf_getfree(uint8_t *drv,uint32_t *total,uint32_t *free);
     /*系统挂载操作*/
-    static bool exfuns_init(char *name,SD_BASE *Storage);
-    static bool exfuns_init(char *name,W25QXX *SDx,bool Font= false);
+    static bool exfuns_init(const char *name,Storage_BASE *Storage);
+    static bool exfuns_init(const char *name,W25QXX *SDx,bool Font= false);
     /*文件系统操作*/
-    static bool disk_init(BYTE name);
+    static bool disk_init  (BYTE name);
     static bool disk_write (BYTE name, const BYTE *buff, DWORD sector, UINT count);
     static bool disk_read  (BYTE name,BYTE *buff,DWORD sector,UINT count);
-    static bool disk_ioctl  (BYTE name,BYTE cmd,void *buff);
+    static bool disk_ioctl (BYTE name,BYTE cmd,void *buff);
 };
 
 

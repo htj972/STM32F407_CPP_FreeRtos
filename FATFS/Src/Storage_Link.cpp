@@ -316,27 +316,34 @@ uint8_t Storage_Link::exf_getfree(uint8_t *drv,uint32_t *total,uint32_t *free)
     return res;
 }
 
+uint8_t  Storage_Link::disk_num=0;
+char     Storage_Link::disk_name[_VOLUMES][3];
+W25QXX*    Storage_Link::W25Q_Link;
+Storage_BASE* Storage_Link:: Storage_L[_VOLUMES];
+FATFS*     Storage_Link:: fs[_VOLUMES];
+
 bool Storage_Link::exfuns_init(char *name)
 {
-    Storage_Link::fs[Storage_Link::disk_num]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));	//为磁盘i工作区申请内存
-    if(!fs[Storage_Link::disk_num])return false;
-    f_mount(fs[Storage_Link::disk_num],name,1);
-    sprintf(disk_name[Storage_Link::disk_num],"%3s",name);
-    Storage_Link::disk_num++;
-    if(Storage_Link::disk_num>_VOLUMES)Storage_Link::disk_num=0;
+    Storage_Link::fs[disk_num]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));	//为磁盘i工作区申请内存
+    if(!fs[disk_num])return false;
+    disk_name[disk_num][0]=name[0];
+    if(FR_OK!=f_mount(fs[disk_num],name,1))
+        return false;
+    disk_num++;
+    if(disk_num>_VOLUMES)disk_num=0;
     return true;
 }
 
-bool Storage_Link::exfuns_init(char *name,SD_BASE *Storage)
+bool Storage_Link::exfuns_init(const char *name,Storage_BASE *Storage)
 {
-    Storage_Link::Storage_L[Storage_Link::disk_num]=Storage;
-    return Storage_Link::exfuns_init(name);
+    Storage_Link::Storage_L[disk_num]=Storage;
+    return Storage_Link::exfuns_init((char*)name);
 }
 
-bool Storage_Link::exfuns_init(char *name, W25QXX *W25x,bool Font) {
+bool Storage_Link::exfuns_init(const char *name, W25QXX *W25x,bool Font) {
     Storage_Link::W25Q_Link=W25x;
-    Storage_Link::Storage_L[Storage_Link::disk_num]=Storage_Link::W25Q_Link;
-    bool ret=Storage_Link::exfuns_init(name);
+    Storage_Link::Storage_L[disk_num]=Storage_Link::W25Q_Link;
+    bool ret=Storage_Link::exfuns_init((char*)name);
     if(ret&&Font){
         ret=Storage_Link::font_init();
     }
@@ -382,16 +389,17 @@ bool Storage_Link::disk_ioctl(BYTE name, BYTE cmd, void *buff) {
         if(disk_name[ii][0]-'0'==name)
             break;
     if(ii==_VOLUMES)return false;
-    bool res= true;;
+    bool res= true;
     switch(cmd)
     {
         case CTRL_SYNC:
+            if(!Storage_L[ii]->WaitReady())res = false;
             break;
         case GET_SECTOR_SIZE:
-            *(WORD*)buff = 512;
+            *(WORD*)buff = Storage_L[ii]->Get_Sector_Size();
             break;
         case GET_BLOCK_SIZE:
-            *(WORD*)buff = 8;
+            *(WORD*)buff = Storage_L[ii]->Get_Block_Size();
             break;
         case GET_SECTOR_COUNT:
             *(DWORD*)buff = Storage_L[ii]->GetSectorCount();

@@ -51,6 +51,8 @@ void W25QXX::init() {
     {
         this->Queue_star();
         this->spix->Queue_star();
+        this->Set_Sector_Size(512);
+        this->Set_Block_Size(8);
         this->CSPin.set_output(HIGH);
         this->spix->SetSpeed(this->BaudRatex);
         this->PowerDown();
@@ -68,6 +70,8 @@ void W25QXX::init(SPI *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx, uint16_t BaudRa
     this->spix=SPIx;
     this->Queue_star();
     this->spix->Queue_star();
+    this->Set_Sector_Size(512);
+    this->Set_Block_Size(8);
     this->CSPin.init(PORTx,Pinx,GPIO_Mode_OUT);
     this->CSPin.set_output(HIGH);
     this->spix->SetSpeed(BaudRate);
@@ -86,6 +90,8 @@ void W25QXX::init(SPI *SPIx,uint8_t CSpin,uint16_t BaudRate)
     this->spix=SPIx;
     this->Queue_star();
     this->spix->Queue_star();
+    this->Set_Sector_Size(512);
+    this->Set_Block_Size(8);
     this->CSPin.init(CSpin,GPIO_Mode_OUT);
     this->CSPin.set_output(HIGH);
     this->spix->SetSpeed(BaudRate);

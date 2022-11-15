@@ -1,3 +1,4 @@
+#include <cstring>
 #include "sys.h"
 #include "delay.h"
 #include "USART.h"
@@ -6,6 +7,7 @@
 #include "Out_In_Put.h"
 #include "OLED_SSD1306.h"
 #include "SD_SPI.h"
+#include "Storage_Link.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -60,7 +62,7 @@ int main()
     MOLED.Fill(0x00);
 
     spi2.config(GPIOB13,GPIOB14,GPIOB15);
-//    spi2.init(SPI2);
+    spi2.init(SPI2);
     uint8_t ret=SD1.init();
     while(ret)//检测不到SD卡
     {
@@ -72,11 +74,41 @@ int main()
     }
     MOLED.Print(0,0,(uint8_t*)"init OK!");
 
-    MOLED.Print(0,2,SD1.GetSectorCount()>>11);
-//    SD1.writestr(1000,asdasd);
-//    MOLED.Print(0,4,sdaasda);
-//    SD1.readstr(1000,&sdaasda,asdasd.length());
-//    MOLED.Print(0,6,sdaasda);
+//    MOLED.Print(0,4,asdasd);//关闭文件
+//    SD1.write(0,(uint8_t *)"1",1);
+//    uint8_t getas[1024];
+//    SD1.read(0,getas,1);
+//
+//    MOLED.Print(0,6,getas);//关闭文件
+    FIL fp;//文件指针
+    FIL fp2;//文件指针
+    UINT plen;											//文件长度临时数据
+    DIR dr;
+    FRESULT rrt;
+    char text_data[10]="123456";
+    char gext_data[10]="qwerty";
+
+    MOLED.Print(0,2,"%s",
+    Storage_Link::exfuns_init((char*)"0:",&SD1)?"true":"false");
+
+//    f_mkfs("0:",1,4096);
+    f_mkdir("0:/asd");
+
+    rrt=f_open(&fp,"0:/asd/23.txt",FA_WRITE|FA_OPEN_ALWAYS);
+    if(rrt==FR_OK)
+    {
+        f_lseek(&fp,fp.fsize);																		//移动光标到文件尾
+        f_write(&fp,text_data,strlen((char*)text_data),&plen);		//写入数据
+        f_close(&fp);
+        MOLED.Print(0,4,(char*)"true");//关闭文件
+    }
+    else
+     MOLED.Print(0,4,(char*)"false");//关闭文件
+
+    rrt=f_open(&fp2,"0:/asd/23.txt",FA_READ);
+    rrt=f_read(&fp2,gext_data,strlen((char*)text_data),&plen);
+    f_close(&fp2);
+    MOLED.Print(0,6,gext_data);//关闭文件
 
 
     //创建开始任务

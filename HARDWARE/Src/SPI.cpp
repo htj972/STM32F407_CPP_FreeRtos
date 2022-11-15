@@ -118,7 +118,6 @@ void SPI::SetSpeed(uint8_t SPI_BaudRatePrescaler)
 
 uint16_t SPI::ReadWriteDATA(uint16_t TxData)
 {
-    this->Queue_star();
     uint32_t error_num=this->error_times;
     while (SPI_I2S_GetFlagStatus(this->SPIx, SPI_I2S_FLAG_TXE) == RESET){
         error_num--;if(error_num==0)break;
@@ -129,7 +128,7 @@ uint16_t SPI::ReadWriteDATA(uint16_t TxData)
         error_num--;if(error_num==0)break;
     } //等待接收完一个byte
     uint16_t data=SPI_I2S_ReceiveData(this->SPIx); //返回通过SPIx最近接收的数据
-    this->Queue_end();
+
     return data;
 }
 

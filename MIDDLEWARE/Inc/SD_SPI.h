@@ -17,7 +17,8 @@ private:
     void SpeedHigh();
     void DisSelect();
     bool Select();
-    bool WaitReady();
+    bool Wait_OWN_Call;
+    bool WaitReady() override;
     uint8_t GetResponse(uint8_t Response);
     bool RecvData(uint8_t *buf,uint16_t len);
     bool SendBlock(uint8_t *buf,uint8_t cmd);

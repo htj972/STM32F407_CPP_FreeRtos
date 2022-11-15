@@ -6,10 +6,12 @@
 
 #ifndef KOKIRIKA_MALLOC_H
 #define KOKIRIKA_MALLOC_H
-#ifndef __MALLOC_H
-#define __MALLOC_H
+
 #include <sys.h>
 
+#if __cplusplus
+extern "C"{
+#endif
 
 //定义三个内存池
 #define SRAMIN	 0		//内部内存池
@@ -59,19 +61,10 @@ uint8_t my_mem_perused(uint8_t memx);				//获得内存使用率(外/内部调用)
 void myfree(uint8_t memx,void *ptr);  			//内存释放(外部调用)
 void *mymalloc(uint8_t memx,uint32_t size);			//内存分配(外部调用)
 void *myrealloc(uint8_t memx,void *ptr,uint32_t size);//重新分配内存(外部调用)
+
+
+#if __cplusplus
+}
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif //KOKIRIKA_MALLOC_H

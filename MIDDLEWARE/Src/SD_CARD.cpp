@@ -67,9 +67,13 @@ uint8_t SD_SPI::init(SPI *SPIx,uint8_t CSpin)
 {
     this->Queue_star();
     this->spix->Queue_star();
+    this->Wait_OWN_Call= true;
     this->CSPinx.init(CSpin,GPIO_Mode_OUT);
     this->spix=SPIx;
+    this->Set_Sector_Size(512);
+    this->Set_Block_Size(8);
     uint8_t ret=this->Initialize();
+    this->Wait_OWN_Call= false;
     this->spix->Queue_end();
     this->Queue_end();
     this->init_flag= true;
@@ -79,9 +83,13 @@ uint8_t SD_SPI::init(SPI *SPIx,uint8_t CSpin)
 uint8_t SD_SPI::init(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx) {
     this->Queue_star();
     this->spix->Queue_star();
+    this->Wait_OWN_Call= true;
     this->CSPinx.init(PORTx,Pinx,GPIO_Mode_OUT);
     this->spix=SPIx;
+    this->Set_Sector_Size(512);
+    this->Set_Block_Size(8);
     uint8_t ret=this->Initialize();
+    this->Wait_OWN_Call= false;
     this->spix->Queue_end();
     this->Queue_end();
     this->init_flag= true;
@@ -93,8 +101,12 @@ uint8_t SD_SPI::init()
     if(this->spix!= nullptr) {
         this->Queue_star();
         this->spix->Queue_star();
+        this->Set_Sector_Size(512);
+        this->Set_Block_Size(8);
+        this->Wait_OWN_Call= true;
         this->DisSelect();
         uint8_t ret=this->Initialize();
+        this->Wait_OWN_Call= false;
         this->spix->Queue_end();
         this->Queue_end();
         this->init_flag= true;
@@ -129,14 +141,28 @@ bool SD_SPI::Select()
 
 bool SD_SPI::WaitReady()
 {
+    bool ret=false;
+    if(!this->Wait_OWN_Call)
+    {
+        this->Queue_star();
+        this->spix->Queue_star();
+    }
     uint32_t t=0;
     do
     {
         if(this->spix->ReadWriteDATA(0XFF)==0XFF)
-            return true;
+        {
+            ret = true;
+            break;
+        }
         t++;
     }while(t<0XFFFFFF);
-    return false;
+    if(!this->Wait_OWN_Call)
+    {
+        this->spix->Queue_end();
+        this->Queue_end();
+    }
+    return ret;
 }
 //等待SD卡回应
 uint8_t SD_SPI::GetResponse(uint8_t Response)
@@ -334,25 +360,27 @@ uint8_t SD_SPI::ReadDisk(uint8_t *buf,uint32_t sector,uint8_t cnt)
     uint8_t r1;
     this->Queue_star();
     this->spix->Queue_star();
-    if(this->SD_Type!=SD_TYPE_V2HC)sector =0;//转换为字节地址
+    this->Wait_OWN_Call= true;
+    if(this->SD_Type!=SD_TYPE_V2HC)sector <<=9;//转换为字节地址
     if(cnt==1)
     {
         r1=this->SendCmd(CMD17,sector,0X01);//读命令
         if(r1==0)//指令发送成功
         {
-            r1=this->RecvData(buf,512);//接收512个字节
+            r1=this->RecvData(buf,512)?0:1;//接收512个字节
         }
     }else
     {
         this->SendCmd(CMD18,sector,0X01);//连续读命令
         do
         {
-            r1=this->RecvData(buf,512);//接收512个字节
+            r1=this->RecvData(buf,512)?0:1;//接收512个字节
             buf+=512;
         }while(--cnt && r1==0);
         this->SendCmd(CMD12,0,0X01);	//发送停止命令
     }
     this->DisSelect();//取消片选
+    this->Wait_OWN_Call= false;
     this->spix->Queue_end();
     this->Queue_end();
     return r1;//
@@ -361,19 +389,19 @@ uint8_t SD_SPI::ReadDisk(uint8_t *buf,uint32_t sector,uint8_t cnt)
 //buf:数据缓存区
 //sector:起始扇区
 //cnt:扇区数
-//返回值:0,ok;其他,失败.
 uint8_t SD_SPI::WriteDisk(uint8_t*buf,uint32_t sector,uint8_t cnt)
 {
     uint8_t r1;
     this->Queue_star();
     this->spix->Queue_star();
+    this->Wait_OWN_Call= true;
     if(SD_Type!=SD_TYPE_V2HC)sector *= 512;//转换为字节地址
     if(cnt==1)
     {
         r1=this->SendCmd(CMD24,sector,0X01);//读命令
         if(r1==0)//指令发送成功
         {
-            r1=this->SendBlock(buf,0xFE);//写512个字节
+            r1=this->SendBlock(buf,0xFE)?0:1;
         }
     }else
     {
@@ -387,13 +415,15 @@ uint8_t SD_SPI::WriteDisk(uint8_t*buf,uint32_t sector,uint8_t cnt)
         {
             do
             {
-                r1=this->SendBlock(buf,0xFC);//接收512个字节
+                r1=this->SendBlock(buf,0xFC)?0:1;;//接收512个字节
                 buf+=512;
             }while(--cnt && r1==0);
-            r1=this->SendBlock(nullptr,0xFD);//接收512个字节
+            if(this->SendBlock(buf,0xFE))
+                r1=0;//写512个字节
         }
     }
     this->DisSelect();//取消片选
+    this->Wait_OWN_Call= false;
     this->spix->Queue_end();
     this->Queue_end();
     return r1;//
@@ -406,7 +436,7 @@ uint16_t SD_SPI::write(uint32_t addr, uint8_t data) {
 }
 
 uint16_t SD_SPI::write(uint32_t addr, uint8_t *data, uint16_t len) {
-    if(this->WriteDisk(data,addr,1)==0)
+    if(this->WriteDisk(data,addr,len)==0)
         return len;
     else return 0;
 }
@@ -430,7 +460,6 @@ bool SD_SPI::FAT_init() {
     if(this->init())return false;
     return true;
 }
-
 
 
 
