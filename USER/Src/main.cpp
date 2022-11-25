@@ -37,7 +37,6 @@ TaskHandle_t Task2Task_Handler;
 [[noreturn]] void task2_task(void *pvParameters);
 
 _OutPut_        led(GPIOE6);
-_OutPut_        led1(GPIOE5);
 _USART_         U1(USART1,115200);
 Software_IIC    SIIC1(GPIOB4,GPIOB5);
 OLED_SSD1306    MOLED(&SIIC1,OLED_SSD1306::Queue::OWN_Queue);
@@ -48,7 +47,8 @@ SD_SPI          SD1(&spi2, GPIOB12);
 std::string asdasd="123456";
 std::string sdaasda="564";
 
-
+SPI_S        SSPI(GPIOD8,GPIOE15,GPIOC5);
+_OutPut_     SC(GPIOD9);
 
 int main()
 {
@@ -74,6 +74,7 @@ int main()
     }
     MOLED.Print(0,0,(uint8_t*)"init OK!");
 
+
 //    MOLED.Print(0,4,asdasd);//关闭文件
 //    SD1.write(0,(uint8_t *)"1",1);
 //    uint8_t getas[1024];
@@ -97,19 +98,20 @@ int main()
     rrt=f_open(&fp,"0:/asd/23.txt",FA_WRITE|FA_OPEN_ALWAYS);
     if(rrt==FR_OK)
     {
-        f_lseek(&fp,fp.fsize);																		//移动光标到文件尾
-        f_write(&fp,text_data,strlen((char*)text_data),&plen);		//写入数据
+        f_lseek(&fp,fp.fsize);//移动光标到文件尾
+        f_write(&fp,text_data,strlen((char*)text_data),&plen);//写入数据
         f_close(&fp);
         MOLED.Print(0,4,(char*)"true");//关闭文件
     }
     else
      MOLED.Print(0,4,(char*)"false");//关闭文件
 
-    rrt=f_open(&fp2,"0:/asd/23.txt",FA_READ);
-    rrt=f_read(&fp2,gext_data,strlen((char*)text_data),&plen);
+    f_open(&fp2,"0:/asd/23.txt",FA_READ);
+    f_read(&fp2,gext_data,strlen((char*)text_data),&plen);
     f_close(&fp2);
     MOLED.Print(0,6,gext_data);//关闭文件
 
+    MOLED.CLS();
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -149,8 +151,13 @@ void start_task(void *pvParameters)
     uint8_t sec_t=0;
     while(true)
     {
-        vTaskDelay(250/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-        led.change();
+        vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+        SSPI.config(SPI_S::CP::OL_1_HA_1);
+
+        MOLED.Print(0,4,sec_t);//关闭文件
+        SC.set(ON);
+        MOLED.Print(0,6,SSPI.ReadWriteDATA(sec_t++));//关闭文件
+        SC.set(OFF);
     }
 }
 
@@ -164,7 +171,7 @@ void start_task(void *pvParameters)
         U1<<U1.read_data();
         MOLED.Queue_star();
         //MOLED.Print(0,0,"%04d",task2_num);
-        led1.change();
+        led.change();
         MOLED.Queue_end();
     }
 }

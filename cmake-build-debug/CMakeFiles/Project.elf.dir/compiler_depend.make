@@ -7014,6 +7014,744 @@ CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj: ../SYSTEM/Src/sys.c \
   ../FWLIB/inc/stm32f4xx_dcmi.h \
   ../FWLIB/inc/stm32f4xx_fsmc.h
 
+CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj: ../USB/CLASS/Src/USB_MSC.cpp \
+  ../USB/CLASS/Inc/USB_MSC.h \
+  ../MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h \
+  ../SYSTEM/Inc/sys.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/string \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++config.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/os_defines.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/cpu_defines.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stringfwd.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/memoryfwd.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/char_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/functexcept.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/exception_defines.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/cpp_type_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/type_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/numeric_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/move.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/type_traits \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator_base_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator_base_funcs.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/concept_check.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/debug/assertions.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/ptr_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/debug/debug.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/postypes.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cwchar \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/wchar.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano/newlib.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/config.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/reent.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/lock.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/assert.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/cdefs.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_locale.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdint \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/allocator.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++allocator.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/new_allocator.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/new \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/exception \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/exception.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/cxxabi_init_exception.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/typeinfo \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/hash_bytes.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/nested_exception.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/localefwd.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++locale.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/clocale \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/locale.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/iosfwd \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cctype \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/ctype.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/ostream_insert.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/cxxabi_forced.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_function.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/backward/binders.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/range_access.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/initializer_list \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/iterator_concepts.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/concepts \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/range_cmp.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/atomicity.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/gthr.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/gthr-default.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/atomic_word.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/alloc_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/alloc_traits.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_construct.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/string_conversions.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdlib \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdlib.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/stdlib.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/alloca.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdio \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdio.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/endian.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_endian.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/select.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_sigset.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_timeval.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/timespec.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_timespec.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_pthreadtypes.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/sched.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/stdio.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cerrno \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/errno.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/errno.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/charconv.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/functional_hash.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/basic_string.tcc \
+  ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h \
+  ../FreeRTOS/FreeRTOS_Inc/FreeRTOS.h \
+  ../FreeRTOS/FreeRTOS_Inc/FreeRTOSConfig.h \
+  ../FreeRTOS/FreeRTOS_Inc/projdefs.h \
+  ../FreeRTOS/FreeRTOS_Inc/portable.h \
+  ../FreeRTOS/FreeRTOS_Inc/deprecated_definitions.h \
+  ../FreeRTOS/FreeRTOS_Inc/portmacro.h \
+  ../FreeRTOS/FreeRTOS_Inc/mpu_wrappers.h \
+  ../FreeRTOS/FreeRTOS_Inc/semphr.h \
+  ../FreeRTOS/FreeRTOS_Inc/queue.h \
+  ../FreeRTOS/FreeRTOS_Inc/task.h \
+  ../FreeRTOS/FreeRTOS_Inc/list.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_HOST/Inc/usbh_def.h \
+  ../USB/USB_HOST/Inc/usbh_conf.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_HOST/Inc/usbh_stdreq.h \
+  ../USB/CLASS/Inc/usb_bsp.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_HOST/Inc/usbh_ioreq.h \
+  ../USB/USB_HOST/Inc/usbh_hcs.h \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_msc_scsi.h \
+  ../USB/USB_HOST/Inc/usbh_msc_bot.h \
+  ../USB/USB_OTG/Inc/usb_hcd_int.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../SYSTEM/Inc/delay.h
+
+CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.obj: ../USB/USB_HOST/Scr/usbh_core.c \
+  ../USB/USB_HOST/Inc/usbh_ioreq.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_HOST/Inc/usbh_def.h \
+  ../USB/USB_HOST/Inc/usbh_conf.h \
+  ../USB/CLASS/Inc/usb_bsp.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_HOST/Inc/usbh_hcs.h \
+  ../USB/USB_HOST/Inc/usbh_stdreq.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_OTG/Inc/usb_hcd_int.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h
+
+CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.obj: ../USB/USB_HOST/Scr/usbh_hcs.c \
+  ../USB/USB_HOST/Inc/usbh_hcs.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_HOST/Inc/usbh_def.h \
+  ../USB/USB_HOST/Inc/usbh_conf.h
+
+CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.obj: ../USB/USB_HOST/Scr/usbh_ioreq.c \
+  ../USB/USB_HOST/Inc/usbh_ioreq.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_HOST/Inc/usbh_def.h \
+  ../USB/USB_HOST/Inc/usbh_conf.h
+
+CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.obj: ../USB/USB_HOST/Scr/usbh_msc_bot.c \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_HOST/Inc/usbh_def.h \
+  ../USB/USB_HOST/Inc/usbh_conf.h \
+  ../USB/USB_HOST/Inc/usbh_stdreq.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/CLASS/Inc/usb_bsp.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_HOST/Inc/usbh_ioreq.h \
+  ../USB/USB_HOST/Inc/usbh_hcs.h \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_msc_scsi.h \
+  ../USB/USB_HOST/Inc/usbh_msc_bot.h \
+  ../USB/USB_HOST/Inc/usbh_msc_scsi.h \
+  ../USB/USB_HOST/Inc/usbh_msc_bot.h \
+  ../USB/USB_HOST/Inc/usbh_ioreq.h \
+  ../USB/USB_HOST/Inc/usbh_def.h \
+  ../USB/USB_OTG/Inc/usb_hcd_int.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h
+
+CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.obj: ../USB/USB_HOST/Scr/usbh_msc_core.c \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_HOST/Inc/usbh_def.h \
+  ../USB/USB_HOST/Inc/usbh_conf.h \
+  ../USB/USB_HOST/Inc/usbh_stdreq.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/CLASS/Inc/usb_bsp.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_HOST/Inc/usbh_ioreq.h \
+  ../USB/USB_HOST/Inc/usbh_hcs.h \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_msc_scsi.h \
+  ../USB/USB_HOST/Inc/usbh_msc_bot.h \
+  ../USB/USB_HOST/Inc/usbh_msc_scsi.h \
+  ../USB/USB_HOST/Inc/usbh_msc_bot.h \
+  ../USB/USB_HOST/Inc/usbh_core.h
+
+CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.obj: ../USB/USB_HOST/Scr/usbh_msc_scsi.c \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_HOST/Inc/usbh_def.h \
+  ../USB/USB_HOST/Inc/usbh_conf.h \
+  ../USB/USB_HOST/Inc/usbh_stdreq.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/CLASS/Inc/usb_bsp.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_HOST/Inc/usbh_ioreq.h \
+  ../USB/USB_HOST/Inc/usbh_hcs.h \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_msc_scsi.h \
+  ../USB/USB_HOST/Inc/usbh_msc_bot.h \
+  ../USB/USB_HOST/Inc/usbh_msc_scsi.h \
+  ../USB/USB_HOST/Inc/usbh_msc_bot.h \
+  ../USB/USB_HOST/Inc/usbh_ioreq.h \
+  ../USB/USB_HOST/Inc/usbh_def.h
+
+CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.obj: ../USB/USB_HOST/Scr/usbh_stdreq.c \
+  ../USB/USB_HOST/Inc/usbh_ioreq.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_HOST/Inc/usbh_def.h \
+  ../USB/USB_HOST/Inc/usbh_conf.h \
+  ../USB/USB_HOST/Inc/usbh_stdreq.h
+
+CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.obj: ../USB/USB_OTG/Scr/usb_core.c \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/CLASS/Inc/usb_bsp.h \
+  ../USB/USB_OTG/Inc/usb_conf.h
+
+CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.obj: ../USB/USB_OTG/Scr/usb_hcd.c \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/CLASS/Inc/usb_bsp.h
+
+CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.obj: ../USB/USB_OTG/Scr/usb_hcd_int.c \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USER/Inc/stm32f4xx.h \
+  ../CORE/Inc/core_cm4.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  ../CORE/Inc/core_cmInstr.h \
+  ../CORE/Inc/core_cmFunc.h \
+  ../CORE/Inc/core_cm4_simd.h \
+  ../USER/Inc/system_stm32f4xx.h \
+  ../USER/Inc/stm32f4xx_conf.h \
+  ../FWLIB/inc/stm32f4xx_adc.h \
+  ../FWLIB/inc/stm32f4xx_crc.h \
+  ../FWLIB/inc/stm32f4xx_dbgmcu.h \
+  ../FWLIB/inc/stm32f4xx_dma.h \
+  ../FWLIB/inc/stm32f4xx_exti.h \
+  ../FWLIB/inc/stm32f4xx_flash.h \
+  ../FWLIB/inc/stm32f4xx_gpio.h \
+  ../FWLIB/inc/stm32f4xx_i2c.h \
+  ../FWLIB/inc/stm32f4xx_iwdg.h \
+  ../FWLIB/inc/stm32f4xx_pwr.h \
+  ../FWLIB/inc/stm32f4xx_rcc.h \
+  ../FWLIB/inc/stm32f4xx_rtc.h \
+  ../FWLIB/inc/stm32f4xx_sdio.h \
+  ../FWLIB/inc/stm32f4xx_spi.h \
+  ../FWLIB/inc/stm32f4xx_syscfg.h \
+  ../FWLIB/inc/stm32f4xx_tim.h \
+  ../FWLIB/inc/stm32f4xx_usart.h \
+  ../FWLIB/inc/stm32f4xx_wwdg.h \
+  ../FWLIB/inc/misc.h \
+  ../FWLIB/inc/stm32f4xx_cryp.h \
+  ../FWLIB/inc/stm32f4xx_hash.h \
+  ../FWLIB/inc/stm32f4xx_rng.h \
+  ../FWLIB/inc/stm32f4xx_can.h \
+  ../FWLIB/inc/stm32f4xx_dac.h \
+  ../FWLIB/inc/stm32f4xx_dcmi.h \
+  ../FWLIB/inc/stm32f4xx_fsmc.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_OTG/Inc/usb_hcd_int.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_core.h
+
 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: ../USER/Src/main.cpp \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstring \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++config.h \
@@ -7422,6 +8160,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/iostre
 
 ../FWLIB/inc/stm32f4xx_adc.h:
 
+../USB/USB_OTG/Inc/usb_hcd.h:
+
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/allocator.h:
 
 ../FWLIB/inc/stm32f4xx_crc.h:
@@ -7466,6 +8206,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/e
 
 ../FWLIB/inc/stm32f4xx_dcmi.h:
 
+../USB/USB_HOST/Inc/usbh_ioreq.h:
+
 ../MIDDLEWARE/BASE_CLASS/Inc/Printer_usart_BASE.h:
 
 ../FWLIB/inc/stm32f4xx_wwdg.h:
@@ -7509,6 +8251,10 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/c
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator_base_funcs.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/concept_check.h:
+
+../USB/USB_HOST/Inc/usbh_msc_scsi.h:
+
+../USB/CLASS/Inc/USB_MSC.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/debug/assertions.h:
 
@@ -7572,11 +8318,15 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_locale.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++allocator.h:
 
+../USB/USB_HOST/Scr/usbh_hcs.c:
+
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/nested_exception.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/new:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/exception:
+
+../USB/USB_HOST/Inc/usbh_stdreq.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/exception.h:
 
@@ -7591,6 +8341,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/typein
 ../FATFS/Inc/ff.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/localefwd.h:
+
+../USB/USB_HOST/Scr/usbh_stdreq.c:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++locale.h:
 
@@ -7609,6 +8361,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/iosfwd
 ../MIDDLEWARE/Src/SHT3x.cpp:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/ctype.h:
+
+../USB/USB_HOST/Inc/usbh_core.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/ostream_insert.h:
 
@@ -7640,15 +8394,21 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/b
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/atomicity.h:
 
+../USB/USB_HOST/Scr/usbh_core.c:
+
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/gthr.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/gthr-default.h:
+
+../USB/USB_HOST/Inc/usbh_msc_bot.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdlib.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/atomic_word.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/alloc_traits.h:
+
+../USB/USB_OTG/Inc/usb_core.h:
 
 ../HARDWARE/Inc/PWM.h:
 
@@ -7758,6 +8518,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h:
 
 ../FATFS/Src/ff.c:
 
+../USB/USB_OTG/Scr/usb_core.c:
+
 ../FWLIB/src/stm32f4xx_crc.c:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/std_function.h:
@@ -7822,6 +8584,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/l
 
 ../FWLIB/src/stm32f4xx_rtc.c:
 
+../USB/USB_HOST/Inc/usbh_def.h:
+
 ../FWLIB/src/stm32f4xx_sai.c:
 
 ../FWLIB/src/stm32f4xx_sdio.c:
@@ -7877,6 +8641,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ios:
 ../HARDWARE/BASE_CLASS/Inc/PWM_BASE.h:
 
 ../HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp:
+
+../USB/USB_HOST/Inc/usbh_hcs.h:
 
 ../HARDWARE/Src/ADC.cpp:
 
@@ -7982,6 +8748,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/s
 
 ../MIDDLEWARE/Src/DHTxx.cpp:
 
+../USB/USB_HOST/Inc/usbh_msc_core.h:
+
 ../MIDDLEWARE/Src/RD_EH32.cpp:
 
 ../MIDDLEWARE/Inc/DHTxx.h:
@@ -8009,6 +8777,32 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/s
 ../SYSTEM/Src/DMA.c:
 
 ../SYSTEM/Src/malloc.c:
+
+../USB/CLASS/Src/USB_MSC.cpp:
+
+../USB/USB_OTG/Inc/usb_regs.h:
+
+../USB/USB_OTG/Inc/usb_conf.h:
+
+../USB/USB_OTG/Inc/usb_defines.h:
+
+../USB/USB_HOST/Inc/usbh_conf.h:
+
+../USB/CLASS/Inc/usb_bsp.h:
+
+../USB/USB_OTG/Inc/usb_hcd_int.h:
+
+../USB/USB_HOST/Scr/usbh_ioreq.c:
+
+../USB/USB_HOST/Scr/usbh_msc_bot.c:
+
+../USB/USB_HOST/Scr/usbh_msc_core.c:
+
+../USB/USB_HOST/Scr/usbh_msc_scsi.c:
+
+../USB/USB_OTG/Scr/usb_hcd.c:
+
+../USB/USB_OTG/Scr/usb_hcd_int.c:
 
 ../USER/Src/main.cpp:
 

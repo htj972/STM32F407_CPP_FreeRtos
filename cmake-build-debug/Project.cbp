@@ -41,6 +41,9 @@
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/CLASS/Inc"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -79,6 +82,9 @@
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/BASE_CLASS/Inc"/>
 					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Inc"/>
+					<Add directory="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/CLASS/Inc"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="f:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -724,6 +730,90 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/sys.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/CLASS/Inc/USB_MSC.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/CLASS/Src/USB_MSC.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Inc/usbh_conf.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Inc/usbh_core.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Inc/usbh_def.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Inc/usbh_hcs.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Inc/usbh_ioreq.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Inc/usbh_msc_bot.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Inc/usbh_msc_core.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Inc/usbh_msc_scsi.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Inc/usbh_stdreq.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_core.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_hcs.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_ioreq.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_msc_bot.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_msc_core.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_msc_scsi.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_stdreq.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Inc/usb_bsp.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Inc/usb_conf.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Inc/usb_core.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Inc/usb_defines.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Inc/usb_hcd.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Inc/usb_hcd_int.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Inc/usb_regs.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Scr/usb_core.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Scr/usb_hcd.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Scr/usb_hcd_int.c">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Inc/stm32f4xx.h">

@@ -44,7 +44,7 @@ void _OutPut_::init(uint8_t Pinx, uint8_t Hi_Lo) {
 
 void _OutPut_::set(uint8_t ON_OFF) {
     this->value=ON_OFF;
-    if(ON_OFF==OFF)
+    if(ON_OFF==ON)
         this->GPIO.set_output(this->default_mode);
     else
         this->GPIO.set_output(!this->default_mode);

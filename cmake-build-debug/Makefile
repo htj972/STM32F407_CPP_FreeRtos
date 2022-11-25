@@ -2408,6 +2408,270 @@ SYSTEM/Src/sys.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.s
 .PHONY : SYSTEM/Src/sys.c.s
 
+USB/CLASS/Src/USB_MSC.obj: USB/CLASS/Src/USB_MSC.cpp.obj
+.PHONY : USB/CLASS/Src/USB_MSC.obj
+
+# target to build an object file
+USB/CLASS/Src/USB_MSC.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj
+.PHONY : USB/CLASS/Src/USB_MSC.cpp.obj
+
+USB/CLASS/Src/USB_MSC.i: USB/CLASS/Src/USB_MSC.cpp.i
+.PHONY : USB/CLASS/Src/USB_MSC.i
+
+# target to preprocess a source file
+USB/CLASS/Src/USB_MSC.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.i
+.PHONY : USB/CLASS/Src/USB_MSC.cpp.i
+
+USB/CLASS/Src/USB_MSC.s: USB/CLASS/Src/USB_MSC.cpp.s
+.PHONY : USB/CLASS/Src/USB_MSC.s
+
+# target to generate assembly for a file
+USB/CLASS/Src/USB_MSC.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.s
+.PHONY : USB/CLASS/Src/USB_MSC.cpp.s
+
+USB/USB_HOST/Scr/usbh_core.obj: USB/USB_HOST/Scr/usbh_core.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_core.obj
+
+# target to build an object file
+USB/USB_HOST/Scr/usbh_core.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_core.c.obj
+
+USB/USB_HOST/Scr/usbh_core.i: USB/USB_HOST/Scr/usbh_core.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_core.i
+
+# target to preprocess a source file
+USB/USB_HOST/Scr/usbh_core.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_core.c.i
+
+USB/USB_HOST/Scr/usbh_core.s: USB/USB_HOST/Scr/usbh_core.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_core.s
+
+# target to generate assembly for a file
+USB/USB_HOST/Scr/usbh_core.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_core.c.s
+
+USB/USB_HOST/Scr/usbh_hcs.obj: USB/USB_HOST/Scr/usbh_hcs.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_hcs.obj
+
+# target to build an object file
+USB/USB_HOST/Scr/usbh_hcs.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_hcs.c.obj
+
+USB/USB_HOST/Scr/usbh_hcs.i: USB/USB_HOST/Scr/usbh_hcs.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_hcs.i
+
+# target to preprocess a source file
+USB/USB_HOST/Scr/usbh_hcs.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_hcs.c.i
+
+USB/USB_HOST/Scr/usbh_hcs.s: USB/USB_HOST/Scr/usbh_hcs.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_hcs.s
+
+# target to generate assembly for a file
+USB/USB_HOST/Scr/usbh_hcs.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_hcs.c.s
+
+USB/USB_HOST/Scr/usbh_ioreq.obj: USB/USB_HOST/Scr/usbh_ioreq.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_ioreq.obj
+
+# target to build an object file
+USB/USB_HOST/Scr/usbh_ioreq.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_ioreq.c.obj
+
+USB/USB_HOST/Scr/usbh_ioreq.i: USB/USB_HOST/Scr/usbh_ioreq.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_ioreq.i
+
+# target to preprocess a source file
+USB/USB_HOST/Scr/usbh_ioreq.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_ioreq.c.i
+
+USB/USB_HOST/Scr/usbh_ioreq.s: USB/USB_HOST/Scr/usbh_ioreq.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_ioreq.s
+
+# target to generate assembly for a file
+USB/USB_HOST/Scr/usbh_ioreq.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_ioreq.c.s
+
+USB/USB_HOST/Scr/usbh_msc_bot.obj: USB/USB_HOST/Scr/usbh_msc_bot.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_msc_bot.obj
+
+# target to build an object file
+USB/USB_HOST/Scr/usbh_msc_bot.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_msc_bot.c.obj
+
+USB/USB_HOST/Scr/usbh_msc_bot.i: USB/USB_HOST/Scr/usbh_msc_bot.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_msc_bot.i
+
+# target to preprocess a source file
+USB/USB_HOST/Scr/usbh_msc_bot.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_msc_bot.c.i
+
+USB/USB_HOST/Scr/usbh_msc_bot.s: USB/USB_HOST/Scr/usbh_msc_bot.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_msc_bot.s
+
+# target to generate assembly for a file
+USB/USB_HOST/Scr/usbh_msc_bot.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_msc_bot.c.s
+
+USB/USB_HOST/Scr/usbh_msc_core.obj: USB/USB_HOST/Scr/usbh_msc_core.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_msc_core.obj
+
+# target to build an object file
+USB/USB_HOST/Scr/usbh_msc_core.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_msc_core.c.obj
+
+USB/USB_HOST/Scr/usbh_msc_core.i: USB/USB_HOST/Scr/usbh_msc_core.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_msc_core.i
+
+# target to preprocess a source file
+USB/USB_HOST/Scr/usbh_msc_core.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_msc_core.c.i
+
+USB/USB_HOST/Scr/usbh_msc_core.s: USB/USB_HOST/Scr/usbh_msc_core.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_msc_core.s
+
+# target to generate assembly for a file
+USB/USB_HOST/Scr/usbh_msc_core.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_msc_core.c.s
+
+USB/USB_HOST/Scr/usbh_msc_scsi.obj: USB/USB_HOST/Scr/usbh_msc_scsi.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_msc_scsi.obj
+
+# target to build an object file
+USB/USB_HOST/Scr/usbh_msc_scsi.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_msc_scsi.c.obj
+
+USB/USB_HOST/Scr/usbh_msc_scsi.i: USB/USB_HOST/Scr/usbh_msc_scsi.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_msc_scsi.i
+
+# target to preprocess a source file
+USB/USB_HOST/Scr/usbh_msc_scsi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_msc_scsi.c.i
+
+USB/USB_HOST/Scr/usbh_msc_scsi.s: USB/USB_HOST/Scr/usbh_msc_scsi.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_msc_scsi.s
+
+# target to generate assembly for a file
+USB/USB_HOST/Scr/usbh_msc_scsi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_msc_scsi.c.s
+
+USB/USB_HOST/Scr/usbh_stdreq.obj: USB/USB_HOST/Scr/usbh_stdreq.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_stdreq.obj
+
+# target to build an object file
+USB/USB_HOST/Scr/usbh_stdreq.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.obj
+.PHONY : USB/USB_HOST/Scr/usbh_stdreq.c.obj
+
+USB/USB_HOST/Scr/usbh_stdreq.i: USB/USB_HOST/Scr/usbh_stdreq.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_stdreq.i
+
+# target to preprocess a source file
+USB/USB_HOST/Scr/usbh_stdreq.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.i
+.PHONY : USB/USB_HOST/Scr/usbh_stdreq.c.i
+
+USB/USB_HOST/Scr/usbh_stdreq.s: USB/USB_HOST/Scr/usbh_stdreq.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_stdreq.s
+
+# target to generate assembly for a file
+USB/USB_HOST/Scr/usbh_stdreq.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.s
+.PHONY : USB/USB_HOST/Scr/usbh_stdreq.c.s
+
+USB/USB_OTG/Scr/usb_core.obj: USB/USB_OTG/Scr/usb_core.c.obj
+.PHONY : USB/USB_OTG/Scr/usb_core.obj
+
+# target to build an object file
+USB/USB_OTG/Scr/usb_core.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.obj
+.PHONY : USB/USB_OTG/Scr/usb_core.c.obj
+
+USB/USB_OTG/Scr/usb_core.i: USB/USB_OTG/Scr/usb_core.c.i
+.PHONY : USB/USB_OTG/Scr/usb_core.i
+
+# target to preprocess a source file
+USB/USB_OTG/Scr/usb_core.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.i
+.PHONY : USB/USB_OTG/Scr/usb_core.c.i
+
+USB/USB_OTG/Scr/usb_core.s: USB/USB_OTG/Scr/usb_core.c.s
+.PHONY : USB/USB_OTG/Scr/usb_core.s
+
+# target to generate assembly for a file
+USB/USB_OTG/Scr/usb_core.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.s
+.PHONY : USB/USB_OTG/Scr/usb_core.c.s
+
+USB/USB_OTG/Scr/usb_hcd.obj: USB/USB_OTG/Scr/usb_hcd.c.obj
+.PHONY : USB/USB_OTG/Scr/usb_hcd.obj
+
+# target to build an object file
+USB/USB_OTG/Scr/usb_hcd.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.obj
+.PHONY : USB/USB_OTG/Scr/usb_hcd.c.obj
+
+USB/USB_OTG/Scr/usb_hcd.i: USB/USB_OTG/Scr/usb_hcd.c.i
+.PHONY : USB/USB_OTG/Scr/usb_hcd.i
+
+# target to preprocess a source file
+USB/USB_OTG/Scr/usb_hcd.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.i
+.PHONY : USB/USB_OTG/Scr/usb_hcd.c.i
+
+USB/USB_OTG/Scr/usb_hcd.s: USB/USB_OTG/Scr/usb_hcd.c.s
+.PHONY : USB/USB_OTG/Scr/usb_hcd.s
+
+# target to generate assembly for a file
+USB/USB_OTG/Scr/usb_hcd.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.s
+.PHONY : USB/USB_OTG/Scr/usb_hcd.c.s
+
+USB/USB_OTG/Scr/usb_hcd_int.obj: USB/USB_OTG/Scr/usb_hcd_int.c.obj
+.PHONY : USB/USB_OTG/Scr/usb_hcd_int.obj
+
+# target to build an object file
+USB/USB_OTG/Scr/usb_hcd_int.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.obj
+.PHONY : USB/USB_OTG/Scr/usb_hcd_int.c.obj
+
+USB/USB_OTG/Scr/usb_hcd_int.i: USB/USB_OTG/Scr/usb_hcd_int.c.i
+.PHONY : USB/USB_OTG/Scr/usb_hcd_int.i
+
+# target to preprocess a source file
+USB/USB_OTG/Scr/usb_hcd_int.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.i
+.PHONY : USB/USB_OTG/Scr/usb_hcd_int.c.i
+
+USB/USB_OTG/Scr/usb_hcd_int.s: USB/USB_OTG/Scr/usb_hcd_int.c.s
+.PHONY : USB/USB_OTG/Scr/usb_hcd_int.s
+
+# target to generate assembly for a file
+USB/USB_OTG/Scr/usb_hcd_int.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.s
+.PHONY : USB/USB_OTG/Scr/usb_hcd_int.c.s
+
 USER/Src/main.obj: USER/Src/main.cpp.obj
 .PHONY : USER/Src/main.obj
 
@@ -2782,6 +3046,39 @@ help:
 	@echo ... SYSTEM/Src/sys.obj
 	@echo ... SYSTEM/Src/sys.i
 	@echo ... SYSTEM/Src/sys.s
+	@echo ... USB/CLASS/Src/USB_MSC.obj
+	@echo ... USB/CLASS/Src/USB_MSC.i
+	@echo ... USB/CLASS/Src/USB_MSC.s
+	@echo ... USB/USB_HOST/Scr/usbh_core.obj
+	@echo ... USB/USB_HOST/Scr/usbh_core.i
+	@echo ... USB/USB_HOST/Scr/usbh_core.s
+	@echo ... USB/USB_HOST/Scr/usbh_hcs.obj
+	@echo ... USB/USB_HOST/Scr/usbh_hcs.i
+	@echo ... USB/USB_HOST/Scr/usbh_hcs.s
+	@echo ... USB/USB_HOST/Scr/usbh_ioreq.obj
+	@echo ... USB/USB_HOST/Scr/usbh_ioreq.i
+	@echo ... USB/USB_HOST/Scr/usbh_ioreq.s
+	@echo ... USB/USB_HOST/Scr/usbh_msc_bot.obj
+	@echo ... USB/USB_HOST/Scr/usbh_msc_bot.i
+	@echo ... USB/USB_HOST/Scr/usbh_msc_bot.s
+	@echo ... USB/USB_HOST/Scr/usbh_msc_core.obj
+	@echo ... USB/USB_HOST/Scr/usbh_msc_core.i
+	@echo ... USB/USB_HOST/Scr/usbh_msc_core.s
+	@echo ... USB/USB_HOST/Scr/usbh_msc_scsi.obj
+	@echo ... USB/USB_HOST/Scr/usbh_msc_scsi.i
+	@echo ... USB/USB_HOST/Scr/usbh_msc_scsi.s
+	@echo ... USB/USB_HOST/Scr/usbh_stdreq.obj
+	@echo ... USB/USB_HOST/Scr/usbh_stdreq.i
+	@echo ... USB/USB_HOST/Scr/usbh_stdreq.s
+	@echo ... USB/USB_OTG/Scr/usb_core.obj
+	@echo ... USB/USB_OTG/Scr/usb_core.i
+	@echo ... USB/USB_OTG/Scr/usb_core.s
+	@echo ... USB/USB_OTG/Scr/usb_hcd.obj
+	@echo ... USB/USB_OTG/Scr/usb_hcd.i
+	@echo ... USB/USB_OTG/Scr/usb_hcd.s
+	@echo ... USB/USB_OTG/Scr/usb_hcd_int.obj
+	@echo ... USB/USB_OTG/Scr/usb_hcd_int.i
+	@echo ... USB/USB_OTG/Scr/usb_hcd_int.s
 	@echo ... USER/Src/main.obj
 	@echo ... USER/Src/main.i
 	@echo ... USER/Src/main.s

@@ -35,6 +35,9 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "../MIDDLEWARE/BASE_CLASS/Inc"
   "../HARDWARE/BASE_CLASS/Inc"
   "../SOFTWARE/Inc"
+  "../USB/USB_HOST/Inc"
+  "../USB/USB_OTG/Inc"
+  "../USB/CLASS/Inc"
   )
 
 # The set of dependency files which are needed:
@@ -90,6 +93,16 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/delay.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/malloc.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/sys.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_core.c" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_hcs.c" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_ioreq.c" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_msc_bot.c" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_msc_core.c" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_msc_scsi.c" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_stdreq.c" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Scr/usb_core.c" "CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Scr/usb_hcd.c" "CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Scr/usb_hcd_int.c" "CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/stm32f4xx_it.c" "CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/system_stm32f4xx.c" "CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FATFS/Src/Storage_Link.cpp" "CMakeFiles/Project.elf.dir/FATFS/Src/Storage_Link.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/FATFS/Src/Storage_Link.cpp.obj.d"
@@ -136,6 +149,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/W25QXX.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/modbus.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Temp_ctrl.cpp" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/CLASS/Src/USB_MSC.cpp" "CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/main.cpp" "CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj.d"
   )
 
