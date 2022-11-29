@@ -8,26 +8,31 @@
 #define KOKIRIKA_USB_MSC_H
 
 #include "Storage_BASE.h"
+//#include "Timer.h"
 
 #include "usbh_core.h"
 #include "usb_conf.h"
-//#include <cstdio>
-
 #include "usbh_msc_core.h"
 #include "usb_hcd_int.h"
 
 class USB_MSC: public Storage_BASE {
 public:
-//    static uint8_t AppState;
-//    static USBH_HOST  USB_Host;
-//    static USB_OTG_CORE_HANDLE  USB_OTG_Core;
+    enum SATA:uint8_t{
+        UnLink  =   0,
+        Linking =   1,
+        Linked  =   2,
+        UnLinking=  3,
+    };
 private:
     static uint8_t UDISK_Read(uint8_t* buf,uint32_t sector,uint16_t cnt);
     static uint8_t UDISK_Write(uint8_t* buf,uint32_t sector,uint16_t cnt);
-    bool   device_sata{};
+    SATA   device_sata{};
+//    Timer  to_wait();
 public:
+    void init();
     void Upset();
-    bool Get_device_sata() const;
+    SATA Get_device_sata() const;
+    void wait_Linked();
     bool FAT_init() override;
     uint32_t GetSectorCount() override;
     uint16_t write(uint32_t addr ,uint8_t data) override;
@@ -39,6 +44,5 @@ public:
 
 
 };
-
 
 #endif //KOKIRIKA_USB_MSC_H

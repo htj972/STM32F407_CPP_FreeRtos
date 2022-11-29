@@ -10,12 +10,8 @@
 uint8_t AppState=0;
 USBH_HOST  USB_Host;
 USB_OTG_CORE_HANDLE  USB_OTG_Core;
-uint8_t USB_MCS_DIRVE_SATA=0;
-#define USH_USR_FS_INIT       0
-#define USH_USR_FS_TEST		  1
-//#define USH_USR_FS_READLIST   1
-//#define USH_USR_FS_WRITEFILE  2
-//#define USH_USR_FS_DRAW       3
+//uint8_t USB_MCS_DIRVE_SATA=0;
+
 
 void USB_OTG_BSP_Init(USB_OTG_CORE_HANDLE *pdev)
 {
@@ -87,13 +83,13 @@ void USBH_USR_Init()
 void USBH_USR_DeviceAttached()//U盘插入
 {
 //    Picture_cut(pic01_1,2,261,0,340,47,261,0);  //自动
-    USB_MCS_DIRVE_SATA=1;
+    AppState=USB_MSC::SATA::Linking;;
 }
 //检测到U盘拔出
 void USBH_USR_DeviceDisconnected ()//U盘移除
 {
 //    Picture_cut(pic01_1,2,176,0,255,47,176,0);  //自动
-    USB_MCS_DIRVE_SATA=0;
+    AppState=USB_MSC::SATA::UnLink;;
 }
 //复位从机
 void USBH_USR_ResetDevice()
@@ -158,14 +154,16 @@ int USBH_USR_MSC_Application()
     uint8_t res=0;
     switch(AppState)
     {
-        case USH_USR_FS_INIT://初始化文件系统
+        case USB_MSC::SATA::UnLink ://初始化文件系统
 //            f_mount(fs[2],"2:",1); 	//挂载U盘
-            AppState=USH_USR_FS_TEST;
+//            AppState=USB_MSC::SATA::Linking;
+            AppState=USB_MSC::SATA::UnLinking;
             break;
-        case USH_USR_FS_TEST:	//执行USB OTG 测试主程序
+        case USB_MSC::SATA::Linking:	//执行USB OTG 测试主程序
             if(HCD_IsDeviceConnected(&USB_OTG_Core))//设备连接成功
             {
-
+                AppState=USB_MSC::SATA::Linked;
+//                USB_MCS_DIRVE_SATA=USB_MSC::SATA::Linked;
             }
             break;
         default:break;
@@ -175,7 +173,7 @@ int USBH_USR_MSC_Application()
 //用户要求重新初始化设备
 void USBH_USR_DeInit()
 {
-    AppState=USH_USR_FS_INIT;
+    AppState=USB_MSC::SATA::UnLink;
 }
 //无法恢复的错误!!
 void USBH_USR_UnrecoveredError ()
@@ -210,8 +208,8 @@ extern "C" void OTG_FS_IRQHandler()
 }
 
 uint8_t USB_MSC::UDISK_Read(uint8_t *buf, uint32_t sector, uint16_t cnt) {
-    uint8_t res=1;
-    if(HCD_IsDeviceConnected(&USB_OTG_Core)&&AppState==USH_USR_FS_TEST)//连接还存在,且是APP测试状态
+    uint8_t res;
+    if(HCD_IsDeviceConnected(&USB_OTG_Core))//连接还存在
     {
         do
         {
@@ -230,7 +228,7 @@ uint8_t USB_MSC::UDISK_Read(uint8_t *buf, uint32_t sector, uint16_t cnt) {
 
 uint8_t USB_MSC::UDISK_Write(uint8_t *buf, uint32_t sector, uint16_t cnt) {
     uint8_t res=1;
-    if(HCD_IsDeviceConnected(&USB_OTG_Core)&&AppState==USH_USR_FS_TEST)//连接还存在,且是APP测试状态
+    if(HCD_IsDeviceConnected(&USB_OTG_Core))//连接还存在
     {
         do
         {
@@ -247,11 +245,17 @@ uint8_t USB_MSC::UDISK_Write(uint8_t *buf, uint32_t sector, uint16_t cnt) {
     return res;
 }
 
-bool USB_MSC::FAT_init() {
+void USB_MSC::init()
+{
+    this->init_flag= true;
     USBH_Init(&USB_OTG_Core,USB_OTG_FS_CORE_ID,&USB_Host,&USBH_MSC_cb,&USR_Callbacks);
     this->Set_Block_Size(512);
     this->Set_Sector_Size(USBH_MSC_Param.MSCapacity);
-    return true;
+    this->device_sata= USB_MSC::SATA::UnLink;
+};
+
+bool USB_MSC::FAT_init() {
+    return HCD_IsDeviceConnected(&USB_OTG_Core);
 }
 
 uint32_t USB_MSC::GetSectorCount() {
@@ -288,11 +292,26 @@ void USB_MSC::read(uint32_t addr, uint8_t *data, uint16_t len) {
 
 void USB_MSC::Upset() {
     USBH_Process(&USB_OTG_Core, &USB_Host);
-    this->device_sata=(USB_MCS_DIRVE_SATA==1);
+    switch (AppState) {
+        case SATA::UnLink : this->device_sata=SATA::UnLink;break;
+        case SATA::Linking :this->device_sata=SATA::Linking;break;
+        case SATA::Linked : this->device_sata=SATA::Linked;break;
+        case SATA::UnLinking :this->device_sata=SATA::UnLinking;break;
+        default:  this->device_sata=SATA::UnLink;break;
+    }
+    this->Set_Sector_Size(USBH_MSC_Param.MSCapacity);
 }
 
-bool USB_MSC::Get_device_sata() const {
+USB_MSC::SATA USB_MSC::Get_device_sata() const {
     return this->device_sata;
+}
+
+void USB_MSC::wait_Linked() {
+    this->Upset();
+    while(this->Get_device_sata()!=USB_MSC::SATA::Linked)//检测不到SD卡
+    {
+      this->Upset();
+    }
 }
 
 

@@ -735,6 +735,9 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/CLASS/Inc/USB_MSC.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/CLASS/Inc/usb_bsp.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/CLASS/Src/USB_MSC.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -784,9 +787,6 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_HOST/Scr/usbh_stdreq.c">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Inc/usb_bsp.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/USB_OTG/Inc/usb_conf.h">

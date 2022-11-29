@@ -6,7 +6,6 @@ CMakeFiles/Project.elf.dir/FATFS/Src/Font.c.obj: ../FATFS/Src/Font.c \
 
 CMakeFiles/Project.elf.dir/FATFS/Src/Storage_Link.cpp.obj: ../FATFS/Src/Storage_Link.cpp \
   ../FATFS/Inc/Storage_Link.h \
-  ../MIDDLEWARE/Inc/W25QXX.h \
   ../MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h \
   ../SYSTEM/Inc/sys.h \
   ../USER/Inc/stm32f4xx.h \
@@ -164,13 +163,6 @@ CMakeFiles/Project.elf.dir/FATFS/Src/Storage_Link.cpp.obj: ../FATFS/Src/Storage_
   ../FreeRTOS/FreeRTOS_Inc/queue.h \
   ../FreeRTOS/FreeRTOS_Inc/task.h \
   ../FreeRTOS/FreeRTOS_Inc/list.h \
-  ../HARDWARE/Inc/GPIO.h \
-  ../HARDWARE/Inc/SPI.h \
-  ../HARDWARE/Inc/GPIO.h \
-  ../HARDWARE/BASE_CLASS/Inc/SPI_BASE.h \
-  ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/SD_BASE.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h \
   ../FATFS/Inc/ff.h \
   ../FATFS/Inc/integer.h \
   ../FATFS/Inc/ffconf.h \
@@ -180,7 +172,6 @@ CMakeFiles/Project.elf.dir/FATFS/Src/Storage_Link.cpp.obj: ../FATFS/Src/Storage_
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/strings.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h \
   ../SYSTEM/Inc/malloc.h \
-  ../SYSTEM/Inc/delay.h \
   ../FATFS/Inc/diskio.h
 
 CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj: ../FATFS/Src/cc936.cpp \
@@ -229,7 +220,6 @@ CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj: ../FATFS/Src/cc936.cpp \
   ../FWLIB/inc/stm32f4xx_dcmi.h \
   ../FWLIB/inc/stm32f4xx_fsmc.h \
   ../FATFS/Inc/Storage_Link.h \
-  ../MIDDLEWARE/Inc/W25QXX.h \
   ../MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/string \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++config.h \
@@ -346,20 +336,12 @@ CMakeFiles/Project.elf.dir/FATFS/Src/cc936.cpp.obj: ../FATFS/Src/cc936.cpp \
   ../FreeRTOS/FreeRTOS_Inc/queue.h \
   ../FreeRTOS/FreeRTOS_Inc/task.h \
   ../FreeRTOS/FreeRTOS_Inc/list.h \
-  ../HARDWARE/Inc/GPIO.h \
-  ../HARDWARE/Inc/SPI.h \
-  ../HARDWARE/Inc/GPIO.h \
-  ../HARDWARE/BASE_CLASS/Inc/SPI_BASE.h \
-  ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/SD_BASE.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h \
   ../FATFS/Inc/ff.h
 
 CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj: ../FATFS/Src/diskio.cpp \
   ../FATFS/Inc/diskio.h \
   ../FATFS/Inc/integer.h \
   ../FATFS/Inc/Storage_Link.h \
-  ../MIDDLEWARE/Inc/W25QXX.h \
   ../MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h \
   ../SYSTEM/Inc/sys.h \
   ../USER/Inc/stm32f4xx.h \
@@ -517,13 +499,6 @@ CMakeFiles/Project.elf.dir/FATFS/Src/diskio.cpp.obj: ../FATFS/Src/diskio.cpp \
   ../FreeRTOS/FreeRTOS_Inc/queue.h \
   ../FreeRTOS/FreeRTOS_Inc/task.h \
   ../FreeRTOS/FreeRTOS_Inc/list.h \
-  ../HARDWARE/Inc/GPIO.h \
-  ../HARDWARE/Inc/SPI.h \
-  ../HARDWARE/Inc/GPIO.h \
-  ../HARDWARE/BASE_CLASS/Inc/SPI_BASE.h \
-  ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/SD_BASE.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h \
   ../FATFS/Inc/ff.h \
   ../FATFS/Inc/ffconf.h \
   ../SYSTEM/Inc/malloc.h
@@ -7952,12 +7927,42 @@ CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: ../USER/Src/main.cpp \
   ../HARDWARE/BASE_CLASS/Inc/SPI_BASE.h \
   ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h \
   ../FATFS/Inc/Storage_Link.h \
-  ../MIDDLEWARE/Inc/W25QXX.h \
   ../MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h \
-  ../HARDWARE/Inc/GPIO.h \
   ../FATFS/Inc/ff.h \
   ../FATFS/Inc/integer.h \
-  ../FATFS/Inc/ffconf.h
+  ../FATFS/Inc/ffconf.h \
+  ../USB/CLASS/Inc/USB_MSC.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_HOST/Inc/usbh_def.h \
+  ../USB/USB_HOST/Inc/usbh_conf.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_HOST/Inc/usbh_stdreq.h \
+  ../USB/CLASS/Inc/usb_bsp.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_HOST/Inc/usbh_ioreq.h \
+  ../USB/USB_HOST/Inc/usbh_hcs.h \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_msc_scsi.h \
+  ../USB/USB_HOST/Inc/usbh_msc_bot.h \
+  ../USB/USB_OTG/Inc/usb_hcd_int.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../HARDWARE/Inc/Timer.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/functional \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/tuple \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/utility \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_relops.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/array \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/uses_allocator.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/invoke.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/refwrap.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/std_function.h
 
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj: ../USER/Src/stm32f4xx_it.c \
   ../USER/Inc/stm32f4xx_it.h \
@@ -8087,14 +8092,6 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/nu
 ../FWLIB/src/stm32f4xx_adc.c:
 
 ../FATFS/Inc/Font.h:
-
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++config.h:
-
-../MIDDLEWARE/Src/RTC_DS3231.cpp:
-
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/sstream:
-
-../MIDDLEWARE/Inc/W25QXX.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/type_traits.h:
 
@@ -8231,6 +8228,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/s
 ../FWLIB/inc/stm32f4xx_fsmc.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/string:
+
+F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++config.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/os_defines.h:
 
@@ -8480,14 +8479,6 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/stream
 
 ../FreeRTOS/FreeRTOS_Inc/list.h:
 
-../MIDDLEWARE/BASE_CLASS/Inc/Temperature_BASE.h:
-
-../FWLIB/inc/stm32f4xx_sai.h:
-
-../HARDWARE/Inc/GPIO.h:
-
-../MIDDLEWARE/BASE_CLASS/Inc/SD_BASE.h:
-
 ../FATFS/Inc/integer.h:
 
 ../FATFS/Inc/ffconf.h:
@@ -8501,8 +8492,6 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h:
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/strings.h:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h:
-
-../SYSTEM/Inc/delay.h:
 
 ../FATFS/Inc/diskio.h:
 
@@ -8588,6 +8577,12 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/l
 
 ../FWLIB/src/stm32f4xx_sai.c:
 
+../MIDDLEWARE/BASE_CLASS/Inc/Temperature_BASE.h:
+
+../HARDWARE/Inc/GPIO.h:
+
+../FWLIB/inc/stm32f4xx_sai.h:
+
 ../FWLIB/src/stm32f4xx_sdio.c:
 
 ../FWLIB/src/stm32f4xx_spi.c:
@@ -8645,6 +8640,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ios:
 ../USB/USB_HOST/Inc/usbh_hcs.h:
 
 ../HARDWARE/Src/ADC.cpp:
+
+../SYSTEM/Inc/delay.h:
 
 ../HARDWARE/Src/CRC.cpp:
 
@@ -8714,6 +8711,12 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/b
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/ostream.tcc:
 
+../MIDDLEWARE/Inc/W25QXX.h:
+
+../MIDDLEWARE/Src/RTC_DS3231.cpp:
+
+F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/sstream:
+
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/sstream.tcc:
 
 ../MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp:
@@ -8735,6 +8738,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/s
 ../MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp:
 
 ../MIDDLEWARE/BASE_CLASS/Inc/RTCBASE.h:
+
+../MIDDLEWARE/BASE_CLASS/Inc/SD_BASE.h:
 
 ../MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp:
 

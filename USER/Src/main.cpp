@@ -8,6 +8,8 @@
 #include "OLED_SSD1306.h"
 #include "SD_SPI.h"
 #include "Storage_Link.h"
+#include "USB_MSC.h"
+#include "Timer.h"
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -49,6 +51,9 @@ std::string sdaasda="564";
 
 SPI_S        SSPI(GPIOD8,GPIOE15,GPIOC5);
 _OutPut_     SC(GPIOD9);
+USB_MSC      usb;
+Storage_Link SD_diak(&SD1);
+Storage_Link USB_diak(&usb);
 
 int main()
 {
@@ -75,27 +80,20 @@ int main()
     MOLED.Print(0,0,(uint8_t*)"init OK!");
 
 
-//    MOLED.Print(0,4,asdasd);//关闭文件
-//    SD1.write(0,(uint8_t *)"1",1);
-//    uint8_t getas[1024];
-//    SD1.read(0,getas,1);
-//
-//    MOLED.Print(0,6,getas);//关闭文件
     FIL fp;//文件指针
     FIL fp2;//文件指针
-    UINT plen;											//文件长度临时数据
+    UINT plen;	//文件长度临时数据
     DIR dr;
     FRESULT rrt;
     char text_data[10]="123456";
     char gext_data[10]="qwerty";
 
-    MOLED.Print(0,2,"%s",
-    Storage_Link::exfuns_init((char*)"0:",&SD1)?"true":"false");
-
+    MOLED.Print(0,0,"%s",
+                SD_diak.init()?"true":"false");
 //    f_mkfs("0:",1,4096);
-    f_mkdir("0:/asd");
+    f_mkdir(SD_diak.setdir("qwe"));
 
-    rrt=f_open(&fp,"0:/asd/23.txt",FA_WRITE|FA_OPEN_ALWAYS);
+    rrt=f_open(&fp,SD_diak.setdir("qwe/23.txt"),FA_WRITE|FA_OPEN_ALWAYS);
     if(rrt==FR_OK)
     {
         f_lseek(&fp,fp.fsize);//移动光标到文件尾
@@ -106,12 +104,13 @@ int main()
     else
      MOLED.Print(0,4,(char*)"false");//关闭文件
 
-    f_open(&fp2,"0:/asd/23.txt",FA_READ);
+    f_open(&fp2,SD_diak.setdir("qwe/23.txt"),FA_READ);
     f_read(&fp2,gext_data,strlen((char*)text_data),&plen);
     f_close(&fp2);
     MOLED.Print(0,6,gext_data);//关闭文件
 
-    MOLED.CLS();
+
+//    MOLED.CLS();
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -152,12 +151,12 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-        SSPI.config(SPI_S::CP::OL_1_HA_1);
-
-        MOLED.Print(0,4,sec_t);//关闭文件
-        SC.set(ON);
-        MOLED.Print(0,6,SSPI.ReadWriteDATA(sec_t++));//关闭文件
-        SC.set(OFF);
+//        SSPI.config(SPI_S::CP::OL_1_HA_1);
+//
+//        MOLED.Print(0,4,sec_t);//关闭文件
+//        SC.set(ON);
+//        MOLED.Print(0,6,SSPI.ReadWriteDATA(sec_t++));//关闭文件
+//        SC.set(OFF);
     }
 }
 

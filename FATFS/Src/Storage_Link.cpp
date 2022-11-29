@@ -2,8 +2,10 @@
 #include "ff.h"
 #include <cstring>
 #include "malloc.h"
-#include "delay.h"
 #include "diskio.h"
+#if GBK_mode ==  Exflash_mode
+#include "delay.h"
+#endif
 
 //字库区域占用的总扇区数大小(3个字库+unigbk表+字库信息=3238700字节,约占791个W25QXX扇区)
 #define FONTSECSIZE	 	791
@@ -51,7 +53,7 @@ const char*  FILE_TYPE_TBL[FILE_MAX_TYPE_NUM][FILE_MAX_SUBT_NUM]=
                 {"BMP","JPG","JPEG","GIF"},//图片文件
                 {"AVI"},			//视频文件
         };
-
+#if GBK_mode ==  Exflash_mode
 //显示当前字体更新进度
 //x,y:坐标
 //size:字体大小
@@ -257,8 +259,8 @@ bool Storage_Link::font_init(W25QXX *Font_fun) {
     Storage_Link::W25Q_Link=Font_fun;
     return font_init();
 }
-
-uint8_t Storage_Link::f_typetell(uint8_t *fname) {
+#endif
+uint8_t Storage_Link::exf_typetell(uint8_t *fname) {
     uint8_t tbuf[5];
     uint8_t *attr;//=(uint8_t )&('\0');//后缀名
     uint8_t i=0,j;
@@ -318,7 +320,6 @@ uint8_t Storage_Link::exf_getfree(uint8_t *drv,uint32_t *total,uint32_t *free)
 
 uint8_t  Storage_Link::disk_num=0;
 char     Storage_Link::disk_name[_VOLUMES][3];
-W25QXX*    Storage_Link::W25Q_Link;
 Storage_BASE* Storage_Link:: Storage_L[_VOLUMES];
 FATFS*     Storage_Link:: fs[_VOLUMES];
 
@@ -329,8 +330,6 @@ bool Storage_Link::exfuns_init(char *name)
     disk_name[disk_num][0]=name[0];
     if(FR_OK!=f_mount(fs[disk_num],name,1))
         return false;
-    disk_num++;
-    if(disk_num>_VOLUMES)disk_num=0;
     return true;
 }
 
@@ -340,6 +339,77 @@ bool Storage_Link::exfuns_init(const char *name,Storage_BASE *Storage)
     return Storage_Link::exfuns_init((char*)name);
 }
 
+
+Storage_Link::Storage_Link() {
+    this->disk_n=Storage_Link::disk_num;
+    Storage_Link::fs[disk_num]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));
+    this->mount_ret= false;
+    disk_num++;
+    if(disk_num>=_VOLUMES)disk_num=0;
+}
+
+Storage_Link::Storage_Link(Storage_BASE *Storage) {
+    Storage_Link::Storage_L[disk_num]=Storage;
+    this->disk_n=Storage_Link::disk_num;
+    Storage_Link::fs[disk_num]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));
+    this->mount_ret= false;
+    disk_num++;
+    if(disk_num>=_VOLUMES)disk_num=0;
+}
+
+bool Storage_Link::init(Storage_BASE *Storage) {
+    Storage_Link::Storage_L[this->disk_n]=Storage;
+    disk_name[this->disk_n][0]='0'+this->disk_n;
+    disk_name[this->disk_n][1]=':';
+    disk_name[this->disk_n][2]=0;
+    if(FR_OK!=f_mount(fs[this->disk_n],disk_name[this->disk_n],1))
+        this->mount_ret = false;
+    else
+        this->mount_ret = true;
+    return this->mount_ret;
+}
+
+bool Storage_Link::init() {
+    if(Storage_Link::Storage_L[this->disk_n] != nullptr) {
+        disk_name[this->disk_n][0]='0'+this->disk_n;
+        disk_name[this->disk_n][1]=':';
+        disk_name[this->disk_n][2]=0;
+        if(FR_OK!=f_mount(fs[this->disk_n],disk_name[this->disk_n],1))
+            this->mount_ret = false;
+        else
+            this->mount_ret = true;
+        return this->mount_ret;
+    } else{
+        return false;
+    }
+}
+
+bool Storage_Link::get_mount_ret() const {
+    return this->mount_ret;
+}
+
+char *Storage_Link::get_name() const {
+    return Storage_Link::disk_name[this->disk_n];
+}
+
+char * Storage_Link::setdir(const std::string& dir){
+    this->dir_str.clear();
+    this->dir_str.append(Storage_Link::disk_name[this->disk_n]);
+    this->dir_str.append("/");
+    this->dir_str.append(dir);
+    return(char *)this->dir_str.data();
+}
+
+char * Storage_Link::setdir(uint8_t* dir){
+    this->dir_str.clear();
+    this->dir_str.append(Storage_Link::disk_name[this->disk_n]);
+    this->dir_str.append("/");
+    this->dir_str.append((char*)dir);
+    return(char *)this->dir_str.data();
+}
+
+#if GBK_mode ==  Exflash_mode
+W25QXX*    Storage_Link::W25Q_Link;
 bool Storage_Link::exfuns_init(const char *name, W25QXX *W25x,bool Font) {
     Storage_Link::W25Q_Link=W25x;
     Storage_Link::Storage_L[disk_num]=Storage_Link::W25Q_Link;
@@ -349,6 +419,13 @@ bool Storage_Link::exfuns_init(const char *name, W25QXX *W25x,bool Font) {
     }
     return ret;
 }
+
+bool Storage_Link::exfuns_init(W25QXX *SDx, bool Font) {
+    char name='0';
+    name=Storage_Link::disk_num+name;
+    return Storage_Link::exfuns_init(&name,SDx,Font);
+}
+#endif
 
 bool Storage_Link::disk_init(BYTE name) {
     uint8_t ii;
@@ -410,6 +487,9 @@ bool Storage_Link::disk_ioctl(BYTE name, BYTE cmd, void *buff) {
     }
     return res;
 }
+
+
+
 
 
 ////打读取文件夹
