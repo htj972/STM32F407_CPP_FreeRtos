@@ -43,72 +43,33 @@ _USART_         U1(USART1,115200);
 Software_IIC    SIIC1(GPIOB4,GPIOB5);
 OLED_SSD1306    MOLED(&SIIC1,OLED_SSD1306::Queue::OWN_Queue);
 
-SPI             spi2(SPI2);
-SD_SPI          SD1(&spi2, GPIOB12);
+//Timer           ledt(TIM6,10000,8400, true);
 
-std::string asdasd="123456";
-std::string sdaasda="564";
+class _led_:public _OutPut_,public Call_Back,public Timer{
+public:
+    _led_(GPIO_Pin param,TIM_TypeDef *TIMx, uint16_t frq) {
+        _OutPut_::init(param,LOW);
+        Timer::init(TIMx,10000/frq,8400,true);
+        this->upload_extern_fun(this);
+    }
+    void Callback(int ,char **) override{
+        this->change();
+    };
+};
 
-SPI_S        SSPI(GPIOD8,GPIOE15,GPIOC5);
-_OutPut_     SC(GPIOD9);
-USB_MSC      usb;
-Storage_Link SD_diak(&SD1);
-Storage_Link USB_diak(&usb);
+_led_       led2(GPIOD9,TIM6,5);
 
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);					//初始化延时函数
 
-    U1.write((uint8_t *)asdasd.data(),5);
     MOLED.init();
     MOLED.Fill(0xff);
     delay_ms(1000);
     MOLED.Fill(0x00);
 
-    spi2.config(GPIOB13,GPIOB14,GPIOB15);
-    spi2.init(SPI2);
-    uint8_t ret=SD1.init();
-    while(ret)//检测不到SD卡
-    {
-        ret=SD1.init();
-        delay_ms(500);
-        MOLED.Print(0,0,"ret:%x",ret);
-        delay_ms(500);
-        MOLED.Print(0,0,(uint8_t*)"       ");
-    }
-    MOLED.Print(0,0,(uint8_t*)"init OK!");
-
-
-    FIL fp;//文件指针
-    FIL fp2;//文件指针
-    UINT plen;	//文件长度临时数据
-    DIR dr;
-    FRESULT rrt;
-    char text_data[10]="123456";
-    char gext_data[10]="qwerty";
-
-    MOLED.Print(0,0,"%s",
-                SD_diak.init()?"true":"false");
-//    f_mkfs("0:",1,4096);
-    f_mkdir(SD_diak.setdir("qwe"));
-
-    rrt=f_open(&fp,SD_diak.setdir("qwe/23.txt"),FA_WRITE|FA_OPEN_ALWAYS);
-    if(rrt==FR_OK)
-    {
-        f_lseek(&fp,fp.fsize);//移动光标到文件尾
-        f_write(&fp,text_data,strlen((char*)text_data),&plen);//写入数据
-        f_close(&fp);
-        MOLED.Print(0,4,(char*)"true");//关闭文件
-    }
-    else
-     MOLED.Print(0,4,(char*)"false");//关闭文件
-
-    f_open(&fp2,SD_diak.setdir("qwe/23.txt"),FA_READ);
-    f_read(&fp2,gext_data,strlen((char*)text_data),&plen);
-    f_close(&fp2);
-    MOLED.Print(0,6,gext_data);//关闭文件
-
+//    ledt.upload_extern_fun(&led2);
 
 //    MOLED.CLS();
 
@@ -151,12 +112,6 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-//        SSPI.config(SPI_S::CP::OL_1_HA_1);
-//
-//        MOLED.Print(0,4,sec_t);//关闭文件
-//        SC.set(ON);
-//        MOLED.Print(0,6,SSPI.ReadWriteDATA(sec_t++));//关闭文件
-//        SC.set(OFF);
     }
 }
 
@@ -169,7 +124,6 @@ void start_task(void *pvParameters)
         vTaskDelay(200/portTICK_RATE_MS );
         U1<<U1.read_data();
         MOLED.Queue_star();
-        //MOLED.Print(0,0,"%04d",task2_num);
         led.change();
         MOLED.Queue_end();
     }

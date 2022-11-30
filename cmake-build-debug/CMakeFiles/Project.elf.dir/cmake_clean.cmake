@@ -175,6 +175,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.obj"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj"

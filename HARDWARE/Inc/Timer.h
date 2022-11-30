@@ -9,13 +9,14 @@
 
 #include "sys.h"
 #include <functional>
+#include "HARD_BASE.h"
 
 
 class Timer {
 private:
     NVIC_InitTypeDef NVIC_InitStructure{};
     void RCC_init();
-    static void Timer_extern_init();
+    static void extern_init();
     bool config_flag{};
 protected:
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure{};
@@ -31,10 +32,13 @@ public:
 
     void (*extern_IRQ_link)(){};
     void upload_extern_fun(void(* fun)());
+    void (*extern_IRQ_link_r)(uint8_t){};
+    void upload_extern_fun(void(* fun)(uint8_t));
     std::function<void()> localfunxx;
     void upload_extern_fun(std::function<void()> fun);
+    void upload_extern_fun(Call_Back *extx) const;
 
-    static void Timer_extern_upset(uint8_t num);
+    static void extern_upset(uint8_t num);
 };
 
 

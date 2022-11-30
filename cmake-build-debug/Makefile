@@ -2240,6 +2240,30 @@ MIDDLEWARE/Src/SHT3x.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.s
 .PHONY : MIDDLEWARE/Src/SHT3x.cpp.s
 
+MIDDLEWARE/Src/TMC220xUart.obj: MIDDLEWARE/Src/TMC220xUart.cpp.obj
+.PHONY : MIDDLEWARE/Src/TMC220xUart.obj
+
+# target to build an object file
+MIDDLEWARE/Src/TMC220xUart.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.obj
+.PHONY : MIDDLEWARE/Src/TMC220xUart.cpp.obj
+
+MIDDLEWARE/Src/TMC220xUart.i: MIDDLEWARE/Src/TMC220xUart.cpp.i
+.PHONY : MIDDLEWARE/Src/TMC220xUart.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/TMC220xUart.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.i
+.PHONY : MIDDLEWARE/Src/TMC220xUart.cpp.i
+
+MIDDLEWARE/Src/TMC220xUart.s: MIDDLEWARE/Src/TMC220xUart.cpp.s
+.PHONY : MIDDLEWARE/Src/TMC220xUart.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/TMC220xUart.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.s
+.PHONY : MIDDLEWARE/Src/TMC220xUart.cpp.s
+
 MIDDLEWARE/Src/W25QXX.obj: MIDDLEWARE/Src/W25QXX.cpp.obj
 .PHONY : MIDDLEWARE/Src/W25QXX.obj
 
@@ -3025,6 +3049,9 @@ help:
 	@echo ... MIDDLEWARE/Src/SHT3x.obj
 	@echo ... MIDDLEWARE/Src/SHT3x.i
 	@echo ... MIDDLEWARE/Src/SHT3x.s
+	@echo ... MIDDLEWARE/Src/TMC220xUart.obj
+	@echo ... MIDDLEWARE/Src/TMC220xUart.i
+	@echo ... MIDDLEWARE/Src/TMC220xUart.s
 	@echo ... MIDDLEWARE/Src/W25QXX.obj
 	@echo ... MIDDLEWARE/Src/W25QXX.i
 	@echo ... MIDDLEWARE/Src/W25QXX.s

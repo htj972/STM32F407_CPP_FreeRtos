@@ -19,7 +19,7 @@ public:
         OS_Queue,
     };
 private:
-    HARD_BASE::Queue lock_mode;
+    HARD_BASE::Queue lock_mode{};
     bool lock_flag{};
 #if SYSTEM_SUPPORT_OS == ON
     QueueHandle_t HARD_Queue{};
@@ -30,6 +30,20 @@ public:
     void Queue_end();
     bool get_Lock() const;
 };
+
+class Call_Back{
+public:
+    enum MODE{
+        C_fun,
+        C_fun_r,
+        CPP_fun,
+        class_fun,
+    };
+    virtual void (Callback)(int ,char **){};
+};
+
+
+
 
 
 #endif //KOKIRIKA_HARD_BASE_H
