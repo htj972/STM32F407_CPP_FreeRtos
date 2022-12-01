@@ -185,6 +185,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj.d"
+  "CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj"
+  "CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj.d"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj.d"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj"

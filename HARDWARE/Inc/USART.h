@@ -9,12 +9,15 @@
 #include "GPIO.h"
 #include "string"
 #include <iostream>
+#include <functional>
+#include "HARD_BASE.h"
 using namespace std;
 
 class _USART_ {
-private:
+protected:
     _GPIO_ RX_GPIO;
     _GPIO_ TX_GPIO;
+private:
     uint8_t  config_flag=0;
     uint32_t Bound;
     USART_InitTypeDef USART_InitStructure;
@@ -23,15 +26,16 @@ private:
     DMA_Stream_TypeDef* DMAy_Streamx;
     uint32_t DMA_FLAG;
     uint32_t DMA_CHANNEL;
-    uint8_t USART_Num=0;
-    uint8_t DMA_Enable=OFF;
+    uint8_t USART_Num;
+    bool DMA_Enable;
     bool DMA_send_flag= false;
     void default_config();
     void GPIO_AF_config();
+    void extern_init();
 
 public:
     explicit _USART_(USART_TypeDef* USARTx,int32_t bound=115200);
-    _USART_()=default;
+    _USART_();
     ~_USART_()=default;
     void init(USART_TypeDef* USARTx,int32_t bound=115200);
     void config(GPIO_TypeDef* PORT_Tx,uint32_t Pin_Tx,GPIO_TypeDef* PORT_Rx,uint32_t Pin_Rx);
@@ -43,11 +47,19 @@ public:
     void setStruct(uint16_t WordLength,uint16_t StopBits,uint16_t Parity);
     void set_fifo_size(uint16_t size);
 
-    static void upload_extern_fun(void(* fun)(uint8_t channel,uint8_t data));
-    static void send_to_fifo(uint8_t channel,uint8_t data);
+    void (*extern_IRQ_link)(){};
+    void upload_extern_fun(void(* fun)());
+    void (*extern_IRQ_link_r)(uint8_t){};
+    void upload_extern_fun(void(* fun)(uint8_t));
+    std::function<void()> localfunxx;
+    void upload_extern_fun(std::function<void()> fun);
+    void upload_extern_fun(Call_Back *extx) const;
+
+    static void extern_upset(uint8_t num,uint8_t data);
+
     void   send_data();
     uint16_t available();
-    string read_data() const;
+    string read_data();
     string read_data(uint8_t len) const;
     string read_data(char c) const ;
     string read_data(const string& str) const ;

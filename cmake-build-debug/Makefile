@@ -2360,6 +2360,30 @@ SYSTEM/Src/DMA.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.s
 .PHONY : SYSTEM/Src/DMA.c.s
 
+SYSTEM/Src/cJSON.obj: SYSTEM/Src/cJSON.c.obj
+.PHONY : SYSTEM/Src/cJSON.obj
+
+# target to build an object file
+SYSTEM/Src/cJSON.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj
+.PHONY : SYSTEM/Src/cJSON.c.obj
+
+SYSTEM/Src/cJSON.i: SYSTEM/Src/cJSON.c.i
+.PHONY : SYSTEM/Src/cJSON.i
+
+# target to preprocess a source file
+SYSTEM/Src/cJSON.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.i
+.PHONY : SYSTEM/Src/cJSON.c.i
+
+SYSTEM/Src/cJSON.s: SYSTEM/Src/cJSON.c.s
+.PHONY : SYSTEM/Src/cJSON.s
+
+# target to generate assembly for a file
+SYSTEM/Src/cJSON.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.s
+.PHONY : SYSTEM/Src/cJSON.c.s
+
 SYSTEM/Src/delay.obj: SYSTEM/Src/delay.c.obj
 .PHONY : SYSTEM/Src/delay.obj
 
@@ -3064,6 +3088,9 @@ help:
 	@echo ... SYSTEM/Src/DMA.obj
 	@echo ... SYSTEM/Src/DMA.i
 	@echo ... SYSTEM/Src/DMA.s
+	@echo ... SYSTEM/Src/cJSON.obj
+	@echo ... SYSTEM/Src/cJSON.i
+	@echo ... SYSTEM/Src/cJSON.s
 	@echo ... SYSTEM/Src/delay.obj
 	@echo ... SYSTEM/Src/delay.i
 	@echo ... SYSTEM/Src/delay.s

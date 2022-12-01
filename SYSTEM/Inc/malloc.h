@@ -8,6 +8,7 @@
 #define KOKIRIKA_MALLOC_H
 
 #include <sys.h>
+#include "stddef.h"
 
 #if __cplusplus
 extern "C"{

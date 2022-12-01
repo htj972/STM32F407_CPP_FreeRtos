@@ -90,6 +90,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_PORTABLE/heap_4.c" "CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/heap_4.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/heap_4.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_PORTABLE/port.c" "CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj" "gcc" "CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/DMA.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/cJSON.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/delay.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/malloc.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SYSTEM/Src/sys.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj.d"

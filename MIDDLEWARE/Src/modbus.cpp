@@ -13,7 +13,7 @@
 /****************************************
  * @structs : Slave
  */
-typedef struct{
+typedef struct k_modbus_Slave_03_receive_{
     uint8_t id;
     uint8_t mode;
     uint8_t address[2];
@@ -21,16 +21,16 @@ typedef struct{
     uint8_t CRC16[2];
 }modbus_Slave_03_receive_;
 
-typedef struct{
-    uint8_t id;
-    uint8_t mode;
-    uint8_t address[2];
-    uint8_t num;
+typedef struct k_modbus_Slave_03_send_{
+    uint8_t id{};
+    uint8_t mode{};
+    uint8_t address[2]{};
+    uint8_t num{};
     std::string data;
-    uint8_t CRC16[2];
+//    uint8_t CRC16[2]{};
 }modbus_Slave_03_send_;
 
-typedef struct{
+typedef struct k_modbus_Slave_06_send_receive_{
     uint8_t id;
     uint8_t mode;
     uint8_t address[2];
@@ -38,17 +38,16 @@ typedef struct{
     uint8_t CRC16[2];
 }modbus_Slave_06_send_receive_;
 
-typedef struct{
+typedef struct k_modbus_Slave_16_receive_{
     uint8_t id;
     uint8_t mode;
     uint8_t address[2];
     uint8_t len[2];
     uint8_t num;
     std::string data;;
-    uint8_t CRC16[2];
 }modbus_Slave_16_receive_;
 
-typedef struct{
+typedef struct k_modbus_Slave_16_send_{
     uint8_t id;
     uint8_t mode;
     uint8_t address[2];
@@ -59,7 +58,7 @@ typedef struct{
 /****************************************
  * @structs : Host
  */
-typedef struct{
+typedef struct k_modbus_Host_03_send{
     uint8_t id;
     uint8_t mode;
     uint8_t address[2];
@@ -67,7 +66,7 @@ typedef struct{
     uint8_t CRC16[2];
 }modbus_Host_03_send;
 
-typedef struct{
+typedef struct k_modbus_Host_03_receive{
     uint8_t id;
     uint8_t mode;
     uint8_t num;
@@ -75,7 +74,7 @@ typedef struct{
     uint8_t CRC16[2];
 }modbus_Host_03_receive ;
 
-typedef struct{
+typedef struct k_modbus_Host_06_send_receive_{
     uint8_t id;
     uint8_t mode;
     uint16_t address;
@@ -83,17 +82,17 @@ typedef struct{
     uint16_t CRC16;
 }modbus_Host_06_send_receive_;
 
-typedef struct{
-    uint8_t id;
-    uint8_t mode;
-    uint8_t address[2];
-    uint8_t len[2];
-    uint8_t num;
+typedef struct k_modbus_Host_16_send{
+    uint8_t id{};
+    uint8_t mode{};
+    uint8_t address[2]{};
+    uint8_t len[2]{};
+    uint8_t num{};
     std::string data;;
-    uint8_t CRC16[2];
+    uint8_t CRC16[2]{};
 }modbus_Host_16_send;
 
-typedef struct{
+typedef struct k_modbus_Host_16_receive{
     uint8_t id;
     uint8_t mode;
     uint16_t address;
@@ -108,6 +107,8 @@ typedef struct{
 
 modbus::modbus() {
     this->USARTx= nullptr;
+    this->send_flag= 0;
+    this->init_flag= false;
 }
 
 modbus::~modbus() {
@@ -121,7 +122,7 @@ void modbus::send_data_fun(uint8_t *data, uint16_t len) {
 }
 
 uint16_t modbus::read_data(const uint8_t *address) {
-    if(this->init_flag==0)
+    if(!this->init_flag)
         return 0;
     else
     {
@@ -133,8 +134,8 @@ uint16_t modbus::read_data(const uint8_t *address) {
     }
 }
 
-uint8_t modbus::write_data(uint8_t *address, uint8_t* data) {
-    if(this->init_flag==0)
+uint8_t modbus::write_data(const uint8_t *address, const uint8_t* data) {
+    if(!this->init_flag)
         return 0;
     else
     {
@@ -166,14 +167,14 @@ void modbus::init(uint16_t* address,uint16_t len,uint16_t start) {
     this->data_list=address;
     this->data_start_end[0]=start;
     this->data_start_end[1]=start+len;
-    init_flag=1;
+    init_flag= true;
 }
 
-void modbus::config(_USART_* USART,uint8_t mode,uint8_t id,uint16_t timeout,uint16_t freetime) {
+void modbus::config(_USART_* USART,uint8_t mode,uint8_t id,uint16_t stimeout,uint16_t sfreetime) {
     this->USARTx=USART;
     this->run_mode=mode;
-    this->timeout=timeout;
-    this->freetime=freetime;
+    this->timeout=stimeout;
+    this->freetime=sfreetime;
     if(this->run_mode==modbus::SLAVE)
         this->own_id=id;
     else
@@ -197,12 +198,12 @@ void modbus::set_mode(uint8_t mode) {
     this->run_mode=mode;
 }
 
-void modbus::set_freetime(uint16_t freetime) {
-    this->freetime=freetime;
+void modbus::set_freetime(uint16_t sfreetime) {
+    this->freetime=sfreetime;
 }
 
-void modbus::set_timeout(uint16_t timeout) {
-    this->timeout=timeout;
+void modbus::set_timeout(uint16_t stimeout) {
+    this->timeout=stimeout;
 }
 
 /****************************************
@@ -341,7 +342,7 @@ void modbus::modbus_Slave_10_uncoding() {
     }
 }
 
-void modbus::modbus_Host_10_coding(uint8_t ID,uint16_t address,uint16_t *data,uint16_t num) {
+void modbus::modbus_Host_10_coding(uint8_t ID,uint16_t address,const uint16_t *data,uint16_t num) {
     uint8_t * modbus_send_data;
     modbus_Host_16_send     modbus_16_send;
     modbus_send_data=(uint8_t*)&modbus_16_send;

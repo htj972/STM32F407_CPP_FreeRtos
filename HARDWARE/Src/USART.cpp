@@ -9,17 +9,36 @@
 #include <sstream>
 #include "DMA.h"
 
-static string RX_buffer[6];
-static uint16_t RX_MAX_LEN[6]={1024,1024,1024,1024,1024,1024};
-static uint8_t  extern_flag=0;
-void USART_RUN_VOID(uint8_t channel,uint8_t data) {}
-struct _IRQ_STRUCT_ {
-    void (*Usart_IRQ_link)(uint8_t channel,uint8_t data);
-    void (*extern_IRQ_link)(uint8_t channel,uint8_t data);
-}HARD_IQR;
+#define UART_Max_num 6
+struct UART_STRUCT_{
+    bool extern_flag= false;
+    Call_Back::MODE run_mode[UART_Max_num]{};
+    void (*funC[UART_Max_num])(){};
+    void (*funC_r[UART_Max_num])(uint8_t){};
+    std::function<void()> funCPP[UART_Max_num+1];
+    Call_Back *ext[UART_Max_num]{};
+    string RX_buffer[UART_Max_num];
+}UART_STRUCT;
+void UART_RUN_VOID() {}
+
+//static string RX_buffer[6];
+static uint16_t RX_MAX_LEN[UART_Max_num]={1024,1024,1024,1024,1024,1024};
+//static uint8_t  extern_flag=0;
+//void USART_RUN_VOID(uint8_t channel,uint8_t data) {}
+//struct _IRQ_STRUCT_ {
+//    void (*Usart_IRQ_link)(uint8_t channel,uint8_t data);
+//    void (*extern_IRQ_link)(uint8_t channel,uint8_t data);
+//}HARD_IQR;
 
 _USART_::_USART_(USART_TypeDef* USARTx,int32_t bound){
     this->init(USARTx,bound);
+    this->DMA_Enable= false;
+    DMA_send_flag= false;
+}
+
+_USART_::_USART_(){
+    this->DMA_Enable= false;
+    DMA_send_flag= false;
 }
 
 void _USART_::GPIO_AF_config(){
@@ -99,10 +118,7 @@ void _USART_::default_config() {
 void _USART_::init(USART_TypeDef* USARTx,int32_t bound) {
     this->Bound=bound;
     this->USART=USARTx;
-    if(extern_flag==0) {
-        _USART_::upload_extern_fun(USART_RUN_VOID);
-    }
-    HARD_IQR.Usart_IRQ_link=_USART_::send_to_fifo;
+    _USART_::extern_init();
     this->default_config();
     if(USARTx==USART1)
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);
@@ -193,71 +209,109 @@ void _USART_::set_fifo_size(uint16_t size) {
     if(RX_MAX_LEN[this->USART_Num]>size)
     {
         uint16_t len_t=RX_MAX_LEN[this->USART_Num]-size;
-        if(RX_buffer[this->USART_Num].length()>size)
-            RX_buffer[this->USART_Num].erase(0,len_t);
+        if(UART_STRUCT.RX_buffer[this->USART_Num].length()>size)
+            UART_STRUCT.RX_buffer[this->USART_Num].erase(0,len_t);
     }
     RX_MAX_LEN[this->USART_Num]=size;
 }
 
-void _USART_::upload_extern_fun(void (*fun)(uint8_t, uint8_t)) {
-    HARD_IQR.extern_IRQ_link=fun;
-    extern_flag=1;
+void _USART_::extern_init() {
+    if(!UART_STRUCT.extern_flag) {
+        UART_STRUCT.extern_flag = true;
+        for(auto & ii : UART_STRUCT.funC)
+            ii=UART_RUN_VOID;
+        for(auto & ii : UART_STRUCT.run_mode)
+            ii=Call_Back::MODE::C_fun;
+    }
 }
 
-void _USART_::send_to_fifo(uint8_t channel,uint8_t data) {
-    RX_buffer[channel]+=data;
-    if(RX_buffer[channel].length()>RX_MAX_LEN[channel])
-        RX_buffer[channel].erase(0,1);
+void _USART_::extern_upset(uint8_t num,uint8_t data)
+{
+    if(UART_STRUCT.run_mode[num%UART_Max_num]==Call_Back::MODE::C_fun) {
+        UART_STRUCT.funC[num % UART_Max_num]();
+        UART_STRUCT.RX_buffer[num%UART_Max_num] += data;
+    }
+    else if(UART_STRUCT.run_mode[num%UART_Max_num]==Call_Back::MODE::C_fun_r)
+        UART_STRUCT.funC_r[num%UART_Max_num](data);
+    else if(UART_STRUCT.run_mode[num%UART_Max_num]==Call_Back::MODE::CPP_fun) {
+        UART_STRUCT.funCPP[num % UART_Max_num]();
+        UART_STRUCT.RX_buffer[num%UART_Max_num] += data;
+    }
+    else if(UART_STRUCT.run_mode[num%UART_Max_num]==Call_Back::MODE::class_fun)
+        UART_STRUCT.ext[num%UART_Max_num]->Callback(data, nullptr);
+}
+
+void _USART_::upload_extern_fun(void (*fun)()) {
+    UART_STRUCT.funC[this->USART_Num%UART_Max_num]=fun;
+    UART_STRUCT.run_mode[this->USART_Num%UART_Max_num]=Call_Back::MODE::C_fun;
+    this->extern_IRQ_link=fun;
+}
+
+void _USART_::upload_extern_fun(void (*fun)(uint8_t)) {
+    UART_STRUCT.funC_r[this->USART_Num%UART_Max_num]=fun;
+    UART_STRUCT.run_mode[this->USART_Num%UART_Max_num]=Call_Back::MODE::C_fun_r;
+    this->extern_IRQ_link_r=fun;
+}
+
+void _USART_::upload_extern_fun(std::function<void()> fun) {
+    this->localfunxx=fun;
+    UART_STRUCT.funCPP[this->USART_Num%UART_Max_num]=std::move(fun);
+    UART_STRUCT.run_mode[this->USART_Num%UART_Max_num]=Call_Back::MODE::CPP_fun;
+}
+
+void _USART_::upload_extern_fun(Call_Back *extx) const {
+    UART_STRUCT.ext[this->USART_Num%UART_Max_num]=extx;
+    UART_STRUCT.run_mode[this->USART_Num%UART_Max_num]=Call_Back::MODE::class_fun;
 }
 
 void _USART_::send_data() {
-    this->write(RX_buffer[this->USART_Num]);
+    this->write(UART_STRUCT.RX_buffer[this->USART_Num]);
 }
 
 uint16_t _USART_::available() {
-    return  RX_buffer[this->USART_Num].length();
+    return  UART_STRUCT.RX_buffer[this->USART_Num].length();
 }
 
-string _USART_::read_data() const {
-    string  ret=RX_buffer[this->USART_Num];
-    RX_buffer[this->USART_Num].clear();
+string _USART_::read_data() {
+    string  ret=UART_STRUCT.RX_buffer[this->USART_Num];
+    UART_STRUCT.RX_buffer[this->USART_Num].clear();
     return ret;
 }
 
 string _USART_::read_data(uint8_t len) const {
-    string  ret=RX_buffer[this->USART_Num].substr(0,len);
-    RX_buffer[this->USART_Num].erase(0,len);
+    string  ret=UART_STRUCT.RX_buffer[this->USART_Num].substr(0,len);
+    UART_STRUCT.RX_buffer[this->USART_Num].erase(0,len);
     return ret;
 }
 
 string _USART_::read_data(char c) const {
     uint16_t len_t;
     string  ret;
-    len_t=RX_buffer[this->USART_Num].find(c);
+    len_t=UART_STRUCT.RX_buffer[this->USART_Num].find(c);
     if(len_t!=65535)
         len_t+=1;
     else
         len_t=0;
-    ret=RX_buffer[this->USART_Num].substr(0,len_t);
-    RX_buffer[this->USART_Num].erase(0,len_t);
+    ret=UART_STRUCT.RX_buffer[this->USART_Num].substr(0,len_t);
+    UART_STRUCT.RX_buffer[this->USART_Num].erase(0,len_t);
     return ret;
 }
 
 string _USART_::read_data(const string& str) const {
     uint16_t len_t;
     string  ret;
-    len_t=RX_buffer[this->USART_Num].find(str);
+    len_t=UART_STRUCT.RX_buffer[this->USART_Num].find(str);
     if(len_t!=65535)
         len_t+=str.length();
     else
         len_t=0;
-    ret=RX_buffer[this->USART_Num].substr(0,len_t);
-    RX_buffer[this->USART_Num].erase(0,len_t);
+    ret=UART_STRUCT.RX_buffer[this->USART_Num].substr(0,len_t);
+    UART_STRUCT.RX_buffer[this->USART_Num].erase(0,len_t);
     return ret;
 }
 
 void _USART_::write(const char *str, uint16_t len) {
-    if(DMA_Enable==OFF) {
+    if(!DMA_Enable) {
         uint16_t ii = 0;
         while (ii != len) {
             while ((this->USART->SR & 0X40) == 0);
@@ -353,7 +407,7 @@ uint16_t _USART_::println(int integer) {
 
 void  _USART_::set_send_DMA(FunctionalState enable) {
     USART_DMACmd(this->USART,USART_DMAReq_Tx,enable);  //使能串口1的DMA发送
-    this->DMA_Enable=(enable==ENABLE)?ON:OFF;
+    this->DMA_Enable= (enable == ENABLE);
     switch (this->USART_Num) {
         case 0:
             this->DMAy_Streamx=DMA2_Stream7;
@@ -388,12 +442,12 @@ void  _USART_::set_send_DMA(FunctionalState enable) {
     }
 }
 
+
 extern "C" void USART1_IRQHandler()  {              	//串口1中断服务程序
     u8 Res;
     if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET){
         Res =USART_ReceiveData(USART1);	//读取接收到的数据
-        HARD_IQR.Usart_IRQ_link(0,Res);
-        HARD_IQR.extern_IRQ_link(0,Res);
+        _USART_::extern_upset(0,Res);
     }
     USART_ClearITPendingBit(USART1,USART_IT_RXNE);
 }
@@ -402,8 +456,7 @@ extern "C" void USART2_IRQHandler() {               	//串口2中断服务程序
     u8 Res;
     if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET){
         Res =USART_ReceiveData(USART2);	//读取接收到的数据
-        HARD_IQR.Usart_IRQ_link(1,Res);
-        HARD_IQR.extern_IRQ_link(1,Res);
+        _USART_::extern_upset(1,Res);
     }
     USART_ClearFlag(USART2,USART_IT_RXNE);
 }
@@ -412,8 +465,7 @@ extern "C" void USART3_IRQHandler()  {              	//串口3中断服务程序
     u8 Res;
     if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET){
         Res =USART_ReceiveData(USART3);	//读取接收到的数据
-        HARD_IQR.Usart_IRQ_link(2,Res);
-        HARD_IQR.extern_IRQ_link(2,Res);
+        _USART_::extern_upset(2,Res);
     }
     USART_ClearFlag(USART3,USART_IT_RXNE);
 }
@@ -422,8 +474,7 @@ extern "C" void UART4_IRQHandler() {              	//串口4中断服务程序
     u8 Res;
     if(USART_GetITStatus(UART4, USART_IT_RXNE) != RESET){
         Res =USART_ReceiveData(UART4);	//读取接收到的数据
-        HARD_IQR.Usart_IRQ_link(3,Res);
-        HARD_IQR.extern_IRQ_link(3,Res);
+        _USART_::extern_upset(3,Res);
     }
     USART_ClearFlag(UART4,USART_IT_RXNE);
 }
@@ -432,8 +483,7 @@ extern "C" void UART5_IRQHandler() {                	//串口5中断服务程序
     u8 Res;
     if(USART_GetITStatus(UART5, USART_IT_RXNE) != RESET){
         Res =USART_ReceiveData(UART5);	//读取接收到的数据
-        HARD_IQR.Usart_IRQ_link(4,Res);
-        HARD_IQR.extern_IRQ_link(4,Res);
+        _USART_::extern_upset(4,Res);
     }
     USART_ClearFlag(UART5,USART_IT_RXNE);
 }
@@ -442,8 +492,7 @@ extern "C" void USART6_IRQHandler() {                	//串口6中断服务程序
     u8 Res;
     if(USART_GetITStatus(USART6, USART_IT_RXNE) != RESET){
         Res =USART_ReceiveData(USART6);	//读取接收到的数据
-        HARD_IQR.Usart_IRQ_link(5,Res);
-        HARD_IQR.extern_IRQ_link(5,Res);
+        _USART_::extern_upset(5,Res);
     }
     USART_ClearFlag(USART6,USART_IT_RXNE);
 }

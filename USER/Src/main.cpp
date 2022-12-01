@@ -10,6 +10,9 @@
 #include "Storage_Link.h"
 #include "USB_MSC.h"
 #include "Timer.h"
+#include "cJSON.h"
+
+
 
 //任务优先级
 #define START_TASK_PRIO		1
@@ -57,7 +60,30 @@ public:
     };
 };
 
-_led_       led2(GPIOD9,TIM6,5);
+_led_       led2(GPIOD9,TIM6,10);
+
+uint8_t str_s[]=R"({"params":{"int":123,"STR":"qwe","Fl":12.34},"STR":"asd","int":123})";
+
+void cJSON_check() {
+    cJSON *cjson = cJSON_Parse((char *) str_s);//申请空间
+    if (!cJSON_GetErrorPtr()) {
+
+        cJSON *params_s = cJSON_GetObjectItem(cjson, "params");
+        if (!cJSON_GetErrorPtr()) {
+            int get_int = cJSON_GetObjectItem(params_s, "int")->valueint;
+            char *get_char = cJSON_GetObjectItem(params_s, "STR")->valuestring;
+            double get_fla = cJSON_GetObjectItem(params_s, "Fl")->valuedouble;
+            MOLED.Print(0,0,get_int);
+            MOLED.Print(0,2,get_char);
+            MOLED.Print(0,4,"%6.2ff",get_fla);
+        }
+        cJSON_Delete(params_s);
+        int get_int = cJSON_GetObjectItem(params_s, "int")->valueint;
+        char *get_char = cJSON_GetObjectItem(params_s, "STR")->valuestring;
+        MOLED.Print(0,6,get_int);
+    }
+    cJSON_Delete(cjson);
+}
 
 int main()
 {
@@ -68,6 +94,7 @@ int main()
     MOLED.Fill(0xff);
     delay_ms(1000);
     MOLED.Fill(0x00);
+    cJSON_check();
 
 //    ledt.upload_extern_fun(&led2);
 
