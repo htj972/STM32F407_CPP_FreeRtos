@@ -1616,6 +1616,30 @@ HARDWARE/Src/SPI.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.s
 .PHONY : HARDWARE/Src/SPI.cpp.s
 
+HARDWARE/Src/Tim_Capture.obj: HARDWARE/Src/Tim_Capture.cpp.obj
+.PHONY : HARDWARE/Src/Tim_Capture.obj
+
+# target to build an object file
+HARDWARE/Src/Tim_Capture.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.obj
+.PHONY : HARDWARE/Src/Tim_Capture.cpp.obj
+
+HARDWARE/Src/Tim_Capture.i: HARDWARE/Src/Tim_Capture.cpp.i
+.PHONY : HARDWARE/Src/Tim_Capture.i
+
+# target to preprocess a source file
+HARDWARE/Src/Tim_Capture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.i
+.PHONY : HARDWARE/Src/Tim_Capture.cpp.i
+
+HARDWARE/Src/Tim_Capture.s: HARDWARE/Src/Tim_Capture.cpp.s
+.PHONY : HARDWARE/Src/Tim_Capture.s
+
+# target to generate assembly for a file
+HARDWARE/Src/Tim_Capture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.s
+.PHONY : HARDWARE/Src/Tim_Capture.cpp.s
+
 HARDWARE/Src/Timer.obj: HARDWARE/Src/Timer.cpp.obj
 .PHONY : HARDWARE/Src/Timer.obj
 
@@ -2023,6 +2047,30 @@ MIDDLEWARE/Src/DS18B20.s: MIDDLEWARE/Src/DS18B20.cpp.s
 MIDDLEWARE/Src/DS18B20.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.s
 .PHONY : MIDDLEWARE/Src/DS18B20.cpp.s
+
+MIDDLEWARE/Src/DW_LCD.obj: MIDDLEWARE/Src/DW_LCD.cpp.obj
+.PHONY : MIDDLEWARE/Src/DW_LCD.obj
+
+# target to build an object file
+MIDDLEWARE/Src/DW_LCD.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj
+.PHONY : MIDDLEWARE/Src/DW_LCD.cpp.obj
+
+MIDDLEWARE/Src/DW_LCD.i: MIDDLEWARE/Src/DW_LCD.cpp.i
+.PHONY : MIDDLEWARE/Src/DW_LCD.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/DW_LCD.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.i
+.PHONY : MIDDLEWARE/Src/DW_LCD.cpp.i
+
+MIDDLEWARE/Src/DW_LCD.s: MIDDLEWARE/Src/DW_LCD.cpp.s
+.PHONY : MIDDLEWARE/Src/DW_LCD.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/DW_LCD.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.s
+.PHONY : MIDDLEWARE/Src/DW_LCD.cpp.s
 
 MIDDLEWARE/Src/FM24Cxx.obj: MIDDLEWARE/Src/FM24Cxx.cpp.obj
 .PHONY : MIDDLEWARE/Src/FM24Cxx.obj
@@ -2995,6 +3043,9 @@ help:
 	@echo ... HARDWARE/Src/SPI.obj
 	@echo ... HARDWARE/Src/SPI.i
 	@echo ... HARDWARE/Src/SPI.s
+	@echo ... HARDWARE/Src/Tim_Capture.obj
+	@echo ... HARDWARE/Src/Tim_Capture.i
+	@echo ... HARDWARE/Src/Tim_Capture.s
 	@echo ... HARDWARE/Src/Timer.obj
 	@echo ... HARDWARE/Src/Timer.i
 	@echo ... HARDWARE/Src/Timer.s
@@ -3046,6 +3097,9 @@ help:
 	@echo ... MIDDLEWARE/Src/DS18B20.obj
 	@echo ... MIDDLEWARE/Src/DS18B20.i
 	@echo ... MIDDLEWARE/Src/DS18B20.s
+	@echo ... MIDDLEWARE/Src/DW_LCD.obj
+	@echo ... MIDDLEWARE/Src/DW_LCD.i
+	@echo ... MIDDLEWARE/Src/DW_LCD.s
 	@echo ... MIDDLEWARE/Src/FM24Cxx.obj
 	@echo ... MIDDLEWARE/Src/FM24Cxx.i
 	@echo ... MIDDLEWARE/Src/FM24Cxx.s

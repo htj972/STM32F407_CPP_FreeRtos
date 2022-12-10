@@ -82,7 +82,13 @@
 uint8_t dir_right[8] = {0x05, 0x00, 0x80, 0x00, 0x00, 0x00, 0x89};
 // 逆时针旋转
 uint8_t dir_left[8] = {0x05, 0x00, 0x80, 0x00, 0x00, 0x00, 0x81};
-
+/*!
+ * 串口发送位置步数
+ * @param uartx 串口指针
+ * @param STEP_Pin  脉冲引脚
+ * @param EN_Pin    使能引脚
+ * @param DIAG_Pin  上报引脚 中断输入
+ */
 TMC220xUart::TMC220xUart(_USART_ *uartx, GPIO_TypeDef *STEP_Port, uint16_t STEP_Pin, GPIO_TypeDef *EN_Port,
                          uint16_t EN_Pin, GPIO_TypeDef *DIAG_Port, uint16_t DIAG_Pin) {
     this->uart=uartx;
@@ -90,50 +96,79 @@ TMC220xUart::TMC220xUart(_USART_ *uartx, GPIO_TypeDef *STEP_Port, uint16_t STEP_
     this->EN.init(EN_Port,EN_Pin,HIGH);
     this->DIAG.init(DIAG_Port,DIAG_Pin,HIGH);
 }
-
+/*!
+ * 串口发送位置步数
+ * @param uartx 串口指针
+ * @param STEP_Pin  脉冲引脚
+ * @param EN_Pin    使能引脚
+ * @param DIAG_Pin  上报引脚 中断输入
+ */
 TMC220xUart::TMC220xUart(_USART_ *uartx,uint32_t STEP_Pin,uint32_t EN_Pin,uint32_t DIAG_Pin) {
     this->uart=uartx;
     this->STEP.init(STEP_Pin,HIGH);
     this->EN.init(EN_Pin,HIGH);
     this->DIAG.init(DIAG_Pin,HIGH);
 }
-
+/*!
+ * 初始化
+ * @param mres 细分
+ * @param maxdistance  最大行程
+ * @param minMovedistance    电机一圈移动的距离
+ * @param stallGuardThreshold  碰撞阈值
+ * @param Reverse  方向反向
+ */
 void TMC220xUart::initTMC2209(uint8_t mres,uint16_t maxdistance, uint16_t minMovedistance,
-                              uint8_t stallGuardThreshold, uint8_t stallGuardDirection) {
+                              uint8_t stallGuardThreshold, bool Reverse) {
     this->stepAngle = 1.8;
     this->maxDistance = maxdistance;
     this->minMoveDistance = minMovedistance;
     this->ZERO_flag = false;
     this->stop = false;
+    this->reverse=Reverse;
     this->DIAG.upload_extern_fun(this);/**中断自动回调**/
-    clearGSTAT();
+    this->clearGSTAT();
     // 细分
     this->setMicrosteppingResolution(mres);
     // 调整此处 阈值 碰撞
     this->stallGuard(stallGuardThreshold);
-    this->moveToUART(stallGuardDirection, maxDistance);
+    this->ZERO_flag = false;
 }
 
 void TMC220xUart::Callback(int ,char **) {
-    this->stop = true;
     this->stopMotor();
 }
-
+/*!
+ * 不限位归零
+ */
+void TMC220xUart::Return_to_zero() {
+    this->ZERO_flag= false;
+    this->moveToUART(Direction::Back,this->maxDistance);
+    while(!this->get_stop_flag());
+    this->ZERO_flag= true;
+    this->stop = false;
+}
+/*!
+ * 串口发送位置步数
+ * @param DIR_Flag 方向
+ * @param moveDistance  移动距离
+ */
 void TMC220xUart::moveToUART(uint8_t DIR_Flag, uint32_t moveDistance) {
-    if(moveDistance>this->maxDistance)
-        moveDistance=this->maxDistance;
-    // 电机转动一圈需要的步数
-    float steps = ((360 * (float)this->div) / this->stepAngle);
-    // 计算需要多少圈才能转到指定位置
-    float nums = ((float) moveDistance / (float) this->minMoveDistance);
-    this->startMotor();//电机使能
-    delay_ms(10);
-    if (DIR_Flag) //正转
-        this->uart->write(dir_right, 8);
-    else  //反转
-        this->uart->write(dir_left, 8);
-    this->moveStepUart( (uint64_t) (steps * nums));
-    this->stopMotor();//电机非使能
+    if(this->uart!= nullptr) {
+        if (moveDistance > this->maxDistance)
+            moveDistance = this->maxDistance;
+        // 电机转动一圈需要的步数
+        float steps = ((360 * (float) this->div) / this->stepAngle);
+        // 计算需要多少圈才能转到指定位置
+        float nums = ((float) moveDistance / (float) this->minMoveDistance);
+        this->startMotor();//电机使能
+        delay_ms(10);
+        if (this->reverse ? DIR_Flag : !DIR_Flag) //正转
+            this->uart->write(dir_right, 8);
+        else  //反转
+            this->uart->write(dir_left, 8);
+        this->moveStepUart((uint64_t) (steps * nums));
+        this->stopMotor();//电机非使能
+    }
 }
 
 void TMC220xUart::calcCrc(uint8_t *datagram, uint8_t datagramLength) {
@@ -166,14 +201,19 @@ int TMC220xUart::fastLog2(int x) {
 
     return (int)(exp - 127);
 }
-
+/*!
+ * 停止电机
+ */
 void TMC220xUart::stopMotor() {
     this->EN.set_value(LOW);
-//    this->set_stop_flag(false);
+    this->set_stop_flag(true);
 }
-
+/*!
+ * 使能电机
+ */
 void TMC220xUart::startMotor() {
     this->EN.set_value(HIGH);
+    this->set_stop_flag(false);
 }
 
 //55 00 01 46   //05 FF 01    00 00 00 00   13       00 00 00
@@ -188,7 +228,7 @@ uint32_t TMC220xUart::readReg(uint8_t regAddr) {
     return cache;
 }
 
-/*！
+/*!
  * 重设全局状态
  */
 void TMC220xUart::clearGSTAT() {
@@ -198,10 +238,10 @@ void TMC220xUart::clearGSTAT() {
 }
 
 /*!
- * 设置斩波模式 0静音斩波 1高速斩波
- * @param en_spread
+ * 设置斩波模式
+ * @param en_spread false 静音斩波 true高速斩波
  */
-void TMC220xUart::setSpreadCycle(uint8_t en_spread) {
+void TMC220xUart::setSpreadCycle(bool en_spread) {
     uint32_t data = this->readReg(0x00);
     if (en_spread) {
         data = data | (1 << 2);
@@ -248,7 +288,6 @@ void TMC220xUart::setMicrosteppingResolution(uint8_t mres) {
  * @return
  */
 void TMC220xUart::setVactual(uint32_t vactual, int acceleration) {
-    this->stop = false;
     if (acceleration == 0) {
         this->uartWriteInt(0x22, vactual);
     }
@@ -269,12 +308,16 @@ void TMC220xUart::setVactualRpm(uint32_t rpm) {
  * @param threshold 碰撞检测阈值
  */
 void TMC220xUart::stallGuard(uint32_t threshold) {
-    this->setSpreadCycle(0);
+    this->setSpreadCycle(false);
     this->uartWriteInt(0x40, threshold);
     this->uartWriteInt(0x14, 2000);
     this->setVactualRpm(30);
 }
-
+/*!
+ * 串口发送数据
+ * @param address 地址
+ * @param value 值
+ */
 void TMC220xUart::uartWriteInt(unsigned char address, unsigned int value) {
     uint8_t writeData[8];
 
@@ -291,7 +334,10 @@ void TMC220xUart::uartWriteInt(unsigned char address, unsigned int value) {
     delay_us(5);
 //    delay_ms(100);
 }
-
+/*!
+ * 串口发送位置步数
+ * @param Step 步数
+ */
 void TMC220xUart::moveStepUart(uint64_t Step) {
     uint64_t i;
     if (this->ZERO_flag) {
@@ -311,7 +357,7 @@ void TMC220xUart::moveStepUart(uint64_t Step) {
                 addc = 0;
                 add--;
             }
-            if (this->stop)break;
+            if (this->get_stop_flag())break;
         }
     } else {
         for (i = 0; i < Step; i++) {
@@ -319,7 +365,7 @@ void TMC220xUart::moveStepUart(uint64_t Step) {
             delay_us(10);
             this->STEP.set_value(HIGH);
             delay_us(10);
-            if (this->stop)break;
+            if (this->get_stop_flag())break;
         }
     }
 
@@ -328,8 +374,10 @@ void TMC220xUart::moveStepUart(uint64_t Step) {
 void TMC220xUart::set_stop_flag(bool flag) {
     this->stop=flag;
 }
-
-uint8_t TMC220xUart::get_stop_flag() const {
+/*!
+ * 获取归零状态
+ */
+bool TMC220xUart::get_stop_flag() const {
     return this->stop;
 }
 

@@ -125,6 +125,7 @@ struct TIMER_STRUCT_{
     void (*funC[Timer_Max_num])(){};
     void (*funC_r[Timer_Max_num])(uint8_t){};
     Call_Back *ext[Timer_Max_num]{};
+    bool CCconfig[Timer_Max_num]{};
     std::function<void()> funCPP[Timer_Max_num+1];
 }TIMER_STRUCT;
 void Timer_RUN_VOID() {}
@@ -136,6 +137,8 @@ void Timer::extern_init() {
         ii=Timer_RUN_VOID;
         for(auto & ii : TIMER_STRUCT.run_mode)
         ii=Call_Back::MODE::C_fun;
+        for(auto & ii : TIMER_STRUCT.CCconfig)
+            ii= false;
     }
 }
 
@@ -149,6 +152,12 @@ void Timer::extern_upset(uint8_t num)
         TIMER_STRUCT.funCPP[num%Timer_Max_num]();
     else if(TIMER_STRUCT.run_mode[num%Timer_Max_num]==Call_Back::MODE::class_fun)
         TIMER_STRUCT.ext[num%Timer_Max_num]->Callback(num, nullptr);
+}
+
+void Timer::extern_CC_upset(uint8_t num,uint8_t channel)
+{
+    if(TIMER_STRUCT.CCconfig[num] == true)
+        TIMER_STRUCT.ext[num%Timer_Max_num]->Callback(num+channel, nullptr);
 }
 
 void Timer::upload_extern_fun(void (*fun)()) {
@@ -172,6 +181,10 @@ void Timer::upload_extern_fun(std::function<void()> fun) {
 void Timer::upload_extern_fun(Call_Back *extx) const {
     TIMER_STRUCT.ext[this->timer_num%Timer_Max_num]=extx;
     TIMER_STRUCT.run_mode[this->timer_num%Timer_Max_num]=Call_Back::MODE::class_fun;
+}
+
+void Timer::set_CCextern_fun(bool en) const {
+    TIMER_STRUCT.CCconfig[this->timer_num] = en;
 }
 
 bool Timer::get_config() const {
@@ -198,6 +211,26 @@ void TIM2_IRQHandler(void) {
     {
         Timer::extern_upset(2);
         TIM_ClearITPendingBit(TIM2, TIM_IT_Update);  //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(2,1);
+        TIM_ClearITPendingBit(TIM2, TIM_IT_CC1); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM2, TIM_IT_CC2) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(2,2);
+        TIM_ClearITPendingBit(TIM2, TIM_IT_CC2); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM2, TIM_IT_CC3) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(2,3);
+        TIM_ClearITPendingBit(TIM2, TIM_IT_CC3); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM2, TIM_IT_CC4) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(2,4);
+        TIM_ClearITPendingBit(TIM2, TIM_IT_CC4); //清除中断标志位
     }
 }
 void TIM3_IRQHandler(void) {

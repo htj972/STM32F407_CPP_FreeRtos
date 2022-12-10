@@ -38,7 +38,9 @@ public:
     void upload_extern_fun(std::function<void()> fun);
     void upload_extern_fun(Call_Back *extx) const;
 
+    void set_CCextern_fun(bool en) const;
     static void extern_upset(uint8_t num);
+    static void extern_CC_upset(uint8_t num,uint8_t channel);
 };
 
 

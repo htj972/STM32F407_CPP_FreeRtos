@@ -57,8 +57,9 @@ public:
 
     static void extern_upset(uint8_t num,uint8_t data);
 
-    void   send_data();
+    void   send_re_data();
     uint16_t available();
+    void   clear();
     string read_data();
     string read_data(uint8_t len) const;
     string read_data(char c) const ;

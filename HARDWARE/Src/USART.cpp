@@ -264,12 +264,16 @@ void _USART_::upload_extern_fun(Call_Back *extx) const {
     UART_STRUCT.run_mode[this->USART_Num%UART_Max_num]=Call_Back::MODE::class_fun;
 }
 
-void _USART_::send_data() {
+void _USART_::send_re_data() {
     this->write(UART_STRUCT.RX_buffer[this->USART_Num]);
 }
 
 uint16_t _USART_::available() {
     return  UART_STRUCT.RX_buffer[this->USART_Num].length();
+}
+
+void _USART_::clear() {
+    UART_STRUCT.RX_buffer[this->USART_Num].clear();
 }
 
 string _USART_::read_data() {
@@ -441,6 +445,7 @@ void  _USART_::set_send_DMA(FunctionalState enable) {
             break;
     }
 }
+
 
 
 extern "C" void USART1_IRQHandler()  {              	//串口1中断服务程序

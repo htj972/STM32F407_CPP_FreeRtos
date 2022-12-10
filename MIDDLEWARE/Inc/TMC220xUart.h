@@ -26,13 +26,13 @@ private:
 
     bool stop{};     //Õ£÷π±Í÷æ
     bool ZERO_flag{};//∏¥ŒªπÈ¡„
+    bool reverse{};
 
     static void calcCrc(uint8_t *datagram, uint8_t datagramLength);
     static int fastLog2(int x);
     void uartWriteInt(unsigned char address, unsigned int value);
     uint32_t readReg(uint8_t regAddr);
     void clearGSTAT();
-    void setSpreadCycle(uint8_t en_spread);
     void setStepResolutionRegSelect(bool en);
     void setMicrosteppingResolution(uint8_t mres);
     void setVactual(uint32_t vactual, int acceleration);
@@ -45,18 +45,25 @@ public:
 
 #define TMC_acc  100
 #define TMC_len  100
+enum Direction:uint8_t{
+    Back    = 0,
+    Forward,
+};
 
     TMC220xUart(_USART_ *uartx,GPIO_TypeDef *STEP_Port, uint16_t STEP_Pin,
                 GPIO_TypeDef *EN_Port, uint16_t EN_Pin,
                 GPIO_TypeDef *DIAG_Port,uint16_t DIA_Pin);
     TMC220xUart(_USART_ *uartx,uint32_t STEP_Pin,uint32_t EN_Pin,uint32_t DIAG_Pin);
     void initTMC2209(uint8_t mres,uint16_t maxdistance, uint16_t minMovedistance,
-                     uint8_t stallGuardThreshold, uint8_t stallGuardDirection);
+                     uint8_t stallGuardThreshold, bool Reverse= false);
+    void Return_to_zero();
     void moveToUART(uint8_t DIR_Flag, uint32_t moveDistance);
     void stopMotor();
     void startMotor();
     void stallGuard(uint32_t threshold);
-    uint8_t get_stop_flag() const;
+    bool get_stop_flag() const;
+
+    void setSpreadCycle(bool en_spread);
 
     void Callback(int ,char **) override;
 };

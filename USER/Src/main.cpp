@@ -6,11 +6,9 @@
 #include "task.h"
 #include "Out_In_Put.h"
 #include "OLED_SSD1306.h"
-#include "SD_SPI.h"
-#include "Storage_Link.h"
-#include "USB_MSC.h"
 #include "Timer.h"
-#include "cJSON.h"
+#include "Tim_Capture.h"
+#include "DW_LCD.h"
 
 
 
@@ -45,12 +43,13 @@ _OutPut_        led(GPIOE6);
 _USART_         U1(USART1,115200);
 Software_IIC    SIIC1(GPIOB4,GPIOB5);
 OLED_SSD1306    MOLED(&SIIC1,OLED_SSD1306::Queue::OWN_Queue);
+Tim_Capture     Tsasd(TIM4,1,GPIOB4);
+_USART_         DW_UART(USART2,115200);
+DW_LCD          LCD(&DW_UART);
 
-//Timer           ledt(TIM6,10000,8400, true);
-
-class _led_:public _OutPut_,public Call_Back,public Timer{
+class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
-    _led_(GPIO_Pin param,TIM_TypeDef *TIMx, uint16_t frq) {
+    T_led_(GPIO_Pin param,TIM_TypeDef *TIMx, uint16_t frq) {
         _OutPut_::init(param,LOW);
         Timer::init(TIMx,10000/frq,8400,true);
         this->upload_extern_fun(this);
@@ -58,32 +57,11 @@ public:
     void Callback(int ,char **) override{
         this->change();
     };
-};
+}led2(GPIOD9,TIM6,10);
 
-_led_       led2(GPIOD9,TIM6,10);
 
-uint8_t str_s[]=R"({"params":{"int":123,"STR":"qwe","Fl":12.34},"STR":"asd","int":123})";
 
-void cJSON_check() {
-    cJSON *cjson = cJSON_Parse((char *) str_s);//申请空间
-    if (!cJSON_GetErrorPtr()) {
 
-        cJSON *params_s = cJSON_GetObjectItem(cjson, "params");
-        if (!cJSON_GetErrorPtr()) {
-            int get_int = cJSON_GetObjectItem(params_s, "int")->valueint;
-            char *get_char = cJSON_GetObjectItem(params_s, "STR")->valuestring;
-            double get_fla = cJSON_GetObjectItem(params_s, "Fl")->valuedouble;
-            MOLED.Print(0,0,get_int);
-            MOLED.Print(0,2,get_char);
-            MOLED.Print(0,4,"%6.2ff",get_fla);
-        }
-        cJSON_Delete(params_s);
-        int get_int = cJSON_GetObjectItem(params_s, "int")->valueint;
-        char *get_char = cJSON_GetObjectItem(params_s, "STR")->valuestring;
-        MOLED.Print(0,6,get_int);
-    }
-    cJSON_Delete(cjson);
-}
 
 int main()
 {
@@ -94,11 +72,8 @@ int main()
     MOLED.Fill(0xff);
     delay_ms(1000);
     MOLED.Fill(0x00);
-    cJSON_check();
+    LCD.Interface_switching(1);
 
-//    ledt.upload_extern_fun(&led2);
-
-//    MOLED.CLS();
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -153,6 +128,7 @@ void start_task(void *pvParameters)
         MOLED.Queue_star();
         led.change();
         MOLED.Queue_end();
+        LCD.setup();
     }
 }
 

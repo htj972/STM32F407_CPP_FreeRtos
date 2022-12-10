@@ -174,14 +174,14 @@ void PWM_H::OCinit(uint8_t num) {
 
 void PWM_H::config_Pin(PWM_BASE::channel channelx,uint8_t Pinx) {
     this->GPIOx_CH[(channelx-1)%4].init(Pinx,GPIO_Mode_AF);
-    GPIO_AF_config(channelx);
+    this->GPIO_AF_config(channelx);
     this->OCinit(channelx);
     this->set_channelx_ccr(channelx,0);
 }
 
 void PWM_H::config_Pin(PWM_BASE::channel channelx,GPIO_TypeDef *PORTx, uint32_t Pinx) {
     this->GPIOx_CH[(channelx-1)%4].init(PORTx,Pinx,GPIO_Mode_AF);
-    GPIO_AF_config(channelx);
+    this->GPIO_AF_config(channelx);
     this->OCinit(channelx);
     this->set_channelx_ccr(channelx,0);
 }
