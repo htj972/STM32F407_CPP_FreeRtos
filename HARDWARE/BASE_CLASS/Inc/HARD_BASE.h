@@ -33,6 +33,12 @@ public:
 
 class Call_Back{
 public:
+    enum Name:uint8_t{
+        exit = 0,
+        uart,
+        timer,
+        timer_cc,
+    };
     enum MODE{
         C_fun,
         C_fun_r,

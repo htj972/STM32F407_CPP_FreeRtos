@@ -43,7 +43,7 @@ _OutPut_        led(GPIOE6);
 _USART_         U1(USART1,115200);
 Software_IIC    SIIC1(GPIOB4,GPIOB5);
 OLED_SSD1306    MOLED(&SIIC1,OLED_SSD1306::Queue::OWN_Queue);
-Tim_Capture     Tsasd(TIM4,1,GPIOB4);
+//Tim_Capture     Tsasd(TIM4,1,GPIOB4);
 _USART_         DW_UART(USART2,115200);
 DW_LCD          LCD(&DW_UART);
 
@@ -51,14 +51,16 @@ class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
     T_led_(GPIO_Pin param,TIM_TypeDef *TIMx, uint16_t frq) {
         _OutPut_::init(param,LOW);
-        Timer::init(TIMx,10000/frq,8400,true);
+        Timer::init(TIMx,10000/frq,8400,false);
         this->upload_extern_fun(this);
     }
-    void Callback(int ,char **) override{
+    void Callback(int num ,char** data) override{
+        MOLED.Print(0,0,num);
+        MOLED.Print(0,2,"%d ",data[0][0]);
+        MOLED.Print(0,4,"%d ",data[1][0]);
         this->change();
     };
-}led2(GPIOD9,TIM6,10);
-
+}led2(GPIOD9,TIM6,1);
 
 
 
@@ -73,6 +75,8 @@ int main()
     delay_ms(1000);
     MOLED.Fill(0x00);
     LCD.Interface_switching(1);
+    delay_ms(1000);
+    led2.set_NVIC(true);
 
 
     //创建开始任务

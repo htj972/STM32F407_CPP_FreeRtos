@@ -18,6 +18,7 @@ private:
     void RCC_init();
     static void extern_init();
     bool config_flag{};
+    static char Interrupt_ret[2][2];
 protected:
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure{};
     uint8_t timer_num{};

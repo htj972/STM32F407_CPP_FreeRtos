@@ -8,6 +8,7 @@
 #include <cstdarg>
 #include <sstream>
 #include "DMA.h"
+#include "malloc.h"
 
 #define UART_Max_num 6
 struct UART_STRUCT_{
@@ -20,6 +21,10 @@ struct UART_STRUCT_{
     string RX_buffer[UART_Max_num];
 }UART_STRUCT;
 void UART_RUN_VOID() {}
+
+char _USART_::Interrupt_name[2];
+char _USART_::Interrupt_data[2];
+char _USART_::Interrupt_ret[2][2];
 
 //static string RX_buffer[6];
 static uint16_t RX_MAX_LEN[UART_Max_num]={1024,1024,1024,1024,1024,1024};
@@ -40,6 +45,10 @@ _USART_::_USART_(){
     this->DMA_Enable= false;
     DMA_send_flag= false;
 }
+
+//_USART_::~_USART_() {
+//    myfree(SRAMIN,Interrupt_ret);
+//}
 
 void _USART_::GPIO_AF_config(){
     if(this->USART==USART1){
@@ -222,6 +231,9 @@ void _USART_::extern_init() {
             ii=UART_RUN_VOID;
         for(auto & ii : UART_STRUCT.run_mode)
             ii=Call_Back::MODE::C_fun;
+//        Interrupt_ret=(char**)mymalloc(SRAMIN,sizeof (char**)*2);
+//        Interrupt_ret[0]=Interrupt_name;
+//        Interrupt_ret[1]=Interrupt_data;
     }
 }
 
@@ -238,7 +250,11 @@ void _USART_::extern_upset(uint8_t num,uint8_t data)
         UART_STRUCT.RX_buffer[num%UART_Max_num] += data;
     }
     else if(UART_STRUCT.run_mode[num%UART_Max_num]==Call_Back::MODE::class_fun)
-        UART_STRUCT.ext[num%UART_Max_num]->Callback(data, nullptr);
+    {
+        _USART_::Interrupt_name[0]=Call_Back::Name::uart;
+        _USART_::Interrupt_data[0]=data;
+        UART_STRUCT.ext[num%UART_Max_num]->Callback(2,(char**)Interrupt_ret);
+    }
 }
 
 void _USART_::upload_extern_fun(void (*fun)()) {
@@ -445,8 +461,6 @@ void  _USART_::set_send_DMA(FunctionalState enable) {
             break;
     }
 }
-
-
 
 extern "C" void USART1_IRQHandler()  {              	//串口1中断服务程序
     u8 Res;

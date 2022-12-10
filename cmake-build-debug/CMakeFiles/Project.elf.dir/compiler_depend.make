@@ -4233,7 +4233,8 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj: ../HARDWARE/Src/USART.cpp
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/sstream \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/sstream.tcc \
   ../SYSTEM/Inc/DMA.h \
-  ../SYSTEM/Inc/sys.h
+  ../SYSTEM/Inc/sys.h \
+  ../SYSTEM/Inc/malloc.h
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp \
   ../MIDDLEWARE/BASE_CLASS/Inc/FuzzyPID.h
@@ -5635,7 +5636,8 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj: ../MIDDLEWARE/Src/DW_L
   ../FreeRTOS/FreeRTOS_Inc/queue.h \
   ../FreeRTOS/FreeRTOS_Inc/task.h \
   ../FreeRTOS/FreeRTOS_Inc/list.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/RTCBASE.h
+  ../MIDDLEWARE/BASE_CLASS/Inc/RTCBASE.h \
+  ../HARDWARE/Inc/Timer.h
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj: ../MIDDLEWARE/Src/FM24Cxx.cpp \
   ../MIDDLEWARE/Inc/FM24Cxx.h \

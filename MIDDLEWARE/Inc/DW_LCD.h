@@ -9,6 +9,7 @@
 
 #include "USART.h"
 #include "RTCBASE.h"
+#include "Timer.h"
 
 #define  pic_H_address  0X0100
 #define  key_H_address  0X0500
@@ -19,6 +20,7 @@ class DW_LCD: public HARD_BASE,public Call_Back{
 protected:
     _USART_ *USARTX{};
     RTCBASE *RTX{};
+    Timer   *timer{};
 private:
     uint8_t head_address[2]{};
     uint8_t curInterface{};
@@ -51,6 +53,7 @@ public:
     void Write_data(uint16_t point,uint8_t offset,uint16_t DATA);
 
     void RtC_link(RTCBASE *RTCX);
+    void Timer_Link(Timer   *timerx);
 
     bool available();
     void setup();

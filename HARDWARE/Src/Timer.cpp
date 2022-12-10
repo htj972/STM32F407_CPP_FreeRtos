@@ -142,6 +142,8 @@ void Timer::extern_init() {
     }
 }
 
+char Timer::Interrupt_ret[2][2];
+
 void Timer::extern_upset(uint8_t num)
 {
     if(TIMER_STRUCT.run_mode[num%Timer_Max_num]==Call_Back::MODE::C_fun)
@@ -150,8 +152,13 @@ void Timer::extern_upset(uint8_t num)
         TIMER_STRUCT.funC_r[num%Timer_Max_num](num);
     else if(TIMER_STRUCT.run_mode[num%Timer_Max_num]==Call_Back::MODE::CPP_fun)
         TIMER_STRUCT.funCPP[num%Timer_Max_num]();
-    else if(TIMER_STRUCT.run_mode[num%Timer_Max_num]==Call_Back::MODE::class_fun)
-        TIMER_STRUCT.ext[num%Timer_Max_num]->Callback(num, nullptr);
+    else if(TIMER_STRUCT.run_mode[num%Timer_Max_num]==Call_Back::MODE::class_fun) {
+//        Timer::Interrupt_ret[0][0]=Call_Back::Name::timer;
+//        Timer::Interrupt_ret[1][0]=num;
+        Timer::Interrupt_ret[0][0]=3;
+        Timer::Interrupt_ret[1][0]=4;
+        TIMER_STRUCT.ext[num % Timer_Max_num]->Callback(2, (char**)Timer::Interrupt_ret);
+    }
 }
 
 void Timer::extern_CC_upset(uint8_t num,uint8_t channel)

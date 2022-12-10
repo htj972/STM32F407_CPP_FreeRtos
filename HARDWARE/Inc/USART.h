@@ -32,6 +32,9 @@ private:
     void default_config();
     void GPIO_AF_config();
     void extern_init();
+    static char Interrupt_name[2];
+    static char Interrupt_data[2];
+    static char Interrupt_ret[2][2];
 
 public:
     explicit _USART_(USART_TypeDef* USARTx,int32_t bound=115200);

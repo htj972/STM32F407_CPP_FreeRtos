@@ -473,11 +473,20 @@ void DW_LCD::setup() {
 }
 /*!
  * 触摸屏  链接RTC时钟
- * @param data:数据
+ * @param RTCX:RTC类指针
  * @return
  */
 void DW_LCD::RtC_link(RTCBASE *RTCX) {
     this->RTX = RTCX;
+}
+/*!
+ * 触摸屏  链接Timer中断回调
+ * @param timerx:定时器类指针
+ * @return
+ */
+void DW_LCD::Timer_Link(Timer *timerx) {
+    this->timer=timerx;
+//    this->timer->upload_extern_fun(std::bind(DW_LCD::setup(),this));
 }
 /*!
  * 获取按键地址  并清除按键状态
@@ -504,3 +513,4 @@ bool DW_LCD::get_key_sata() {
     this->ret_key= false;
     return ret;
 }
+
