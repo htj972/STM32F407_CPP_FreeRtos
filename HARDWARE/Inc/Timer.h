@@ -18,7 +18,10 @@ private:
     void RCC_init();
     static void extern_init();
     bool config_flag{};
-    static char Interrupt_ret[2][2];
+    static char Interrupt_data[2];
+    static char Interrupt_name[2];
+    static char Interrupt_channel[2];
+    static char* Interrupt_ret[3];
 protected:
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure{};
     uint8_t timer_num{};
@@ -28,6 +31,7 @@ public:
     Timer();
     ~Timer()=default;
     void init(TIM_TypeDef* TIMx,uint32_t arr,uint16_t psc,bool nvic= false);
+    void set_Cmd(bool sata);
     void set_NVIC(bool sata,uint8_t Preemption=1,uint8_t SubPriority=3);
     bool get_config() const;
 

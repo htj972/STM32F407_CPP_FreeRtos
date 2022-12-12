@@ -7,7 +7,6 @@
 #include "Out_In_Put.h"
 #include "OLED_SSD1306.h"
 #include "Timer.h"
-#include "Tim_Capture.h"
 #include "DW_LCD.h"
 
 
@@ -43,26 +42,30 @@ _OutPut_        led(GPIOE6);
 _USART_         U1(USART1,115200);
 Software_IIC    SIIC1(GPIOB4,GPIOB5);
 OLED_SSD1306    MOLED(&SIIC1,OLED_SSD1306::Queue::OWN_Queue);
-//Tim_Capture     Tsasd(TIM4,1,GPIOB4);
-_USART_         DW_UART(USART2,115200);
-DW_LCD          LCD(&DW_UART);
 
 class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
     T_led_(GPIO_Pin param,TIM_TypeDef *TIMx, uint16_t frq) {
         _OutPut_::init(param,LOW);
-        Timer::init(TIMx,10000/frq,8400,false);
+        Timer::init(TIMx,10000/frq,8400,true);
         this->upload_extern_fun(this);
     }
-    void Callback(int num ,char** data) override{
-        MOLED.Print(0,0,num);
-        MOLED.Print(0,2,"%d ",data[0][0]);
-        MOLED.Print(0,4,"%d ",data[1][0]);
+    void Callback(int  ,char** ) override{
         this->change();
     };
-}led2(GPIOD9,TIM6,1);
+}led2(GPIOD9,TIM6,10);
 
-
+class K_DW:public _USART_,public DW_LCD,public Timer{
+public:
+    K_DW(USART_TypeDef* USARTx,TIM_TypeDef *TIMx, uint16_t frq) {
+        _USART_::init(USARTx,115200);
+        DW_LCD::init(this);
+        Timer::init(TIMx,10000/frq,8400,true);
+    }
+    void init(){
+        DW_LCD::Timer_Link(this);
+    }
+}MDW(USART2,TIM7,20);
 
 
 int main()
@@ -74,9 +77,10 @@ int main()
     MOLED.Fill(0xff);
     delay_ms(1000);
     MOLED.Fill(0x00);
-    LCD.Interface_switching(1);
-    delay_ms(1000);
-    led2.set_NVIC(true);
+//    LCD.Interface_switching(1);
+//    LCD.Timer_Link(&DWTx);
+    MDW.init();
+    MDW.Interface_switching(1);
 
 
     //创建开始任务
@@ -132,7 +136,17 @@ void start_task(void *pvParameters)
         MOLED.Queue_star();
         led.change();
         MOLED.Queue_end();
-        LCD.setup();
+//        LCD.setup();
+        if (MDW.get_key_sata())
+        switch (MDW.get_key_address()&0x00ff) {
+            case 0x00:
+                 MDW.Interface_switching(1);
+                break;//全局按键
+            case 0x01:			//主界面
+                if((MDW.get_key_data()&0x00ff)==1)
+                    MDW.Interface_switching(3);
+                break;
+        }
     }
 }
 

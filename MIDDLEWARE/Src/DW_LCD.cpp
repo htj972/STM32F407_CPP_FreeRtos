@@ -367,22 +367,34 @@ void DW_LCD::Write_data(uint16_t point,uint8_t offset,uint16_t DATA)
 /*!
  * 串口回调
  */
-void DW_LCD::Callback(int data, char **) {
-    this->uart_get_data = data;
+void DW_LCD::Callback(int num ,char** data) {
     static uint8_t head_flag=0;
-    if(head_flag==1)
-    {
-        if(data==this->head_address[1])
-        {
-            this->uart_get_len=1;
-            this->fifo_data[0]=this->head_address[0];
-        }
-        head_flag=0;
+    switch (data[0][0]) {
+        case Call_Back::Name::uart:
+//            if(data[1][0]==this->USARTX->get_USART_Num())
+            this->uart_get_data = data[2][0];
+            if(this->uart_get_data==this->head_address[0])
+                head_flag=1;
+            else if(head_flag==1)
+            {
+                if(this->uart_get_data==this->head_address[1])
+                {
+                    this->uart_get_len=1;
+                    this->fifo_data[0]=this->head_address[0];
+                }
+                head_flag=0;
+            }
+            this->fifo_data[this->uart_get_len++]=this->uart_get_data;
+            if(this->uart_get_len==sizeof (this->fifo_data))
+                this->uart_get_len=0;
+        break;
+        case Call_Back::Name::timer:
+            this->timer->set_Cmd(false);
+            this->setup();
+            this->timer->set_Cmd(true);
+        break;
     }
-    if(data==this->head_address[0])head_flag=1;
-    this->fifo_data[this->uart_get_len++]=this->uart_get_data;
-    if(this->uart_get_len==sizeof (this->fifo_data))
-        this->uart_get_len=0;
+
 }
 /*!
  * 数据可执行
@@ -414,16 +426,6 @@ void DW_LCD::key_back_value_point() {
     this->ret_key= true;
     this->ret_key_address=(DW_Address_H<<8)+DW_Address_L;
     this->ret_key_data=(DW_DATA_High<<8)+DW_DATA_LoW;
-    if (DW_Address_H == ((key_H_address >> 8) & 0x00ff)) {
-        switch (DW_Address_L) {
-            case 0x00:
-                break;//全局按键
-            case 0x01:			//主界面
-            if(DW_DATA_LoW==1)
-                this->Interface_switching(3);
-                break;
-        }
-    }
 }
 /*!
  * 触摸屏  寄存器hex转int
@@ -486,7 +488,7 @@ void DW_LCD::RtC_link(RTCBASE *RTCX) {
  */
 void DW_LCD::Timer_Link(Timer *timerx) {
     this->timer=timerx;
-//    this->timer->upload_extern_fun(std::bind(DW_LCD::setup(),this));
+    this->timer->upload_extern_fun(this);
 }
 /*!
  * 获取按键地址  并清除按键状态

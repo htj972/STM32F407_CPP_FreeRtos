@@ -41,6 +41,10 @@ private:
     uint8_t Down_level{};
     uint8_t pin_num{};
     bool setted{};
+
+    static char Interrupt_name[2];
+    static char Interrupt_channel[2];
+    static char* Interrupt_ret[2];
     static void extern_init();
 public:
     _InPut_(GPIO_TypeDef* PORTx,uint32_t Pinx,uint8_t Hi_Lo=LOW);
@@ -64,6 +68,7 @@ public:
 
     static void extern_upset(uint8_t num);
 
+    uint8_t get_pin_num() const;
     uint8_t get_level();
     bool get_state();
     bool get_NVIC_state() const;

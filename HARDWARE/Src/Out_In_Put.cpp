@@ -90,12 +90,14 @@ void _InPut_::init(){
         if(this->GPIO.Pinx==0xff)
             this->GPIO.get_pinx_num();
         this->GPIO.init(this->GPIO.Pinx,GPIO_Mode_IN);
+        this->pin_num=this->GPIO.get_GPIOx_num();
     }
 }
 
 void _InPut_::init(GPIO_TypeDef *PORTx, uint32_t Pinx, uint8_t Hi_Lo) {
     this->Down_level=Hi_Lo;
     this->GPIO.init(PORTx,Pinx,GPIO_Mode_IN);
+    this->pin_num=this->GPIO.get_GPIOx_num();
     if(this->Down_level!=LOW)
         this->GPIO.set_PuPD(GPIO_PuPd_DOWN);
     this->setted= true;
@@ -104,6 +106,7 @@ void _InPut_::init(GPIO_TypeDef *PORTx, uint32_t Pinx, uint8_t Hi_Lo) {
 void _InPut_::init(uint8_t Pinx, uint8_t Hi_Lo) {
     this->Down_level=Hi_Lo;
     this->GPIO.init(Pinx,GPIO_Mode_IN);
+    this->pin_num=this->GPIO.get_GPIOx_num();
     if(this->Down_level!=LOW)
         this->GPIO.set_PuPD(GPIO_PuPd_DOWN);
     this->setted= true;
@@ -112,7 +115,6 @@ void _InPut_::init(uint8_t Pinx, uint8_t Hi_Lo) {
 void _InPut_::set_EXTI() {
     if(this->GPIO.get_PORTx_num()!=0)
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);//Ê¹ÄÜSYSCFGÊ±ÖÓ
-    this->pin_num=this->GPIO.get_GPIOx_num();
     SYSCFG_EXTILineConfig(this->GPIO.get_PORTx_num(),this->pin_num);
     _InPut_::extern_init();
 
@@ -167,6 +169,10 @@ struct INPUT_STRUCT_{
 }INPUT_STRUCT;
 void INPUT_RUN_VOID() {}
 
+char _InPut_::Interrupt_name[2];
+char _InPut_::Interrupt_channel[2];
+char* _InPut_::Interrupt_ret[2];
+
 void _InPut_::extern_init() {
     if(!INPUT_STRUCT.extern_flag) {
         INPUT_STRUCT.extern_flag = true;
@@ -174,6 +180,9 @@ void _InPut_::extern_init() {
             ii=INPUT_RUN_VOID;
         for(auto & ii : INPUT_STRUCT.run_mode)
             ii=Call_Back::MODE::C_fun;
+        _InPut_::Interrupt_ret[0]=_InPut_::Interrupt_name;
+        _InPut_::Interrupt_ret[1]=_InPut_::Interrupt_channel;
+        _InPut_::Interrupt_name[0]=Call_Back::Name::exit;
     }
 }
 
@@ -187,7 +196,10 @@ void _InPut_::extern_upset(uint8_t num)
     else if(INPUT_STRUCT.run_mode[num%INPUT_Max_num]==Call_Back::MODE::CPP_fun)
         INPUT_STRUCT.funCPP[num%INPUT_Max_num]();
     else if(INPUT_STRUCT.run_mode[num%INPUT_Max_num]==Call_Back::MODE::class_fun)
-        INPUT_STRUCT.ext[num%INPUT_Max_num]->Callback(num, nullptr);
+    {
+        _InPut_::Interrupt_channel[0]=num;
+        INPUT_STRUCT.ext[num%INPUT_Max_num]->Callback(2, _InPut_::Interrupt_ret);
+    }
 }
 
 void _InPut_::upload_extern_fun(void (*fun)()) {
@@ -225,6 +237,10 @@ bool _InPut_::get_NVIC_state() const {
     bool get_d = INPUT_STRUCT.NVIC_state[this->pin_num];
     INPUT_STRUCT.NVIC_state[this->pin_num] = false;
     return get_d;
+}
+
+uint8_t _InPut_::get_pin_num() const {
+    return this->pin_num;
 }
 
 

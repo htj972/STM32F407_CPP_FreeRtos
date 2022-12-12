@@ -32,9 +32,10 @@ private:
     void default_config();
     void GPIO_AF_config();
     void extern_init();
-    static char Interrupt_name[2];
     static char Interrupt_data[2];
-    static char Interrupt_ret[2][2];
+    static char Interrupt_channel[2];
+    static char Interrupt_name[2];
+    static char* Interrupt_ret[3];
 
 public:
     explicit _USART_(USART_TypeDef* USARTx,int32_t bound=115200);
@@ -49,6 +50,8 @@ public:
     void setCmd_ENABLE(bool EnAble=true);
     void setStruct(uint16_t WordLength,uint16_t StopBits,uint16_t Parity);
     void set_fifo_size(uint16_t size);
+
+    uint8_t get_USART_Num();
 
     void (*extern_IRQ_link)(){};
     void upload_extern_fun(void(* fun)());

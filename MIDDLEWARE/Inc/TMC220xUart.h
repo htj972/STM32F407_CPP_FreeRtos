@@ -65,7 +65,7 @@ enum Direction:uint8_t{
 
     void setSpreadCycle(bool en_spread);
 
-    void Callback(int ,char **) override;
+    void Callback(int,char** data) override;
 };
 
 

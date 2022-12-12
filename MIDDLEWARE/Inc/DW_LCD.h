@@ -34,6 +34,7 @@ private:
     void key_back_value_point();
     void register_back_value_point();
 public:
+    DW_LCD()=default;
     explicit DW_LCD(_USART_ *USART,uint8_t head1=0x5A,uint8_t head2=0xA5);
     void init(_USART_ *USART,uint8_t head1=0x5A,uint8_t head2=0xA5);
     void Interface_switching(uint16_t Interface);
@@ -63,7 +64,7 @@ public:
     bool get_key_sata();
 
 
-    void Callback(int data ,char **) override;
+    void Callback(int num ,char** data) override;
 
 };
 

@@ -134,7 +134,8 @@ void TMC220xUart::initTMC2209(uint8_t mres,uint16_t maxdistance, uint16_t minMov
     this->ZERO_flag = false;
 }
 
-void TMC220xUart::Callback(int ,char **) {
+void TMC220xUart::Callback(int,char** data) {
+//    if(data[1][0]==this->DIAG.get_pin_num())
     this->stopMotor();
 }
 /*!

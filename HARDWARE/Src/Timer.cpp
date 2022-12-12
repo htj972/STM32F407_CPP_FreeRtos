@@ -92,7 +92,21 @@ void Timer::RCC_init() {
         this->timer_num=14;
     }
 }
-
+/*!
+ * 定时器使能
+ * @param sata 是否使能
+ * @return
+ */
+void Timer::set_Cmd(bool sata) {
+    TIM_Cmd(this->Timx,sata?ENABLE:DISABLE);
+}
+/*!
+ * 中断使能
+ * @param sata 是否使能
+ * @param Preemption  抢占优先级
+ * @param SubPriority 子优先级
+ * @return
+ */
 void Timer::set_NVIC(bool sata,uint8_t Preemption,uint8_t SubPriority) {
 
     FunctionalState NVIC_sata=sata?ENABLE:DISABLE;
@@ -130,6 +144,11 @@ struct TIMER_STRUCT_{
 }TIMER_STRUCT;
 void Timer_RUN_VOID() {}
 
+char* Timer::Interrupt_ret[3];
+char Timer::Interrupt_data[2];
+char Timer::Interrupt_channel[2];
+char Timer::Interrupt_name[2];
+
 void Timer::extern_init() {
     if(!TIMER_STRUCT.extern_flag) {
         TIMER_STRUCT.extern_flag = true;
@@ -139,10 +158,11 @@ void Timer::extern_init() {
         ii=Call_Back::MODE::C_fun;
         for(auto & ii : TIMER_STRUCT.CCconfig)
             ii= false;
+        Timer::Interrupt_ret[0]=Timer::Interrupt_name;
+        Timer::Interrupt_ret[1]=Timer::Interrupt_channel;
+        Timer::Interrupt_ret[2]=Timer::Interrupt_data;
     }
 }
-
-char Timer::Interrupt_ret[2][2];
 
 void Timer::extern_upset(uint8_t num)
 {
@@ -153,18 +173,21 @@ void Timer::extern_upset(uint8_t num)
     else if(TIMER_STRUCT.run_mode[num%Timer_Max_num]==Call_Back::MODE::CPP_fun)
         TIMER_STRUCT.funCPP[num%Timer_Max_num]();
     else if(TIMER_STRUCT.run_mode[num%Timer_Max_num]==Call_Back::MODE::class_fun) {
-//        Timer::Interrupt_ret[0][0]=Call_Back::Name::timer;
-//        Timer::Interrupt_ret[1][0]=num;
-        Timer::Interrupt_ret[0][0]=3;
-        Timer::Interrupt_ret[1][0]=4;
+        Timer::Interrupt_name[0]=Call_Back::Name::timer;
+        Timer::Interrupt_channel[0]=num;
+        Timer::Interrupt_data[0] = 0;
         TIMER_STRUCT.ext[num % Timer_Max_num]->Callback(2, (char**)Timer::Interrupt_ret);
     }
 }
 
 void Timer::extern_CC_upset(uint8_t num,uint8_t channel)
 {
-    if(TIMER_STRUCT.CCconfig[num] == true)
-        TIMER_STRUCT.ext[num%Timer_Max_num]->Callback(num+channel, nullptr);
+    if(TIMER_STRUCT.CCconfig[num] == true) {
+        Timer::Interrupt_name[0] = Call_Back::Name::timer_cc;
+        Timer::Interrupt_channel[0] = num;
+        Timer::Interrupt_data[0] = channel;
+        TIMER_STRUCT.ext[num % Timer_Max_num]->Callback(num + channel, nullptr);
+    }
 }
 
 void Timer::upload_extern_fun(void (*fun)()) {
@@ -197,8 +220,6 @@ void Timer::set_CCextern_fun(bool en) const {
 bool Timer::get_config() const {
     return this->config_flag;
 }
-
-
 
 extern "C" {
 void TIM1_UP_TIM10_IRQHandler(void) {
@@ -246,6 +267,26 @@ void TIM3_IRQHandler(void) {
         Timer::extern_upset(3);
         TIM_ClearITPendingBit(TIM3, TIM_IT_Update);  //清除中断标志位
     }
+    if(TIM_GetITStatus(TIM3, TIM_IT_CC1) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(3,1);
+        TIM_ClearITPendingBit(TIM3, TIM_IT_CC1); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM3, TIM_IT_CC2) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(3,2);
+        TIM_ClearITPendingBit(TIM3, TIM_IT_CC2); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM3, TIM_IT_CC3) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(3,3);
+        TIM_ClearITPendingBit(TIM3, TIM_IT_CC3); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM3, TIM_IT_CC4) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(3,4);
+        TIM_ClearITPendingBit(TIM3, TIM_IT_CC4); //清除中断标志位
+    }
 }
 void TIM4_IRQHandler(void) {
     if (TIM_GetITStatus(TIM4, TIM_IT_Update) == SET) //溢出中断
@@ -253,12 +294,52 @@ void TIM4_IRQHandler(void) {
         Timer::extern_upset(4);
         TIM_ClearITPendingBit(TIM4, TIM_IT_Update);  //清除中断标志位
     }
+    if(TIM_GetITStatus(TIM4, TIM_IT_CC1) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(4,1);
+        TIM_ClearITPendingBit(TIM4, TIM_IT_CC1); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM4, TIM_IT_CC2) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(4,2);
+        TIM_ClearITPendingBit(TIM4, TIM_IT_CC2); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM4, TIM_IT_CC3) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(4,3);
+        TIM_ClearITPendingBit(TIM4, TIM_IT_CC3); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM4, TIM_IT_CC4) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(4,4);
+        TIM_ClearITPendingBit(TIM4, TIM_IT_CC4); //清除中断标志位
+    }
 }
 void TIM5_IRQHandler(void) {
     if (TIM_GetITStatus(TIM5, TIM_IT_Update) == SET) //溢出中断
     {
         Timer::extern_upset(5);
         TIM_ClearITPendingBit(TIM5, TIM_IT_Update);  //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM5, TIM_IT_CC1) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(5,1);
+        TIM_ClearITPendingBit(TIM5, TIM_IT_CC1); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM5, TIM_IT_CC2) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(5,2);
+        TIM_ClearITPendingBit(TIM5, TIM_IT_CC2); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM5, TIM_IT_CC3) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(5,3);
+        TIM_ClearITPendingBit(TIM5, TIM_IT_CC3); //清除中断标志位
+    }
+    if(TIM_GetITStatus(TIM5, TIM_IT_CC4) != RESET)//捕获1发生捕获事件
+    {
+        Timer::extern_CC_upset(5,4);
+        TIM_ClearITPendingBit(TIM5, TIM_IT_CC4); //清除中断标志位
     }
 }
 void TIM6_DAC_IRQHandler(void) {

@@ -19,21 +19,14 @@ struct UART_STRUCT_{
     std::function<void()> funCPP[UART_Max_num+1];
     Call_Back *ext[UART_Max_num]{};
     string RX_buffer[UART_Max_num];
+    uint16_t RX_MAX_LEN[UART_Max_num];
 }UART_STRUCT;
 void UART_RUN_VOID() {}
 
 char _USART_::Interrupt_name[2];
 char _USART_::Interrupt_data[2];
-char _USART_::Interrupt_ret[2][2];
-
-//static string RX_buffer[6];
-static uint16_t RX_MAX_LEN[UART_Max_num]={1024,1024,1024,1024,1024,1024};
-//static uint8_t  extern_flag=0;
-//void USART_RUN_VOID(uint8_t channel,uint8_t data) {}
-//struct _IRQ_STRUCT_ {
-//    void (*Usart_IRQ_link)(uint8_t channel,uint8_t data);
-//    void (*extern_IRQ_link)(uint8_t channel,uint8_t data);
-//}HARD_IQR;
+char _USART_::Interrupt_channel[2];
+char* _USART_::Interrupt_ret[3];
 
 _USART_::_USART_(USART_TypeDef* USARTx,int32_t bound){
     this->init(USARTx,bound);
@@ -45,10 +38,6 @@ _USART_::_USART_(){
     this->DMA_Enable= false;
     DMA_send_flag= false;
 }
-
-//_USART_::~_USART_() {
-//    myfree(SRAMIN,Interrupt_ret);
-//}
 
 void _USART_::GPIO_AF_config(){
     if(this->USART==USART1){
@@ -215,14 +204,22 @@ void _USART_::setStruct(uint16_t WordLength, uint16_t StopBits, uint16_t Parity)
 }
 
 void _USART_::set_fifo_size(uint16_t size) {
-    if(RX_MAX_LEN[this->USART_Num]>size)
+    if(UART_STRUCT.RX_MAX_LEN[this->USART_Num]>size)
     {
-        uint16_t len_t=RX_MAX_LEN[this->USART_Num]-size;
+        uint16_t len_t=UART_STRUCT.RX_MAX_LEN[this->USART_Num]-size;
         if(UART_STRUCT.RX_buffer[this->USART_Num].length()>size)
             UART_STRUCT.RX_buffer[this->USART_Num].erase(0,len_t);
     }
-    RX_MAX_LEN[this->USART_Num]=size;
+    UART_STRUCT.RX_MAX_LEN[this->USART_Num]=size;
 }
+
+uint8_t _USART_::get_USART_Num() {
+    return this->USART_Num;
+}
+
+static char Interrupt_data[2];
+static char Interrupt_name[2];
+static char* Interrupt_ret[2];
 
 void _USART_::extern_init() {
     if(!UART_STRUCT.extern_flag) {
@@ -231,9 +228,12 @@ void _USART_::extern_init() {
             ii=UART_RUN_VOID;
         for(auto & ii : UART_STRUCT.run_mode)
             ii=Call_Back::MODE::C_fun;
-//        Interrupt_ret=(char**)mymalloc(SRAMIN,sizeof (char**)*2);
-//        Interrupt_ret[0]=Interrupt_name;
-//        Interrupt_ret[1]=Interrupt_data;
+        for(auto & ii : UART_STRUCT.RX_MAX_LEN)
+            ii=1024;
+        _USART_::Interrupt_ret[0]=_USART_::Interrupt_name;
+        _USART_::Interrupt_ret[1]=_USART_::Interrupt_channel;
+        _USART_::Interrupt_ret[2]=_USART_::Interrupt_data;
+        _USART_::Interrupt_name[0]=Call_Back::Name::uart;
     }
 }
 
@@ -251,9 +251,9 @@ void _USART_::extern_upset(uint8_t num,uint8_t data)
     }
     else if(UART_STRUCT.run_mode[num%UART_Max_num]==Call_Back::MODE::class_fun)
     {
-        _USART_::Interrupt_name[0]=Call_Back::Name::uart;
-        _USART_::Interrupt_data[0]=data;
-        UART_STRUCT.ext[num%UART_Max_num]->Callback(2,(char**)Interrupt_ret);
+        _USART_::Interrupt_data[0] = data;
+        _USART_::Interrupt_channel[0] = num;
+        UART_STRUCT.ext[num%UART_Max_num]->Callback(2,_USART_::Interrupt_ret);
     }
 }
 
