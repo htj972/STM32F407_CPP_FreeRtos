@@ -35,11 +35,11 @@ void DW_LCD::init(_USART_ *USART, uint8_t head1, uint8_t head2) {
  * @param head Êı¾İÖ¡Í·
  * @return void
  */
-void DW_LCD::Interface_switching(uint16_t Interface)
+void DW_LCD::Interface_switching(uint16_t Interface,bool save)
 {
     uint8_t LcdOrder[7] = {this->head_address[0],this->head_address[1],0x04,0x80,0x03,0x00,0x00};
     this->Queue_star();
-    this->curInterface = Interface;        //ÏµÍ³½çÃæ×´Ì¬±ê×¢
+    if(save)this->curInterface = Interface;        //ÏµÍ³½çÃæ×´Ì¬±ê×¢
     LcdOrder[5] = (Interface >> 8) & 0x00ff;
     LcdOrder[6] = Interface & 0x00ff;
     this->USARTX->write((uint8_t*)LcdOrder,7);
@@ -141,6 +141,17 @@ void DW_LCD::Picture_cut(uint16_t address,uint16_t PictureID,uint16_t IDs_x,uint
     this->Queue_end();
 }
 /*!
+ * ´¥ÃşÆÁ  ÉèÖÃ½ø¶ÈÌõ½ø¶È Í¼Æ¬IDÎª +1
+ * @param address µØÖ·
+ * @param IDs_x,IDs_y    Í¼±ê¿ªÊ¼×ø±ê
+ * @param IDe_x,IDe_y    Í¼±ê½áÊø×ø±ê
+ * @return
+ */
+void DW_LCD::set_Progress_bar(uint16_t address,uint8_t progress, uint16_t IDs_x, uint16_t IDs_y, uint16_t IDe_x, uint16_t IDe_y) {
+    uint16_t end_x=(IDe_x-IDs_x)/100*progress+IDs_x;
+    this->Picture_cut(address,this->curInterface+1,IDs_x,IDs_y,end_x,IDe_y,IDs_x,IDs_y);
+}
+/*!
  * ´¥ÃşÆÁ  Í¼±ê±äÁ¿ ·ÅÖÃº¯Êı
  * @param address µØÖ·
  * @param IDNum    Í¼±êËùÔÚÎ»ÖÃ ID
@@ -206,15 +217,34 @@ void DW_LCD::RTC_write(uint8_t yer,uint8_t mon,uint8_t day,uint8_t hou,uint8_t m
 /*!
  * ´¥ÃşÆÁ  ·¢ËÍ±³¹âÁÁ¶È
  * @param light ÁÁ¶È (0x00-0x40ÁÁ¶È·¶Î§)
+ * @param save ±£´æ
  * @return
  */
-void DW_LCD::SetBackLight(uint8_t light)
+void DW_LCD::SetBackLight(uint8_t light,bool save)
 {
     volatile uint8_t LcdOrder[6] = {this->head_address[0],this->head_address[1],0x03,0x80,0x01,0x01};
     this->Queue_star();
     LcdOrder[5] = light;
     this->USARTX->write((uint8_t*)LcdOrder,6);
+    if(save)this->cur_light=light;
     this->Queue_end();
+}
+/*!
+ * ´¥ÃşÆÁ  Ë¯Ãß ×ªÌøÆÁ±£Ò³ ÁÁ¶È0 ÆÁ±£Ò³¿ÉÒÔ»½ĞÑ
+ * @param Interface ÆÁ±£Ò³Ãæ Ä¬ÈÏ0
+ * @return
+ */
+void DW_LCD::Sleep(uint8_t Interface) {
+    this->SetBackLight(0, false);
+    this->Interface_switching(Interface,false);
+}
+/*!
+ * ´¥ÃşÆÁ  »½ĞÑ ×ªÌøÔËĞĞ½çÃæ
+ * @return
+ */
+void DW_LCD::Wake_up() {
+    this->SetBackLight(this->cur_light, false);
+    this->Interface_switching(this->curInterface,false);
 }
 /*!
  * ´¥ÃşÆÁ  ÇúÏß
@@ -441,9 +471,9 @@ uint8_t DW_LCD::hex_to_int(uint8_t hex)
 /*!
  * ´¥ÃşÆÁ  ¼Ä´æÆ÷Ö¸Õë·µ»Ø
  */
-#define time_data(x) hex_to_int(DMT_G_DATA[x])
 void DW_LCD::register_back_value_point()
 {
+    #define time_data(x) hex_to_int(DMT_G_DATA[x])
     switch(DW_REG_Address)
     {
         case 0x20:										//RTC¼Ä´æÆ÷
@@ -515,4 +545,5 @@ bool DW_LCD::get_key_sata() {
     this->ret_key= false;
     return ret;
 }
+
 

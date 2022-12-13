@@ -1,4 +1,3 @@
-#include <cstring>
 #include "sys.h"
 #include "delay.h"
 #include "USART.h"
@@ -55,7 +54,7 @@ public:
     };
 }led2(GPIOD9,TIM6,10);
 
-class K_DW:public _USART_,public DW_LCD,public Timer{
+class K_DW: private _USART_,public DW_LCD,private Timer{
 public:
     K_DW(USART_TypeDef* USARTx,TIM_TypeDef *TIMx, uint16_t frq) {
         _USART_::init(USARTx,115200);
@@ -81,7 +80,10 @@ int main()
 //    LCD.Timer_Link(&DWTx);
     MDW.init();
     MDW.Interface_switching(1);
-
+    MDW.SetBackLight(20);
+    MDW.set_Progress_bar(PIC_ADD(1),50,87,362,724,399);
+    delay_ms(1000);
+    MDW.Interface_switching(3);
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -128,7 +130,6 @@ void start_task(void *pvParameters)
 //task2任务函数
 [[noreturn]] void task2_task(void *pvParameters)
 {
-
     while(true)
     {
         vTaskDelay(200/portTICK_RATE_MS );
@@ -136,16 +137,25 @@ void start_task(void *pvParameters)
         MOLED.Queue_star();
         led.change();
         MOLED.Queue_end();
-//        LCD.setup();
         if (MDW.get_key_sata())
-        switch (MDW.get_key_address()&0x00ff) {
-            case 0x00:
-                 MDW.Interface_switching(1);
-                break;//全局按键
-            case 0x01:			//主界面
-                if((MDW.get_key_data()&0x00ff)==1)
+        if(MDW.get_key_address()==key_H_address) {
+            switch (MDW.get_key_data()) {
+                case 0:
                     MDW.Interface_switching(3);
+                    break;
+                case 1:
+                    MDW.Interface_switching(5);
                 break;
+                case 2:
+                    MDW.Interface_switching(7);
+                    break;
+                case 3:
+                    MDW.Interface_switching(9);
+                    break;
+                case 4:
+                    MDW.Interface_switching(11);
+                    break;
+            }
         }
     }
 }

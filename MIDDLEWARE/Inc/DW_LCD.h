@@ -11,10 +11,12 @@
 #include "RTCBASE.h"
 #include "Timer.h"
 
-#define  pic_H_address  0X0100
-#define  key_H_address  0X0500
+#define  pic_H_address  0X3300
+#define  key_H_address  0X3000
 #define text_H_address  0X1000
 #define  point_address  0x2000
+
+#define PIC_ADD(n) (pic_H_address+0x20*((n)-1))
 
 class DW_LCD: public HARD_BASE,public Call_Back{
 protected:
@@ -24,6 +26,7 @@ protected:
 private:
     uint8_t head_address[2]{};
     uint8_t curInterface{};
+    uint8_t cur_light{};
     uint8_t fifo_data[16]{};
     uint8_t uart_get_len{};
     uint8_t uart_get_data{};
@@ -37,16 +40,19 @@ public:
     DW_LCD()=default;
     explicit DW_LCD(_USART_ *USART,uint8_t head1=0x5A,uint8_t head2=0xA5);
     void init(_USART_ *USART,uint8_t head1=0x5A,uint8_t head2=0xA5);
-    void Interface_switching(uint16_t Interface);
+    void Interface_switching(uint16_t Interface,bool save=true);
     void Data_Output(uint16_t address,float date,uint8_t decimal);
     int vspf_Text(uint16_t address,char *fmt, ...);
     void Text_Output(uint16_t address,char *p);
     void Picture_cut(uint16_t address,uint16_t PictureID,uint16_t IDs_x,uint16_t IDs_y,uint16_t IDe_x,uint16_t IDe_y,uint16_t x,uint16_t y);
+    void set_Progress_bar(uint16_t address,uint8_t progress,uint16_t IDs_x,uint16_t IDs_y,uint16_t IDe_x,uint16_t IDe_y);
     void ICO_cut(uint16_t address,uint16_t IDNum);
     void Keyboard_Up(uint8_t InputNum);
     void RTC_Read();
     void RTC_write(uint8_t yer,uint8_t mon,uint8_t day,uint8_t hou,uint8_t min,uint8_t sec);
-    void SetBackLight(uint8_t light);
+    void SetBackLight(uint8_t light,bool save=true);
+    void Sleep(uint8_t Interface=0);
+    void Wake_up();
     void DrawCurve(uint8_t ch, uint16_t X_scale, uint16_t Y_scale, int Y_offset, uint16_t data_num, uint16_t max_data, const uint16_t * curve_data);
     void Draw(uint8_t ch, uint16_t data_len,const uint16_t * curve_data);
     void DROW_point(uint8_t ch,uint16_t data);
