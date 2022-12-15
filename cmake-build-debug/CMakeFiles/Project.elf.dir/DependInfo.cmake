@@ -152,6 +152,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/TMC220xUart.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/W25QXX.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/modbus.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Src/DW_DIS.cpp" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Temp_ctrl.cpp" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/CLASS/Src/USB_MSC.cpp" "CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/main.cpp" "CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj.d"

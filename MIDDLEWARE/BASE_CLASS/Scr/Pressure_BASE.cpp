@@ -11,7 +11,8 @@ Pressure_BASE::Pressure_BASE(float offset) {
 }
 
 float Pressure_BASE::get_pres() {
-    return this->get_sensor_pres()-this->pres_offset;
+    this->pres_cache=this->get_sensor_pres()-this->pres_offset;
+    return this->pres_cache;
 }
 
 float Pressure_BASE::get_sensor_pres() {
@@ -28,5 +29,9 @@ float Pressure_BASE::get_pres_offset() const {
 
 void Pressure_BASE::calculate_pres_offset(float pres) {
     this->pres_offset=this->get_sensor_pres()-pres;
+}
+
+float Pressure_BASE::get_pres_cache() const {
+    return this->pres_cache;
 }
 

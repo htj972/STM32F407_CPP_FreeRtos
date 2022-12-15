@@ -20,7 +20,9 @@ float Temp_Humi_BASE::get_sensor_humi() {
 }
 
 bool Temp_Humi_BASE::get_sensor_temp_humi(float *Temp, float *Humi) {
-    return false;
+    *Temp=Temperature_BASE::get_sensor_temp();
+    *Humi=Humidity_BASE::get_sensor_humi();
+    return true;
 }
 
 bool Temp_Humi_BASE::get_temp_humi(float *Temp, float *Humi) {
@@ -39,6 +41,12 @@ void Temp_Humi_BASE::set_offset(float Toffset, float Hoffset) {
 void Temp_Humi_BASE::calculate_offset(float Temp, float Humi) {
     this->calculate_temp_offset(Temp);
     this->calculate_humi_offset(Humi);
+}
+
+bool Temp_Humi_BASE::get_temp_humi_cache(float *Temp_cache, float *Humi_cache) {
+    *Temp_cache=Temperature_BASE::get_temp_cache();
+    *Humi_cache=Humidity_BASE::get_humi_cache();
+    return true;
 }
 
 

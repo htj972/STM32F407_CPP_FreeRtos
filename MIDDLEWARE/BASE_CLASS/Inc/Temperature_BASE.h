@@ -10,13 +10,14 @@
 
 class Temperature_BASE {
 private:
-    float temp_offset;
-
+    float temp_offset{};
+    float temp_cache{};
 public:
     explicit Temperature_BASE(float offset=0);
     ~Temperature_BASE()=default;
     float get_temp();
     virtual float get_sensor_temp();
+    float get_temp_cache() const;
     void  set_temp_offset(float offset);
     float get_temp_offset() const;
     void  calculate_temp_offset(float temp);

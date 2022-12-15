@@ -2360,6 +2360,30 @@ MIDDLEWARE/Src/modbus.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.s
 .PHONY : MIDDLEWARE/Src/modbus.cpp.s
 
+SOFTWARE/Src/DW_DIS.obj: SOFTWARE/Src/DW_DIS.cpp.obj
+.PHONY : SOFTWARE/Src/DW_DIS.obj
+
+# target to build an object file
+SOFTWARE/Src/DW_DIS.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj
+.PHONY : SOFTWARE/Src/DW_DIS.cpp.obj
+
+SOFTWARE/Src/DW_DIS.i: SOFTWARE/Src/DW_DIS.cpp.i
+.PHONY : SOFTWARE/Src/DW_DIS.i
+
+# target to preprocess a source file
+SOFTWARE/Src/DW_DIS.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.i
+.PHONY : SOFTWARE/Src/DW_DIS.cpp.i
+
+SOFTWARE/Src/DW_DIS.s: SOFTWARE/Src/DW_DIS.cpp.s
+.PHONY : SOFTWARE/Src/DW_DIS.s
+
+# target to generate assembly for a file
+SOFTWARE/Src/DW_DIS.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.s
+.PHONY : SOFTWARE/Src/DW_DIS.cpp.s
+
 SOFTWARE/Src/Temp_ctrl.obj: SOFTWARE/Src/Temp_ctrl.cpp.obj
 .PHONY : SOFTWARE/Src/Temp_ctrl.obj
 
@@ -3136,6 +3160,9 @@ help:
 	@echo ... MIDDLEWARE/Src/modbus.obj
 	@echo ... MIDDLEWARE/Src/modbus.i
 	@echo ... MIDDLEWARE/Src/modbus.s
+	@echo ... SOFTWARE/Src/DW_DIS.obj
+	@echo ... SOFTWARE/Src/DW_DIS.i
+	@echo ... SOFTWARE/Src/DW_DIS.s
 	@echo ... SOFTWARE/Src/Temp_ctrl.obj
 	@echo ... SOFTWARE/Src/Temp_ctrl.i
 	@echo ... SOFTWARE/Src/Temp_ctrl.s

@@ -40,3 +40,9 @@ void Temp_Pres_BASE::calculate_offset(float Temp, float Pres) {
     this->calculate_temp_offset(Temp);
     this->calculate_pres_offset(Pres);
 }
+
+bool Temp_Pres_BASE::get_temp_pres_cache(float* Temp_cache,float *Pres_cache) {
+    *Temp_cache=Temperature_BASE::get_temp_cache();
+    *Pres_cache=Pressure_BASE::get_pres_cache();
+    return true;
+}

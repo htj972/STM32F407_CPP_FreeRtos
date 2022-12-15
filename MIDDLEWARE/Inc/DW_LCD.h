@@ -11,13 +11,6 @@
 #include "RTCBASE.h"
 #include "Timer.h"
 
-#define  pic_H_address  0X3300
-#define  key_H_address  0X3000
-#define text_H_address  0X1000
-#define  point_address  0x2000
-
-#define PIC_ADD(n) (pic_H_address+0x20*((n)-1))
-
 class DW_LCD: public HARD_BASE,public Call_Back{
 protected:
     _USART_ *USARTX{};
@@ -25,7 +18,7 @@ protected:
     Timer   *timer{};
 private:
     uint8_t head_address[2]{};
-    uint8_t curInterface{};
+    uint16_t curInterface{};
     uint8_t cur_light{};
     uint8_t fifo_data[16]{};
     uint8_t uart_get_len{};
@@ -33,6 +26,9 @@ private:
     uint16_t ret_key_address{};
     uint16_t ret_key_data{};
     bool     ret_key{};
+    uint16_t  dis_protect_time{};
+    bool     sleep_flag{};
+    uint8_t  go_sleep_page{};
     static uint8_t hex_to_int(uint8_t hex);
     void key_back_value_point();
     void register_back_value_point();
@@ -63,12 +59,14 @@ public:
     void Timer_Link(Timer   *timerx);
 
     bool available();
-    void setup();
+    bool setup();
 
     uint16_t get_key_address();
     uint16_t get_key_data();
     bool get_key_sata();
-
+    void set_dis_sleep_time(uint16_t x);
+    uint8_t get_curInterface() const;
+    uint8_t get_cur_light() const;
 
     void Callback(int num ,char** data) override;
 

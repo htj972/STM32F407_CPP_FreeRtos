@@ -185,6 +185,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj"
+  "CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.obj"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj"

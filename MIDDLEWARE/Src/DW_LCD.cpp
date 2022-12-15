@@ -22,6 +22,8 @@ DW_LCD::DW_LCD(_USART_ *USART,uint8_t head1,uint8_t head2) {
  */
 void DW_LCD::init(_USART_ *USART, uint8_t head1, uint8_t head2) {
     this->USARTX=USART;
+    this->dis_protect_time=0;
+    this->sleep_flag= false;
     this->head_address[0]=head1;
     this->head_address[1]=head2;
     this->uart_get_len=0;
@@ -222,6 +224,7 @@ void DW_LCD::RTC_write(uint8_t yer,uint8_t mon,uint8_t day,uint8_t hou,uint8_t m
  */
 void DW_LCD::SetBackLight(uint8_t light,bool save)
 {
+    if(light>0x40)light=0x40;
     volatile uint8_t LcdOrder[6] = {this->head_address[0],this->head_address[1],0x03,0x80,0x01,0x01};
     this->Queue_star();
     LcdOrder[5] = light;
@@ -230,21 +233,27 @@ void DW_LCD::SetBackLight(uint8_t light,bool save)
     this->Queue_end();
 }
 /*!
- * 触摸屏  睡眠 转跳屏保页 亮度0 屏保页可以唤醒
+ * 触摸屏  睡眠 转跳屏保页 亮度0
  * @param Interface 屏保页面 默认0
  * @return
  */
 void DW_LCD::Sleep(uint8_t Interface) {
+    this->sleep_flag= true;
     this->SetBackLight(0, false);
-    this->Interface_switching(Interface,false);
+    this->go_sleep_page= this->curInterface;
+    this->Interface_switching(Interface);
 }
 /*!
  * 触摸屏  唤醒 转跳运行界面
  * @return
  */
 void DW_LCD::Wake_up() {
+    this->sleep_flag= false;
     this->SetBackLight(this->cur_light, false);
-    this->Interface_switching(this->curInterface,false);
+    if(this->go_sleep_page)
+        this->Interface_switching(this->go_sleep_page);
+    else
+        this->Interface_switching(this->curInterface);
 }
 /*!
  * 触摸屏  曲线
@@ -395,38 +404,6 @@ void DW_LCD::Write_data(uint16_t point,uint8_t offset,uint16_t DATA)
     this->USARTX->write((uint8_t*)command_buf,8);
 }
 /*!
- * 串口回调
- */
-void DW_LCD::Callback(int num ,char** data) {
-    static uint8_t head_flag=0;
-    switch (data[0][0]) {
-        case Call_Back::Name::uart:
-//            if(data[1][0]==this->USARTX->get_USART_Num())
-            this->uart_get_data = data[2][0];
-            if(this->uart_get_data==this->head_address[0])
-                head_flag=1;
-            else if(head_flag==1)
-            {
-                if(this->uart_get_data==this->head_address[1])
-                {
-                    this->uart_get_len=1;
-                    this->fifo_data[0]=this->head_address[0];
-                }
-                head_flag=0;
-            }
-            this->fifo_data[this->uart_get_len++]=this->uart_get_data;
-            if(this->uart_get_len==sizeof (this->fifo_data))
-                this->uart_get_len=0;
-        break;
-        case Call_Back::Name::timer:
-            this->timer->set_Cmd(false);
-            this->setup();
-            this->timer->set_Cmd(true);
-        break;
-    }
-
-}
-/*!
  * 数据可执行
  * @return bool 是否又可以执行数据
  */
@@ -487,8 +464,9 @@ void DW_LCD::register_back_value_point()
 }
 /*!
  * 触摸屏  数据执行更新接口
+ * @return 是否有数据待处理
  */
-void DW_LCD::setup() {
+bool DW_LCD::setup() {
     if(this->available())
     {
         switch(DW_function)
@@ -500,8 +478,11 @@ void DW_LCD::setup() {
                 register_back_value_point();
                 break;
         }
-        if(this->uart_get_len>DW_STR_Len+3)this->USARTX->clear();
+        this->USARTX->clear();
+        this->uart_get_len=0;
+        return true;
     }
+    return false;
 }
 /*!
  * 触摸屏  链接RTC时钟
@@ -544,6 +525,69 @@ bool DW_LCD::get_key_sata() {
     bool ret=this->ret_key;
     this->ret_key= false;
     return ret;
+}
+/*!
+ * 设置屏幕保护时间 0为不息屏
+ * @param x 息屏时间x次定时器中断时间（0为不息屏）
+ */
+void DW_LCD::set_dis_sleep_time(uint16_t x) {
+    this->dis_protect_time=x;
+}
+/*!
+ * 获取按当前页面
+ * @return 页面号
+ */
+uint8_t DW_LCD::get_curInterface() const {
+    return this->curInterface;
+}
+/*!
+ * 获取按当前亮度
+ * @return 亮度
+ */
+uint8_t DW_LCD::get_cur_light() const {
+    return this->cur_light;
+}
+/*!
+ * 中断回调
+ */
+void DW_LCD::Callback(int num ,char** data) {
+    static uint8_t head_flag=0;
+    static uint16_t TIMX_CALL_times=0;
+    switch (data[0][0]) {
+        case Call_Back::Name::uart:
+//            if(data[1][0]==this->USARTX->get_USART_Num())
+            this->uart_get_data = data[2][0];
+            if(this->uart_get_data==this->head_address[0])
+                head_flag=1;
+            else if(head_flag==1)
+            {
+                if(this->uart_get_data==this->head_address[1])
+                {
+                    this->uart_get_len=1;
+                    this->fifo_data[0]=this->head_address[0];
+                }
+                head_flag=0;
+            }
+            this->fifo_data[this->uart_get_len++]=this->uart_get_data;
+            if(this->uart_get_len==sizeof (this->fifo_data))
+                this->uart_get_len=0;
+            break;
+        case Call_Back::Name::timer:
+            this->timer->set_Cmd(false);
+            if(this->setup())
+                TIMX_CALL_times=0;
+            if((this->dis_protect_time>0)&&(!this->sleep_flag))
+            {
+                TIMX_CALL_times++;
+                if(TIMX_CALL_times>=this->dis_protect_time){
+                    TIMX_CALL_times=0;
+                    this->Sleep();
+                }
+            }
+            this->timer->set_Cmd(true);
+            break;
+    }
+
 }
 
 

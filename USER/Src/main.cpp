@@ -1,12 +1,12 @@
 #include "sys.h"
 #include "delay.h"
-#include "USART.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "Out_In_Put.h"
-#include "OLED_SSD1306.h"
 #include "Timer.h"
-#include "DW_LCD.h"
+#include "DW_DIS.h"
+#include "SPI.h"
+#include "MAX31865.h"
 
 
 
@@ -37,10 +37,15 @@ TaskHandle_t Task2Task_Handler;
 //任务函数
 [[noreturn]] void task2_task(void *pvParameters);
 
-_OutPut_        led(GPIOE6);
-_USART_         U1(USART1,115200);
-Software_IIC    SIIC1(GPIOB4,GPIOB5);
-OLED_SSD1306    MOLED(&SIIC1,OLED_SSD1306::Queue::OWN_Queue);
+_OutPut_    led(GPIOE6);
+
+DW_DIS      MDW(USART6,TIM7,10);
+SPI         spi1(SPI1);
+MAX31865    temp1(&spi1,GPIOC0);
+MAX31865    temp2(&spi1,GPIOC1);
+MAX31865    temp3(&spi1,GPIOC2);
+MAX31865    temp4(&spi1,GPIOC3);
+MAX31865    temp5(&spi1,GPIOA0);
 
 class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
@@ -52,19 +57,8 @@ public:
     void Callback(int  ,char** ) override{
         this->change();
     };
-}led2(GPIOD9,TIM6,10);
+}led2(GPIOE5,TIM6,10);
 
-class K_DW: private _USART_,public DW_LCD,private Timer{
-public:
-    K_DW(USART_TypeDef* USARTx,TIM_TypeDef *TIMx, uint16_t frq) {
-        _USART_::init(USARTx,115200);
-        DW_LCD::init(this);
-        Timer::init(TIMx,10000/frq,8400,true);
-    }
-    void init(){
-        DW_LCD::Timer_Link(this);
-    }
-}MDW(USART2,TIM7,20);
 
 
 int main()
@@ -72,18 +66,20 @@ int main()
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);					//初始化延时函数
 
-    MOLED.init();
-    MOLED.Fill(0xff);
-    delay_ms(1000);
-    MOLED.Fill(0x00);
-//    LCD.Interface_switching(1);
-//    LCD.Timer_Link(&DWTx);
-    MDW.init();
+    temp1.init();
+    temp1.config(MAX31865::MODE::PT1000,2000);
+    temp2.init();
+    temp2.config(MAX31865::MODE::PT1000,2000);
+    temp3.init();
+    temp3.config(MAX31865::MODE::PT1000,2000);
+    temp4.init();
+    temp4.config(MAX31865::MODE::PT1000,2000);
+    temp5.init();
+    temp5.config(MAX31865::MODE::PT1000,2000);
     MDW.Interface_switching(1);
     MDW.SetBackLight(20);
-    MDW.set_Progress_bar(PIC_ADD(1),50,87,362,724,399);
-    delay_ms(1000);
-    MDW.Interface_switching(3);
+    MDW.set_dis_sleep_time(10*60*15);
+    MDW.init();
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -124,6 +120,12 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+//        MDW.vspf_Text(0x1000,(char*)"temp:%f",temp1.get_temp());
+//        MDW.vspf_Text(0x1040,(char*)"temp:%f",temp2.get_temp());
+//        MDW.vspf_Text(0x1080,(char*)"temp:%f",temp3.get_temp());
+//        MDW.vspf_Text(0x10C0,(char*)"temp:%f",temp4.get_temp());
+//        MDW.vspf_Text(0x1100,(char*)"temp:%f",temp5.get_temp());
+
     }
 }
 
@@ -133,30 +135,9 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(200/portTICK_RATE_MS );
-        U1<<U1.read_data();
-        MOLED.Queue_star();
         led.change();
-        MOLED.Queue_end();
-        if (MDW.get_key_sata())
-        if(MDW.get_key_address()==key_H_address) {
-            switch (MDW.get_key_data()) {
-                case 0:
-                    MDW.Interface_switching(3);
-                    break;
-                case 1:
-                    MDW.Interface_switching(5);
-                break;
-                case 2:
-                    MDW.Interface_switching(7);
-                    break;
-                case 3:
-                    MDW.Interface_switching(9);
-                    break;
-                case 4:
-                    MDW.Interface_switching(11);
-                    break;
-            }
-        }
+        MDW.key_handle();
+        MDW.Dis_handle();
     }
 }
 

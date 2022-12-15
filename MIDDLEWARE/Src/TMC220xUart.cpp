@@ -143,7 +143,7 @@ void TMC220xUart::Callback(int,char** data) {
  */
 void TMC220xUart::Return_to_zero() {
     this->ZERO_flag= false;
-    this->moveToUART(Direction::Back,this->maxDistance);
+    this->moveTo(Direction::Back,this->maxDistance);
     while(!this->get_stop_flag());
     this->ZERO_flag= true;
     this->stop = false;
@@ -153,7 +153,7 @@ void TMC220xUart::Return_to_zero() {
  * @param DIR_Flag ·½Ïò
  * @param moveDistance  ÒÆ¶¯¾àÀë
  */
-void TMC220xUart::moveToUART(uint8_t DIR_Flag, uint32_t moveDistance) {
+void TMC220xUart::moveTo(uint8_t DIR_Flag, uint32_t moveDistance) {
     if(this->uart!= nullptr) {
         if (moveDistance > this->maxDistance)
             moveDistance = this->maxDistance;

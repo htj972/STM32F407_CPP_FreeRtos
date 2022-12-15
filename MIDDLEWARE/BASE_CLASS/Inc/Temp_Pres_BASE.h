@@ -20,6 +20,7 @@ public:
     float get_sensor_pres() override;
     virtual bool get_sensor_temp_pres(float* Temp,float *Pres);
     bool get_temp_pres(float* Temp,float *Pres);
+    bool get_temp_pres_cache(float* Temp_cache,float *Pres_cache);
     void set_offset(float Toffset,float Poffset);
     void calculate_offset(float Temp,float Pres);
 

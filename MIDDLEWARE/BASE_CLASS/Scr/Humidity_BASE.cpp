@@ -11,7 +11,8 @@ Humidity_BASE::Humidity_BASE(float offset) {
 }
 
 float Humidity_BASE::get_humi() {
-    return this->get_sensor_humi()-this->Humi_offset;
+    this->Humi_cache=this->get_sensor_humi()-this->Humi_offset;
+    return this->Humi_cache;
 }
 
 float Humidity_BASE::get_sensor_humi() {
@@ -28,5 +29,9 @@ float Humidity_BASE::get_humi_offset() const {
 
 void Humidity_BASE::calculate_humi_offset(float temp) {
     this->Humi_offset=this->get_sensor_humi()-temp;
+}
+
+float Humidity_BASE::get_humi_cache() const {
+    return this->Humi_cache;
 }
 

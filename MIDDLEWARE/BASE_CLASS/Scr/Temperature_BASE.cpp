@@ -11,7 +11,8 @@ Temperature_BASE::Temperature_BASE(float offset) {
 }
 
 float Temperature_BASE::get_temp() {
-    return this->get_sensor_temp()-this->temp_offset;
+    this->temp_cache=this->get_sensor_temp()-this->temp_offset;
+    return this->temp_cache;
 }
 
 float Temperature_BASE::get_sensor_temp() {
@@ -28,5 +29,9 @@ float Temperature_BASE::get_temp_offset() const {
 
 void Temperature_BASE::calculate_temp_offset(float temp) {
     this->temp_offset=this->get_sensor_temp()-temp;
+}
+
+float Temperature_BASE::get_temp_cache() const {
+    return this->temp_cache;
 }
 

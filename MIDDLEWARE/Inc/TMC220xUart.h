@@ -57,7 +57,7 @@ enum Direction:uint8_t{
     void initTMC2209(uint8_t mres,uint16_t maxdistance, uint16_t minMovedistance,
                      uint8_t stallGuardThreshold, bool Reverse= false);
     void Return_to_zero();
-    void moveToUART(uint8_t DIR_Flag, uint32_t moveDistance);
+    void moveTo(uint8_t DIR_Flag, uint32_t moveDistance);
     void stopMotor();
     void startMotor();
     void stallGuard(uint32_t threshold);
