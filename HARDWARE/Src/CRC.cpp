@@ -78,12 +78,10 @@ uint16_t CRC16_Modbus::Compute(uint8_t *puchMsg, uint16_t usDataLen)
     return ((uchCRCHi<< 8)  | (uchCRCLo)) ;
 }
 
-uint16_t CRC16_Modbus::Compute(std::string str, uint16_t Len) {
-    CRC16_Modbus::Compute((uint8_t*)&str,Len);
-    return 0;
+uint16_t CRC16_Modbus::Compute(const std::string& str, uint16_t Len) {
+    return CRC16_Modbus::Compute((uint8_t *)str.data(),Len);
 }
 
-uint16_t CRC16_Modbus::Compute(std::string str) {
-    CRC16_Modbus::Compute((uint8_t*)&str,str.length());
-    return 0;
+uint16_t CRC16_Modbus::Compute(const std::string& str) {
+    return CRC16_Modbus::Compute((uint8_t *)str.data(),str.length());
 }

@@ -13,22 +13,7 @@
 /****************************************
  * @structs : Slave
  */
-typedef struct k_modbus_Slave_03_receive_{
-    uint8_t id;
-    uint8_t mode;
-    uint8_t address[2];
-    uint8_t len[2];
-    uint8_t CRC16[2];
-}modbus_Slave_03_receive_;
 
-typedef struct k_modbus_Slave_03_send_{
-    uint8_t id{};
-    uint8_t mode{};
-    uint8_t address[2]{};
-    uint8_t num{};
-    std::string data;
-//    uint8_t CRC16[2]{};
-}modbus_Slave_03_send_;
 
 typedef struct k_modbus_Slave_06_send_receive_{
     uint8_t id;
@@ -105,15 +90,36 @@ typedef struct k_modbus_Host_16_receive{
  * @structs : END
  */
 
-modbus::modbus() {
-    this->USARTx= nullptr;
+modbus::modbus(_USART_* USART,uint8_t mode,uint8_t id,uint16_t stimeout,uint16_t sfreetime) {
     this->send_flag= 0;
     this->init_flag= false;
+    this->init(USART,mode,id,stimeout,sfreetime);
 }
 
 modbus::~modbus() {
     this->USARTx= nullptr;
     delete this;
+}
+
+void modbus::config(uint16_t* address,uint16_t len,uint16_t start) {
+    this->data_list=address;
+    this->data_start_end[0]=start;
+    this->data_start_end[1]=start+len;
+    init_flag= true;
+}
+
+void modbus::init(_USART_* USART,uint8_t mode,uint8_t id,uint16_t stimeout,uint16_t sfreetime) {
+    this->USARTx=USART;
+    this->run_mode=mode;
+    this->timeout=stimeout;
+    this->freetime=sfreetime;
+    if(this->run_mode==modbus::SLAVE)
+        this->own_id=id;
+    else
+    {
+        this->run_mode=modbus::HOST;
+        this->slave_id=id;
+    }
 }
 
 void modbus::send_data_fun(uint8_t *data, uint16_t len) {
@@ -128,7 +134,7 @@ uint16_t modbus::read_data(const uint8_t *address) {
     {
         uint16_t address_temp=(address[0]<<8)+address[1];
         if((address_temp>=this->data_start_end[0])&&(address_temp<=this->data_start_end[1]))
-            return *(this->data_list+address_temp);
+            return *(this->data_list+address_temp-this->data_start_end[0]);
         else
             return 0;
     }
@@ -163,27 +169,6 @@ bool modbus::modbus_wait_rec() const {
         return false;
 }
 
-void modbus::init(uint16_t* address,uint16_t len,uint16_t start) {
-    this->data_list=address;
-    this->data_start_end[0]=start;
-    this->data_start_end[1]=start+len;
-    init_flag= true;
-}
-
-void modbus::config(_USART_* USART,uint8_t mode,uint8_t id,uint16_t stimeout,uint16_t sfreetime) {
-    this->USARTx=USART;
-    this->run_mode=mode;
-    this->timeout=stimeout;
-    this->freetime=sfreetime;
-    if(this->run_mode==modbus::SLAVE)
-        this->own_id=id;
-    else
-    {
-        this->run_mode=modbus::HOST;
-        this->slave_id=id;
-    }
-}
-
 void modbus::set_id(uint8_t id) {
     if(this->run_mode==modbus::SLAVE)
         this->own_id=id;
@@ -209,34 +194,53 @@ void modbus::set_timeout(uint16_t stimeout) {
 /****************************************
  * @MODE : 0x03
  */
+typedef struct k_modbus_Slave_03_receive_{
+    uint8_t id;
+    uint8_t mode;
+    uint8_t address[2];
+    uint8_t len[2];
+    uint8_t CRC16[2];
+}modbus_Slave_03_receive_;
+
+//typedef struct k_modbus_Slave_03_send_{
+//    uint8_t id{};
+//    uint8_t mode{};
+//    uint8_t address[2]{};
+//    uint8_t num{};
+////    std::string data;
+//    uint8_t data[20];
+//}modbus_Slave_03_send_;
+
 void modbus::modbus_Slave_03_uncoding() {
     uint16_t crc16_check;       //校验
     uint8_t data_num=0;
-    uint8_t * modbus_send_data;
+    uint8_t  modbus_send_data[20];
     modbus_Slave_03_receive_ *modebus_data_temp;	//声明接受结构体指针
-    modbus_Slave_03_send_    send_data_temp;		//声明发送结构体
+//    modbus_Slave_03_send_    send_data_temp;		//声明发送结构体
     modebus_data_temp=(modbus_Slave_03_receive_*)this->modbus_receive_data.data();
     crc16_check=modbus::Compute(modbus_receive_data,6);
-    if(crc16_check==(modebus_data_temp->CRC16[1]<<8)+(modebus_data_temp->CRC16[0]))//比较校验
+    if(crc16_check==(modebus_data_temp->CRC16[0]<<8)+(modebus_data_temp->CRC16[1]))//比较校验
     {
-        modbus_send_data=(uint8_t*)&send_data_temp;	//发送结构体放入数组指针
-        send_data_temp.id	=modebus_data_temp->id;     //设置ID
-        send_data_temp.mode	=modebus_data_temp->mode;	//设置模式
-        send_data_temp.address[0]=modebus_data_temp->address[0];	//设置地址
-        send_data_temp.address[1]=modebus_data_temp->address[1];	//设置地址
+//        modbus_send_data=(uint8_t*)&send_data_temp;	//发送结构体放入数组指针
+        modbus_send_data[0]	=modebus_data_temp->id;     //设置ID
+        modbus_send_data[1]	=modebus_data_temp->mode;	//设置模式
+        modbus_send_data[2]=modebus_data_temp->address[0];	//设置地址
+        modbus_send_data[3]=modebus_data_temp->address[1];	//设置地址
         uint16_t num = (modebus_data_temp->len[0]<<8)+(modebus_data_temp->len[1]);//获取寄存器个数
+        modbus_send_data[4]=num*2;
         //modebus_data_temp->address;
-        for(uint16_t ii=0;ii<num*4;ii++)							//循环数据长度
+        uint16_t
+        for(uint16_t ii=0;ii<num;ii++)							//循环数据长度
         {
             uint16_t get_data_t=this->read_data(modebus_data_temp->address+ii);
-            send_data_temp.data[data_num++]=(get_data_t>>8)&0x00ff; //放入发送结构体
-            send_data_temp.data[data_num++]=(get_data_t>>0)&0x00ff; //放入发送结构体
+            modbus_send_data[5+data_num++]=(get_data_t>>8)&0x00ff; //放入发送结构体
+            modbus_send_data[5+data_num++]=(get_data_t>>0)&0x00ff; //放入发送结构体
         }
-        send_data_temp.num=data_num;							//设置字节数
+//        send_data_temp.num=data_num;							//设置字节数
         crc16_check=modbus::Compute(modbus_send_data,data_num+5);//计算CRC   通过数组指针
         //校验应紧接着数据而不是放入结构体位置
-        modbus_send_data[data_num+5]=(crc16_check>>0)&0x00ff;	//设置CRC
-        modbus_send_data[data_num+6]=(crc16_check>>8)&0x00ff;	//设置CRC
+        modbus_send_data[data_num+5]=(crc16_check>>8)&0x00ff;	//设置CRC
+        modbus_send_data[data_num+6]=(crc16_check>>0)&0x00ff;	//设置CRC
         this->send_data_fun(modbus_send_data,data_num+5+2);
     }
 }
@@ -286,7 +290,7 @@ void modbus::modbus_Slave_06_uncoding() {
     modbus_Slave_06_send_receive_ *modebus_data_temp;				//声明接受结构体指针
     modebus_data_temp=(modbus_Slave_06_send_receive_*)this->modbus_receive_data.data();//接收数据放入结构体指针
     uint16_t crc16_check=modbus::Compute(modbus_receive_data,8);									//计算接收数据校验
-    if(crc16_check==(modebus_data_temp->CRC16[1]<<8)+(modebus_data_temp->CRC16[0]))//比较校验
+    if(crc16_check==(modebus_data_temp->CRC16[0]<<8)+(modebus_data_temp->CRC16[1]))//比较校验
     {
         modbus_send_data=(uint8_t*)this->modbus_receive_data.data();					//发送结构体放入数组指针
         this->write_data(modebus_data_temp->address,modebus_data_temp->data);//写入数据
@@ -424,7 +428,7 @@ void modbus::modbus_receive_upset() {
         if(!this->send_flag)
             this->freetime_t++;
         if(this->freetime_t==this->freetime) {
-            this->modbus_receive_data.clear();
+//            this->modbus_receive_data.clear();
             this->modbus_receive_data=this->USARTx->read_data();
             this->receive_data_channel();
             this->freetime_t=0;
@@ -466,6 +470,44 @@ void modbus::receive_data_channel() {
             }
     }
 }
+
+void modbus::Callback(int, char **gdata) {
+    if(gdata[0][0]==Call_Back::Name::uart)
+    {
+        this->modbus_receive_data+=gdata[2][0];
+    }
+    else if(gdata[0][0]==Call_Back::Name::timer)
+    {
+        this->TIMERX->set_Cmd(false);
+        uint16_t len_t=this->modbus_receive_data.length();
+        if(this->reveive_len!=len_t) {
+            this->reveive_len = len_t;
+            this->freetime_t=0;
+        }
+        else if(len_t!=0)
+        {
+            if(!this->send_flag)
+                this->freetime_t++;
+            if(this->freetime_t==this->freetime) {
+                this->receive_data_channel();
+                this->modbus_receive_data.clear();
+                this->freetime_t=0;
+            }
+        }
+        this->TIMERX->set_Cmd(true);
+    }
+
+}
+
+void modbus::Link_UART_CALLback() {
+    this->USARTx->upload_extern_fun(this);
+}
+
+void modbus::Link_TIMER_CALLback(Timer *TIMX) {
+    this->TIMERX=TIMX;
+    TIMX->upload_extern_fun(this);
+}
+
 
 
 

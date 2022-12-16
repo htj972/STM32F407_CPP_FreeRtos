@@ -109,10 +109,12 @@ void OLED_SSD1306::TurnOFF() {
 }
 
 void OLED_SSD1306::WriteCmd(uint8_t Command) {
+    if(this->IICX!= nullptr)
     this->IICX->Write_One_Byte(this->OWNADD,0x00,Command);
 }
 
 void OLED_SSD1306::WriteDat(uint8_t Data) {
+    if(this->IICX!= nullptr)
     this->IICX->Write_One_Byte(this->OWNADD,0x40,Data);
 }
 

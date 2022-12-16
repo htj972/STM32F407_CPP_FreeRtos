@@ -24,8 +24,8 @@ public:
 class CRC16_Modbus{
 public:
     static uint16_t Compute(uint8_t *puchMsg, uint16_t usDataLen);
-    static uint16_t Compute(std::string str, uint16_t Len);
-    static uint16_t Compute(std::string str);
+    static uint16_t Compute(const std::string& str, uint16_t Len);
+    static uint16_t Compute(const std::string& str);
 };
 
 

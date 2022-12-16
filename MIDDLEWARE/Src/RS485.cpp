@@ -8,87 +8,53 @@
 #include <cstdarg>
 #include "delay.h"
 
-RS485::RS485(_USART_ *USART,GPIO_TypeDef *PORT,uint32_t Pinx) {
-    this->UARTx=USART;
-    this->De.init(PORT,Pinx,GPIO_Mode_OUT);
-    this->config(1);
+RS485::RS485(USART_TypeDef* USARTx,GPIO_TypeDef *PORT,uint32_t Pinx,int32_t bound) {
+    this->init(USARTx,PORT,Pinx,bound);
 }
 
-RS485::RS485(_USART_ *USART, uint8_t Pinx) {
-    this->UARTx=USART;
-    this->De.init(Pinx,GPIO_Mode_OUT);
-    this->config(1);
+RS485::RS485(USART_TypeDef* USARTx, uint8_t Pinx,int32_t bound) {
+    this->init(USARTx,Pinx,bound);
 }
 
-void RS485::init(_USART_ *USART, GPIO_TypeDef *PORT, uint32_t Pinx) {
-    this->UARTx=USART;
-    this->De.init(PORT,Pinx,GPIO_Mode_OUT);
-    this->config(1);
+void RS485::init(USART_TypeDef* USARTx,GPIO_TypeDef *PORT,uint32_t Pinx,int32_t bound) {
+    _USART_::init(USARTx,bound);
+    this->De.init(PORT,Pinx,HIGH);
+    this->set_delay_times(1);
 }
 
-void RS485::init(_USART_ *USART, uint8_t Pinx) {
-    this->UARTx=USART;
-    this->De.init(Pinx,GPIO_Mode_OUT);
-    this->config(1);
+void RS485::init(USART_TypeDef* USARTx,uint8_t Pinx,int32_t bound) {
+    _USART_::init(USARTx,bound);
+    this->De.init(Pinx,HIGH);
+    this->set_delay_times(1);
 }
 
 void RS485::init() {
-    this->De.set_output(LOW);
-    this->config(1);
+    if(this->USART!= nullptr){
+        this->De.set_value(LOW);
+        this->set_delay_times(this->delay_time);
+    }
 }
 
-void RS485::config(uint8_t delay_times) {
+void RS485::set_delay_times(uint8_t delay_times) {
     this->delay_time=delay_times;
 }
 
+
 void RS485::write(const char *str, uint16_t len) {
-    this->De.set_output(HIGH);
+    this->De.set_value(HIGH);
     delay_ms(this->delay_time);
-    this->UARTx->write(str,len);
+    _USART_::write(str,len);
     delay_ms(this->delay_time);
-    this->De.set_output(HIGH);
+    this->De.set_value(LOW);
 }
 
 void RS485::write(uint8_t *str, uint16_t len) {
     this->write((char*)str,len);
 }
 
-void RS485::write(const std::string& String) {
+void RS485::write(string String) {
     this->write(String.c_str(),String.length());
 }
-
-uint16_t RS485::print(const char *fmt, ...) {
-    va_list args;
-    va_start(args, fmt);
-    const auto len = vsnprintf(nullptr, 0, fmt, args);
-    va_end(args);
-    std::string r;
-    r.resize(static_cast<size_t>(len) + 1);
-    va_start(args, fmt);
-    vsnprintf(&r.front(), len + 1, fmt, args);
-    va_end(args);
-    r.resize(static_cast<size_t>(len));
-    this->write(r);
-    return r.length();
-}
-
-uint16_t RS485::print(const string &String) {
-    this->write(String);
-    return String.length();
-}
-
-uint16_t RS485::print(const char *s) {
-    return this->print("%s",s);
-}
-
-uint16_t RS485::print(char s) {
-    return this->print("%c",s);
-}
-
-uint16_t RS485::print(int integer) {
-    return this->print("%d",integer);
-}
-
 
 
 

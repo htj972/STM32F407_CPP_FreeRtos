@@ -23,6 +23,21 @@ void SPI::config(GPIO_TypeDef *PORT_SCK,uint32_t Pin_SCK,\
     this->SCK.init(PORT_SCK,Pin_SCK,GPIO_Mode_AF);
     this->MISO.init(PORT_MISO,Pin_MISO,GPIO_Mode_AF);
     this->MOSI.init(PORT_MOSI,Pin_MOSI,GPIO_Mode_AF);
+    if (this->SPIx == SPI1) {
+        this->SCK.set_AFConfig(GPIO_AF_SPI1);
+        this->MISO.set_AFConfig(GPIO_AF_SPI1);
+        this->MOSI.set_AFConfig(GPIO_AF_SPI1);
+    }
+    else if (this->SPIx == SPI2) {
+        this->SCK.set_AFConfig(GPIO_AF_SPI2);
+        this->MISO.set_AFConfig(GPIO_AF_SPI2);
+        this->MOSI.set_AFConfig(GPIO_AF_SPI2);
+    }
+    else if (this->SPIx == SPI3) {
+        this->SCK.set_AFConfig(GPIO_AF_SPI3);
+        this->MISO.set_AFConfig(GPIO_AF_SPI3);
+        this->MOSI.set_AFConfig(GPIO_AF_SPI3);
+    }
     this->config_flag=1;
 }
 

@@ -17,12 +17,12 @@ class _USART_ {
 protected:
     _GPIO_ RX_GPIO;
     _GPIO_ TX_GPIO;
+    USART_TypeDef* USART;
 private:
     uint8_t  config_flag=0;
     uint32_t Bound;
     USART_InitTypeDef USART_InitStructure;
     NVIC_InitTypeDef NVIC_InitStructure;
-    USART_TypeDef* USART;
     DMA_Stream_TypeDef* DMAy_Streamx;
     uint32_t DMA_FLAG;
     uint32_t DMA_CHANNEL;
@@ -71,14 +71,14 @@ public:
     string read_data(char c) const ;
     string read_data(const string& str) const ;
 
-    void write(const char *str,uint16_t len);
-    void write(uint8_t *str,uint16_t len);
-    void write(string String);
-    uint16_t print(const char *fmt, ...);
-    uint16_t print(const string& String);
-    uint16_t print(const char *s);
-    uint16_t print(char s);
-    uint16_t print(int integer);
+    virtual void write(const char *str,uint16_t len);
+    virtual void write(uint8_t *str,uint16_t len);
+    virtual void write(string String);
+    virtual uint16_t print(const char *fmt, ...);
+    virtual uint16_t print(const string& String);
+    virtual uint16_t print(const char *s);
+    virtual uint16_t print(char s);
+    virtual uint16_t print(int integer);
     uint16_t println(const char *fmt, ...);
     uint16_t println(string String);
     uint16_t println(const char *s);

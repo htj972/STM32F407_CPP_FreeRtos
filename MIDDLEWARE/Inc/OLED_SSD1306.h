@@ -15,9 +15,10 @@ private:
     Software_IIC *IICX{};
     uint16_t wait_time{};
     uint8_t OWNADD{};
-    bool fill_mode;
-    int X_offset=0;
+    bool fill_mode{};
+    int X_offset{};
 public:
+    OLED_SSD1306()=default;
     explicit OLED_SSD1306(Software_IIC *IIC,HARD_BASE::Queue mode=HARD_BASE::Queue::OWN_Queue,int Xoffset=0,uint8_t addr=0x78);
     void config(Software_IIC *IIC,int Xoffset=0,uint8_t addr=0x78);
     bool init() override;

@@ -4,9 +4,12 @@
 #include "task.h"
 #include "Out_In_Put.h"
 #include "Timer.h"
-#include "DW_DIS.h"
 #include "SPI.h"
 #include "MAX31865.h"
+#include "RS485.h"
+#include "modbus.h"
+#include "IIC.h"
+#include "OLED_SSD1306.h"
 
 
 
@@ -31,21 +34,17 @@ TaskHandle_t Task1Task_Handler;
 //任务优先级
 #define TASK2_TASK_PRIO		2
 //任务堆栈大小
-#define TASK2_STK_SIZE 		128
+#define TASK2_STK_SIZE 		512
 //任务句柄
 TaskHandle_t Task2Task_Handler;
 //任务函数
 [[noreturn]] void task2_task(void *pvParameters);
 
-_OutPut_    led(GPIOE6);
-
-DW_DIS      MDW(USART6,TIM7,10);
-SPI         spi1(SPI1);
-MAX31865    temp1(&spi1,GPIOC0);
-MAX31865    temp2(&spi1,GPIOC1);
-MAX31865    temp3(&spi1,GPIOC2);
-MAX31865    temp4(&spi1,GPIOC3);
-MAX31865    temp5(&spi1,GPIOA0);
+SPI_S       spi1(GPIOE5,GPIOE3,GPIOE6);
+MAX31865    temp1(&spi1,GPIOE2);
+MAX31865    temp2(&spi1,GPIOE4);
+//RS485       modus_DE(USART2,GPIOD4,9600);
+//modbus      SLAVE_BUS(&modus_DE);
 
 class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
@@ -57,30 +56,74 @@ public:
     void Callback(int  ,char** ) override{
         this->change();
     };
-}led2(GPIOE5,TIM6,10);
+}led2(GPIOE1,TIM6,10);
 
+class OLED:private Software_IIC,public OLED_SSD1306{
+public:
+    OLED(uint8_t Pin_Scl, uint8_t Pin_Sda){
+        Software_IIC::init(Pin_Scl, Pin_Sda);
+        OLED_SSD1306::config(this);
+    }
+}MLED(GPIOB12,GPIOB13);
 
+class SLAVE_BUS:private RS485,private Timer,public modbus{
+public:
+    SLAVE_BUS(USART_TypeDef* USARTx,uint8_t Pinx,TIM_TypeDef *TIMx, uint16_t frq){
+        RS485::init(USARTx,Pinx);
+        Timer::init(TIMx,10000/frq,8400,true);
+        modbus::init(this);
+    }
+    uint16_t data_BUS[20]{};
+    string asd;
+    void initial(){
+        RS485::config(GPIOD5,GPIOD6);
+        modbus::Link_UART_CALLback();
+        modbus::Link_TIMER_CALLback(this);
+        modbus::config(this->data_BUS,0,10);
+        for(uint8_t ii=0;ii<20;ii++){
+            data_BUS[ii]=ii;
+        }
+    }
+    void data_ADD_output(){
+        MLED.Print(0,0,"%02x %02x %02x %02x %02x %02x %02x %02x"\
+        ,data_BUS[0],data_BUS[1],data_BUS[2],data_BUS[3]\
+        ,data_BUS[4],data_BUS[5],data_BUS[6],data_BUS[7]);
+    }
+
+    void dssfsfa(){
+        static uint8_t sdatime=0;
+        uint16_t len_t=this->modbus_receive_data.length();
+        if(this->reveive_len!=len_t){
+            this->reveive_len = len_t;
+            sdatime=0;
+        }
+        else if(len_t!=0)
+        {
+            sdatime++;
+            if(sdatime==10) {
+                sdatime=0;
+                asd = modbus_receive_data;
+                modbus_receive_data.clear();
+                MLED.Print(0, 0, "%02x %02x %02x %02x"\
+                , asd[0], asd[1], asd[2], asd[3]);
+                MLED.Print(0, 2, "%02x %02x %02x %02x"\
+                , asd[4], asd[5], asd[6], asd[7]);
+            }
+        }
+    }
+}m_modebus(USART2,GPIOD4,TIM7,100);
+
+string wreer="123456789";
 
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);					//初始化延时函数
-
-    temp1.init();
-    temp1.config(MAX31865::MODE::PT1000,2000);
-    temp2.init();
-    temp2.config(MAX31865::MODE::PT1000,2000);
-    temp3.init();
-    temp3.config(MAX31865::MODE::PT1000,2000);
-    temp4.init();
-    temp4.config(MAX31865::MODE::PT1000,2000);
-    temp5.init();
-    temp5.config(MAX31865::MODE::PT1000,2000);
-    MDW.Interface_switching(1);
-    MDW.SetBackLight(20);
-    MDW.set_dis_sleep_time(10*60*15);
-    MDW.init();
-
+    MLED.OLED_SSD1306::init();
+    MLED.CLS();
+    wreer+='a';
+    MLED.Print(0, 0,wreer);
+    m_modebus.initial();
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
                 (const char*    )"start_task",           //任务名称
@@ -120,11 +163,6 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-//        MDW.vspf_Text(0x1000,(char*)"temp:%f",temp1.get_temp());
-//        MDW.vspf_Text(0x1040,(char*)"temp:%f",temp2.get_temp());
-//        MDW.vspf_Text(0x1080,(char*)"temp:%f",temp3.get_temp());
-//        MDW.vspf_Text(0x10C0,(char*)"temp:%f",temp4.get_temp());
-//        MDW.vspf_Text(0x1100,(char*)"temp:%f",temp5.get_temp());
 
     }
 }
@@ -134,10 +172,8 @@ void start_task(void *pvParameters)
 {
     while(true)
     {
-        vTaskDelay(200/portTICK_RATE_MS );
-        led.change();
-        MDW.key_handle();
-        MDW.Dis_handle();
+        vTaskDelay(100/portTICK_RATE_MS );
+
     }
 }
 

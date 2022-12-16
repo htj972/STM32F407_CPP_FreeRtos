@@ -8,30 +8,25 @@
 #define KOKIRIKA_RS485_H
 
 #include "USART.h"
+#include "Out_In_Put.h"
 
-class RS485 {
+class RS485: public _USART_{
 private:
-    _GPIO_ De;
+    _OutPut_ De;
     uint8_t delay_time{};
 public:
-    _USART_ *UARTx{};
-    RS485(_USART_ *USART,GPIO_TypeDef *PORT,uint32_t Pinx);
-    RS485(_USART_ *USART,uint8_t Pinx);
+    RS485(USART_TypeDef* USARTx,GPIO_TypeDef *PORT,uint32_t Pinx,int32_t bound=9600);
+    RS485(USART_TypeDef* USARTx,uint8_t Pinx,int32_t bound=9600);
     RS485()=default;
     ~RS485()=default;
-    void init(_USART_ *USART,GPIO_TypeDef *PORT,uint32_t Pinx);
-    void init(_USART_ *USART,uint8_t Pinx);
+    void init(USART_TypeDef* USARTx,GPIO_TypeDef *PORT,uint32_t Pinx,int32_t bound=9600);
+    void init(USART_TypeDef* USARTx,uint8_t Pinx,int32_t bound=9600);
     void init();
-    void config(uint8_t delay_times);
+    void set_delay_times(uint8_t delay_times);
 
-    void write(const char *str,uint16_t len);
-    void write(uint8_t *str,uint16_t len);
-    void write(const string& String);
-    uint16_t print(const char *fmt, ...);
-    uint16_t print(const string& String);
-    uint16_t print(const char *s);
-    uint16_t print(char s);
-    uint16_t print(int integer);
+    void write(const char *str,uint16_t len) override;
+    void write(uint8_t *str,uint16_t len) override;
+    void write(string String) override;
 };
 
 

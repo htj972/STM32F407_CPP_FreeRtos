@@ -9,10 +9,12 @@
 
 #include "CRC.h"
 #include "USART.h"
+#include "Timer.h"
 
-class modbus: public CRC16_Modbus{
+class modbus: public CRC16_Modbus,public Call_Back{
 private:
     _USART_* USARTx;
+    Timer  * TIMERX;
     enum {
         HOST=1,
         SLAVE=0,
@@ -30,21 +32,24 @@ private:
     uint16_t timeout{};
     uint16_t freetime{};
     uint16_t freetime_t{};
-    uint16_t reveive_len{};
     uint8_t send_flag=0;
     uint16_t slave_address{};
     uint16_t *data_list{};
     uint16_t data_start_end[2]{};
-    string modbus_receive_data;
-    uint16_t read_data(const uint8_t *address);
+
+    uint16_t read_data(const uint16_t address);
     uint8_t  write_data(const uint8_t *address,const uint8_t* data);
     void  send_data_fun(uint8_t* data,uint16_t len);
     bool modbus_wait_rec() const;
+protected:
+    string modbus_receive_data;
+    uint16_t reveive_len{};
 public:
-    modbus();
+    explicit modbus(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=500,uint16_t sfreetime=30);
+    modbus()=default;
     ~modbus();
-    void init(uint16_t* address,uint16_t len,uint16_t start=0);
-    void config(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=500,uint16_t sfreetime=50);
+    void init(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=500,uint16_t sfreetime=30);
+    void config(uint16_t* address,uint16_t len,uint16_t start=0);
     void set_id(uint8_t id=1);
     void set_mode(uint8_t mode =0);
     void set_freetime(uint16_t sfreetime);
@@ -65,6 +70,10 @@ public:
 
     void modbus_receive_upset();
     void receive_data_channel();
+
+    void Link_UART_CALLback();
+    void Link_TIMER_CALLback(Timer *TIMX);
+    void Callback(int  ,char** gdata ) override;
 };
 
 

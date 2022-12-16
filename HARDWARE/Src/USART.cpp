@@ -29,6 +29,7 @@ char _USART_::Interrupt_channel[2];
 char* _USART_::Interrupt_ret[3];
 
 _USART_::_USART_(USART_TypeDef* USARTx,int32_t bound){
+    this->config_flag=0;
     this->init(USARTx,bound);
     this->DMA_Enable= false;
     DMA_send_flag= false;
@@ -69,47 +70,50 @@ void _USART_::GPIO_AF_config(){
 void _USART_::config(GPIO_TypeDef *PORT_Tx, uint32_t Pin_Tx, GPIO_TypeDef *PORT_Rx, uint32_t Pin_Rx) {
     this->TX_GPIO.init(PORT_Tx,Pin_Tx,GPIO_Mode_AF);
     this->RX_GPIO.init(PORT_Rx,Pin_Rx,GPIO_Mode_AF);
-    this->config_flag=1;
     this->GPIO_AF_config();
+    this->config_flag=1;
 }
 
 void _USART_::config(uint8_t Pin_Tx, uint8_t Pin_Rx) {
+    this->TX_GPIO.set_pinmode(GPIO_Mode_IN);
+    this->RX_GPIO.set_pinmode(GPIO_Mode_IN);
+
+    this->TX_GPIO.set_PuPD(GPIO_PuPd_NOPULL);
+    this->RX_GPIO.set_PuPD(GPIO_PuPd_NOPULL);
+
     this->TX_GPIO.init(Pin_Tx,GPIO_Mode_AF);
     this->RX_GPIO.init(Pin_Rx,GPIO_Mode_AF);
-    this->config_flag=1;
     this->GPIO_AF_config();
+    this->config_flag=1;
 }
 
 void _USART_::default_config() {
-    if(this->USART==USART1){
-        this->USART_Num=0;
-        if(this->config_flag==0)
-            this->config(GPIOA9,GPIOA10);
-    }
-    else if(this->USART==USART2) {
-        this->USART_Num = 1;
-        if(this->config_flag==0)
-            this->config(GPIOA2, GPIOA3);
-    }
-    else if(this->USART==USART3) {
-        this->USART_Num = 2;
-        if(this->config_flag==0)
-            this->config(GPIOB10, GPIOB11);
-    }
-    else if(this->USART==UART4) {
-        this->USART_Num = 3;
-        if(this->config_flag==0)
-            this->config(GPIOC10, GPIOC11);
-    }
-    else if(this->USART==UART5) {
-        this->USART_Num = 4;
-        if(this->config_flag==0)
-            this->config(GPIOC12, GPIOD2);
-    }
-    else if(this->USART==USART6) {
-        this->USART_Num = 5;
-        if(this->config_flag==0)
-            this->config(GPIOC6, GPIOC7);
+    if (this->config_flag == 0) {
+        if (this->USART == USART1) {
+            this->USART_Num = 0;
+            if (this->config_flag == 0)
+                this->config(GPIOA9, GPIOA10);
+        } else if (this->USART == USART2) {
+            this->USART_Num = 1;
+            if (this->config_flag == 0)
+                this->config(GPIOA2,GPIOA3);
+        } else if (this->USART == USART3) {
+            this->USART_Num = 2;
+            if (this->config_flag == 0)
+                this->config(GPIOB10, GPIOB11);
+        } else if (this->USART == UART4) {
+            this->USART_Num = 3;
+            if (this->config_flag == 0)
+                this->config(GPIOC10, GPIOC11);
+        } else if (this->USART == UART5) {
+            this->USART_Num = 4;
+            if (this->config_flag == 0)
+                this->config(GPIOC12, GPIOD2);
+        } else if (this->USART == USART6) {
+            this->USART_Num = 5;
+            if (this->config_flag == 0)
+                this->config(GPIOC6, GPIOC7);
+        }
     }
 }
 
