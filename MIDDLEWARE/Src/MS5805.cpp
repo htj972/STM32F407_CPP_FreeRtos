@@ -92,7 +92,7 @@ float MS5805::get_sensor_pres() {
     double dT   	= MS_D2-this->register_d[5]*256.0;
     double offset  = this->register_d[2]*131072.0+dT*this->register_d[4]/64.0;
     double SENS 	= this->register_d[1]*65536.0+dT*this->register_d[3]/128.0;
-    return (float)(((MS_D1*SENS)/2097152.0-offset)/32768.0)/10; //kPa
+    return (float)(((MS_D1*SENS)/2097152.0-offset)/32768.0)/1000; //kPa
 }
 
 bool MS5805::get_sensor_temp_pres(float *Temp, float *Pres) {

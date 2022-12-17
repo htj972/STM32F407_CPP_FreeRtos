@@ -4,12 +4,12 @@
 #include "task.h"
 #include "Out_In_Put.h"
 #include "Timer.h"
-#include "SPI.h"
-#include "MAX31865.h"
-#include "RS485.h"
-#include "modbus.h"
 #include "IIC.h"
 #include "OLED_SSD1306.h"
+#include "Communication.h"
+#include "pretreatment.h"
+#include "MS5805.h"
+#include "FM24Cxx.h"
 
 
 
@@ -40,11 +40,20 @@ TaskHandle_t Task2Task_Handler;
 //任务函数
 [[noreturn]] void task2_task(void *pvParameters);
 
-SPI_S       spi1(GPIOE5,GPIOE3,GPIOE6);
-MAX31865    temp1(&spi1,GPIOE2);
-MAX31865    temp2(&spi1,GPIOE4);
-//RS485       modus_DE(USART2,GPIOD4,9600);
-//modbus      SLAVE_BUS(&modus_DE);
+//IIC总线
+Software_IIC IIC_BUS(GPIOB8,GPIOB9);
+//SPI总线
+SPI_S SPI_BUS(GPIOE5,GPIOE3,GPIOE6);
+//通信软件类
+Communication m_modebus(USART2,GPIOD4,TIM7,100,GPIOD5,GPIOD6);
+//预处理控温软件类
+pretreatment stovectrl(&SPI_BUS,GPIOE2,TIM4,1000,2);
+
+MS5805  daqiya(&IIC_BUS);
+
+FM24Cxx power_data(&IIC_BUS);
+
+
 
 class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
@@ -58,72 +67,41 @@ public:
     };
 }led2(GPIOE1,TIM6,10);
 
+
 class OLED:private Software_IIC,public OLED_SSD1306{
 public:
     OLED(uint8_t Pin_Scl, uint8_t Pin_Sda){
         Software_IIC::init(Pin_Scl, Pin_Sda);
         OLED_SSD1306::config(this);
     }
+    void initial(){
+        this->OLED_SSD1306::init();
+        this->CLS();
+    }
 }MLED(GPIOB12,GPIOB13);
 
-class SLAVE_BUS:private RS485,private Timer,public modbus{
-public:
-    SLAVE_BUS(USART_TypeDef* USARTx,uint8_t Pinx,TIM_TypeDef *TIMx, uint16_t frq){
-        RS485::init(USARTx,Pinx);
-        Timer::init(TIMx,10000/frq,8400,true);
-        modbus::init(this);
-    }
-    uint16_t data_BUS[20]{};
-    string asd;
-    void initial(){
-        RS485::config(GPIOD5,GPIOD6);
-        modbus::Link_UART_CALLback();
-        modbus::Link_TIMER_CALLback(this);
-        modbus::config(this->data_BUS,0,10);
-        for(uint8_t ii=0;ii<20;ii++){
-            data_BUS[ii]=ii;
-        }
-    }
-    void data_ADD_output(){
-        MLED.Print(0,0,"%02x %02x %02x %02x %02x %02x %02x %02x"\
-        ,data_BUS[0],data_BUS[1],data_BUS[2],data_BUS[3]\
-        ,data_BUS[4],data_BUS[5],data_BUS[6],data_BUS[7]);
-    }
-
-    void dssfsfa(){
-        static uint8_t sdatime=0;
-        uint16_t len_t=this->modbus_receive_data.length();
-        if(this->reveive_len!=len_t){
-            this->reveive_len = len_t;
-            sdatime=0;
-        }
-        else if(len_t!=0)
-        {
-            sdatime++;
-            if(sdatime==10) {
-                sdatime=0;
-                asd = modbus_receive_data;
-                modbus_receive_data.clear();
-                MLED.Print(0, 0, "%02x %02x %02x %02x"\
-                , asd[0], asd[1], asd[2], asd[3]);
-                MLED.Print(0, 2, "%02x %02x %02x %02x"\
-                , asd[4], asd[5], asd[6], asd[7]);
-            }
-        }
-    }
-}m_modebus(USART2,GPIOD4,TIM7,100);
-
-string wreer="123456789";
+union {
+    float f;
+    uint16_t u16;
+}dsa;
 
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
-    delay_init(168);					//初始化延时函数
-    MLED.OLED_SSD1306::init();
-    MLED.CLS();
-    wreer+='a';
-    MLED.Print(0, 0,wreer);
-    m_modebus.initial();
+    delay_init(168);	//初始化延时函数
+    MLED.initial();             //OLED 初始化
+    stovectrl.initial();        //炉子初始化
+    daqiya.init();              //大气压初始化
+    power_data.init();          //数据存储初始化
+    //读取缓存数据
+    power_data.read(0,m_modebus.data_BUS.to_u8t,sizeof(m_modebus.data_BUS));
+    //检验数据正确性  头次上电（版本号）
+    if(m_modebus.data_BUS.to_float.version-HARD_version!=0){
+        K_POWER_DATA init_data;             //新实体一个新数据 构造方法放置初始数值
+        m_modebus.data_BUS=init_data;       //转移数据到使用结构体
+        power_data.write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
+    }
+    dsa.f=0.1;
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
                 (const char*    )"start_task",           //任务名称
@@ -163,7 +141,13 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+        MLED.Print(0,0,"V%.2lf",m_modebus.data_BUS.to_float.version);
 
+//        MLED.Print(0,2,data);
+        MLED.Print(0,4,"%.2lf",daqiya.get_pres());
+        MLED.Print(0,6,"%.2lf",stovectrl.get_temp_cache());
+//        pretreatment1.set_target(150);
+//        pretreatment1.upset();
     }
 }
 

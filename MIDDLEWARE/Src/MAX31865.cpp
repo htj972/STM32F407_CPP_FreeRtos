@@ -39,20 +39,20 @@ MAX31865::MAX31865(SPI_BASE *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx,numwires wir
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
     this->wire_num=wires;
-    this->CSPin.init(PORTx,Pinx,GPIO_Mode_OUT);
+    this->CSPin.init(PORTx,Pinx,LOW);
 }
 
 MAX31865::MAX31865(SPI_BASE *SPIx, uint8_t CSpin,numwires wires, uint16_t BaudRate) {
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
     this->wire_num=wires;
-    this->CSPin.init(CSpin,GPIO_Mode_OUT);
+    this->CSPin.init(CSpin,LOW);
 }
 
 void MAX31865::init() {
-    if((this->spix!= nullptr)&&(this->CSPin.Pinx!=0xff))
+    if(this->spix!= nullptr)
     {
-        this->CSPin.set_output(HIGH);
+        this->CSPin.set_value(HIGH);
         this->spix->SetSpeed(this->BaudRatex);
         this->sensor_init();
         this->default_config();
@@ -64,7 +64,7 @@ void MAX31865::init(SPI_BASE *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx,numwires 
     this->spix=SPIx;
     this->wire_num=wires;
     this->CSPin.init(PORTx,Pinx,GPIO_Mode_OUT);
-    this->CSPin.set_output(HIGH);
+    this->CSPin.set_value(HIGH);
     this->spix->SetSpeed(BaudRate);
     this->sensor_init();
     this->default_config();
@@ -76,7 +76,7 @@ void MAX31865::init(SPI_BASE *SPIx,uint8_t CSpin,numwires wires,uint16_t BaudRat
     this->spix=SPIx;
     this->wire_num=wires;
     this->CSPin.init(CSpin,GPIO_Mode_OUT);
-    this->CSPin.set_output(HIGH);
+    this->CSPin.set_value(HIGH);
     this->spix->SetSpeed(BaudRate);
     this->sensor_init();
     this->default_config();
@@ -127,33 +127,33 @@ void MAX31865::enableBias(uint8_t b)
     this->writeRegister8(MAX31856_CONFIG_REG, t);
 }
 //Ö¸¶¨¼Ä´æÆ÷Ð´8Î»Êý¾Ý
-void MAX31865::writeRegister8(uint8_t addr, uint8_t data) const
+void MAX31865::writeRegister8(uint8_t addr, uint8_t data)
 {
     addr |= 0x80;
-    this->CSPin.set_output(LOW);
+    this->CSPin.set_value(LOW);
     this->spix->ReadWriteDATA(addr);
     this->spix->ReadWriteDATA(data);
-    this->CSPin.set_output(HIGH);
+    this->CSPin.set_value(HIGH);
 }
 //¶Á¼Ä´æÆ÷£¬8Î»
-uint8_t MAX31865::readRegister8(uint8_t addr) const
+uint8_t MAX31865::readRegister8(uint8_t addr)
 {
     addr &= 0x7F;
-    this->CSPin.set_output(LOW);
+    this->CSPin.set_value(LOW);
     this->spix->ReadWriteDATA(addr);
     uint8_t ret = this->spix->ReadWriteDATA(0xff);
-    this->CSPin.set_output(HIGH);
+    this->CSPin.set_value(HIGH);
     return ret;
 }
-uint16_t MAX31865::readRegister16(uint8_t addr) const
+uint16_t MAX31865::readRegister16(uint8_t addr)
 {
     uint8_t buffer[2] = {0, 0};
     addr &= 0x7F;                             // make sure top bit is 0
-    this->CSPin.set_output(LOW);
+    this->CSPin.set_value(LOW);
     this->spix->ReadWriteDATA(addr);   //·¢ËÍ¶ÁÈ¡×´Ì¬¼Ä´æÆ÷ÃüÁî
     buffer[0] = this->spix->ReadWriteDATA(0Xff);
     buffer[1] = this->spix->ReadWriteDATA(0Xff);
-    this->CSPin.set_output(HIGH);
+    this->CSPin.set_value(HIGH);
     uint16_t ret = buffer[0];
     ret <<= 8;
     ret |=  buffer[1];
@@ -231,6 +231,8 @@ float MAX31865::get_sensor_temp()
 
     return temp;
 }
+
+
 
 
 

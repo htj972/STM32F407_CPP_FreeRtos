@@ -2312,6 +2312,30 @@ MIDDLEWARE/Src/TMC220xUart.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.s
 .PHONY : MIDDLEWARE/Src/TMC220xUart.cpp.s
 
+MIDDLEWARE/Src/Temp_ctrl.obj: MIDDLEWARE/Src/Temp_ctrl.cpp.obj
+.PHONY : MIDDLEWARE/Src/Temp_ctrl.obj
+
+# target to build an object file
+MIDDLEWARE/Src/Temp_ctrl.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Temp_ctrl.cpp.obj
+.PHONY : MIDDLEWARE/Src/Temp_ctrl.cpp.obj
+
+MIDDLEWARE/Src/Temp_ctrl.i: MIDDLEWARE/Src/Temp_ctrl.cpp.i
+.PHONY : MIDDLEWARE/Src/Temp_ctrl.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/Temp_ctrl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Temp_ctrl.cpp.i
+.PHONY : MIDDLEWARE/Src/Temp_ctrl.cpp.i
+
+MIDDLEWARE/Src/Temp_ctrl.s: MIDDLEWARE/Src/Temp_ctrl.cpp.s
+.PHONY : MIDDLEWARE/Src/Temp_ctrl.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/Temp_ctrl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Temp_ctrl.cpp.s
+.PHONY : MIDDLEWARE/Src/Temp_ctrl.cpp.s
+
 MIDDLEWARE/Src/W25QXX.obj: MIDDLEWARE/Src/W25QXX.cpp.obj
 .PHONY : MIDDLEWARE/Src/W25QXX.obj
 
@@ -2360,6 +2384,30 @@ MIDDLEWARE/Src/modbus.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.s
 .PHONY : MIDDLEWARE/Src/modbus.cpp.s
 
+SOFTWARE/Src/Communication.obj: SOFTWARE/Src/Communication.cpp.obj
+.PHONY : SOFTWARE/Src/Communication.obj
+
+# target to build an object file
+SOFTWARE/Src/Communication.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj
+.PHONY : SOFTWARE/Src/Communication.cpp.obj
+
+SOFTWARE/Src/Communication.i: SOFTWARE/Src/Communication.cpp.i
+.PHONY : SOFTWARE/Src/Communication.i
+
+# target to preprocess a source file
+SOFTWARE/Src/Communication.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.i
+.PHONY : SOFTWARE/Src/Communication.cpp.i
+
+SOFTWARE/Src/Communication.s: SOFTWARE/Src/Communication.cpp.s
+.PHONY : SOFTWARE/Src/Communication.s
+
+# target to generate assembly for a file
+SOFTWARE/Src/Communication.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.s
+.PHONY : SOFTWARE/Src/Communication.cpp.s
+
 SOFTWARE/Src/DW_DIS.obj: SOFTWARE/Src/DW_DIS.cpp.obj
 .PHONY : SOFTWARE/Src/DW_DIS.obj
 
@@ -2384,29 +2432,29 @@ SOFTWARE/Src/DW_DIS.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.s
 .PHONY : SOFTWARE/Src/DW_DIS.cpp.s
 
-SOFTWARE/Src/Temp_ctrl.obj: SOFTWARE/Src/Temp_ctrl.cpp.obj
-.PHONY : SOFTWARE/Src/Temp_ctrl.obj
+SOFTWARE/Src/pretreatment.obj: SOFTWARE/Src/pretreatment.cpp.obj
+.PHONY : SOFTWARE/Src/pretreatment.obj
 
 # target to build an object file
-SOFTWARE/Src/Temp_ctrl.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.obj
-.PHONY : SOFTWARE/Src/Temp_ctrl.cpp.obj
+SOFTWARE/Src/pretreatment.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj
+.PHONY : SOFTWARE/Src/pretreatment.cpp.obj
 
-SOFTWARE/Src/Temp_ctrl.i: SOFTWARE/Src/Temp_ctrl.cpp.i
-.PHONY : SOFTWARE/Src/Temp_ctrl.i
+SOFTWARE/Src/pretreatment.i: SOFTWARE/Src/pretreatment.cpp.i
+.PHONY : SOFTWARE/Src/pretreatment.i
 
 # target to preprocess a source file
-SOFTWARE/Src/Temp_ctrl.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.i
-.PHONY : SOFTWARE/Src/Temp_ctrl.cpp.i
+SOFTWARE/Src/pretreatment.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.i
+.PHONY : SOFTWARE/Src/pretreatment.cpp.i
 
-SOFTWARE/Src/Temp_ctrl.s: SOFTWARE/Src/Temp_ctrl.cpp.s
-.PHONY : SOFTWARE/Src/Temp_ctrl.s
+SOFTWARE/Src/pretreatment.s: SOFTWARE/Src/pretreatment.cpp.s
+.PHONY : SOFTWARE/Src/pretreatment.s
 
 # target to generate assembly for a file
-SOFTWARE/Src/Temp_ctrl.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Temp_ctrl.cpp.s
-.PHONY : SOFTWARE/Src/Temp_ctrl.cpp.s
+SOFTWARE/Src/pretreatment.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.s
+.PHONY : SOFTWARE/Src/pretreatment.cpp.s
 
 SYSTEM/Src/DMA.obj: SYSTEM/Src/DMA.c.obj
 .PHONY : SYSTEM/Src/DMA.obj
@@ -3154,18 +3202,24 @@ help:
 	@echo ... MIDDLEWARE/Src/TMC220xUart.obj
 	@echo ... MIDDLEWARE/Src/TMC220xUart.i
 	@echo ... MIDDLEWARE/Src/TMC220xUart.s
+	@echo ... MIDDLEWARE/Src/Temp_ctrl.obj
+	@echo ... MIDDLEWARE/Src/Temp_ctrl.i
+	@echo ... MIDDLEWARE/Src/Temp_ctrl.s
 	@echo ... MIDDLEWARE/Src/W25QXX.obj
 	@echo ... MIDDLEWARE/Src/W25QXX.i
 	@echo ... MIDDLEWARE/Src/W25QXX.s
 	@echo ... MIDDLEWARE/Src/modbus.obj
 	@echo ... MIDDLEWARE/Src/modbus.i
 	@echo ... MIDDLEWARE/Src/modbus.s
+	@echo ... SOFTWARE/Src/Communication.obj
+	@echo ... SOFTWARE/Src/Communication.i
+	@echo ... SOFTWARE/Src/Communication.s
 	@echo ... SOFTWARE/Src/DW_DIS.obj
 	@echo ... SOFTWARE/Src/DW_DIS.i
 	@echo ... SOFTWARE/Src/DW_DIS.s
-	@echo ... SOFTWARE/Src/Temp_ctrl.obj
-	@echo ... SOFTWARE/Src/Temp_ctrl.i
-	@echo ... SOFTWARE/Src/Temp_ctrl.s
+	@echo ... SOFTWARE/Src/pretreatment.obj
+	@echo ... SOFTWARE/Src/pretreatment.i
+	@echo ... SOFTWARE/Src/pretreatment.s
 	@echo ... SYSTEM/Src/DMA.obj
 	@echo ... SYSTEM/Src/DMA.i
 	@echo ... SYSTEM/Src/DMA.s

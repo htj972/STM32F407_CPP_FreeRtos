@@ -9,6 +9,7 @@
 
 #include "Temperature_BASE.h"
 #include "SPI.h"
+#include "Out_In_Put.h"
 
 class MAX31865: public Temperature_BASE{
 public:
@@ -29,22 +30,23 @@ private:
     uint16_t modex{};
     numwires wire_num;
     void enableBias(uint8_t b);
-    void writeRegister8(uint8_t addr, uint8_t data) const;
-    uint8_t readRegister8(uint8_t addr) const;
-    uint16_t readRegister16(uint8_t addr) const;
+    void writeRegister8(uint8_t addr, uint8_t data);
+    uint8_t readRegister8(uint8_t addr);
+    uint16_t readRegister16(uint8_t addr);
     void setWires(MAX31865::numwires wires);
     void clearFault();
     uint8_t readFault();
     uint16_t readRTD();
     void  default_config();
     void  sensor_init();
-
-public:
-    _GPIO_ CSPin;
+protected:
+    _OutPut_ CSPin;
     SPI_BASE *spix;
-
+public:
+    MAX31865()=default;
     MAX31865(SPI_BASE *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx,numwires wires=numwires::_3WIRE,uint16_t BaudRate=SPI_BaudRatePrescaler_64);
     MAX31865(SPI_BASE *SPIx,uint8_t CSpin,numwires wires=numwires::_3WIRE,uint16_t BaudRate=SPI_BaudRatePrescaler_64);
+
     void init();
     void init(SPI_BASE *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx,numwires wires=numwires::_3WIRE, uint16_t BaudRate=SPI_BaudRatePrescaler_64);
     void init(SPI_BASE *SPIx,uint8_t CSpin,numwires wires=numwires::_3WIRE,uint16_t BaudRate=SPI_BaudRatePrescaler_64);

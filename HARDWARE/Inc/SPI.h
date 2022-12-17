@@ -66,6 +66,7 @@ private:
     uint8_t SOFT_SPI_RW_MODE2( uint8_t write_dat);/* CPOL = 1£¬CPHA = 0, MSB first */
     uint8_t SOFT_SPI_RW_MODE3( uint8_t write_dat );/* CPOL = 1,CPHA = 1, MSB first */
 public:
+    SPI_S()=default;
     SPI_S(uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI,Queue mode =Queue::OWN_Queue);
     SPI_S(GPIO_TypeDef *PORT_SCK,uint32_t Pin_SCK,\
                 GPIO_TypeDef *PORT_MISO,uint32_t Pin_MISO,\

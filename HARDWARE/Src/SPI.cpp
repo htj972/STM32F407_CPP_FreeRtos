@@ -195,7 +195,7 @@ SPI_S::SPI_S(GPIO_TypeDef *PORT_SCK, uint32_t Pin_SCK, GPIO_TypeDef *PORT_MISO, 
 
 void SPI_S::init(Queue mode) {
     this->set_Queue_mode( mode);
-    this->config(SPI_S::CP::OL_0_HA_0);
+    this->config(SPI_S::CP::OL_0_HA_1);
     this->SetSpeed(SPI_BaudRatePrescaler_8);
 }
 
@@ -206,7 +206,7 @@ void SPI_S::init(uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI,HARD_BASE::
     this->SCK.set_output(HIGH);
     this->MOSI.set_output(HIGH);
     this->set_Queue_mode( mode);
-    this->config(SPI_S::CP::OL_0_HA_0);
+    this->config(SPI_S::CP::OL_0_HA_1);
     this->SetSpeed(SPI_BaudRatePrescaler_8);
 }
 
@@ -218,7 +218,7 @@ void SPI_S::init(GPIO_TypeDef *PORT_SCK, uint32_t Pin_SCK, GPIO_TypeDef *PORT_MI
     this->SCK.set_output(HIGH);
     this->MOSI.set_output(HIGH);
     this->set_Queue_mode( mode);
-    this->config(SPI_S::CP::OL_0_HA_0);
+    this->config(SPI_S::CP::OL_0_HA_1);
     this->SetSpeed(SPI_BaudRatePrescaler_8);
 }
 /* CPOL = 0, CPHA = 0, MSB first */
@@ -326,7 +326,6 @@ void SPI_S::SetSpeed(uint8_t SPI_BaudRatePrescaler) {
 }
 
 uint16_t SPI_S::ReadWriteDATA(uint16_t TxData) {
-    this->Queue_star();
     uint16_t data;
     switch (this->RW_mode) {
         case 0:data= this->SOFT_SPI_RW_MODE0(TxData);break;
@@ -335,9 +334,10 @@ uint16_t SPI_S::ReadWriteDATA(uint16_t TxData) {
         case 3:data= this->SOFT_SPI_RW_MODE3(TxData);break;
         default:data= 0xffff;
     }
-    this->Queue_end();
     return data;
 }
+
+
 
 
 

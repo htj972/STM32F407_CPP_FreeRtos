@@ -75,11 +75,12 @@ void _USART_::config(GPIO_TypeDef *PORT_Tx, uint32_t Pin_Tx, GPIO_TypeDef *PORT_
 }
 
 void _USART_::config(uint8_t Pin_Tx, uint8_t Pin_Rx) {
-    this->TX_GPIO.set_pinmode(GPIO_Mode_IN);
-    this->RX_GPIO.set_pinmode(GPIO_Mode_IN);
-
-    this->TX_GPIO.set_PuPD(GPIO_PuPd_NOPULL);
-    this->RX_GPIO.set_PuPD(GPIO_PuPd_NOPULL);
+    if(this->config_flag==1) {
+        this->TX_GPIO.set_pinmode(GPIO_Mode_IN);
+        this->RX_GPIO.set_pinmode(GPIO_Mode_IN);
+        this->TX_GPIO.set_PuPD(GPIO_PuPd_NOPULL);
+        this->RX_GPIO.set_PuPD(GPIO_PuPd_NOPULL);
+    }
 
     this->TX_GPIO.init(Pin_Tx,GPIO_Mode_AF);
     this->RX_GPIO.init(Pin_Rx,GPIO_Mode_AF);

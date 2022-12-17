@@ -12,7 +12,7 @@
 #include "PID_BASE.h"
 
 class Temp_ctrl {
-private:
+protected:
     Temperature_BASE *SENSOR{};
     PWM_BASE         *CONTROLLER{};
     PID_BASE         PID{};
