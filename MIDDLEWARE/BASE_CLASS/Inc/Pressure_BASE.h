@@ -9,7 +9,7 @@
 
 
 class Pressure_BASE {
-private:
+protected:
     float pres_offset{};
     float pres_cache{};
 public:

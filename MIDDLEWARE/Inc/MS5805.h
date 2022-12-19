@@ -17,9 +17,9 @@ private:
     uint16_t register_d[8]{};
     uint16_t read_ms5805_2(uint8_t cmd) const;
     uint32_t read_ms5805_3(uint8_t cmd) const;
-public:
+protected:
     Software_IIC *IIC{};
-
+public:
     explicit MS5805(Software_IIC *IICx,uint8_t Addr=0xec);
     MS5805()=default;
     ~MS5805()=default;

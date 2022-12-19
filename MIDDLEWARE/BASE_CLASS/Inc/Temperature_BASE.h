@@ -9,7 +9,7 @@
 
 
 class Temperature_BASE {
-private:
+protected:
     float temp_offset{};
     float temp_cache{};
 public:

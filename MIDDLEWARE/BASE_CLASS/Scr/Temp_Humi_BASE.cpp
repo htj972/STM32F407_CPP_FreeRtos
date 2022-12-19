@@ -22,6 +22,8 @@ float Temp_Humi_BASE::get_sensor_humi() {
 bool Temp_Humi_BASE::get_sensor_temp_humi(float *Temp, float *Humi) {
     *Temp=Temperature_BASE::get_sensor_temp();
     *Humi=Humidity_BASE::get_sensor_humi();
+    this->Humi_cache=*Humi;
+    this->temp_cache=*Temp;
     return true;
 }
 

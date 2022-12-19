@@ -9,7 +9,7 @@
 
 
 class Humidity_BASE {
-private:
+protected:
     float Humi_offset{};
     float Humi_cache{};
 public:

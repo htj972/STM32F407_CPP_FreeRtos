@@ -111,6 +111,8 @@ bool MS5805::get_sensor_temp_pres(float *Temp, float *Pres) {
     double SENS 	= this->register_d[1]*65536.0+dT*this->register_d[3]/128.0;
     *Temp = (float )(2000+(dT*this->register_d[6])/83886080)/100; //¡ãC  0.001
     *Pres = (float )(((MS_D1*SENS)/2097152.0-offset)/32768.0)/1000; //kPa
+    this->pres_cache=*Pres;
+    this->temp_cache=*Temp;
     if(*Pres>0)return true;
     else return false;
 }

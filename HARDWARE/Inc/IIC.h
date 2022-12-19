@@ -55,6 +55,7 @@ public:
     uint8_t Read_One_Byte(uint8_t daddr,uint8_t addr);
     bool    Read_Data(uint8_t daddr,uint8_t addr,uint8_t draddr,uint8_t* data,uint8_t len);
     bool    Read_Data(uint8_t daddr,uint8_t addr,uint8_t* data,uint8_t len);
+    bool    Read_Data(uint8_t addr,uint8_t* data,uint8_t len);
 };
 
 class HARD_IIC{

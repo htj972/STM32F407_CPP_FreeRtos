@@ -20,7 +20,11 @@ float Temp_Pres_BASE::get_sensor_pres() {
 }
 
 bool Temp_Pres_BASE::get_sensor_temp_pres(float *Temp, float *Pres) {
-    return false;
+    *Temp=Temperature_BASE::get_sensor_temp();
+    *Pres=Pressure_BASE::get_sensor_pres();
+    this->pres_cache=*Pres;
+    this->temp_cache=*Temp;
+    return true;
 }
 
 bool Temp_Pres_BASE::get_temp_pres(float *Temp, float *Pres) {
