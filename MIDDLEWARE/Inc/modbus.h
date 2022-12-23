@@ -39,7 +39,6 @@ private:
 
     uint16_t read_data(uint16_t address);
     bool  write_data(uint16_t address,const uint8_t* data);
-    void  send_data_fun(uint8_t* data,uint16_t len);
     void  send_data_fun(string str);
     bool modbus_wait_rec() const;
 protected:
@@ -62,13 +61,13 @@ public:
     void modbus_Slave_06_uncoding();
     void modbus_Host_06_coding(uint8_t ID,uint16_t address,uint16_t data);
     void modbus_Host_06_uncoding();
-    void modbus_Slave_10_uncoding();
-    void modbus_Host_10_coding(uint8_t ID,uint16_t address,const uint16_t *data,uint16_t num);
-    void modbus_Host_10_uncoding();
+    void modbus_Slave_16_uncoding();
+    void modbus_Host_16_coding(uint8_t ID,uint16_t address,const uint16_t *data,uint16_t num);
+    void modbus_Host_16_uncoding();
 
     uint8_t modbus_03_send(uint16_t address,uint16_t num);
     uint8_t modbus_06_send(uint16_t address,uint16_t data);
-    uint8_t modbus_10_send(uint16_t address,uint16_t *data,uint16_t num);
+    uint8_t modbus_16_send(uint16_t address,uint16_t *data,uint16_t num);
 
     void modbus_receive_upset();
     void receive_data_channel();

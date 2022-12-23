@@ -22,14 +22,16 @@ float Temp_Pres_BASE::get_sensor_pres() {
 bool Temp_Pres_BASE::get_sensor_temp_pres(float *Temp, float *Pres) {
     *Temp=Temperature_BASE::get_sensor_temp();
     *Pres=Pressure_BASE::get_sensor_pres();
-    this->pres_cache=*Pres;
-    this->temp_cache=*Temp;
+    this->pres_cache=*Pres-this->pres_offset;
+    this->temp_cache=*Temp-this->temp_offset;
     return true;
 }
 
 bool Temp_Pres_BASE::get_temp_pres(float *Temp, float *Pres) {
     float GT,GP;
     bool ret=get_sensor_temp_pres(&GT,&GP);
+    this->pres_cache=GP;
+    this->temp_cache=GT;
     *Temp=GT- this->get_temp_offset();
     *Pres=GP- this->get_pres_offset();
     return ret;

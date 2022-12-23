@@ -15,7 +15,7 @@
 #define HARD_version 0.1
 
 typedef struct K_USER_data{
-    float version;          //版本号
+    float version;            //版本号
     float air_temp{};         //采样口温度
     float stove_temp_r{};     //加热炉温度 读当前
     float stove_temp_w{};     //加热炉温度 设置目标

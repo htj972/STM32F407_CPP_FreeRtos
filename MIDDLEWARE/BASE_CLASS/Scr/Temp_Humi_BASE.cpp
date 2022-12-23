@@ -30,6 +30,8 @@ bool Temp_Humi_BASE::get_sensor_temp_humi(float *Temp, float *Humi) {
 bool Temp_Humi_BASE::get_temp_humi(float *Temp, float *Humi) {
     float GT,GH;
     bool ret =get_sensor_temp_humi(&GT,&GH);
+    this->Humi_cache=GH-this->Humi_offset;
+    this->temp_cache=GT-this->temp_offset;
     *Temp=GT- this->get_temp_offset();
     *Humi=GH- this->get_humi_offset();
     return ret;

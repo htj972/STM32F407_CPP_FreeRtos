@@ -1,4 +1,4 @@
-"D:\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=G:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc.exe -DCMAKE_CXX_COMPILER=G:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-g++.exe -G "CodeBlocks - MinGW Makefiles" -S G:\stm32_project\STM32F407_CPP_FreeRtos -B G:\stm32_project\STM32F407_CPP_FreeRtos\cmake-build-debug
+"F:\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc.exe -DCMAKE_CXX_COMPILER=F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-g++.exe -G "CodeBlocks - MinGW Makefiles" -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos -B C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug
 -- Configuring done
 -- Generating done
--- Build files have been written to: G:/stm32_project/STM32F407_CPP_FreeRtos/cmake-build-debug
+-- Build files have been written to: C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/cmake-build-debug

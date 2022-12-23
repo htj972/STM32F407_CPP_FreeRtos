@@ -85,14 +85,12 @@ bool SHT3x::get_sensor_temp_humi(float* Temp,float *Humi)
     {
         data=((uint16_t)this->sht_data[0] << 8) | this->sht_data[1];
         * Temp =(175.0f * (float)data / 65535.0f - 45.0f);
-        this->temp_cache=*Temp;
     }
     else return false;
     if(crc8_check(&this->sht_data[3], this->sht_data[5]))
     {
         data=((uint16_t )this->sht_data[3] << 8) | this->sht_data[4];
         * Humi =(100.0f *(float)data / 65535.0f);
-        this->Humi_cache=*Humi;
     }
     else return false;
     return true;
