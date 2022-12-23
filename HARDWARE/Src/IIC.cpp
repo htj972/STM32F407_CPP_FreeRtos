@@ -255,13 +255,11 @@ bool Software_IIC::Read_Data(uint8_t daddr, uint8_t addr, uint8_t *data, uint8_t
 bool Software_IIC::Read_Data(uint8_t addr, uint8_t *data, uint8_t len) {
     this->Start();
     this->Send_Byte(addr);
-    if(!this->Wait_Ack())goto false_label;
+    this->NAck();
     for(uint8_t ii=0;ii<len;ii++)
         data[ii]=this->Read_Byte((ii==len-1)?0:1);
     this->Stop();
     return true;
-    false_label:
-    return false;
 }
 
 /*******************************************************/

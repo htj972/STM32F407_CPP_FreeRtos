@@ -10,6 +10,7 @@
 #include "pretreatment.h"
 #include "MS5805.h"
 #include "FM24Cxx.h"
+#include "SMI.h"
 
 
 
@@ -53,6 +54,10 @@ MS5805  daqiya(&IIC_BUS);
 
 FM24Cxx power_data(&IIC_BUS);
 
+Software_IIC IIC_BUS2(GPIOD1,GPIOD0);
+SMI     yacha(&IIC_BUS2,34473.785f,-34473.785f);
+Software_IIC IIC_BUS3(GPIOD3,GPIOD2);
+SMI     yacha2 (&IIC_BUS3,4000,-500);
 
 
 class T_led_:public _OutPut_,public Call_Back,public Timer{
@@ -80,10 +85,6 @@ public:
     }
 }MLED(GPIOB12,GPIOB13);
 
-union {
-    float f;
-    uint16_t u16;
-}dsa;
 
 int main()
 {
@@ -101,7 +102,6 @@ int main()
         m_modebus.data_BUS=init_data;       //转移数据到使用结构体
         power_data.write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
     }
-    dsa.f=0.1;
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
                 (const char*    )"start_task",           //任务名称
@@ -143,9 +143,10 @@ void start_task(void *pvParameters)
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         MLED.Print(0,0,"V%.2lf",m_modebus.data_BUS.to_float.version);
 
-//        MLED.Print(0,2,data);
-        MLED.Print(0,4,"%.2lf",daqiya.get_pres());
-        MLED.Print(0,6,"%.2lf",stovectrl.get_temp_cache());
+        MLED.Print(0,2,"%.2lf",yacha.get_pres());
+        MLED.Print(0,4,"%.2lf",yacha2.get_pres());
+        MLED.Print(0,6,"%.2lf",daqiya.get_pres());
+//        MLED.Print(0,6,"%.2lf",stovectrl.get_temp_cache());
 //        pretreatment1.set_target(150);
 //        pretreatment1.upset();
     }

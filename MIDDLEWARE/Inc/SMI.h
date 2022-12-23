@@ -1,11 +1,11 @@
 /**
 * @Author kokirika
-* @Name Project
+* @Name SMI
 * @Date 2022-12-23
 **/
 
-#ifndef STM32F407_CPP_FREERTOS_SMI_H
-#define STM32F407_CPP_FREERTOS_SMI_H
+#ifndef KOKIRIKA_SMI_H
+#define KOKIRIKA_SMI_H
 
 
 #include "Temp_Pres_BASE.h"
@@ -16,8 +16,10 @@ protected:
     Software_IIC *iicx{};
 private:
     uint8_t Addr{};
+    float max{};
+    float min{};
 public:
-    explicit SMI(Software_IIC *IICx, uint8_t Address=0x50);
+    explicit SMI(Software_IIC *IICx,float pmax,float pmin,uint8_t Address=0x50);
     SMI()=default;
     float get_sensor_temp() override;
     float get_sensor_pres() override;
@@ -25,4 +27,4 @@ public:
 };
 
 
-#endif //STM32F407_CPP_FREERTOS_SMI_H
+#endif //KOKIRIKA_SMI_H

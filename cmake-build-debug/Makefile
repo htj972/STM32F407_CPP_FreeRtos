@@ -1616,6 +1616,30 @@ HARDWARE/Src/SPI.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.s
 .PHONY : HARDWARE/Src/SPI.cpp.s
 
+HARDWARE/Src/STM_FLASH.obj: HARDWARE/Src/STM_FLASH.cpp.obj
+.PHONY : HARDWARE/Src/STM_FLASH.obj
+
+# target to build an object file
+HARDWARE/Src/STM_FLASH.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.obj
+.PHONY : HARDWARE/Src/STM_FLASH.cpp.obj
+
+HARDWARE/Src/STM_FLASH.i: HARDWARE/Src/STM_FLASH.cpp.i
+.PHONY : HARDWARE/Src/STM_FLASH.i
+
+# target to preprocess a source file
+HARDWARE/Src/STM_FLASH.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.i
+.PHONY : HARDWARE/Src/STM_FLASH.cpp.i
+
+HARDWARE/Src/STM_FLASH.s: HARDWARE/Src/STM_FLASH.cpp.s
+.PHONY : HARDWARE/Src/STM_FLASH.s
+
+# target to generate assembly for a file
+HARDWARE/Src/STM_FLASH.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.s
+.PHONY : HARDWARE/Src/STM_FLASH.cpp.s
+
 HARDWARE/Src/Tim_Capture.obj: HARDWARE/Src/Tim_Capture.cpp.obj
 .PHONY : HARDWARE/Src/Tim_Capture.obj
 
@@ -2095,6 +2119,30 @@ MIDDLEWARE/Src/FM24Cxx.s: MIDDLEWARE/Src/FM24Cxx.cpp.s
 MIDDLEWARE/Src/FM24Cxx.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.s
 .PHONY : MIDDLEWARE/Src/FM24Cxx.cpp.s
+
+MIDDLEWARE/Src/IAP.obj: MIDDLEWARE/Src/IAP.cpp.obj
+.PHONY : MIDDLEWARE/Src/IAP.obj
+
+# target to build an object file
+MIDDLEWARE/Src/IAP.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj
+.PHONY : MIDDLEWARE/Src/IAP.cpp.obj
+
+MIDDLEWARE/Src/IAP.i: MIDDLEWARE/Src/IAP.cpp.i
+.PHONY : MIDDLEWARE/Src/IAP.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/IAP.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.i
+.PHONY : MIDDLEWARE/Src/IAP.cpp.i
+
+MIDDLEWARE/Src/IAP.s: MIDDLEWARE/Src/IAP.cpp.s
+.PHONY : MIDDLEWARE/Src/IAP.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/IAP.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.s
+.PHONY : MIDDLEWARE/Src/IAP.cpp.s
 
 MIDDLEWARE/Src/MAX31865.obj: MIDDLEWARE/Src/MAX31865.cpp.obj
 .PHONY : MIDDLEWARE/Src/MAX31865.obj
@@ -3139,6 +3187,9 @@ help:
 	@echo ... HARDWARE/Src/SPI.obj
 	@echo ... HARDWARE/Src/SPI.i
 	@echo ... HARDWARE/Src/SPI.s
+	@echo ... HARDWARE/Src/STM_FLASH.obj
+	@echo ... HARDWARE/Src/STM_FLASH.i
+	@echo ... HARDWARE/Src/STM_FLASH.s
 	@echo ... HARDWARE/Src/Tim_Capture.obj
 	@echo ... HARDWARE/Src/Tim_Capture.i
 	@echo ... HARDWARE/Src/Tim_Capture.s
@@ -3199,6 +3250,9 @@ help:
 	@echo ... MIDDLEWARE/Src/FM24Cxx.obj
 	@echo ... MIDDLEWARE/Src/FM24Cxx.i
 	@echo ... MIDDLEWARE/Src/FM24Cxx.s
+	@echo ... MIDDLEWARE/Src/IAP.obj
+	@echo ... MIDDLEWARE/Src/IAP.i
+	@echo ... MIDDLEWARE/Src/IAP.s
 	@echo ... MIDDLEWARE/Src/MAX31865.obj
 	@echo ... MIDDLEWARE/Src/MAX31865.i
 	@echo ... MIDDLEWARE/Src/MAX31865.s

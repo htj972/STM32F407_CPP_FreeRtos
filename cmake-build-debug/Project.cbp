@@ -504,6 +504,9 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/SPI.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/STM_FLASH.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Inc/Tim_Capture.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -538,6 +541,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/SPI.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/STM_FLASH.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/HARDWARE/Src/Tim_Capture.cpp">
@@ -639,6 +645,9 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/FM24Cxx.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/IAP.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/MAX31865.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -688,6 +697,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/FM24Cxx.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/IAP.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/MAX31865.cpp">

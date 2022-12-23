@@ -1,18 +1,17 @@
 /**
 * @Author kokirika
-* @Name Project
+* @Name SMI
 * @Date 2022-12-23
 **/
 
 #include "SMI.h"
 
-SMI::SMI(Software_IIC *IICx, uint8_t Address):iicx(IICx),Addr(Address){
+SMI::SMI(Software_IIC *IICx,float pmax,float pmin,uint8_t Address)
+        :iicx(IICx),Addr(Address),max(pmax),min(pmin){
 
 }
 
 float SMI::get_sensor_temp() {
-    float P1=1638.3f;       /* P1= 10% * 16383 ?B type*/
-    float P2=14744.7f;      /* P2= 90% * 16383 ?B type*/
     uint16_t NPA;
     uint8_t NPA_buf[4];
     this->iicx->Queue_star();
@@ -32,12 +31,12 @@ float SMI::get_sensor_pres() {
     this->iicx->Queue_end();
     NPA  = ((NPA_buf[0] & 0x3F) << 8) | NPA_buf[1];
 
-    return (((float)NPA)  - P1) * (34473.785f    - (-34473.785f))   / (P2 - P1) + (-34473.785f);       //-5~40cmH20
+    return (((float)NPA)  - P1) * (this->max - (this->min))   / (P2 - P1) + (this->min);       //-5~40cmH20
 }
 
 bool SMI::get_sensor_temp_pres(float *Temp, float *Pres) {
-    float P1=1638.3f;       /* P1= 10% * 16383 ?B type*/
-    float P2=14744.7f;      /* P2= 90% * 16383 ?B type*/
+    float P1=1638.3f;       /* P1= 10% * 16383 14B type*/
+    float P2=14744.7f;      /* P2= 90% * 16383 14B type*/
     uint16_t NPA;
     uint8_t NPA_buf[4];
     this->iicx->Queue_star();
@@ -45,7 +44,7 @@ bool SMI::get_sensor_temp_pres(float *Temp, float *Pres) {
     this->iicx->Queue_end();
     NPA  = ((NPA_buf[0] & 0x3F) << 8) | NPA_buf[1];
 
-    *Pres = (((float)NPA)  - P1) * (34473.785f    - (-34473.785f))   / (P2 - P1) + (-34473.785f);       //-5~40cmH20
+    *Pres = (((float)NPA)  - P1) * (this->max - (this->min)) / (P2 - P1) + (this->min);       //-5~40cmH20
 
     /***********计算压力***********1毫米水柱（mmH2O）=9.80665帕（Pa）****1psi=6.894757kPa****************/
     //  Pressure_LYA = (((float)NPA)  - P1) * (3922.66    - (-490.3325))   / (P2 - P1) + (-490.3325);       //-5~40cmH20
