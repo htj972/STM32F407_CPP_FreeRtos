@@ -11,30 +11,14 @@ SMI::SMI(Software_IIC *IICx,float pmax,float pmin,uint8_t Address)
 
 }
 
-float SMI::get_sensor_temp() {
-    uint16_t NPA;
-    uint8_t NPA_buf[4];
-    this->iicx->Queue_star();
-    this->iicx->Read_Data(Addr+1,NPA_buf,4);
-    this->iicx->Queue_end();
-    NPA  = (NPA_buf[2]  << 3) | (NPA_buf[3] >> 5);
-    return (float)NPA  * 20.0f / 2048.0f - 50.0f;
+void SMI::init(Software_IIC *IICx, float pmax, float pmin, uint8_t Address) {
+    this->iicx=IICx;
+    this->Addr=Address;
+    this->max=pmax;
+    this->min=pmin;
 }
 
-float SMI::get_sensor_pres() {
-    float P1=1638.3f;       /* P1= 10% * 16383 ?B type*/
-    float P2=14744.7f;      /* P2= 90% * 16383 ?B type*/
-    uint16_t NPA;
-    uint8_t NPA_buf[4];
-    this->iicx->Queue_star();
-    this->iicx->Read_Data(Addr+1,NPA_buf,4);
-    this->iicx->Queue_end();
-    NPA  = ((NPA_buf[0] & 0x3F) << 8) | NPA_buf[1];
-
-    return (((float)NPA)  - P1) * (this->max - (this->min))   / (P2 - P1) + (this->min);       //-5~40cmH20
-}
-
-bool SMI::get_sensor_temp_pres(float *Temp, float *Pres) {
+void SMI::get_temp_pres_value(float *Temp, float *Pres) {
     float P1=1638.3f;       /* P1= 10% * 16383 14B type*/
     float P2=14744.7f;      /* P2= 90% * 16383 14B type*/
     uint16_t NPA;
@@ -57,7 +41,26 @@ bool SMI::get_sensor_temp_pres(float *Temp, float *Pres) {
     /************ÎÂ¶È¼ÆËã****************/
     NPA  = (NPA_buf[2]  << 3) | (NPA_buf[3] >> 5);
     *Temp = (float)NPA  * 20.0f / 2048.0f - 50.0f;
+}
+
+float SMI::get_sensor_temp() {
+    float GT,GP;
+    this->get_temp_pres_value(&GT,&GP);
+    return GT;
+}
+
+float SMI::get_sensor_pres() {
+    float GT,GP;
+    this->get_temp_pres_value(&GT,&GP);
+    return GP;
+}
+
+bool SMI::get_sensor_temp_pres(float *Temp, float *Pres) {
+    this->get_temp_pres_value(Temp,Pres);
     return true;
 }
+
+
+
 
 

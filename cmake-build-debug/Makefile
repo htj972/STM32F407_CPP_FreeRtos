@@ -2504,6 +2504,30 @@ SOFTWARE/Src/DW_DIS.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.s
 .PHONY : SOFTWARE/Src/DW_DIS.cpp.s
 
+SOFTWARE/Src/Fower_Ctrl.obj: SOFTWARE/Src/Fower_Ctrl.cpp.obj
+.PHONY : SOFTWARE/Src/Fower_Ctrl.obj
+
+# target to build an object file
+SOFTWARE/Src/Fower_Ctrl.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj
+.PHONY : SOFTWARE/Src/Fower_Ctrl.cpp.obj
+
+SOFTWARE/Src/Fower_Ctrl.i: SOFTWARE/Src/Fower_Ctrl.cpp.i
+.PHONY : SOFTWARE/Src/Fower_Ctrl.i
+
+# target to preprocess a source file
+SOFTWARE/Src/Fower_Ctrl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.i
+.PHONY : SOFTWARE/Src/Fower_Ctrl.cpp.i
+
+SOFTWARE/Src/Fower_Ctrl.s: SOFTWARE/Src/Fower_Ctrl.cpp.s
+.PHONY : SOFTWARE/Src/Fower_Ctrl.s
+
+# target to generate assembly for a file
+SOFTWARE/Src/Fower_Ctrl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.s
+.PHONY : SOFTWARE/Src/Fower_Ctrl.cpp.s
+
 SOFTWARE/Src/pretreatment.obj: SOFTWARE/Src/pretreatment.cpp.obj
 .PHONY : SOFTWARE/Src/pretreatment.obj
 
@@ -3298,6 +3322,9 @@ help:
 	@echo ... SOFTWARE/Src/DW_DIS.obj
 	@echo ... SOFTWARE/Src/DW_DIS.i
 	@echo ... SOFTWARE/Src/DW_DIS.s
+	@echo ... SOFTWARE/Src/Fower_Ctrl.obj
+	@echo ... SOFTWARE/Src/Fower_Ctrl.i
+	@echo ... SOFTWARE/Src/Fower_Ctrl.s
 	@echo ... SOFTWARE/Src/pretreatment.obj
 	@echo ... SOFTWARE/Src/pretreatment.i
 	@echo ... SOFTWARE/Src/pretreatment.s

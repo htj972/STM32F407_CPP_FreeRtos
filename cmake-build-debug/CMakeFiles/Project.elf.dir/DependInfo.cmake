@@ -158,6 +158,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/modbus.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Communication.cpp" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Src/DW_DIS.cpp" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Fower_Ctrl.cpp" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Src/pretreatment.cpp" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USB/CLASS/Src/USB_MSC.cpp" "CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/USER/Src/main.cpp" "CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj.d"

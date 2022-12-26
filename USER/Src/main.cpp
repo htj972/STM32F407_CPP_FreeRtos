@@ -10,8 +10,7 @@
 #include "pretreatment.h"
 #include "MS5805.h"
 #include "FM24Cxx.h"
-#include "SMI.h"
-
+#include "Fower_Ctrl.h"
 
 
 //任务优先级
@@ -43,23 +42,30 @@ TaskHandle_t Task2Task_Handler;
 
 //IIC总线
 Software_IIC IIC_BUS(GPIOB8,GPIOB9);
-//SPI总线
-SPI_S SPI_BUS(GPIOE5,GPIOE3,GPIOE6);
-//通信软件类
-Communication m_modebus(USART2,GPIOD4,TIM7,100,GPIOD5,GPIOD6);
-//预处理控温软件类
-pretreatment stovectrl(&SPI_BUS,GPIOE2,TIM4,1000,2);
-
-MS5805  daqiya(&IIC_BUS);
-
+//大气压传感器
+MS5805  Atmospheric_P(&IIC_BUS);
+//EEPROM 数据存储
 FM24Cxx power_data(&IIC_BUS);
 
-Software_IIC IIC_BUS2(GPIOD1,GPIOD0);
-SMI     yacha(&IIC_BUS2,34473.785f,-34473.785f);
-Software_IIC IIC_BUS3(GPIOD3,GPIOD2);
-SMI     yacha2 (&IIC_BUS3,4000,-500);
+//SPI总线
+SPI_S SPI_BUS(GPIOE5,GPIOE3,GPIOE6);
+//预处理控温软件类
+pretreatment stovectrl(&SPI_BUS,GPIOE2,TIM4,1000,2);
+//大气温度传感器
+MAX31865 Atmospheric_T(&SPI_BUS,GPIOE4);
+
+//通信软件类
+Communication m_modebus(USART2,GPIOD4,TIM7,100,GPIOD5,GPIOD6);
+
+_OutPut_ BENG(GPIOC10);
+_OutPut_ fa(GPIOC11);
 
 
+
+Differential_pressure tes1(GPIOD1,GPIOD0,100000,-100000,TIM9,100);
+Differential_pressure tes2(GPIOD3,GPIOD2,4000,-500,TIM10,100);
+
+//运行指示灯
 class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
     T_led_(GPIO_Pin param,TIM_TypeDef *TIMx, uint16_t frq) {
@@ -75,7 +81,7 @@ public:
 
 class OLED:private Software_IIC,public OLED_SSD1306{
 public:
-    OLED(uint8_t Pin_Scl, uint8_t Pin_Sda){
+    OLED(GPIO_Pin Pin_Scl, GPIO_Pin Pin_Sda){
         Software_IIC::init(Pin_Scl, Pin_Sda);
         OLED_SSD1306::config(this);
     }
@@ -92,7 +98,7 @@ int main()
     delay_init(168);	//初始化延时函数
     MLED.initial();             //OLED 初始化
     stovectrl.initial();        //炉子初始化
-    daqiya.init();              //大气压初始化
+    Atmospheric_P.init();              //大气压初始化
     power_data.init();          //数据存储初始化
     //读取缓存数据
     power_data.read(0,m_modebus.data_BUS.to_u8t,sizeof(m_modebus.data_BUS));
@@ -143,12 +149,13 @@ void start_task(void *pvParameters)
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         MLED.Print(0,0,"V%.2lf",m_modebus.data_BUS.to_float.version);
 
-        MLED.Print(0,2,"%.2lf",yacha.get_pres());
-        MLED.Print(0,4,"%.2lf",yacha2.get_pres());
-        MLED.Print(0,6,"%.2lf",daqiya.get_pres());
+        MLED.Print(0,2,"%.2lf",tes1.get_pres());
+        MLED.Print(0,4,"%.2lf",tes2.get_pres());
+        MLED.Print(0,6,"%.2lf",Atmospheric_P.get_pres());
 //        MLED.Print(0,6,"%.2lf",stovectrl.get_temp_cache());
 //        pretreatment1.set_target(150);
 //        pretreatment1.upset();
+
     }
 }
 
