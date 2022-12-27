@@ -18,6 +18,6 @@ Communication::Communication(USART_TypeDef *USARTx, uint8_t DE, TIM_TypeDef *TIM
 void Communication::initial() {
     modbus::Link_UART_CALLback();
     modbus::Link_TIMER_CALLback(this);
-    modbus::config(this->data_BUS.to_u16,0);
+    modbus::config(this->data_BUS.to_u16,sizeof(this->data_BUS.to_u16)/2);
 }
 

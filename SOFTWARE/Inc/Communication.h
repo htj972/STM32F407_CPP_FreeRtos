@@ -41,8 +41,8 @@ typedef struct K_USER_data{
 
 typedef union K_POWER_DATA_{
     USER_data to_float;
-    uint16_t  to_u16[sizeof(USER_data)*2]{};
-    uint8_t   to_u8t[sizeof(USER_data)*4];
+    uint16_t  to_u16[sizeof(USER_data)/2]{};
+    uint8_t   to_u8t[sizeof(USER_data)];
     K_POWER_DATA_() {
         to_float.version=HARD_version;
         to_float.Flow_coefficient=1.0;
