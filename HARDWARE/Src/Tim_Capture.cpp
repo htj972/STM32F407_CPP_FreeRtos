@@ -36,7 +36,7 @@ Tim_Capture::Tim_Capture(TIM_TypeDef* TIMx,uint32_t FRQ){
  * 析构函数 释放内存
  */
 Tim_Capture::~Tim_Capture() {
-    myfree(SRAMIN,*this->CAPTURE_TABLE);
+//    myfree(SRAMIN,*this->CAPTURE_TABLE);
 }
 /*!
  * 初始化
@@ -59,7 +59,7 @@ void Tim_Capture::init(TIM_TypeDef *TIMx, uint32_t FRQ) {
  * @param Pinx  引脚
  * @param fifo_size  申请内存 给缓存区
  */
-void Tim_Capture::config_Pin(uint8_t channelx,uint8_t Pinx,uint32_t fifo_size) {
+void Tim_Capture::config_Pin(uint8_t channelx,GPIO_Pin Pinx,uint32_t fifo_size) {
     this->GPIOx.init(Pinx,GPIO_Mode_AF);
     this->GPIOx.set_PuPD(GPIO_PuPd_NOPULL);
     this->GPIO_AF_config();
@@ -68,19 +68,18 @@ void Tim_Capture::config_Pin(uint8_t channelx,uint8_t Pinx,uint32_t fifo_size) {
     else if(channelx==0)channelx=1;
     this->set_Callback();
     this->CAPTURE_MAX_LEN=fifo_size;
-    this->CAPTURE_TABLE[fifo_size]=(uint32_t*)mymalloc(SRAMIN,fifo_size*4);
+//    *this->CAPTURE_TABLE=(uint32_t*)mymalloc(SRAMIN,fifo_size*4);
     this->CHANNEL=channelx;
-    this->TIM_ICInitStructure.TIM_Channel = 0x0004*channelx; //CC1S=01 	选择输入端 IC映射到TI上
+    this->TIM_ICInitStructure.TIM_Channel = 0x0004*(channelx-1); //CC1S=01 	选择输入端 IC映射到TI上
     this->TIM_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Rising;	//上升沿捕获
     this->TIM_ICInitStructure.TIM_ICSelection = TIM_ICSelection_DirectTI; //映射到TI上
     this->TIM_ICInitStructure.TIM_ICPrescaler = TIM_ICPSC_DIV1;	 //配置输入分频,不分频
     this->TIM_ICInitStructure.TIM_ICFilter = 0xf;//IC1F=0000 配置输入滤波器 不滤波
     TIM_ICInit(this->Timx, &this->TIM_ICInitStructure);
 
-    this->set_NVIC(true);
-    TIM_ITConfig(this->Timx,(0x0002<<channelx),DISABLE);//允许更新中断 ,允许CCIE捕获中断
+    this->set_NVIC(true,0,0);
+    TIM_ITConfig(this->Timx,TIM_IT_Update|(0x0001<<channelx),DISABLE);//允许更新中断 ,允许CCIE捕获中断
     TIM_SetCounter(this->Timx,0);
-
 }
 /*!
  * 配置通道
@@ -91,12 +90,12 @@ void Tim_Capture::config_Pin(uint8_t channelx,uint32_t fifo_size){
     if(channelx>4)channelx=4;
     else if(channelx==0)channelx=1;
     this->CAPTURE_MAX_LEN=fifo_size;
-    this->CAPTURE_TABLE[fifo_size]=(uint32_t*)mymalloc(SRAMIN,fifo_size*4);
+//    *this->CAPTURE_TABLE=(uint32_t*)mymalloc(SRAMIN,fifo_size*4);
     this->CHANNEL=channelx;
     this->default_GPIO(channelx);
     TIM_Cmd(this->Timx,DISABLE );
     this->set_Callback();
-    this->TIM_ICInitStructure.TIM_Channel = 0x0004*channelx; //CC1S=01 	选择输入端 IC映射到TI上
+    this->TIM_ICInitStructure.TIM_Channel = 0x0004*(channelx-1); //CC1S=01 	选择输入端 IC映射到TI上
     this->TIM_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Rising;	//上升沿捕获
     this->TIM_ICInitStructure.TIM_ICSelection = TIM_ICSelection_DirectTI; //映射到TI上
     this->TIM_ICInitStructure.TIM_ICPrescaler = TIM_ICPSC_DIV1;	 //配置输入分频,不分频
@@ -104,7 +103,7 @@ void Tim_Capture::config_Pin(uint8_t channelx,uint32_t fifo_size){
     TIM_ICInit(this->Timx, &this->TIM_ICInitStructure);
 
     this->set_NVIC(true);
-    TIM_ITConfig(this->Timx,(0x0002<<channelx),DISABLE);//允许更新中断 ,允许CCIE捕获中断
+    TIM_ITConfig(this->Timx,TIM_IT_Update|(0x0001<<channelx),DISABLE);//允许更新中断 ,允许CCIE捕获中断
     TIM_SetCounter(this->Timx,0);
 }
 /*!
@@ -208,15 +207,19 @@ void Tim_Capture::default_GPIO(uint8_t channelx) {
 /*!
  * CC回调
  */
-void Tim_Capture::Callback(int num, char **) {
-    uint8_t channelx=num-this->timer_num;
-    if(channelx==this->CHANNEL)
+void Tim_Capture::Callback(int num, char **gdata) {
+    if(gdata[0][0]==Call_Back::Name::timer)
     {
-        this->CAPTURE_VAL=TIM_GetCapture2(TIM4);
-        TIM_SetCounter(TIM4,0);
-        *this->CAPTURE_TABLE[this->CAPTURE_LEN++]=this->CAPTURE_VAL;
-        if(this->CAPTURE_LEN>=this->CAPTURE_MAX_LEN)
-            this->CAPTURE_LEN=0;
+    }
+    else if(gdata[0][0]==Call_Back::Name::timer_cc)
+    {
+        if(gdata[2][0]==this->CHANNEL){
+            this->CAPTURE_VAL=TIM_GetCapture2(this->Timx);
+            TIM_SetCounter(this->Timx,0);
+            this->CAPTURE_TABLE[this->CAPTURE_LEN++]=this->CAPTURE_VAL;
+            if(this->CAPTURE_LEN>=this->CAPTURE_MAX_LEN)
+                this->CAPTURE_LEN=0;
+        }
     }
 }
 /*!
@@ -230,7 +233,7 @@ void Tim_Capture::set_Callback() {
 uint32_t Tim_Capture::get_CAPTURE_fifo() {
     uint32_t sum=0;
     for(uint32_t ii=0;ii<this->CAPTURE_MAX_LEN;ii++)
-        sum+=*this->CAPTURE_TABLE[ii];
+        sum+=this->CAPTURE_TABLE[ii];
     return sum/this->CAPTURE_MAX_LEN;
 }
 
@@ -240,10 +243,13 @@ uint32_t Tim_Capture::get_CAPTURE_VAL() const {
 
 void Tim_Capture::start() {
     TIM_Cmd(this->Timx,ENABLE );
+    TIM_ITConfig(this->Timx,(0x0001<< this->CHANNEL),ENABLE);//允许更新中断 ,允许CCIE捕获中断
+    TIM_SetCounter(this->Timx,0);
 }
 
 void Tim_Capture::stop() {
     TIM_Cmd(this->Timx,DISABLE );
+    TIM_ITConfig(this->Timx,(0x0001<< this->CHANNEL),DISABLE);//允许更新中断 ,允许CCIE捕获中断
 }
 
 void Tim_Capture::set_enable(bool en) {

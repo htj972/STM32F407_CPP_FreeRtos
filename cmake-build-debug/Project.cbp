@@ -753,6 +753,9 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Fower_Ctrl.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/TEOM.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/pretreatment.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -763,6 +766,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Fower_Ctrl.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Src/TEOM.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/SOFTWARE/Src/pretreatment.cpp">

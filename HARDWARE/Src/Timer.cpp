@@ -186,7 +186,7 @@ void Timer::extern_CC_upset(uint8_t num,uint8_t channel)
         Timer::Interrupt_name[0] = Call_Back::Name::timer_cc;
         Timer::Interrupt_channel[0] = num;
         Timer::Interrupt_data[0] = channel;
-        TIMER_STRUCT.ext[num % Timer_Max_num]->Callback(num + channel, nullptr);
+        TIMER_STRUCT.ext[num % Timer_Max_num]->Callback(3, (char**)Timer::Interrupt_ret);
     }
 }
 

@@ -2528,6 +2528,30 @@ SOFTWARE/Src/Fower_Ctrl.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.s
 .PHONY : SOFTWARE/Src/Fower_Ctrl.cpp.s
 
+SOFTWARE/Src/TEOM.obj: SOFTWARE/Src/TEOM.cpp.obj
+.PHONY : SOFTWARE/Src/TEOM.obj
+
+# target to build an object file
+SOFTWARE/Src/TEOM.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.obj
+.PHONY : SOFTWARE/Src/TEOM.cpp.obj
+
+SOFTWARE/Src/TEOM.i: SOFTWARE/Src/TEOM.cpp.i
+.PHONY : SOFTWARE/Src/TEOM.i
+
+# target to preprocess a source file
+SOFTWARE/Src/TEOM.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.i
+.PHONY : SOFTWARE/Src/TEOM.cpp.i
+
+SOFTWARE/Src/TEOM.s: SOFTWARE/Src/TEOM.cpp.s
+.PHONY : SOFTWARE/Src/TEOM.s
+
+# target to generate assembly for a file
+SOFTWARE/Src/TEOM.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.s
+.PHONY : SOFTWARE/Src/TEOM.cpp.s
+
 SOFTWARE/Src/pretreatment.obj: SOFTWARE/Src/pretreatment.cpp.obj
 .PHONY : SOFTWARE/Src/pretreatment.obj
 
@@ -3325,6 +3349,9 @@ help:
 	@echo ... SOFTWARE/Src/Fower_Ctrl.obj
 	@echo ... SOFTWARE/Src/Fower_Ctrl.i
 	@echo ... SOFTWARE/Src/Fower_Ctrl.s
+	@echo ... SOFTWARE/Src/TEOM.obj
+	@echo ... SOFTWARE/Src/TEOM.i
+	@echo ... SOFTWARE/Src/TEOM.s
 	@echo ... SOFTWARE/Src/pretreatment.obj
 	@echo ... SOFTWARE/Src/pretreatment.i
 	@echo ... SOFTWARE/Src/pretreatment.s

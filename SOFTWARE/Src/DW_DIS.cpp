@@ -31,6 +31,13 @@ void DW_DIS::init() {
     this->Check_page(TURN);
 }
 /*!
+ * 触摸屏软件  链接TEOM
+ * @return
+ */
+void DW_DIS::Link_TEOM(TEOM_Machine *TEOM_l){
+    this->TEOM_link=TEOM_l;
+};
+/*!
  * 触摸屏软件  设置屏保时间 分钟
  * @连接定时器中断
  * @return
@@ -88,7 +95,7 @@ void DW_DIS::Check_Box_set(Check_Box data, bool en) {
     data.IDs_x,data.IDs_y,data.IDe_x,data.IDe_y,data.IDs_x,data.IDs_y);
 }
 /*!
- * 触摸屏软件  按键事件处理接口
+ * 触摸屏软件  事件处理接口
  * @转送    根据页面id号 转送到当前页面所有按键接口方法
  */
 void DW_DIS::key_handle() {
@@ -168,7 +175,7 @@ void DW_DIS::Check_page(Event E) {
     }
 }
 /*!
- * 触摸屏软件  主页面按键事件处理
+ * 触摸屏软件  主页面事件处理
  * @根据按键转换对对应页面
  */
 void DW_DIS::Main_page(Event E) {
@@ -197,12 +204,16 @@ void DW_DIS::Main_page(Event E) {
     }
 }
 /*!
- * 触摸屏软件  采样页面按键事件处理
+ * 触摸屏软件  采样页面事件处理
  */
 void DW_DIS::Samp_prepare_page(Event E) {
     switch (E) {
         case TURN:this->Interface_switching(5);
             this->Check_Box_set(Samp_mode_l);
+            this->clear_text(8);
+            this->RTC_Read();
+            TEOM_link->DATA.to_float.Samp_TL=TEOM_link->DATA.to_float.l_Samp;
+            TEOM_link->DATA.to_float.Samp_TS=TEOM_link->DATA.to_float.s_Samp;
             break;
         case KEY:
             switch (this->get_key_data()) {
@@ -218,12 +229,20 @@ void DW_DIS::Samp_prepare_page(Event E) {
             }
             break;
         case DISPLAY:
+            this->vspf_Text(TEXT_ADD(1),(char *)"未知地点");
+            this->vspf_Text(TEXT_ADD(2),(char *)"未知人员");
+            this->vspf_Text(TEXT_ADD(3),(char *)"%02d-%02d %02d：%02d",RTX->get_month(),RTX->get_day(),RTX->get_hour(),RTX->get_min());
+            this->vspf_Text(TEXT_ADD(4),(char *)"%02.0f 小时",TEOM_link->DATA.to_float.Work_TL);
+            this->vspf_Text(TEXT_ADD(5),(char *)"%02.0f 小时",TEOM_link->DATA.to_float.Samp_TL);
+            this->vspf_Text(TEXT_ADD(6),(char *)"%02.0f 分钟",TEOM_link->DATA.to_float.Work_TS);
+            this->vspf_Text(TEXT_ADD(7),(char *)"%02.0f 分钟",TEOM_link->DATA.to_float.Samp_TS);
+            this->vspf_Text(TEXT_ADD(8),(char *)"%2.0f",TEOM_link->DATA.to_float.Samp_num);
             break;
     }
 
 }
 /*!
- * 触摸屏软件  查询页面按键事件处理
+ * 触摸屏软件  查询页面事件处理
  */
 void DW_DIS::Query_page(Event E) {
     switch (E) {
@@ -241,7 +260,7 @@ void DW_DIS::Query_page(Event E) {
     }
 }
 /*!
- * 触摸屏软件  维护页面按键事件处理
+ * 触摸屏软件  维护页面事件处理
  */
 void DW_DIS::Maintain_page(Event E) {
     switch (E) {
@@ -260,13 +279,13 @@ void DW_DIS::Maintain_page(Event E) {
     }
 }
 /*!
- * 触摸屏软件  设置页面按键事件处理
+ * 触摸屏软件  设置页面事件处理
  */
 void DW_DIS::Settings_page(Event E) {
     switch (E) {
         case TURN:
             this->Interface_switching(11);
-            this->clear_text(2);
+            this->clear_text(4);
             break;
         case KEY:
             switch (this->get_key_data()) {
@@ -297,11 +316,12 @@ void DW_DIS::Settings_page(Event E) {
         case DISPLAY:
             this->vspf_Text(TEXT_ADD(1),(char*)"%02d",get_dis_sleep_time());
             this->vspf_Text(TEXT_ADD(2),(char*)"%03d",get_cur_light());
-            this->vspf_Text(TEXT_ADD(3),(char*)"%04d-%02d-%02d",this->year,this->month,this->day);
-
+            this->vspf_Text(TEXT_ADD(3),(char*)"%02.0f 小时",TEOM_link->DATA.to_float.l_Samp);
+            this->vspf_Text(TEXT_ADD(4),(char*)"%02.0f 分钟",TEOM_link->DATA.to_float.s_Samp);
             break;
     }
 }
+
 
 
 

@@ -5,11 +5,9 @@
 **/
 
 #include "modbus.h"
-
-#include <utility>
+#include "delay.h"
 #include "string"
-#include "FreeRTOS.h"
-#include "task.h"
+
 
 
 /****************************************
@@ -128,7 +126,7 @@ bool modbus::write_data(uint16_t address, const uint8_t* data) {
     {
         if((address>=this->data_start_end[0])&&(address<=(this->data_start_end[0]+this->data_start_end[1])))
         {
-            *(this->data_list+address-this->data_start_end[0])=(data[1]<<8)+data[0];
+            *(this->data_list+address-this->data_start_end[0])=(data[0]<<8)+data[1];
             return true;
         }
         else
@@ -140,7 +138,7 @@ bool modbus::modbus_wait_rec() const {
     uint16_t time_t=this->timeout;
     while((this->send_flag!=0)&&(time_t>=10))
     {
-        vTaskDelay(10/portTICK_RATE_MS );
+        delay_ms(10);
         time_t-=10;
     }
     if(this->send_flag==0)
@@ -438,6 +436,7 @@ void modbus::Callback(int, char **gdata) {
     }
     else if(gdata[0][0]==Call_Back::Name::timer)
     {
+
         this->TIMERX->set_Cmd(false);
         uint16_t len_t=this->modbus_receive_data.length();
         if(this->reveive_len!=len_t) {
@@ -446,7 +445,7 @@ void modbus::Callback(int, char **gdata) {
         }
         else if(len_t!=0)
         {
-            if(!this->send_flag)
+            if(this->send_flag)
                 this->freetime_t++;
             if(this->freetime_t==this->freetime) {
                 this->receive_data_channel();

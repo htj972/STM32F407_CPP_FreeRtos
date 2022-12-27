@@ -10,6 +10,7 @@
 
 #include "USART.h"
 #include "DW_LCD.h"
+#include "TEOM.h"
 
 #define TEXT_MAX_NUM  10
 #define PIC_MAX_NUM  10
@@ -33,6 +34,7 @@ protected:
     uint16_t frqx;
     bool key_check();
     bool clear_text(uint8_t num);
+    TEOM_Machine *TEOM_link{};
     enum Event{
         TURN,
         KEY,
@@ -52,6 +54,7 @@ private:
 public:
     DW_DIS(USART_TypeDef* USARTx,TIM_TypeDef *TIMx, uint16_t frq);
     void init();
+    void Link_TEOM(TEOM_Machine *TEOM_l);
     void key_handle();
     void Dis_handle();
     void set_dis_sleep_time(uint16_t x) override;

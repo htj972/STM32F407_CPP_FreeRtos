@@ -22,7 +22,7 @@ protected:
     uint32_t 	    CAPTURE_VAL{};
     uint32_t 	    CAPTURE_LEN{};
     uint32_t 	    CAPTURE_MAX_LEN{};
-    uint32_t 	    **CAPTURE_TABLE{};
+    uint32_t 	    CAPTURE_TABLE[1024]{};
 private:
     uint8_t CHANNEL{};
     TIM_ICInitTypeDef  TIM_ICInitStructure{};
@@ -42,7 +42,7 @@ public:
     void init(TIM_TypeDef *TIMx, uint32_t FRQ=Capture_Frq::_1M);
 //    bool config(int ch,...);
     void config_Pin(uint8_t channelx,uint32_t fifo_size=1024);
-    void config_Pin(uint8_t channelx,uint8_t Pinx,uint32_t fifo_size=1024);
+    void config_Pin(uint8_t channelx,GPIO_Pin Pinx,uint32_t fifo_size=1024);
     uint32_t get_CAPTURE_fifo();
     uint32_t get_CAPTURE_VAL() const;
 
@@ -50,7 +50,7 @@ public:
     void stop();
     void set_enable(bool en);
 
-    void Callback(int num,char **) override;
+    void Callback(int num,char ** gdata) override;
 
 };
 

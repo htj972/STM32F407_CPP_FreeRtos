@@ -8,6 +8,7 @@
 #include "Communication.h"
 #include "MAX31865.h"
 #include "DW_DIS.h"
+#include "TEOM.h"
 
 
 //任务优先级
@@ -31,26 +32,13 @@ TaskHandle_t Task1Task_Handler;
 //任务优先级
 #define TASK2_TASK_PRIO		2
 //任务堆栈大小
-#define TASK2_STK_SIZE 		512
+#define TASK2_STK_SIZE 		1024
 //任务句柄
 TaskHandle_t Task2Task_Handler;
 //任务函数
 [[noreturn]] void task2_task(void *pvParameters);
 
-////IIC总线
-//Software_IIC IIC_BUS(GPIOB8,GPIOB9);
-////大气压传感器
-//MS5805  Atmospheric_P(&IIC_BUS);
-////EEPROM 数据存储
-//FM24Cxx power_data(&IIC_BUS);
 
-////SPI总线
-//SPI_S SPI_BUS(GPIOE5,GPIOE3,GPIOE6);
-////大气温度传感器
-//MAX31865 Atmospheric_T(&SPI_BUS,GPIOE4);
-
-//通信软件类
-Communication m_modebus(USART3,GPIOE15,TIM5,100);
 
 _OutPut_    led(GPIOE6);
 
@@ -73,6 +61,11 @@ public:
     };
 }led2(GPIOE5,TIM6,10);
 
+//TOEM 驱动类
+TEOM_Machine teom(GPIOB0,GPIOB1,GPIOD14,TIM4,2);
+//通信软件类
+Communication m_modebus(USART3,GPIOE15,TIM5,100);
+//迪文显示类
 DW_DIS MDW(USART6,TIM7,10);
 
 
@@ -94,21 +87,16 @@ int main()
     temp5.init();
     temp5.config(MAX31865::MODE::PT1000,2000);
 
+    teom.inital();
+
     MDW.SetBackLight(20);
     MDW.set_dis_sleep_time(15);
+    MDW.Link_TEOM(&teom);
     MDW.init();
 
 
+//    teom.turn_on();
 
-//    power_data.init();          //数据存储初始化
-    //读取缓存数据
-//    power_data.read(0,m_modebus.data_BUS.to_u8t,sizeof(m_modebus.data_BUS));
-    //检验数据正确性  头次上电（版本号）
-//    if(m_modebus.data_BUS.to_float.version-HARD_version!=0){
-//        K_POWER_DATA init_data;             //新实体一个新数据 构造方法放置初始数值
-//        m_modebus.data_BUS=init_data;       //转移数据到使用结构体
-//        power_data.write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
-//    }
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
                 (const char*    )"start_task",           //任务名称
@@ -163,13 +151,6 @@ void start_task(void *pvParameters)
         vTaskDelay(100/portTICK_RATE_MS );
         MDW.key_handle();
         MDW.Dis_handle();
-        if(MDW.get_curInterface()==5)
-        {
-            if(flag==0)
-                ret=m_modebus.modbus_03_send(0,2);
-            flag=1;
-            MDW.vspf_Text(0X1000,(char*)"%02x - %lf",ret,m_modebus.data_BUS.to_float.version);
-        }
     }
 }
 
