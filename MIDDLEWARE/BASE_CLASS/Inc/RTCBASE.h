@@ -12,6 +12,12 @@
 
 class RTCBASE {
 private:
+    uint8_t  name{};
+    uint8_t  week_mode=WEEK_MODE::Monday_First;
+    uint8_t  hour_mode=HOUR_MODE::_24H_MODE;
+    void     hour_change();
+
+protected:
     uint16_t year{};
     uint8_t  month{};
     uint8_t  day{};
@@ -20,12 +26,6 @@ private:
     uint8_t  apm{};
     uint8_t  min{};
     uint8_t  sec{};
-    uint8_t  name{};
-    uint8_t  week_mode=WEEK_MODE::Monday_First;
-    uint8_t  hour_mode=HOUR_MODE::_24H_MODE;
-    void     hour_change();
-
-protected:
     uint8_t    week_change();
 
 public:

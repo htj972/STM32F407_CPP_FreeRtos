@@ -534,6 +534,13 @@ void DW_LCD::set_dis_sleep_time(uint16_t x) {
     this->dis_protect_time=x;
 }
 /*!
+ * 获取屏幕保护时间 0为不息屏
+ * @return x 息屏时间x次定时器中断时间（0为不息屏）
+ */
+uint16_t DW_LCD::get_dis_sleep_time() const {
+    return this->dis_protect_time;
+}
+/*!
  * 获取按当前页面
  * @return 页面号
  */
@@ -589,5 +596,6 @@ void DW_LCD::Callback(int num ,char** data) {
     }
 
 }
+
 
 

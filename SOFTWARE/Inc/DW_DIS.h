@@ -28,9 +28,11 @@ typedef struct k_Check_Box{
 }Check_Box;
 
 
-class DW_DIS: private _USART_, public DW_LCD, private Timer{
+class DW_DIS: private _USART_, public DW_LCD, private Timer,private RTCBASE{
 protected:
+    uint16_t frqx;
     bool key_check();
+    bool clear_text(uint8_t num);
     enum Event{
         TURN,
         KEY,
@@ -52,6 +54,8 @@ public:
     void init();
     void key_handle();
     void Dis_handle();
+    void set_dis_sleep_time(uint16_t x) override;
+    uint16_t get_dis_sleep_time() const override;
 };
 
 

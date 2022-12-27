@@ -47,8 +47,8 @@ typedef struct k_modbus_Host_03_receive{
     uint8_t id;
     uint8_t mode;
     uint8_t num;
-    uint8_t data[256];;
-    uint8_t CRC16[2];
+    uint8_t data[258];;
+//    uint8_t CRC16[2];
 }modbus_Host_03_receive ;
 
 typedef struct k_modbus_Host_06_receive_{
@@ -128,7 +128,7 @@ bool modbus::write_data(uint16_t address, const uint8_t* data) {
     {
         if((address>=this->data_start_end[0])&&(address<=(this->data_start_end[0]+this->data_start_end[1])))
         {
-            *(this->data_list+address-this->data_start_end[0])=(data[0]<<8)+data[1];
+            *(this->data_list+address-this->data_start_end[0])=(data[1]<<8)+data[0];
             return true;
         }
         else
@@ -225,15 +225,12 @@ void modbus::modbus_Host_03_uncoding() {
     modbus_Host_03_receive *modbus_03_receive;
     modbus_03_receive=(modbus_Host_03_receive*)this->modbus_receive_data.data();
     uint8_t num=modbus_03_receive->num;
-    uint16_t crc16_check=modbus::Compute(this->modbus_receive_data,5+num);
-    if(crc16_check==(modbus_03_receive->CRC16[0]<<8)+(modbus_03_receive->CRC16[1]))//比较校验
+    uint16_t crc16_check=modbus::Compute(this->modbus_receive_data,3+num);
+    if(crc16_check==(modbus_03_receive->data[num]<<8)+(modbus_03_receive->data[num+1]))//比较校验
     {
         for(uint8_t ii=0;ii<modbus_03_receive->num/2;ii++)
         {
-            uint8_t data[3];
-            data[0]=(modbus_03_receive->data[ii]>>8)&0x00ff;
-            data[1]=(modbus_03_receive->data[ii++]>>0)&0x00ff;
-            this->write_data(this->slave_address+ii,data);
+            this->write_data(this->slave_address+ii,&modbus_03_receive->data[ii*2]);
         }
         if(this->send_flag==3)
             this->send_flag=0;

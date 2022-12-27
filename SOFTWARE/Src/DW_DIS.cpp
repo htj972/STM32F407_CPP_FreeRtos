@@ -15,7 +15,7 @@
  * @初始化  串口、迪文屏驱动、定时器
  *
  */
-DW_DIS::DW_DIS(USART_TypeDef *USARTx, TIM_TypeDef *TIMx, uint16_t frq)  {
+DW_DIS::DW_DIS(USART_TypeDef *USARTx, TIM_TypeDef *TIMx, uint16_t frq):frqx(frq) {
     _USART_::init(USARTx,115200);
     DW_LCD::init(this);
     Timer::init(TIMx,10000/frq,8400,true);
@@ -27,7 +27,24 @@ DW_DIS::DW_DIS(USART_TypeDef *USARTx, TIM_TypeDef *TIMx, uint16_t frq)  {
  */
 void DW_DIS::init() {
     DW_LCD::Timer_Link(this);
+    DW_LCD::RtC_link(this);
     this->Check_page(TURN);
+}
+/*!
+ * 触摸屏软件  设置屏保时间 分钟
+ * @连接定时器中断
+ * @return
+ */
+void DW_DIS::set_dis_sleep_time(uint16_t x) {
+    DW_LCD::set_dis_sleep_time(frqx*60*x);
+}
+/*!
+ * 触摸屏软件  获取屏保时间 分钟
+ * @连接定时器中断
+ * @return
+ */
+uint16_t DW_DIS::get_dis_sleep_time() const {
+    return DW_LCD::get_dis_sleep_time()/frqx/60;
 }
 /*!
  * 触摸屏软件  按键准备检测
@@ -38,6 +55,17 @@ bool DW_DIS::key_check() {
         if(this->get_key_address()==key_address)
             return true;
     return false;
+}
+/*!
+ * 触摸屏软件  文本清除
+ * @return
+ */
+bool DW_DIS::clear_text(uint8_t num) {
+    char void_char_str[]="                      ";
+    for (int ii = 0; ii <= num ; ii++) {
+        this->vspf_Text(TEXT_ADD(ii),void_char_str);
+    }
+    return true;
 }
 /*!
  * 触摸屏软件  基本图形同位置切割
@@ -95,9 +123,25 @@ void DW_DIS::key_handle() {
  * @转送    根据页面id号 转送到当前页面所有按键接口方法
  */
 void DW_DIS::Dis_handle() {
-    if(this->get_curInterface()==1)
-        Check_page(DISPLAY);
-
+    switch (this->get_curInterface()) {
+        case 1:
+            Check_page(DISPLAY);
+        case 3:
+            this->Main_page(DISPLAY);
+            break;
+        case 5:
+            this->Samp_prepare_page(DISPLAY);
+            break;
+        case 7:
+            this->Query_page(DISPLAY);
+            break;
+        case 9:
+            this->Maintain_page(DISPLAY);
+            break;
+        case 11:
+            this->Settings_page(DISPLAY);
+            break;
+    }
 }
 /*!
  * 触摸屏软件  检测数据事件显示处理
@@ -130,6 +174,7 @@ void DW_DIS::Check_page(Event E) {
 void DW_DIS::Main_page(Event E) {
     switch (E) {
         case TURN:this->Interface_switching(3);
+
             break;
         case KEY:
             switch (this->get_key_data()) {
@@ -221,6 +266,7 @@ void DW_DIS::Settings_page(Event E) {
     switch (E) {
         case TURN:
             this->Interface_switching(11);
+            this->clear_text(2);
             break;
         case KEY:
             switch (this->get_key_data()) {
@@ -228,21 +274,36 @@ void DW_DIS::Settings_page(Event E) {
                     this->Main_page(TURN);
                     break;
                 case 1:
+                    if(this->get_dis_sleep_time()>0)
+                        this->set_dis_sleep_time(this->get_dis_sleep_time()-1);
                     break;
                 case 2:
+                    if(this->get_dis_sleep_time()<60)
+                        this->set_dis_sleep_time(this->get_dis_sleep_time()+1);
                     break;
                 case 3:
-                    this->SetBackLight(this->get_cur_light()-0x40/10);
+                    if(this->get_cur_light()>4)
+                        this->SetBackLight(this->get_cur_light()-4);
                     break;
                 case 4:
-                    this->SetBackLight(this->get_cur_light()+0x40/10);
+                    if(this->get_cur_light()<61)
+                        this->SetBackLight(this->get_cur_light()+4);
+                    break;
+                case 5:
+                    this->RTC_Read();
                     break;
             }
             break;
         case DISPLAY:
+            this->vspf_Text(TEXT_ADD(1),(char*)"%02d",get_dis_sleep_time());
+            this->vspf_Text(TEXT_ADD(2),(char*)"%03d",get_cur_light());
+            this->vspf_Text(TEXT_ADD(3),(char*)"%04d-%02d-%02d",this->year,this->month,this->day);
+
             break;
     }
 }
+
+
 
 
 

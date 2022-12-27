@@ -16,10 +16,6 @@ private:
     _USART_* USARTx{};
     Timer  * TIMERX{};
     enum {
-        HOST=1,
-        SLAVE=0,
-    };
-    enum {
         modbus_success =0x00,
         modbus_03_error=0x03,
         modbus_06_error=0x06,
@@ -46,6 +42,10 @@ protected:
     string  modbus_send_data;
     uint16_t reveive_len{};
 public:
+    enum {
+        HOST=1,
+        SLAVE=0,
+    };
     explicit modbus(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=500,uint16_t sfreetime=20);
     modbus()=default;
     ~modbus();

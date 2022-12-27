@@ -20,7 +20,7 @@ private:
     uint8_t head_address[2]{};
     uint16_t curInterface{};
     uint8_t cur_light{};
-    uint8_t fifo_data[16]{};
+    uint8_t fifo_data[32]{};
     uint8_t uart_get_len{};
     uint8_t uart_get_data{};
     uint16_t ret_key_address{};
@@ -64,7 +64,8 @@ public:
     uint16_t get_key_address();
     uint16_t get_key_data();
     bool get_key_sata();
-    void set_dis_sleep_time(uint16_t x);
+    virtual void set_dis_sleep_time(uint16_t x);
+    virtual uint16_t get_dis_sleep_time() const;
     uint8_t get_curInterface() const;
     uint8_t get_cur_light() const;
 

@@ -7976,7 +7976,11 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj: ../SOFTWARE/Src/C
   ../HARDWARE/Inc/Out_In_Put.h \
   ../HARDWARE/Inc/Timer.h \
   ../MIDDLEWARE/Inc/modbus.h \
-  ../HARDWARE/Inc/CRC.h
+  ../HARDWARE/Inc/CRC.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstring \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/strings.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj: ../SOFTWARE/Src/DW_DIS.cpp \
   ../SOFTWARE/Inc/DW_DIS.h \
@@ -9639,8 +9643,9 @@ CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: ../USER/Src/main.cpp \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/std_function.h \
   ../HARDWARE/Inc/Timer.h \
   ../HARDWARE/Inc/IIC.h \
-  ../MIDDLEWARE/Inc/OLED_SSD1306.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/OLED_BASE.h \
+  ../SOFTWARE/Inc/Communication.h \
+  ../MIDDLEWARE/Inc/RS485.h \
+  ../HARDWARE/Inc/USART.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/string \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stringfwd.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/memoryfwd.h \
@@ -9682,10 +9687,6 @@ CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: ../USER/Src/main.cpp \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/errno.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/charconv.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/basic_string.tcc \
-  ../FATFS/Inc/Font.h \
-  ../SOFTWARE/Inc/Communication.h \
-  ../MIDDLEWARE/Inc/RS485.h \
-  ../HARDWARE/Inc/USART.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/iostream \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ostream \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ios \
@@ -9711,25 +9712,18 @@ CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: ../USER/Src/main.cpp \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/istream.tcc \
   ../MIDDLEWARE/Inc/modbus.h \
   ../HARDWARE/Inc/CRC.h \
-  ../SOFTWARE/Inc/pretreatment.h \
-  ../MIDDLEWARE/Inc/Temp_ctrl.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/Temperature_BASE.h \
-  ../HARDWARE/BASE_CLASS/Inc/PWM_BASE.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/PID_BASE.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstring \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/strings.h \
+  F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h \
   ../MIDDLEWARE/Inc/MAX31865.h \
+  ../MIDDLEWARE/BASE_CLASS/Inc/Temperature_BASE.h \
   ../HARDWARE/Inc/SPI.h \
   ../HARDWARE/BASE_CLASS/Inc/SPI_BASE.h \
   ../HARDWARE/BASE_CLASS/Inc/HARD_BASE.h \
-  ../HARDWARE/Inc/PWM.h \
-  ../HARDWARE/Inc/Timer.h \
-  ../MIDDLEWARE/Inc/MS5805.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/Temp_Pres_BASE.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/Pressure_BASE.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/Temperature_BASE.h \
-  ../MIDDLEWARE/Inc/FM24Cxx.h \
-  ../MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h \
-  ../SOFTWARE/Inc/Fower_Ctrl.h \
-  ../MIDDLEWARE/Inc/SMI.h
+  ../SOFTWARE/Inc/DW_DIS.h \
+  ../MIDDLEWARE/Inc/DW_LCD.h \
+  ../MIDDLEWARE/BASE_CLASS/Inc/RTCBASE.h
 
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj: ../USER/Src/stm32f4xx_it.c \
   ../USER/Inc/stm32f4xx_it.h \

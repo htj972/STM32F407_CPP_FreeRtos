@@ -11,8 +11,7 @@
 #include "RS485.h"
 #include "Timer.h"
 #include "modbus.h"
-
-#define HARD_version 0.1
+#include <cstring>
 
 typedef struct K_USER_data{
     float version;            //°æ±¾ºÅ
@@ -41,23 +40,16 @@ typedef struct K_USER_data{
 
 typedef union K_POWER_DATA_{
     USER_data to_float;
-    uint16_t  to_u16[sizeof(USER_data)*2]{};
-    uint8_t   to_u8t[sizeof(USER_data)*4];
+    uint16_t  to_u16[sizeof(USER_data)/2]{};
+    uint8_t   to_u8t[sizeof(USER_data)];
     K_POWER_DATA_() {
-        to_float.version=HARD_version;
-        to_float.Flow_coefficient=1.0;
-        to_float.stove_P=20;
-        to_float.stove_I=1;
-        to_float.stove_D=5;
-        to_float.Flow_P=1;
-        to_float.Flow_I=1;
-        to_float.Flow_D=1;
+        memset(this->to_u8t,0,sizeof(this->to_u8t));
     };
 }K_POWER_DATA;
 
 class Communication: private RS485, private Timer, public modbus {
 public:
-    Communication(USART_TypeDef* USARTx,uint8_t DE,TIM_TypeDef *TIMx, uint16_t frq,uint8_t PinTx,uint8_t PinRx);
+    Communication(USART_TypeDef* USARTx,uint8_t DE,TIM_TypeDef *TIMx, uint16_t frq);
     K_POWER_DATA data_BUS;
     void initial();
 };
