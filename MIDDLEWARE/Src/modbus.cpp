@@ -323,7 +323,7 @@ void modbus::modbus_Host_16_coding(uint8_t ID,uint16_t address,const uint16_t *d
         modbus_send_data+=(data[ii]>>8)&0x00ff;
         modbus_send_data+=(data[ii]>>0)&0x00ff;
     }
-    uint8_t  crc16_check=modbus::Compute(modbus_send_data);
+    uint16_t  crc16_check=modbus::Compute(modbus_send_data);
     modbus_send_data+=(crc16_check>>8)&0x00ff;
     modbus_send_data+=(crc16_check>>0)&0x00ff;
     this->send_data_fun(modbus_send_data);

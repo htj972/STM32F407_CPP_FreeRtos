@@ -1376,6 +1376,30 @@ HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.s
 .PHONY : HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.s
 
+HARDWARE/BASE_CLASS/Src/RTC_BASE.obj: HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.obj
+.PHONY : HARDWARE/BASE_CLASS/Src/RTC_BASE.obj
+
+# target to build an object file
+HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.obj
+.PHONY : HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.obj
+
+HARDWARE/BASE_CLASS/Src/RTC_BASE.i: HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.i
+.PHONY : HARDWARE/BASE_CLASS/Src/RTC_BASE.i
+
+# target to preprocess a source file
+HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.i
+.PHONY : HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.i
+
+HARDWARE/BASE_CLASS/Src/RTC_BASE.s: HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.s
+.PHONY : HARDWARE/BASE_CLASS/Src/RTC_BASE.s
+
+# target to generate assembly for a file
+HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.s
+.PHONY : HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.s
+
 HARDWARE/BASE_CLASS/Src/SPI_BASE.obj: HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj
 .PHONY : HARDWARE/BASE_CLASS/Src/SPI_BASE.obj
 
@@ -1591,6 +1615,30 @@ HARDWARE/Src/PWM.s: HARDWARE/Src/PWM.cpp.s
 HARDWARE/Src/PWM.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.s
 .PHONY : HARDWARE/Src/PWM.cpp.s
+
+HARDWARE/Src/RTC_H.obj: HARDWARE/Src/RTC_H.cpp.obj
+.PHONY : HARDWARE/Src/RTC_H.obj
+
+# target to build an object file
+HARDWARE/Src/RTC_H.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.obj
+.PHONY : HARDWARE/Src/RTC_H.cpp.obj
+
+HARDWARE/Src/RTC_H.i: HARDWARE/Src/RTC_H.cpp.i
+.PHONY : HARDWARE/Src/RTC_H.i
+
+# target to preprocess a source file
+HARDWARE/Src/RTC_H.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.i
+.PHONY : HARDWARE/Src/RTC_H.cpp.i
+
+HARDWARE/Src/RTC_H.s: HARDWARE/Src/RTC_H.cpp.s
+.PHONY : HARDWARE/Src/RTC_H.s
+
+# target to generate assembly for a file
+HARDWARE/Src/RTC_H.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.s
+.PHONY : HARDWARE/Src/RTC_H.cpp.s
 
 HARDWARE/Src/SPI.obj: HARDWARE/Src/SPI.cpp.obj
 .PHONY : HARDWARE/Src/SPI.obj
@@ -1879,30 +1927,6 @@ MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/Printe
 MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.s
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.s
-
-MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj
-.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj
-
-# target to build an object file
-MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj
-.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj
-
-MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.i: MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.i
-.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.i
-
-# target to preprocess a source file
-MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.i
-.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.i
-
-MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.s: MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s
-.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.s
-
-# target to generate assembly for a file
-MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s
-.PHONY : MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s
 
 MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.obj: MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.obj
@@ -3205,6 +3229,9 @@ help:
 	@echo ... HARDWARE/BASE_CLASS/Src/PWM_BASE.obj
 	@echo ... HARDWARE/BASE_CLASS/Src/PWM_BASE.i
 	@echo ... HARDWARE/BASE_CLASS/Src/PWM_BASE.s
+	@echo ... HARDWARE/BASE_CLASS/Src/RTC_BASE.obj
+	@echo ... HARDWARE/BASE_CLASS/Src/RTC_BASE.i
+	@echo ... HARDWARE/BASE_CLASS/Src/RTC_BASE.s
 	@echo ... HARDWARE/BASE_CLASS/Src/SPI_BASE.obj
 	@echo ... HARDWARE/BASE_CLASS/Src/SPI_BASE.i
 	@echo ... HARDWARE/BASE_CLASS/Src/SPI_BASE.s
@@ -3232,6 +3259,9 @@ help:
 	@echo ... HARDWARE/Src/PWM.obj
 	@echo ... HARDWARE/Src/PWM.i
 	@echo ... HARDWARE/Src/PWM.s
+	@echo ... HARDWARE/Src/RTC_H.obj
+	@echo ... HARDWARE/Src/RTC_H.i
+	@echo ... HARDWARE/Src/RTC_H.s
 	@echo ... HARDWARE/Src/SPI.obj
 	@echo ... HARDWARE/Src/SPI.i
 	@echo ... HARDWARE/Src/SPI.s
@@ -3268,9 +3298,6 @@ help:
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.s
-	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.obj
-	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.i
-	@echo ... MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.s

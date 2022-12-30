@@ -6,7 +6,6 @@
 #include "Timer.h"
 #include "IIC.h"
 #include "Communication.h"
-#include "MAX31865.h"
 #include "DW_DIS.h"
 #include "TEOM.h"
 
@@ -39,15 +38,7 @@ TaskHandle_t Task2Task_Handler;
 [[noreturn]] void task2_task(void *pvParameters);
 
 
-
 _OutPut_    led(GPIOE6);
-
-SPI         spi1(SPI1);
-MAX31865    temp1(&spi1,GPIOC0);
-MAX31865    temp2(&spi1,GPIOC1);
-MAX31865    temp3(&spi1,GPIOC2);
-MAX31865    temp4(&spi1,GPIOC3);
-MAX31865    temp5(&spi1,GPIOA0);
 
 class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
@@ -59,15 +50,16 @@ public:
     void Callback(int  ,char** ) override{
         this->change();
     };
-}led2(GPIOE5,TIM6,10);
+}led2(GPIOE5,TIM6,2);
 
-//TOEM 驱动类
+//TEOM 驱动类
 TEOM_Machine teom(GPIOB0,GPIOB1,GPIOD14,TIM4,2);
+//TEOM 温度控制类
+TEOM_TEMP TEMP(SPI1,GPIOC0,GPIOC1,GPIOC2,GPIOC3,GPIOA0,TIM1,1000);
 //通信软件类
 Communication m_modebus(USART3,GPIOE15,TIM5,100);
 //迪文显示类
 DW_DIS MDW(USART6,TIM7,10);
-
 
 
 
@@ -76,26 +68,14 @@ int main()
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);	//初始化延时函数
 
-    temp1.init();
-    temp1.config(MAX31865::MODE::PT1000,2000);
-    temp2.init();
-    temp2.config(MAX31865::MODE::PT1000,2000);
-    temp3.init();
-    temp3.config(MAX31865::MODE::PT1000,2000);
-    temp4.init();
-    temp4.config(MAX31865::MODE::PT1000,2000);
-    temp5.init();
-    temp5.config(MAX31865::MODE::PT1000,2000);
-
+    TEMP.initial();
     teom.inital();
-
-    MDW.SetBackLight(20);
-    MDW.set_dis_sleep_time(15);
     MDW.Link_TEOM(&teom);
-    MDW.init();
+    MDW.Link_Temp(&TEMP);
+    MDW.Link_Com(&m_modebus);
+    MDW.initial();
 
 
-//    teom.turn_on();
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -133,11 +113,10 @@ void start_task(void *pvParameters)
 [[noreturn]] void task1_task(void *pvParameters)//alignas(8)
 {
     uint8_t sec_t=0;
-    while(true)
-    {
-        vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+    while(true) {
+        vTaskDelay(200 / portTICK_RATE_MS);            //延时10ms，模拟任务运行10ms，此函数不会引起任务调度
 
-
+        m_modebus.data_sync();
     }
 }
 
@@ -151,6 +130,13 @@ void start_task(void *pvParameters)
         vTaskDelay(100/portTICK_RATE_MS );
         MDW.key_handle();
         MDW.Dis_handle();
+//        if(MDW.get_curInterface()==3){
+//            MDW.vspf_Text(0x1000,(char *)"%05.1lf",TEMP.temp_sensor[0].get_temp());
+//            MDW.vspf_Text(0x1040,(char *)"%05.1lf",TEMP.temp_sensor[1].get_temp());
+//            MDW.vspf_Text(0x1080,(char *)"%05.1lf",TEMP.temp_sensor[2].get_temp());
+//            MDW.vspf_Text(0x10C0,(char *)"%05.1lf",TEMP.temp_sensor[3].get_temp());
+//            MDW.vspf_Text(0x1100,(char *)"%05.1lf",TEMP.temp_sensor[4].get_temp());
+//        }
     }
 }
 

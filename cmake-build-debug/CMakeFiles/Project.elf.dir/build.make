@@ -796,10 +796,24 @@ CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.s"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\BASE_CLASS\Src\PWM_BASE.cpp -o CMakeFiles\Project.elf.dir\HARDWARE\BASE_CLASS\Src\PWM_BASE.cpp.s
 
+CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
+CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.obj: ../HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp
+CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.obj"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\BASE_CLASS\Src\RTC_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\BASE_CLASS\Src\RTC_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\BASE_CLASS\Src\RTC_BASE.cpp
+
+CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.i"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\BASE_CLASS\Src\RTC_BASE.cpp > CMakeFiles\Project.elf.dir\HARDWARE\BASE_CLASS\Src\RTC_BASE.cpp.i
+
+CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.s"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\BASE_CLASS\Src\RTC_BASE.cpp -o CMakeFiles\Project.elf.dir\HARDWARE\BASE_CLASS\Src\RTC_BASE.cpp.s
+
 CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj: ../HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\BASE_CLASS\Src\SPI_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\BASE_CLASS\Src\SPI_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\BASE_CLASS\Src\SPI_BASE.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.i: cmake_force
@@ -813,7 +827,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj: ../HARDWARE/Src/ADC.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\ADC.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\ADC.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\ADC.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.i: cmake_force
@@ -827,7 +841,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj: ../HARDWARE/Src/CRC.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\CRC.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\CRC.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\CRC.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.i: cmake_force
@@ -841,7 +855,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.obj: ../HARDWARE/Src/DAC.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\DAC.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\DAC.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\DAC.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.i: cmake_force
@@ -855,7 +869,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/DAC.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj: ../HARDWARE/Src/GPIO.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\GPIO.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\GPIO.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\GPIO.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.i: cmake_force
@@ -869,7 +883,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/GPIO.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj: ../HARDWARE/Src/IIC.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\IIC.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\IIC.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\IIC.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.i: cmake_force
@@ -883,7 +897,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.obj: ../HARDWARE/Src/ONE_Wire.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\ONE_Wire.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\ONE_Wire.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\ONE_Wire.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.i: cmake_force
@@ -897,7 +911,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj: ../HARDWARE/Src/Out_In_Put.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\Out_In_Put.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\Out_In_Put.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\Out_In_Put.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.i: cmake_force
@@ -911,7 +925,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.obj: ../HARDWARE/Src/PWM.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\PWM.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\PWM.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\PWM.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.i: cmake_force
@@ -922,10 +936,24 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.s"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\PWM.cpp -o CMakeFiles\Project.elf.dir\HARDWARE\Src\PWM.cpp.s
 
+CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
+CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.obj: ../HARDWARE/Src/RTC_H.cpp
+CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.obj"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\RTC_H.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\RTC_H.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\RTC_H.cpp
+
+CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.i"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\RTC_H.cpp > CMakeFiles\Project.elf.dir\HARDWARE\Src\RTC_H.cpp.i
+
+CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.s"
+	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\RTC_H.cpp -o CMakeFiles\Project.elf.dir\HARDWARE\Src\RTC_H.cpp.s
+
 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj: ../HARDWARE/Src/SPI.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\SPI.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\SPI.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\SPI.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.i: cmake_force
@@ -939,7 +967,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.obj: ../HARDWARE/Src/STM_FLASH.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\STM_FLASH.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\STM_FLASH.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\STM_FLASH.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.i: cmake_force
@@ -953,7 +981,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.obj: ../HARDWARE/Src/Tim_Capture.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\Tim_Capture.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\Tim_Capture.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\Tim_Capture.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.i: cmake_force
@@ -967,7 +995,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.obj: ../HARDWARE/Src/Timer.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\Timer.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\Timer.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\Timer.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.i: cmake_force
@@ -981,7 +1009,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj: ../HARDWARE/Src/USART.cpp
 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj -MF CMakeFiles\Project.elf.dir\HARDWARE\Src\USART.cpp.obj.d -o CMakeFiles\Project.elf.dir\HARDWARE\Src\USART.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\HARDWARE\Src\USART.cpp
 
 CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.i: cmake_force
@@ -995,7 +1023,7 @@ CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\FuzzyPID.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\FuzzyPID.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\FuzzyPID.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.i: cmake_force
@@ -1009,7 +1037,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Humidity_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Humidity_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Humidity_BASE.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.i: cmake_force
@@ -1023,7 +1051,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.s: cmake_
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\OLED_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\OLED_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\OLED_BASE.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.i: cmake_force
@@ -1037,7 +1065,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/OLED_BASE.cpp.s: cmake_forc
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\PID_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\PID_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\PID_BASE.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.i: cmake_force
@@ -1051,7 +1079,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Pressure_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Pressure_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Pressure_BASE.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.i: cmake_force
@@ -1065,7 +1093,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.s: cmake_
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Printer_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Printer_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Printer_BASE.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.i: cmake_force
@@ -1079,7 +1107,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.s: cmake_f
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Printer_usart_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Printer_usart_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Printer_usart_BASE.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.i: cmake_force
@@ -1090,24 +1118,10 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.s: c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.s"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Printer_usart_BASE.cpp -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Printer_usart_BASE.cpp.s
 
-CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
-CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp
-CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\RTC_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\RTC_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\RTC_BASE.cpp
-
-CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.i"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\RTC_BASE.cpp > CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\RTC_BASE.cpp.i
-
-CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.s"
-	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\RTC_BASE.cpp -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\RTC_BASE.cpp.s
-
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\SD_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\SD_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\SD_BASE.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.i: cmake_force
@@ -1121,7 +1135,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Storage_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Storage_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Storage_BASE.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.i: cmake_force
@@ -1135,7 +1149,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.s: cmake_f
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Temp_Humi_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Temp_Humi_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Temp_Humi_BASE.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.i: cmake_force
@@ -1149,7 +1163,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.s: cmake
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Temp_Pres_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Temp_Pres_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Temp_Pres_BASE.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.i: cmake_force
@@ -1163,7 +1177,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Pres_BASE.cpp.s: cmake
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj: ../MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Temperature_BASE.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\BASE_CLASS\Scr\Temperature_BASE.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\BASE_CLASS\Scr\Temperature_BASE.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.i: cmake_force
@@ -1177,7 +1191,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.s: cma
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.obj: ../MIDDLEWARE/Src/DHTxx.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\DHTxx.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\DHTxx.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\DHTxx.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.i: cmake_force
@@ -1191,7 +1205,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.obj: ../MIDDLEWARE/Src/DS18B20.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\DS18B20.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\DS18B20.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\DS18B20.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.i: cmake_force
@@ -1205,7 +1219,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj: ../MIDDLEWARE/Src/DW_LCD.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\DW_LCD.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\DW_LCD.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\DW_LCD.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.i: cmake_force
@@ -1219,7 +1233,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj: ../MIDDLEWARE/Src/FM24Cxx.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\FM24Cxx.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\FM24Cxx.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\FM24Cxx.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.i: cmake_force
@@ -1233,7 +1247,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj: ../MIDDLEWARE/Src/IAP.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\IAP.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\IAP.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\IAP.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.i: cmake_force
@@ -1247,7 +1261,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj: ../MIDDLEWARE/Src/MAX31865.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\MAX31865.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\MAX31865.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\MAX31865.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.i: cmake_force
@@ -1261,7 +1275,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj: ../MIDDLEWARE/Src/MS5805.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\MS5805.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\MS5805.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\MS5805.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.i: cmake_force
@@ -1275,7 +1289,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj: ../MIDDLEWARE/Src/OLED_SSD1306.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\OLED_SSD1306.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\OLED_SSD1306.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\OLED_SSD1306.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.i: cmake_force
@@ -1289,7 +1303,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj: ../MIDDLEWARE/Src/RD_EH32.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\RD_EH32.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\RD_EH32.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\RD_EH32.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.i: cmake_force
@@ -1303,7 +1317,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj: ../MIDDLEWARE/Src/RS485.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\RS485.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\RS485.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\RS485.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.i: cmake_force
@@ -1317,7 +1331,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj: ../MIDDLEWARE/Src/RTC_DS3231.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\RTC_DS3231.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\RTC_DS3231.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\RTC_DS3231.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.i: cmake_force
@@ -1331,7 +1345,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj: ../MIDDLEWARE/Src/SD_CARD.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\SD_CARD.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\SD_CARD.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\SD_CARD.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.i: cmake_force
@@ -1345,7 +1359,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj: ../MIDDLEWARE/Src/SHT3x.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\SHT3x.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\SHT3x.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\SHT3x.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.i: cmake_force
@@ -1359,7 +1373,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SMI.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SMI.cpp.obj: ../MIDDLEWARE/Src/SMI.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SMI.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SMI.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SMI.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SMI.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\SMI.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\SMI.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\SMI.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SMI.cpp.i: cmake_force
@@ -1373,7 +1387,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SMI.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.obj: ../MIDDLEWARE/Src/TMC220xUart.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\TMC220xUart.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\TMC220xUart.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\TMC220xUart.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.i: cmake_force
@@ -1387,7 +1401,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/TMC220xUart.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Temp_ctrl.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Temp_ctrl.cpp.obj: ../MIDDLEWARE/Src/Temp_ctrl.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Temp_ctrl.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Temp_ctrl.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Temp_ctrl.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Temp_ctrl.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\Temp_ctrl.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\Temp_ctrl.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\Temp_ctrl.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Temp_ctrl.cpp.i: cmake_force
@@ -1401,7 +1415,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/Temp_ctrl.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj: ../MIDDLEWARE/Src/W25QXX.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\W25QXX.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\W25QXX.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\W25QXX.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.i: cmake_force
@@ -1415,7 +1429,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj: ../MIDDLEWARE/Src/modbus.cpp
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj -MF CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\modbus.cpp.obj.d -o CMakeFiles\Project.elf.dir\MIDDLEWARE\Src\modbus.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\MIDDLEWARE\Src\modbus.cpp
 
 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.i: cmake_force
@@ -1429,7 +1443,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj: ../SOFTWARE/Src/Communication.cpp
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building CXX object CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj -MF CMakeFiles\Project.elf.dir\SOFTWARE\Src\Communication.cpp.obj.d -o CMakeFiles\Project.elf.dir\SOFTWARE\Src\Communication.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SOFTWARE\Src\Communication.cpp
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.i: cmake_force
@@ -1443,7 +1457,7 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj: ../SOFTWARE/Src/DW_DIS.cpp
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building CXX object CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj -MF CMakeFiles\Project.elf.dir\SOFTWARE\Src\DW_DIS.cpp.obj.d -o CMakeFiles\Project.elf.dir\SOFTWARE\Src\DW_DIS.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SOFTWARE\Src\DW_DIS.cpp
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.i: cmake_force
@@ -1457,7 +1471,7 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj: ../SOFTWARE/Src/Fower_Ctrl.cpp
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building CXX object CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj -MF CMakeFiles\Project.elf.dir\SOFTWARE\Src\Fower_Ctrl.cpp.obj.d -o CMakeFiles\Project.elf.dir\SOFTWARE\Src\Fower_Ctrl.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SOFTWARE\Src\Fower_Ctrl.cpp
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.i: cmake_force
@@ -1471,7 +1485,7 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.obj: ../SOFTWARE/Src/TEOM.cpp
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building CXX object CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.obj -MF CMakeFiles\Project.elf.dir\SOFTWARE\Src\TEOM.cpp.obj.d -o CMakeFiles\Project.elf.dir\SOFTWARE\Src\TEOM.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SOFTWARE\Src\TEOM.cpp
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.i: cmake_force
@@ -1485,7 +1499,7 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj: ../SOFTWARE/Src/pretreatment.cpp
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building CXX object CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj -MF CMakeFiles\Project.elf.dir\SOFTWARE\Src\pretreatment.cpp.obj.d -o CMakeFiles\Project.elf.dir\SOFTWARE\Src\pretreatment.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SOFTWARE\Src\pretreatment.cpp
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.i: cmake_force
@@ -1499,7 +1513,7 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj: ../SYSTEM/Src/DMA.c
 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj -MF CMakeFiles\Project.elf.dir\SYSTEM\Src\DMA.c.obj.d -o CMakeFiles\Project.elf.dir\SYSTEM\Src\DMA.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SYSTEM\Src\DMA.c
 
 CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.i: cmake_force
@@ -1513,7 +1527,7 @@ CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.s: cmake_force
 CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj: ../SYSTEM/Src/cJSON.c
 CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj -MF CMakeFiles\Project.elf.dir\SYSTEM\Src\cJSON.c.obj.d -o CMakeFiles\Project.elf.dir\SYSTEM\Src\cJSON.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SYSTEM\Src\cJSON.c
 
 CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.i: cmake_force
@@ -1527,7 +1541,7 @@ CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.s: cmake_force
 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj: ../SYSTEM/Src/delay.c
 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj -MF CMakeFiles\Project.elf.dir\SYSTEM\Src\delay.c.obj.d -o CMakeFiles\Project.elf.dir\SYSTEM\Src\delay.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SYSTEM\Src\delay.c
 
 CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.i: cmake_force
@@ -1541,7 +1555,7 @@ CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.s: cmake_force
 CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj: ../SYSTEM/Src/malloc.c
 CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj -MF CMakeFiles\Project.elf.dir\SYSTEM\Src\malloc.c.obj.d -o CMakeFiles\Project.elf.dir\SYSTEM\Src\malloc.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SYSTEM\Src\malloc.c
 
 CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.i: cmake_force
@@ -1555,7 +1569,7 @@ CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.s: cmake_force
 CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj: ../SYSTEM/Src/sys.c
 CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.obj -MF CMakeFiles\Project.elf.dir\SYSTEM\Src\sys.c.obj.d -o CMakeFiles\Project.elf.dir\SYSTEM\Src\sys.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\SYSTEM\Src\sys.c
 
 CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.i: cmake_force
@@ -1569,7 +1583,7 @@ CMakeFiles/Project.elf.dir/SYSTEM/Src/sys.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj: ../USB/CLASS/Src/USB_MSC.cpp
 CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building CXX object CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building CXX object CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.obj -MF CMakeFiles\Project.elf.dir\USB\CLASS\Src\USB_MSC.cpp.obj.d -o CMakeFiles\Project.elf.dir\USB\CLASS\Src\USB_MSC.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USB\CLASS\Src\USB_MSC.cpp
 
 CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.i: cmake_force
@@ -1583,7 +1597,7 @@ CMakeFiles/Project.elf.dir/USB/CLASS/Src/USB_MSC.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.obj: ../USB/USB_HOST/Scr/usbh_core.c
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.obj -MF CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_core.c.obj.d -o CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_core.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USB\USB_HOST\Scr\usbh_core.c
 
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.i: cmake_force
@@ -1597,7 +1611,7 @@ CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_core.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.obj: ../USB/USB_HOST/Scr/usbh_hcs.c
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.obj -MF CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_hcs.c.obj.d -o CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_hcs.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USB\USB_HOST\Scr\usbh_hcs.c
 
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.i: cmake_force
@@ -1611,7 +1625,7 @@ CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_hcs.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.obj: ../USB/USB_HOST/Scr/usbh_ioreq.c
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.obj -MF CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_ioreq.c.obj.d -o CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_ioreq.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USB\USB_HOST\Scr\usbh_ioreq.c
 
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.i: cmake_force
@@ -1625,7 +1639,7 @@ CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_ioreq.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.obj: ../USB/USB_HOST/Scr/usbh_msc_bot.c
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.obj -MF CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_msc_bot.c.obj.d -o CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_msc_bot.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USB\USB_HOST\Scr\usbh_msc_bot.c
 
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.i: cmake_force
@@ -1639,7 +1653,7 @@ CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_bot.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.obj: ../USB/USB_HOST/Scr/usbh_msc_core.c
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.obj -MF CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_msc_core.c.obj.d -o CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_msc_core.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USB\USB_HOST\Scr\usbh_msc_core.c
 
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.i: cmake_force
@@ -1653,7 +1667,7 @@ CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_core.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.obj: ../USB/USB_HOST/Scr/usbh_msc_scsi.c
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.obj -MF CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_msc_scsi.c.obj.d -o CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_msc_scsi.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USB\USB_HOST\Scr\usbh_msc_scsi.c
 
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.i: cmake_force
@@ -1667,7 +1681,7 @@ CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_msc_scsi.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.obj: ../USB/USB_HOST/Scr/usbh_stdreq.c
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building C object CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.obj -MF CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_stdreq.c.obj.d -o CMakeFiles\Project.elf.dir\USB\USB_HOST\Scr\usbh_stdreq.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USB\USB_HOST\Scr\usbh_stdreq.c
 
 CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.i: cmake_force
@@ -1681,7 +1695,7 @@ CMakeFiles/Project.elf.dir/USB/USB_HOST/Scr/usbh_stdreq.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.obj: ../USB/USB_OTG/Scr/usb_core.c
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building C object CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.obj -MF CMakeFiles\Project.elf.dir\USB\USB_OTG\Scr\usb_core.c.obj.d -o CMakeFiles\Project.elf.dir\USB\USB_OTG\Scr\usb_core.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USB\USB_OTG\Scr\usb_core.c
 
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.i: cmake_force
@@ -1695,7 +1709,7 @@ CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_core.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.obj: ../USB/USB_OTG/Scr/usb_hcd.c
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building C object CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.obj -MF CMakeFiles\Project.elf.dir\USB\USB_OTG\Scr\usb_hcd.c.obj.d -o CMakeFiles\Project.elf.dir\USB\USB_OTG\Scr\usb_hcd.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USB\USB_OTG\Scr\usb_hcd.c
 
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.i: cmake_force
@@ -1709,7 +1723,7 @@ CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.obj: ../USB/USB_OTG/Scr/usb_hcd_int.c
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building C object CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building C object CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.obj -MF CMakeFiles\Project.elf.dir\USB\USB_OTG\Scr\usb_hcd_int.c.obj.d -o CMakeFiles\Project.elf.dir\USB\USB_OTG\Scr\usb_hcd_int.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USB\USB_OTG\Scr\usb_hcd_int.c
 
 CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.i: cmake_force
@@ -1723,7 +1737,7 @@ CMakeFiles/Project.elf.dir/USB/USB_OTG/Scr/usb_hcd_int.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: ../USER/Src/main.cpp
 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building CXX object CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building CXX object CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj -MF CMakeFiles\Project.elf.dir\USER\Src\main.cpp.obj.d -o CMakeFiles\Project.elf.dir\USER\Src\main.cpp.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USER\Src\main.cpp
 
 CMakeFiles/Project.elf.dir/USER/Src/main.cpp.i: cmake_force
@@ -1737,7 +1751,7 @@ CMakeFiles/Project.elf.dir/USER/Src/main.cpp.s: cmake_force
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj: ../USER/Src/stm32f4xx_it.c
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building C object CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj -MF CMakeFiles\Project.elf.dir\USER\Src\stm32f4xx_it.c.obj.d -o CMakeFiles\Project.elf.dir\USER\Src\stm32f4xx_it.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USER\Src\stm32f4xx_it.c
 
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.i: cmake_force
@@ -1751,7 +1765,7 @@ CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.s: cmake_force
 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj: ../USER/Src/system_stm32f4xx.c
 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj: CMakeFiles/Project.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building C object CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj -MF CMakeFiles\Project.elf.dir\USER\Src\system_stm32f4xx.c.obj.d -o CMakeFiles\Project.elf.dir\USER\Src\system_stm32f4xx.c.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\USER\Src\system_stm32f4xx.c
 
 CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.i: cmake_force
@@ -1764,7 +1778,7 @@ CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.s: cmake_force
 
 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj: CMakeFiles/Project.elf.dir/flags.make
 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj: ../startup/startup_stm32f407xx.s
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building ASM object CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building ASM object CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj"
 	F:\CubeMX\gcc-arm-none-eabi-10.3-2021.10\bin\arm-none-eabi-gcc.exe $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles\Project.elf.dir\startup\startup_stm32f407xx.s.obj -c C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\startup\startup_stm32f407xx.s
 
 CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.i: cmake_force
@@ -1829,6 +1843,7 @@ Project_elf_OBJECTS = \
 "CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.obj" \
+"CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj" \
@@ -1838,6 +1853,7 @@ Project_elf_OBJECTS = \
 "CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.obj" \
+"CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.obj" \
 "CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.obj" \
@@ -1850,7 +1866,6 @@ Project_elf_OBJECTS = \
 "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj" \
 "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj" \
 "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj" \
-"CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj" \
 "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj" \
 "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj" \
 "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj" \
@@ -1955,6 +1970,7 @@ Project.elf: CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/heap_4.c.obj
 Project.elf: CMakeFiles/Project.elf.dir/FreeRTOS/FreeRTOS_PORTABLE/port.c.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.obj
+Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/RTC_BASE.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/SPI_BASE.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/ADC.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/CRC.cpp.obj
@@ -1964,6 +1980,7 @@ Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/ONE_Wire.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/Out_In_Put.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/PWM.cpp.obj
+Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/RTC_H.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/SPI.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/STM_FLASH.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.obj
@@ -1976,7 +1993,6 @@ Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/PID_BASE.cpp.o
 Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Pressure_BASE.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_BASE.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Printer_usart_BASE.cpp.obj
-Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/RTC_BASE.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/SD_BASE.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Storage_BASE.cpp.obj
 Project.elf: CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temp_Humi_BASE.cpp.obj
@@ -2028,7 +2044,7 @@ Project.elf: CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj
 Project.elf: CMakeFiles/Project.elf.dir/build.make
 Project.elf: CMakeFiles/Project.elf.dir/objects1.rsp
 Project.elf: CMakeFiles/Project.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Linking CXX executable Project.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Linking CXX executable Project.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Project.elf.dir\link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/cmake-build-debug/Project.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/cmake-build-debug/Project.bin"

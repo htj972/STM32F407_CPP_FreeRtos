@@ -217,6 +217,32 @@ void DW_LCD::RTC_write(uint8_t yer,uint8_t mon,uint8_t day,uint8_t hou,uint8_t m
     this->Queue_end();
 }
 /*!
+ * 触摸屏  发送RTC写 数据来源外部RTC
+ * @return
+ */
+void DW_LCD::RTC_Write(){
+    if(this->RTX!= nullptr)
+    {
+        uint16_t yer;
+        uint8_t mon,day,hou,min,sec;
+        this->RTX->get_date(&yer,&mon,&day);
+        this->RTX->get_time(&hou,&min,&sec);
+        volatile uint8_t LcdOrder[13] = {this->head_address[0],this->head_address[1],0x0A,0x80,0x1F,0x5A};
+        yer%=100;
+        this->Queue_star();
+        LcdOrder[6]=((yer/10)<<4)+(yer%10);
+        LcdOrder[7]=((mon/10)<<4)+(mon%10);
+        LcdOrder[8]=((day/10)<<4)+(day%10);
+        LcdOrder[9]=0;
+        LcdOrder[10]=((hou/10)<<4)+(hou%10);
+        LcdOrder[11]=((min/10)<<4)+(min%10);;
+        LcdOrder[12]=((sec/10)<<4)+(sec%10);
+
+        this->USARTX->write((uint8_t*)LcdOrder,13);
+        this->Queue_end();
+    }
+}
+/*!
  * 触摸屏  发送背光亮度
  * @param light 亮度 (0x00-0x40亮度范围)
  * @param save 保存
@@ -416,6 +442,8 @@ void DW_LCD::Write_data(uint16_t point,uint8_t offset,uint16_t DATA)
 #define DW_DATA_Len 		DMT_G_DATA[6]
 #define DW_DATA_High 		DMT_G_DATA[7]
 #define DW_DATA_LoW 		DMT_G_DATA[8]
+#define DW_DATA2_High 		DMT_G_DATA[9]
+#define DW_DATA2_LoW 		DMT_G_DATA[10]
 /********************REG*************************/
 #define DW_REG_Address 	    DMT_G_DATA[4]
 /*!
@@ -433,6 +461,7 @@ void DW_LCD::key_back_value_point() {
     this->ret_key= true;
     this->ret_key_address=(DW_Address_H<<8)+DW_Address_L;
     this->ret_key_data=(DW_DATA_High<<8)+DW_DATA_LoW;
+    this->ret_value_data=(float)((DW_DATA_High<<24)+(DW_DATA_LoW<<16)+(DW_DATA2_High<<8)+(DW_DATA2_LoW));
 }
 /*!
  * 触摸屏  寄存器hex转int
@@ -518,6 +547,14 @@ uint16_t DW_LCD::get_key_data() {
     return this->ret_key_data;
 }
 /*!
+ * 获取数据值  并清除按键状态
+ * @return 按键值
+ */
+float DW_LCD::get_value_data() {
+    this->ret_key= false;
+    return this->ret_value_data;
+}
+/*!
  * 获取按键状态  并清除按键状态
  * @return 状态
  */
@@ -596,6 +633,8 @@ void DW_LCD::Callback(int num ,char** data) {
     }
 
 }
+
+
 
 
 

@@ -25,6 +25,7 @@ private:
     uint8_t uart_get_data{};
     uint16_t ret_key_address{};
     uint16_t ret_key_data{};
+    float    ret_value_data{};
     bool     ret_key{};
     uint16_t  dis_protect_time{};
     bool     sleep_flag{};
@@ -46,6 +47,7 @@ public:
     void Keyboard_Up(uint8_t InputNum);
     void RTC_Read();
     void RTC_write(uint8_t yer,uint8_t mon,uint8_t day,uint8_t hou,uint8_t min,uint8_t sec);
+    void RTC_Write();
     void SetBackLight(uint8_t light,bool save=true);
     void Sleep(uint8_t Interface=0);
     void Wake_up();
@@ -63,6 +65,7 @@ public:
 
     uint16_t get_key_address();
     uint16_t get_key_data();
+    float get_value_data();
     bool get_key_sata();
     virtual void set_dis_sleep_time(uint16_t x);
     virtual uint16_t get_dis_sleep_time() const;

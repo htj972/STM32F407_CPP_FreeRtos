@@ -27,6 +27,7 @@ void Timer::init(TIM_TypeDef* TIMx,uint32_t arr,uint16_t psc,bool nvic) {
     TIM_TimeBaseInitStructure.TIM_Prescaler=psc;  //定时器分频
     TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up; //向上计数模式
     TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1;
+    TIM_TimeBaseInitStructure.TIM_RepetitionCounter=0;
 
     TIM_TimeBaseInit(this->Timx,&TIM_TimeBaseInitStructure);//初始化TIM3
     TIM_Cmd(this->Timx,ENABLE); //使能定时器3

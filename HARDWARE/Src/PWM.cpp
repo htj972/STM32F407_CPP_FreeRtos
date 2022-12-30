@@ -12,19 +12,26 @@ PWM_H::PWM_H(TIM_TypeDef* TIMx,uint32_t FRQ){
 }
 
 void PWM_H::init(TIM_TypeDef *TIMx, uint32_t FRQ) {
-    uint16_t APBx=8400;
+    uint16_t APBx=84;
     if((TIMx==TIM1)||(TIMx==TIM8)||(TIMx==TIM9)||(TIMx==TIM10)||(TIMx==TIM11))
-        APBx=16800;
+        APBx=168;
     else if((TIMx==TIM2)||(TIMx==TIM3)||(TIMx==TIM4)||(TIMx==TIM5)||(TIMx==TIM6)
           ||(TIMx==TIM7)||(TIMx==TIM12)||(TIMx==TIM13)||(TIMx==TIM14))
-        APBx=8400;
+        APBx=84;
     this->set_max_channel(4);
-    this->ARR=10000/FRQ; //  (MFRQ/APB)/frq
+    this->ARR=1000000/FRQ; //  (MFRQ/APB)/frq
     Timer::init(TIMx,this->ARR-1,APBx-1);
     TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1; //选择定时器模式:TIM脉冲宽度调制模式2
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; //比较输出使能
     TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; //输出极性:TIM输出比较极性低
+    if((TIMx==TIM1)||(TIMx==TIM8))
+    {
+        TIM_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Disable;//输出同相，TIM_OCNPolarity_High时输出反相
+        TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Set;
+        TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCNIdleState_Reset;
+    }
     TIM_ARRPreloadConfig(TIMx,ENABLE);//ARPE使能
+    TIM_CtrlPWMOutputs(TIMx,ENABLE);
 }
 
 bool PWM_H::config(int ch, ...) {
@@ -170,6 +177,7 @@ void PWM_H::OCinit(uint8_t num) {
             break;
         default:return;
     }
+//    TIM_CtrlPWMOutputs(this->Timx,ENABLE);
 }
 
 void PWM_H::config_Pin(PWM_BASE::channel channelx,uint8_t Pinx) {
