@@ -50,15 +50,12 @@ FM24Cxx power_data(&IIC_BUS);
 //SPI总线
 SPI_S SPI_BUS(GPIOE5,GPIOE3,GPIOE6);
 //预处理控温软件类
-pretreatment stovectrl(&SPI_BUS,GPIOE2,TIM4,1000,2);
+pretreatment stovectrl(&SPI_BUS,GPIOE4,TIM4,1000,2,GPIOC10,GPIOC11);
 //大气温度传感器
-MAX31865 Atmospheric_T(&SPI_BUS,GPIOE4);
-
+MAX31865 Atmospheric_T(&SPI_BUS,GPIOE2);
 //通信软件类
 Communication m_modebus(USART2,GPIOD4,TIM7,100,GPIOD5,GPIOD6);
 
-_OutPut_ BENG(GPIOC10);
-_OutPut_ fa(GPIOC11);
 
 
 
@@ -97,8 +94,10 @@ int main()
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);	//初始化延时函数
     MLED.initial();             //OLED 初始化
-    stovectrl.initial();        //炉子初始化
-    Atmospheric_P.init();              //大气压初始化
+
+    Atmospheric_T.init();       //
+    Atmospheric_T.config(MAX31865::PT100,3900);
+    Atmospheric_P.init();       //大气压初始化
     power_data.init();          //数据存储初始化
     //读取缓存数据
     power_data.read(0,m_modebus.data_BUS.to_u8t,sizeof(m_modebus.data_BUS));
@@ -108,6 +107,9 @@ int main()
         m_modebus.data_BUS=init_data;       //转移数据到使用结构体
         power_data.write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
     }
+
+    stovectrl.initial();        //炉子初始化
+
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
                 (const char*    )"start_task",           //任务名称
@@ -146,15 +148,28 @@ void start_task(void *pvParameters)
     uint8_t sec_t=0;
     while(true)
     {
-        vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+        vTaskDelay(200/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         MLED.Print(0,0,"V%.2lf",m_modebus.data_BUS.to_float.version);
 
-        MLED.Print(0,2,"%.2lf",tes1.get_pres());
-        MLED.Print(0,4,"%.2lf",tes2.get_pres());
+
+        MLED.Print(0,2,"%.2lf",stovectrl.get_cur());
+
+        MLED.Print(0,4,"%.2lf",Atmospheric_T.get_temp());
+
         MLED.Print(0,6,"%.2lf",Atmospheric_P.get_pres());
 //        MLED.Print(0,6,"%.2lf",stovectrl.get_temp_cache());
 //        pretreatment1.set_target(150);
 //        pretreatment1.upset();
+
+        m_modebus.data_BUS.to_float.stove_temp_r=stovectrl.get_cur();
+
+        if(m_modebus.data_BUS.to_float.stove_work==1){
+            stovectrl.turn_ON();
+        }
+        else
+        {
+            stovectrl.turn_OFF();
+        }
 
     }
 }
@@ -164,8 +179,8 @@ void start_task(void *pvParameters)
 {
     while(true)
     {
-        vTaskDelay(100/portTICK_RATE_MS );
-
+        delay_ms(500);
+        stovectrl.upset();
     }
 }
 

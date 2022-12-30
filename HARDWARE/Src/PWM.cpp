@@ -12,14 +12,14 @@ PWM_H::PWM_H(TIM_TypeDef* TIMx,uint32_t FRQ){
 }
 
 void PWM_H::init(TIM_TypeDef *TIMx, uint32_t FRQ) {
-    uint16_t APBx=8400;
+    uint16_t APBx=84;
     if((TIMx==TIM1)||(TIMx==TIM8)||(TIMx==TIM9)||(TIMx==TIM10)||(TIMx==TIM11))
-        APBx=16800;
+        APBx=168;
     else if((TIMx==TIM2)||(TIMx==TIM3)||(TIMx==TIM4)||(TIMx==TIM5)||(TIMx==TIM6)
           ||(TIMx==TIM7)||(TIMx==TIM12)||(TIMx==TIM13)||(TIMx==TIM14))
-        APBx=8400;
+        APBx=84;
     this->set_max_channel(4);
-    this->ARR=10000/FRQ; //  (MFRQ/APB)/frq
+    this->ARR=1000000/FRQ; //  (MFRQ/APB)/frq
     Timer::init(TIMx,this->ARR-1,APBx-1);
     TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1; //选择定时器模式:TIM脉冲宽度调制模式2
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; //比较输出使能

@@ -46,8 +46,8 @@ typedef union K_POWER_DATA_{
     K_POWER_DATA_() {
         to_float.version=HARD_version;
         to_float.Flow_coefficient=1.0;
-        to_float.stove_P=20;
-        to_float.stove_I=1;
+        to_float.stove_P=5;
+        to_float.stove_I=0.1;
         to_float.stove_D=5;
         to_float.Flow_P=1;
         to_float.Flow_I=1;
