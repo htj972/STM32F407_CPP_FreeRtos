@@ -4,7 +4,6 @@
 #include "task.h"
 #include "Out_In_Put.h"
 #include "Timer.h"
-#include "IIC.h"
 #include "Communication.h"
 #include "DW_DIS.h"
 #include "TEOM.h"
@@ -20,22 +19,40 @@ TaskHandle_t StartTask_Handler;
 void start_task(void *pvParameters);
 
 //任务优先级
-#define TASK1_TASK_PRIO		2
+#define TEMP_TASK_PRIO		2
 //任务堆栈大小
-#define TASK1_STK_SIZE 		512
+#define TEMP_STK_SIZE 		128
 //任务句柄
-TaskHandle_t Task1Task_Handler;
+TaskHandle_t TEMPTask_Handler;
 //任务函数
-[[noreturn]] void task1_task(void *pvParameters);
+[[noreturn]] void TEMP_task(void *pvParameters);
 
 //任务优先级
-#define TASK2_TASK_PRIO		2
+#define PRE_TASK_PRIO		2
 //任务堆栈大小
-#define TASK2_STK_SIZE 		1024
+#define PRE_STK_SIZE 		128
 //任务句柄
-TaskHandle_t Task2Task_Handler;
+TaskHandle_t PRETask_Handler;
 //任务函数
-[[noreturn]] void task2_task(void *pvParameters);
+[[noreturn]] void PRE_task(void *pvParameters);
+
+//任务优先级
+#define COM_TASK_PRIO		3
+//任务堆栈大小
+#define COM_STK_SIZE 		512
+//任务句柄
+TaskHandle_t COMTask_Handler;
+//任务函数
+[[noreturn]] void COM_task(void *pvParameters);
+
+//任务优先级
+#define DIS_TASK_PRIO		3
+//任务堆栈大小
+#define DIS_STK_SIZE 		1024
+//任务句柄
+TaskHandle_t DISTask_Handler;
+//任务函数
+[[noreturn]] void DIS_task(void *pvParameters);
 
 
 _OutPut_    led(GPIOE6);
@@ -60,6 +77,9 @@ TEOM_TEMP TEMP(SPI1,GPIOC0,GPIOC1,GPIOC2,GPIOC3,GPIOA0,TIM1,1000);
 Communication m_modebus(USART3,GPIOE15,TIM5,100);
 //迪文显示类
 DW_DIS MDW(USART6,TIM7,10);
+//差压显示
+pressure_dif pressure(GPIOD4,GPIOD5);
+
 
 
 
@@ -67,7 +87,7 @@ int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);	//初始化延时函数
-
+    delay_ms(1000);
     TEMP.initial();
     teom.inital();
     MDW.Link_TEOM(&teom);
@@ -91,52 +111,71 @@ int main()
 void start_task(void *pvParameters)
 {
     taskENTER_CRITICAL();           //进入临界区
-    //创建TASK1任务
-    xTaskCreate((TaskFunction_t )task1_task,
-                (const char*    )"task1_task",
-                (uint16_t       )TASK1_STK_SIZE,
+    //创建温度任务
+    xTaskCreate((TaskFunction_t )TEMP_task,
+                (const char*    )"TEMP_task",
+                (uint16_t       )TEMP_STK_SIZE,
                 (void*          )nullptr,
-                (UBaseType_t    )TASK1_TASK_PRIO,
-                (TaskHandle_t*  )&Task1Task_Handler);
+                (UBaseType_t    )TEMP_TASK_PRIO,
+                (TaskHandle_t*  )&TEMPTask_Handler);
+    //创建压力任务
+    xTaskCreate((TaskFunction_t )PRE_task,
+                (const char*    )"PRE_task",
+                (uint16_t       )PRE_STK_SIZE,
+                (void*          )nullptr,
+                (UBaseType_t    )PRE_TASK_PRIO,
+                (TaskHandle_t*  )&PRETask_Handler);
+    //创建COM任务
+    xTaskCreate((TaskFunction_t )COM_task,
+                (const char*    )"COM_task",
+                (uint16_t       )COM_STK_SIZE,
+                (void*          )nullptr,
+                (UBaseType_t    )COM_TASK_PRIO,
+                (TaskHandle_t*  )&COMTask_Handler);
     //创建TASK2任务
-    xTaskCreate((TaskFunction_t )task2_task,
-                (const char*    )"task2_task",
-                (uint16_t       )TASK2_STK_SIZE,
+    xTaskCreate((TaskFunction_t )DIS_task,
+                (const char*    )"DIS_task",
+                (uint16_t       )DIS_STK_SIZE,
                 (void*          )nullptr,
-                (UBaseType_t    )TASK2_TASK_PRIO,
-                (TaskHandle_t*  )&Task2Task_Handler);
+                (UBaseType_t    )DIS_TASK_PRIO,
+                (TaskHandle_t*  )&DISTask_Handler);
     vTaskDelete(StartTask_Handler); //删除开始任务
     taskEXIT_CRITICAL();            //退出临界区
 }
 
-//task1任务函数
-[[noreturn]] void task1_task(void *pvParameters)//alignas(8)
+//温度读取任务
+[[noreturn]] void TEMP_task(void *pvParameters)
+{
+    while(true) {
+        delay_ms(100);
+    }
+}
+//压力读取任务
+[[noreturn]] void PRE_task(void *pvParameters)
+{
+    while(true) {
+        delay_ms(100);
+        pressure.read();
+    }
+}
+//串通信任务
+[[noreturn]] void COM_task(void *pvParameters)
 {
     uint8_t sec_t=0;
     while(true) {
-        vTaskDelay(200 / portTICK_RATE_MS);            //延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-
+        vTaskDelay(200 / portTICK_RATE_MS);
         m_modebus.data_sync();
+
     }
 }
-
-//task2任务函数
-[[noreturn]] void task2_task(void *pvParameters)
+//迪文屏任务
+[[noreturn]] void DIS_task(void *pvParameters)
 {
-    static uint8_t flag=0;
-    uint8_t ret=0;
     while(true)
     {
         vTaskDelay(100/portTICK_RATE_MS );
         MDW.key_handle();
         MDW.Dis_handle();
-//        if(MDW.get_curInterface()==3){
-//            MDW.vspf_Text(0x1000,(char *)"%05.1lf",TEMP.temp_sensor[0].get_temp());
-//            MDW.vspf_Text(0x1040,(char *)"%05.1lf",TEMP.temp_sensor[1].get_temp());
-//            MDW.vspf_Text(0x1080,(char *)"%05.1lf",TEMP.temp_sensor[2].get_temp());
-//            MDW.vspf_Text(0x10C0,(char *)"%05.1lf",TEMP.temp_sensor[3].get_temp());
-//            MDW.vspf_Text(0x1100,(char *)"%05.1lf",TEMP.temp_sensor[4].get_temp());
-//        }
     }
 }
 

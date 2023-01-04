@@ -122,7 +122,9 @@ uint8_t RTC_H::get_date(uint16_t *y, uint8_t *m, uint8_t *d) {
 
 uint8_t RTC_H::get_time(uint8_t *h, uint8_t *m, uint8_t *s) {
     RTC_GetTime(RTC_Format_BIN,&RTC_TimeStruct);
-    RTCBASE::set_time(RTC_TimeStruct.RTC_Hours,RTC_TimeStruct.RTC_Minutes,RTC_TimeStruct.RTC_Seconds);
+    RTCBASE::set_hour(RTC_TimeStruct.RTC_Hours);
+    RTCBASE::set_min(RTC_TimeStruct.RTC_Minutes);
+    RTCBASE::set_sec(RTC_TimeStruct.RTC_Seconds);
     *h=RTC_TimeStruct.RTC_Hours;
     *m=RTC_TimeStruct.RTC_Minutes;
     *s=RTC_TimeStruct.RTC_Seconds;

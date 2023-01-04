@@ -58,7 +58,6 @@ void Communication::data_sync() {
         this->modbus_16_send(this->find_address(this->datax[ii]),
                              temp._u16,2);
         this->queue_flag[ii]= false;
-
     }
     else {
         this->modbus_03_send(0,sizeof(this->data_BUS)/2);

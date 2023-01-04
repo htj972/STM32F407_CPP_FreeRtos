@@ -231,6 +231,26 @@ std::string RTCBASE::get_name_str(name_mode mode) {
     return "name error";
 }
 
+void RTCBASE::set_Initial_time() {
+    uint8_t h,s,m;
+    this->get_time(&h,&m,&s);
+    this->Initial_time=h*3600+m*60+s;
+}
+
+uint32_t RTCBASE::get_run_time() {
+    uint8_t h,s,m;
+    this->get_time(&h,&m,&s);
+    return (h*3600+m*60+s)-this->Initial_time;
+}
+
+void RTCBASE::get_run_time(uint8_t *h, uint8_t *m, uint8_t *s) {
+    uint8_t sh,ss,sm;
+    this->get_time(&sh,&sm,&ss);
+    *h=(sh*3600+sm*60+ss-this->Initial_time)/3600;
+    *m=(sh*3600+sm*60+ss-this->Initial_time)%3600/60;
+    *s=(sh*3600+sm*60+ss-this->Initial_time)%60;
+}
+
 
 
 

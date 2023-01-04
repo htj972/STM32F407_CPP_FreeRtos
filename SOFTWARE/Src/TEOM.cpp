@@ -18,7 +18,8 @@ TEOM::TEOM(GPIO_Pin ENx,TIM_TypeDef* TIMx,uint8_t channel) {
 void TEOM::init(GPIO_Pin ENx, TIM_TypeDef *TIMx, uint8_t channel) {
     this->EN.init(ENx,HIGH);
     this->TimxC.init(TIMx);
-    this->TimxC.config_Pin(channel);
+    this->TimxC.config_Pin(channel,4000);
+    this->TimxC.filte.init(50,2);
 }
 
 void TEOM::turn_on() {
@@ -32,10 +33,36 @@ void TEOM::turn_off() {
 }
 
 float TEOM::get_frq() {
-    uint32_t T=this->TimxC.get_CAPTURE_fifo();
-    return 1.0f/(float)T*1000*1000;
+    static uint8_t  frqnum=0;
+    static uint16_t Tt=65535-500;
+    static bool ovoer_f= false;
+    Tt++;
+    if((Tt>20)&&(Tt<50))
+    {
+        Tt=0;
+        this->frqdata[frqnum++]=1.0f/this->TimxC.get_CAPTURE_fifo()*1000*1000;
+    }
+    else if(Tt>=50)
+        this->frqdata[frqnum++]=1.0f/this->TimxC.get_CAPTURE_fifo()*1000*1000;
+    if(frqnum>=120){
+        frqnum=0;
+        ovoer_f= true;
+    }
+    float frq_sum=0;
+    if(ovoer_f) {
+        for (uint16_t ii = 0; ii < 120; ii++) {
+            frq_sum += this->frqdata[ii];
+        }
+        frq_sum /= 120.0f;
+    }
+    else {
+        for (uint16_t ii = 0; ii < frqnum; ii++) {
+            frq_sum += this->frqdata[ii];
+        }
+        frq_sum /= 120.0f;
+    }
+    return frq_sum;
 }
-
 
 TEOM_TEMP::TEOM_TEMP(SPI_TypeDef *SPI, GPIO_Pin CS1, GPIO_Pin CS2, GPIO_Pin CS3, \
                     GPIO_Pin CS4, GPIO_Pin CS5,TIM_TypeDef* TIMx,uint32_t FRQ) {
@@ -74,6 +101,10 @@ void TEOM_TEMP::initial() {
 
 }
 
+void TEOM_Machine::Link_PRE(pressure_dif *Pre_linkx) {
+    this->Pre_link=Pre_linkx;
+}
+
 void TEOM_Machine::inital() {
     PDATA_Storage::inital();
     this->read(0,this->DATA.to_u8t,sizeof(DATA));
@@ -91,5 +122,9 @@ void TEOM_Machine::data_save(float *data,float value) {
     *data=value;
     this->write(0,this->DATA.to_u8t,sizeof(DATA));
 }
+
+
+
+
 
 

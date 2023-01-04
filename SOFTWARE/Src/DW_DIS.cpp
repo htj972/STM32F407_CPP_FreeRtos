@@ -105,6 +105,26 @@ bool DW_DIS::clear_text(uint8_t num) {
     return true;
 }
 /*!
+ * 触摸屏软件  曲线数据
+ * @return
+ */
+int      DW_DIS::teom_dis_mul_num=1;		//放大角标
+uint16_t DW_DIS::teom_dis_mul[3][2]={{935,5},{187,25},{37,125}}; //放大系数
+void DW_DIS::send_cure_data(uint8_t ch, float data) {
+    static uint8_t mark=0;
+    if(mark!= this->RTX->get_sec()) {
+        mark= this->RTX->get_sec();
+        if (data < 388)
+            this->DROW_point(ch, 0);
+        else if ((data > 387) && (data < 389)) {
+            this->DROW_point(ch, (uint16_t) ((data - 388) * 10000));
+            this->Write_data(point_address, 0x06, (uint16_t) ((data - 388) * 10000));
+        } else if (data > 388)
+            this->DROW_point(ch, 10000);
+    }
+
+}
+/*!
  * 触摸屏软件  基本图形同位置切割
  * @param address 基本图形位置
  * @param IDs_x IDs_y 开始位置
@@ -156,6 +176,13 @@ void DW_DIS::key_handle() {
             case 15:
                 this->Password_page(KEY);
                 break;
+            case 16:
+                this->Super_page(KEY);
+                break;
+            case 17:
+            case 18:
+                this->Working_page(KEY);
+                break;
         }
     }
     else if(event==Data){
@@ -174,6 +201,12 @@ void DW_DIS::key_handle() {
                 break;
             case 15:
                 this->Password_page(Data);
+                break;
+            case 16:
+                this->Super_page(Data);
+                break;
+            case 17:
+                this->Working_page(Data);
                 break;
         }
     }
@@ -198,6 +231,13 @@ void DW_DIS::Dis_handle() {
             break;
         case 11:
             this->Settings_page(DISPLAY);
+            break;
+        case 16:
+            this->Super_page(DISPLAY);
+            break;
+        case 17:
+        case 18:
+            this->Working_page(DISPLAY);
             break;
     }
 }
@@ -281,6 +321,9 @@ void DW_DIS::Samp_prepare_page(Event E) {
                 case 4:
                     this->Check_Box_set(Samp_mode_s);
                     this->TEOM_link->DATA.to_float.Samp_mode=Samp_Short_mode;
+                    break;
+                case 6:
+                    this->Working_page(TURN);
                     break;
             }
             break;
@@ -514,6 +557,7 @@ void DW_DIS::Settings_page(Event E) {
 }
 
 void DW_DIS::Password_page(DW_DIS::Event E) {
+    static uint8_t error_f=0;
     switch (E) {
         case TURN:
             this->Interface_switching(15);
@@ -527,8 +571,18 @@ void DW_DIS::Password_page(DW_DIS::Event E) {
         case Data:
             if(this->get_value_data()==2008)
                 this->Maintain_page(TURN);
-            else
-                this->vspf_Text(TEXT_ADD(1),(char*)"密码错误！！");
+            else if(this->get_value_data()==87) {
+                error_f = 1;
+                this->vspf_Text(TEXT_ADD(1), (char *) "密码错误！！");
+            }
+            else if((error_f==1)&&(this->get_value_data()==2012)) {
+                error_f = 0;
+                this->Super_page(TURN);
+            }
+            else {
+                error_f = 0;
+                this->vspf_Text(TEXT_ADD(1), (char *) "密码错误！！");
+            }
             break;
         case DISPLAY:
             break;
@@ -536,6 +590,122 @@ void DW_DIS::Password_page(DW_DIS::Event E) {
             break;
     }
 }
+
+void DW_DIS::Working_page(DW_DIS::Event E) {
+    float  frq_temp;
+    switch (E) {
+        case TURN:
+            this->Interface_switching(17);
+            this->clear_text(8);
+            this->vspf_Text(TEXT_ADD(3), (char *) "00:00:00");
+            this->TEOM_link->turn_on();
+            this->Write_data(point_address,0x08,teom_dis_mul[teom_dis_mul_num][0]);
+            this->vspf_Text(TEXT_ADD(9),(char *)"0.0%02dhz/行 ",teom_dis_mul[teom_dis_mul_num][1]/5);
+            worked = false;
+            break;
+        case KEY:
+            switch (this->get_key_data()) {
+                case 0://返回
+                    this->Interface_switching(17);
+                    break;
+                case 1:
+                    this->RTX->set_Initial_time();
+                    this->vspf_Text(TEXT_ADD(5),(char *) "%09.5lfHz   ",this->TEOM_link->get_frq());
+                    this->vspf_Text(TEXT_ADD(7),(char *) "%04.0lfPa   ",this->TEOM_link->Pre_link->get_value());
+                    worked = true;
+                break;
+                case 2:
+                    this->Interface_switching(18);
+                    break;
+                case 3:
+                    teom_dis_mul_num--;
+                    if(teom_dis_mul_num<=0)teom_dis_mul_num=0;
+                    this->Write_data(point_address,0x08,teom_dis_mul[teom_dis_mul_num][0]);
+                    this->vspf_Text(TEXT_ADD(9),(char *)"0.0%02dhz/行 ",teom_dis_mul[teom_dis_mul_num][1]/5);
+                    break;
+                case 4:
+                    teom_dis_mul_num++;
+                    if(teom_dis_mul_num>=2)teom_dis_mul_num=2;
+                    this->Write_data(point_address,0x08,teom_dis_mul[teom_dis_mul_num][0]);
+                    this->vspf_Text(TEXT_ADD(9),(char *)"0.0%02dhz/行 ",teom_dis_mul[teom_dis_mul_num][1]/5);
+                    break;
+            }
+            break;
+        case Data:
+            if(this->get_key_data()==0xF1) {
+                worked = false;
+                this->Samp_prepare_page(TURN);
+                this->TEOM_link->turn_off();
+            }
+            break;
+        case DISPLAY:
+            this->vspf_Text(TEXT_ADD(2), (char *) "%05.1lfL/m",COM_link->data_BUS.to_float.Flow_value_r);
+            if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) {
+                this->vspf_Text(TEXT_ADD(1), (char *) "长时间采样");
+                this->vspf_Text(TEXT_ADD(4), (char *) "%04.1lf小时",TEOM_link->DATA.to_float.Samp_TL);
+            }
+            else{
+                this->vspf_Text(TEXT_ADD(1), (char *) "短时间采样");
+                this->vspf_Text(TEXT_ADD(4), (char *) "%04.1lf分钟",TEOM_link->DATA.to_float.Samp_TS);
+            }
+            if(worked){
+                uint8_t h,m,s;
+                this->RTX->get_run_time(&h,&m,&s);
+                this->vspf_Text(TEXT_ADD(3),(char *) "%02d:%02d:%02d  ",h,m,s);
+                if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) {
+                    if(h==(uint8_t)TEOM_link->DATA.to_float.Samp_TL){
+
+                    }
+                }
+                else{
+                    if(m==(uint8_t)TEOM_link->DATA.to_float.Samp_TS){
+                        this->Samp_prepare_page(TURN);
+                        this->TEOM_link->turn_off();
+                    }
+                }
+            }
+            else{
+                this->vspf_Text(TEXT_ADD(3),(char *) "00：00：00");
+                this->vspf_Text(TEXT_ADD(5),(char *) "---.---Hz");
+                this->vspf_Text(TEXT_ADD(7),(char *) "----Pa");
+            }
+            frq_temp =this->TEOM_link->get_frq();
+            this->vspf_Text(TEXT_ADD(6),(char *) "%09.5lfHz   ",frq_temp);
+            this->send_cure_data(0,frq_temp);
+
+            this->vspf_Text(TEXT_ADD(8),(char *) "%04.0lfPa   ",this->TEOM_link->Pre_link->get_value());
+
+            this->vspf_Text(TEXT_ADD(10), (char *) "%09.5lf",
+                            frq_temp + (float) teom_dis_mul[teom_dis_mul_num][1] / 1000.0f);//388.46844
+            this->vspf_Text(TEXT_ADD(11), (char *) "%09.5lf", frq_temp);//388.443451
+            this->vspf_Text(TEXT_ADD(12), (char *) "%09.5lf",
+                            frq_temp - (float) teom_dis_mul[teom_dis_mul_num][1] / 1000.0f);
+            break;
+        case Error:
+            break;
+    }
+}
+
+void DW_DIS::Super_page(DW_DIS::Event E) {
+    switch (E) {
+        case TURN:
+            this->Interface_switching(16);
+            break;
+        case KEY:
+            switch (this->get_key_data()) {
+                case 0:
+                this->Main_page(TURN);
+            }
+            break;
+        case Data:
+            break;
+        case DISPLAY:
+            break;
+        case Error:
+            break;
+    }
+}
+
 
 
 

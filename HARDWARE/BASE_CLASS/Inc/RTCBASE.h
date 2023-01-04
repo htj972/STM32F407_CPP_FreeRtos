@@ -16,7 +16,7 @@ private:
     uint8_t  week_mode=WEEK_MODE::Monday_First;
     uint8_t  hour_mode=HOUR_MODE::_24H_MODE;
     void     hour_change();
-
+    uint32_t Initial_time;
 protected:
     uint16_t year{};
     uint8_t  month{};
@@ -97,6 +97,10 @@ public:
 
     uint8_t get_name();
     std::string get_name_str(name_mode mode =name_mode::EN);
+
+    void set_Initial_time();
+    uint32_t get_run_time();
+    void get_run_time(uint8_t *h,uint8_t *m,uint8_t *s);
 };
 
 

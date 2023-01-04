@@ -34,7 +34,7 @@ void DW_LCD::init(_USART_ *USART, uint8_t head1, uint8_t head2) {
 /*!
  * 触摸屏  界面切换  函数
  * @param Interface 界面号
- * @param head 数据帧头
+ * @param save 是否保持
  * @return void
  */
 void DW_LCD::Interface_switching(uint16_t Interface,bool save)
@@ -292,7 +292,7 @@ void DW_LCD::Wake_up() {
  * @param curve_data:数据地址
  * @return
  */
-void DW_LCD::DrawCurve(uint8_t ch, uint16_t X_scale, uint16_t Y_scale, int Y_offset, uint16_t data_num, u16 max_data, const u16 * curve_data)
+void DW_LCD::DrawCurve(uint8_t ch, uint16_t X_scale, uint16_t Y_scale, int Y_offset, uint16_t data_num, uint16_t max_data, const uint16_t * curve_data)
 {
     uint16_t tmp;
     uint16_t datapos;

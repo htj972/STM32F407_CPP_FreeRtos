@@ -44,8 +44,11 @@ float PID_BASE::calculate(float current) {
     return this->B;
 }
 
-
-
+/*!
+ * ÂË²¨Æ÷³õÊ¼»¯
+ * @param kQ ²â£¨¹ý³Ì£©ÔëÉù·½²î
+ * @param kR ²âÁ¿£¨¹Û²â£©ÔëÉù·½²î
+*/
 void Kalman::init(float kQ, float kR) {
     this->A = 1;  //±êÁ¿¿¨¶ûÂü
     this->H = 2;  //

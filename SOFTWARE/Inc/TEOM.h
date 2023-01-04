@@ -16,6 +16,7 @@
 #include "MAX31865.h"
 #include "Temp_ctrl.h"
 #include "PWM.h"
+#include "SMI.h"
 
 #define HARD_version 1.0f
 
@@ -67,10 +68,12 @@ public:
 
 class TEOM {
 private:
+
 protected:
     _OutPut_ EN;
     Tim_Capture TimxC;
 public:
+    float frqdata[256]{};
     POWER_TEOM_DATA DATA;
     TEOM(GPIO_Pin ENx,TIM_TypeDef* TIMx,uint8_t channel);
     TEOM()=default;
@@ -79,6 +82,29 @@ public:
     void turn_off();
 
     float get_frq();
+};
+
+class pressure_dif:public SMI,private Software_IIC,private Kalman{
+private:
+    float data[40]{};
+    uint8_t num;
+public:
+    pressure_dif(uint8_t scl,uint8_t sda) : Kalman(){
+        Software_IIC::init(scl,sda);
+        SMI::init(this,34473.785,-34473.785);
+        Kalman::init(20,5);
+        this->num=0;
+    }
+    void read(){
+        this->data[this->num++]=Kalman::Filter(this->get_temp());
+        if(this->num>=40)this->num=0;
+    };
+    float get_value(){
+        float sum=0;
+        for(float &ii : this->data)
+            sum+=ii;
+        return sum/40;
+    };
 };
 
 class TEOM_TEMP:private SPI,public PWM_H{
@@ -100,6 +126,8 @@ public:
         PDATA_Storage::Software_IIC::init(Pin_Scl,Pin_Sda);
         TEOM::init(ENx,TIMx,channel);
     }
+    pressure_dif *Pre_link{};
+    void Link_PRE(pressure_dif *Pre_linkx);
     void inital() override;
     void data_save(float *data,float value);
 };

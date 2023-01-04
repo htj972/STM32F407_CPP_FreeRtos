@@ -9,6 +9,7 @@
 
 #include "Timer.h"
 #include "GPIO.h"
+#include "PID_BASE.h"
 
 class Tim_Capture:public Timer, public Call_Back{
 public:
@@ -22,7 +23,8 @@ protected:
     uint32_t 	    CAPTURE_VAL{};
     uint32_t 	    CAPTURE_LEN{};
     uint32_t 	    CAPTURE_MAX_LEN{};
-    uint32_t 	    CAPTURE_TABLE[1024]{};
+    bool            OVER_flag;
+    uint32_t 	    CAPTURE_TABLE[4096]{};
 private:
     uint8_t CHANNEL{};
     TIM_ICInitTypeDef  TIM_ICInitStructure{};
@@ -34,6 +36,7 @@ private:
     bool GPIO_CH3();
     bool GPIO_CH4();
 public:
+    Kalman filte{};
     Tim_Capture(TIM_TypeDef* TIMx,uint8_t channelx,GPIO_Pin Pinx,uint32_t fifo_size=1024,uint32_t FRQ=Capture_Frq::_1M);
     Tim_Capture(TIM_TypeDef* TIMx,uint8_t channelx,uint32_t fifo_size=1024,uint32_t FRQ=Capture_Frq::_1M);
     explicit Tim_Capture(TIM_TypeDef* TIMx,uint32_t FRQ=Capture_Frq::_1M);
@@ -43,7 +46,7 @@ public:
 //    bool config(int ch,...);
     void config_Pin(uint8_t channelx,uint32_t fifo_size=1024);
     void config_Pin(uint8_t channelx,GPIO_Pin Pinx,uint32_t fifo_size=1024);
-    uint32_t get_CAPTURE_fifo();
+    float get_CAPTURE_fifo();
     uint32_t get_CAPTURE_VAL() const;
 
     void start();

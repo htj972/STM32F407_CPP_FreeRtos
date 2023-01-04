@@ -52,6 +52,7 @@ void Tim_Capture::init(TIM_TypeDef *TIMx, uint32_t FRQ) {
         APBx=84*(1000000/FRQ);
 
     Timer::init(TIMx,0XFFFFFFFF-1,APBx-1);
+    this->filte.init(100,10);
 }
 /*!
  * 配置通道
@@ -68,6 +69,10 @@ void Tim_Capture::config_Pin(uint8_t channelx,GPIO_Pin Pinx,uint32_t fifo_size) 
     else if(channelx==0)channelx=1;
     this->set_Callback();
     this->CAPTURE_MAX_LEN=fifo_size;
+    for(uint32_t ii=0;ii<fifo_size;ii++)
+        this->CAPTURE_TABLE[ii]=3333;
+    this->CAPTURE_LEN=0;
+    this->OVER_flag= false;
 //    *this->CAPTURE_TABLE=(uint32_t*)mymalloc(SRAMIN,fifo_size*4);
     this->CHANNEL=channelx;
     this->TIM_ICInitStructure.TIM_Channel = 0x0004*(channelx-1); //CC1S=01 	选择输入端 IC映射到TI上
@@ -90,6 +95,10 @@ void Tim_Capture::config_Pin(uint8_t channelx,uint32_t fifo_size){
     if(channelx>4)channelx=4;
     else if(channelx==0)channelx=1;
     this->CAPTURE_MAX_LEN=fifo_size;
+    for(uint32_t ii=0;ii<fifo_size;ii++)
+        this->CAPTURE_TABLE[ii]=3333;
+    this->CAPTURE_LEN=0;
+    this->OVER_flag= false;
 //    *this->CAPTURE_TABLE=(uint32_t*)mymalloc(SRAMIN,fifo_size*4);
     this->CHANNEL=channelx;
     this->default_GPIO(channelx);
@@ -102,7 +111,7 @@ void Tim_Capture::config_Pin(uint8_t channelx,uint32_t fifo_size){
     this->TIM_ICInitStructure.TIM_ICFilter = 0xf;//IC1F=0000 配置输入滤波器 不滤波
     TIM_ICInit(this->Timx, &this->TIM_ICInitStructure);
 
-    this->set_NVIC(true);
+    this->set_NVIC(true,0,0);
     TIM_ITConfig(this->Timx,TIM_IT_Update|(0x0001<<channelx),DISABLE);//允许更新中断 ,允许CCIE捕获中断
     TIM_SetCounter(this->Timx,0);
 }
@@ -213,12 +222,15 @@ void Tim_Capture::Callback(int num, char **gdata) {
     }
     else if(gdata[0][0]==Call_Back::Name::timer_cc)
     {
-        if(gdata[2][0]==this->CHANNEL){
-            this->CAPTURE_VAL=TIM_GetCapture2(this->Timx);
-            TIM_SetCounter(this->Timx,0);
-            this->CAPTURE_TABLE[this->CAPTURE_LEN++]=this->CAPTURE_VAL;
-            if(this->CAPTURE_LEN>=this->CAPTURE_MAX_LEN)
-                this->CAPTURE_LEN=0;
+        if(gdata[2][0]==this->CHANNEL) {
+            this->CAPTURE_VAL = TIM_GetCapture2(this->Timx);
+            TIM_SetCounter(this->Timx, 0);
+            this->CAPTURE_VAL = (uint32_t) this->filte.Filter((float) this->CAPTURE_VAL);
+            this->CAPTURE_TABLE[this->CAPTURE_LEN++] = this->CAPTURE_VAL;
+            if (this->CAPTURE_LEN >= this->CAPTURE_MAX_LEN) {
+                this->OVER_flag = true;
+                this->CAPTURE_LEN = 0;
+            }
         }
     }
 }
@@ -230,11 +242,18 @@ void Tim_Capture::set_Callback() {
     this->set_CCextern_fun(true);
 }
 
-uint32_t Tim_Capture::get_CAPTURE_fifo() {
-    uint32_t sum=0;
-    for(uint32_t ii=0;ii<this->CAPTURE_MAX_LEN;ii++)
-        sum+=this->CAPTURE_TABLE[ii];
-    return sum/this->CAPTURE_MAX_LEN;
+float Tim_Capture::get_CAPTURE_fifo() {
+    float sum=0.0f;
+    if(this->OVER_flag) {
+        for (uint32_t ii = 0; ii < this->CAPTURE_MAX_LEN; ii++)
+            sum += (float) this->CAPTURE_TABLE[ii];
+        return sum / (float) this->CAPTURE_MAX_LEN;
+    }
+    else {
+        for (uint32_t ii = 0; ii < this->CAPTURE_LEN+1; ii++)
+            sum += (float) this->CAPTURE_TABLE[ii];
+        return sum / (float) this->CAPTURE_LEN+1;
+    }
 }
 
 uint32_t Tim_Capture::get_CAPTURE_VAL() const {
