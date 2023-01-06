@@ -24,6 +24,7 @@ private:
     void GPIO_AF_config(uint8_t channel);
 public:
     PWM_H(TIM_TypeDef* TIMx,uint32_t FRQ);
+    PWM_H(TIM_TypeDef* TIMx);
     PWM_H()=default;
     void init(TIM_TypeDef* TIMx,uint32_t FRQ);
     bool config(int ch,...);

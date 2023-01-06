@@ -45,17 +45,17 @@ typedef union K_POWER_DATA_{
     uint8_t   to_u8t[sizeof(USER_data)];
     K_POWER_DATA_() {
         to_float.version=HARD_version;
-        to_float.Flow_coefficient=1.0;
+        to_float.Flow_coefficient=10;
         to_float.stove_P=5;
         to_float.stove_I=0.1;
         to_float.stove_D=5;
         to_float.Flow_P=1;
-        to_float.Flow_I=1;
-        to_float.Flow_D=1;
+        to_float.Flow_I=0.1;
+        to_float.Flow_D=0.5;
     };
 }K_POWER_DATA;
 
-class Communication: private RS485, private Timer, public modbus {
+class Communication: private RS485, public Timer, public modbus {
 public:
     Communication(USART_TypeDef* USARTx,uint8_t DE,TIM_TypeDef *TIMx, uint16_t frq,uint8_t PinTx,uint8_t PinRx);
     K_POWER_DATA data_BUS;

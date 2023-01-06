@@ -15,7 +15,6 @@
 class Timer {
 private:
     NVIC_InitTypeDef NVIC_InitStructure{};
-    void RCC_init();
     static void extern_init();
     bool config_flag{};
     static char Interrupt_data[2];
@@ -26,6 +25,7 @@ protected:
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure{};
     uint8_t timer_num{};
     TIM_TypeDef* Timx{};
+    void RCC_init();
 public:
     Timer(TIM_TypeDef* TIMx,uint32_t arr,uint16_t psc,bool nvic= false);
     Timer();

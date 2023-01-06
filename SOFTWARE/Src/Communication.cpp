@@ -10,7 +10,7 @@ Communication::Communication(USART_TypeDef *USARTx, uint8_t DE, TIM_TypeDef *TIM
                              uint8_t PinRx) {
     RS485::init(USARTx,DE);
     RS485::config(PinTx,PinRx);
-    Timer::init(TIMx,10000/frq,8400,true);
+    Timer::init(TIMx,10000/frq,8400, true);
     modbus::init(this);
     this->initial();
 }

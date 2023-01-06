@@ -11,6 +11,7 @@
 #include "MS5805.h"
 #include "FM24Cxx.h"
 #include "Fower_Ctrl.h"
+#include "DS18B20.h"
 
 
 //任务优先级
@@ -23,22 +24,31 @@ TaskHandle_t StartTask_Handler;
 void start_task(void *pvParameters);
 
 //任务优先级
-#define TASK1_TASK_PRIO		2
+#define LOGIC_TASK_PRIO		3
 //任务堆栈大小
-#define TASK1_STK_SIZE 		512
+#define LOGIC_STK_SIZE 		512
 //任务句柄
-TaskHandle_t Task1Task_Handler;
+TaskHandle_t LOGICTask_Handler;
 //任务函数
-[[noreturn]] void task1_task(void *pvParameters);
+[[noreturn]] void LOGIC_task(void *pvParameters);
 
 //任务优先级
-#define TASK2_TASK_PRIO		2
+#define PID_TASK_PRIO		2
 //任务堆栈大小
-#define TASK2_STK_SIZE 		512
+#define PID_STK_SIZE 		256
 //任务句柄
-TaskHandle_t Task2Task_Handler;
+TaskHandle_t PIDTask_Handler;
 //任务函数
-[[noreturn]] void task2_task(void *pvParameters);
+[[noreturn]] void PID_task(void *pvParameters);
+
+//任务优先级
+#define DATA_TASK_PRIO		2
+//任务堆栈大小
+#define DATA_STK_SIZE 		256
+//任务句柄
+TaskHandle_t DATATask_Handler;
+//任务函数
+[[noreturn]] void DATA_task(void *pvParameters);
 
 //IIC总线
 Software_IIC IIC_BUS(GPIOB8,GPIOB9);
@@ -47,20 +57,24 @@ MS5805  Atmospheric_P(&IIC_BUS);
 //EEPROM 数据存储
 FM24Cxx power_data(&IIC_BUS);
 
+//硬件PWM
+PWM_H PWM(TIM4,1000);
 //SPI总线
 SPI_S SPI_BUS(GPIOE5,GPIOE3,GPIOE6);
 //预处理控温软件类
-pretreatment stovectrl(&SPI_BUS,GPIOE4,TIM4,1000,2,GPIOC10,GPIOC11);
+pretreatment stovectrl(&SPI_BUS,GPIOE4,&PWM,2,GPIOC10,GPIOC11);
 //大气温度传感器
 MAX31865 Atmospheric_T(&SPI_BUS,GPIOE2);
 //通信软件类
-Communication m_modebus(USART2,GPIOD4,TIM7,100,GPIOD5,GPIOD6);
+Communication m_modebus(USART2,GPIOD4,TIM7,1000,GPIOD5,GPIOD6);
 
 
+Differential_pressure JY(GPIOD1,GPIOD0,100000,-100000);
+Differential_pressure LY(GPIOD3,GPIOD2,4000,-500);
+//计温
+DS18B20  JW(GPIOB6);
 
-
-Differential_pressure tes1(GPIOD1,GPIOD0,100000,-100000,TIM9,100);
-Differential_pressure tes2(GPIOD3,GPIOD2,4000,-500,TIM10,100);
+Fower_Ctrl LL(&LY,&JY,&Atmospheric_P,&JW,&Atmospheric_T);
 
 //运行指示灯
 class T_led_:public _OutPut_,public Call_Back,public Timer{
@@ -74,6 +88,7 @@ public:
         this->change();
     };
 }led2(GPIOE1,TIM6,10);
+
 
 
 class OLED:private Software_IIC,public OLED_SSD1306{
@@ -93,6 +108,9 @@ int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);	//初始化延时函数
+
+    delay_ms(500);
+
     MLED.initial();             //OLED 初始化
 
     Atmospheric_T.init();       //
@@ -107,9 +125,15 @@ int main()
         m_modebus.data_BUS=init_data;       //转移数据到使用结构体
         power_data.write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
     }
-
+    PWM.config(1,2);
+    LL.config(&PWM,1);
+    LL.FLOW_RATE=m_modebus.data_BUS.to_float.Flow_coefficient;
     stovectrl.initial();        //炉子初始化
+    JW.init();
 
+//    PWM.set_channel1_Duty_cycle(5 );
+
+    taskENTER_CRITICAL();           //进入临界区
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
                 (const char*    )"start_task",           //任务名称
@@ -117,6 +141,7 @@ int main()
                 (void*          )nullptr,            //传递给任务函数的参数
                 (UBaseType_t    )START_TASK_PRIO,       //任务优先级
                 (TaskHandle_t*  )&StartTask_Handler);   //任务句柄
+    taskEXIT_CRITICAL();            //退出临界区
     vTaskStartScheduler();          //开启任务调度
 }
 
@@ -124,46 +149,58 @@ int main()
 void start_task(void *pvParameters)
 {
     taskENTER_CRITICAL();           //进入临界区
-    //创建TASK1任务
-    xTaskCreate((TaskFunction_t )task1_task,
-                (const char*    )"task1_task",
-                (uint16_t       )TASK1_STK_SIZE,
+    //创建LOGIC任务
+    xTaskCreate((TaskFunction_t )LOGIC_task,
+                (const char*    )"LOGIC_task",
+                (uint16_t       )LOGIC_STK_SIZE,
                 (void*          )nullptr,
-                (UBaseType_t    )TASK1_TASK_PRIO,
-                (TaskHandle_t*  )&Task1Task_Handler);
-    //创建TASK2任务
-    xTaskCreate((TaskFunction_t )task2_task,
-                (const char*    )"task2_task",
-                (uint16_t       )TASK2_STK_SIZE,
+                (UBaseType_t    )LOGIC_TASK_PRIO,
+                (TaskHandle_t*  )&LOGICTask_Handler);
+    //创建PID任务
+    xTaskCreate((TaskFunction_t )PID_task,
+                (const char*    )"PID_task",
+                (uint16_t       )PID_STK_SIZE,
                 (void*          )nullptr,
-                (UBaseType_t    )TASK2_TASK_PRIO,
-                (TaskHandle_t*  )&Task2Task_Handler);
-    vTaskDelete(StartTask_Handler); //删除开始任务
+                (UBaseType_t    )PID_TASK_PRIO,
+                (TaskHandle_t*  )&PIDTask_Handler);
+
+    //创建DATA任务
+    xTaskCreate((TaskFunction_t )DATA_task,
+                (const char*    )"DATA_task",
+                (uint16_t       )DATA_STK_SIZE,
+                (void*          )nullptr,
+                (UBaseType_t    )DATA_TASK_PRIO,
+                (TaskHandle_t*  )&DATATask_Handler);
+
+    vTaskDelete(StartTask_Handler);
     taskEXIT_CRITICAL();            //退出临界区
 }
 
-//task1任务函数
-[[noreturn]] void task1_task(void *pvParameters)//alignas(8)
+//LOGIC任务函数
+[[noreturn]] void LOGIC_task(void *pvParameters)
 {
-    uint8_t sec_t=0;
+    static bool LL_init_f= false;
     while(true)
     {
-        vTaskDelay(200/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-        MLED.Print(0,0,"V%.2lf",m_modebus.data_BUS.to_float.version);
+        delay_ms(200);
 
+        MLED.OLED_SSD1306::Queue_star();
+        MLED.Print(0,0,"%.2lf   %.2lf",LL.LiuYa,LL.JiYa);
+        MLED.Print(0,2,"%.2lf   %.2lf",LL.JiWen,LL.DaQiWen);
 
-        MLED.Print(0,2,"%.2lf",stovectrl.get_cur());
+        MLED.Print(0,4,"%.2lf",LL.DaQiYa);
 
-        MLED.Print(0,4,"%.2lf",Atmospheric_T.get_temp());
+        MLED.Print(0,6,"%.2lf",LL.cur);
+        MLED.OLED_SSD1306::Queue_end();
 
-        MLED.Print(0,6,"%.2lf",Atmospheric_P.get_pres());
-//        MLED.Print(0,6,"%.2lf",stovectrl.get_temp_cache());
-//        pretreatment1.set_target(150);
-//        pretreatment1.upset();
 
         m_modebus.data_BUS.to_float.stove_temp_r=stovectrl.get_cur();
+        m_modebus.data_BUS.to_float.Flow_value_r=LL.cur;
+        m_modebus.data_BUS.to_float.air_temp=Atmospheric_T.get_temp_cache();
+        m_modebus.data_BUS.to_float.Flow_coefficient=LL.FLOW_RATE;
 
         if(m_modebus.data_BUS.to_float.stove_work==1){
+
             stovectrl.turn_ON();
         }
         else
@@ -171,17 +208,48 @@ void start_task(void *pvParameters)
             stovectrl.turn_OFF();
         }
 
+        if(m_modebus.data_BUS.to_float.Flow_work==1){
+            LL.set_target(m_modebus.data_BUS.to_float.Flow_value_s);
+            LL.TURN_ON();
+            if(!LL_init_f)
+            {
+                LL_init_f= true;
+                JY.calculate_pres_offset(0);
+                LY.calculate_pres_offset(0);
+            }
+            if(m_modebus.data_BUS.to_float.Flow_value_w>0){
+                LL.FLOW_RATE_change(m_modebus.data_BUS.to_float.Flow_value_w);
+                m_modebus.data_BUS.to_float.Flow_value_w=0;
+                m_modebus.data_BUS.to_float.Flow_coefficient=LL.FLOW_RATE;
+                power_data.write(0,m_modebus.data_BUS.to_u8t,sizeof(m_modebus.data_BUS));  //写入数据
+            }
+        }
+        else
+        {
+            LL.TURN_OFF();
+        }
+
     }
 }
 
-//task2任务函数
-[[noreturn]] void task2_task(void *pvParameters)
+//PID任务函数
+[[noreturn]] void PID_task(void *pvParameters)
 {
     while(true)
     {
         delay_ms(500);
         stovectrl.upset();
+        LL.upset();
     }
 }
 
-
+//DATA任务函数
+[[noreturn]] void DATA_task(void *pvParameters)
+{
+    while(true)
+    {
+        delay_ms(100);
+        LL.data_upset();
+        LL.calculation_hole_flow();
+    }
+}

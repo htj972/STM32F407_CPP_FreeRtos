@@ -18,12 +18,11 @@ private:
     bool en;
     uint16_t _05s_back_times;
 protected:
-    PWM_H PWMx;
+    PWM_H *PWMx{};
     _OutPut_ BENGx;
     _OutPut_ FAx;
 public:
-    pretreatment(SPI_BASE *SPIx,uint8_t CSpin,TIM_TypeDef *PWM_TIMx, uint32_t FRQ,uint8_t ch,
-                 GPIO_Pin BENG,GPIO_Pin FA);
+    pretreatment(SPI_BASE *SPIx,uint8_t CSpin,PWM_H *PWM,uint8_t ch,GPIO_Pin BENG,GPIO_Pin FA);
     void initial();
 
     void turn_ON();

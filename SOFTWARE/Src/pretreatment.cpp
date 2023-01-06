@@ -6,11 +6,9 @@
 
 #include "pretreatment.h"
 
-pretreatment::pretreatment(SPI_BASE *SPIx, uint8_t CSpin, TIM_TypeDef *PWM_TIMx,
-                           uint32_t FRQ, uint8_t ch,GPIO_Pin BENG,GPIO_Pin FA):SCpinx(CSpin){
-    this->PWMx.init(PWM_TIMx,FRQ);
-    this->PWMx.config(ch);
-    Temp_ctrl::init(this,&this->PWMx,ch);
+pretreatment::pretreatment(SPI_BASE *SPIx, uint8_t CSpin,PWM_H *PWM,uint8_t ch,GPIO_Pin BENG,GPIO_Pin FA):SCpinx(CSpin){
+    this->PWMx=PWM;
+    Temp_ctrl::init(this,this->PWMx,ch);
     this->spix=SPIx;
     this->en= false;
     this->BENGx.init(BENG,HIGH);

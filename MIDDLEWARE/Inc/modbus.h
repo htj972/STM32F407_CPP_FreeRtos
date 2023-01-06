@@ -46,10 +46,10 @@ protected:
     string  modbus_send_data;
     uint16_t reveive_len{};
 public:
-    explicit modbus(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=500,uint16_t sfreetime=20);
+    explicit modbus(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=500,uint16_t sfreetime=10);
     modbus()=default;
     ~modbus();
-    void init(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=500,uint16_t sfreetime=20);
+    void init(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=500,uint16_t sfreetime=10);
     void config(uint16_t* address,uint16_t len,uint16_t start=0);
     void set_id(uint8_t id=1);
     void set_mode(uint8_t mode =0);

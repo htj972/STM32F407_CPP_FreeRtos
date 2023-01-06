@@ -11,6 +11,12 @@ PWM_H::PWM_H(TIM_TypeDef* TIMx,uint32_t FRQ){
     this->init(TIMx,FRQ);
 }
 
+
+PWM_H::PWM_H(TIM_TypeDef *TIMx) {
+    this->Timx=TIMx;
+    Timer::RCC_init();
+}
+
 void PWM_H::init(TIM_TypeDef *TIMx, uint32_t FRQ) {
     uint16_t APBx=84;
     if((TIMx==TIM1)||(TIMx==TIM8)||(TIMx==TIM9)||(TIMx==TIM10)||(TIMx==TIM11))
@@ -52,8 +58,8 @@ bool PWM_H::config(int ch, ...) {
 }
 
 bool PWM_H::GPIO_init(uint8_t num) {
-    if(num>4)num=4;
-    if(num==0)num=1;
+    if(num>4)return false;
+    if(num==0)return false;
     if(this->Timx== nullptr)return false;
     bool ret;
     switch (num) {
@@ -211,6 +217,7 @@ void PWM_H::set_channel3_ccr(uint32_t ccr) {
 void PWM_H::set_channel4_ccr(uint32_t ccr) {
     TIM_SetCompare4(this->Timx,ccr);
 }
+
 
 
 
