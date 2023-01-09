@@ -242,6 +242,28 @@ void DW_DIS::Dis_handle() {
     }
 }
 /*!
+ * 触摸屏软件  检测数据事件
+ * @根据按键转换对对应页面
+ */
+#include "delay.h"
+#define Event_num 10
+uint8_t DW_DIS::Check_Event(uint8_t num){
+    switch (num/(100/Event_num)){
+        case 0:
+            if(COM_link->modbus_03_send(0,4)==0)
+                this->vspf_Text(TEXT_ADD(4),(char*)"通讯正常");
+            else
+                this->vspf_Text(TEXT_ADD(4),(char*)"通讯异常");
+            break;
+        default:
+            this->vspf_Text(TEXT_ADD(4),(char*)"  %d      ",num/(100/Event_num));
+            break;
+    }
+    delay_ms(500);
+    num+=(100/Event_num);
+    return num;
+}
+/*!
  * 触摸屏软件  检测数据事件显示处理
  * @根据按键转换对对应页面
  */
@@ -249,15 +271,14 @@ void DW_DIS::Check_page(Event E) {
     switch (E) {
         case TURN:
         this->Interface_switching(1);
-        this->vspf_Text(TEXT_ADD(1),(char*)"V 0.0");
-        this->vspf_Text(TEXT_ADD(2),(char*)"V 0.0");
+        this->vspf_Text(TEXT_ADD(1),(char*)"V3.1f",TEOM_link->DATA.to_float.version);
+        this->vspf_Text(TEXT_ADD(2),(char*)"V1.0");
         this->vspf_Text(TEXT_ADD(3),(char*)"ABCD");
-        this->vspf_Text(TEXT_ADD(4),(char*)"OK");
     break;
     case DISPLAY:
         static uint8_t ii=0;
+            ii=Check_Event(ii);
             this->set_Progress_bar(PIC_ADD(1),ii,87,362,724,399);
-            ii+=10;
             if(ii>=100)
                 Main_page(TURN);
         break;
@@ -410,13 +431,14 @@ void DW_DIS::Maintain_page(Event E) {
                 case 1://开关加热炉
                     COM_link->data_set(&COM_link->data_BUS.to_float.stove_work,stove_work_flag);
                     break;
-                case 2://开关加热炉
+                case 2://标定开关
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,16.7);
                     COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,flow_work_flag);
                     break;
-                case 3://开关加热炉
+                case 3://5L
                     COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,5);
                     break;
-                case 4://开关加热炉
+                case 4://17L
                     COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,16.7);
                     break;
             }
@@ -440,8 +462,10 @@ void DW_DIS::Maintain_page(Event E) {
                 this->Check_Box_set(flow_work_ON, false);
                 flow_work_flag=1;
             }
-            this->vspf_Text(TEXT_ADD(1),(char *)"%05.1lf",COM_link->data_BUS.to_float.stove_temp_r);
-            this->vspf_Text(TEXT_ADD(3),(char *)"%05.1lf",COM_link->data_BUS.to_float.Flow_value_r);
+            this->vspf_Text(TEXT_ADD(1),(char *)"%05.1lf"
+                            ,COM_link->data_BUS.to_float.stove_temp_r);
+            this->vspf_Text(TEXT_ADD(3),(char *)"%05.1lf   %05.2lf",COM_link->data_BUS.to_float.Flow_value_r,
+                            COM_link->data_BUS.to_float.Flow_coefficient);
 
             for (int ii = 0; ii < 5; ii++) {
                 TEMP_link->CTRLT[ii].upset(false);
@@ -449,6 +473,7 @@ void DW_DIS::Maintain_page(Event E) {
             }
             break;
         case Data:
+            COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_w,this->get_value_data()/100.0f);
             break;
         case Error:
             break;
@@ -602,6 +627,14 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
             this->Write_data(point_address,0x08,teom_dis_mul[teom_dis_mul_num][0]);
             this->vspf_Text(TEXT_ADD(9),(char *)"0.0%02dhz/行 ",teom_dis_mul[teom_dis_mul_num][1]/5);
             worked = false;
+            if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) {
+                COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,16.7);
+                COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,1);
+            }
+            else{
+                COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,5);
+                COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,1);
+            }
             break;
         case KEY:
             switch (this->get_key_data()) {
@@ -636,6 +669,7 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                 worked = false;
                 this->Samp_prepare_page(TURN);
                 this->TEOM_link->turn_off();
+                COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
             }
             break;
         case DISPLAY:
@@ -654,13 +688,18 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                 this->vspf_Text(TEXT_ADD(3),(char *) "%02d:%02d:%02d  ",h,m,s);
                 if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) {
                     if(h==(uint8_t)TEOM_link->DATA.to_float.Samp_TL){
-
+                        worked = false;
+                        this->Keyboard_Up(0x11);
+                        this->TEOM_link->turn_off();
+                        COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
                     }
                 }
                 else{
                     if(m==(uint8_t)TEOM_link->DATA.to_float.Samp_TS){
-                        this->Samp_prepare_page(TURN);
+                        worked = false;
+                        this->Keyboard_Up(0x11);
                         this->TEOM_link->turn_off();
+                        COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
                     }
                 }
             }

@@ -8504,7 +8504,8 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj: ../SOFTWARE/Src/DW_DIS.c
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/strings.h \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h \
   ../SOFTWARE/Inc/DW_SITE_DATA.h \
-  ../SOFTWARE/Inc/DW_DIS.h
+  ../SOFTWARE/Inc/DW_DIS.h \
+  ../SYSTEM/Inc/delay.h
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj: ../SOFTWARE/Src/Fower_Ctrl.cpp \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/valarray \

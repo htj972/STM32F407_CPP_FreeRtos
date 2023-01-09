@@ -41,6 +41,7 @@ protected:
     };
     uint16_t frqx;
     Event key_check();
+    uint8_t Check_Event(uint8_t num);
     uint8_t get_value_address();
     bool clear_text(uint8_t num);
     TEOM_Machine *TEOM_link{};
