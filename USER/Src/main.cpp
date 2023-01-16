@@ -128,6 +128,7 @@ int main()
     PWM.config(1,2);
     LL.config(&PWM,1);
     LL.FLOW_RATE=m_modebus.data_BUS.to_float.Flow_coefficient;
+    LL.set_ladder(10);
     stovectrl.initial();        //炉子初始化
     JW.init();
 
@@ -200,7 +201,6 @@ void start_task(void *pvParameters)
         m_modebus.data_BUS.to_float.Flow_coefficient=LL.FLOW_RATE;
 
         if(m_modebus.data_BUS.to_float.stove_work==1){
-
             stovectrl.turn_ON();
         }
         else
@@ -224,6 +224,7 @@ void start_task(void *pvParameters)
                 power_data.write(0,m_modebus.data_BUS.to_u8t,sizeof(m_modebus.data_BUS));  //写入数据
             }
         }
+
         else
         {
             LL.TURN_OFF();
@@ -248,7 +249,7 @@ void start_task(void *pvParameters)
 {
     while(true)
     {
-        delay_ms(100);
+        delay_ms(20);
         LL.data_upset();
         LL.calculation_hole_flow();
     }

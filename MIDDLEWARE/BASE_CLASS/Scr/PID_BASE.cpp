@@ -10,6 +10,8 @@ void PID_BASE::init(float P, float I, float D) {
     this->kp=P;
     this->ki=I;
     this->kd=D;
+    this->ladder=0;
+    this->last_B=0;
 }
 
 void PID_BASE::set_target(float target) {
@@ -19,6 +21,13 @@ void PID_BASE::set_target(float target) {
 void PID_BASE::clear() {
     this->sumError=0;
     this->lastError=0;
+    this->last_B=0;
+}
+
+void PID_BASE::set_ladder(float ladderx) {
+    if(ladderx<0)
+        ladderx=-ladderx;
+    this->ladder=ladderx;
 }
 
 float PID_BASE::get_target() const {
@@ -27,12 +36,7 @@ float PID_BASE::get_target() const {
 
 float PID_BASE::calculate(float target, float current) {
     this->tar=target;
-    this->Error=target-current;//当前误差 //PID算法第一步 设定转速减去当前转速 赋值给 Error
-    this->sumError=this->Error+this->sumError;//误差和
-    this->dError=this->Error-this->lastError;//误差偏差
-    this->lastError=this->Error;
-    this->B=this->kp*this->Error+this->ki*this->sumError+this->kd*this->dError;
-    return this->B;
+    return this->calculate(current);
 }
 
 float PID_BASE::calculate(float current) {
@@ -41,9 +45,17 @@ float PID_BASE::calculate(float current) {
     this->dError=this->Error-this->lastError;//误差偏差
     this->lastError=this->Error;
     this->B=this->kp*this->Error+this->ki*this->sumError+this->kd*this->dError;
+    if(this->ladder!=0){
+        if(this->B>this->last_B+this->ladder) {
+            this->B = this->last_B + this->ladder;
+        }else
+        if(this->B<this->last_B-this->ladder) {
+            this->B = this->last_B - this->ladder;
+        }
+    }
+    this->last_B = this->B;
     return this->B;
 }
-
 
 
 void Kalman::init(float kQ, float kR) {

@@ -34,7 +34,7 @@ protected:
     Pressure_BASE *daqiya;
     Temperature_BASE *jiwen;
     Temperature_BASE *daqiwen;
-    Kalman filter[6]{};
+    Kalman filter[5]{};
     PWM_H *CONTROLLER;
     uint8_t chx;
 public:

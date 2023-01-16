@@ -24,7 +24,7 @@ Fower_Ctrl::Fower_Ctrl(Pressure_BASE *liu, Pressure_BASE *ji, Pressure_BASE *daq
     for (uint8_t & ii : this->data_n)
         ii=0;
 
-    PID_BASE::init(1,0.1,0.5);
+    PID_BASE::init(0.8,0.3,0.8);
 }
 
 float Fower_Ctrl::calculation_hole_flow() {
@@ -105,17 +105,21 @@ void Fower_Ctrl::upset() {
     cur=FF_value;
 
     if(en){
-
         OUT=this->calculate(cur);
         if(OUT>100)OUT=100;
-        else if(OUT<0)OUT=0;
+        else if(OUT<4)OUT=4;
 
         if(this->CONTROLLER!= nullptr)
             this->CONTROLLER->set_Duty_cycle(this->chx,OUT);
     } else{
-        if(this->CONTROLLER!= nullptr)
-            this->CONTROLLER->set_Duty_cycle(this->chx,0);
+        if(this->CONTROLLER!= nullptr) {
+            OUT=this->calculate(0,cur);
+            if(OUT>100)OUT=100;
+            else if(OUT<0)OUT=0;
+            this->CONTROLLER->set_Duty_cycle(this->chx,OUT);
+        }
         cur=0;
+        this->clear();
     }
 }
 

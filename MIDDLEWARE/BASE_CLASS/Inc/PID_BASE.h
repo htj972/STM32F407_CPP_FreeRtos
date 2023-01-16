@@ -19,12 +19,15 @@ private:
     float lastError;
     float dError;
     float Error;
+    float ladder;
+    float last_B;
 protected:
     float tar;
 public:
     void init(float P, float I, float D);
     void set_target(float target);
     void clear();
+    void set_ladder(float ladderx);
     float get_target() const;
     float calculate(float target,float current);
     float calculate(float current);

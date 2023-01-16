@@ -50,8 +50,8 @@ typedef union K_POWER_DATA_{
         to_float.stove_I=0.1;
         to_float.stove_D=5;
         to_float.Flow_P=1;
-        to_float.Flow_I=0.1;
-        to_float.Flow_D=0.5;
+        to_float.Flow_I=0.05;
+        to_float.Flow_D=0.1;
     };
 }K_POWER_DATA;
 
