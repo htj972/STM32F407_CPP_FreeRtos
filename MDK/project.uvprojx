@@ -325,7 +325,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>1</uC99>
+            <uC99>0</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>2</v6Lang>
@@ -336,10 +336,10 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>--cpp11</MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER,__FPU_USED=1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE\Inc;..\FreeRTOS\FreeRTOS_Inc;..\FWLIB\inc;..\HARDWARE\Inc;..\SYSTEM\Inc;..\USER\Inc</IncludePath>
+              <IncludePath>..\CORE\Inc;..\FreeRTOS\FreeRTOS_Inc;..\FWLIB\inc;..\HARDWARE\BASE_CLASS\Inc;..\HARDWARE\Inc;..\SYSTEM\Inc;..\USER\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -394,14 +394,14 @@
               <FilePath>..\USER\Src\system_stm32f4xx.c</FilePath>
             </File>
             <File>
-              <FileName>main.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\USER\Src\main.cpp</FilePath>
+              <FileName>startup_stm32f40_41xxx.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\startup_stm32f40_41xxx.s</FilePath>
             </File>
             <File>
-              <FileName>startup_stm32f407xx.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\startup\startup_stm32f407xx.s</FilePath>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -589,26 +589,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>HARDWARE</GroupName>
-          <Files>
-            <File>
-              <FileName>GPIO.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\HARDWARE\Src\GPIO.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Out_In_Put.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\HARDWARE\Src\Out_In_Put.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>USART.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\HARDWARE\Src\USART.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>SYSTEM</GroupName>
           <Files>
             <File>
@@ -621,10 +601,20 @@
               <FileType>1</FileType>
               <FilePath>..\SYSTEM\Src\sys.c</FilePath>
             </File>
+            <File>
+              <FileName>DMA.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\Src\DMA.c</FilePath>
+            </File>
+            <File>
+              <FileName>malloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\Src\malloc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>FreeRTOS</GroupName>
+          <GroupName>FREERTOS</GroupName>
           <Files>
             <File>
               <FileName>croutine.c</FileName>
@@ -647,11 +637,6 @@
               <FilePath>..\FreeRTOS\FreeRTOS_CORE\queue.c</FilePath>
             </File>
             <File>
-              <FileName>stream_buffer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FreeRTOS\FreeRTOS_CORE\stream_buffer.c</FilePath>
-            </File>
-            <File>
               <FileName>tasks.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FreeRTOS\FreeRTOS_CORE\tasks.c</FilePath>
@@ -660,11 +645,6 @@
               <FileName>timers.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FreeRTOS\FreeRTOS_CORE\timers.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmsis_os.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FreeRTOS\FreeRTOS_PORTABLE\cmsis_os.c</FilePath>
             </File>
             <File>
               <FileName>heap_4.c</FileName>

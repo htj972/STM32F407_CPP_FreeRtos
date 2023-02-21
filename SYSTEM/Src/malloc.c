@@ -5,6 +5,7 @@
 **/
 
 #include "malloc.h"
+#include "string.h"
 
 #ifndef NULL
 #define NULL 0
@@ -36,31 +37,31 @@ struct _m_mallco_dev mallco_dev=
         0,  		 					//内存管理未就绪
     };
 
-//复制内存
-//*des:目的地址
-//*src:源地址
-//n:需要复制的内存长度(字节为单位)
-void mymemcpy(void *des,void *src,uint32_t n)
-{
-    uint8_t *xdes=des;
-    uint8_t *xsrc=src;
-    while(n--)*xdes++=*xsrc++;
-}
-//设置内存
-//*s:内存首地址
-//c :要设置的值
-//count:需要设置的内存大小(字节为单位)
-void mymemset(void *s,uint8_t c,uint32_t count)
-{
-    uint8_t *xs = s;
-    while(count--)*xs++=c;
-}
+////复制内存
+////*des:目的地址
+////*src:源地址
+////n:需要复制的内存长度(字节为单位)
+//void mymemcpy(void *des,void *src,uint32_t n)
+//{
+//    uint8_t *xdes=des;
+//    uint8_t *xsrc=src;
+//    while(n--)*xdes++=*xsrc++;
+//}
+////设置内存
+////*s:内存首地址
+////c :要设置的值
+////count:需要设置的内存大小(字节为单位)
+//void mymemset(void *s,uint8_t c,uint32_t count)
+//{
+//    uint8_t *xs = s;
+//    while(count--)*xs++=c;
+//}
 //内存管理初始化
 //memx:所属内存块
 void my_mem_init(uint8_t memx)
 {
-    mymemset(mallco_dev.memmap[memx], 0,memtblsize[memx]*2);//内存状态表数据清零
-    mymemset(mallco_dev.membase[memx], 0,memsize[memx]);	//内存池所有数据清零
+    memset(mallco_dev.memmap[memx], 0,memtblsize[memx]*2);//内存状态表数据清零
+    memset(mallco_dev.membase[memx], 0,memsize[memx]);	//内存池所有数据清零
     mallco_dev.memrdy[memx]=1;								//内存管理初始化OK
 }
 //获取内存使用率
@@ -161,7 +162,7 @@ void *myrealloc(uint8_t memx,void *ptr,uint32_t size)
     if(offset==0XFFFFFFFF)return NULL;
     else
     {
-        mymemcpy((void*)((uint32_t) mallco_dev.membase[memx]+offset),ptr,size);	//拷贝旧内存内容到新内存
+        memcpy((void*)((uint32_t) mallco_dev.membase[memx]+offset),ptr,size);	//拷贝旧内存内容到新内存
         myfree(memx,ptr);  											  		//释放旧内存
         return (void*)((uint32_t) mallco_dev.membase[memx]+offset);  				//返回新内存首地址
     }

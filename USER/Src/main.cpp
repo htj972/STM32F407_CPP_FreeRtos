@@ -92,13 +92,12 @@ pretreatment stovectrl(&SPI_BUS,GPIOE4,&PWM,2,GPIOC10,GPIOC11);
 MAX31865 Atmospheric_T(&SPI_BUS,GPIOE2);
 //通信软件类
 Communication m_modebus(USART2,GPIOD4,TIM7,1000,GPIOD5,GPIOD6);
-
-
+//压差传感器类
 Differential_pressure JY(GPIOD1,GPIOD0,100000,-100000);
 Differential_pressure LY(GPIOD3,GPIOD2,4000,-500);
 //计温
 DS18B20  JW(GPIOB6);
-
+//流量
 Fower_Ctrl LL(&LY,&JY,&Atmospheric_P,&JW,&Atmospheric_T);
 
 //运行指示灯
@@ -134,12 +133,12 @@ int main()
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);	//初始化延时函数
 
-    delay_ms(500);
+    delay_ms(500);         //等待末端设备上电完成
 
     MLED.initial();             //OLED 初始化
 
-    Atmospheric_T.init();       //
-    Atmospheric_T.config(MAX31865::PT100,3900);
+    Atmospheric_T.init();       //大气温度初始化
+    Atmospheric_T.config(MAX31865::PT100,3900);//大气温度传感器配置
     Atmospheric_P.init();       //大气压初始化
     power_data.init();          //数据存储初始化
     //读取缓存数据
@@ -150,14 +149,13 @@ int main()
         m_modebus.data_BUS=init_data;       //转移数据到使用结构体
         power_data.write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
     }
-    PWM.config(1,2);
-    LL.config(&PWM,1);
-    LL.FLOW_RATE=m_modebus.data_BUS.to_float.Flow_coefficient;
-    LL.set_ladder(10);
+    PWM.config(1,2);      //配置PWM所用输出通道
+    LL.config(&PWM,1);//配置控制器
+    LL.FLOW_RATE=m_modebus.data_BUS.to_float.Flow_coefficient;//配置倍率
+    LL.set_ladder(10);   //设置流量PID控制变化梯度
     stovectrl.initial();        //炉子初始化
-    JW.init();
+    JW.init();                  //计温初始化
 
-//    PWM.set_channel1_Duty_cycle(5 );
 
     taskENTER_CRITICAL();           //进入临界区
     //创建开始任务
@@ -300,7 +298,7 @@ void start_task(void *pvParameters)
     }
 }
 
-//PID任务函数
+//PID任务函数 PWM控制更新
 [[noreturn]] void PID_task(void *pvParameters)
 {
     while(true)
@@ -311,7 +309,7 @@ void start_task(void *pvParameters)
     }
 }
 
-//DATA任务函数
+//DATA任务函数  流量计算
 [[noreturn]] void DATA_task(void *pvParameters)
 {
     while(true)
@@ -321,7 +319,7 @@ void start_task(void *pvParameters)
     }
 }
 
-//DATA1任务函数
+//DATA1任务函数 传感器数据更新
 [[noreturn]] void DATA1_task(void *pvParameters)
 {
     while(true)
@@ -331,7 +329,7 @@ void start_task(void *pvParameters)
     }
 }
 
-//DATA2任务函数
+//DATA2任务函数 传感器数据更新
 [[noreturn]] void DATA2_task(void *pvParameters)
 {
     while(true)
@@ -341,7 +339,7 @@ void start_task(void *pvParameters)
     }
 }
 
-//DATA3任务函数
+//DATA3任务函数 传感器数据更新
 [[noreturn]] void DATA3_task(void *pvParameters)
 {
     while(true)
@@ -351,7 +349,7 @@ void start_task(void *pvParameters)
     }
 }
 
-//DATA4任务函数
+//DATA4任务函数 传感器数据更新
 [[noreturn]] void DATA4_task(void *pvParameters)
 {
     while(true)
@@ -361,7 +359,7 @@ void start_task(void *pvParameters)
     }
 }
 
-//DATA5任务函数
+//DATA5任务函数 传感器数据更新
 [[noreturn]] void DATA5_task(void *pvParameters)
 {
     while(true)

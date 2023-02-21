@@ -8,10 +8,10 @@ extern "C"{
 #endif
 #endif /* __cplusplus */
 
-void delay_init(u8 SYSCLK);
-void delay_us(u32 nus);
-void delay_ms(u32 nms);
-void delay_xms(u32 nms);
+void delay_init(uint8_t SYSCLK);
+void delay_us(uint32_t nus);
+void delay_ms(uint32_t nms);
+void delay_xms(uint32_t nms);
 
 #ifdef __cplusplus
 #if __cplusplus

@@ -627,7 +627,8 @@ void ADC_SetInjectedOffset(ADC_TypeDef* ADCx, uint8_t ADC_InjectedChannel, uint1
 void ADC_ExternalTrigInjectedConvConfig(ADC_TypeDef* ADCx, uint32_t ADC_ExternalTrigInjecConv);
 void ADC_ExternalTrigInjectedConvEdgeConfig(ADC_TypeDef* ADCx, uint32_t ADC_ExternalTrigInjecConvEdge);
 void ADC_SoftwareStartInjectedConv(ADC_TypeDef* ADCx);
-FlagStatus ADC_GetSoftwareStartInjectedConvCmdStatus(ADC_TypeDef* ADCx);
+
+__attribute__((unused)) FlagStatus ADC_GetSoftwareStartInjectedConvCmdStatus(ADC_TypeDef* ADCx);
 void ADC_AutoInjectedConvCmd(ADC_TypeDef* ADCx, FunctionalState NewState);
 void ADC_InjectedDiscModeCmd(ADC_TypeDef* ADCx, FunctionalState NewState);
 uint16_t ADC_GetInjectedConversionValue(ADC_TypeDef* ADCx, uint8_t ADC_InjectedChannel);

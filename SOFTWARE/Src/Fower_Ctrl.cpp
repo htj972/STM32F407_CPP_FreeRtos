@@ -7,7 +7,9 @@
 
 #include <cmath>
 #include "Fower_Ctrl.h"
-
+/*!
+ * 流量控制构造
+ */
 Fower_Ctrl::Fower_Ctrl(Pressure_BASE *liu, Pressure_BASE *ji, Pressure_BASE *daqi,
                        Temperature_BASE *jit,Temperature_BASE *daqit): PID_BASE(),
                        liuya(liu),jiya(ji),daqiya(daqi),jiwen(jit),daqiwen(daqit){
@@ -16,7 +18,7 @@ Fower_Ctrl::Fower_Ctrl(Pressure_BASE *liu, Pressure_BASE *ji, Pressure_BASE *daq
     this->filter[2].init(50,1);//*daqiya;
     this->filter[3].init(10,1);//*jiwen;
     this->filter[4].init(10,1);//*daqiwen;
-    this->filter[5].init(50,2);//*FF_value;
+//    this->filter[5].init(50,2);//*FF_value;
     for(auto & ii : this->data_t){
         for (float & jj : ii)
             jj=0;
@@ -26,7 +28,9 @@ Fower_Ctrl::Fower_Ctrl(Pressure_BASE *liu, Pressure_BASE *ji, Pressure_BASE *daq
 
     PID_BASE::init(0.8,0.3,0.8);
 }
-
+/*!
+ * 折算孔板流量
+ */
 float Fower_Ctrl::calculation_hole_flow() {
     float fbuf = LiuYa;
 
@@ -41,17 +45,23 @@ float Fower_Ctrl::calculation_hole_flow() {
     FF_value=fbuf;
     return fbuf;
 }
-
+/*!
+ * 折算到入口流量
+ */
 float Fower_Ctrl::calculation_entrance_flow() {
-    //折算到入口流量
     return this->calculation_hole_flow() * (DaQiYa*1000 +JiYa) *
             (273.15f + DaQiWen) / (DaQiYa*1000) / (273.15f + JiWen);
 }
-
+/*!
+ * 计算倍率
+ * @param value 实际流量
+ */
 void Fower_Ctrl::FLOW_RATE_change(float value) {
     FLOW_RATE=value/FF_value*FLOW_RATE;
 }
-
+/*!
+ * 同步数据
+ */
 void Fower_Ctrl::data_upset() {
     float data_g[5];
     data_g[0]=liuya->get_pres();
@@ -99,7 +109,9 @@ void Fower_Ctrl::data_upset() {
     }
     DaQiWen=sum/=Fower_Data_num;
 }
-
+/*!
+ * 同步流压数据
+ */
 void Fower_Ctrl::LiuYa_data_upset() {
     float data_g=liuya->get_pres();
     this->data_t[0][this->data_n[0]++]=filter[0].Filter(data_g);
@@ -110,7 +122,9 @@ void Fower_Ctrl::LiuYa_data_upset() {
     }
     LiuYa=sum/=Fower_Data_num;
 }
-
+/*!
+ * 同步计压数据
+ */
 void Fower_Ctrl::JiYa_data_upset() {
     float data_g=liuya->get_pres();
     this->data_t[1][this->data_n[1]++]=filter[1].Filter(data_g);
@@ -121,7 +135,9 @@ void Fower_Ctrl::JiYa_data_upset() {
     }
     JiYa=sum/=Fower_Data_num;
 }
-
+/*!
+ * 同步大气压数据
+ */
 void Fower_Ctrl::DaQiYa_data_upset() {
     float data_g=liuya->get_pres();
     this->data_t[2][this->data_n[2]++]=filter[2].Filter(data_g);
@@ -132,7 +148,9 @@ void Fower_Ctrl::DaQiYa_data_upset() {
     }
     DaQiYa=sum/=Fower_Data_num;
 }
-
+/*!
+ * 同步计温数据
+ */
 void Fower_Ctrl::JiWen_data_upset() {
     float data_g=liuya->get_pres();
     this->data_t[3][this->data_n[3]++]=filter[3].Filter(data_g);
@@ -143,7 +161,9 @@ void Fower_Ctrl::JiWen_data_upset() {
     }
     JiWen=sum/=Fower_Data_num;
 }
-
+/*!
+ * 同步大气温度数据
+ */
 void Fower_Ctrl::DaQiWen_data_upset() {
     float data_g=liuya->get_pres();
     this->data_t[4][this->data_n[4]++]=filter[4].Filter(data_g);
@@ -154,7 +174,9 @@ void Fower_Ctrl::DaQiWen_data_upset() {
     }
     LiuYa=sum/=Fower_Data_num;
 }
-
+/*!
+ * 更新PID控制输出
+ */
 void Fower_Ctrl::upset() {
     float OUT;
     cur=FF_value;
@@ -177,17 +199,25 @@ void Fower_Ctrl::upset() {
         this->clear();
     }
 }
-
+/*!
+ * 配置PWM类
+ * @param CONTR PWM类指针
+ * @param ch  PWM通道
+ */
 void Fower_Ctrl::config(PWM_H *CONTR, uint8_t ch) {
     CONTROLLER=CONTR,
     chx=ch;
 }
-
+/*!
+ * 开启输出
+ */
 void Fower_Ctrl::TURN_ON() {
     if(!en)
         en= true;
 }
-
+/*!
+ * 关闭输出
+ */
 void Fower_Ctrl::TURN_OFF() {
     if(en)
         en= false;

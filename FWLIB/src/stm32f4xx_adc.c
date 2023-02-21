@@ -1391,7 +1391,7 @@ void ADC_SoftwareStartInjectedConv(ADC_TypeDef* ADCx)
   * @param  ADCx: where x can be 1, 2 or 3 to select the ADC peripheral.
   * @retval The new state of ADC software start injected conversion (SET or RESET).
   */
-FlagStatus ADC_GetSoftwareStartInjectedConvCmdStatus(ADC_TypeDef* ADCx)
+__attribute__((unused)) FlagStatus ADC_GetSoftwareStartInjectedConvCmdStatus(ADC_TypeDef* ADCx)
 {
   FlagStatus bitstatus = RESET;
   /* Check the parameters */

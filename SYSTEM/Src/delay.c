@@ -8,8 +8,8 @@
 #endif
 
 
-static u8  fac_us=0;							//us延时倍乘数
-static u16 fac_ms=0;							//ms延时倍乘数,在os下,代表每个节拍的ms数
+static uint8_t fac_us=0;							//us延时倍乘数
+static uint16_t fac_ms=0;							//ms延时倍乘数,在os下,代表每个节拍的ms数
 
 
 extern void xPortSysTickHandler(void);
@@ -27,9 +27,9 @@ void SysTick_Handler(void)
 //SYSTICK的时钟固定为AHB时钟，基础例程里面SYSTICK时钟频率为AHB/8
 //这里为了兼容FreeRTOS，所以将SYSTICK的时钟频率改为AHB的频率！
 //SYSCLK:系统时钟频率
-void delay_init(u8 SYSCLK)
+void delay_init(uint8_t SYSCLK)
 {
-    u32 reload;
+    uint32_t reload;
     SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK);
     fac_us=SYSCLK;							//不论是否使用OS,fac_us都需要使用
     reload=SYSCLK;							//每秒钟的计数次数 单位为M
@@ -44,11 +44,11 @@ void delay_init(u8 SYSCLK)
 //延时nus
 //nus:要延时的us数.
 //nus:0~204522252(最大值即2^32/fac_us@fac_us=168)
-void delay_us(u32 nus)
+void delay_us(uint32_t nus)
 {
-    u32 ticks;
-    u32 told,tnow,tcnt=0;
-    u32 reload=SysTick->LOAD;				//LOAD的值
+    uint32_t ticks;
+    uint32_t told,tnow,tcnt=0;
+    uint32_t reload=SysTick->LOAD;				//LOAD的值
     ticks=nus*fac_us; 						//需要的节拍数
     told=SysTick->VAL;        				//刚进入时的计数器值
     while(1)
@@ -66,7 +66,7 @@ void delay_us(u32 nus)
 //延时nms
 //nms:要延时的ms数
 //nms:0~65535
-void delay_ms(u32 nms)
+void delay_ms(uint32_t nms)
 {
     if(xTaskGetSchedulerState()!=taskSCHEDULER_NOT_STARTED)//系统已经运行
     {
@@ -76,14 +76,14 @@ void delay_ms(u32 nms)
         }
         nms%=fac_ms;						//OS已经无法提供这么小的延时了,采用普通方式延时
     }
-    delay_us((u32)(nms*1000));				//普通方式延时
+    delay_us((uint32_t)(nms*1000));				//普通方式延时
 }
 
 //延时nms,不会引起任务调度
 //nms:要延时的ms数
-void delay_xms(u32 nms)
+void delay_xms(uint32_t nms)
 {
-    u32 i;
+    uint32_t i;
     for(i=0;i<nms;i++) delay_us(1000);
 }
 

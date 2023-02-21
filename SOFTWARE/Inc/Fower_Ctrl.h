@@ -27,7 +27,7 @@ private:
     float data_t[5][Fower_Data_num]{};
     uint8_t data_n[5]{};
     float FF_value{};
-    bool en;
+    bool en{};
 protected:
     Pressure_BASE *liuya;
     Pressure_BASE *jiya;
@@ -35,8 +35,8 @@ protected:
     Temperature_BASE *jiwen;
     Temperature_BASE *daqiwen;
     Kalman filter[5]{};
-    PWM_H *CONTROLLER;
-    uint8_t chx;
+    PWM_H *CONTROLLER{};
+    uint8_t chx{};
 public:
     float cur{};
     float FLOW_RATE{}; 

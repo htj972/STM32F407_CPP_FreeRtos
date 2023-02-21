@@ -232,10 +232,10 @@ typedef enum
 void WFI_SET(void);		//执行WFI指令
 void INTX_DISABLE(void);//关闭所有中断
 void INTX_ENABLE(void);	//开启所有中断
-void MSR_MSP(u32 addr);	//设置堆栈地址
+void MSR_MSP(uint32_t addr);	//设置堆栈地址
 
 extern void run_void(void);								//空指令函数   初始函数指针使用
-extern void run_void_data(u8 data);						//空指令传入函数
+extern void run_void_data(uint8_t data);						//空指令传入函数
 
 #endif
 

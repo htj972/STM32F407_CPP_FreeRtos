@@ -5,7 +5,9 @@
 **/
 
 #include "PID_BASE.h"
-
+/*!
+ * 初始化PID
+ */
 void PID_BASE::init(float P, float I, float D) {
     this->kp=P;
     this->ki=I;
@@ -13,32 +15,48 @@ void PID_BASE::init(float P, float I, float D) {
     this->ladder=0;
     this->last_B=0;
 }
-
+/*!
+ * 设置PID控制目标值
+ */
 void PID_BASE::set_target(float target) {
     this->tar=target;
 }
-
+/*!
+ * 清除PID数据累计
+ */
 void PID_BASE::clear() {
     this->sumError=0;
     this->lastError=0;
     this->last_B=0;
 }
-
+/*!
+ * 初始化PID 变化梯度
+ * @param ladderx 变化梯度 0为无限
+ */
 void PID_BASE::set_ladder(float ladderx) {
     if(ladderx<0)
         ladderx=-ladderx;
     this->ladder=ladderx;
 }
-
+/*!
+ * 获取PID目标值
+ */
 float PID_BASE::get_target() const {
     return this->tar;
 }
-
+/*!
+ * 计算PID
+ * @param current 当前值
+ * @param target  目标值
+ */
 float PID_BASE::calculate(float target, float current) {
     this->tar=target;
     return this->calculate(current);
 }
-
+/*!
+ * 计算PID
+ * @param current 当前值
+ */
 float PID_BASE::calculate(float current) {
     this->Error=this->tar-current;//当前误差 //PID算法第一步 设定转速减去当前转速 赋值给 Error
     this->sumError=this->Error+this->sumError;//误差和
