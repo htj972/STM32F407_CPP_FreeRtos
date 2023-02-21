@@ -44,11 +44,36 @@ TaskHandle_t PIDTask_Handler;
 //任务优先级
 #define DATA_TASK_PRIO		2
 //任务堆栈大小
-#define DATA_STK_SIZE 		256
+#define DATA_STK_SIZE 		128
 //任务句柄
 TaskHandle_t DATATask_Handler;
 //任务函数
 [[noreturn]] void DATA_task(void *pvParameters);
+
+//任务句柄
+TaskHandle_t DATATask1_Handler;
+//任务函数
+[[noreturn]] void DATA1_task(void *pvParameters);
+
+//任务句柄
+TaskHandle_t DATATask2_Handler;
+//任务函数
+[[noreturn]] void DATA2_task(void *pvParameters);
+
+//任务句柄
+TaskHandle_t DATATask3_Handler;
+//任务函数
+[[noreturn]] void DATA3_task(void *pvParameters);
+
+//任务句柄
+TaskHandle_t DATATask4_Handler;
+//任务函数
+[[noreturn]] void DATA4_task(void *pvParameters);
+
+//任务句柄
+TaskHandle_t DATATask5_Handler;
+//任务函数
+[[noreturn]] void DATA5_task(void *pvParameters);
 
 //IIC总线
 Software_IIC IIC_BUS(GPIOB8,GPIOB9);
@@ -173,6 +198,46 @@ void start_task(void *pvParameters)
                 (UBaseType_t    )DATA_TASK_PRIO,
                 (TaskHandle_t*  )&DATATask_Handler);
 
+    //创建DATA1任务
+    xTaskCreate((TaskFunction_t )DATA1_task,
+                (const char*    )"DATA1_task",
+                (uint16_t       )DATA_STK_SIZE,
+                (void*          )nullptr,
+                (UBaseType_t    )DATA_TASK_PRIO,
+                (TaskHandle_t*  )&DATATask1_Handler);
+
+    //创建DATA2任务
+    xTaskCreate((TaskFunction_t )DATA2_task,
+                (const char*    )"DATA2_task",
+                (uint16_t       )DATA_STK_SIZE,
+                (void*          )nullptr,
+                (UBaseType_t    )DATA_TASK_PRIO,
+                (TaskHandle_t*  )&DATATask2_Handler);
+
+    //创建DATA3任务
+    xTaskCreate((TaskFunction_t )DATA3_task,
+                (const char*    )"DATA3_task",
+                (uint16_t       )DATA_STK_SIZE,
+                (void*          )nullptr,
+                (UBaseType_t    )DATA_TASK_PRIO,
+                (TaskHandle_t*  )&DATATask3_Handler);
+
+    //创建DATA4任务
+    xTaskCreate((TaskFunction_t )DATA4_task,
+                (const char*    )"DATA4_task",
+                (uint16_t       )DATA_STK_SIZE,
+                (void*          )nullptr,
+                (UBaseType_t    )DATA_TASK_PRIO,
+                (TaskHandle_t*  )&DATATask4_Handler);
+
+    //创建DATA5任务
+    xTaskCreate((TaskFunction_t )DATA5_task,
+                (const char*    )"DATA5_task",
+                (uint16_t       )DATA_STK_SIZE,
+                (void*          )nullptr,
+                (UBaseType_t    )DATA_TASK_PRIO,
+                (TaskHandle_t*  )&DATATask5_Handler);
+
     vTaskDelete(StartTask_Handler);
     taskEXIT_CRITICAL();            //退出临界区
 }
@@ -198,7 +263,9 @@ void start_task(void *pvParameters)
         m_modebus.data_BUS.to_float.stove_temp_r=stovectrl.get_cur();
         m_modebus.data_BUS.to_float.Flow_value_r=LL.cur;
         m_modebus.data_BUS.to_float.air_temp=Atmospheric_T.get_temp_cache();
+
         m_modebus.data_BUS.to_float.Flow_coefficient=LL.FLOW_RATE;
+
 
         if(m_modebus.data_BUS.to_float.stove_work==1){
             stovectrl.turn_ON();
@@ -250,7 +317,56 @@ void start_task(void *pvParameters)
     while(true)
     {
         delay_ms(20);
-        LL.data_upset();
         LL.calculation_hole_flow();
+    }
+}
+
+//DATA1任务函数
+[[noreturn]] void DATA1_task(void *pvParameters)
+{
+    while(true)
+    {
+        delay_ms(10);
+        LL.LiuYa_data_upset();
+    }
+}
+
+//DATA2任务函数
+[[noreturn]] void DATA2_task(void *pvParameters)
+{
+    while(true)
+    {
+        delay_ms(10);
+        LL.JiYa_data_upset();
+    }
+}
+
+//DATA3任务函数
+[[noreturn]] void DATA3_task(void *pvParameters)
+{
+    while(true)
+    {
+        delay_ms(10);
+        LL.DaQiYa_data_upset();
+    }
+}
+
+//DATA4任务函数
+[[noreturn]] void DATA4_task(void *pvParameters)
+{
+    while(true)
+    {
+        delay_ms(10);
+        LL.JiWen_data_upset();
+    }
+}
+
+//DATA5任务函数
+[[noreturn]] void DATA5_task(void *pvParameters)
+{
+    while(true)
+    {
+        delay_ms(10);
+        LL.DaQiWen_data_upset();
     }
 }

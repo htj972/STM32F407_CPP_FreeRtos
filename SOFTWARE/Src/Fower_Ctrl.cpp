@@ -100,6 +100,61 @@ void Fower_Ctrl::data_upset() {
     DaQiWen=sum/=Fower_Data_num;
 }
 
+void Fower_Ctrl::LiuYa_data_upset() {
+    float data_g=liuya->get_pres();
+    this->data_t[0][this->data_n[0]++]=filter[0].Filter(data_g);
+    if (this->data_n[0] >= Fower_Data_num)this->data_n[0] = 0;
+    float sum=0;
+    for(float & ii : this->data_t[0]) {
+        sum+=ii;
+    }
+    LiuYa=sum/=Fower_Data_num;
+}
+
+void Fower_Ctrl::JiYa_data_upset() {
+    float data_g=liuya->get_pres();
+    this->data_t[1][this->data_n[1]++]=filter[1].Filter(data_g);
+    if (this->data_n[1] >= Fower_Data_num)this->data_n[1] = 0;
+    float sum=0;
+    for(float & ii : this->data_t[1]) {
+        sum+=ii;
+    }
+    JiYa=sum/=Fower_Data_num;
+}
+
+void Fower_Ctrl::DaQiYa_data_upset() {
+    float data_g=liuya->get_pres();
+    this->data_t[2][this->data_n[2]++]=filter[2].Filter(data_g);
+    if (this->data_n[2] >= Fower_Data_num)this->data_n[2] = 0;
+    float sum=0;
+    for(float & ii : this->data_t[2]) {
+        sum+=ii;
+    }
+    DaQiYa=sum/=Fower_Data_num;
+}
+
+void Fower_Ctrl::JiWen_data_upset() {
+    float data_g=liuya->get_pres();
+    this->data_t[3][this->data_n[3]++]=filter[3].Filter(data_g);
+    if (this->data_n[3] >= Fower_Data_num)this->data_n[3] = 0;
+    float sum=0;
+    for(float & ii : this->data_t[3]) {
+        sum+=ii;
+    }
+    JiWen=sum/=Fower_Data_num;
+}
+
+void Fower_Ctrl::DaQiWen_data_upset() {
+    float data_g=liuya->get_pres();
+    this->data_t[4][this->data_n[4]++]=filter[4].Filter(data_g);
+    if (this->data_n[4] >= Fower_Data_num)this->data_n[4] = 0;
+    float sum=0;
+    for(float & ii : this->data_t[4]) {
+        sum+=ii;
+    }
+    LiuYa=sum/=Fower_Data_num;
+}
+
 void Fower_Ctrl::upset() {
     float OUT;
     cur=FF_value;

@@ -39,12 +39,17 @@ protected:
     uint8_t chx;
 public:
     float cur{};
-    float FLOW_RATE{};
+    float FLOW_RATE{}; 
     Fower_Ctrl(Pressure_BASE *liu,Pressure_BASE *ji,Pressure_BASE *daqi,
                Temperature_BASE *jit,Temperature_BASE *daqit);
     void config(PWM_H *CONTR,uint8_t ch);
     float LiuYa{},JiYa{},DaQiYa{},JiWen{},DaQiWen{};
     void data_upset();
+    void LiuYa_data_upset();
+    void JiYa_data_upset();
+    void DaQiYa_data_upset();
+    void JiWen_data_upset();
+    void DaQiWen_data_upset();
     float calculation_hole_flow();
     float calculation_entrance_flow();
     void  FLOW_RATE_change(float value);
