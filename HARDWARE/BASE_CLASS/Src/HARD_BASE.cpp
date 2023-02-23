@@ -14,7 +14,7 @@ void HARD_BASE::set_Queue_mode(Queue mode) {
 
 void HARD_BASE::Queue_star() {
     if(this->lock_mode==Queue::OWN_Queue){
-        while(this->lock_flag)delay_ms(1);
+        while(this->lock_flag)delay_ms(2);
         this->lock_flag=true;
     }
 #if SYSTEM_SUPPORT_OS == ON

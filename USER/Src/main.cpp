@@ -24,7 +24,7 @@ TaskHandle_t StartTask_Handler;
 void start_task(void *pvParameters);
 
 //任务优先级
-#define LOGIC_TASK_PRIO		3
+#define LOGIC_TASK_PRIO		2
 //任务堆栈大小
 #define LOGIC_STK_SIZE 		512
 //任务句柄
@@ -248,15 +248,16 @@ void start_task(void *pvParameters)
     while(true)
     {
         delay_ms(200);
-//
-//        MLED.OLED_SSD1306::Queue_star();
-//        MLED.Print(0,0,"%.2lf   %.2lf",LL.LiuYa,LL.JiYa);
-//        MLED.Print(0,2,"%.2lf   %.2lf",LL.JiWen,LL.DaQiWen);
-//
-//        MLED.Print(0,4,"%.2lf",LL.DaQiYa);
-//
-//        MLED.Print(0,6,"%.2lf",LL.cur);
-//        MLED.OLED_SSD1306::Queue_end();
+
+        MLED.OLED_SSD1306::Queue_star();
+        MLED.Print(0,0,"%.2lf   %.2lf",LL.LiuYa,LL.JiYa);
+
+        MLED.Print(0,2,"%.2lf   %.2lf",LL.JiWen,LL.DaQiWen);
+
+        MLED.Print(0,4,"%.2lf",LL.DaQiYa);
+
+        MLED.Print(0,6,"%.2lf",LL.cur);
+        MLED.OLED_SSD1306::Queue_end();
 
 
         m_modebus.data_BUS.to_float.stove_temp_r=stovectrl.get_cur();
