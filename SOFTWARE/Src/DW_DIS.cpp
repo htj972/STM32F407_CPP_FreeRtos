@@ -628,11 +628,11 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
             this->vspf_Text(TEXT_ADD(9),(char *)"0.0%02dhz/ÐÐ ",teom_dis_mul[teom_dis_mul_num][1]/5);
             worked = false;
             if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) {
-                COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,16.7);
+                COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,5);
                 COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,1);
             }
             else{
-                COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,5);
+                COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,15);
                 COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,1);
             }
             break;
