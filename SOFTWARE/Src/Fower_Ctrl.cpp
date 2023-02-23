@@ -13,12 +13,12 @@
 Fower_Ctrl::Fower_Ctrl(Pressure_BASE *liu, Pressure_BASE *ji, Pressure_BASE *daqi,
                        Temperature_BASE *jit,Temperature_BASE *daqit): PID_BASE(),
                        liuya(liu),jiya(ji),daqiya(daqi),jiwen(jit),daqiwen(daqit){
-    this->filter[0].init(50,1);//*liuya;
-    this->filter[1].init(50,1);//*jiya;
-    this->filter[2].init(50,1);//*daqiya;
-    this->filter[3].init(10,1);//*jiwen;
-    this->filter[4].init(10,1);//*daqiwen;
-//    this->filter[5].init(50,2);//*FF_value;
+    this->filter[0].init(15,5);//*liuya;
+    this->filter[1].init(15,5);//*jiya;
+    this->filter[2].init(15,5);//*daqiya;
+    this->filter[3].init(5,1);//*jiwen;
+    this->filter[4].init(5,1);//*daqiwen;
+    this->filter[5].init(5,2);//*FF_value;
     for(auto & ii : this->data_t){
         for (float & jj : ii)
             jj=0;
@@ -33,31 +33,42 @@ Fower_Ctrl::Fower_Ctrl(Pressure_BASE *liu, Pressure_BASE *ji, Pressure_BASE *daq
  */
 float Fower_Ctrl::calculation_hole_flow() {
     float fbuf = LiuYa;
-
     float density_1=0.28689097f*(273.15f+JiWen)/(DaQiYa*1000+JiYa);
 
     if(density_1<0) {this->FF_value=fbuf;return 0;} //结果小于0，忽略
     if(fbuf < 2)        fbuf = 0;  //如果动压小于2Pa，忽略，防止漂移
-    else
-    {
-        fbuf = (float )sqrt((double )(fbuf*density_1)) * FLOW_RATE;  //计算孔板处流量
-    }
+    fbuf = (float )sqrt((double )(fbuf*density_1)) * FLOW_RATE;  //计算孔板处流量
+
+//    this->data_t[5][this->data_n[5]++]=this->filter[5].Filter(fbuf);
+//    if (this->data_n[5] >= 10)this->data_n[5] = 0;
+//    float sum=0;
+//    for(uint8_t ii=0; ii<10;ii++) {
+//        sum+=this->data_t[5][ii];
+//    }
+//    fbuf=sum/=10.0;
     FF_value=fbuf;
+//    cur=FF_value;
     return fbuf;
 }
 /*!
  * 折算到入口流量
  */
 float Fower_Ctrl::calculation_entrance_flow() {
-    return this->calculation_hole_flow() * (DaQiYa*1000 +JiYa) *
-            (273.15f + DaQiWen) / (DaQiYa*1000) / (273.15f + JiWen);
+    cur=this->calculation_hole_flow() * (DaQiYa*1000 +JiYa) *
+        (273.15f + DaQiWen) / (DaQiYa*1000) / (273.15f + JiWen);
+    return cur;
+//    return this->calculation_hole_flow() * (DaQiYa*1000 +JiYa) *
+//            (273.15f + DaQiWen) / (DaQiYa*1000) / (273.15f + JiWen);
 }
 /*!
  * 计算倍率
- * @param value 实际流量
+ * @param value 实际入口流量
  */
 void Fower_Ctrl::FLOW_RATE_change(float value) {
-    FLOW_RATE=value/FF_value*FLOW_RATE;
+//    cur*(DaQiYa*1000)*(273.15f + JiWen)/ (DaQiYa*1000 +JiYa) /(273.15f + DaQiWen)
+//    FLOW_RATE=value/FF_value*FLOW_RATE;
+    FLOW_RATE=value*(DaQiYa*1000)*(273.15f + JiWen)/ (DaQiYa*1000 +JiYa)
+            /(273.15f + DaQiWen)/FF_value*FLOW_RATE;
 }
 /*!
  * 同步数据
@@ -126,7 +137,7 @@ void Fower_Ctrl::LiuYa_data_upset() {
  * 同步计压数据
  */
 void Fower_Ctrl::JiYa_data_upset() {
-    float data_g=liuya->get_pres();
+    float data_g=jiya->get_pres();
     this->data_t[1][this->data_n[1]++]=filter[1].Filter(data_g);
     if (this->data_n[1] >= Fower_Data_num)this->data_n[1] = 0;
     float sum=0;
@@ -139,7 +150,7 @@ void Fower_Ctrl::JiYa_data_upset() {
  * 同步大气压数据
  */
 void Fower_Ctrl::DaQiYa_data_upset() {
-    float data_g=liuya->get_pres();
+    float data_g=daqiya->get_pres();
     this->data_t[2][this->data_n[2]++]=filter[2].Filter(data_g);
     if (this->data_n[2] >= Fower_Data_num)this->data_n[2] = 0;
     float sum=0;
@@ -152,7 +163,7 @@ void Fower_Ctrl::DaQiYa_data_upset() {
  * 同步计温数据
  */
 void Fower_Ctrl::JiWen_data_upset() {
-    float data_g=liuya->get_pres();
+    float data_g=jiwen->get_temp();
     this->data_t[3][this->data_n[3]++]=filter[3].Filter(data_g);
     if (this->data_n[3] >= Fower_Data_num)this->data_n[3] = 0;
     float sum=0;
@@ -165,14 +176,14 @@ void Fower_Ctrl::JiWen_data_upset() {
  * 同步大气温度数据
  */
 void Fower_Ctrl::DaQiWen_data_upset() {
-    float data_g=liuya->get_pres();
+    float data_g=daqiwen->get_temp();
     this->data_t[4][this->data_n[4]++]=filter[4].Filter(data_g);
     if (this->data_n[4] >= Fower_Data_num)this->data_n[4] = 0;
     float sum=0;
     for(float & ii : this->data_t[4]) {
         sum+=ii;
     }
-    LiuYa=sum/=Fower_Data_num;
+    DaQiWen=sum/=Fower_Data_num;
 }
 /*!
  * 更新PID控制输出

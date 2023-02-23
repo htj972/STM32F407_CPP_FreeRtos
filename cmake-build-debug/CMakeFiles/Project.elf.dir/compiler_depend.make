@@ -2897,7 +2897,8 @@ CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp.obj: ../HARDWAR
   ../FreeRTOS/FreeRTOS_Inc/semphr.h \
   ../FreeRTOS/FreeRTOS_Inc/queue.h \
   ../FreeRTOS/FreeRTOS_Inc/task.h \
-  ../FreeRTOS/FreeRTOS_Inc/list.h
+  ../FreeRTOS/FreeRTOS_Inc/list.h \
+  ../SYSTEM/Inc/delay.h
 
 CMakeFiles/Project.elf.dir/HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp.obj: ../HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp \
   ../HARDWARE/BASE_CLASS/Inc/PWM_BASE.h \
@@ -10423,6 +10424,8 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ios:
 
 ../HARDWARE/BASE_CLASS/Src/HARD_BASE.cpp:
 
+../SYSTEM/Inc/delay.h:
+
 ../HARDWARE/BASE_CLASS/Src/PWM_BASE.cpp:
 
 ../HARDWARE/BASE_CLASS/Inc/PWM_BASE.h:
@@ -10432,8 +10435,6 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ios:
 ../USB/USB_HOST/Inc/usbh_hcs.h:
 
 ../HARDWARE/Src/ADC.cpp:
-
-../SYSTEM/Inc/delay.h:
 
 ../HARDWARE/Src/CRC.cpp:
 

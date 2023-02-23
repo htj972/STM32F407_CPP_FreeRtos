@@ -21,11 +21,11 @@ public:
         SMI::init(this,pmax, pmin);
     }
 };
-#define Fower_Data_num 5
+#define Fower_Data_num 100
 class Fower_Ctrl :public PID_BASE{
 private:
-    float data_t[5][Fower_Data_num]{};
-    uint8_t data_n[5]{};
+    float data_t[6][Fower_Data_num]{};
+    uint8_t data_n[6]{};
     float FF_value{};
     bool en{};
 protected:
@@ -34,7 +34,7 @@ protected:
     Pressure_BASE *daqiya;
     Temperature_BASE *jiwen;
     Temperature_BASE *daqiwen;
-    Kalman filter[5]{};
+    Kalman filter[6]{};
     PWM_H *CONTROLLER{};
     uint8_t chx{};
 public:

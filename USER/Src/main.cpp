@@ -35,7 +35,7 @@ TaskHandle_t LOGICTask_Handler;
 //任务优先级
 #define PID_TASK_PRIO		2
 //任务堆栈大小
-#define PID_STK_SIZE 		256
+#define PID_STK_SIZE 		512
 //任务句柄
 TaskHandle_t PIDTask_Handler;
 //任务函数
@@ -44,7 +44,7 @@ TaskHandle_t PIDTask_Handler;
 //任务优先级
 #define DATA_TASK_PRIO		2
 //任务堆栈大小
-#define DATA_STK_SIZE 		128
+#define DATA_STK_SIZE 		256
 //任务句柄
 TaskHandle_t DATATask_Handler;
 //任务函数
@@ -144,15 +144,16 @@ int main()
     //读取缓存数据
     power_data.read(0,m_modebus.data_BUS.to_u8t,sizeof(m_modebus.data_BUS));
     //检验数据正确性  头次上电（版本号）
-    if(m_modebus.data_BUS.to_float.version-HARD_version!=0){
-        K_POWER_DATA init_data;             //新实体一个新数据 构造方法放置初始数值
-        m_modebus.data_BUS=init_data;       //转移数据到使用结构体
-        power_data.write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
-    }
+//    if(m_modebus.data_BUS.to_float.version-HARD_version!=0){
+//        K_POWER_DATA init_data;             //新实体一个新数据 构造方法放置初始数值
+//        m_modebus.data_BUS=init_data;       //转移数据到使用结构体
+//        power_data.write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
+//    }
     PWM.config(1,2);      //配置PWM所用输出通道
     LL.config(&PWM,1);//配置控制器
     LL.FLOW_RATE=m_modebus.data_BUS.to_float.Flow_coefficient;//配置倍率
-    LL.set_ladder(10);   //设置流量PID控制变化梯度
+    m_modebus.data_BUS.to_float.Flow_work=0;//工作归零
+    LL.set_ladder(5);   //设置流量PID控制变化梯度
     stovectrl.initial();        //炉子初始化
     JW.init();                  //计温初始化
 
@@ -247,15 +248,15 @@ void start_task(void *pvParameters)
     while(true)
     {
         delay_ms(200);
-
-        MLED.OLED_SSD1306::Queue_star();
-        MLED.Print(0,0,"%.2lf   %.2lf",LL.LiuYa,LL.JiYa);
-        MLED.Print(0,2,"%.2lf   %.2lf",LL.JiWen,LL.DaQiWen);
-
-        MLED.Print(0,4,"%.2lf",LL.DaQiYa);
-
-        MLED.Print(0,6,"%.2lf",LL.cur);
-        MLED.OLED_SSD1306::Queue_end();
+//
+//        MLED.OLED_SSD1306::Queue_star();
+//        MLED.Print(0,0,"%.2lf   %.2lf",LL.LiuYa,LL.JiYa);
+//        MLED.Print(0,2,"%.2lf   %.2lf",LL.JiWen,LL.DaQiWen);
+//
+//        MLED.Print(0,4,"%.2lf",LL.DaQiYa);
+//
+//        MLED.Print(0,6,"%.2lf",LL.cur);
+//        MLED.OLED_SSD1306::Queue_end();
 
 
         m_modebus.data_BUS.to_float.stove_temp_r=stovectrl.get_cur();
@@ -306,6 +307,7 @@ void start_task(void *pvParameters)
         delay_ms(500);
         stovectrl.upset();
         LL.upset();
+//        PWM.set_channel1_Duty_cycle(6);
     }
 }
 
@@ -315,7 +317,7 @@ void start_task(void *pvParameters)
     while(true)
     {
         delay_ms(20);
-        LL.calculation_hole_flow();
+        LL.calculation_entrance_flow();
     }
 }
 
@@ -354,7 +356,7 @@ void start_task(void *pvParameters)
 {
     while(true)
     {
-        delay_ms(10);
+        delay_ms(50);
         LL.JiWen_data_upset();
     }
 }
@@ -364,7 +366,7 @@ void start_task(void *pvParameters)
 {
     while(true)
     {
-        delay_ms(10);
+        delay_ms(50);
         LL.DaQiWen_data_upset();
     }
 }
