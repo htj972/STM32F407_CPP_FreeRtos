@@ -432,14 +432,14 @@ void DW_DIS::Maintain_page(Event E) {
                     COM_link->data_set(&COM_link->data_BUS.to_float.stove_work,stove_work_flag);
                     break;
                 case 2://标定开关
-                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,16.7);
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,5);
                     COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,flow_work_flag);
                     break;
                 case 3://5L
                     COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,5);
                     break;
                 case 4://17L
-                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,16.7);
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,15);
                     break;
             }
             break;
