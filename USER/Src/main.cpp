@@ -144,11 +144,11 @@ int main()
     //读取缓存数据
     power_data.read(0,m_modebus.data_BUS.to_u8t,sizeof(m_modebus.data_BUS));
     //检验数据正确性  头次上电（版本号）
-//    if(m_modebus.data_BUS.to_float.version-HARD_version!=0){
-//        K_POWER_DATA init_data;             //新实体一个新数据 构造方法放置初始数值
-//        m_modebus.data_BUS=init_data;       //转移数据到使用结构体
-//        power_data.write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
-//    }
+    if(m_modebus.data_BUS.to_float.version==0){
+        K_POWER_DATA init_data;             //新实体一个新数据 构造方法放置初始数值
+        m_modebus.data_BUS=init_data;       //转移数据到使用结构体
+        power_data.write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
+    }
     PWM.config(1,2);      //配置PWM所用输出通道
     LL.config(&PWM,1);//配置控制器
     LL.FLOW_RATE=m_modebus.data_BUS.to_float.Flow_coefficient;//配置倍率
