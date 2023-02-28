@@ -594,7 +594,7 @@ void DW_DIS::Password_page(DW_DIS::Event E) {
                 this->Main_page(TURN);
             break;
         case Data:
-            if(this->get_value_data()==2008)
+            if(this->get_value_data()==2007)
                 this->Maintain_page(TURN);
             else if(this->get_value_data()==87) {
                 error_f = 1;
