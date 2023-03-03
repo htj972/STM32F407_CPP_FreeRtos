@@ -26,7 +26,7 @@ Fower_Ctrl::Fower_Ctrl(Pressure_BASE *liu, Pressure_BASE *ji, Pressure_BASE *daq
     for (uint8_t & ii : this->data_n)
         ii=0;
 
-    PID_BASE::init(0.8,0.3,0.8);
+    PID_BASE::init(0.8,0.4,1);
 }
 /*!
  * ушкЦ©в╟ЕаВа©

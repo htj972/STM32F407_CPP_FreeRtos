@@ -115,17 +115,17 @@ public:
 
 
 
-class OLED:private Software_IIC,public OLED_SSD1306{
-public:
-    OLED(GPIO_Pin Pin_Scl, GPIO_Pin Pin_Sda){
-        Software_IIC::init(Pin_Scl, Pin_Sda);
-        OLED_SSD1306::config(this);
-    }
-    void initial(){
-        this->OLED_SSD1306::init();
-        this->CLS();
-    }
-}MLED(GPIOB12,GPIOB13);
+//class OLED:private Software_IIC,public OLED_SSD1306{
+//public:
+//    OLED(GPIO_Pin Pin_Scl, GPIO_Pin Pin_Sda){
+//        Software_IIC::init(Pin_Scl, Pin_Sda);
+//        OLED_SSD1306::config(this);
+//    }
+//    void initial(){
+//        this->OLED_SSD1306::init();
+//        this->CLS();
+//    }
+//}MLED(GPIOB12,GPIOB13);
 
 
 int main()
@@ -135,7 +135,7 @@ int main()
 
     delay_ms(500);         //等待末端设备上电完成
 
-    MLED.initial();             //OLED 初始化
+//    MLED.initial();             //OLED 初始化
 
     Atmospheric_T.init();       //大气温度初始化
     Atmospheric_T.config(MAX31865::PT100,3900);//大气温度传感器配置
@@ -249,15 +249,15 @@ void start_task(void *pvParameters)
     {
         delay_ms(200);
 
-        MLED.OLED_SSD1306::Queue_star();
-        MLED.Print(0,0,"%.2lf   %.2lf",LL.LiuYa,LL.JiYa);
-
-        MLED.Print(0,2,"%.2lf   %.2lf",LL.JiWen,LL.DaQiWen);
-
-        MLED.Print(0,4,"%.2lf",LL.DaQiYa);
-
-        MLED.Print(0,6,"%.2lf",LL.cur);
-        MLED.OLED_SSD1306::Queue_end();
+//        MLED.OLED_SSD1306::Queue_star();
+//        MLED.Print(0,0,"%.2lf   %.2lf",LL.LiuYa,LL.JiYa);
+//
+//        MLED.Print(0,2,"%.2lf   %.2lf",LL.JiWen,LL.DaQiWen);
+//
+//        MLED.Print(0,4,"%.2lf",LL.DaQiYa);
+//
+//        MLED.Print(0,6,"%.2lf",LL.cur);
+//        MLED.OLED_SSD1306::Queue_end();
 
 
         m_modebus.data_BUS.to_float.stove_temp_r=stovectrl.get_cur();

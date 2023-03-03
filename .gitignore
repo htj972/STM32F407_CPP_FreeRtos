@@ -30,6 +30,7 @@
 *.exe
 *.out
 *.app
+*.crf
 .idea/vcs.xml
 cmake-build-debug/CMakeFiles/Project.elf.dir/ASM.includecache
 cmake-build-debug/CMakeFiles/Project.elf.dir/depend.make

@@ -186,6 +186,7 @@
             <RvdsVP>2</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
+            <nBranchProt>0</nBranchProt>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -336,7 +337,7 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls>--cpp11</MiscControls>
+              <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER,__FPU_USED=1</Define>
               <Undefine></Undefine>
               <IncludePath>..\CORE\Inc;..\FreeRTOS\FreeRTOS_Inc;..\FWLIB\inc;..\HARDWARE\BASE_CLASS\Inc;..\HARDWARE\Inc;..\SYSTEM\Inc;..\USER\Inc</IncludePath>
