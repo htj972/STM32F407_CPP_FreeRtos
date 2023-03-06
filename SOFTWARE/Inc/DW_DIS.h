@@ -52,7 +52,7 @@ private:
     bool worked;
     static int      teom_dis_mul_num;		//放大角标
     static uint16_t teom_dis_mul[3][2];     //放大系数
-    void send_cure_data(uint8_t ch,float data);
+    void send_cure_data(uint8_t ch,float center,float data);
     void CHANGE_PIC(uint16_t address,uint16_t IDs_x,uint16_t IDs_y,uint16_t IDe_x,uint16_t IDe_y);
     void Check_Box_set(Check_Box data,bool en=true);
     void Check_page(Event E);   //系统检查

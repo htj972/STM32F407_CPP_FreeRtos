@@ -110,16 +110,16 @@ bool DW_DIS::clear_text(uint8_t num) {
  */
 int      DW_DIS::teom_dis_mul_num=1;		//放大角标
 uint16_t DW_DIS::teom_dis_mul[3][2]={{935,5},{187,25},{37,125}}; //放大系数
-void DW_DIS::send_cure_data(uint8_t ch, float data) {
+void DW_DIS::send_cure_data(uint8_t ch,float center,float data) {
     static uint8_t mark=0;
     if(mark!= this->RTX->get_sec()) {
         mark= this->RTX->get_sec();
-        if (data < 388)
+        if (data < center-1)
             this->DROW_point(ch, 0);
-        else if ((data > 387) && (data < 389)) {
-            this->DROW_point(ch, (uint16_t) ((data - 388) * 10000));
-            this->Write_data(point_address, 0x06, (uint16_t) ((data - 388) * 10000));
-        } else if (data > 388)
+        else if ((data > center-1) && (data < center+1)) {
+            this->DROW_point(ch, (uint16_t) ((data - center) * 10000));
+            this->Write_data(point_address, 0x06, (uint16_t) ((data - center) * 10000));
+        } else if (data > center+1)
             this->DROW_point(ch, 10000);
     }
 
@@ -439,7 +439,7 @@ void DW_DIS::Maintain_page(Event E) {
                     COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,5);
                     break;
                 case 4://17L
-                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,15);
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,15.5);
                     break;
             }
             break;
@@ -617,7 +617,7 @@ void DW_DIS::Password_page(DW_DIS::Event E) {
 }
 
 void DW_DIS::Working_page(DW_DIS::Event E) {
-    float  frq_temp;
+    float  frq_temp,frq_center;
     switch (E) {
         case TURN:
             this->Interface_switching(17);
@@ -632,7 +632,7 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                 COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,1);
             }
             else{
-                COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,15);
+                COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,15.5);
                 COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,1);
             }
             break;
@@ -643,7 +643,8 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                     break;
                 case 1:
                     this->RTX->set_Initial_time();
-                    this->vspf_Text(TEXT_ADD(5),(char *) "%09.5lfHz   ",this->TEOM_link->get_frq());
+                    frq_center=this->TEOM_link->get_frq();
+                    this->vspf_Text(TEXT_ADD(5),(char *) "%09.5lfHz   ",frq_center);
                     this->vspf_Text(TEXT_ADD(7),(char *) "%04.0lfPa   ",this->TEOM_link->Pre_link->get_value());
                     worked = true;
                 break;
@@ -686,12 +687,14 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                 uint8_t h,m,s;
                 this->RTX->get_run_time(&h,&m,&s);
                 this->vspf_Text(TEXT_ADD(3),(char *) "%02d:%02d:%02d  ",h,m,s);
-                if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) {
+                if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) { //采样完成
                     if(h==(uint8_t)TEOM_link->DATA.to_float.Samp_TL){
                         worked = false;
                         this->Keyboard_Up(0x11);
                         this->TEOM_link->turn_off();
                         COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
+                        TEOM_link->DATA.to_float.Samp_num++;
+                        this->TEOM_link->data_save(&TEOM_link->DATA.to_float.dis_light, this->get_cur_light());
                     }
                 }
                 else{
@@ -700,8 +703,11 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                         this->Keyboard_Up(0x11);
                         this->TEOM_link->turn_off();
                         COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
+                        TEOM_link->DATA.to_float.Samp_num++;
+                        this->TEOM_link->data_save(&TEOM_link->DATA.to_float.dis_light, this->get_cur_light());
                     }
                 }
+                this->send_cure_data(0,frq_center,frq_temp);
             }
             else{
                 this->vspf_Text(TEXT_ADD(3),(char *) "00：00：00");
@@ -710,7 +716,6 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
             }
             frq_temp =this->TEOM_link->get_frq();
             this->vspf_Text(TEXT_ADD(6),(char *) "%09.5lfHz   ",frq_temp);
-            this->send_cure_data(0,frq_temp);
 
             this->vspf_Text(TEXT_ADD(8),(char *) "%04.0lfPa   ",this->TEOM_link->Pre_link->get_value());
 
