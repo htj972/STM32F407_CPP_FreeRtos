@@ -4,13 +4,9 @@
 #include "task.h"
 #include "Out_In_Put.h"
 #include "Timer.h"
-#include "IIC.h"
-#include "OLED_SSD1306.h"
-#include "Communication.h"
-#include "pretreatment.h"
-#include "MS5805.h"
-#include "FM24Cxx.h"
-#include "Fower_Ctrl.h"
+#include "USART.h"
+#include "TMC220xUart.h"
+
 
 
 //任务优先级
@@ -40,30 +36,6 @@ TaskHandle_t Task2Task_Handler;
 //任务函数
 [[noreturn]] void task2_task(void *pvParameters);
 
-//IIC总线
-Software_IIC IIC_BUS(GPIOB8,GPIOB9);
-//大气压传感器
-MS5805  Atmospheric_P(&IIC_BUS);
-//EEPROM 数据存储
-FM24Cxx power_data(&IIC_BUS);
-
-//SPI总线
-SPI_S SPI_BUS(GPIOE5,GPIOE3,GPIOE6);
-//预处理控温软件类
-pretreatment stovectrl(&SPI_BUS,GPIOE2,TIM4,1000,2);
-//大气温度传感器
-MAX31865 Atmospheric_T(&SPI_BUS,GPIOE4);
-
-//通信软件类
-Communication m_modebus(USART2,GPIOD4,TIM7,100,GPIOD5,GPIOD6);
-
-_OutPut_ BENG(GPIOC10);
-_OutPut_ fa(GPIOC11);
-
-
-
-Differential_pressure tes1(GPIOD1,GPIOD0,100000,-100000,TIM9,100);
-Differential_pressure tes2(GPIOD3,GPIOD2,4000,-500,TIM10,100);
 
 //运行指示灯
 class T_led_:public _OutPut_,public Call_Back,public Timer{
@@ -76,38 +48,56 @@ public:
     void Callback(int  ,char** ) override{
         this->change();
     };
-}led2(GPIOE1,TIM6,10);
+}led(GPIOE2,TIM6,2);
 
+_USART_ DEBUG(USART1);
+//_USART_ TMC_U(USART3);
 
-class OLED:private Software_IIC,public OLED_SSD1306{
+class TMC_UART:public _USART_{
+private:
+    _OutPut_ CS1,CS2;
 public:
-    OLED(GPIO_Pin Pin_Scl, GPIO_Pin Pin_Sda){
-        Software_IIC::init(Pin_Scl, Pin_Sda);
-        OLED_SSD1306::config(this);
+    TMC_UART(GPIO_Pin CS_Pin1,GPIO_Pin CS_Pin2,USART_TypeDef* USARTx) {
+        CS1.init(CS_Pin1,HIGH);
+        CS2.init(CS_Pin2,HIGH);
+        this->init(USARTx);
     }
-    void initial(){
-        this->OLED_SSD1306::init();
-        this->CLS();
+    void send(uint8_t ch,string str){
+        switch(ch){
+            case 2:
+                CS1.set(ON);
+                CS2.set(OFF);
+            break;
+            case 3:
+                CS1.set(ON);
+                CS2.set(ON);
+            break;
+            case 4:
+                CS1.set(OFF);
+                CS2.set(ON);
+            break;
+            default:
+                CS1.set(OFF);
+                CS2.set(OFF);
+            break;
+        }
+        this->write(std::move(str));
     }
-}MLED(GPIOB12,GPIOB13);
+}TMC_U(GPIOE15,GPIOE14,USART3);
 
+TMC220xUart TMC_X(&TMC_U,GPIOE12,GPIOE13,GPIOA3);
 
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);	//初始化延时函数
-    MLED.initial();             //OLED 初始化
-    stovectrl.initial();        //炉子初始化
-    Atmospheric_P.init();              //大气压初始化
-    power_data.init();          //数据存储初始化
-    //读取缓存数据
-    power_data.read(0,m_modebus.data_BUS.to_u8t,sizeof(m_modebus.data_BUS));
-    //检验数据正确性  头次上电（版本号）
-    if(m_modebus.data_BUS.to_float.version-HARD_version!=0){
-        K_POWER_DATA init_data;             //新实体一个新数据 构造方法放置初始数值
-        m_modebus.data_BUS=init_data;       //转移数据到使用结构体
-        power_data.write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
-    }
+    delay_ms(1000);
+    DEBUG.println((string)"ONLINE");
+    TMC_U.send(1,"line1\r\n");
+
+    TMC_X.init(16,50,2,90,true);
+    TMC_X.Return_to_zero();
+
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
                 (const char*    )"start_task",           //任务名称
@@ -143,18 +133,9 @@ void start_task(void *pvParameters)
 //task1任务函数
 [[noreturn]] void task1_task(void *pvParameters)//alignas(8)
 {
-    uint8_t sec_t=0;
     while(true)
     {
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-        MLED.Print(0,0,"V%.2lf",m_modebus.data_BUS.to_float.version);
-
-        MLED.Print(0,2,"%.2lf",tes1.get_pres());
-        MLED.Print(0,4,"%.2lf",tes2.get_pres());
-        MLED.Print(0,6,"%.2lf",Atmospheric_P.get_pres());
-//        MLED.Print(0,6,"%.2lf",stovectrl.get_temp_cache());
-//        pretreatment1.set_target(150);
-//        pretreatment1.upset();
 
     }
 }
@@ -165,7 +146,7 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(100/portTICK_RATE_MS );
-
+//        DEBUG<<TMC_U.read_data();
     }
 }
 

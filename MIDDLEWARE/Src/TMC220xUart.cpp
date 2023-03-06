@@ -106,7 +106,7 @@ TMC220xUart::TMC220xUart(_USART_ *uartx, GPIO_TypeDef *STEP_Port, uint16_t STEP_
 TMC220xUart::TMC220xUart(_USART_ *uartx,uint32_t STEP_Pin,uint32_t EN_Pin,uint32_t DIAG_Pin) {
     this->uart=uartx;
     this->STEP.init(STEP_Pin,HIGH);
-    this->EN.init(EN_Pin,HIGH);
+    this->EN.init(EN_Pin,LOW);
     this->DIAG.init(DIAG_Pin,HIGH);
 }
 /*!
@@ -117,7 +117,7 @@ TMC220xUart::TMC220xUart(_USART_ *uartx,uint32_t STEP_Pin,uint32_t EN_Pin,uint32
  * @param stallGuardThreshold  碰撞阈值
  * @param Reverse  方向反向
  */
-void TMC220xUart::initTMC2209(uint8_t mres,uint16_t maxdistance, uint16_t minMovedistance,
+void TMC220xUart::init(uint8_t mres,uint16_t maxdistance, uint16_t minMovedistance,
                               uint8_t stallGuardThreshold, bool Reverse) {
     this->stepAngle = 1.8;
     this->maxDistance = maxdistance;
@@ -126,17 +126,19 @@ void TMC220xUart::initTMC2209(uint8_t mres,uint16_t maxdistance, uint16_t minMov
     this->stop = false;
     this->reverse=Reverse;
     this->DIAG.upload_extern_fun(this);/**中断自动回调**/
+//    this->startMotor();
     this->clearGSTAT();
     // 细分
     this->setMicrosteppingResolution(mres);
     // 调整此处 阈值 碰撞
-    this->stallGuard(stallGuardThreshold);
+//    this->stallGuard(stallGuardThreshold);
+//    this->stopMotor();
     this->ZERO_flag = false;
 }
 
 void TMC220xUart::Callback(int,char** data) {
-//    if(data[1][0]==this->DIAG.get_pin_num())
-    this->stopMotor();
+    if(data[1][0]==this->DIAG.get_pin_num())
+        this->stopMotor();
 }
 /*!
  * 不限位归零
@@ -206,14 +208,14 @@ int TMC220xUart::fastLog2(int x) {
  * 停止电机
  */
 void TMC220xUart::stopMotor() {
-    this->EN.set_value(LOW);
+    this->EN.set(OFF);
     this->set_stop_flag(true);
 }
 /*!
  * 使能电机
  */
 void TMC220xUart::startMotor() {
-    this->EN.set_value(HIGH);
+    this->EN.set(ON);
     this->set_stop_flag(false);
 }
 
@@ -347,9 +349,9 @@ void TMC220xUart::moveStepUart(uint64_t Step) {
             static uint8_t addc = 0;
             //发送脉冲
             this->STEP.set_value(LOW);
-            delay_us(10 + add);
+            delay_us(30 + add);
             this->STEP.set_value(HIGH);
-            delay_us(10 + add);
+            delay_us(30 + add);
             addc++;  //用定时器加效果会更好
             if ((Step - TMC_len * TMC_acc <= i) && (addc == TMC_acc)) {
                 addc = 0;
@@ -363,9 +365,9 @@ void TMC220xUart::moveStepUart(uint64_t Step) {
     } else {
         for (i = 0; i < Step; i++) {
             this->STEP.set_value(LOW);
-            delay_us(10);
+            delay_us(30);
             this->STEP.set_value(HIGH);
-            delay_us(10);
+            delay_us(30);
             if (this->get_stop_flag())break;
         }
     }

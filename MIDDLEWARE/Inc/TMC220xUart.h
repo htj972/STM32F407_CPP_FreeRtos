@@ -54,7 +54,7 @@ enum Direction:uint8_t{
                 GPIO_TypeDef *EN_Port, uint16_t EN_Pin,
                 GPIO_TypeDef *DIAG_Port,uint16_t DIA_Pin);
     TMC220xUart(_USART_ *uartx,uint32_t STEP_Pin,uint32_t EN_Pin,uint32_t DIAG_Pin);
-    void initTMC2209(uint8_t mres,uint16_t maxdistance, uint16_t minMovedistance,
+    void init(uint8_t mres,uint16_t maxdistance, uint16_t minMovedistance,
                      uint8_t stallGuardThreshold, bool Reverse= false);
     void Return_to_zero();
     void moveTo(uint8_t DIR_Flag, uint32_t moveDistance);
