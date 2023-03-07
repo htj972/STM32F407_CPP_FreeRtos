@@ -78,10 +78,6 @@
 ////SGTHRS
 //uint8_t sgthrs = 255 << 0;
 
-// 顺时针旋转
-uint8_t dir_right[8] = {0x05, 0x00, 0x80, 0x00, 0x00, 0x00, 0x89};
-// 逆时针旋转
-uint8_t dir_left[8] = {0x05, 0x00, 0x80, 0x00, 0x00, 0x00, 0x81};
 /*!
  * 串口发送位置步数
  * @param uartx 串口指针
@@ -117,8 +113,8 @@ TMC220xUart::TMC220xUart(_USART_ *uartx,uint32_t STEP_Pin,uint32_t EN_Pin,uint32
  * @param stallGuardThreshold  碰撞阈值
  * @param Reverse  方向反向
  */
-void TMC220xUart::init(uint8_t mres,uint16_t maxdistance, uint16_t minMovedistance,
-                              uint8_t stallGuardThreshold, bool Reverse) {
+void TMC220xUart::init(uint16_t mres,uint16_t maxdistance, uint16_t minMovedistance,
+                              uint32_t stallGuardThreshold, bool Reverse) {
     this->stepAngle = 1.8;
     this->maxDistance = maxdistance;
     this->minMoveDistance = minMovedistance;
@@ -126,13 +122,11 @@ void TMC220xUart::init(uint8_t mres,uint16_t maxdistance, uint16_t minMovedistan
     this->stop = false;
     this->reverse=Reverse;
     this->DIAG.upload_extern_fun(this);/**中断自动回调**/
-//    this->startMotor();
-    this->clearGSTAT();
-    // 细分
-    this->setMicrosteppingResolution(mres);
+    this->clearGSTAT();                         //复位寄存器
+    this->setMicrosteppingResolution(mres);     // 细分
+    this->setSpreadCycle(false);      //静音斩波
     // 调整此处 阈值 碰撞
-//    this->stallGuard(stallGuardThreshold);
-//    this->stopMotor();
+    this->stallGuard(stallGuardThreshold);
     this->ZERO_flag = false;
 }
 
@@ -155,25 +149,26 @@ void TMC220xUart::Return_to_zero() {
  * @param DIR_Flag 方向
  * @param moveDistance  移动距离
  */
-void TMC220xUart::moveTo(uint8_t DIR_Flag, uint32_t moveDistance) {
+void TMC220xUart::moveTo(uint8_t DIR_Flag, float moveDistance) {
     if(this->uart!= nullptr) {
-        if (moveDistance > this->maxDistance)
+        if (moveDistance > (float)this->maxDistance)
             moveDistance = this->maxDistance;
         // 电机转动一圈需要的步数
         float steps = ((360 * (float) this->div) / this->stepAngle);
         // 计算需要多少圈才能转到指定位置
         float nums = ((float) moveDistance / (float) this->minMoveDistance);
+        this->setStepDirRegSelect(this->reverse ? DIR_Flag : !DIR_Flag);
         this->startMotor();//电机使能
         delay_ms(10);
-        if (this->reverse ? DIR_Flag : !DIR_Flag) //正转
-            this->uart->write(dir_right, 8);
-        else  //反转
-            this->uart->write(dir_left, 8);
         this->moveStepUart((uint64_t) (steps * nums));
         this->stopMotor();//电机非使能
     }
 }
-
+/*!
+ * CRC校验
+ * @param datagram 数组
+ * @param datagramLength 数组长度
+ */
 void TMC220xUart::calcCrc(uint8_t *datagram, uint8_t datagramLength) {
     int i, j;
     uint8_t *crc = datagram + (datagramLength - 1);
@@ -224,8 +219,9 @@ uint32_t TMC220xUart::readReg(uint8_t regAddr) {
     uint8_t send[4] = {0x55, 0x00, regAddr};
     uint32_t cache;
     calcCrc(send, 4);
+    this->uart->clear();
     this->uart->write(send, 4);
-    delay_us(5);
+    delay_ms(2);
     string get_buff=this->uart->read_data();
     cache = (get_buff[7] << 24) + (get_buff[8] << 16) + (get_buff[9] << 8) + get_buff[10];
     return cache;
@@ -256,7 +252,7 @@ void TMC220xUart::setSpreadCycle(bool en_spread) {
 
 /*!
  * 设置细分模式
- * @param en 0外部细分 1内部细分
+ * @param en F外部细分 T内部细分
  */
 void TMC220xUart::setStepResolutionRegSelect(bool en) {
     uint32_t data = this->readReg(0x00);
@@ -269,17 +265,31 @@ void TMC220xUart::setStepResolutionRegSelect(bool en) {
 }
 
 /*!
+ * 设置正反转
+ * @param dir 0正转 1反转
+ */
+void TMC220xUart::setStepDirRegSelect(uint8_t dir) {
+    uint32_t data = this->readReg(0x00);
+    if (dir) {
+        data = data | (1 << 3);
+    } else {
+        data = data & ~(1 << 3);
+    }
+    this->uartWriteInt(0x00, data);
+}
+
+/*!
  * 设置内部细分数
  * @param mres 细分数 256, 128, 64, 32, 16, 8, 4, 2, FULLSTEP
  */
-void TMC220xUart::setMicrosteppingResolution(uint8_t mres) {
+void TMC220xUart::setMicrosteppingResolution(uint16_t mres) {
     uint32_t chopconf = this->readReg(0x6c);
     uint32_t msresdezimal = TMC220xUart::fastLog2(mres);
     msresdezimal = 8 - msresdezimal;
     chopconf = chopconf & 0xF0FFFFFF;
     chopconf = chopconf | msresdezimal << 24;
     this->uartWriteInt(0x6c, chopconf);
-    this->setStepResolutionRegSelect(false);
+    this->setStepResolutionRegSelect(true);
     this->stepsPerRevolution = 200 * mres;
     this->div = mres;
 }
@@ -311,10 +321,9 @@ void TMC220xUart::setVactualRpm(uint32_t rpm) {
  * @param threshold 碰撞检测阈值
  */
 void TMC220xUart::stallGuard(uint32_t threshold) {
-    this->setSpreadCycle(false);
     this->uartWriteInt(0x40, threshold);
     this->uartWriteInt(0x14, 2000);
-    this->setVactualRpm(30);
+//    this->setVactualRpm(30);
 }
 /*!
  * 串口发送数据
@@ -332,9 +341,9 @@ void TMC220xUart::uartWriteInt(unsigned char address, unsigned int value) {
     writeData[5] = value >> 8;                        // Register Data
     writeData[6] = value & 0xFF;                      // Register Data
     calcCrc(writeData, 8);    // Cyclic redundancy check
-//    delay_ms(100);
+    delay_ms(2);
     this->uart->write(writeData, 8);
-    delay_us(5);
+    delay_ms(2);
 //    delay_ms(100);
 }
 /*!
@@ -349,9 +358,9 @@ void TMC220xUart::moveStepUart(uint64_t Step) {
             static uint8_t addc = 0;
             //发送脉冲
             this->STEP.set_value(LOW);
-            delay_us(30 + add);
+            delay_us(10 + add);
             this->STEP.set_value(HIGH);
-            delay_us(30 + add);
+            delay_us(10 + add);
             addc++;  //用定时器加效果会更好
             if ((Step - TMC_len * TMC_acc <= i) && (addc == TMC_acc)) {
                 addc = 0;
@@ -365,9 +374,9 @@ void TMC220xUart::moveStepUart(uint64_t Step) {
     } else {
         for (i = 0; i < Step; i++) {
             this->STEP.set_value(LOW);
-            delay_us(30);
+            delay_us(10);
             this->STEP.set_value(HIGH);
-            delay_us(30);
+            delay_us(10);
             if (this->get_stop_flag())break;
         }
     }

@@ -18,7 +18,7 @@ protected:
     _OutPut_ EN;
     _InPut_  DIAG;
 private:
-    uint16_t minMoveDistance{};// 电机一圈移动距离
+    float minMoveDistance{};// 电机一圈移动距离
     uint16_t div{};// 细分数
     uint16_t maxDistance{};// 丝杆最大行程
     float stepAngle{};// 步距角
@@ -34,7 +34,7 @@ private:
     uint32_t readReg(uint8_t regAddr);
     void clearGSTAT();
     void setStepResolutionRegSelect(bool en);
-    void setMicrosteppingResolution(uint8_t mres);
+    void setMicrosteppingResolution(uint16_t mres);
     void setVactual(uint32_t vactual, int acceleration);
     void setVactualRps(float rps);
     void setVactualRpm(uint32_t rpm);
@@ -54,13 +54,14 @@ enum Direction:uint8_t{
                 GPIO_TypeDef *EN_Port, uint16_t EN_Pin,
                 GPIO_TypeDef *DIAG_Port,uint16_t DIA_Pin);
     TMC220xUart(_USART_ *uartx,uint32_t STEP_Pin,uint32_t EN_Pin,uint32_t DIAG_Pin);
-    void init(uint8_t mres,uint16_t maxdistance, uint16_t minMovedistance,
-                     uint8_t stallGuardThreshold, bool Reverse= false);
+    void init(uint16_t mres,uint16_t maxdistance, uint16_t minMovedistance,
+                     uint32_t stallGuardThreshold, bool Reverse= false);
     void Return_to_zero();
-    void moveTo(uint8_t DIR_Flag, uint32_t moveDistance);
+    void moveTo(uint8_t DIR_Flag, float moveDistance);
     void stopMotor();
     void startMotor();
     void stallGuard(uint32_t threshold);
+    void setStepDirRegSelect(uint8_t dir);
     bool get_stop_flag() const;
 
     void setSpreadCycle(bool en_spread);

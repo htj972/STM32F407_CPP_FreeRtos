@@ -81,7 +81,7 @@ public:
                 CS2.set(OFF);
             break;
         }
-        this->write(std::move(str));
+//        this->write(std::move(str));
     }
 }TMC_U(GPIOE15,GPIOE14,USART3);
 
@@ -94,8 +94,8 @@ int main()
     delay_ms(1000);
     DEBUG.println((string)"ONLINE");
     TMC_U.send(1,"line1\r\n");
-
-    TMC_X.init(16,50,2,90,true);
+    delay_ms(1000);
+    TMC_X.init(64,10,1,20,true);
     TMC_X.Return_to_zero();
 
     //创建开始任务
@@ -136,7 +136,9 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-
+        TMC_X.moveTo(1,10);
+        vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+        TMC_X.moveTo(0,10);
     }
 }
 
