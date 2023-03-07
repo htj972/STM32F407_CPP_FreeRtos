@@ -617,7 +617,7 @@ void DW_DIS::Password_page(DW_DIS::Event E) {
 }
 
 void DW_DIS::Working_page(DW_DIS::Event E) {
-    float  frq_temp,frq_center;
+    static float  frq_temp,frq_center;
     switch (E) {
         case TURN:
             this->Interface_switching(17);
