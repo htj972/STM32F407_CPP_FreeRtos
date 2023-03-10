@@ -213,5 +213,96 @@ void PWM_H::set_channel4_ccr(uint32_t ccr) {
 }
 
 
+PWM_S::PWM_S(TIM_TypeDef *TIMx, uint32_t FRQ) {
+    this->init(TIMx,FRQ);
+}
+
+void PWM_S::init(TIM_TypeDef *TIMx, uint32_t FRQ) {
+    uint16_t APBx=84;
+    if((TIMx==TIM1)||(TIMx==TIM8)||(TIMx==TIM9)||(TIMx==TIM10)||(TIMx==TIM11))
+        APBx=168;
+    else if((TIMx==TIM2)||(TIMx==TIM3)||(TIMx==TIM4)||(TIMx==TIM5)||(TIMx==TIM6)
+            ||(TIMx==TIM7)||(TIMx==TIM12)||(TIMx==TIM13)||(TIMx==TIM14))
+        APBx=84;
+    this->set_max_channel(4);
+    this->ARR=1000/FRQ; //  (MFRQ/APB)/frq
+    this->set_max_channel(0);
+    Timer::init(TIMx,this->ARR-1,APBx-1, true);
+    this->upload_extern_fun(this);
+    this->ARR=1000;
+}
+
+bool PWM_S::config(GPIO_Pin Pin1,uint8_t Pin2,uint8_t Pin3,uint8_t Pin4) {
+    this->config_Pin(channel::_1-1,Pin1);
+    if(Pin2!=0) {
+        this->config_Pin(channel::_2-1, Pin2);
+        if(Pin3!=0) {
+            this->config_Pin(channel::_3-1, Pin3);
+            if(Pin4!=0) {
+                this->config_Pin(channel::_4-1, Pin3);
+            }
+        }
+    }
+    if((Pin1==Pin2)||(Pin1==Pin3)||(Pin1==Pin4)||(Pin2==Pin3)||(Pin3==Pin4))
+        return false;
+    return true;
+}
+
+void PWM_S::config_Pin(uint8_t channelx, uint8_t Pinx) {
+    set_max_channel(get_max_channel()+1);
+    this->GPIOx_CH[channelx].GPIOx.init(Pinx,HIGH);
+    this->GPIOx_CH[channelx].arr=0;
+    this->GPIOx_CH[channelx].ccr=0;
+}
+
+void PWM_S::config_Pin(uint8_t channelx, GPIO_TypeDef *PORTx, uint8_t Pinx) {
+    set_max_channel(get_max_channel()+1);
+    this->GPIOx_CH[channelx].GPIOx.init(PORTx,Pinx,HIGH);
+    this->GPIOx_CH[channelx].arr=0;
+    this->GPIOx_CH[channelx].ccr=0;
+}
+
+void PWM_S::set_channelx_ccr(uint8_t num, uint32_t ccr) {
+    switch (num) {
+        case 1:set_channel1_ccr(ccr);break;
+        case 2:set_channel2_ccr(ccr);break;
+        case 3:set_channel3_ccr(ccr);break;
+        case 4:set_channel4_ccr(ccr);break;
+        default:break;
+    }
+}
+
+void PWM_S::set_channel1_ccr(uint32_t ccr) {
+    this->GPIOx_CH[0].ccr=ccr;
+}
+
+void PWM_S::set_channel2_ccr(uint32_t ccr) {
+    this->GPIOx_CH[1].ccr=ccr;
+}
+
+void PWM_S::set_channel3_ccr(uint32_t ccr) {
+    this->GPIOx_CH[2].ccr=ccr;
+}
+
+void PWM_S::set_channel4_ccr(uint32_t ccr) {
+    this->GPIOx_CH[3].ccr=ccr;
+}
+
+void PWM_S::Callback(int, char **data) {
+    if(data[0][0]==Call_Back::Name::timer)
+        if(data[1][0]==this->timer_num){
+            for(uint8_t ii=0;ii<this->max_channel;ii++){
+                this->GPIOx_CH[ii].arr++;
+                if(this->GPIOx_CH[ii].arr>=1000){
+                    if(this->GPIOx_CH[ii].ccr!=0)
+                        this->GPIOx_CH[ii].GPIOx.set(ON);
+                    this->GPIOx_CH[ii].arr=0;
+                }
+                else if(this->GPIOx_CH[ii].arr>=this->GPIOx_CH[ii].ccr){
+                    this->GPIOx_CH[ii].GPIOx.set(OFF);
+                }
+            }
+        }
+}
 
 

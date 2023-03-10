@@ -10,6 +10,10 @@ void PWM_BASE::set_max_channel(uint8_t num) {
     this->max_channel=num;
 }
 
+uint8_t PWM_BASE::get_max_channel() const {
+    return max_channel;
+}
+
 void PWM_BASE::set_channelx_ccr(uint8_t num, uint32_t ccr) {
 }
 
@@ -33,5 +37,6 @@ void PWM_BASE::set_channel3_Duty_cycle(float Proportion) {
 void PWM_BASE::set_channel4_Duty_cycle(float Proportion) {
     this->set_Duty_cycle(4,Proportion);
 }
+
 
 

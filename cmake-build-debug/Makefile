@@ -2024,6 +2024,30 @@ MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.s
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.cpp.s
 
+MIDDLEWARE/Src/CD4052.obj: MIDDLEWARE/Src/CD4052.cpp.obj
+.PHONY : MIDDLEWARE/Src/CD4052.obj
+
+# target to build an object file
+MIDDLEWARE/Src/CD4052.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/CD4052.cpp.obj
+.PHONY : MIDDLEWARE/Src/CD4052.cpp.obj
+
+MIDDLEWARE/Src/CD4052.i: MIDDLEWARE/Src/CD4052.cpp.i
+.PHONY : MIDDLEWARE/Src/CD4052.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/CD4052.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/CD4052.cpp.i
+.PHONY : MIDDLEWARE/Src/CD4052.cpp.i
+
+MIDDLEWARE/Src/CD4052.s: MIDDLEWARE/Src/CD4052.cpp.s
+.PHONY : MIDDLEWARE/Src/CD4052.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/CD4052.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/CD4052.cpp.s
+.PHONY : MIDDLEWARE/Src/CD4052.cpp.s
+
 MIDDLEWARE/Src/DHTxx.obj: MIDDLEWARE/Src/DHTxx.cpp.obj
 .PHONY : MIDDLEWARE/Src/DHTxx.obj
 
@@ -3262,6 +3286,9 @@ help:
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/Temperature_BASE.s
+	@echo ... MIDDLEWARE/Src/CD4052.obj
+	@echo ... MIDDLEWARE/Src/CD4052.i
+	@echo ... MIDDLEWARE/Src/CD4052.s
 	@echo ... MIDDLEWARE/Src/DHTxx.obj
 	@echo ... MIDDLEWARE/Src/DHTxx.i
 	@echo ... MIDDLEWARE/Src/DHTxx.s

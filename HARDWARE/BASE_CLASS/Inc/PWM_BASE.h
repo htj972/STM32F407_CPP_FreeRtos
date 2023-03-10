@@ -11,10 +11,12 @@
 
 class PWM_BASE {
 private:
-    uint8_t max_channel{};
+
 protected:
     uint32_t ARR{};
+    uint8_t max_channel{};
     void set_max_channel(uint8_t num);
+    uint8_t get_max_channel() const;
 public:
     enum channel :uint8_t{
         _1 = 1,

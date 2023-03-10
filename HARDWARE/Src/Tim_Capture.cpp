@@ -212,8 +212,14 @@ void Tim_Capture::Callback(int num, char **) {
     uint8_t channelx=num-this->timer_num;
     if(channelx==this->CHANNEL)
     {
-        this->CAPTURE_VAL=TIM_GetCapture2(TIM4);
-        TIM_SetCounter(TIM4,0);
+        switch(this->CHANNEL){
+            case 2:this->CAPTURE_VAL=TIM_GetCapture2(this->Timx);break;
+            case 3:this->CAPTURE_VAL=TIM_GetCapture3(this->Timx);break;
+            case 4:this->CAPTURE_VAL=TIM_GetCapture4(this->Timx);break;
+            default:this->CAPTURE_VAL=TIM_GetCapture1(this->Timx);break;
+        }
+//        this->CAPTURE_VAL=TIM_GetCapture2(this->Timx);
+        TIM_SetCounter(this->Timx,0);
         *this->CAPTURE_TABLE[this->CAPTURE_LEN++]=this->CAPTURE_VAL;
         if(this->CAPTURE_LEN>=this->CAPTURE_MAX_LEN)
             this->CAPTURE_LEN=0;

@@ -6,6 +6,8 @@
 #include "Timer.h"
 #include "USART.h"
 #include "TMC220xUart.h"
+#include "CD4052.h"
+#include "PWM.h"
 
 
 
@@ -53,50 +55,44 @@ public:
 _USART_ DEBUG(USART1);
 //_USART_ TMC_U(USART3);
 
-class TMC_UART:public _USART_{
-private:
-    _OutPut_ CS1,CS2;
-public:
-    TMC_UART(GPIO_Pin CS_Pin1,GPIO_Pin CS_Pin2,USART_TypeDef* USARTx) {
-        CS1.init(CS_Pin1,HIGH);
-        CS2.init(CS_Pin2,HIGH);
-        this->init(USARTx);
-    }
-    void send(uint8_t ch,string str){
-        switch(ch){
-            case 2:
-                CS1.set(ON);
-                CS2.set(OFF);
-            break;
-            case 3:
-                CS1.set(ON);
-                CS2.set(ON);
-            break;
-            case 4:
-                CS1.set(OFF);
-                CS2.set(ON);
-            break;
-            default:
-                CS1.set(OFF);
-                CS2.set(OFF);
-            break;
-        }
-//        this->write(std::move(str));
-    }
-}TMC_U(GPIOE15,GPIOE14,USART3);
+CD4052 TMC_U(GPIOE15,GPIOE14,USART3);
+//
+//TMC220xUart TMC_X(&TMC_U,GPIOE12,GPIOE13,GPIOA3);
 
-TMC220xUart TMC_X(&TMC_U,GPIOE12,GPIOE13,GPIOA3);
+class TMCX:public TMC220xUart{
+private:
+    uint8_t CD4052_chanel{};
+protected:
+    CD4052 *uartX{};// 设置串口
+public:
+    void send_data(TMC220xUart *TMX,uint8_t *str, uint16_t len) override{
+        this->uartX->clear();
+        this->uartX->write_chanel(CD4052_chanel,str, len);
+    };
+    TMCX(CD4052 *uartx,uint8_t channel,uint32_t STEP_Pin,uint32_t EN_Pin,uint32_t DIAG_Pin){
+        this->init(uartx,STEP_Pin,EN_Pin,DIAG_Pin);
+        this->uartX=uartx;
+        this->CD4052_chanel=channel;
+    };
+
+}TMC_X1(&TMC_U,1,GPIOE12,GPIOE13,GPIOA3),
+ TMC_X2(&TMC_U,2,GPIOE10,GPIOE11,GPIOA4),
+ TMC_X3(&TMC_U,3,GPIOE8,GPIOE9,GPIOA1),
+ TMC_X4(&TMC_U,4,GPIOB1,GPIOE7,GPIOA2);
+
 
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);	//初始化延时函数
+
     delay_ms(1000);
-    DEBUG.println((string)"ONLINE");
-    TMC_U.send(1,"line1\r\n");
-    delay_ms(1000);
-    TMC_X.init(64,10,1,20,true);
-    TMC_X.Return_to_zero();
+    TMC_X1.config(64,20,1,100, true);
+    TMC_X1.Return_to_zero();
+    TMC_X1.stallGuard(0);
+//    TMC_X2.config(64,10,1,100,true);
+//    TMC_X2.Return_to_zero();
+//    TMC_X2.stallGuard(0);
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -136,9 +132,13 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-        TMC_X.moveTo(1,10);
+//        TMC_X1.moveTo(1,5);
+        TMC_X1.set_site(10);
+//        TMC_X2.moveTo(1,5);
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-        TMC_X.moveTo(0,10);
+//        TMC_X1.moveTo(0,5);
+        TMC_X1.set_site(5);
+//        TMC_X2.moveTo(0,5);
     }
 }
 
@@ -147,8 +147,7 @@ void start_task(void *pvParameters)
 {
     while(true)
     {
-        vTaskDelay(100/portTICK_RATE_MS );
-//        DEBUG<<TMC_U.read_data();
+        vTaskDelay(1000/portTICK_RATE_MS );
     }
 }
 

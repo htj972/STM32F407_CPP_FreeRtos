@@ -23,6 +23,8 @@ private:
     uint16_t maxDistance{};// 丝杆最大行程
     float stepAngle{};// 步距角
     uint32_t stepsPerRevolution{};
+    float site{};
+    float angle{};
 
     bool stop{};     //停止标志
     bool ZERO_flag{};//复位归零
@@ -40,6 +42,8 @@ private:
     void setVactualRpm(uint32_t rpm);
     void moveStepUart(uint64_t Step);
     void set_stop_flag(bool flag);
+    void stopMotor();
+    void startMotor();
 
 public:
 
@@ -49,23 +53,33 @@ enum Direction:uint8_t{
     Back    = 0,
     Forward,
 };
-
+    TMC220xUart()=default;
     TMC220xUart(_USART_ *uartx,GPIO_TypeDef *STEP_Port, uint16_t STEP_Pin,
                 GPIO_TypeDef *EN_Port, uint16_t EN_Pin,
-                GPIO_TypeDef *DIAG_Port,uint16_t DIA_Pin);
+                GPIO_TypeDef *DIAG_Port,uint16_t DIAG_Pin);
     TMC220xUart(_USART_ *uartx,uint32_t STEP_Pin,uint32_t EN_Pin,uint32_t DIAG_Pin);
-    void init(uint16_t mres,uint16_t maxdistance, uint16_t minMovedistance,
-                     uint32_t stallGuardThreshold, bool Reverse= false);
+
+    void init(_USART_ *uartx,GPIO_TypeDef *STEP_Port, uint16_t STEP_Pin,
+              GPIO_TypeDef *EN_Port, uint16_t EN_Pin,
+              GPIO_TypeDef *DIAG_Port,uint16_t DIAG_Pin);
+    void init(_USART_ *uartx,uint32_t STEP_Pin,uint32_t EN_Pin,uint32_t DIAG_Pin);
+    void config(uint16_t mres,uint16_t maxdistance, uint16_t minMovedistance,
+                uint32_t stallGuardThreshold, bool Reverse= false);
+    void config(uint16_t mres, bool Reverse= false);
     void Return_to_zero();
-    void moveTo(uint8_t DIR_Flag, float moveDistance);
-    void stopMotor();
-    void startMotor();
+
     void stallGuard(uint32_t threshold);
     void setStepDirRegSelect(uint8_t dir);
     bool get_stop_flag() const;
-
     void setSpreadCycle(bool en_spread);
 
+    void moveTo(uint8_t DIR_Flag, float moveDistance);
+    void turnTo(float Angle);
+
+    void set_site(float Site);
+    void set_angle(float Angle,bool continuation= true);
+
+    virtual void send_data(TMC220xUart *TMX,uint8_t *str, uint16_t len);
     void Callback(int,char** data) override;
 };
 
