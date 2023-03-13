@@ -221,6 +221,13 @@ void Timer::set_CCextern_fun(bool en) const {
 bool Timer::get_config() const {
     return this->config_flag;
 }
+/*!
+ * 获取定时器号
+ * @return 当前硬件定时器号 timer_num
+ */
+uint8_t Timer::get_Timer_num() {
+    return this->timer_num;
+}
 
 extern "C" {
 void TIM1_UP_TIM10_IRQHandler(void) {

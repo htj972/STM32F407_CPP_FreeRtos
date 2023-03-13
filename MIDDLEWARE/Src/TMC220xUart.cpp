@@ -135,8 +135,12 @@ void TMC220xUart::initTMC2209(uint8_t mres,uint16_t maxdistance, uint16_t minMov
 }
 
 void TMC220xUart::Callback(int,char** data) {
-//    if(data[1][0]==this->DIAG.get_pin_num())
-    this->stopMotor();
+    if(data[0][0]==Call_Back::Name::exit)
+        if(data[1][0]==this->DIAG.get_pin_num())
+            this->stopMotor();
+    if(data[0][0]==Call_Back::Name::timer)
+
+            this->stopMotor();
 }
 /*!
  * ≤ªœﬁŒªπÈ¡„
