@@ -8,6 +8,7 @@
 #include "TMC220xUart.h"
 #include "CD4052.h"
 #include "PWM.h"
+#include "Timer_queue.h"
 
 
 
@@ -52,6 +53,8 @@ public:
     };
 }led(GPIOE2,TIM6,2);
 
+Timer_queue tIMS(TIM7,50000);
+
 _USART_ DEBUG(USART1);
 //_USART_ TMC_U(USART3);
 
@@ -88,6 +91,7 @@ int main()
 
     delay_ms(1000);
     TMC_X1.config(64,20,1,100, true);
+    TMC_X1.Link_TIMX(&tIMS);
     TMC_X1.Return_to_zero();
     TMC_X1.stallGuard(0);
 //    TMC_X2.config(64,10,1,100,true);

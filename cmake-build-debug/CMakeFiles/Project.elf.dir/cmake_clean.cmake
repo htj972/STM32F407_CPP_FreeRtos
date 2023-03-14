@@ -129,6 +129,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/Tim_Capture.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.obj"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer_queue.cpp.obj"
+  "CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer_queue.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj"
   "CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj"

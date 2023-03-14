@@ -164,11 +164,20 @@ void TMC220xUart::config(uint16_t mres, bool Reverse) {
     this->stop = false;
     this->angle=0;
 }
-
-void TMC220xUart::Callback(int,char** data) {
-    if(data[0][0]==Call_Back::Name::exit)
-        if(data[1][0]==this->DIAG.get_pin_num())
-            this->stopMotor();
+/*!
+ * 链接定时器
+ * @param TIMX 定时器指针
+ */
+void TMC220xUart::Link_TIMX(Timer *TIMX) {
+    this->Tim_link.TimX=TIMX;
+    TIMX->upload_extern_fun(this);
+    this->Tim_link.time_num=this->Tim_link.TimX->get_Timer_num();
+    this->Tim_link.tar_num=0;
+    this->Tim_link.cur_num=0;
+    this->Tim_link.speed_num=1;
+    this->Tim_link.steps_num=0;
+    this->Tim_link.add=20000;
+    this->Tim_link.add_t=0;
 }
 /*!
  * 不限位归零
@@ -438,10 +447,20 @@ void TMC220xUart::uartWriteInt(unsigned char address, unsigned int value) {
  * @param Step 步数
  */
 void TMC220xUart::moveStepUart(uint64_t Step) {
-    uint64_t i;
-    if (this->ZERO_flag) {
+    if(this->Tim_link.TimX!= nullptr){
+//        if (this->ZERO_flag)
+//            this->Tim_link.speed_num=10;
+        this->Tim_link.tar_num=Step*2;
+        this->Tim_link.cur_num=0;
+        this->Tim_link.over= false;
+        while(!this->Tim_link.over) {
+            delay_ms(5);
+            if (this->get_stop_flag())break;
+        }
+    }
+    else if (this->ZERO_flag) {
         uint16_t add = TMC_len;
-        for (i = 0; i < Step; i++) {
+        for (uint64_t i = 0; i < Step; i++) {
             static uint8_t addc = 0;
             //发送脉冲
             this->STEP.set_value(LOW);
@@ -459,7 +478,7 @@ void TMC220xUart::moveStepUart(uint64_t Step) {
             if (this->get_stop_flag())break;
         }
     } else {
-        for (i = 0; i < Step; i++) {
+        for (uint64_t i = 0; i < Step; i++) {
             this->STEP.set_value(LOW);
             delay_us(15);
             this->STEP.set_value(HIGH);
@@ -470,6 +489,37 @@ void TMC220xUart::moveStepUart(uint64_t Step) {
 
 }
 
+void TMC220xUart::Callback(int,char** data) {
+    if(data[0][0]==Call_Back::Name::exit)
+        if(data[1][0]==this->DIAG.get_pin_num())
+            this->stopMotor();
+    if(data[0][0]==Call_Back::Name::timer)
+        if(data[1][0]==this->Tim_link.time_num){
+            this->Tim_link.steps_num++;
+//            this->Tim_link.add_t++;
+//            if(this->Tim_link.add_t>=this->Tim_link.add) {
+//                this->Tim_link.add_t = 0;
+//                if (this->ZERO_flag) {
+//                    if ((this->Tim_link.cur_num >= this->Tim_link.tar_num -10*this->Tim_link.add) &&
+//                             this->Tim_link.speed_num < 10)
+//                        this->Tim_link.speed_num++;
+//                    else if ((this->Tim_link.cur_num < this->Tim_link.tar_num / 2) &&
+//                             this->Tim_link.speed_num > 1)
+//                        this->Tim_link.speed_num--;
+//                }
+//            }
+            if(this->Tim_link.steps_num>=this->Tim_link.speed_num) {
+                this->Tim_link.steps_num = 0;
+                this->STEP.change();
+                this->Tim_link.cur_num++;
+                if(this->Tim_link.cur_num>=this->Tim_link.tar_num)
+                    this->Tim_link.over= true;
+            }
+        }
+}
+/*!
+ * 设置停止标志位
+ */
 void TMC220xUart::set_stop_flag(bool flag) {
     this->stop=flag;
 }
@@ -479,11 +529,15 @@ void TMC220xUart::set_stop_flag(bool flag) {
 bool TMC220xUart::get_stop_flag() const {
     return this->stop;
 }
-
+/*!
+ * 发送串口数据
+ */
 void TMC220xUart::send_data(TMC220xUart *TMX, uint8_t *str, uint16_t len) {
     TMX->uart->clear();
     TMX->uart->write(str, len);
 }
+
+
 
 
 

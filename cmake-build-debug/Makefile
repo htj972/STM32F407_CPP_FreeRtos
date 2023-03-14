@@ -1688,6 +1688,30 @@ HARDWARE/Src/Timer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer.cpp.s
 .PHONY : HARDWARE/Src/Timer.cpp.s
 
+HARDWARE/Src/Timer_queue.obj: HARDWARE/Src/Timer_queue.cpp.obj
+.PHONY : HARDWARE/Src/Timer_queue.obj
+
+# target to build an object file
+HARDWARE/Src/Timer_queue.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer_queue.cpp.obj
+.PHONY : HARDWARE/Src/Timer_queue.cpp.obj
+
+HARDWARE/Src/Timer_queue.i: HARDWARE/Src/Timer_queue.cpp.i
+.PHONY : HARDWARE/Src/Timer_queue.i
+
+# target to preprocess a source file
+HARDWARE/Src/Timer_queue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer_queue.cpp.i
+.PHONY : HARDWARE/Src/Timer_queue.cpp.i
+
+HARDWARE/Src/Timer_queue.s: HARDWARE/Src/Timer_queue.cpp.s
+.PHONY : HARDWARE/Src/Timer_queue.s
+
+# target to generate assembly for a file
+HARDWARE/Src/Timer_queue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/Timer_queue.cpp.s
+.PHONY : HARDWARE/Src/Timer_queue.cpp.s
+
 HARDWARE/Src/USART.obj: HARDWARE/Src/USART.cpp.obj
 .PHONY : HARDWARE/Src/USART.obj
 
@@ -3244,6 +3268,9 @@ help:
 	@echo ... HARDWARE/Src/Timer.obj
 	@echo ... HARDWARE/Src/Timer.i
 	@echo ... HARDWARE/Src/Timer.s
+	@echo ... HARDWARE/Src/Timer_queue.obj
+	@echo ... HARDWARE/Src/Timer_queue.i
+	@echo ... HARDWARE/Src/Timer_queue.s
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s

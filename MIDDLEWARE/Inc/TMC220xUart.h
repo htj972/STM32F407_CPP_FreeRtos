@@ -10,9 +10,22 @@
 #include "sys.h"
 #include "USART.h"
 #include "Out_In_Put.h"
+#include "Timer.h"
 
 class TMC220xUart: public Call_Back{
 protected:
+    class TIMER_STEP{
+    public:
+        uint8_t time_num;
+        Timer*   TimX;
+        uint64_t tar_num;
+        uint64_t cur_num;
+        uint8_t  speed_num;
+        uint8_t  steps_num;
+        uint16_t add;
+        uint16_t add_t;
+        bool     over;
+    }Tim_link{};
     _USART_ *uart{};// ÉèÖÃ´®¿Ú
     _OutPut_ STEP;
     _OutPut_ EN;
@@ -66,6 +79,7 @@ enum Direction:uint8_t{
     void config(uint16_t mres,uint16_t maxdistance, uint16_t minMovedistance,
                 uint32_t stallGuardThreshold, bool Reverse= false);
     void config(uint16_t mres, bool Reverse= false);
+    void Link_TIMX(Timer* TIMX);
     void Return_to_zero();
 
     void stallGuard(uint32_t threshold);

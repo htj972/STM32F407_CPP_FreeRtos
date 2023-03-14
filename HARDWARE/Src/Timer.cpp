@@ -208,7 +208,7 @@ void Timer::upload_extern_fun(std::function<void()> fun) {
     TIMER_STRUCT.run_mode[this->timer_num%Timer_Max_num]=Call_Back::MODE::CPP_fun;
 }
 
-void Timer::upload_extern_fun(Call_Back *extx) const {
+void Timer::upload_extern_fun(Call_Back *extx) {
     TIMER_STRUCT.ext[this->timer_num%Timer_Max_num]=extx;
     TIMER_STRUCT.run_mode[this->timer_num%Timer_Max_num]=Call_Back::MODE::class_fun;
 }
@@ -219,6 +219,13 @@ void Timer::set_CCextern_fun(bool en) const {
 
 bool Timer::get_config() const {
     return this->config_flag;
+}
+/*!
+ * 获取定时器号
+ * @return 当前硬件定时器号 timer_num
+ */
+uint8_t Timer::get_Timer_num() {
+    return this->timer_num;
 }
 
 extern "C" {
