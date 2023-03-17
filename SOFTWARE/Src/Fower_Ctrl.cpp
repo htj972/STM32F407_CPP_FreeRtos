@@ -46,7 +46,7 @@ float Fower_Ctrl::calculation_hole_flow() {
 //        sum+=this->data_t[5][ii];
 //    }
 //    fbuf=sum/=10.0;
-    FF_value=fbuf;
+//    FF_value=fbuf;
 //    cur=FF_value;
     return fbuf;
 }
@@ -56,7 +56,16 @@ float Fower_Ctrl::calculation_hole_flow() {
 float Fower_Ctrl::calculation_entrance_flow() {
     cur=this->calculation_hole_flow() * (DaQiYa*1000 +JiYa) *
         (273.15f + DaQiWen) / (DaQiYa*1000) / (273.15f + JiWen);
-    return cur;
+
+    this->data_t[5][this->data_n[5]++]=this->filter[5].Filter(cur);
+    if (this->data_n[5] >= 10)this->data_n[5] = 0;
+    float sum=0;
+    for(uint8_t ii=0; ii<10;ii++) {
+        sum+=this->data_t[5][ii];
+    }
+    FF_value=sum/10.0f;
+    return FF_value;
+//    return cur;
 //    return this->calculation_hole_flow() * (DaQiYa*1000 +JiYa) *
 //            (273.15f + DaQiWen) / (DaQiYa*1000) / (273.15f + JiWen);
 }
