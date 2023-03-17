@@ -39,6 +39,12 @@ typedef struct K_TEOM_data{
     float dis_time;         //屏幕保护时间
     float dis_light;        //屏幕亮度
 
+    float stiffness;        //振动系数
+    float coefficient;      //压力系数
+
+    float Concentration[10];//浓度
+    float Work_time[10];    //工作时间
+
 }TEOM_data;
 
 typedef union K_POWER_TEOM_DATA_{
@@ -96,7 +102,7 @@ public:
         this->num=0;
     }
     void read(){
-        this->data[this->num++]=Kalman::Filter(this->get_temp());
+        this->data[this->num++]=Kalman::Filter(this->get_pres());
         if(this->num>=40)this->num=0;
     };
     float get_value(){
@@ -107,15 +113,15 @@ public:
     };
 };
 
-class TEOM_TEMP:private SPI,public PWM_H{
+class TEOM_TEMP:public PWM_H{
 private:
     GPIO_Pin CS_P[5]{};
 protected:
-
+    SPI *spix;
 public:
     MAX31865 temp_sensor[5];
     Temp_ctrl CTRLT[5];
-    TEOM_TEMP(SPI_TypeDef* SPI,GPIO_Pin CS1,GPIO_Pin CS2,GPIO_Pin CS3,
+    TEOM_TEMP(SPI * SPIx,GPIO_Pin CS1,GPIO_Pin CS2,GPIO_Pin CS3,
               GPIO_Pin CS4,GPIO_Pin CS5,TIM_TypeDef* TIMx,uint32_t FRQ);
     void initial();
 };

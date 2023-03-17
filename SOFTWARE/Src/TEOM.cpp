@@ -64,9 +64,9 @@ float TEOM::get_frq() {
     return frq_sum;
 }
 
-TEOM_TEMP::TEOM_TEMP(SPI_TypeDef *SPI, GPIO_Pin CS1, GPIO_Pin CS2, GPIO_Pin CS3, \
+TEOM_TEMP::TEOM_TEMP(SPI *SPIx, GPIO_Pin CS1, GPIO_Pin CS2, GPIO_Pin CS3, \
                     GPIO_Pin CS4, GPIO_Pin CS5,TIM_TypeDef* TIMx,uint32_t FRQ) {
-    SPI::init(SPI1);
+    this->spix=SPIx;
     PWM_H::init(TIMx,FRQ);
     this->CS_P[0]=CS1;
     this->CS_P[1]=CS2;
@@ -77,7 +77,7 @@ TEOM_TEMP::TEOM_TEMP(SPI_TypeDef *SPI, GPIO_Pin CS1, GPIO_Pin CS2, GPIO_Pin CS3,
 
 void TEOM_TEMP::initial() {
     for(uint8_t ii=0;ii<5;ii++) {
-        this->temp_sensor[ii].init(this, CS_P[ii]);
+        this->temp_sensor[ii].init(this->spix, CS_P[ii]);
         this->temp_sensor[ii].config(MAX31865::MODE::PT1000,200);
     }
     this->CTRLT[0].init(&this->temp_sensor[0],this,4);//管前
@@ -109,12 +109,17 @@ void TEOM_Machine::inital() {
     PDATA_Storage::inital();
     this->read(0,this->DATA.to_u8t,sizeof(DATA));
     //检验数据正确性  头次上电（版本号）
-//    if((this->DATA.to_float.version-HARD_version!=0)||(this->DATA.to_float.dis_light==0))
+    if((this->DATA.to_float.version<=0)||(this->DATA.to_float.dis_light==0))
     {
         POWER_TEOM_DATA init_data;             //新实体一个新数据 构造方法放置初始数值
         this->DATA=init_data;       //转移数据到使用结构体
         this->write(0,init_data.to_u8t,sizeof(init_data));  //写入数据
-
+    }
+    if((this->DATA.to_float.stiffness==0)||(this->DATA.to_float.coefficient==0))
+    {
+        this->DATA.to_float.stiffness=181583456.0f;
+        this->DATA.to_float.coefficient=-9.93238913e-08;
+        this->write(0,this->DATA.to_u8t,sizeof(DATA));
     }
 }
 
@@ -122,9 +127,5 @@ void TEOM_Machine::data_save(float *data,float value) {
     *data=value;
     this->write(0,this->DATA.to_u8t,sizeof(DATA));
 }
-
-
-
-
 
 

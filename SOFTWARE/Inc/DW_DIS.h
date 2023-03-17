@@ -12,6 +12,7 @@
 #include "TEOM.h"
 #include "RTC_H.h"
 #include "Communication.h"
+#include "Storage_Link.h"
 
 #define TEXT_MAX_NUM  10
 #define PIC_MAX_NUM  10
@@ -47,12 +48,14 @@ protected:
     TEOM_Machine *TEOM_link{};
     TEOM_TEMP    *TEMP_link{};
     Communication *COM_link;
+    Storage_Link  *Flash;
 
 private:
     bool worked;
     static int      teom_dis_mul_num;		//放大角标
     static uint16_t teom_dis_mul[3][2];     //放大系数
-    void send_cure_data(uint8_t ch,float center,float data);
+    float  frq_temp,frq_center,press_temp,press_center,teom_qua,Concentration;
+    bool send_cure_data(uint8_t ch,float center,float data);
     void CHANGE_PIC(uint16_t address,uint16_t IDs_x,uint16_t IDs_y,uint16_t IDe_x,uint16_t IDe_y);
     void Check_Box_set(Check_Box data,bool en=true);
     void Check_page(Event E);   //系统检查
@@ -64,6 +67,7 @@ private:
     void Password_page(Event E);    //密码页面
     void Working_page(Event E);     //采样进行界面 曲线图续接
     void Super_page(Event E);       //超级维护页面
+    void Data_DIS(Event E);         //采样数据页面
 
 public:
     DW_DIS(USART_TypeDef* USARTx,TIM_TypeDef *TIMx, uint16_t frq);
@@ -71,6 +75,7 @@ public:
     void Link_TEOM(TEOM_Machine *TEOM_l);
     void Link_Temp(TEOM_TEMP *TEMP_l);
     void Link_Com(Communication *COM_l);
+    void Link_Flash(Storage_Link *flash);
     void key_handle();
     void Dis_handle();
     void set_dis_sleep_time(uint16_t x) override;

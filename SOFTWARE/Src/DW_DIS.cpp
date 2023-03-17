@@ -57,6 +57,13 @@ void DW_DIS::Link_Com(Communication *COM_l) {
     this->COM_link=COM_l;
 }
 /*!
+ * 触摸屏软件  链接存储模块
+ * @return
+ */
+void DW_DIS::Link_Flash(Storage_Link *flash) {
+    this->Flash=flash;
+}
+/*!
  * 触摸屏软件  设置屏保时间 分钟
  * @连接定时器中断
  * @return
@@ -110,7 +117,7 @@ bool DW_DIS::clear_text(uint8_t num) {
  */
 int      DW_DIS::teom_dis_mul_num=1;		//放大角标
 uint16_t DW_DIS::teom_dis_mul[3][2]={{935,5},{187,25},{37,125}}; //放大系数
-void DW_DIS::send_cure_data(uint8_t ch,float center,float data) {
+bool DW_DIS::send_cure_data(uint8_t ch,float center,float data) {
     static uint8_t mark=0;
     if(mark!= this->RTX->get_sec()) {
         mark= this->RTX->get_sec();
@@ -121,8 +128,9 @@ void DW_DIS::send_cure_data(uint8_t ch,float center,float data) {
             this->Write_data(point_address, 0x06, (uint16_t) ((data - center) * 10000));
         } else if (data > center+1)
             this->DROW_point(ch, 10000);
+        return true;
     }
-
+    return false;
 }
 /*!
  * 触摸屏软件  基本图形同位置切割
@@ -183,6 +191,9 @@ void DW_DIS::key_handle() {
             case 18:
                 this->Working_page(KEY);
                 break;
+            case 21:
+                this->Data_DIS(KEY);
+                break;
         }
     }
     else if(event==Data){
@@ -207,6 +218,9 @@ void DW_DIS::key_handle() {
                 break;
             case 17:
                 this->Working_page(Data);
+                break;
+            case 21:
+                this->Data_DIS(Data);
                 break;
         }
     }
@@ -239,6 +253,9 @@ void DW_DIS::Dis_handle() {
         case 18:
             this->Working_page(DISPLAY);
             break;
+        case 21:
+            this->Data_DIS(DISPLAY);
+            break;
     }
 }
 /*!
@@ -248,6 +265,7 @@ void DW_DIS::Dis_handle() {
 #include "delay.h"
 #define Event_num 10
 uint8_t DW_DIS::Check_Event(uint8_t num){
+//    char asdf[30];
     switch (num/(100/Event_num)){
         case 0:
             if(COM_link->modbus_03_send(0,4)==0)
@@ -255,6 +273,17 @@ uint8_t DW_DIS::Check_Event(uint8_t num){
             else
                 this->vspf_Text(TEXT_ADD(4),(char*)"通讯异常");
             break;
+//        case 1:
+//            f_open(&this->Flash->fp,this->Flash->setdir("13.txt"),FA_WRITE|FA_OPEN_ALWAYS);
+//            f_write(&this->Flash->fp,"ACD456",6,&this->Flash->plen);
+//            f_close(&this->Flash->fp);
+//            break;
+//        case 2:
+//            f_open(&this->Flash->fp,this->Flash->setdir("13.txt"),FA_OPEN_ALWAYS);
+//            f_read(&this->Flash->fp,asdf,6,&this->Flash->plen);
+//            f_close(&this->Flash->fp);
+//            this->vspf_Text(TEXT_ADD(3),(char*)asdf);
+//            break;
         default:
             this->vspf_Text(TEXT_ADD(4),(char*)"  %d      ",num/(100/Event_num));
             break;
@@ -273,7 +302,7 @@ void DW_DIS::Check_page(Event E) {
         this->Interface_switching(1);
         this->vspf_Text(TEXT_ADD(1),(char*)"V3.1f",TEOM_link->DATA.to_float.version);
         this->vspf_Text(TEXT_ADD(2),(char*)"V1.0");
-        this->vspf_Text(TEXT_ADD(3),(char*)"ABCD");
+//        this->vspf_Text(TEXT_ADD(3),(char*)"ABCD");
     break;
     case DISPLAY:
         static uint8_t ii=0;
@@ -342,6 +371,9 @@ void DW_DIS::Samp_prepare_page(Event E) {
                 case 4:
                     this->Check_Box_set(Samp_mode_s);
                     this->TEOM_link->DATA.to_float.Samp_mode=Samp_Short_mode;
+                    break;
+                case 5:
+                    this->TEOM_link->data_save(&TEOM_link->DATA.to_float.Samp_num,0);
                     break;
                 case 6:
                     this->Working_page(TURN);
@@ -617,7 +649,7 @@ void DW_DIS::Password_page(DW_DIS::Event E) {
 }
 
 void DW_DIS::Working_page(DW_DIS::Event E) {
-    static float  frq_temp,frq_center;
+//    static float  frq_temp,frq_center,teom_qua;
     switch (E) {
         case TURN:
             this->Interface_switching(17);
@@ -644,8 +676,9 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                 case 1:
                     this->RTX->set_Initial_time();
                     frq_center=this->TEOM_link->get_frq();
+                    press_center=this->TEOM_link->Pre_link->get_value();
                     this->vspf_Text(TEXT_ADD(5),(char *) "%09.5lfHz   ",frq_center);
-                    this->vspf_Text(TEXT_ADD(7),(char *) "%04.0lfPa   ",this->TEOM_link->Pre_link->get_value());
+                    this->vspf_Text(TEXT_ADD(7),(char *) "%04.0lfPa   ",press_center);
                     worked = true;
                 break;
                 case 2:
@@ -687,25 +720,38 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                 uint8_t h,m,s;
                 this->RTX->get_run_time(&h,&m,&s);
                 this->vspf_Text(TEXT_ADD(3),(char *) "%02d:%02d:%02d  ",h,m,s);
-                if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) { //采样完成
-                    if(h==(uint8_t)TEOM_link->DATA.to_float.Samp_TL){
-                        worked = false;
-                        this->Keyboard_Up(0x11);
-                        this->TEOM_link->turn_off();
-                        COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
-                        TEOM_link->DATA.to_float.Samp_num++;
-                        this->TEOM_link->data_save(&TEOM_link->DATA.to_float.dis_light, this->get_cur_light());
+
+                if(((this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode)&&
+                (h==(uint8_t)TEOM_link->DATA.to_float.Samp_TL))||
+                ((this->TEOM_link->DATA.to_float.Samp_mode==Samp_Short_mode)&&
+                (m==(uint8_t)TEOM_link->DATA.to_float.Samp_TS))) {
+                    worked = false;
+//                    this->Keyboard_Up(0x11);
+                    this->TEOM_link->turn_off();
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work, 0);
+
+                    float teom_frq_comp=frq_temp-this->TEOM_link->DATA.to_float.coefficient*
+                            (press_temp-press_center)*(frq_temp+frq_center)/2;   //压力计算
+                    teom_qua = this->TEOM_link->DATA.to_float.stiffness *
+                               (1 / (frq_temp * frq_temp) - 1 / (teom_frq_comp * teom_frq_comp));
+
+                    if (this->TEOM_link->DATA.to_float.Samp_mode == Samp_Long_mode) {
+                        this->Concentration=teom_qua / (float) (h * 5 * 60);
+                        TEOM_link->DATA.to_float.Concentration[(u8) TEOM_link->DATA.to_float.Samp_num] =
+                                this->Concentration;
+                        TEOM_link->DATA.to_float.Work_time[(u8) TEOM_link->DATA.to_float.Samp_num] =
+                                TEOM_link->DATA.to_float.Work_TL;
                     }
-                }
-                else{
-                    if(m==(uint8_t)TEOM_link->DATA.to_float.Samp_TS){
-                        worked = false;
-                        this->Keyboard_Up(0x11);
-                        this->TEOM_link->turn_off();
-                        COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
-                        TEOM_link->DATA.to_float.Samp_num++;
-                        this->TEOM_link->data_save(&TEOM_link->DATA.to_float.dis_light, this->get_cur_light());
+                    else if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Short_mode) {
+                        this->Concentration=teom_qua / (float) (m * 15);
+                        TEOM_link->DATA.to_float.Concentration[(u8) TEOM_link->DATA.to_float.Samp_num] =
+                                this->Concentration;
+                        TEOM_link->DATA.to_float.Work_time[(u8) TEOM_link->DATA.to_float.Samp_num] =
+                                TEOM_link->DATA.to_float.Work_TS;
                     }
+                    TEOM_link->DATA.to_float.Samp_num++;
+                    this->TEOM_link->data_save(&TEOM_link->DATA.to_float.Samp_num, TEOM_link->DATA.to_float.Samp_num);
+                    this->Data_DIS(TURN);
                 }
                 this->send_cure_data(0,frq_center,frq_temp);
             }
@@ -715,9 +761,10 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                 this->vspf_Text(TEXT_ADD(7),(char *) "----Pa");
             }
             frq_temp =this->TEOM_link->get_frq();
+            press_temp=this->TEOM_link->Pre_link->get_value();
             this->vspf_Text(TEXT_ADD(6),(char *) "%09.5lfHz   ",frq_temp);
 
-            this->vspf_Text(TEXT_ADD(8),(char *) "%04.0lfPa   ",this->TEOM_link->Pre_link->get_value());
+            this->vspf_Text(TEXT_ADD(8),(char *) "%04.0lfPa   ",press_temp);
 
             this->vspf_Text(TEXT_ADD(10), (char *) "%09.5lf",
                             frq_temp + (float) teom_dis_mul[teom_dis_mul_num][1] / 1000.0f);//388.46844
@@ -749,6 +796,47 @@ void DW_DIS::Super_page(DW_DIS::Event E) {
             break;
     }
 }
+
+void DW_DIS::Data_DIS(DW_DIS::Event E) {
+    switch (E) {
+        case TURN:
+            this->Interface_switching(21);
+            this->clear_text(8);
+            break;
+        case KEY:
+            switch (this->get_key_data()) {
+                case 1:
+                    this->Main_page(TURN);
+                case 2:
+                    this->Samp_prepare_page(TURN);
+            }
+            break;
+        case Data:
+            break;
+        case DISPLAY:
+            if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) {
+                this->vspf_Text(TEXT_ADD(1), (char *) "长时间采样");
+                this->vspf_Text(TEXT_ADD(2), (char *) "%04.1lf小时",TEOM_link->DATA.to_float.Samp_TL);
+            }
+            else{
+                this->vspf_Text(TEXT_ADD(1), (char *) "短时间采样");
+                this->vspf_Text(TEXT_ADD(2), (char *) "%04.1lf分钟",TEOM_link->DATA.to_float.Samp_TS);
+            }
+            this->vspf_Text(TEXT_ADD(3),(char *)"%09.5lfHz   ", frq_center);
+            this->vspf_Text(TEXT_ADD(4), (char *)"%09.5lfHz   ",frq_temp);
+            this->vspf_Text(TEXT_ADD(5), (char *)"%09.5lkpa   ","短时间采样");
+            this->vspf_Text(TEXT_ADD(6), (char *)"%09.5lkpa   ","短时间采样");
+            this->vspf_Text(TEXT_ADD(7), (char *)"%09.5lfmg   ",teom_qua);
+            this->vspf_Text(TEXT_ADD(8), (char *)"%09.5lfmg/L   ",Concentration);
+            break;
+        case Error:
+            break;
+    }
+}
+
+
+
+
 
 
 

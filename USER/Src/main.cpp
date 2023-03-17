@@ -7,6 +7,9 @@
 #include "Communication.h"
 #include "DW_DIS.h"
 #include "TEOM.h"
+#include "W25QXX.h"
+#include "Storage_Link.h"
+#include "USB_MSC.h"
 
 
 //任务优先级
@@ -69,10 +72,12 @@ public:
     };
 }led2(GPIOE5,TIM6,2);
 
+//SPI总线
+SPI SPI_BUS(SPI1);
 //TEOM 驱动类
 TEOM_Machine teom(GPIOB0,GPIOB1,GPIOD14,TIM4,2);
 //TEOM 温度控制类
-TEOM_TEMP TEMP(SPI1,GPIOC0,GPIOC1,GPIOC2,GPIOC3,GPIOA0,TIM1,1000);
+TEOM_TEMP TEMP(&SPI_BUS,GPIOC0,GPIOC1,GPIOC2,GPIOC3,GPIOA0,TIM1,1000);
 //通信软件类
 Communication m_modebus(USART3,GPIOE15,TIM5,100);
 //迪文显示类
@@ -80,7 +85,12 @@ DW_DIS MDW(USART6,TIM7,10);
 //差压显示
 pressure_dif pressure(GPIOD4,GPIOD5);
 
+W25QXX flash(&SPI_BUS,GPIOC4);
+Storage_Link flash_fatfs(&flash);
 
+
+USB_MSC USB ;
+Storage_Link USB_fatfs(&USB);
 
 
 int main()
@@ -90,6 +100,16 @@ int main()
     delay_ms(1000);
     TEMP.initial();
     teom.inital();
+    teom.Link_PRE(&pressure);
+    USB.init();
+//    USB.wait_Linked();
+    USB_fatfs.init();
+    flash_fatfs.init();
+
+
+
+//    f_mkfs(flash_fatfs.get_name(),1,4096);
+    MDW.Link_Flash(&USB_fatfs);
     MDW.Link_TEOM(&teom);
     MDW.Link_Temp(&TEMP);
     MDW.Link_Com(&m_modebus);
@@ -148,6 +168,7 @@ void start_task(void *pvParameters)
 {
     while(true) {
         delay_ms(100);
+        USB.Upset();
     }
 }
 //压力读取任务
@@ -176,6 +197,16 @@ void start_task(void *pvParameters)
         vTaskDelay(100/portTICK_RATE_MS );
         MDW.key_handle();
         MDW.Dis_handle();
+        {
+//    char asdf[30];
+//    f_open(&USB_fatfs.fp,USB_fatfs.setdir("13.txt"),FA_WRITE|FA_OPEN_ALWAYS);
+//    f_write(&USB_fatfs.fp,"ACD456",6,&USB_fatfs.plen);
+//    f_close(&USB_fatfs.fp);
+//
+//    f_open(&USB_fatfs.fp,USB_fatfs.setdir("13.txt"),FA_OPEN_ALWAYS);
+//    f_read(&USB_fatfs.fp,asdf,6,&USB_fatfs.plen);
+//    f_close(&USB_fatfs.fp);
+        }
     }
 }
 
