@@ -87,9 +87,9 @@ PWM_H PWM(TIM4,1000);
 //SPI总线
 SPI_S SPI_BUS(GPIOE5,GPIOE3,GPIOE6);
 //预处理控温软件类
-pretreatment stovectrl(&SPI_BUS,GPIOE4,&PWM,2,GPIOC10,GPIOC11);
+pretreatment stovectrl(&SPI_BUS,GPIOE2,&PWM,2,GPIOC10,GPIOC11);
 //大气温度传感器
-MAX31865 Atmospheric_T(&SPI_BUS,GPIOE2);
+MAX31865 Atmospheric_T(&SPI_BUS,GPIOE4);
 //通信软件类
 Communication m_modebus(USART2,GPIOD4,TIM7,1000,GPIOD5,GPIOD6);
 //压差传感器类

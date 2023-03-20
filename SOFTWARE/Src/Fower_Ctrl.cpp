@@ -35,18 +35,18 @@ float Fower_Ctrl::calculation_hole_flow() {
     float fbuf = LiuYa;
     float density_1=0.28689097f*(273.15f+JiWen)/(DaQiYa*1000+JiYa);
 
-    if(density_1<0) {this->FF_value=fbuf;return 0;} //结果小于0，忽略
+    if(density_1<0) {FF_value=0;return 0;} //结果小于0，忽略
     if(fbuf < 2)        fbuf = 0;  //如果动压小于2Pa，忽略，防止漂移
     fbuf = (float )sqrt((double )(fbuf*density_1)) * FLOW_RATE;  //计算孔板处流量
 
-//    this->data_t[5][this->data_n[5]++]=this->filter[5].Filter(fbuf);
-//    if (this->data_n[5] >= 10)this->data_n[5] = 0;
-//    float sum=0;
-//    for(uint8_t ii=0; ii<10;ii++) {
-//        sum+=this->data_t[5][ii];
-//    }
-//    fbuf=sum/=10.0;
-//    FF_value=fbuf;
+    this->data_t[5][this->data_n[5]++]=fbuf;
+    if (this->data_n[5] >= 10)this->data_n[5] = 0;
+    float sum=0;
+    for(uint8_t ii=0; ii<10;ii++) {
+        sum+=this->data_t[5][ii];
+    }
+    fbuf=sum/10.0f;
+    FF_value=fbuf;
 //    cur=FF_value;
     return fbuf;
 }
@@ -54,18 +54,24 @@ float Fower_Ctrl::calculation_hole_flow() {
  * 折算到入口流量
  */
 float Fower_Ctrl::calculation_entrance_flow() {
-    cur=this->calculation_hole_flow() * (DaQiYa*1000 +JiYa) *
+    float curL=this->calculation_hole_flow() * (DaQiYa*1000 +JiYa) *
         (273.15f + DaQiWen) / (DaQiYa*1000) / (273.15f + JiWen);
 
-    this->data_t[5][this->data_n[5]++]=this->filter[5].Filter(cur);
-    if (this->data_n[5] >= 10)this->data_n[5] = 0;
-    float sum=0;
-    for(uint8_t ii=0; ii<10;ii++) {
-        sum+=this->data_t[5][ii];
-    }
-    FF_value=sum/10.0f;
-    return FF_value;
-//    return cur;
+//    if(curL>0) {
+//        this->data_t[5][this->data_n[5]++] = this->filter[5].Filter(cur);
+//        if (this->data_n[5] >= 10)this->data_n[5] = 0;
+//        float sum = 0;
+//        for (uint8_t ii = 0; ii < 10; ii++) {
+//            sum += this->data_t[5][ii];
+//        }
+//        FF_value = sum / 10.0f;
+//    }
+//    else{
+//        FF_value = 0;
+//    }
+//    FF_value = curL;
+//    return FF_value;
+    return curL;
 //    return this->calculation_hole_flow() * (DaQiYa*1000 +JiYa) *
 //            (273.15f + DaQiWen) / (DaQiYa*1000) / (273.15f + JiWen);
 }
