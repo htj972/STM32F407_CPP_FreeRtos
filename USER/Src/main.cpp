@@ -85,8 +85,8 @@ DW_DIS MDW(USART6,TIM7,10);
 //≤Ó—πœ‘ æ
 pressure_dif pressure(GPIOD4,GPIOD5);
 
-W25QXX flash(&SPI_BUS,GPIOC4);
-Storage_Link flash_fatfs(&flash);
+//W25QXX flash(&SPI_BUS,GPIOC4);
+//Storage_Link flash_fatfs(&flash);
 
 
 USB_MSC USB ;
@@ -104,7 +104,7 @@ int main()
     USB.init();
 //    USB.wait_Linked();
     USB_fatfs.init();
-    flash_fatfs.init();
+//    flash_fatfs.init();
 
 
 

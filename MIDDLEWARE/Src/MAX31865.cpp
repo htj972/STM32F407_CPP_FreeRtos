@@ -63,7 +63,7 @@ void MAX31865::init(SPI_BASE *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx,numwires 
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
     this->wire_num=wires;
-    this->CSPin.init(PORTx,Pinx,GPIO_Mode_OUT);
+    this->CSPin.init(PORTx,Pinx,LOW);
     this->CSPin.set_value(HIGH);
     this->spix->SetSpeed(BaudRate);
     this->sensor_init();
@@ -75,7 +75,7 @@ void MAX31865::init(SPI_BASE *SPIx,uint8_t CSpin,numwires wires,uint16_t BaudRat
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
     this->wire_num=wires;
-    this->CSPin.init(CSpin,GPIO_Mode_OUT);
+    this->CSPin.init(CSpin,LOW);
     this->CSPin.set_value(HIGH);
     this->spix->SetSpeed(BaudRate);
     this->sensor_init();
