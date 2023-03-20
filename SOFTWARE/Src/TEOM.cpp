@@ -78,7 +78,7 @@ TEOM_TEMP::TEOM_TEMP(SPI *SPIx, GPIO_Pin CS1, GPIO_Pin CS2, GPIO_Pin CS3, \
 void TEOM_TEMP::initial() {
     for(uint8_t ii=0;ii<5;ii++) {
         this->temp_sensor[ii].init(this->spix, CS_P[ii]);
-        this->temp_sensor[ii].config(MAX31865::MODE::PT1000,200);
+        this->temp_sensor[ii].config(MAX31865::MODE::PT1000,3900);
     }
     this->CTRLT[0].init(&this->temp_sensor[0],this,4);//管前
     this->CTRLT[1].init(&this->temp_sensor[1],nullptr,0);//管后  --查看
