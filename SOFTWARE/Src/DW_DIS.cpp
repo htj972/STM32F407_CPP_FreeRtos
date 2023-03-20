@@ -494,14 +494,14 @@ void DW_DIS::Maintain_page(Event E) {
                 this->Check_Box_set(flow_work_ON, false);
                 flow_work_flag=1;
             }
-            this->vspf_Text(TEXT_ADD(1),(char *)"%05.1lf"
+            this->vspf_Text(TEXT_ADD(1),(char *)"%05.1lf   "
                             ,COM_link->data_BUS.to_float.stove_temp_r);
-            this->vspf_Text(TEXT_ADD(3),(char *)"%05.1lf   %05.2lf",COM_link->data_BUS.to_float.Flow_value_r,
+            this->vspf_Text(TEXT_ADD(3),(char *)"%05.1lf   %05.2lf   ",COM_link->data_BUS.to_float.Flow_value_r,
                             COM_link->data_BUS.to_float.Flow_coefficient);
 
             for (int ii = 0; ii < 5; ii++) {
                 TEMP_link->CTRLT[ii].upset(false);
-                this->vspf_Text(TEXT_ADD(4+ii),(char *)"%05.2lf",TEMP_link->CTRLT[ii].get_cur());
+                this->vspf_Text(TEXT_ADD(4+ii),(char *)"%05.2lf   ",TEMP_link->CTRLT[ii].get_cur());
             }
             break;
         case Data:
@@ -741,9 +741,10 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                                 this->Concentration;
                         TEOM_link->DATA.to_float.Work_time[(u8) TEOM_link->DATA.to_float.Samp_num] =
                                 TEOM_link->DATA.to_float.Work_TL;
+
                     }
                     else if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Short_mode) {
-                        this->Concentration=teom_qua / (float) (m * 15);
+                        this->Concentration=teom_qua / (float) (m * 15.5);
                         TEOM_link->DATA.to_float.Concentration[(u8) TEOM_link->DATA.to_float.Samp_num] =
                                 this->Concentration;
                         TEOM_link->DATA.to_float.Work_time[(u8) TEOM_link->DATA.to_float.Samp_num] =
