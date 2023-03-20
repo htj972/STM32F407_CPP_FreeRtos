@@ -8401,7 +8401,7 @@ Discarded input sections
  .ARM.exidx.text._ZN9TEOM_TEMPC2EP3SPI8GPIO_PinS2_S2_S2_S2_P11TIM_TypeDefm
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.obj
  .text._ZN9TEOM_TEMP7initialEv
-                0x00000000      0x1d8 CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.obj
+                0x00000000      0x1dc CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.obj
  .ARM.extab.text._ZN9TEOM_TEMP7initialEv
                 0x00000000        0xc CMakeFiles/Project.elf.dir/SOFTWARE/Src/TEOM.cpp.obj
  .ARM.exidx.text._ZN9TEOM_TEMP7initialEv
