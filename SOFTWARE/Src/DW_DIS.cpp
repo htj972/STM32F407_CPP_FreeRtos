@@ -501,7 +501,13 @@ void DW_DIS::Maintain_page(Event E) {
 
             for (int ii = 0; ii < 5; ii++) {
                 TEMP_link->CTRLT[ii].upset(false);
-                this->vspf_Text(TEXT_ADD(4+ii),(char *)"%05.2lf   ",TEMP_link->CTRLT[ii].get_cur());
+                float temp_dis_t;
+                temp_dis_t=TEMP_link->CTRLT[ii].get_cur();
+                if((temp_dis_t>-20)&&(temp_dis_t<250))
+                    this->vspf_Text(TEXT_ADD(4+ii),(char *)"%05.2lf   ",TEMP_link->CTRLT[ii].get_cur());
+                else
+                    this->vspf_Text(TEXT_ADD(4+ii),(char *)"“Ï≥£  "
+                                                           "");
             }
             break;
         case Data:
