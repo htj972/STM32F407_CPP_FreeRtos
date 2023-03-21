@@ -19,9 +19,9 @@ pretreatment::pretreatment(SPI_BASE *SPIx, uint8_t CSpin,PWM_H *PWM,uint8_t ch,G
 void pretreatment::initial() {
     MAX31865::init(this->spix,SCpinx);
     MAX31865::config(MAX31865::PT100,3900);
-    Temp_ctrl::config_PID(5,0.1,5);
+    Temp_ctrl::config_PID(5,0.02,5);
     Temp_ctrl::config_kalman(0.1,0.05);
-    Temp_ctrl::set_target(60);
+    Temp_ctrl::set_target(120);
 }
 
 void pretreatment::upset() {
