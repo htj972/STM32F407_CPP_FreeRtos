@@ -7266,7 +7266,7 @@ Discarded input sections
  .ARM.exidx.text._ZN8MAX3186514default_configEv
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
  .text._ZN8MAX3186511sensor_initEv
-                0x00000000       0x52 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
+                0x00000000       0x72 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
  .ARM.extab.text._ZN8MAX3186511sensor_initEv
                 0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
  .ARM.exidx.text._ZN8MAX3186511sensor_initEv
@@ -7326,7 +7326,7 @@ Discarded input sections
  .ARM.exidx.text._ZN8MAX318659readFaultEv
                 0x00000000        0x8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
  .text._ZN8MAX318657readRTDEv
-                0x00000000       0x62 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
+                0x00000000       0x3c CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
  .ARM.extab.text._ZN8MAX318657readRTDEv
                 0x00000000        0xc CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
  .ARM.exidx.text._ZN8MAX318657readRTDEv
@@ -7348,7 +7348,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0xa8 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
  .debug_ranges  0x00000000       0x98 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
- .debug_line    0x00000000      0x8b4 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
+ .debug_line    0x00000000      0x8b1 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
  .debug_str     0x00000000     0x1305 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
  .comment       0x00000000       0x4a CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj
  .debug_frame   0x00000000      0x2a0 CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj

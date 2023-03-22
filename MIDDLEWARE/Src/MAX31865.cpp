@@ -63,7 +63,7 @@ void MAX31865::init(SPI_BASE *SPIx, GPIO_TypeDef *PORTx, uint32_t Pinx,numwires 
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
     this->wire_num=wires;
-    this->CSPin.init(PORTx,Pinx,GPIO_Mode_OUT);
+    this->CSPin.init(PORTx,Pinx,LOW);
     this->CSPin.set_value(HIGH);
     this->spix->SetSpeed(BaudRate);
     this->sensor_init();
@@ -75,7 +75,7 @@ void MAX31865::init(SPI_BASE *SPIx,uint8_t CSpin,numwires wires,uint16_t BaudRat
     this->BaudRatex=BaudRate;
     this->spix=SPIx;
     this->wire_num=wires;
-    this->CSPin.init(CSpin,GPIO_Mode_OUT);
+    this->CSPin.init(CSpin,LOW);
     this->CSPin.set_value(HIGH);
     this->spix->SetSpeed(BaudRate);
     this->sensor_init();
@@ -93,6 +93,9 @@ void MAX31865::sensor_init() {
     delay_ms(10);
     setWires(this->wire_num);
     clearFault();
+    uint8_t t = this->readRegister8(MAX31856_CONFIG_REG);
+    t |= MAX31856_CONFIG_MODEAUTO;
+    this->writeRegister8(MAX31856_CONFIG_REG, t);
     this->spix->Queue_end();
 }
 
@@ -188,10 +191,10 @@ uint8_t MAX31865::readFault()
 uint16_t MAX31865::readRTD()
 {
     this->spix->Queue_star();
-    uint8_t t = this->readRegister8(MAX31856_CONFIG_REG);
-    t |= MAX31856_CONFIG_1SHOT;
-    this->writeRegister8(MAX31856_CONFIG_REG, t);
-    delay_ms(70);//单次转换读取时间在片选信号拉高后在50HZ工作模式下需要约62ms，60hz约52ms
+//    uint8_t t = this->readRegister8(MAX31856_CONFIG_REG);
+//    t |= MAX31856_CONFIG_1SHOT;
+//    this->writeRegister8(MAX31856_CONFIG_REG, t);
+//    delay_ms(70);//单次转换读取时间在片选信号拉高后在50HZ工作模式下需要约62ms，60hz约52ms
     uint16_t rtd = this->readRegister16(MAX31856_RTDMSB_REG);
     // remove fault
     rtd >>= 1;
