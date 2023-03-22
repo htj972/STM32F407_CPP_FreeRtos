@@ -70,6 +70,11 @@ void Temp_ctrl::upset(bool en) {
         if(this->CONTROLLER!= nullptr)
             this->CONTROLLER->set_Duty_cycle(this->chx,OUT);
     }
+    else
+    {
+        if(this->CONTROLLER!= nullptr)
+            this->CONTROLLER->set_Duty_cycle(this->chx,0);
+    }
 }
 
 float Temp_ctrl::get_cur() const {

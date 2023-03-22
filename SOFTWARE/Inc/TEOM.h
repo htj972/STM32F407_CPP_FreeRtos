@@ -45,6 +45,8 @@ typedef struct K_TEOM_data{
     float Concentration[10];//浓度
     float Work_time[10];    //工作时间
 
+    float temp_dif[5];
+
 }TEOM_data;
 
 typedef union K_POWER_TEOM_DATA_{
@@ -136,6 +138,7 @@ public:
     void Link_PRE(pressure_dif *Pre_linkx);
     void inital() override;
     void data_save(float *data,float value);
+    void data_save();
 };
 
 

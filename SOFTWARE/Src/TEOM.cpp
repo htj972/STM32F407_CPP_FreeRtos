@@ -99,6 +99,16 @@ void TEOM_TEMP::initial() {
     this->CTRLT[3].config_PID(45,0.15,200);//ÉÏ¸Ç
     this->CTRLT[4].config_PID(45,0.15,500);//Ç»ÎÂ
 
+    this->CTRLT[0].set_target(50);
+    this->CTRLT[2].set_target(50);
+    this->CTRLT[3].set_target(50);
+    this->CTRLT[4].set_target(50);
+
+    this->CTRLT[0].PID_ENABLE_Range(1);
+    this->CTRLT[2].PID_ENABLE_Range(1);
+    this->CTRLT[3].PID_ENABLE_Range(1);
+    this->CTRLT[4].PID_ENABLE_Range(1);
+
     PWM_H::config(1,2,3,4);
 
 }
@@ -127,6 +137,10 @@ void TEOM_Machine::inital() {
 
 void TEOM_Machine::data_save(float *data,float value) {
     *data=value;
+    this->write(0,this->DATA.to_u8t,sizeof(DATA));
+}
+
+void TEOM_Machine::data_save() {
     this->write(0,this->DATA.to_u8t,sizeof(DATA));
 }
 

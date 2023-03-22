@@ -29,4 +29,9 @@ Check_Box Samp_mode_s(PIC_ADD(1),6,35,306,71,340);
 Check_Box stove_work_ON(PIC_ADD(1),10,640,80,732,128);
 Check_Box flow_work_ON(PIC_ADD(2),10,228,134,313,191);
 
+Check_Box temp_Tube_f_ON(PIC_ADD(3),10,206,368,302,424);
+Check_Box temp_Tube_b_ON(PIC_ADD(4),10,350,368,443,424);
+Check_Box temp_cover_ON( PIC_ADD(5),10,495,368,588,424);
+Check_Box temp_cavity_ON(PIC_ADD(6),10,641,368,734,424);
+
 #endif //KOKIRIKA_DW_SITE_DATA_H

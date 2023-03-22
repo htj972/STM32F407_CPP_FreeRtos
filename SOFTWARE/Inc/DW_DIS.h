@@ -47,14 +47,15 @@ protected:
     bool clear_text(uint8_t num);
     TEOM_Machine *TEOM_link{};
     TEOM_TEMP    *TEMP_link{};
-    Communication *COM_link;
-    Storage_Link  *Flash;
+    Communication *COM_link{};
+    Storage_Link  *Flash{};
 
 private:
-    bool worked;
+    bool worked{};
     static int      teom_dis_mul_num;		//放大角标
     static uint16_t teom_dis_mul[3][2];     //放大系数
-    float  frq_temp,frq_center,press_temp,press_center,teom_qua,Concentration;
+    float  frq_temp{},frq_center{},press_temp{},press_center{},teom_qua{},Concentration{};
+    bool TEMP_UP_F[5]{};
     bool send_cure_data(uint8_t ch,float center,float data);
     void CHANGE_PIC(uint16_t address,uint16_t IDs_x,uint16_t IDs_y,uint16_t IDe_x,uint16_t IDe_y);
     void Check_Box_set(Check_Box data,bool en=true);

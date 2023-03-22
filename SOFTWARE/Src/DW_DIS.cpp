@@ -33,6 +33,9 @@ void DW_DIS::initial() {
         this->SetBackLight((uint8_t) this->TEOM_link->DATA.to_float.dis_light);
         this->set_dis_sleep_time((uint8_t) this->TEOM_link->DATA.to_float.dis_time);
     }
+    for (int ii = 0; ii < 5; ii++) {
+        TEMP_link->temp_sensor[ii].set_temp_offset(TEOM_link->DATA.to_float.temp_dif[ii]);
+    }
     this->Check_page(TURN);
 }
 /*!
@@ -454,10 +457,16 @@ void DW_DIS::Maintain_page(Event E) {
         case TURN:
             this->Interface_switching(9);
             this->clear_text(8);
+            for (bool &ii :TEMP_UP_F) {
+                ii= false;
+            }
             break;
         case KEY:
             switch (this->get_key_data()) {
                 case 0://返回
+                    for (auto & ii : TEMP_link->CTRLT) {
+                        ii.upset(false);
+                    }
                     this->Main_page(TURN);
                     break;
                 case 1://开关加热炉
@@ -472,6 +481,22 @@ void DW_DIS::Maintain_page(Event E) {
                     break;
                 case 4://17L
                     COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,15.5);
+                    break;
+                case 6:
+                    TEMP_UP_F[0]=!TEMP_UP_F[0];
+                    this->Check_Box_set(temp_Tube_f_ON, TEMP_UP_F[0]);
+                    break;
+                case 7:
+                    TEMP_UP_F[2]=!TEMP_UP_F[2];
+                    this->Check_Box_set(temp_Tube_b_ON, TEMP_UP_F[2]);
+                    break;
+                case 8:
+                    TEMP_UP_F[3]=!TEMP_UP_F[3];
+                    this->Check_Box_set(temp_cover_ON, TEMP_UP_F[3]);
+                    break;
+                case 9:
+                    TEMP_UP_F[4]=!TEMP_UP_F[4];
+                    this->Check_Box_set(temp_cavity_ON, TEMP_UP_F[4]);
                     break;
             }
             break;
@@ -500,18 +525,35 @@ void DW_DIS::Maintain_page(Event E) {
                             COM_link->data_BUS.to_float.Flow_coefficient);
 
             for (int ii = 0; ii < 5; ii++) {
-                TEMP_link->CTRLT[ii].upset(false);
+                TEMP_link->CTRLT[ii].upset(TEMP_UP_F[ii]);
                 float temp_dis_t;
                 temp_dis_t=TEMP_link->CTRLT[ii].get_cur();
                 if((temp_dis_t>-20)&&(temp_dis_t<250))
                     this->vspf_Text(TEXT_ADD(4+ii),(char *)"%05.2lf   ",TEMP_link->CTRLT[ii].get_cur());
                 else
-                    this->vspf_Text(TEXT_ADD(4+ii),(char *)"异常  "
-                                                           "");
+                    this->vspf_Text(TEXT_ADD(4+ii),(char *)"异常  ");
             }
+            this->vspf_Text(TEXT_ADD(9),(char *)"%05.2lf   ",COM_link->data_BUS.to_float.air_temp);
             break;
         case Data:
-            COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_w,this->get_value_data()/100.0f);
+            float value;
+            switch (this->get_value_address()) {
+                case 0:
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_w, this->get_value_data() / 100.0f);
+                    break;
+                case 1:
+                    value=this->get_value_data();
+                    TEMP_link->temp_sensor[0].calculate_temp_offset(value);
+                    TEMP_link->temp_sensor[1].calculate_temp_offset(value);
+                    TEMP_link->temp_sensor[2].calculate_temp_offset(value);
+                    TEMP_link->temp_sensor[3].calculate_temp_offset(value);
+                    TEMP_link->temp_sensor[4].calculate_temp_offset(value);
+                    for (int ii = 0; ii < 5; ii++) {
+                        TEOM_link->DATA.to_float.temp_dif[ii]=TEMP_link->temp_sensor[ii].get_temp_offset();
+                    }
+                    TEOM_link->data_save();
+                    break;
+            }
             break;
         case Error:
             break;
@@ -770,7 +812,6 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
             frq_temp =this->TEOM_link->get_frq();
             press_temp=this->TEOM_link->Pre_link->get_value();
             this->vspf_Text(TEXT_ADD(6),(char *) "%09.5lfHz   ",frq_temp);
-
             this->vspf_Text(TEXT_ADD(8),(char *) "%04.0lfPa   ",press_temp);
 
             this->vspf_Text(TEXT_ADD(10), (char *) "%09.5lf",
@@ -785,19 +826,111 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
 }
 
 void DW_DIS::Super_page(DW_DIS::Event E) {
+    static float quality=0;
+    static float coefficient[3][3];
+    static uint8_t calibration_flag=0;
+    #define p0  coefficient[0][0]
+    #define p1  coefficient[1][0]
+    #define p2  coefficient[2][0]
+    #define f0  coefficient[0][1]
+    #define f1  coefficient[1][1]
+    #define f2  coefficient[2][1]
+    #define m0  coefficient[0][2]
+    #define m1  coefficient[1][2]
+    #define m2  coefficient[2][2]
     switch (E) {
         case TURN:
             this->Interface_switching(16);
+            this->clear_text(9);
+            this->vspf_Text(TEXT_ADD(1), (char *) "0 L/Min");
+            this->vspf_Text(TEXT_ADD(3), (char *) "0 Hz");
+            calibration_flag=0;
+            for(auto &ii : coefficient)
+                for(float &jj : ii)
+                    jj=0;
             break;
+            for (bool &ii :TEMP_UP_F) {
+                ii= false;
+            }
         case KEY:
             switch (this->get_key_data()) {
                 case 0:
-                this->Main_page(TURN);
+                    for (auto & ii : TEMP_link->CTRLT) {
+                        ii.upset(false);
+                    }
+                    this->Main_page(TURN);
+                    break;
+                case 1:
+                    this->TEOM_link->turn_on();
+                    for (bool &ii :TEMP_UP_F) {
+                        ii= true;
+                    }
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,5);
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,1);
+                    break;
+                case 2:
+                    calibration_flag|=0x01;
+                    coefficient[0][0]=press_temp;
+                    coefficient[0][1]=frq_temp;
+                    coefficient[0][2]=0;
+                    this->TEOM_link->turn_off();
+                    this->vspf_Text(TEXT_ADD(4), (char *) "%09.5lfHz   ",coefficient[0][1]);
+                    this->vspf_Text(TEXT_ADD(5), (char *) "%04.0lfPa   ",coefficient[0][0]);
+                    break;
+                case 3:case 5:
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,15.5);
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,1);
+                    this->TEOM_link->turn_on();
+                    break;
+                case 4:
+                    calibration_flag|=0x02;
+                    coefficient[1][0]=press_temp;
+                    coefficient[1][1]=frq_temp;
+                    coefficient[1][2]=0;
+                    this->TEOM_link->turn_off();
+                    this->vspf_Text(TEXT_ADD(4), (char *) "%09.5lfHz   ",coefficient[1][1]);
+                    this->vspf_Text(TEXT_ADD(5), (char *) "%04.0lfPa   ",coefficient[1][0]);
+                    break;
+                case 6:
+                    calibration_flag|=0x04;
+                    coefficient[1][0]=press_temp;
+                    coefficient[1][1]=frq_temp;
+                    coefficient[1][2]=quality;
+                    this->TEOM_link->turn_off();
+
+                    if((calibration_flag&0x3)==0x03)
+                    {
+                        TEOM_link->DATA.to_float.coefficient=(f1-f0)/(((f1+f0)/2)*(p1-p0));
+                        TEOM_link->data_save();
+                    }
+                    if((calibration_flag&0x6)==0x06)
+                    {
+                        float frq_comp=f2-TEOM_link->DATA.to_float.coefficient*(p2-p1)*(f2+f1)/2;
+                        #define reci_squ(x) (1/((x)*(x)))
+                        TEOM_link->DATA.to_float.stiffness=m2/(reci_squ(frq_comp)-reci_squ(f1)) ;
+                        this->TEOM_link->data_save();
+                    }
+                    this->vspf_Text(TEXT_ADD(4), (char *) "%09.8lf",TEOM_link->DATA.to_float.coefficient);
+                    this->vspf_Text(TEXT_ADD(5), (char *) "%09.0lf",TEOM_link->DATA.to_float.stiffness);
+                    break;
             }
             break;
         case Data:
+            switch (this->get_value_address()) {
+                case 0:
+                    quality = this->get_value_data() / 1000;
+                    break;
+            }
             break;
         case DISPLAY:
+            this->vspf_Text(TEXT_ADD(1), (char *) "%05.1lfL/m",COM_link->data_BUS.to_float.Flow_value_r);
+            this->vspf_Text(TEXT_ADD(2), (char *) "%06.3lf mg",quality);
+            frq_temp =this->TEOM_link->get_frq();
+            press_temp=this->TEOM_link->Pre_link->get_value();
+            this->vspf_Text(TEXT_ADD(3), (char *) "%09.5lfHz   ",frq_temp);
+            for (int ii = 0; ii < 5; ii++) {
+                TEMP_link->CTRLT[ii].upset(TEMP_UP_F[ii]);
+            }
             break;
         case Error:
             break;
