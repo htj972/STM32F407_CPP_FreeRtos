@@ -24,7 +24,7 @@ void start_task(void *pvParameters);
 //任务优先级
 #define TEMP_TASK_PRIO		2
 //任务堆栈大小
-#define TEMP_STK_SIZE 		128
+#define TEMP_STK_SIZE 		256
 //任务句柄
 TaskHandle_t TEMPTask_Handler;
 //任务函数
@@ -33,7 +33,7 @@ TaskHandle_t TEMPTask_Handler;
 //任务优先级
 #define PRE_TASK_PRIO		2
 //任务堆栈大小
-#define PRE_STK_SIZE 		128
+#define PRE_STK_SIZE 		256
 //任务句柄
 TaskHandle_t PRETask_Handler;
 //任务函数
@@ -51,7 +51,7 @@ TaskHandle_t COMTask_Handler;
 //任务优先级
 #define DIS_TASK_PRIO		3
 //任务堆栈大小
-#define DIS_STK_SIZE 		1024
+#define DIS_STK_SIZE 		512
 //任务句柄
 TaskHandle_t DISTask_Handler;
 //任务函数
@@ -138,13 +138,13 @@ void start_task(void *pvParameters)
                 (void*          )nullptr,
                 (UBaseType_t    )TEMP_TASK_PRIO,
                 (TaskHandle_t*  )&TEMPTask_Handler);
-    //创建压力任务
-    xTaskCreate((TaskFunction_t )PRE_task,
-                (const char*    )"PRE_task",
-                (uint16_t       )PRE_STK_SIZE,
-                (void*          )nullptr,
-                (UBaseType_t    )PRE_TASK_PRIO,
-                (TaskHandle_t*  )&PRETask_Handler);
+//    //创建压力任务
+//    xTaskCreate((TaskFunction_t )PRE_task,
+//                (const char*    )"PRE_task",
+//                (uint16_t       )PRE_STK_SIZE,
+//                (void*          )nullptr,
+//                (UBaseType_t    )PRE_TASK_PRIO,
+//                (TaskHandle_t*  )&PRETask_Handler);
     //创建COM任务
     xTaskCreate((TaskFunction_t )COM_task,
                 (const char*    )"COM_task",
@@ -167,26 +167,25 @@ void start_task(void *pvParameters)
 [[noreturn]] void TEMP_task(void *pvParameters)
 {
     while(true) {
-        delay_ms(100);
+        vTaskDelay(100/portTICK_RATE_MS );
         USB.Upset();
     }
 }
-//压力读取任务
-[[noreturn]] void PRE_task(void *pvParameters)
-{
-    while(true) {
-        delay_ms(100);
-        pressure.read();
-    }
-}
+////压力读取任务
+//[[noreturn]] void PRE_task(void *pvParameters)
+//{
+//    while(true) {
+//        vTaskDelay(100/portTICK_RATE_MS );
+//        pressure.read();
+//    }
+//}
 //串通信任务
 [[noreturn]] void COM_task(void *pvParameters)
 {
-    uint8_t sec_t=0;
     while(true) {
         vTaskDelay(200 / portTICK_RATE_MS);
         m_modebus.data_sync();
-
+        pressure.read();
     }
 }
 //迪文屏任务
@@ -197,16 +196,6 @@ void start_task(void *pvParameters)
         vTaskDelay(100/portTICK_RATE_MS );
         MDW.key_handle();
         MDW.Dis_handle();
-        {
-//    char asdf[30];
-//    f_open(&USB_fatfs.fp,USB_fatfs.setdir("13.txt"),FA_WRITE|FA_OPEN_ALWAYS);
-//    f_write(&USB_fatfs.fp,"ACD456",6,&USB_fatfs.plen);
-//    f_close(&USB_fatfs.fp);
-//
-//    f_open(&USB_fatfs.fp,USB_fatfs.setdir("13.txt"),FA_OPEN_ALWAYS);
-//    f_read(&USB_fatfs.fp,asdf,6,&USB_fatfs.plen);
-//    f_close(&USB_fatfs.fp);
-        }
     }
 }
 

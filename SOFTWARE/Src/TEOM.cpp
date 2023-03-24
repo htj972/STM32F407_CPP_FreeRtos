@@ -88,11 +88,11 @@ void TEOM_TEMP::initial() {
     this->CTRLT[3].init(&this->temp_sensor[3],this,1);//上盖
     this->CTRLT[4].init(&this->temp_sensor[4],this,2);//腔温
 
-    this->CTRLT[0].config_kalman(0.1,0.034);
-    this->CTRLT[1].config_kalman(0.1,0.034);
-    this->CTRLT[2].config_kalman(0.1,0.034);
-    this->CTRLT[3].config_kalman(0.1,0.034);
-    this->CTRLT[4].config_kalman(0.1,0.034);
+    this->CTRLT[0].config_kalman(0.05,0.01);
+    this->CTRLT[1].config_kalman(0.05,0.01);
+    this->CTRLT[2].config_kalman(0.05,0.01);
+    this->CTRLT[3].config_kalman(0.05,0.01);
+    this->CTRLT[4].config_kalman(0.05,0.01);
 
     this->CTRLT[0].config_PID(45,0.2,300);//管前
     this->CTRLT[2].config_PID(45,0.5,350);//管后 -- 膜温

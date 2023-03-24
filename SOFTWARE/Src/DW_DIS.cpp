@@ -542,7 +542,7 @@ void DW_DIS::Maintain_page(Event E) {
                     COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_w, this->get_value_data() / 100.0f);
                     break;
                 case 1:
-                    value=this->get_value_data();
+                    value=this->get_value_data()/100;
                     TEMP_link->temp_sensor[0].calculate_temp_offset(value);
                     TEMP_link->temp_sensor[1].calculate_temp_offset(value);
                     TEMP_link->temp_sensor[2].calculate_temp_offset(value);
