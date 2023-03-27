@@ -8490,7 +8490,29 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj: ../SOFTWARE/Src/DW_DIS.c
   ../FATFS/Inc/ffconf.h \
   ../SOFTWARE/Inc/DW_SITE_DATA.h \
   ../SOFTWARE/Inc/DW_DIS.h \
-  ../SYSTEM/Inc/delay.h
+  ../SYSTEM/Inc/delay.h \
+  ../USB/CLASS/Inc/USB_MSC.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h \
+  ../USB/USB_OTG/Inc/usb_regs.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_OTG/Inc/usb_defines.h \
+  ../USB/USB_HOST/Inc/usbh_def.h \
+  ../USB/USB_HOST/Inc/usbh_conf.h \
+  ../USB/USB_OTG/Inc/usb_conf.h \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_core.h \
+  ../USB/USB_HOST/Inc/usbh_stdreq.h \
+  ../USB/CLASS/Inc/usb_bsp.h \
+  ../USB/USB_OTG/Inc/usb_core.h \
+  ../USB/USB_HOST/Inc/usbh_ioreq.h \
+  ../USB/USB_HOST/Inc/usbh_hcs.h \
+  ../USB/USB_HOST/Inc/usbh_msc_core.h \
+  ../USB/USB_HOST/Inc/usbh_msc_scsi.h \
+  ../USB/USB_HOST/Inc/usbh_msc_bot.h \
+  ../USB/USB_OTG/Inc/usb_hcd_int.h \
+  ../USB/USB_OTG/Inc/usb_hcd.h
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj: ../SOFTWARE/Src/Fower_Ctrl.cpp \
   F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/valarray \
@@ -10737,9 +10759,9 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-no
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/ext/alloc_traits.h:
 
-../USB/USB_OTG/Inc/usb_core.h:
-
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/float.h:
+
+../USB/USB_OTG/Inc/usb_core.h:
 
 ../HARDWARE/Inc/PWM.h:
 
@@ -11167,6 +11189,20 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/u
 
 ../SOFTWARE/Inc/DW_SITE_DATA.h:
 
+../USB/USB_OTG/Inc/usb_regs.h:
+
+../USB/USB_OTG/Inc/usb_conf.h:
+
+../USB/USB_OTG/Inc/usb_defines.h:
+
+F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/syslimits.h:
+
+../USB/USB_HOST/Inc/usbh_conf.h:
+
+../USB/CLASS/Inc/usb_bsp.h:
+
+../USB/USB_OTG/Inc/usb_hcd_int.h:
+
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/valarray:
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stl_algo.h:
@@ -11187,23 +11223,9 @@ F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/v
 
 F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed/syslimits.h:
 
-../USB/USB_HOST/Inc/usbh_conf.h:
-
-F:/CubeMX/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/syslimits.h:
-
 ../SYSTEM/Src/malloc.c:
 
 ../USB/CLASS/Src/USB_MSC.cpp:
-
-../USB/USB_OTG/Inc/usb_regs.h:
-
-../USB/USB_OTG/Inc/usb_conf.h:
-
-../USB/USB_OTG/Inc/usb_defines.h:
-
-../USB/CLASS/Inc/usb_bsp.h:
-
-../USB/USB_OTG/Inc/usb_hcd_int.h:
 
 ../USB/USB_HOST/Scr/usbh_ioreq.c:
 

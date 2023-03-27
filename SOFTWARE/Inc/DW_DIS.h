@@ -70,6 +70,8 @@ private:
     void Working_page(Event E);     //采样进行界面 曲线图续接
     void Super_page(Event E);       //超级维护页面
     void Data_DIS(Event E);         //采样数据页面
+    void statement(Event E);          //数据报表
+
 
 public:
     DW_DIS(USART_TypeDef* USARTx,TIM_TypeDef *TIMx, uint16_t frq);

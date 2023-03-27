@@ -195,7 +195,11 @@ void DW_DIS::key_handle() {
                 this->Working_page(KEY);
                 break;
             case 21:
+            case 22:
                 this->Data_DIS(KEY);
+                break;
+            case 23:
+                this->statement(KEY);
                 break;
         }
     }
@@ -223,7 +227,11 @@ void DW_DIS::key_handle() {
                 this->Working_page(Data);
                 break;
             case 21:
+            case 22:
                 this->Data_DIS(Data);
+                break;
+            case 23:
+                this->statement(Data);
                 break;
         }
     }
@@ -257,7 +265,11 @@ void DW_DIS::Dis_handle() {
             this->Working_page(DISPLAY);
             break;
         case 21:
+        case 22:
             this->Data_DIS(DISPLAY);
+            break;
+        case 23:
+            this->statement(DISPLAY);
             break;
     }
 }
@@ -266,6 +278,8 @@ void DW_DIS::Dis_handle() {
  * @根据按键转换对对应页面
  */
 #include "delay.h"
+#include "USB_MSC.h"
+
 #define Event_num 10
 uint8_t DW_DIS::Check_Event(uint8_t num){
 //    char asdf[30];
@@ -789,6 +803,7 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                                 this->Concentration;
                         TEOM_link->DATA.to_float.Work_time[(u8) TEOM_link->DATA.to_float.Samp_num] =
                                 TEOM_link->DATA.to_float.Work_TL;
+                        TEOM_link->DATA.to_float.Samp_num=0;
 
                     }
                     else if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Short_mode) {
@@ -797,8 +812,8 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                                 this->Concentration;
                         TEOM_link->DATA.to_float.Work_time[(u8) TEOM_link->DATA.to_float.Samp_num] =
                                 TEOM_link->DATA.to_float.Work_TS;
+                        TEOM_link->DATA.to_float.Samp_num++;
                     }
-                    TEOM_link->DATA.to_float.Samp_num++;
                     this->TEOM_link->data_save(&TEOM_link->DATA.to_float.Samp_num, TEOM_link->DATA.to_float.Samp_num);
                     this->Data_DIS(TURN);
                 }
@@ -893,9 +908,9 @@ void DW_DIS::Super_page(DW_DIS::Event E) {
                     break;
                 case 6:
                     calibration_flag|=0x04;
-                    coefficient[1][0]=press_temp;
-                    coefficient[1][1]=frq_temp;
-                    coefficient[1][2]=quality;
+                    coefficient[2][0]=press_temp;
+                    coefficient[2][1]=frq_temp;
+                    coefficient[2][2]=quality;
                     this->TEOM_link->turn_off();
 
                     if((calibration_flag&0x3)==0x03)
@@ -940,15 +955,23 @@ void DW_DIS::Super_page(DW_DIS::Event E) {
 void DW_DIS::Data_DIS(DW_DIS::Event E) {
     switch (E) {
         case TURN:
-            this->Interface_switching(21);
+            if (this->TEOM_link->DATA.to_float.Samp_mode == Samp_Long_mode)
+                this->Interface_switching(22);
+            else
+                this->Interface_switching(21);
             this->clear_text(8);
             break;
         case KEY:
             switch (this->get_key_data()) {
                 case 1:
                     this->Main_page(TURN);
+                    break;
                 case 2:
                     this->Samp_prepare_page(TURN);
+                    break;
+                case 3:
+                    this->statement(TURN);
+                    break;
             }
             break;
         case Data:
@@ -964,10 +987,86 @@ void DW_DIS::Data_DIS(DW_DIS::Event E) {
             }
             this->vspf_Text(TEXT_ADD(3),(char *)"%09.5lfHz   ", frq_center);
             this->vspf_Text(TEXT_ADD(4), (char *)"%09.5lfHz   ",frq_temp);
-            this->vspf_Text(TEXT_ADD(5), (char *)"%09.5lkpa   ","短时间采样");
-            this->vspf_Text(TEXT_ADD(6), (char *)"%09.5lkpa   ","短时间采样");
+            this->vspf_Text(TEXT_ADD(5), (char *)"%06.1lfpa   ",press_center);
+            this->vspf_Text(TEXT_ADD(6), (char *)"%06.1lfpa   ",press_temp);
             this->vspf_Text(TEXT_ADD(7), (char *)"%09.5lfmg   ",teom_qua);
             this->vspf_Text(TEXT_ADD(8), (char *)"%09.5lfmg/L   ",Concentration);
+            break;
+        case Error:
+            break;
+    }
+}
+
+extern USB_MSC USB ;
+extern Storage_Link USB_fatfs;
+void DW_DIS::statement(Event E) {
+    static float TEOM_TWA=0;
+    switch (E) {
+        case TURN:
+            this->Interface_switching(23);
+            this->clear_text(4);
+
+            if (this->TEOM_link->DATA.to_float.Samp_mode == Samp_Long_mode){
+                /*
+                 * TWA = (c * V) / (F*480) * 1000
+                 * TWA-空气中有害物质8h时间加权平均浓度，mg/m3;
+                 * c-测得的样品溶液中有害物质的浓度，ug/ml;
+                 * v-样品溶液的总体积，ml;
+                 * F-采样流量，ml/min;
+                 * 480-为时间加权平均容许浓度规定的以8h计，min.
+                */
+                TEOM_TWA=TEOM_link->DATA.to_float.Concentration[0];
+                this->vspf_Text(TEXT_ADD(3), (char *) "%07.2 ug/L",TEOM_TWA);
+                //Concentration:浓度  = 质量/流量*时间 = TWA
+            }
+            else {
+                /*
+                 * 式中: TWA-空气中有害物质8h时间加权平均浓度，mg/m';
+                 * C1、C2、C。-测得空气中有害物质浓度，mg/m';
+                 * T1、T2、T。-劳动者在相应的有害物质浓度下的工作时间，h;
+                 * 8-时间加权平均容许浓度规定的8h。
+                */
+                float sum=0;
+                for(uint8_t ii=0;ii<(u8) TEOM_link->DATA.to_float.Samp_num;ii++){
+                    sum+=TEOM_link->DATA.to_float.Concentration[ii]*TEOM_link->DATA.to_float.Work_time[ii];
+                }
+                TEOM_TWA=sum/8;
+                this->vspf_Text(TEXT_ADD(3), (char *) "%07.2 ug/L",TEOM_TWA);
+            }
+
+//            TEOM_link->DATA.to_float.Concentration[(u8) TEOM_link->DATA.to_float.Samp_num];
+            break;
+        case KEY:
+            switch (this->get_key_data()) {
+                case 1:
+                    this->Data_DIS(TURN);
+                    break;
+                case 2:
+                    if(USB.Get_device_sata()==USB_MSC::SATA::Linked) {
+                        if (f_open(&USB_fatfs.fp,USB_fatfs.setdir("data/qwe.txt"),FA_WRITE | FA_OPEN_ALWAYS) == FR_OK) {
+                            f_lseek(&USB_fatfs.fp,USB_fatfs.fp.fsize);                                                                        //??????±ê????????
+                            f_write(&USB_fatfs.fp, "text_data", strlen((char *) "text_data"), &USB_fatfs.plen);
+                            f_close(&USB_fatfs.fp);
+                        }
+                    }
+                    this->Keyboard_Up(0x11);
+            }
+            break;
+        case Data:
+            break;
+        case DISPLAY:
+            if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) {
+                this->vspf_Text(TEXT_ADD(1), (char *) "长时间采样");
+                this->vspf_Text(TEXT_ADD(2), (char *) "%04.1lf小时",TEOM_link->DATA.to_float.Samp_TL);
+            }
+            else{
+                this->vspf_Text(TEXT_ADD(1), (char *) "短时间采样");
+                this->vspf_Text(TEXT_ADD(2), (char *) "%04.1lf分钟",TEOM_link->DATA.to_float.Samp_TS);
+            }
+            if(USB.Get_device_sata()==USB_MSC::SATA::Linked)
+                this->vspf_Text(TEXT_ADD(4), (char *) "已连接");
+            else
+                this->vspf_Text(TEXT_ADD(4), (char *) "未连接");
             break;
         case Error:
             break;

@@ -46,7 +46,6 @@ typedef struct K_TEOM_data{
     float Work_time[10];    //工作时间
 
     float temp_dif[5];
-
 }TEOM_data;
 
 typedef union K_POWER_TEOM_DATA_{

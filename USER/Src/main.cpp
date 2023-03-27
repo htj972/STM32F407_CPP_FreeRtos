@@ -22,7 +22,7 @@ TaskHandle_t StartTask_Handler;
 void start_task(void *pvParameters);
 
 //任务优先级
-#define TEMP_TASK_PRIO		2
+#define TEMP_TASK_PRIO		4
 //任务堆栈大小
 #define TEMP_STK_SIZE 		256
 //任务句柄
@@ -97,10 +97,23 @@ int main()
     USB_fatfs.init();
 //    flash_fatfs.init();
 
-
+//    uint16_t ii=0;
+//    char dasda[50];
+//
+//    if(USB.Get_device_sata()==USB_MSC::SATA::Linked) {
+//        again:
+//        sprintf(dasda,"data/qwe%d.txt",ii);
+//        ii++;
+//        if (f_open(&USB_fatfs.fp,USB_fatfs.setdir(dasda),FA_WRITE | FA_OPEN_ALWAYS) == FR_OK) {
+//            f_lseek(&USB_fatfs.fp,USB_fatfs.fp.fsize);                                                                        //??????±ê????????
+//            f_write(&USB_fatfs.fp, dasda, strlen(dasda), &USB_fatfs.plen);
+//            f_close(&USB_fatfs.fp);
+//        }
+//        if(ii<10)goto again;
+//    }
 
 //    f_mkfs(flash_fatfs.get_name(),1,4096);
-    MDW.Link_Flash(&USB_fatfs);
+//    MDW.Link_Flash(&USB_fatfs);
     MDW.Link_TEOM(&teom);
     MDW.Link_Temp(&TEMP);
     MDW.Link_Com(&m_modebus);
@@ -147,15 +160,15 @@ void start_task(void *pvParameters)
     taskEXIT_CRITICAL();            //退出临界区
 }
 
-//温度读取任务
+//U读取任务
 [[noreturn]] void TEMP_task(void *pvParameters)
 {
     while(true) {
-        vTaskDelay(100/portTICK_RATE_MS );
-//        USB.Upset();
+        vTaskDelay(50/portTICK_RATE_MS );
+//        delay_ms(10);
+        USB.Upset();
     }
 }
-
 //串通信任务
 [[noreturn]] void COM_task(void *pvParameters)
 {

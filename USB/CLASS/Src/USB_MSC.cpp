@@ -297,7 +297,7 @@ void USB_MSC::Upset() {
         case SATA::Linking :this->device_sata=SATA::Linking;break;
         case SATA::Linked : this->device_sata=SATA::Linked;break;
         case SATA::UnLinking :this->device_sata=SATA::UnLinking;break;
-        default:  this->device_sata=SATA::UnLink;break;
+//        default:  this->device_sata=SATA::UnLink;break;
     }
     this->Set_Sector_Size(USBH_MSC_Param.MSCapacity);
 }
