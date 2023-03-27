@@ -21,7 +21,7 @@ Communication::Communication(USART_TypeDef *USARTx, uint8_t DE, TIM_TypeDef *TIM
 void Communication::initial() {
     modbus::Link_UART_CALLback();
     modbus::Link_TIMER_CALLback(this);
-    modbus::config(this->data_BUS.to_u16,sizeof(this->data_BUS)/2);
+    modbus::config(this->data_BUS.to_u16,sizeof(this->data_BUS)/2-1);
 
 }
 
@@ -30,15 +30,13 @@ uint16_t Communication::find_address(const float *data) {
 }
 
 void Communication::data_set(float *data,float value) {
-    uint8_t ii=0;
-    for(;ii<COM_queue_num;ii++){
-        if(!this->queue_flag[ii])
+    for(uint8_t ii=0;ii<COM_queue_num;ii++){
+        if(!this->queue_flag[ii]){
+            this->datax[ii]  = data;
+            this->valuex[ii] = value;
+            this->queue_flag[ii]= true;
             break;
-    }
-    if(ii<COM_queue_num){
-        this->datax[ii]=data;
-        this->valuex[ii]=value;
-        this->queue_flag[ii]= true;
+        }
     }
 }
 

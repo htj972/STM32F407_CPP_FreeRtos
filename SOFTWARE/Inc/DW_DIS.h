@@ -62,6 +62,7 @@ private:
     void Check_page(Event E);   //系统检查
     void Main_page(Event E);    //主界面
     void Samp_prepare_page(Event E);    //采样准备界面
+
     void Query_page(Event E);
     void Maintain_page(Event E);    //维护页面
     void Settings_page(Event E);    //设置页面

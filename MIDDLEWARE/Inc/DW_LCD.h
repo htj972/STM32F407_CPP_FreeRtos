@@ -20,7 +20,7 @@ private:
     uint8_t head_address[2]{};
     uint16_t curInterface{};
     uint8_t cur_light{};
-    uint8_t fifo_data[32]{};
+    uint8_t fifo_data[64]{};
     uint8_t uart_get_len{};
     uint8_t uart_get_data{};
     uint16_t ret_key_address{};

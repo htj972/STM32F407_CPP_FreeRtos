@@ -36,6 +36,7 @@ typedef struct K_USER_data{
     float stove_work{};       //加热炉工作
     float Flow_work{};        //流量控制工作
     float pump{};             //加热炉泵
+    float reserve{};          //预留
 }USER_data;
 
 typedef union K_POWER_DATA_{

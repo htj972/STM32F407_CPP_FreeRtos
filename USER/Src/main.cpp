@@ -31,18 +31,9 @@ TaskHandle_t TEMPTask_Handler;
 [[noreturn]] void TEMP_task(void *pvParameters);
 
 //任务优先级
-#define PRE_TASK_PRIO		2
-//任务堆栈大小
-#define PRE_STK_SIZE 		256
-//任务句柄
-TaskHandle_t PRETask_Handler;
-//任务函数
-[[noreturn]] void PRE_task(void *pvParameters);
-
-//任务优先级
 #define COM_TASK_PRIO		3
 //任务堆栈大小
-#define COM_STK_SIZE 		512
+#define COM_STK_SIZE 		1024
 //任务句柄
 TaskHandle_t COMTask_Handler;
 //任务函数
@@ -51,7 +42,7 @@ TaskHandle_t COMTask_Handler;
 //任务优先级
 #define DIS_TASK_PRIO		3
 //任务堆栈大小
-#define DIS_STK_SIZE 		512
+#define DIS_STK_SIZE 		1024
 //任务句柄
 TaskHandle_t DISTask_Handler;
 //任务函数
@@ -138,13 +129,6 @@ void start_task(void *pvParameters)
                 (void*          )nullptr,
                 (UBaseType_t    )TEMP_TASK_PRIO,
                 (TaskHandle_t*  )&TEMPTask_Handler);
-//    //创建压力任务
-//    xTaskCreate((TaskFunction_t )PRE_task,
-//                (const char*    )"PRE_task",
-//                (uint16_t       )PRE_STK_SIZE,
-//                (void*          )nullptr,
-//                (UBaseType_t    )PRE_TASK_PRIO,
-//                (TaskHandle_t*  )&PRETask_Handler);
     //创建COM任务
     xTaskCreate((TaskFunction_t )COM_task,
                 (const char*    )"COM_task",
@@ -168,22 +152,15 @@ void start_task(void *pvParameters)
 {
     while(true) {
         vTaskDelay(100/portTICK_RATE_MS );
-        USB.Upset();
+//        USB.Upset();
     }
 }
-////压力读取任务
-//[[noreturn]] void PRE_task(void *pvParameters)
-//{
-//    while(true) {
-//        vTaskDelay(100/portTICK_RATE_MS );
-//        pressure.read();
-//    }
-//}
+
 //串通信任务
 [[noreturn]] void COM_task(void *pvParameters)
 {
     while(true) {
-        vTaskDelay(200 / portTICK_RATE_MS);
+        vTaskDelay(500 / portTICK_RATE_MS);
         m_modebus.data_sync();
         pressure.read();
     }

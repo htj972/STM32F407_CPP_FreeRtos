@@ -112,7 +112,7 @@ uint16_t modbus::read_data(uint16_t address) {
         return 0;
     else
     {
-        if((address>=this->data_start_end[0])&&(address<=(this->data_start_end[0]+this->data_start_end[1])))
+        if((address>=this->data_start_end[0])&&(address<(this->data_start_end[0]+this->data_start_end[1])))
             return *(this->data_list+address-this->data_start_end[0]);
         else
             return 0;
@@ -124,7 +124,7 @@ bool modbus::write_data(uint16_t address, const uint8_t* data) {
         return false;
     else
     {
-        if((address>=this->data_start_end[0])&&(address<=(this->data_start_end[0]+this->data_start_end[1])))
+        if((address>=this->data_start_end[0])&&(address<(this->data_start_end[0]+this->data_start_end[1])))
         {
             *(this->data_list+address-this->data_start_end[0])=(data[0]<<8)+data[1];
             return true;

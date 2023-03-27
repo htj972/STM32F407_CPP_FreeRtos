@@ -613,7 +613,7 @@ void DW_LCD::Callback(int num ,char** data) {
                 head_flag=0;
             }
             this->fifo_data[this->uart_get_len++]=this->uart_get_data;
-            if(this->uart_get_len==sizeof (this->fifo_data))
+            if(this->uart_get_len>=(sizeof (this->fifo_data)/2))
                 this->uart_get_len=0;
             break;
         case Call_Back::Name::timer:
