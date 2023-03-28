@@ -35,8 +35,7 @@ void pretreatment::upset() {
     }
     else if(this->_05s_back_times==5*2)
     {
-        if(this->en)
-            this->BENGx.set(OFF);
+        this->BENGx.set(OFF);
         this->FAx.set(OFF);
     }
 }
