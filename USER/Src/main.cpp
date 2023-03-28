@@ -87,7 +87,7 @@ PWM_H PWM(TIM4,1000);
 //SPI总线
 SPI_S SPI_BUS(GPIOE5,GPIOE3,GPIOE6);
 //预处理控温软件类
-pretreatment stovectrl(&SPI_BUS,GPIOE4,&PWM,2,GPIOC10,GPIOC11);
+pretreatment stovectrl(&SPI_BUS,GPIOE4,&PWM,2,GPIOC10);
 //大气温度传感器
 MAX31865 Atmospheric_T(&SPI_BUS,GPIOE2);
 //通信软件类
@@ -98,7 +98,7 @@ Differential_pressure LY(GPIOD3,GPIOD2,4000,-500);
 //计温
 DS18B20  JW(GPIOB6);
 //流量
-Fower_Ctrl LL(&LY,&JY,&Atmospheric_P,&JW,&Atmospheric_T);
+Fower_Ctrl LL(&LY,&JY,&Atmospheric_P,&JW,&Atmospheric_T,GPIOC11);
 
 //运行指示灯
 class T_led_:public _OutPut_,public Call_Back,public Timer{

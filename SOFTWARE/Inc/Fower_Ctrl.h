@@ -12,6 +12,7 @@
 #include "Timer.h"
 #include "PID_BASE.h"
 #include "PWM.h"
+#include "Out_In_Put.h"
 
 class Differential_pressure: private Software_IIC,public SMI{
 
@@ -36,12 +37,13 @@ protected:
     Temperature_BASE *daqiwen;
     Kalman filter[6]{};
     PWM_H *CONTROLLER{};
+    _OutPut_ FAx;
     uint8_t chx{};
 public:
     float cur{};
     float FLOW_RATE{}; 
     Fower_Ctrl(Pressure_BASE *liu,Pressure_BASE *ji,Pressure_BASE *daqi,
-               Temperature_BASE *jit,Temperature_BASE *daqit);
+               Temperature_BASE *jit,Temperature_BASE *daqit,GPIO_Pin FA);
     void config(PWM_H *CONTR,uint8_t ch);
     float LiuYa{},JiYa{},DaQiYa{},JiWen{},DaQiWen{};
     void data_upset();

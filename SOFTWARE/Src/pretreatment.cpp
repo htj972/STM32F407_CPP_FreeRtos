@@ -6,13 +6,12 @@
 
 #include "pretreatment.h"
 
-pretreatment::pretreatment(SPI_BASE *SPIx, uint8_t CSpin,PWM_H *PWM,uint8_t ch,GPIO_Pin BENG,GPIO_Pin FA):SCpinx(CSpin){
+pretreatment::pretreatment(SPI_BASE *SPIx, uint8_t CSpin,PWM_H *PWM,uint8_t ch,GPIO_Pin BENG):SCpinx(CSpin){
     this->PWMx=PWM;
     Temp_ctrl::init(this,this->PWMx,ch);
     this->spix=SPIx;
     this->en= false;
     this->BENGx.init(BENG,HIGH);
-    this->FAx.init(FA,HIGH);
     this->_05s_back_times=0;
 }
 
@@ -36,7 +35,6 @@ void pretreatment::upset() {
     else if(this->_05s_back_times==5*2)
     {
         this->BENGx.set(OFF);
-        this->FAx.set(OFF);
     }
 }
 
@@ -50,7 +48,6 @@ void pretreatment::turn_ON() {
 void pretreatment::turn_OFF() {
     if(this->en) {
         this->en = false;
-        this->FAx.set(ON);
         this->_05s_back_times=0;
     }
 }

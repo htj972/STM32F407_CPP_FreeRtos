@@ -8322,7 +8322,8 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj: ../SOFTWARE/Src/Fowe
   ../MIDDLEWARE/BASE_CLASS/Inc/PID_BASE.h \
   ../HARDWARE/Inc/PWM.h \
   ../HARDWARE/Inc/Timer.h \
-  ../HARDWARE/BASE_CLASS/Inc/PWM_BASE.h
+  ../HARDWARE/BASE_CLASS/Inc/PWM_BASE.h \
+  ../HARDWARE/Inc/Out_In_Put.h
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj: ../SOFTWARE/Src/pretreatment.cpp \
   ../SOFTWARE/Inc/pretreatment.h \

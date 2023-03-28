@@ -11,7 +11,7 @@
  * 流量控制构造
  */
 Fower_Ctrl::Fower_Ctrl(Pressure_BASE *liu, Pressure_BASE *ji, Pressure_BASE *daqi,
-                       Temperature_BASE *jit,Temperature_BASE *daqit): PID_BASE(),
+                       Temperature_BASE *jit,Temperature_BASE *daqit,GPIO_Pin FA): PID_BASE(),
                        liuya(liu),jiya(ji),daqiya(daqi),jiwen(jit),daqiwen(daqit){
     this->filter[0].init(15,5);//*liuya;
     this->filter[1].init(15,5);//*jiya;
@@ -19,6 +19,7 @@ Fower_Ctrl::Fower_Ctrl(Pressure_BASE *liu, Pressure_BASE *ji, Pressure_BASE *daq
     this->filter[3].init(5,1);//*jiwen;
     this->filter[4].init(5,1);//*daqiwen;
     this->filter[5].init(5,2);//*FF_value;
+    this->FAx.init(FA,HIGH);
     for(auto & ii : this->data_t){
         for (float & jj : ii)
             jj=0;
@@ -240,6 +241,7 @@ void Fower_Ctrl::config(PWM_H *CONTR, uint8_t ch) {
 void Fower_Ctrl::TURN_ON() {
     if(!en)
         en= true;
+    this->FAx.set(ON);
 }
 /*!
  * 关闭输出
@@ -247,6 +249,7 @@ void Fower_Ctrl::TURN_ON() {
 void Fower_Ctrl::TURN_OFF() {
     if(en)
         en= false;
+    this->FAx.set(OFF);
 }
 
 
