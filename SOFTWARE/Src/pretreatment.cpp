@@ -27,7 +27,7 @@ void pretreatment::initial() {
 void pretreatment::upset() {
     Temp_ctrl::upset(this->en);
     this->_05s_back_times++;
-    if(this->_05s_back_times==60*2)
+    if(this->_05s_back_times==30*2)
     {
         if(this->en)
             this->BENGx.set(ON);

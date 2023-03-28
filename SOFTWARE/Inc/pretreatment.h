@@ -19,9 +19,11 @@ private:
     uint16_t _05s_back_times;
 protected:
     PWM_H *PWMx{};
+//    _OutPut_ BENGx;
+//    _OutPut_ FAx;
+public:
     _OutPut_ BENGx;
     _OutPut_ FAx;
-public:
     pretreatment(SPI_BASE *SPIx,uint8_t CSpin,PWM_H *PWM,uint8_t ch,GPIO_Pin BENG,GPIO_Pin FA);
     void initial();
 

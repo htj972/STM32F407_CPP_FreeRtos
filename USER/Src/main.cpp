@@ -157,6 +157,10 @@ int main()
     stovectrl.initial();        //炉子初始化
     JW.init();                  //计温初始化
 
+//    stovectrl.BENGx.set(ON);
+//
+//    while(1);
+
 
     taskENTER_CRITICAL();           //进入临界区
     //创建开始任务
