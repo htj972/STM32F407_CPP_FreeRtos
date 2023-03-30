@@ -889,6 +889,7 @@ void DW_DIS::Super_page(DW_DIS::Event E) {
                     coefficient[0][1]=frq_temp;
                     coefficient[0][2]=0;
                     this->TEOM_link->turn_off();
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
                     this->vspf_Text(TEXT_ADD(4), (char *) "%09.5lfHz   ",coefficient[0][1]);
                     this->vspf_Text(TEXT_ADD(5), (char *) "%04.0lfPa   ",coefficient[0][0]);
                     break;
@@ -903,8 +904,9 @@ void DW_DIS::Super_page(DW_DIS::Event E) {
                     coefficient[1][1]=frq_temp;
                     coefficient[1][2]=0;
                     this->TEOM_link->turn_off();
-                    this->vspf_Text(TEXT_ADD(4), (char *) "%09.5lfHz   ",coefficient[1][1]);
-                    this->vspf_Text(TEXT_ADD(5), (char *) "%04.0lfPa   ",coefficient[1][0]);
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
+                    this->vspf_Text(TEXT_ADD(6), (char *) "%09.5lfHz   ",coefficient[1][1]);
+                    this->vspf_Text(TEXT_ADD(7), (char *) "%04.0lfPa   ",coefficient[1][0]);
                     break;
                 case 6:
                     calibration_flag|=0x04;
@@ -925,8 +927,9 @@ void DW_DIS::Super_page(DW_DIS::Event E) {
                         TEOM_link->DATA.to_float.stiffness=m2/(reci_squ(frq_comp)-reci_squ(f1)) ;
                         this->TEOM_link->data_save();
                     }
-                    this->vspf_Text(TEXT_ADD(4), (char *) "%09.8lf",TEOM_link->DATA.to_float.coefficient);
-                    this->vspf_Text(TEXT_ADD(5), (char *) "%09.0lf",TEOM_link->DATA.to_float.stiffness);
+                    COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
+                    this->vspf_Text(TEXT_ADD(8), (char *) "%09.8lf",TEOM_link->DATA.to_float.coefficient);
+                    this->vspf_Text(TEXT_ADD(9), (char *) "%09.0lf",TEOM_link->DATA.to_float.stiffness);
                     break;
             }
             break;
@@ -1043,7 +1046,7 @@ void DW_DIS::statement(Event E) {
                     break;
                 case 2:
                     if(USB.Get_device_sata()==USB_MSC::SATA::Linked) {
-                        if (f_open(&USB_fatfs.fp,USB_fatfs.setdir("data/qwe.txt"),FA_WRITE | FA_OPEN_ALWAYS) == FR_OK) {
+                        if (f_open(&USB_fatfs.fp,USB_fatfs.setdir("data.txt"),FA_WRITE | FA_OPEN_ALWAYS) == FR_OK) {
                             f_lseek(&USB_fatfs.fp,USB_fatfs.fp.fsize);                                                                        //??????¡À¨º????????
                             f_write(&USB_fatfs.fp, "text_data", strlen((char *) "text_data"), &USB_fatfs.plen);
                             f_close(&USB_fatfs.fp);
