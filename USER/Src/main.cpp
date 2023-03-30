@@ -49,7 +49,7 @@ TaskHandle_t DISTask_Handler;
 [[noreturn]] void DIS_task(void *pvParameters);
 
 
-_OutPut_    led(GPIOE6);
+_OutPut_    led(GPIOE6,LOW);
 
 class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
@@ -76,6 +76,7 @@ DW_DIS MDW(USART6,TIM7,10);
 //≤Ó—πœ‘ æ
 pressure_dif pressure(GPIOD4,GPIOD5);
 
+
 //W25QXX flash(&SPI_BUS,GPIOC4);
 //Storage_Link flash_fatfs(&flash);
 
@@ -93,24 +94,17 @@ int main()
     teom.inital();
     teom.Link_PRE(&pressure);
     USB.init();
-//    USB.wait_Linked();
+
+    USB.wait_Linked();
     USB_fatfs.init();
+    
+
+//    flash.init();
 //    flash_fatfs.init();
 
-//    uint16_t ii=0;
-//    char dasda[50];
-//
-//    if(USB.Get_device_sata()==USB_MSC::SATA::Linked) {
-//        again:
-//        sprintf(dasda,"data/qwe%d.txt",ii);
-//        ii++;
-//        if (f_open(&USB_fatfs.fp,USB_fatfs.setdir(dasda),FA_WRITE | FA_OPEN_ALWAYS) == FR_OK) {
-//            f_lseek(&USB_fatfs.fp,USB_fatfs.fp.fsize);                                                                        //??????°¿®∫????????
-//            f_write(&USB_fatfs.fp, dasda, strlen(dasda), &USB_fatfs.plen);
-//            f_close(&USB_fatfs.fp);
-//        }
-//        if(ii<10)goto again;
-//    }
+
+
+
 
 //    f_mkfs(flash_fatfs.get_name(),1,4096);
 //    MDW.Link_Flash(&USB_fatfs);
@@ -186,6 +180,22 @@ void start_task(void *pvParameters)
         vTaskDelay(100/portTICK_RATE_MS );
         MDW.key_handle();
         MDW.Dis_handle();
+
+        static uint16_t ii=0;
+        ii++;
+        if(ii<10)
+        {
+            char dasda[50];
+            while(USB.Get_device_sata()!=USB_MSC::SATA::Linked);
+            sprintf(dasda,"qwe%d.txt",ii);
+            while (f_open(&USB_fatfs.fp,USB_fatfs.setdir(dasda),FA_WRITE | FA_OPEN_ALWAYS) != FR_OK);
+            f_lseek(&USB_fatfs.fp,USB_fatfs.fp.fsize);                                                                        //??????°¿®∫????????
+            f_write(&USB_fatfs.fp, dasda, strlen(dasda), &USB_fatfs.plen);
+            f_close(&USB_fatfs.fp);
+        }
+        else
+            led.set(ON);
+
     }
 }
 
