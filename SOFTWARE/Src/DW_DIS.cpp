@@ -370,7 +370,10 @@ void DW_DIS::Main_page(Event E) {
 void DW_DIS::Samp_prepare_page(Event E) {
     switch (E) {
         case TURN:this->Interface_switching(5);
-            this->Check_Box_set(Samp_mode_l);
+            if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode)
+                this->Check_Box_set(Samp_mode_l);
+            else
+                this->Check_Box_set(Samp_mode_s);
             this->clear_text(8);
             this->RTC_Read();
             TEOM_link->DATA.to_float.Samp_TL=TEOM_link->DATA.to_float.l_Samp;
@@ -724,6 +727,8 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
             if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) {
                 COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,5);
                 COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,1);
+                TEOM_link->DATA.to_float.Samp_num=0;
+                TEOM_link->data_save();
             }
             else{
                 COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,15.5);
@@ -1046,10 +1051,35 @@ void DW_DIS::statement(Event E) {
                     break;
                 case 2:
                     if(USB.Get_device_sata()==USB_MSC::SATA::Linked) {
-                        if (f_open(&USB_fatfs.fp,USB_fatfs.setdir("data.txt"),FA_WRITE | FA_OPEN_ALWAYS) == FR_OK) {
-                            f_lseek(&USB_fatfs.fp,USB_fatfs.fp.fsize);                                                                        //??????±ê????????
-                            f_write(&USB_fatfs.fp, "text_data", strlen((char *) "text_data"), &USB_fatfs.plen);
-                            f_close(&USB_fatfs.fp);
+                        char file_name[20];
+                        sprintf(file_name,"%d-%02d-%02d_%02d.txt",RTX->get_year(),RTX->get_month(),RTX->get_day(),RTX->get_hour());
+                        if (f_open(&USB_fatfs.fp,USB_fatfs.setdir(file_name),FA_WRITE | FA_OPEN_ALWAYS) == FR_OK) {
+                            f_lseek(&USB_fatfs.fp,USB_fatfs.fp.fsize);
+                            char  file_data[128];
+                            if (this->TEOM_link->DATA.to_float.Samp_mode == Samp_Long_mode){
+                                sprintf(file_data,"file:%s:\r\nmode:%s\r\ntime:%.0f",file_name,"长时间采样",TEOM_link->DATA.to_float.Work_time[0]);
+                                f_write(&USB_fatfs.fp, file_data, strlen((char *) file_data), &USB_fatfs.plen);
+                                f_lseek(&USB_fatfs.fp,USB_fatfs.fp.fsize);
+                                sprintf(file_data,"TWA:%f:\r\n",TEOM_TWA);
+                                f_write(&USB_fatfs.fp, file_data, strlen((char *) file_data), &USB_fatfs.plen);
+                                f_close(&USB_fatfs.fp);
+                            }
+                            else
+                            {
+                                sprintf(file_data,"file:%s:\r\nmode:%s\r\n",file_name,"短时间采样");
+                                f_write(&USB_fatfs.fp, file_data, strlen((char *) file_data), &USB_fatfs.plen);
+                                for(uint8_t ii=0;ii<(uint8_t)TEOM_link->DATA.to_float.Samp_num;ii++){
+                                    f_lseek(&USB_fatfs.fp,USB_fatfs.fp.fsize);
+                                    sprintf(file_data,"Concentration:%f:\r\nWork time:%f\r\n",
+                                            TEOM_link->DATA.to_float.Concentration[ii],
+                                            TEOM_link->DATA.to_float.Work_time[ii]);
+                                    f_write(&USB_fatfs.fp, file_data, strlen((char *) file_data), &USB_fatfs.plen);
+                                }
+                                f_lseek(&USB_fatfs.fp,USB_fatfs.fp.fsize);
+                                sprintf(file_data,"TWA:%f:\r\n",TEOM_TWA);
+                                f_write(&USB_fatfs.fp, file_data, strlen((char *) file_data), &USB_fatfs.plen);
+                                f_close(&USB_fatfs.fp);
+                            }
                         }
                     }
                     this->Keyboard_Up(0x11);

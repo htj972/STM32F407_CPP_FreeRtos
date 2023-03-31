@@ -83,9 +83,38 @@ pressure_dif pressure(GPIOD4,GPIOD5);
 USB_MSC USB ;
 Storage_Link USB_fatfs(&USB);
 
+/*修改APP启动
+ * /ZR-APP/ZR-055V.bin
+ * system_stm32f4xx.c
+ * 原始  #define VECT_TAB_OFFSET  0x00
+ * 修改  #define VECT_TAB_OFFSET  0x8000
+ *
+ * STM32F407VGTx_FLASH.ld
+ *原始
+ * MEMORY
+    {
+    RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 128K
+    CCMRAM (xrw)      : ORIGIN = 0x10000000, LENGTH = 64K
+    FLASH (rx)      : ORIGIN = 0x8000000, LENGTH = 1024K
+    }
+ * 修改
+ * MEMORY
+    {
+    RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 128K
+    CCMRAM (xrw)      : ORIGIN = 0x10000000, LENGTH = 64K
+    FLASH (rx)      : ORIGIN = 0x8008000, LENGTH = 992K
+    }
+ *
+*/
 
 int main()
 {
+//#define FLASH_ADDR_OFFSET		0x00000
+//#ifdef VECT_TAB_RAM
+//    NVIC_SetVectorTable(NVIC_VectTab_RAM, FLASH_ADDR_OFFSET);
+//#else
+//    NVIC_SetVectorTable(NVIC_VectTab_FLASH, FLASH_ADDR_OFFSET);
+//#endif
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);	//初始化延时函数
     delay_ms(1000);
