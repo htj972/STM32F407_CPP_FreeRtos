@@ -1,5 +1,5 @@
-#ifndef __SYS_H
-#define __SYS_H	 
+#ifndef SYS_H
+#define SYS_H
 #include "stm32f4xx.h"
 //#include <iostream>
 
@@ -14,11 +14,17 @@
 
 #define SYSTEM_SUPPORT_OS		ON		//定义系统文件夹是否支持FREE_RTOS
 
+//关闭所有中断
+#define INTX_DISABLE()  __ASM volatile("cpsid i")
+//开启所有中断
+#define INTX_ENABLE() __ASM volatile("cpsie i")
+//采用如下方法实现执行汇编指令WFI
+#define WFI_SET()     __ASM volatile("wfi")
 	 
 //位带操作,实现51类似的GPIO控制功能
 //具体实现思想,参考<<CM3权威指南>>第五章(87页~92页).M4同M3类似,只是寄存器地址变了.
 //IO口操作宏定义
-#define BITBAND(addr, bitnum) ((addr & 0xF0000000)+0x2000000+((addr &0xFFFFF)<<5)+(bitnum<<2)) 
+#define BITBAND(addr, bitnum) (((addr) & 0xF0000000)+0x2000000+((addr &0xFFFFF)<<5)+(bitnum<<2))
 #define MEM_ADDR(addr)  *((volatile unsigned long  *)(addr)) 
 #define BIT_ADDR(addr, bitnum)   MEM_ADDR(BITBAND(addr, bitnum)) 
 //IO口地址映射
@@ -229,9 +235,6 @@ typedef enum
 }GPIO_Pin;
 
 //以下为汇编函数
-void WFI_SET(void);		//执行WFI指令
-void INTX_DISABLE(void);//关闭所有中断
-void INTX_ENABLE(void);	//开启所有中断
 void MSR_MSP(u32 addr);	//设置堆栈地址
 
 extern void run_void(void);								//空指令函数   初始函数指针使用

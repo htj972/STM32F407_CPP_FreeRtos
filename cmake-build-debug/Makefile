@@ -2336,6 +2336,30 @@ MIDDLEWARE/Src/RTC_DS3231.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.s
 .PHONY : MIDDLEWARE/Src/RTC_DS3231.cpp.s
 
+MIDDLEWARE/Src/SDIO_CARD.obj: MIDDLEWARE/Src/SDIO_CARD.cpp.obj
+.PHONY : MIDDLEWARE/Src/SDIO_CARD.obj
+
+# target to build an object file
+MIDDLEWARE/Src/SDIO_CARD.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SDIO_CARD.cpp.obj
+.PHONY : MIDDLEWARE/Src/SDIO_CARD.cpp.obj
+
+MIDDLEWARE/Src/SDIO_CARD.i: MIDDLEWARE/Src/SDIO_CARD.cpp.i
+.PHONY : MIDDLEWARE/Src/SDIO_CARD.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/SDIO_CARD.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SDIO_CARD.cpp.i
+.PHONY : MIDDLEWARE/Src/SDIO_CARD.cpp.i
+
+MIDDLEWARE/Src/SDIO_CARD.s: MIDDLEWARE/Src/SDIO_CARD.cpp.s
+.PHONY : MIDDLEWARE/Src/SDIO_CARD.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/SDIO_CARD.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SDIO_CARD.cpp.s
+.PHONY : MIDDLEWARE/Src/SDIO_CARD.cpp.s
+
 MIDDLEWARE/Src/SD_CARD.obj: MIDDLEWARE/Src/SD_CARD.cpp.obj
 .PHONY : MIDDLEWARE/Src/SD_CARD.obj
 
@@ -3373,6 +3397,9 @@ help:
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.obj
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.i
 	@echo ... MIDDLEWARE/Src/RTC_DS3231.s
+	@echo ... MIDDLEWARE/Src/SDIO_CARD.obj
+	@echo ... MIDDLEWARE/Src/SDIO_CARD.i
+	@echo ... MIDDLEWARE/Src/SDIO_CARD.s
 	@echo ... MIDDLEWARE/Src/SD_CARD.obj
 	@echo ... MIDDLEWARE/Src/SD_CARD.i
 	@echo ... MIDDLEWARE/Src/SD_CARD.s

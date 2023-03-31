@@ -10,6 +10,7 @@
 #include "W25QXX.h"
 #include "Storage_Link.h"
 #include "USB_MSC.h"
+#include "SDIO_CARD.h"
 
 
 //任务优先级
@@ -80,9 +81,12 @@ pressure_dif pressure(GPIOD4,GPIOD5);
 //W25QXX flash(&SPI_BUS,GPIOC4);
 //Storage_Link flash_fatfs(&flash);
 
+SDIO_CARD SD;
+Storage_Link SD_fatfs(&SD);
 
 USB_MSC USB ;
 Storage_Link USB_fatfs(&USB);
+
 
 
 int main()
@@ -93,11 +97,36 @@ int main()
     TEMP.initial();
     teom.inital();
     teom.Link_PRE(&pressure);
+
+    SD.init();
+    SD_fatfs.init();
+
     USB.init();
 
     USB.wait_Linked();
     USB_fatfs.init();
-    
+
+    while(true)
+    {
+
+        static uint16_t ii=0;
+        ii++;
+        if(ii<10)
+        {
+            char dasda[50];
+//            while(USB.Get_device_sata()!=USB_MSC::SATA::Linked);
+            sprintf(dasda,"qwe%d.txt",ii);
+            while (f_open(&SD_fatfs.fp,SD_fatfs.setdir(dasda),FA_WRITE | FA_OPEN_ALWAYS) != FR_OK);
+            f_lseek(&SD_fatfs.fp,SD_fatfs.fp.fsize);                                                                        //??????±ê????????
+            f_write(&SD_fatfs.fp, dasda, strlen(dasda), &SD_fatfs.plen);
+            f_close(&SD_fatfs.fp);
+        }
+        else
+            led.set(ON);
+
+    }
+
+
 
 //    flash.init();
 //    flash_fatfs.init();
@@ -181,20 +210,20 @@ void start_task(void *pvParameters)
         MDW.key_handle();
         MDW.Dis_handle();
 
-        static uint16_t ii=0;
-        ii++;
-        if(ii<10)
-        {
-            char dasda[50];
-            while(USB.Get_device_sata()!=USB_MSC::SATA::Linked);
-            sprintf(dasda,"qwe%d.txt",ii);
-            while (f_open(&USB_fatfs.fp,USB_fatfs.setdir(dasda),FA_WRITE | FA_OPEN_ALWAYS) != FR_OK);
-            f_lseek(&USB_fatfs.fp,USB_fatfs.fp.fsize);                                                                        //??????±ê????????
-            f_write(&USB_fatfs.fp, dasda, strlen(dasda), &USB_fatfs.plen);
-            f_close(&USB_fatfs.fp);
-        }
-        else
-            led.set(ON);
+//        static uint16_t ii=0;
+//        ii++;
+//        if(ii<10)
+//        {
+//            char dasda[50];
+////            while(USB.Get_device_sata()!=USB_MSC::SATA::Linked);
+//            sprintf(dasda,"qwe%d.txt",ii);
+//            while (f_open(&SD_fatfs.fp,SD_fatfs.setdir(dasda),FA_WRITE | FA_OPEN_ALWAYS) != FR_OK);
+//            f_lseek(&SD_fatfs.fp,SD_fatfs.fp.fsize);                                                                        //??????±ê????????
+//            f_write(&SD_fatfs.fp, dasda, strlen(dasda), &SD_fatfs.plen);
+//            f_close(&SD_fatfs.fp);
+//        }
+//        else
+//            led.set(ON);
 
     }
 }

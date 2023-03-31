@@ -183,6 +183,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SDIO_CARD.cpp.obj"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SDIO_CARD.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj"

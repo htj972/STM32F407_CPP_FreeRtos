@@ -151,6 +151,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RD_EH32.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RS485.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RS485.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RTC_DS3231.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RTC_DS3231.cpp.obj.d"
+  "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/SDIO_CARD.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SDIO_CARD.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SDIO_CARD.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/SD_CARD.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SD_CARD.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/SHT3x.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SHT3x.cpp.obj.d"
   "C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/SMI.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SMI.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/SMI.cpp.obj.d"

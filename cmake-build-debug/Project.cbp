@@ -678,6 +678,12 @@
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/RTC_DS3231.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/SDIO_CARD.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/SDIO_CARD_ENUM.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/SD_SPI.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -730,6 +736,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/RTC_DS3231.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/SDIO_CARD.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/53105/Desktop/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/SD_CARD.cpp">
