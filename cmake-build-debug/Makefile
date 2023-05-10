@@ -47,19 +47,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "F:\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "D:\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "F:\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "D:\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos
+CMAKE_SOURCE_DIR = G:\stm32_project\STM32F407_CPP_FreeRtos
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug
+CMAKE_BINARY_DIR = G:\stm32_project\STM32F407_CPP_FreeRtos\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-deb
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"F:\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"D:\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,7 +77,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"F:\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"D:\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\stm32_project\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles G:\stm32_project\STM32F407_CPP_FreeRtos\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\53105\Desktop\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\stm32_project\STM32F407_CPP_FreeRtos\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -2240,6 +2240,30 @@ MIDDLEWARE/Src/MS5805.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.s
 .PHONY : MIDDLEWARE/Src/MS5805.cpp.s
 
+MIDDLEWARE/Src/NPA_SMI.obj: MIDDLEWARE/Src/NPA_SMI.cpp.obj
+.PHONY : MIDDLEWARE/Src/NPA_SMI.obj
+
+# target to build an object file
+MIDDLEWARE/Src/NPA_SMI.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/NPA_SMI.cpp.obj
+.PHONY : MIDDLEWARE/Src/NPA_SMI.cpp.obj
+
+MIDDLEWARE/Src/NPA_SMI.i: MIDDLEWARE/Src/NPA_SMI.cpp.i
+.PHONY : MIDDLEWARE/Src/NPA_SMI.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/NPA_SMI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/NPA_SMI.cpp.i
+.PHONY : MIDDLEWARE/Src/NPA_SMI.cpp.i
+
+MIDDLEWARE/Src/NPA_SMI.s: MIDDLEWARE/Src/NPA_SMI.cpp.s
+.PHONY : MIDDLEWARE/Src/NPA_SMI.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/NPA_SMI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/NPA_SMI.cpp.s
+.PHONY : MIDDLEWARE/Src/NPA_SMI.cpp.s
+
 MIDDLEWARE/Src/OLED_SSD1306.obj: MIDDLEWARE/Src/OLED_SSD1306.cpp.obj
 .PHONY : MIDDLEWARE/Src/OLED_SSD1306.obj
 
@@ -3361,6 +3385,9 @@ help:
 	@echo ... MIDDLEWARE/Src/MS5805.obj
 	@echo ... MIDDLEWARE/Src/MS5805.i
 	@echo ... MIDDLEWARE/Src/MS5805.s
+	@echo ... MIDDLEWARE/Src/NPA_SMI.obj
+	@echo ... MIDDLEWARE/Src/NPA_SMI.i
+	@echo ... MIDDLEWARE/Src/NPA_SMI.s
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.obj
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.i
 	@echo ... MIDDLEWARE/Src/OLED_SSD1306.s

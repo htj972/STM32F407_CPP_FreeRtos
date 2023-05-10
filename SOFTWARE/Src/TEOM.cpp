@@ -37,6 +37,8 @@ float TEOM::get_frq() {
     static uint8_t  frqnum=0;
     static uint16_t Tt=65535-500;
     static bool ovoer_f= false;
+    static float CAPTURE_temp=0;
+    CAPTURE_temp=CAPTURE_temp*0.9+this->TimxC.get_CAPTURE_fifo()*1000*100;
     Tt++;
     if((Tt>20)&&(Tt<50))
     {

@@ -57,6 +57,7 @@ private:
     float  frq_temp{},frq_center{},press_temp{},press_center{},teom_qua{},Concentration{};
     bool TEMP_UP_F[5]{};
     bool send_cure_data(uint8_t ch,float center,float data);
+    bool data_save(uint32_t num,float frq,float press);
     void CHANGE_PIC(uint16_t address,uint16_t IDs_x,uint16_t IDs_y,uint16_t IDe_x,uint16_t IDe_y);
     void Check_Box_set(Check_Box data,bool en=true);
     void Check_page(Event E);   //ÏµÍ³¼ì²é

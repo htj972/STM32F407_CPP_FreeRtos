@@ -6,7 +6,11 @@
 
 #include "DW_DIS.h"
 #include "DW_SITE_DATA.h"
+#include "delay.h"
+#include "USB_MSC.h"
 
+extern USB_MSC USB ;
+extern Storage_Link USB_fatfs;
 
 /*!
  * 触摸屏软件  构造
@@ -29,6 +33,7 @@ void DW_DIS::initial() {
     DW_LCD::Timer_Link(this);
     RTC_H::init();
     DW_LCD::RtC_link(this);
+    DW_LCD::RTC_Read();
     if(this->TEOM_link!= nullptr) {
         this->SetBackLight((uint8_t) this->TEOM_link->DATA.to_float.dis_light);
         this->set_dis_sleep_time((uint8_t) this->TEOM_link->DATA.to_float.dis_time);
@@ -122,6 +127,7 @@ int      DW_DIS::teom_dis_mul_num=1;		//放大角标
 uint16_t DW_DIS::teom_dis_mul[3][2]={{935,5},{187,25},{37,125}}; //放大系数
 bool DW_DIS::send_cure_data(uint8_t ch,float center,float data) {
     static uint8_t mark=0;
+    center-=0.3;
     if(mark!= this->RTX->get_sec()) {
         mark= this->RTX->get_sec();
         if (data < center-1)
@@ -132,6 +138,39 @@ bool DW_DIS::send_cure_data(uint8_t ch,float center,float data) {
         } else if (data > center+1)
             this->DROW_point(ch, 10000);
         return true;
+    }
+    return false;
+}
+/*!
+ * 数据保存 暂时每秒存到U盘
+ * @return
+ */
+bool DW_DIS::data_save(uint32_t num,float frq,float press) {
+    if(USB.Get_device_sata()==USB_MSC::SATA::Linked) {
+        char file_name[20];
+        sprintf(file_name, "%d-%02d-%02d", RTX->get_year(), RTX->get_month(), RTX->get_day());
+        DIR dr;
+        if(f_opendir(&dr,USB_fatfs.setdir(file_name))!=FR_OK)
+            f_mkdir(USB_fatfs.setdir(file_name));
+        sprintf(file_name, "%d-%02d-%02d/%02d.csv", RTX->get_year(), RTX->get_month(), RTX->get_day(), RTX->get_hour());
+        if (f_open(&USB_fatfs.fp, USB_fatfs.setdir(file_name), FA_WRITE | FA_OPEN_ALWAYS) == FR_OK) {
+            f_lseek(&USB_fatfs.fp, USB_fatfs.fp.fsize);
+            char file_data[128];
+            if(num==0){
+                sprintf(file_data, "序号,时间,频率Hz,负载Pa,上管温C,下管温C,膜温C,盖温C,腔温C\r\n");
+            }
+            else{
+                sprintf(file_data, "%lu,%02d:%02d:%02d,%lf,%lf,%lf,%lf,%lf,%lf,%lf\r\n",
+                        num,RTX->get_hour(),this->RTX->get_min(),this->RTX->get_sec(),
+                        frq,press, this->TEMP_link->temp_sensor[0].get_temp_cache(),
+                        this->TEMP_link->temp_sensor[1].get_temp_cache(),
+                        this->TEMP_link->temp_sensor[2].get_temp_cache(),
+                        this->TEMP_link->temp_sensor[3].get_temp_cache(),
+                        this->TEMP_link->temp_sensor[4].get_temp_cache());
+            }
+            f_write(&USB_fatfs.fp, file_data, strlen((char *) file_data), &USB_fatfs.plen);
+            f_close(&USB_fatfs.fp);
+        }
     }
     return false;
 }
@@ -277,9 +316,6 @@ void DW_DIS::Dis_handle() {
  * 触摸屏软件  检测数据事件
  * @根据按键转换对对应页面
  */
-#include "delay.h"
-#include "USB_MSC.h"
-
 #define Event_num 10
 uint8_t DW_DIS::Check_Event(uint8_t num){
 //    char asdf[30];
@@ -416,23 +452,23 @@ void DW_DIS::Samp_prepare_page(Event E) {
                 case 0:
                     value=this->get_value_data();
                     value/=10.0f;
-                    if(value>24) value=24;
+                    if(value>23) value=23;
                     this->TEOM_link->data_save(&TEOM_link->DATA.to_float.Work_TL,abs(value));
                     break;
                 case 1:
                     value=this->get_value_data();
-                    if(value>24) value=24;
+                    if(value>23) value=23;
                     this->TEOM_link->data_save(&TEOM_link->DATA.to_float.Samp_TL,abs(value));
                     break;
                 case 2:
                     value=this->get_value_data();
                     value/=10.0f;
-                    if(value>24) value=24;
+                    if(value>23) value=23;
                     this->TEOM_link->data_save(&TEOM_link->DATA.to_float.Work_TS,abs(value));
                     break;
                 case 3:
                     value=this->get_value_data();
-                    if(value>60) value=60;
+                    if(value>59) value=59;
                     this->TEOM_link->data_save(&TEOM_link->DATA.to_float.Samp_TS,abs(value));
                     break;
             }
@@ -715,6 +751,7 @@ void DW_DIS::Password_page(DW_DIS::Event E) {
 
 void DW_DIS::Working_page(DW_DIS::Event E) {
 //    static float  frq_temp,frq_center,teom_qua;
+    static uint32_t data_num=0;
     switch (E) {
         case TURN:
             this->Interface_switching(17);
@@ -724,6 +761,9 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
             this->Write_data(point_address,0x08,teom_dis_mul[teom_dis_mul_num][0]);
             this->vspf_Text(TEXT_ADD(9),(char *)"0.0%02dhz/行 ",teom_dis_mul[teom_dis_mul_num][1]/5);
             worked = false;
+            for (bool &ii :TEMP_UP_F) {
+                ii= true;
+            }
             if(this->TEOM_link->DATA.to_float.Samp_mode==Samp_Long_mode) {
                 COM_link->data_set(&COM_link->data_BUS.to_float.Flow_value_s,5);
                 COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,1);
@@ -747,6 +787,7 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                     this->vspf_Text(TEXT_ADD(5),(char *) "%09.5lfHz   ",frq_center);
                     this->vspf_Text(TEXT_ADD(7),(char *) "%04.0lfPa   ",press_center);
                     worked = true;
+                    data_num=0;
                 break;
                 case 2:
                     this->Interface_switching(18);
@@ -768,6 +809,9 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
         case Data:
             if(this->get_key_data()==0xF1) {
                 worked = false;
+                for (auto & ii : TEMP_link->CTRLT) {
+                    ii.upset(false);
+                }
                 this->Samp_prepare_page(TURN);
                 this->TEOM_link->turn_off();
                 COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
@@ -800,7 +844,7 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                     float teom_frq_comp=frq_temp-this->TEOM_link->DATA.to_float.coefficient*
                             (press_temp-press_center)*(frq_temp+frq_center)/2;   //压力计算
                     teom_qua = this->TEOM_link->DATA.to_float.stiffness *
-                               (1 / (frq_temp * frq_temp) - 1 / (teom_frq_comp * teom_frq_comp));
+                               (1 / (teom_frq_comp * teom_frq_comp) - 1 / (frq_center * frq_center));
 
                     if (this->TEOM_link->DATA.to_float.Samp_mode == Samp_Long_mode) {
                         this->Concentration=teom_qua / (float) (h * 5 * 60);
@@ -820,14 +864,21 @@ void DW_DIS::Working_page(DW_DIS::Event E) {
                         TEOM_link->DATA.to_float.Samp_num++;
                     }
                     this->TEOM_link->data_save(&TEOM_link->DATA.to_float.Samp_num, TEOM_link->DATA.to_float.Samp_num);
+                    for (auto & ii : TEMP_link->CTRLT) {
+                        ii.upset(false);
+                    }
                     this->Data_DIS(TURN);
                 }
-                this->send_cure_data(0,frq_center,frq_temp);
+                if(this->send_cure_data(0,frq_center,frq_temp))
+                    data_save(data_num++,frq_temp,press_temp);
             }
             else{
                 this->vspf_Text(TEXT_ADD(3),(char *) "00：00：00");
                 this->vspf_Text(TEXT_ADD(5),(char *) "---.---Hz");
                 this->vspf_Text(TEXT_ADD(7),(char *) "----Pa");
+            }
+            for (uint8_t ii = 0; ii < 5; ii++) {
+                TEMP_link->CTRLT[ii].upset(TEMP_UP_F[ii]);
             }
             frq_temp =this->TEOM_link->get_frq();
             press_temp=this->TEOM_link->Pre_link->get_value();
@@ -933,8 +984,6 @@ void DW_DIS::Super_page(DW_DIS::Event E) {
                         this->TEOM_link->data_save();
                     }
                     COM_link->data_set(&COM_link->data_BUS.to_float.Flow_work,0);
-                    this->vspf_Text(TEXT_ADD(8), (char *) "%09.8lf",TEOM_link->DATA.to_float.coefficient);
-                    this->vspf_Text(TEXT_ADD(9), (char *) "%09.0lf",TEOM_link->DATA.to_float.stiffness);
                     break;
             }
             break;
@@ -954,6 +1003,8 @@ void DW_DIS::Super_page(DW_DIS::Event E) {
             for (int ii = 0; ii < 5; ii++) {
                 TEMP_link->CTRLT[ii].upset(TEMP_UP_F[ii]);
             }
+            this->vspf_Text(TEXT_ADD(8), (char *) "%09.8lf",TEOM_link->DATA.to_float.coefficient);
+            this->vspf_Text(TEXT_ADD(9), (char *) "%09.0lf",TEOM_link->DATA.to_float.stiffness);
             break;
         case Error:
             break;
@@ -1005,8 +1056,7 @@ void DW_DIS::Data_DIS(DW_DIS::Event E) {
     }
 }
 
-extern USB_MSC USB ;
-extern Storage_Link USB_fatfs;
+
 void DW_DIS::statement(Event E) {
     static float TEOM_TWA=0;
     switch (E) {
@@ -1105,6 +1155,7 @@ void DW_DIS::statement(Event E) {
             break;
     }
 }
+
 
 
 

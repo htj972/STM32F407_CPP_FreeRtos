@@ -175,6 +175,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/NPA_SMI.cpp.obj"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/NPA_SMI.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/OLED_SSD1306.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/RD_EH32.cpp.obj"

@@ -196,6 +196,11 @@ void start_task(void *pvParameters)
         vTaskDelay(50/portTICK_RATE_MS );
 //        delay_ms(10);
         USB.Upset();
+        if(USB.Get_device_sata()==USB_MSC::SATA::Linked) {
+            led.set(ON);
+        } else{
+            led.set(OFF);
+        }
     }
 }
 //串通信任务
