@@ -9,6 +9,7 @@
 #include "CD4052.h"
 #include "PWM.h"
 #include "Timer_queue.h"
+#include "RS485.h"
 
 
 
@@ -51,37 +52,14 @@ public:
     void Callback(int  ,char** ) override{
         this->change();
     };
-}led(GPIOE2,TIM6,2);
+}led(GPIOE5,TIM6,2);
 
 Timer_queue tIMS(TIM7,50000);
 
 _USART_ DEBUG(USART1);
-//_USART_ TMC_U(USART3);
+_USART_ Lora(USART6);
+RS485   YU(USART3,GPIOB15,9600);
 
-CD4052 TMC_U(GPIOE15,GPIOE14,USART3);
-//
-//TMC220xUart TMC_X(&TMC_U,GPIOE12,GPIOE13,GPIOA3);
-
-class TMCX:public TMC220xUart{
-private:
-    uint8_t CD4052_chanel{};
-protected:
-    CD4052 *uartX{};// 设置串口
-public:
-    void send_data(TMC220xUart *TMX,uint8_t *str, uint16_t len) override{
-        this->uartX->clear();
-        this->uartX->write_chanel(CD4052_chanel,str, len);
-    };
-    TMCX(CD4052 *uartx,uint8_t channel,uint32_t STEP_Pin,uint32_t EN_Pin,uint32_t DIAG_Pin){
-        this->init(uartx,STEP_Pin,EN_Pin,DIAG_Pin);
-        this->uartX=uartx;
-        this->CD4052_chanel=channel;
-    };
-
-}TMC_X1(&TMC_U,1,GPIOE12,GPIOE13,GPIOA3),
- TMC_X2(&TMC_U,2,GPIOE10,GPIOE11,GPIOA4),
- TMC_X3(&TMC_U,3,GPIOE8,GPIOE9,GPIOA1),
- TMC_X4(&TMC_U,4,GPIOB1,GPIOE7,GPIOA2);
 
 
 int main()
@@ -90,13 +68,9 @@ int main()
     delay_init(168);	//初始化延时函数
 
     delay_ms(1000);
-    TMC_X1.config(64,20,1,100, true);
-    TMC_X1.Link_TIMX(&tIMS);
-    TMC_X1.Return_to_zero();
-    TMC_X1.stallGuard(0);
-//    TMC_X2.config(64,10,1,100,true);
-//    TMC_X2.Return_to_zero();
-//    TMC_X2.stallGuard(0);
+    YU.config(GPIOD8,GPIOD9);
+//    YU.init();
+
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -136,13 +110,7 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-//        TMC_X1.moveTo(1,5);
-        TMC_X1.set_site(10);
-//        TMC_X2.moveTo(1,5);
-        vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-//        TMC_X1.moveTo(0,5);
-        TMC_X1.set_site(5);
-//        TMC_X2.moveTo(0,5);
+
     }
 }
 
@@ -151,7 +119,18 @@ void start_task(void *pvParameters)
 {
     while(true)
     {
-        vTaskDelay(1000/portTICK_RATE_MS );
+        vTaskDelay(100/portTICK_RATE_MS );
+
+        string data =Lora.read_data();
+
+        DEBUG<<data;
+        YU<<data;
+
+
+        Lora<<YU.read_data();
+
+        Lora<<DEBUG.read_data();
+
     }
 }
 
