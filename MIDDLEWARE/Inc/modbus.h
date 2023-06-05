@@ -12,13 +12,14 @@
 #include "Timer.h"
 
 class modbus: public CRC16_Modbus,public Call_Back{
-private:
-    _USART_* USARTx{};
-    Timer  * TIMERX{};
+public:
     enum {
         HOST=1,
         SLAVE=0,
     };
+private:
+    _USART_* USARTx{};
+    Timer  * TIMERX{};
     enum {
         modbus_success =0x00,
         modbus_03_error=0x03,

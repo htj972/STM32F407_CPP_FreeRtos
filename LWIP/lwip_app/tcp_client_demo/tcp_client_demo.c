@@ -32,7 +32,8 @@ void tcp_client_test(void)
 	tcppcb=tcp_new();	//创建一个新的pcb
 	if(tcppcb)			//创建成功
 	{
-		IP4_ADDR(&rmtipaddr,10,40,12,14);
+        IP4_ADDR(&rmtipaddr,lwipdev.remoteip[0],lwipdev.remoteip[1],lwipdev.remoteip[2],lwipdev.remoteip[3]);
+//		IP4_ADDR(&rmtipaddr,10,40,12,14);
 		tcp_connect(tcppcb,&rmtipaddr,TCP_CLIENT_PORT,tcp_client_connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
  	}else res=1;
 	while(res==0)

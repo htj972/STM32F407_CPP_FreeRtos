@@ -5,16 +5,16 @@
 
  
 //UDP接收数据缓冲区
-u8 udp_demo_recvbuf[UDP_DEMO_RX_BUFSIZE];	//UDP接收数据缓冲区 
+uint8_t udp_demo_recvbuf[UDP_DEMO_RX_BUFSIZE];	//UDP接收数据缓冲区
 //UDP发送数据内容
-const u8 *tcp_demo_sendbuf="Explorer STM32F407 UDP demo send data\r\n";
+const uint8_t *tcp_demo_sendbuf="Explorer STM32F407 UDP demo send data\r\n";
 
 //UDP 测试全局状态标记变量
 //bit7:没有用到
 //bit6:0,没有收到数据;1,收到数据了.
 //bit5:0,没有连接上;1,连接上了.
 //bit4~0:保留
-u8 udp_demo_flag;
+uint8_t udp_demo_flag;
 //UDP测试
 void udp_demo_test(void)
 {
@@ -22,8 +22,8 @@ void udp_demo_test(void)
 	struct udp_pcb *udppcb;  	//定义一个TCP服务器控制块
 	struct ip_addr rmtipaddr;  	//远端ip地址
  	
-	u8 *tbuf;
-	u8 res=0;
+	uint8_t *tbuf;
+	uint8_t res=0;
 
 	tbuf=mymalloc(SRAMIN,200);	//申请内存
 	if(tbuf==NULL)return ;		//内存申请失败了,直接退出
@@ -44,10 +44,10 @@ void udp_demo_test(void)
 	}else res=1;
 	while(res==0)
 	{
-//		if(udp_demo_recvbuf[0]=='O')//KEY0按下了,发送数据
-//		{
-//			udp_demo_senddata(udppcb);
-//		}
+		if(udp_demo_recvbuf[0]=='O')//KEY0按下了,发送数据
+		{
+            res=1;
+		}
 		if(udp_demo_flag&1<<6)//是否收到数据?
 		{
 

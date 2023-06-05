@@ -11,6 +11,7 @@
 #include "lwip_comm/lwip_comm.h"
 #include "tcp_client_demo/tcp_client_demo.h"
 #include "udp_demo/udp_demo.h"
+#include "modbus.h"
 
 
 
@@ -65,7 +66,9 @@ _USART_ DEBUG(USART1);
 _USART_ Lora(USART6);
 RS485   YU(USART3,GPIOB15,9600);
 
+modbus SUN(&YU,modbus::HOST);
 
+uint16_t sun_data[2];
 
 int main()
 {
@@ -83,6 +86,7 @@ int main()
     delay_ms(100);
     BEEP.set(OFF);
 
+    SUN.config(sun_data,2);
 
     delay_ms(1000);
     YU.config(GPIOD8,GPIOD9);
@@ -114,7 +118,7 @@ int main()
 
     DEBUG<<DHCP_str[0]<<DHCP_str[1]<<DHCP_str[2]<<DHCP_str[3]<<DHCP_str[4];
 
-    DEBUG<<"lwIP Init Successed\r\n";
+    DEBUG<<"lwIP DHCP Successed\r\n";
     if(lwipdev.dhcpstatus==2)sprintf((char*)buf,"DHCP IP:%d.%d.%d.%d\r\n",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印动态IP地址
     else sprintf((char*)buf,"Static IP:%d.%d.%d.%d\r\n",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印静态IP地址
     DEBUG<<buf;
@@ -123,8 +127,7 @@ int main()
     else DEBUG<<"Ethernet Speed:10M\r\n";
 
 
-    udp_demo_test();
-    tcp_client_test();
+
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -163,10 +166,11 @@ void start_task(void *pvParameters)
 {
     while(true)
     {
-        vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+        vTaskDelay(200/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         run.change();
         OUT1.change();
         OUT2.change();
+        SUN.modbus_03_send(0,1);
     }
 }
 
@@ -178,7 +182,8 @@ void start_task(void *pvParameters)
         vTaskDelay(100/portTICK_RATE_MS );
 
 
-        Lora<<"OK";
+        udp_demo_test();
+        tcp_client_test();
 
 
     }
