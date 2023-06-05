@@ -5,11 +5,12 @@
 #include "Out_In_Put.h"
 #include "Timer.h"
 #include "USART.h"
-#include "TMC220xUart.h"
-#include "CD4052.h"
-#include "PWM.h"
 #include "Timer_queue.h"
 #include "RS485.h"
+#include "malloc.h"
+#include "lwip_comm/lwip_comm.h"
+#include "tcp_client_demo/tcp_client_demo.h"
+#include "udp_demo/udp_demo.h"
 
 
 
@@ -40,7 +41,7 @@ TaskHandle_t Task2Task_Handler;
 //任务函数
 [[noreturn]] void task2_task(void *pvParameters);
 
-
+extern u32 lwip_localtime;		//lwip本地时间计数器,单位:ms
 //运行指示灯
 class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
@@ -51,8 +52,12 @@ public:
     }
     void Callback(int  ,char** ) override{
         this->change();
+        lwip_localtime+=10;
     };
-}led(GPIOE5,TIM6,2);
+}led(GPIOE5,TIM6,100);
+
+_OutPut_ run (GPIOE6),BEEP (GPIOE4,HIGH);
+_OutPut_ OUT1(GPIOE0),OUT2(GPIOE1);
 
 Timer_queue tIMS(TIM7,50000);
 
@@ -67,10 +72,59 @@ int main()
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);	//初始化延时函数
 
+    my_mem_init(SRAMIN);		//初始化内部内存池
+
+    BEEP.set(ON);
+    delay_ms(100);
+    BEEP.set(OFF);
+    delay_ms(250);
+
+    BEEP.set(ON);
+    delay_ms(100);
+    BEEP.set(OFF);
+
+
     delay_ms(1000);
     YU.config(GPIOD8,GPIOD9);
+
 //    YU.init();
 
+
+    DEBUG<<"Ethernet lwIP Test\r\n"<<"KOKIRIKA\r\n"<<"2023-6-2\r\n";
+
+    DEBUG<<"lwIP Initing...\r\n";
+    uint8_t ret =lwip_comm_init();
+    while(ret!=0)
+    {
+        ret =lwip_comm_init();
+        DEBUG<<"lwIP Init failed!\r\n";
+        delay_ms(1200);
+        DEBUG<<"Retrying...\r\n";
+    }
+    DEBUG<<"lwIP Init Successed\r\n";
+    //等待DHCP获取
+    DEBUG<<"DHCP IP configing...\r\n";
+    while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
+    {
+        lwip_periodic_handle();
+    }
+
+    uint8_t speed;
+    char buf[30];
+
+    DEBUG<<DHCP_str[0]<<DHCP_str[1]<<DHCP_str[2]<<DHCP_str[3]<<DHCP_str[4];
+
+    DEBUG<<"lwIP Init Successed\r\n";
+    if(lwipdev.dhcpstatus==2)sprintf((char*)buf,"DHCP IP:%d.%d.%d.%d\r\n",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印动态IP地址
+    else sprintf((char*)buf,"Static IP:%d.%d.%d.%d\r\n",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印静态IP地址
+    DEBUG<<buf;
+    speed=LAN8720_Get_Speed();//得到网速
+    if(speed&1<<1)DEBUG<<"Ethernet Speed:100M\r\n";
+    else DEBUG<<"Ethernet Speed:10M\r\n";
+
+
+    udp_demo_test();
+    tcp_client_test();
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -110,7 +164,9 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-
+        run.change();
+        OUT1.change();
+        OUT2.change();
     }
 }
 
@@ -121,15 +177,9 @@ void start_task(void *pvParameters)
     {
         vTaskDelay(100/portTICK_RATE_MS );
 
-        string data =Lora.read_data();
 
-        DEBUG<<data;
-        YU<<data;
+        Lora<<"OK";
 
-
-        Lora<<YU.read_data();
-
-        Lora<<DEBUG.read_data();
 
     }
 }

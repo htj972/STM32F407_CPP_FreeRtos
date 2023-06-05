@@ -24,7 +24,7 @@ add_definitions(-DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__F
 #SET(FPU_FLAGS "-mfloat-abi=soft")
 
 SET(COMMON_FLAGS
-    "-mcpu=cortex-m4 ${FPU_FLAGS} -mthumb -mthumb-interwork -ffunction-sections -fdata-sections \
+        "-mcpu=cortex-m4 ${FPU_FLAGS} -mthumb -mthumb-interwork -ffunction-sections -fdata-sections \
     -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs -u _printf_float")
 
 SET(CMAKE_CXX_FLAGS_INIT "${COMMON_FLAGS} -std=c++11")
@@ -37,18 +37,20 @@ set(CMAKE_CXX_STANDARD 11)
 add_definitions(-DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx)
 
 file(GLOB_RECURSE SOURCES "startup/*.*" "USER/*.*" "CORE/*.*" "FWLIB/*.*" "FATFS/*.*"
-                          "SYSTEM/*.*" "HARDWARE/*.*" "FreeRTOS/*.*" "MIDDLEWARE/*.*"
-                          "SOFTWARE/*.*" "USB/*.*")
+        "SYSTEM/*.*" "HARDWARE/*.*" "FreeRTOS/*.*" "MIDDLEWARE/*.*"
+        "SOFTWARE/*.*" "USB/*.*" "LWIP/*.*")
 
 include_directories(Core/Inc FWLIB/inc SYSTEM/Inc USER/Inc HARDWARE/Inc FATFS/Inc
-                    FreeRTOS/FreeRTOS_Inc MIDDLEWARE/Inc MIDDLEWARE/BASE_CLASS/Inc
-                    HARDWARE/BASE_CLASS/Inc SOFTWARE/Inc
-                    USB/USB_HOST/Inc USB/USB_OTG/Inc USB/CLASS/Inc)
+        FreeRTOS/FreeRTOS_Inc MIDDLEWARE/Inc MIDDLEWARE/BASE_CLASS/Inc
+        HARDWARE/BASE_CLASS/Inc SOFTWARE/Inc
+        USB/USB_HOST/Inc USB/USB_OTG/Inc USB/CLASS/Inc
+        LWIP/lwip-1.4.1/src/include LWIP/lwip-1.4.1/src/include/ipv4
+        LWIP/arch LWIP/lwip_app)
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 
 set(CMAKE_EXE_LINKER_FLAGS
-    "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map")
+        "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map")
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)

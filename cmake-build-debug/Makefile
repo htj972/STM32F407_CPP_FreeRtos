@@ -272,6 +272,30 @@ FWLIB/src/misc.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FWLIB/src/misc.c.s
 .PHONY : FWLIB/src/misc.c.s
 
+FWLIB/src/stm32f4x7_eth.obj: FWLIB/src/stm32f4x7_eth.c.obj
+.PHONY : FWLIB/src/stm32f4x7_eth.obj
+
+# target to build an object file
+FWLIB/src/stm32f4x7_eth.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4x7_eth.c.obj
+.PHONY : FWLIB/src/stm32f4x7_eth.c.obj
+
+FWLIB/src/stm32f4x7_eth.i: FWLIB/src/stm32f4x7_eth.c.i
+.PHONY : FWLIB/src/stm32f4x7_eth.i
+
+# target to preprocess a source file
+FWLIB/src/stm32f4x7_eth.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4x7_eth.c.i
+.PHONY : FWLIB/src/stm32f4x7_eth.c.i
+
+FWLIB/src/stm32f4x7_eth.s: FWLIB/src/stm32f4x7_eth.c.s
+.PHONY : FWLIB/src/stm32f4x7_eth.s
+
+# target to generate assembly for a file
+FWLIB/src/stm32f4x7_eth.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/FWLIB/src/stm32f4x7_eth.c.s
+.PHONY : FWLIB/src/stm32f4x7_eth.c.s
+
 FWLIB/src/stm32f4xx_adc.obj: FWLIB/src/stm32f4xx_adc.c.obj
 .PHONY : FWLIB/src/stm32f4xx_adc.obj
 
@@ -1520,6 +1544,30 @@ HARDWARE/Src/IIC.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/IIC.cpp.s
 .PHONY : HARDWARE/Src/IIC.cpp.s
 
+HARDWARE/Src/LAN8720.obj: HARDWARE/Src/LAN8720.c.obj
+.PHONY : HARDWARE/Src/LAN8720.obj
+
+# target to build an object file
+HARDWARE/Src/LAN8720.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/LAN8720.c.obj
+.PHONY : HARDWARE/Src/LAN8720.c.obj
+
+HARDWARE/Src/LAN8720.i: HARDWARE/Src/LAN8720.c.i
+.PHONY : HARDWARE/Src/LAN8720.i
+
+# target to preprocess a source file
+HARDWARE/Src/LAN8720.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/LAN8720.c.i
+.PHONY : HARDWARE/Src/LAN8720.c.i
+
+HARDWARE/Src/LAN8720.s: HARDWARE/Src/LAN8720.c.s
+.PHONY : HARDWARE/Src/LAN8720.s
+
+# target to generate assembly for a file
+HARDWARE/Src/LAN8720.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/LAN8720.c.s
+.PHONY : HARDWARE/Src/LAN8720.c.s
+
 HARDWARE/Src/ONE_Wire.obj: HARDWARE/Src/ONE_Wire.cpp.obj
 .PHONY : HARDWARE/Src/ONE_Wire.obj
 
@@ -1735,6 +1783,1398 @@ HARDWARE/Src/USART.s: HARDWARE/Src/USART.cpp.s
 HARDWARE/Src/USART.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.s
 .PHONY : HARDWARE/Src/USART.cpp.s
+
+LWIP/arch/sys_arch.obj: LWIP/arch/sys_arch.c.obj
+.PHONY : LWIP/arch/sys_arch.obj
+
+# target to build an object file
+LWIP/arch/sys_arch.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/arch/sys_arch.c.obj
+.PHONY : LWIP/arch/sys_arch.c.obj
+
+LWIP/arch/sys_arch.i: LWIP/arch/sys_arch.c.i
+.PHONY : LWIP/arch/sys_arch.i
+
+# target to preprocess a source file
+LWIP/arch/sys_arch.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/arch/sys_arch.c.i
+.PHONY : LWIP/arch/sys_arch.c.i
+
+LWIP/arch/sys_arch.s: LWIP/arch/sys_arch.c.s
+.PHONY : LWIP/arch/sys_arch.s
+
+# target to generate assembly for a file
+LWIP/arch/sys_arch.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/arch/sys_arch.c.s
+.PHONY : LWIP/arch/sys_arch.c.s
+
+LWIP/lwip-1.4.1/src/api/api_lib.obj: LWIP/lwip-1.4.1/src/api/api_lib.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/api_lib.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/api/api_lib.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/api_lib.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/api_lib.c.obj
+
+LWIP/lwip-1.4.1/src/api/api_lib.i: LWIP/lwip-1.4.1/src/api/api_lib.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/api_lib.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/api/api_lib.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/api_lib.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/api_lib.c.i
+
+LWIP/lwip-1.4.1/src/api/api_lib.s: LWIP/lwip-1.4.1/src/api/api_lib.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/api_lib.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/api/api_lib.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/api_lib.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/api_lib.c.s
+
+LWIP/lwip-1.4.1/src/api/api_msg.obj: LWIP/lwip-1.4.1/src/api/api_msg.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/api_msg.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/api/api_msg.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/api_msg.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/api_msg.c.obj
+
+LWIP/lwip-1.4.1/src/api/api_msg.i: LWIP/lwip-1.4.1/src/api/api_msg.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/api_msg.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/api/api_msg.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/api_msg.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/api_msg.c.i
+
+LWIP/lwip-1.4.1/src/api/api_msg.s: LWIP/lwip-1.4.1/src/api/api_msg.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/api_msg.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/api/api_msg.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/api_msg.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/api_msg.c.s
+
+LWIP/lwip-1.4.1/src/api/err.obj: LWIP/lwip-1.4.1/src/api/err.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/err.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/api/err.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/err.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/err.c.obj
+
+LWIP/lwip-1.4.1/src/api/err.i: LWIP/lwip-1.4.1/src/api/err.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/err.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/api/err.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/err.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/err.c.i
+
+LWIP/lwip-1.4.1/src/api/err.s: LWIP/lwip-1.4.1/src/api/err.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/err.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/api/err.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/err.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/err.c.s
+
+LWIP/lwip-1.4.1/src/api/netbuf.obj: LWIP/lwip-1.4.1/src/api/netbuf.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/netbuf.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/api/netbuf.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/netbuf.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/netbuf.c.obj
+
+LWIP/lwip-1.4.1/src/api/netbuf.i: LWIP/lwip-1.4.1/src/api/netbuf.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/netbuf.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/api/netbuf.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/netbuf.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/netbuf.c.i
+
+LWIP/lwip-1.4.1/src/api/netbuf.s: LWIP/lwip-1.4.1/src/api/netbuf.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/netbuf.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/api/netbuf.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/netbuf.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/netbuf.c.s
+
+LWIP/lwip-1.4.1/src/api/netdb.obj: LWIP/lwip-1.4.1/src/api/netdb.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/netdb.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/api/netdb.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/netdb.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/netdb.c.obj
+
+LWIP/lwip-1.4.1/src/api/netdb.i: LWIP/lwip-1.4.1/src/api/netdb.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/netdb.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/api/netdb.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/netdb.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/netdb.c.i
+
+LWIP/lwip-1.4.1/src/api/netdb.s: LWIP/lwip-1.4.1/src/api/netdb.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/netdb.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/api/netdb.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/netdb.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/netdb.c.s
+
+LWIP/lwip-1.4.1/src/api/netifapi.obj: LWIP/lwip-1.4.1/src/api/netifapi.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/netifapi.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/api/netifapi.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/netifapi.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/netifapi.c.obj
+
+LWIP/lwip-1.4.1/src/api/netifapi.i: LWIP/lwip-1.4.1/src/api/netifapi.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/netifapi.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/api/netifapi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/netifapi.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/netifapi.c.i
+
+LWIP/lwip-1.4.1/src/api/netifapi.s: LWIP/lwip-1.4.1/src/api/netifapi.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/netifapi.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/api/netifapi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/netifapi.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/netifapi.c.s
+
+LWIP/lwip-1.4.1/src/api/sockets.obj: LWIP/lwip-1.4.1/src/api/sockets.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/sockets.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/api/sockets.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/sockets.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/sockets.c.obj
+
+LWIP/lwip-1.4.1/src/api/sockets.i: LWIP/lwip-1.4.1/src/api/sockets.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/sockets.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/api/sockets.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/sockets.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/sockets.c.i
+
+LWIP/lwip-1.4.1/src/api/sockets.s: LWIP/lwip-1.4.1/src/api/sockets.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/sockets.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/api/sockets.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/sockets.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/sockets.c.s
+
+LWIP/lwip-1.4.1/src/api/tcpip.obj: LWIP/lwip-1.4.1/src/api/tcpip.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/tcpip.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/api/tcpip.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/tcpip.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/api/tcpip.c.obj
+
+LWIP/lwip-1.4.1/src/api/tcpip.i: LWIP/lwip-1.4.1/src/api/tcpip.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/tcpip.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/api/tcpip.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/tcpip.c.i
+.PHONY : LWIP/lwip-1.4.1/src/api/tcpip.c.i
+
+LWIP/lwip-1.4.1/src/api/tcpip.s: LWIP/lwip-1.4.1/src/api/tcpip.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/tcpip.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/api/tcpip.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/api/tcpip.c.s
+.PHONY : LWIP/lwip-1.4.1/src/api/tcpip.c.s
+
+LWIP/lwip-1.4.1/src/core/def.obj: LWIP/lwip-1.4.1/src/core/def.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/def.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/def.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/def.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/def.c.obj
+
+LWIP/lwip-1.4.1/src/core/def.i: LWIP/lwip-1.4.1/src/core/def.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/def.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/def.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/def.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/def.c.i
+
+LWIP/lwip-1.4.1/src/core/def.s: LWIP/lwip-1.4.1/src/core/def.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/def.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/def.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/def.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/def.c.s
+
+LWIP/lwip-1.4.1/src/core/dhcp.obj: LWIP/lwip-1.4.1/src/core/dhcp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/dhcp.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/dhcp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/dhcp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/dhcp.c.obj
+
+LWIP/lwip-1.4.1/src/core/dhcp.i: LWIP/lwip-1.4.1/src/core/dhcp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/dhcp.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/dhcp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/dhcp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/dhcp.c.i
+
+LWIP/lwip-1.4.1/src/core/dhcp.s: LWIP/lwip-1.4.1/src/core/dhcp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/dhcp.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/dhcp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/dhcp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/dhcp.c.s
+
+LWIP/lwip-1.4.1/src/core/dns.obj: LWIP/lwip-1.4.1/src/core/dns.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/dns.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/dns.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/dns.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/dns.c.obj
+
+LWIP/lwip-1.4.1/src/core/dns.i: LWIP/lwip-1.4.1/src/core/dns.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/dns.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/dns.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/dns.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/dns.c.i
+
+LWIP/lwip-1.4.1/src/core/dns.s: LWIP/lwip-1.4.1/src/core/dns.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/dns.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/dns.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/dns.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/dns.c.s
+
+LWIP/lwip-1.4.1/src/core/init.obj: LWIP/lwip-1.4.1/src/core/init.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/init.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/init.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/init.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/init.c.obj
+
+LWIP/lwip-1.4.1/src/core/init.i: LWIP/lwip-1.4.1/src/core/init.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/init.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/init.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/init.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/init.c.i
+
+LWIP/lwip-1.4.1/src/core/init.s: LWIP/lwip-1.4.1/src/core/init.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/init.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/init.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/init.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/init.c.s
+
+LWIP/lwip-1.4.1/src/core/ipv4/autoip.obj: LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/autoip.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.obj
+
+LWIP/lwip-1.4.1/src/core/ipv4/autoip.i: LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/autoip.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.i
+
+LWIP/lwip-1.4.1/src/core/ipv4/autoip.s: LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/autoip.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/autoip.c.s
+
+LWIP/lwip-1.4.1/src/core/ipv4/icmp.obj: LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/icmp.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.obj
+
+LWIP/lwip-1.4.1/src/core/ipv4/icmp.i: LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/icmp.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.i
+
+LWIP/lwip-1.4.1/src/core/ipv4/icmp.s: LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/icmp.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/icmp.c.s
+
+LWIP/lwip-1.4.1/src/core/ipv4/igmp.obj: LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/igmp.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.obj
+
+LWIP/lwip-1.4.1/src/core/ipv4/igmp.i: LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/igmp.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.i
+
+LWIP/lwip-1.4.1/src/core/ipv4/igmp.s: LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/igmp.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/igmp.c.s
+
+LWIP/lwip-1.4.1/src/core/ipv4/inet.obj: LWIP/lwip-1.4.1/src/core/ipv4/inet.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/ipv4/inet.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/inet.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet.c.obj
+
+LWIP/lwip-1.4.1/src/core/ipv4/inet.i: LWIP/lwip-1.4.1/src/core/ipv4/inet.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/ipv4/inet.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/inet.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet.c.i
+
+LWIP/lwip-1.4.1/src/core/ipv4/inet.s: LWIP/lwip-1.4.1/src/core/ipv4/inet.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/ipv4/inet.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/inet.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet.c.s
+
+LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.obj: LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.obj
+
+LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.i: LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.i
+
+LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.s: LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.c.s
+
+LWIP/lwip-1.4.1/src/core/ipv4/ip.obj: LWIP/lwip-1.4.1/src/core/ipv4/ip.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/ipv4/ip.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/ip.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip.c.obj
+
+LWIP/lwip-1.4.1/src/core/ipv4/ip.i: LWIP/lwip-1.4.1/src/core/ipv4/ip.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/ipv4/ip.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/ip.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip.c.i
+
+LWIP/lwip-1.4.1/src/core/ipv4/ip.s: LWIP/lwip-1.4.1/src/core/ipv4/ip.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/ipv4/ip.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/ip.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip.c.s
+
+LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.obj: LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.obj
+
+LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.i: LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.i
+
+LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.s: LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.c.s
+
+LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.obj: LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.obj
+
+LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.i: LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.i
+
+LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.s: LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.c.s
+
+LWIP/lwip-1.4.1/src/core/lwip_sys.obj: LWIP/lwip-1.4.1/src/core/lwip_sys.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/lwip_sys.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/lwip_sys.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/lwip_sys.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/lwip_sys.c.obj
+
+LWIP/lwip-1.4.1/src/core/lwip_sys.i: LWIP/lwip-1.4.1/src/core/lwip_sys.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/lwip_sys.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/lwip_sys.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/lwip_sys.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/lwip_sys.c.i
+
+LWIP/lwip-1.4.1/src/core/lwip_sys.s: LWIP/lwip-1.4.1/src/core/lwip_sys.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/lwip_sys.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/lwip_sys.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/lwip_sys.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/lwip_sys.c.s
+
+LWIP/lwip-1.4.1/src/core/mem.obj: LWIP/lwip-1.4.1/src/core/mem.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/mem.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/mem.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/mem.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/mem.c.obj
+
+LWIP/lwip-1.4.1/src/core/mem.i: LWIP/lwip-1.4.1/src/core/mem.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/mem.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/mem.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/mem.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/mem.c.i
+
+LWIP/lwip-1.4.1/src/core/mem.s: LWIP/lwip-1.4.1/src/core/mem.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/mem.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/mem.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/mem.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/mem.c.s
+
+LWIP/lwip-1.4.1/src/core/memp.obj: LWIP/lwip-1.4.1/src/core/memp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/memp.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/memp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/memp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/memp.c.obj
+
+LWIP/lwip-1.4.1/src/core/memp.i: LWIP/lwip-1.4.1/src/core/memp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/memp.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/memp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/memp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/memp.c.i
+
+LWIP/lwip-1.4.1/src/core/memp.s: LWIP/lwip-1.4.1/src/core/memp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/memp.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/memp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/memp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/memp.c.s
+
+LWIP/lwip-1.4.1/src/core/netif.obj: LWIP/lwip-1.4.1/src/core/netif.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/netif.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/netif.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/netif.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/netif.c.obj
+
+LWIP/lwip-1.4.1/src/core/netif.i: LWIP/lwip-1.4.1/src/core/netif.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/netif.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/netif.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/netif.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/netif.c.i
+
+LWIP/lwip-1.4.1/src/core/netif.s: LWIP/lwip-1.4.1/src/core/netif.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/netif.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/netif.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/netif.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/netif.c.s
+
+LWIP/lwip-1.4.1/src/core/pbuf.obj: LWIP/lwip-1.4.1/src/core/pbuf.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/pbuf.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/pbuf.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/pbuf.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/pbuf.c.obj
+
+LWIP/lwip-1.4.1/src/core/pbuf.i: LWIP/lwip-1.4.1/src/core/pbuf.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/pbuf.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/pbuf.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/pbuf.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/pbuf.c.i
+
+LWIP/lwip-1.4.1/src/core/pbuf.s: LWIP/lwip-1.4.1/src/core/pbuf.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/pbuf.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/pbuf.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/pbuf.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/pbuf.c.s
+
+LWIP/lwip-1.4.1/src/core/raw.obj: LWIP/lwip-1.4.1/src/core/raw.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/raw.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/raw.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/raw.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/raw.c.obj
+
+LWIP/lwip-1.4.1/src/core/raw.i: LWIP/lwip-1.4.1/src/core/raw.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/raw.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/raw.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/raw.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/raw.c.i
+
+LWIP/lwip-1.4.1/src/core/raw.s: LWIP/lwip-1.4.1/src/core/raw.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/raw.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/raw.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/raw.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/raw.c.s
+
+LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.obj: LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.obj
+
+LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.i: LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.i
+
+LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.s: LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.c.s
+
+LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.obj: LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.obj
+
+LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.i: LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.i
+
+LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.s: LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.c.s
+
+LWIP/lwip-1.4.1/src/core/snmp/mib2.obj: LWIP/lwip-1.4.1/src/core/snmp/mib2.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib2.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/snmp/mib2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/mib2.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib2.c.obj
+
+LWIP/lwip-1.4.1/src/core/snmp/mib2.i: LWIP/lwip-1.4.1/src/core/snmp/mib2.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib2.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/snmp/mib2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/mib2.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib2.c.i
+
+LWIP/lwip-1.4.1/src/core/snmp/mib2.s: LWIP/lwip-1.4.1/src/core/snmp/mib2.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib2.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/snmp/mib2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/mib2.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib2.c.s
+
+LWIP/lwip-1.4.1/src/core/snmp/mib_structs.obj: LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib_structs.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.obj
+
+LWIP/lwip-1.4.1/src/core/snmp/mib_structs.i: LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib_structs.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.i
+
+LWIP/lwip-1.4.1/src/core/snmp/mib_structs.s: LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib_structs.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/mib_structs.c.s
+
+LWIP/lwip-1.4.1/src/core/snmp/msg_in.obj: LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_in.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.obj
+
+LWIP/lwip-1.4.1/src/core/snmp/msg_in.i: LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_in.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.i
+
+LWIP/lwip-1.4.1/src/core/snmp/msg_in.s: LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_in.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_in.c.s
+
+LWIP/lwip-1.4.1/src/core/snmp/msg_out.obj: LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_out.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.obj
+
+LWIP/lwip-1.4.1/src/core/snmp/msg_out.i: LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_out.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.i
+
+LWIP/lwip-1.4.1/src/core/snmp/msg_out.s: LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_out.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/snmp/msg_out.c.s
+
+LWIP/lwip-1.4.1/src/core/stats.obj: LWIP/lwip-1.4.1/src/core/stats.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/stats.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/stats.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/stats.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/stats.c.obj
+
+LWIP/lwip-1.4.1/src/core/stats.i: LWIP/lwip-1.4.1/src/core/stats.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/stats.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/stats.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/stats.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/stats.c.i
+
+LWIP/lwip-1.4.1/src/core/stats.s: LWIP/lwip-1.4.1/src/core/stats.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/stats.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/stats.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/stats.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/stats.c.s
+
+LWIP/lwip-1.4.1/src/core/tcp.obj: LWIP/lwip-1.4.1/src/core/tcp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/tcp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/tcp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp.c.obj
+
+LWIP/lwip-1.4.1/src/core/tcp.i: LWIP/lwip-1.4.1/src/core/tcp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/tcp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/tcp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp.c.i
+
+LWIP/lwip-1.4.1/src/core/tcp.s: LWIP/lwip-1.4.1/src/core/tcp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/tcp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/tcp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp.c.s
+
+LWIP/lwip-1.4.1/src/core/tcp_in.obj: LWIP/lwip-1.4.1/src/core/tcp_in.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_in.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/tcp_in.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/tcp_in.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_in.c.obj
+
+LWIP/lwip-1.4.1/src/core/tcp_in.i: LWIP/lwip-1.4.1/src/core/tcp_in.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_in.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/tcp_in.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/tcp_in.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_in.c.i
+
+LWIP/lwip-1.4.1/src/core/tcp_in.s: LWIP/lwip-1.4.1/src/core/tcp_in.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_in.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/tcp_in.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/tcp_in.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_in.c.s
+
+LWIP/lwip-1.4.1/src/core/tcp_out.obj: LWIP/lwip-1.4.1/src/core/tcp_out.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_out.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/tcp_out.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/tcp_out.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_out.c.obj
+
+LWIP/lwip-1.4.1/src/core/tcp_out.i: LWIP/lwip-1.4.1/src/core/tcp_out.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_out.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/tcp_out.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/tcp_out.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_out.c.i
+
+LWIP/lwip-1.4.1/src/core/tcp_out.s: LWIP/lwip-1.4.1/src/core/tcp_out.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_out.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/tcp_out.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/tcp_out.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/tcp_out.c.s
+
+LWIP/lwip-1.4.1/src/core/timers.obj: LWIP/lwip-1.4.1/src/core/timers.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/timers.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/timers.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/timers.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/timers.c.obj
+
+LWIP/lwip-1.4.1/src/core/timers.i: LWIP/lwip-1.4.1/src/core/timers.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/timers.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/timers.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/timers.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/timers.c.i
+
+LWIP/lwip-1.4.1/src/core/timers.s: LWIP/lwip-1.4.1/src/core/timers.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/timers.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/timers.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/timers.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/timers.c.s
+
+LWIP/lwip-1.4.1/src/core/udp.obj: LWIP/lwip-1.4.1/src/core/udp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/udp.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/core/udp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/udp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/core/udp.c.obj
+
+LWIP/lwip-1.4.1/src/core/udp.i: LWIP/lwip-1.4.1/src/core/udp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/udp.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/core/udp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/udp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/core/udp.c.i
+
+LWIP/lwip-1.4.1/src/core/udp.s: LWIP/lwip-1.4.1/src/core/udp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/udp.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/core/udp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/core/udp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/core/udp.c.s
+
+LWIP/lwip-1.4.1/src/netif/etharp.obj: LWIP/lwip-1.4.1/src/netif/etharp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/etharp.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/etharp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/etharp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/etharp.c.obj
+
+LWIP/lwip-1.4.1/src/netif/etharp.i: LWIP/lwip-1.4.1/src/netif/etharp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/etharp.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/etharp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/etharp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/etharp.c.i
+
+LWIP/lwip-1.4.1/src/netif/etharp.s: LWIP/lwip-1.4.1/src/netif/etharp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/etharp.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/etharp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/etharp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/etharp.c.s
+
+LWIP/lwip-1.4.1/src/netif/ethernetif.obj: LWIP/lwip-1.4.1/src/netif/ethernetif.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ethernetif.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ethernetif.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ethernetif.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ethernetif.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ethernetif.i: LWIP/lwip-1.4.1/src/netif/ethernetif.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ethernetif.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ethernetif.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ethernetif.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ethernetif.c.i
+
+LWIP/lwip-1.4.1/src/netif/ethernetif.s: LWIP/lwip-1.4.1/src/netif/ethernetif.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ethernetif.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ethernetif.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ethernetif.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ethernetif.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/auth.obj: LWIP/lwip-1.4.1/src/netif/ppp/auth.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/auth.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/auth.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/auth.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/auth.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/auth.i: LWIP/lwip-1.4.1/src/netif/ppp/auth.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/auth.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/auth.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/auth.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/auth.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/auth.s: LWIP/lwip-1.4.1/src/netif/ppp/auth.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/auth.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/auth.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/auth.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/auth.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/chap.obj: LWIP/lwip-1.4.1/src/netif/ppp/chap.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chap.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/chap.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/chap.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chap.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/chap.i: LWIP/lwip-1.4.1/src/netif/ppp/chap.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chap.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/chap.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/chap.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chap.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/chap.s: LWIP/lwip-1.4.1/src/netif/ppp/chap.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chap.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/chap.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/chap.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chap.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/chpms.obj: LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chpms.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/chpms.i: LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chpms.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/chpms.s: LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chpms.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/chpms.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/fsm.obj: LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/fsm.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/fsm.i: LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/fsm.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/fsm.s: LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/fsm.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/fsm.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/ipcp.obj: LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ipcp.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/ipcp.i: LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ipcp.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/ipcp.s: LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ipcp.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ipcp.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/lcp.obj: LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/lcp.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/lcp.i: LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/lcp.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/lcp.s: LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/lcp.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/lcp.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/magic.obj: LWIP/lwip-1.4.1/src/netif/ppp/magic.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/magic.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/magic.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/magic.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/magic.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/magic.i: LWIP/lwip-1.4.1/src/netif/ppp/magic.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/magic.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/magic.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/magic.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/magic.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/magic.s: LWIP/lwip-1.4.1/src/netif/ppp/magic.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/magic.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/magic.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/magic.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/magic.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/md5.obj: LWIP/lwip-1.4.1/src/netif/ppp/md5.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/md5.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/md5.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/md5.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/md5.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/md5.i: LWIP/lwip-1.4.1/src/netif/ppp/md5.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/md5.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/md5.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/md5.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/md5.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/md5.s: LWIP/lwip-1.4.1/src/netif/ppp/md5.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/md5.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/md5.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/md5.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/md5.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/pap.obj: LWIP/lwip-1.4.1/src/netif/ppp/pap.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/pap.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/pap.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/pap.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/pap.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/pap.i: LWIP/lwip-1.4.1/src/netif/ppp/pap.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/pap.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/pap.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/pap.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/pap.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/pap.s: LWIP/lwip-1.4.1/src/netif/ppp/pap.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/pap.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/pap.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/pap.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/pap.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/ppp.obj: LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/ppp.i: LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/ppp.s: LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.obj: LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.i: LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.s: LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/randm.obj: LWIP/lwip-1.4.1/src/netif/ppp/randm.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/randm.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/randm.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/randm.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/randm.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/randm.i: LWIP/lwip-1.4.1/src/netif/ppp/randm.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/randm.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/randm.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/randm.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/randm.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/randm.s: LWIP/lwip-1.4.1/src/netif/ppp/randm.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/randm.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/randm.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/randm.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/randm.c.s
+
+LWIP/lwip-1.4.1/src/netif/ppp/vj.obj: LWIP/lwip-1.4.1/src/netif/ppp/vj.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/vj.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/ppp/vj.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/vj.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/vj.c.obj
+
+LWIP/lwip-1.4.1/src/netif/ppp/vj.i: LWIP/lwip-1.4.1/src/netif/ppp/vj.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/vj.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/ppp/vj.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/vj.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/vj.c.i
+
+LWIP/lwip-1.4.1/src/netif/ppp/vj.s: LWIP/lwip-1.4.1/src/netif/ppp/vj.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/vj.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/ppp/vj.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/vj.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/ppp/vj.c.s
+
+LWIP/lwip-1.4.1/src/netif/slipif.obj: LWIP/lwip-1.4.1/src/netif/slipif.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/slipif.obj
+
+# target to build an object file
+LWIP/lwip-1.4.1/src/netif/slipif.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/slipif.c.obj
+.PHONY : LWIP/lwip-1.4.1/src/netif/slipif.c.obj
+
+LWIP/lwip-1.4.1/src/netif/slipif.i: LWIP/lwip-1.4.1/src/netif/slipif.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/slipif.i
+
+# target to preprocess a source file
+LWIP/lwip-1.4.1/src/netif/slipif.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/slipif.c.i
+.PHONY : LWIP/lwip-1.4.1/src/netif/slipif.c.i
+
+LWIP/lwip-1.4.1/src/netif/slipif.s: LWIP/lwip-1.4.1/src/netif/slipif.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/slipif.s
+
+# target to generate assembly for a file
+LWIP/lwip-1.4.1/src/netif/slipif.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/slipif.c.s
+.PHONY : LWIP/lwip-1.4.1/src/netif/slipif.c.s
+
+LWIP/lwip_app/lwip_comm/lwip_comm.obj: LWIP/lwip_app/lwip_comm/lwip_comm.c.obj
+.PHONY : LWIP/lwip_app/lwip_comm/lwip_comm.obj
+
+# target to build an object file
+LWIP/lwip_app/lwip_comm/lwip_comm.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/lwip_comm/lwip_comm.c.obj
+.PHONY : LWIP/lwip_app/lwip_comm/lwip_comm.c.obj
+
+LWIP/lwip_app/lwip_comm/lwip_comm.i: LWIP/lwip_app/lwip_comm/lwip_comm.c.i
+.PHONY : LWIP/lwip_app/lwip_comm/lwip_comm.i
+
+# target to preprocess a source file
+LWIP/lwip_app/lwip_comm/lwip_comm.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/lwip_comm/lwip_comm.c.i
+.PHONY : LWIP/lwip_app/lwip_comm/lwip_comm.c.i
+
+LWIP/lwip_app/lwip_comm/lwip_comm.s: LWIP/lwip_app/lwip_comm/lwip_comm.c.s
+.PHONY : LWIP/lwip_app/lwip_comm/lwip_comm.s
+
+# target to generate assembly for a file
+LWIP/lwip_app/lwip_comm/lwip_comm.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/lwip_comm/lwip_comm.c.s
+.PHONY : LWIP/lwip_app/lwip_comm/lwip_comm.c.s
+
+LWIP/lwip_app/tcp_client_demo/tcp_client_demo.obj: LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.obj
+.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.obj
+
+# target to build an object file
+LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.obj
+.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.obj
+
+LWIP/lwip_app/tcp_client_demo/tcp_client_demo.i: LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.i
+.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.i
+
+# target to preprocess a source file
+LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.i
+.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.i
+
+LWIP/lwip_app/tcp_client_demo/tcp_client_demo.s: LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.s
+.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.s
+
+# target to generate assembly for a file
+LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.s
+.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.s
+
+LWIP/lwip_app/udp_demo/udp_demo.obj: LWIP/lwip_app/udp_demo/udp_demo.c.obj
+.PHONY : LWIP/lwip_app/udp_demo/udp_demo.obj
+
+# target to build an object file
+LWIP/lwip_app/udp_demo/udp_demo.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp_demo/udp_demo.c.obj
+.PHONY : LWIP/lwip_app/udp_demo/udp_demo.c.obj
+
+LWIP/lwip_app/udp_demo/udp_demo.i: LWIP/lwip_app/udp_demo/udp_demo.c.i
+.PHONY : LWIP/lwip_app/udp_demo/udp_demo.i
+
+# target to preprocess a source file
+LWIP/lwip_app/udp_demo/udp_demo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp_demo/udp_demo.c.i
+.PHONY : LWIP/lwip_app/udp_demo/udp_demo.c.i
+
+LWIP/lwip_app/udp_demo/udp_demo.s: LWIP/lwip_app/udp_demo/udp_demo.c.s
+.PHONY : LWIP/lwip_app/udp_demo/udp_demo.s
+
+# target to generate assembly for a file
+LWIP/lwip_app/udp_demo/udp_demo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp_demo/udp_demo.c.s
+.PHONY : LWIP/lwip_app/udp_demo/udp_demo.c.s
 
 MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.obj: MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.obj
@@ -3091,6 +4531,9 @@ help:
 	@echo ... FWLIB/src/misc.obj
 	@echo ... FWLIB/src/misc.i
 	@echo ... FWLIB/src/misc.s
+	@echo ... FWLIB/src/stm32f4x7_eth.obj
+	@echo ... FWLIB/src/stm32f4x7_eth.i
+	@echo ... FWLIB/src/stm32f4x7_eth.s
 	@echo ... FWLIB/src/stm32f4xx_adc.obj
 	@echo ... FWLIB/src/stm32f4xx_adc.i
 	@echo ... FWLIB/src/stm32f4xx_adc.s
@@ -3247,6 +4690,9 @@ help:
 	@echo ... HARDWARE/Src/IIC.obj
 	@echo ... HARDWARE/Src/IIC.i
 	@echo ... HARDWARE/Src/IIC.s
+	@echo ... HARDWARE/Src/LAN8720.obj
+	@echo ... HARDWARE/Src/LAN8720.i
+	@echo ... HARDWARE/Src/LAN8720.s
 	@echo ... HARDWARE/Src/ONE_Wire.obj
 	@echo ... HARDWARE/Src/ONE_Wire.i
 	@echo ... HARDWARE/Src/ONE_Wire.s
@@ -3274,6 +4720,180 @@ help:
 	@echo ... HARDWARE/Src/USART.obj
 	@echo ... HARDWARE/Src/USART.i
 	@echo ... HARDWARE/Src/USART.s
+	@echo ... LWIP/arch/sys_arch.obj
+	@echo ... LWIP/arch/sys_arch.i
+	@echo ... LWIP/arch/sys_arch.s
+	@echo ... LWIP/lwip-1.4.1/src/api/api_lib.obj
+	@echo ... LWIP/lwip-1.4.1/src/api/api_lib.i
+	@echo ... LWIP/lwip-1.4.1/src/api/api_lib.s
+	@echo ... LWIP/lwip-1.4.1/src/api/api_msg.obj
+	@echo ... LWIP/lwip-1.4.1/src/api/api_msg.i
+	@echo ... LWIP/lwip-1.4.1/src/api/api_msg.s
+	@echo ... LWIP/lwip-1.4.1/src/api/err.obj
+	@echo ... LWIP/lwip-1.4.1/src/api/err.i
+	@echo ... LWIP/lwip-1.4.1/src/api/err.s
+	@echo ... LWIP/lwip-1.4.1/src/api/netbuf.obj
+	@echo ... LWIP/lwip-1.4.1/src/api/netbuf.i
+	@echo ... LWIP/lwip-1.4.1/src/api/netbuf.s
+	@echo ... LWIP/lwip-1.4.1/src/api/netdb.obj
+	@echo ... LWIP/lwip-1.4.1/src/api/netdb.i
+	@echo ... LWIP/lwip-1.4.1/src/api/netdb.s
+	@echo ... LWIP/lwip-1.4.1/src/api/netifapi.obj
+	@echo ... LWIP/lwip-1.4.1/src/api/netifapi.i
+	@echo ... LWIP/lwip-1.4.1/src/api/netifapi.s
+	@echo ... LWIP/lwip-1.4.1/src/api/sockets.obj
+	@echo ... LWIP/lwip-1.4.1/src/api/sockets.i
+	@echo ... LWIP/lwip-1.4.1/src/api/sockets.s
+	@echo ... LWIP/lwip-1.4.1/src/api/tcpip.obj
+	@echo ... LWIP/lwip-1.4.1/src/api/tcpip.i
+	@echo ... LWIP/lwip-1.4.1/src/api/tcpip.s
+	@echo ... LWIP/lwip-1.4.1/src/core/def.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/def.i
+	@echo ... LWIP/lwip-1.4.1/src/core/def.s
+	@echo ... LWIP/lwip-1.4.1/src/core/dhcp.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/dhcp.i
+	@echo ... LWIP/lwip-1.4.1/src/core/dhcp.s
+	@echo ... LWIP/lwip-1.4.1/src/core/dns.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/dns.i
+	@echo ... LWIP/lwip-1.4.1/src/core/dns.s
+	@echo ... LWIP/lwip-1.4.1/src/core/init.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/init.i
+	@echo ... LWIP/lwip-1.4.1/src/core/init.s
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/autoip.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/autoip.i
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/autoip.s
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/icmp.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/icmp.i
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/icmp.s
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/igmp.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/igmp.i
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/igmp.s
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/inet.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/inet.i
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/inet.s
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.i
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/inet_chksum.s
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/ip.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/ip.i
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/ip.s
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.i
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/ip_addr.s
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.i
+	@echo ... LWIP/lwip-1.4.1/src/core/ipv4/ip_frag.s
+	@echo ... LWIP/lwip-1.4.1/src/core/lwip_sys.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/lwip_sys.i
+	@echo ... LWIP/lwip-1.4.1/src/core/lwip_sys.s
+	@echo ... LWIP/lwip-1.4.1/src/core/mem.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/mem.i
+	@echo ... LWIP/lwip-1.4.1/src/core/mem.s
+	@echo ... LWIP/lwip-1.4.1/src/core/memp.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/memp.i
+	@echo ... LWIP/lwip-1.4.1/src/core/memp.s
+	@echo ... LWIP/lwip-1.4.1/src/core/netif.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/netif.i
+	@echo ... LWIP/lwip-1.4.1/src/core/netif.s
+	@echo ... LWIP/lwip-1.4.1/src/core/pbuf.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/pbuf.i
+	@echo ... LWIP/lwip-1.4.1/src/core/pbuf.s
+	@echo ... LWIP/lwip-1.4.1/src/core/raw.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/raw.i
+	@echo ... LWIP/lwip-1.4.1/src/core/raw.s
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.i
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/asn1_dec.s
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.i
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/asn1_enc.s
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/mib2.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/mib2.i
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/mib2.s
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/mib_structs.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/mib_structs.i
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/mib_structs.s
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/msg_in.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/msg_in.i
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/msg_in.s
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/msg_out.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/msg_out.i
+	@echo ... LWIP/lwip-1.4.1/src/core/snmp/msg_out.s
+	@echo ... LWIP/lwip-1.4.1/src/core/stats.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/stats.i
+	@echo ... LWIP/lwip-1.4.1/src/core/stats.s
+	@echo ... LWIP/lwip-1.4.1/src/core/tcp.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/tcp.i
+	@echo ... LWIP/lwip-1.4.1/src/core/tcp.s
+	@echo ... LWIP/lwip-1.4.1/src/core/tcp_in.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/tcp_in.i
+	@echo ... LWIP/lwip-1.4.1/src/core/tcp_in.s
+	@echo ... LWIP/lwip-1.4.1/src/core/tcp_out.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/tcp_out.i
+	@echo ... LWIP/lwip-1.4.1/src/core/tcp_out.s
+	@echo ... LWIP/lwip-1.4.1/src/core/timers.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/timers.i
+	@echo ... LWIP/lwip-1.4.1/src/core/timers.s
+	@echo ... LWIP/lwip-1.4.1/src/core/udp.obj
+	@echo ... LWIP/lwip-1.4.1/src/core/udp.i
+	@echo ... LWIP/lwip-1.4.1/src/core/udp.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/etharp.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/etharp.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/etharp.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ethernetif.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ethernetif.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ethernetif.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/auth.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/auth.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/auth.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/chap.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/chap.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/chap.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/chpms.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/chpms.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/chpms.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/fsm.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/fsm.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/fsm.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/ipcp.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/ipcp.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/ipcp.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/lcp.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/lcp.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/lcp.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/magic.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/magic.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/magic.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/md5.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/md5.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/md5.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/pap.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/pap.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/pap.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/ppp.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/ppp.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/ppp.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/ppp_oe.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/randm.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/randm.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/randm.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/vj.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/vj.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/ppp/vj.s
+	@echo ... LWIP/lwip-1.4.1/src/netif/slipif.obj
+	@echo ... LWIP/lwip-1.4.1/src/netif/slipif.i
+	@echo ... LWIP/lwip-1.4.1/src/netif/slipif.s
+	@echo ... LWIP/lwip_app/lwip_comm/lwip_comm.obj
+	@echo ... LWIP/lwip_app/lwip_comm/lwip_comm.i
+	@echo ... LWIP/lwip_app/lwip_comm/lwip_comm.s
+	@echo ... LWIP/lwip_app/tcp_client_demo/tcp_client_demo.obj
+	@echo ... LWIP/lwip_app/tcp_client_demo/tcp_client_demo.i
+	@echo ... LWIP/lwip_app/tcp_client_demo/tcp_client_demo.s
+	@echo ... LWIP/lwip_app/udp_demo/udp_demo.obj
+	@echo ... LWIP/lwip_app/udp_demo/udp_demo.i
+	@echo ... LWIP/lwip_app/udp_demo/udp_demo.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.s
