@@ -590,9 +590,6 @@
 		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/arch/cc.h">
 			<Option target="Project.elf"/>
 		</Unit>
-		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/arch/cpu.h">
-			<Option target="Project.elf"/>
-		</Unit>
 		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/arch/epstruct.h">
 			<Option target="Project.elf"/>
 		</Unit>

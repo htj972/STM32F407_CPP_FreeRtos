@@ -10042,7 +10042,7 @@ CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj: E:/KOKIRIKA/STM/STM32F
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_Inc/task.h \
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_Inc/list.h \
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/HARDWARE/Inc/Timer.h \
-  E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/FreeRTOS/FreeRTOS_Inc/task.h
+  E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/SYSTEM/Inc/delay.h
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj: E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Communication.cpp \
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Communication.h \
@@ -10240,7 +10240,11 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj: E:/KOKIRIKA/STM/S
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/HARDWARE/Inc/Out_In_Put.h \
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/HARDWARE/Inc/Timer.h \
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/modbus.h \
-  E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/HARDWARE/Inc/CRC.h
+  E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/HARDWARE/Inc/CRC.h \
+  E:/KOKIRIKA/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstring \
+  E:/KOKIRIKA/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h \
+  E:/KOKIRIKA/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/strings.h \
+  E:/KOKIRIKA/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj: E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/SOFTWARE/Src/DW_DIS.cpp \
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/DW_DIS.h \
@@ -11997,7 +12001,12 @@ CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: E:/KOKIRIKA/STM/STM32F407_CPP_
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/udp_demo/udp_demo.h \
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip-1.4.1/src/include/lwip/udp.h \
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/modbus.h \
-  E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/HARDWARE/Inc/CRC.h
+  E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/HARDWARE/Inc/CRC.h \
+  E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Communication.h \
+  E:/KOKIRIKA/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstring \
+  E:/KOKIRIKA/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h \
+  E:/KOKIRIKA/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/strings.h \
+  E:/KOKIRIKA/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h
 
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj: E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/USER/Src/stm32f4xx_it.c \
   E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/USER/Inc/stm32f4xx_it.h \

@@ -12,6 +12,7 @@
 #include "tcp_client_demo/tcp_client_demo.h"
 #include "udp_demo/udp_demo.h"
 #include "modbus.h"
+#include "Communication.h"
 
 
 
@@ -55,20 +56,18 @@ public:
         this->change();
         lwip_localtime+=10;
     };
-}led(GPIOE5,TIM6,100);
+}led(GPIOE5,TIM6,100);//运行指示灯定时器
 
-_OutPut_ run (GPIOE6),BEEP (GPIOE4,HIGH);
-_OutPut_ OUT1(GPIOE0),OUT2(GPIOE1);
+_OutPut_ run (GPIOE6),BEEP (GPIOE4,HIGH);//运行指示灯
+_OutPut_ OUT1(GPIOE0),OUT2(GPIOE1);            //输出
 
-Timer_queue tIMS(TIM7,50000);
+//Timer_queue tIMS(TIM7,50000);                 //定时器队列
 
-_USART_ DEBUG(USART1);
-_USART_ Lora(USART6);
-RS485   YU(USART3,GPIOB15,9600);
+_USART_ DEBUG(USART1);                          //调试串口
+_USART_ Lora(USART6);                           //Lora串口
 
-modbus SUN(&YU,modbus::HOST);
+Communication SUN(USART3,GPIOB15,TIM7,100);//modbus通信
 
-uint16_t sun_data[2];
 
 int main()
 {
@@ -86,12 +85,9 @@ int main()
     delay_ms(100);
     BEEP.set(OFF);
 
-    SUN.config(sun_data,2);
 
     delay_ms(1000);
-    YU.config(GPIOD8,GPIOD9);
-
-//    YU.init();
+    SUN.RS485::config(GPIOD8,GPIOD9);//配置RS485 GPIO引脚
 
 
     DEBUG<<"Ethernet lwIP Test\r\n"<<"KOKIRIKA\r\n"<<"2023-6-2\r\n";
@@ -161,16 +157,26 @@ void start_task(void *pvParameters)
     taskEXIT_CRITICAL();            //退出临界区
 }
 
+//{
+//"sensor":[{"id":1, "name":"温度","value":"20.3","type":"power"},{"id":1, "name":"光照","value":"1","type":"value"],
+//"inside":[{"id":1, "name":"开关","value":"20.3","type":"power"},{"id":1, "name":"灯光","value":"1","type":"value"],
+//"outside":[{"id":1, "name":"开关","value":"20.3","type":"power"},{"id":1, "name":"阀门","value":"1","type":"value"],
+//}
+
 //task1任务函数
 [[noreturn]] void task1_task(void *pvParameters)//alignas(8)
 {
     while(true)
     {
         vTaskDelay(200/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-        run.change();
-        OUT1.change();
-        OUT2.change();
-        SUN.modbus_03_send(0,1);
+        run.change();       //运行指示灯
+        OUT1.change();      //输出状态反转
+        OUT2.change();      //输出状态反转
+        SUN.data_sync();    //modbus数据同步
+        DEBUG<<"SUM:"<<(int )SUN.data_BUS.to_u16[0]<<"\r\n";
+        u8 buf[30];
+        sprintf((char*)buf,"{\"id\":1, \"name\":\"光照\",\"value\":\"%03.1d\"}",(int )SUN.data_BUS.to_u16[0]);
+        tcp_send_data(buf);    //TCP发送数据
     }
 }
 
@@ -182,8 +188,8 @@ void start_task(void *pvParameters)
         vTaskDelay(100/portTICK_RATE_MS );
 
 
-        udp_demo_test();
-        tcp_client_test();
+        udp_demo_test();    //UDP测试
+        tcp_client_test();  //TCP客户端测试
 
 
     }

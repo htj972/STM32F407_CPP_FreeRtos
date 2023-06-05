@@ -31,13 +31,15 @@ struct tcp_client_struct
 };  
 
 void tcp_client_test(void);//TCP Client测试函数
-err_t tcp_client_connected(void *arg, struct tcp_pcb *tpcb, err_t err);
-err_t tcp_client_recv(void *arg,struct tcp_pcb *tpcb,struct pbuf *p,err_t err);
-void tcp_client_error(void *arg,err_t err);
-err_t tcp_client_poll(void *arg, struct tcp_pcb *tpcb);
-err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len);
-void tcp_client_senddata(struct tcp_pcb *tpcb, struct tcp_client_struct * es);
-void tcp_client_connection_close(struct tcp_pcb *tpcb, struct tcp_client_struct * es );
+err_t tcp_client_connected(void *arg, struct tcp_pcb *tpcb, err_t err);//TCP连接建立后调用回调函数
+err_t tcp_client_recv(void *arg,struct tcp_pcb *tpcb,struct pbuf *p,err_t err);//tcp_recv()函数的回调函数
+void tcp_client_error(void *arg,err_t err);//tcp_err()回调函数
+err_t tcp_client_poll(void *arg, struct tcp_pcb *tpcb);//tcp_poll()回调函数
+err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len);//tcp_sent()回调函数
+void tcp_client_senddata(struct tcp_pcb *tpcb, struct tcp_client_struct * es);//TCP Client发送数据
+void tcp_client_connection_close(struct tcp_pcb *tpcb, struct tcp_client_struct * es );//关闭TCP Client连接
+
+void tcp_send_data(u8 *data);//TCP发送数据
 
 #ifdef __cplusplus
 }

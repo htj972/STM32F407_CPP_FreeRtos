@@ -5,11 +5,9 @@
 **/
 
 #include "modbus.h"
-
-#include <utility>
+#include "delay.h"
 #include "string"
-#include "FreeRTOS.h"
-#include "task.h"
+
 
 
 /****************************************
@@ -47,8 +45,8 @@ typedef struct k_modbus_Host_03_receive{
     uint8_t id;
     uint8_t mode;
     uint8_t num;
-    uint8_t data[256];;
-    uint8_t CRC16[2];
+    uint8_t data[258];;
+//    uint8_t CRC16[2];
 }modbus_Host_03_receive ;
 
 typedef struct k_modbus_Host_06_receive_{
@@ -114,7 +112,7 @@ uint16_t modbus::read_data(uint16_t address) {
         return 0;
     else
     {
-        if((address>=this->data_start_end[0])&&(address<=(this->data_start_end[0]+this->data_start_end[1])))
+        if((address>=this->data_start_end[0])&&(address<(this->data_start_end[0]+this->data_start_end[1])))
             return *(this->data_list+address-this->data_start_end[0]);
         else
             return 0;
@@ -126,7 +124,7 @@ bool modbus::write_data(uint16_t address, const uint8_t* data) {
         return false;
     else
     {
-        if((address>=this->data_start_end[0])&&(address<=(this->data_start_end[0]+this->data_start_end[1])))
+        if((address>=this->data_start_end[0])&&(address<(this->data_start_end[0]+this->data_start_end[1])))
         {
             *(this->data_list+address-this->data_start_end[0])=(data[0]<<8)+data[1];
             return true;
@@ -140,7 +138,7 @@ bool modbus::modbus_wait_rec() const {
     uint16_t time_t=this->timeout;
     while((this->send_flag!=0)&&(time_t>=10))
     {
-        vTaskDelay(10/portTICK_RATE_MS );
+        delay_ms(10);
         time_t-=10;
     }
     if(this->send_flag==0)
@@ -225,15 +223,12 @@ void modbus::modbus_Host_03_uncoding() {
     modbus_Host_03_receive *modbus_03_receive;
     modbus_03_receive=(modbus_Host_03_receive*)this->modbus_receive_data.data();
     uint8_t num=modbus_03_receive->num;
-    uint16_t crc16_check=modbus::Compute(this->modbus_receive_data,5+num);
-    if(crc16_check==(modbus_03_receive->CRC16[0]<<8)+(modbus_03_receive->CRC16[1]))//比较校验
+    uint16_t crc16_check=modbus::Compute(this->modbus_receive_data,3+num);
+    if(crc16_check==(modbus_03_receive->data[num]<<8)+(modbus_03_receive->data[num+1]))//比较校验
     {
         for(uint8_t ii=0;ii<modbus_03_receive->num/2;ii++)
         {
-            uint8_t data[3];
-            data[0]=(modbus_03_receive->data[ii]>>8)&0x00ff;
-            data[1]=(modbus_03_receive->data[ii++]>>0)&0x00ff;
-            this->write_data(this->slave_address+ii,data);
+            this->write_data(this->slave_address+ii,&modbus_03_receive->data[ii*2]);
         }
         if(this->send_flag==3)
             this->send_flag=0;
@@ -328,7 +323,7 @@ void modbus::modbus_Host_16_coding(uint8_t ID,uint16_t address,const uint16_t *d
         modbus_send_data+=(data[ii]>>8)&0x00ff;
         modbus_send_data+=(data[ii]>>0)&0x00ff;
     }
-    uint8_t  crc16_check=modbus::Compute(modbus_send_data);
+    uint16_t  crc16_check=modbus::Compute(modbus_send_data);
     modbus_send_data+=(crc16_check>>8)&0x00ff;
     modbus_send_data+=(crc16_check>>0)&0x00ff;
     this->send_data_fun(modbus_send_data);
@@ -403,18 +398,18 @@ void modbus::receive_data_channel() {
     if(this->run_mode==modbus::SLAVE)
     {
         if(this->modbus_receive_data[0]==this->own_id)
-        switch(modbus_receive_data[1])
-        {
-            case 0x03:
-                this->modbus_Slave_03_uncoding();
-                break;
-            case 0x06:
-                this->modbus_Slave_06_uncoding();
-                break;
-            case 0x10:
-                this->modbus_Slave_16_uncoding();
-                break;
-        }
+            switch(modbus_receive_data[1])
+            {
+                case 0x03:
+                    this->modbus_Slave_03_uncoding();
+                    break;
+                case 0x06:
+                    this->modbus_Slave_06_uncoding();
+                    break;
+                case 0x10:
+                    this->modbus_Slave_16_uncoding();
+                    break;
+            }
     }
     else
     {
@@ -441,6 +436,7 @@ void modbus::Callback(int, char **gdata) {
     }
     else if(gdata[0][0]==Call_Back::Name::timer)
     {
+
         this->TIMERX->set_Cmd(false);
         uint16_t len_t=this->modbus_receive_data.length();
         if(this->reveive_len!=len_t) {
@@ -449,7 +445,7 @@ void modbus::Callback(int, char **gdata) {
         }
         else if(len_t!=0)
         {
-            if(!this->send_flag)
+            if(this->send_flag)
                 this->freetime_t++;
             if(this->freetime_t==this->freetime) {
                 this->receive_data_channel();

@@ -5,16 +5,18 @@
 
  
 //TCP Client接收数据缓冲区
-u8 tcp_client_recvbuf[TCP_CLIENT_RX_BUFSIZE];	
+uint8_t tcp_client_recvbuf[TCP_CLIENT_RX_BUFSIZE];
 //TCP服务器发送数据内容
-const u8 *tcp_client_sendbuf="Explorer STM32F407 TCP Client send data\r\n";
+const uint8_t *tcp_client_sendbuf="Explorer STM32F407 TCP Client send data\r\n";
+uint8_t tcp_client_data[128];//TCP Client发送数据缓冲区
+uint8_t tcp_client_sendlen;//TCP Client发送数据长度
 
 //TCP Client 测试全局状态标记变量
 //bit7:0,没有数据要发送;1,有数据要发送
 //bit6:0,没有收到数据;1,收到数据了.
 //bit5:0,没有连接上服务器;1,连接上服务器了.
 //bit4~0:保留
-u8 tcp_client_flag;	 
+uint8_t tcp_client_flag;
 
  
 
@@ -24,10 +26,10 @@ void tcp_client_test(void)
  	struct tcp_pcb *tcppcb;  	//定义一个TCP服务器控制块
 	struct ip_addr rmtipaddr;  	//远端ip地址
 
- 	u8 key=0;
-	u8 res=0;		
-	u8 t=0; 
-	u8 connflag=0;		//连接标记
+ 	uint8_t key=0;
+	uint8_t res=0;
+	uint8_t t=0;
+	uint8_t connflag=0;		//连接标记
 
 	tcppcb=tcp_new();	//创建一个新的pcb
 	if(tcppcb)			//创建成功
@@ -168,8 +170,18 @@ err_t tcp_client_poll(void *arg, struct tcp_pcb *tpcb)
 	{
 		if(tcp_client_flag&(1<<7))	//判断是否有数据要发送 
 		{
-			es->p=pbuf_alloc(PBUF_TRANSPORT, strlen((char*)tcp_client_sendbuf),PBUF_POOL);	//申请内存
-			pbuf_take(es->p,(char*)tcp_client_sendbuf,strlen((char*)tcp_client_sendbuf));	//将tcp_client_sentbuf[]中的数据拷贝到es->p_tx中
+            if(tcp_client_sendlen!=0){
+                es->p=pbuf_alloc(PBUF_TRANSPORT, tcp_client_sendlen,PBUF_POOL);	//申请内存
+                //tcp_client_data[]中的数据拷贝到es->p_tx中
+                pbuf_take(es->p,(char*)tcp_client_data,tcp_client_sendlen);
+            }
+            else{
+                es->p=pbuf_alloc(PBUF_TRANSPORT, strlen((char*)tcp_client_sendbuf),PBUF_POOL);	//申请内存
+                //将tcp_client_sentbuf[]中的数据拷贝到es->p_tx中
+                pbuf_take(es->p,(char*)tcp_client_sendbuf,strlen((char*)tcp_client_sendbuf));
+            }
+
+
 			tcp_client_senddata(tpcb,es);//将tcp_client_sentbuf[]里面复制给pbuf的数据发送出去
 			tcp_client_flag&=~(1<<7);	//清除数据发送标志
 			if(es->p)pbuf_free(es->p);	//释放内存
@@ -226,7 +238,12 @@ void tcp_client_connection_close(struct tcp_pcb *tpcb, struct tcp_client_struct 
 	tcp_client_flag&=~(1<<5);//标记连接断开了
 }
 
+void tcp_send_data(uint8_t *data) {
+    memcpy(tcp_client_data,data,strlen((char*)data));
+    tcp_client_sendlen = strlen((char*)data);
+    tcp_client_flag|=1<<7;		//标记有数据要发送
 
+}
 
 
 
