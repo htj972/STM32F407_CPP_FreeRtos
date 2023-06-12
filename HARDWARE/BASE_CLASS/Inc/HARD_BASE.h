@@ -8,6 +8,8 @@
 #define KOKIRIKA_HARD_BASE_H
 
 #if SYSTEM_SUPPORT_OS == ON
+
+#include <string>
 #include "FreeRTOS.h"
 #include "semphr.h"
 #endif
@@ -38,6 +40,7 @@ public:
         uart,
         timer,
         timer_cc,
+        Intnel,
     };
     enum MODE{
         C_fun,
@@ -46,6 +49,7 @@ public:
         class_fun,
     };
     virtual void (Callback)(int ,char **){};
+    virtual void (Callback)(std::string str){};
 };
 
 

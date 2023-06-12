@@ -3104,6 +3104,30 @@ LWIP/lwip-1.4.1/src/netif/slipif.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/slipif.c.s
 .PHONY : LWIP/lwip-1.4.1/src/netif/slipif.c.s
 
+LWIP/lwip_app/MQTT/MQTT.obj: LWIP/lwip_app/MQTT/MQTT.cpp.obj
+.PHONY : LWIP/lwip_app/MQTT/MQTT.obj
+
+# target to build an object file
+LWIP/lwip_app/MQTT/MQTT.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/MQTT/MQTT.cpp.obj
+.PHONY : LWIP/lwip_app/MQTT/MQTT.cpp.obj
+
+LWIP/lwip_app/MQTT/MQTT.i: LWIP/lwip_app/MQTT/MQTT.cpp.i
+.PHONY : LWIP/lwip_app/MQTT/MQTT.i
+
+# target to preprocess a source file
+LWIP/lwip_app/MQTT/MQTT.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/MQTT/MQTT.cpp.i
+.PHONY : LWIP/lwip_app/MQTT/MQTT.cpp.i
+
+LWIP/lwip_app/MQTT/MQTT.s: LWIP/lwip_app/MQTT/MQTT.cpp.s
+.PHONY : LWIP/lwip_app/MQTT/MQTT.s
+
+# target to generate assembly for a file
+LWIP/lwip_app/MQTT/MQTT.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/MQTT/MQTT.cpp.s
+.PHONY : LWIP/lwip_app/MQTT/MQTT.cpp.s
+
 LWIP/lwip_app/lwip_comm/lwip_comm.obj: LWIP/lwip_app/lwip_comm/lwip_comm.c.obj
 .PHONY : LWIP/lwip_app/lwip_comm/lwip_comm.obj
 
@@ -3128,53 +3152,53 @@ LWIP/lwip_app/lwip_comm/lwip_comm.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/lwip_comm/lwip_comm.c.s
 .PHONY : LWIP/lwip_app/lwip_comm/lwip_comm.c.s
 
-LWIP/lwip_app/tcp_client_demo/tcp_client_demo.obj: LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.obj
-.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.obj
+LWIP/lwip_app/tcp_client/TCP_Client_Class.obj: LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.obj
+.PHONY : LWIP/lwip_app/tcp_client/TCP_Client_Class.obj
 
 # target to build an object file
-LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.obj
-.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.obj
+LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.obj
+.PHONY : LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.obj
 
-LWIP/lwip_app/tcp_client_demo/tcp_client_demo.i: LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.i
-.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.i
+LWIP/lwip_app/tcp_client/TCP_Client_Class.i: LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.i
+.PHONY : LWIP/lwip_app/tcp_client/TCP_Client_Class.i
 
 # target to preprocess a source file
-LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.i
-.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.i
+LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.i
+.PHONY : LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.i
 
-LWIP/lwip_app/tcp_client_demo/tcp_client_demo.s: LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.s
-.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.s
+LWIP/lwip_app/tcp_client/TCP_Client_Class.s: LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.s
+.PHONY : LWIP/lwip_app/tcp_client/TCP_Client_Class.s
 
 # target to generate assembly for a file
-LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.s
-.PHONY : LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c.s
+LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.s
+.PHONY : LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.s
 
-LWIP/lwip_app/udp_demo/udp_demo.obj: LWIP/lwip_app/udp_demo/udp_demo.c.obj
-.PHONY : LWIP/lwip_app/udp_demo/udp_demo.obj
+LWIP/lwip_app/udp/UDP_Class.obj: LWIP/lwip_app/udp/UDP_Class.cpp.obj
+.PHONY : LWIP/lwip_app/udp/UDP_Class.obj
 
 # target to build an object file
-LWIP/lwip_app/udp_demo/udp_demo.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp_demo/udp_demo.c.obj
-.PHONY : LWIP/lwip_app/udp_demo/udp_demo.c.obj
+LWIP/lwip_app/udp/UDP_Class.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp/UDP_Class.cpp.obj
+.PHONY : LWIP/lwip_app/udp/UDP_Class.cpp.obj
 
-LWIP/lwip_app/udp_demo/udp_demo.i: LWIP/lwip_app/udp_demo/udp_demo.c.i
-.PHONY : LWIP/lwip_app/udp_demo/udp_demo.i
+LWIP/lwip_app/udp/UDP_Class.i: LWIP/lwip_app/udp/UDP_Class.cpp.i
+.PHONY : LWIP/lwip_app/udp/UDP_Class.i
 
 # target to preprocess a source file
-LWIP/lwip_app/udp_demo/udp_demo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp_demo/udp_demo.c.i
-.PHONY : LWIP/lwip_app/udp_demo/udp_demo.c.i
+LWIP/lwip_app/udp/UDP_Class.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp/UDP_Class.cpp.i
+.PHONY : LWIP/lwip_app/udp/UDP_Class.cpp.i
 
-LWIP/lwip_app/udp_demo/udp_demo.s: LWIP/lwip_app/udp_demo/udp_demo.c.s
-.PHONY : LWIP/lwip_app/udp_demo/udp_demo.s
+LWIP/lwip_app/udp/UDP_Class.s: LWIP/lwip_app/udp/UDP_Class.cpp.s
+.PHONY : LWIP/lwip_app/udp/UDP_Class.s
 
 # target to generate assembly for a file
-LWIP/lwip_app/udp_demo/udp_demo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp_demo/udp_demo.c.s
-.PHONY : LWIP/lwip_app/udp_demo/udp_demo.c.s
+LWIP/lwip_app/udp/UDP_Class.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp/UDP_Class.cpp.s
+.PHONY : LWIP/lwip_app/udp/UDP_Class.cpp.s
 
 MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.obj: MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj
 .PHONY : MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.obj
@@ -4885,15 +4909,18 @@ help:
 	@echo ... LWIP/lwip-1.4.1/src/netif/slipif.obj
 	@echo ... LWIP/lwip-1.4.1/src/netif/slipif.i
 	@echo ... LWIP/lwip-1.4.1/src/netif/slipif.s
+	@echo ... LWIP/lwip_app/MQTT/MQTT.obj
+	@echo ... LWIP/lwip_app/MQTT/MQTT.i
+	@echo ... LWIP/lwip_app/MQTT/MQTT.s
 	@echo ... LWIP/lwip_app/lwip_comm/lwip_comm.obj
 	@echo ... LWIP/lwip_app/lwip_comm/lwip_comm.i
 	@echo ... LWIP/lwip_app/lwip_comm/lwip_comm.s
-	@echo ... LWIP/lwip_app/tcp_client_demo/tcp_client_demo.obj
-	@echo ... LWIP/lwip_app/tcp_client_demo/tcp_client_demo.i
-	@echo ... LWIP/lwip_app/tcp_client_demo/tcp_client_demo.s
-	@echo ... LWIP/lwip_app/udp_demo/udp_demo.obj
-	@echo ... LWIP/lwip_app/udp_demo/udp_demo.i
-	@echo ... LWIP/lwip_app/udp_demo/udp_demo.s
+	@echo ... LWIP/lwip_app/tcp_client/TCP_Client_Class.obj
+	@echo ... LWIP/lwip_app/tcp_client/TCP_Client_Class.i
+	@echo ... LWIP/lwip_app/tcp_client/TCP_Client_Class.s
+	@echo ... LWIP/lwip_app/udp/UDP_Class.obj
+	@echo ... LWIP/lwip_app/udp/UDP_Class.i
+	@echo ... LWIP/lwip_app/udp/UDP_Class.s
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.obj
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.i
 	@echo ... MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.s

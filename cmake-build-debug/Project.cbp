@@ -944,6 +944,12 @@
 		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip-1.4.1/src/netif/slipif.c">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/MQTT/MQTT.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/MQTT/MQTT.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/lwip_comm/lwip_comm.c">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -953,16 +959,19 @@
 		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/lwip_comm/lwipopts.h">
 			<Option target="Project.elf"/>
 		</Unit>
-		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/tcp_client_demo/tcp_client_demo.c">
+		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
-		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/tcp_client_demo/tcp_client_demo.h">
+		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/tcp_client/TCP_Client_Class.h">
 			<Option target="Project.elf"/>
 		</Unit>
-		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/udp_demo/udp_demo.c">
+		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/tcp_client/TCP_base.h">
 			<Option target="Project.elf"/>
 		</Unit>
-		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/udp_demo/udp_demo.h">
+		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/udp/UDP_Class.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/LWIP/lwip_app/udp/UDP_Class.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/FuzzyPID.h">

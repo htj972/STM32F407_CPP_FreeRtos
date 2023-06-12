@@ -6,6 +6,7 @@
 
 #include <functional>
 #include "Out_In_Put.h"
+#include "delay.h"
 
 _OutPut_::_OutPut_(GPIO_TypeDef *PORTx, uint32_t Pinx, uint8_t Hi_Lo) {
     this->init(PORTx,Pinx,Hi_Lo);
@@ -64,6 +65,24 @@ void _OutPut_::change() {
 uint8_t _OutPut_::get() const {
     return this->value;
 }
+
+void _OutPut_::flicker(uint8_t time) {
+    this->set(ON);
+    delay_ms(time);
+    this->set(OFF);
+}
+
+void _OutPut_::flicker(uint8_t time, uint8_t interval, uint8_t num) {
+    for(uint8_t i=0;i<num;i++)
+    {
+        this->set(ON);
+        delay_ms(time);
+        this->set(OFF);
+        delay_ms(interval);
+    }
+}
+
+
 
 /***********************************************************************/
 /**

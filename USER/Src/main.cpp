@@ -5,14 +5,15 @@
 #include "Out_In_Put.h"
 #include "Timer.h"
 #include "USART.h"
-#include "Timer_queue.h"
 #include "RS485.h"
 #include "malloc.h"
 #include "lwip_comm/lwip_comm.h"
-#include "tcp_client_demo/tcp_client_demo.h"
-#include "udp_demo/udp_demo.h"
-#include "modbus.h"
 #include "Communication.h"
+#include "udp/UDP_Class.h"
+#include "cJSON.h"
+#include "tcp_client/TCP_Client_Class.h"
+#include "lwip/inet.h"
+#include "lwip/dns.h"
 
 
 
@@ -54,7 +55,8 @@ public:
     }
     void Callback(int  ,char** ) override{
         this->change();
-        lwip_localtime+=10;
+//        lwip_localtime+=10;
+        lwip_setup();
     };
 }led(GPIOE5,TIM6,100);//运行指示灯定时器
 
@@ -68,6 +70,19 @@ _USART_ Lora(USART6);                           //Lora串口
 
 Communication SUN(USART3,GPIOB15,TIM7,100);//modbus通信
 
+UDP_Class udp_demo(8089);//UDP通信
+
+class TCP_Cxlient:public TCP_Client_Class,public Call_Back{
+public:
+    explicit TCP_Cxlient(uint16_t port):TCP_Client_Class(port){
+        this->upload_extern_fun(this);
+    }
+
+    void Callback(string str) override{
+        this->print(str);
+    };
+} tcp_demo(8090);//TCP通信
+
 
 int main()
 {
@@ -76,21 +91,11 @@ int main()
 
     my_mem_init(SRAMIN);		//初始化内部内存池
 
-    BEEP.set(ON);
-    delay_ms(100);
-    BEEP.set(OFF);
-    delay_ms(250);
+    BEEP.flicker(100,250,2);//蜂鸣器提示
 
-    BEEP.set(ON);
-    delay_ms(100);
-    BEEP.set(OFF);
-
-
-    delay_ms(1000);
+    delay_ms(1000);//延时1s
     SUN.RS485::config(GPIOD8,GPIOD9);//配置RS485 GPIO引脚
 
-
-    DEBUG<<"Ethernet lwIP Test\r\n"<<"KOKIRIKA\r\n"<<"2023-6-2\r\n";
 
     DEBUG<<"lwIP Initing...\r\n";
     uint8_t ret =lwip_comm_init();
@@ -99,6 +104,7 @@ int main()
         ret =lwip_comm_init();
         DEBUG<<"lwIP Init failed!\r\n";
         delay_ms(1200);
+//        my_mem_init(SRAMIN);		//初始化内部内存池
         DEBUG<<"Retrying...\r\n";
     }
     DEBUG<<"lwIP Init Successed\r\n";
@@ -173,24 +179,97 @@ void start_task(void *pvParameters)
         OUT1.change();      //输出状态反转
         OUT2.change();      //输出状态反转
         SUN.data_sync();    //modbus数据同步
-        DEBUG<<"SUM:"<<(int )SUN.data_BUS.to_u16[0]<<"\r\n";
-        u8 buf[30];
-        sprintf((char*)buf,"{\"id\":1, \"name\":\"光照\",\"value\":\"%03.1d\"}",(int )SUN.data_BUS.to_u16[0]);
-        tcp_send_data(buf);    //TCP发送数据
+//        DEBUG<<"SUM:"<<(int )SUN.data_BUS.to_u16[0]<<"\r\n";
+//        u8 buf[30];
+//        sprintf((char*)buf,"{\"id\":1, \"name\":\"光照\",\"value\":\"%03.1d\"}",(int )SUN.data_BUS.to_u16[0]);
+//        tcp_send_data(buf);    //TCP发送数据
     }
+}
+
+void my_found(const char *name, ip_addr_t *ipaddr, void *arg){
+    uint8_t ip[4];
+    ip[0] = (ipaddr->addr)>>24;
+    ip[1] = (ipaddr->addr)>>16;
+    ip[2] = (ipaddr->addr)>>8;
+    ip[3] = (ipaddr->addr);
+    DEBUG.print("%s ip is :%d.%d.%d.%d.\r\n",name,ip[3], ip[2], ip[1], ip[0]);
+}
+
+void vDnsClientTask(){
+//    char dfs[]="www.baidu.com";//110.242.68.4
+//    DEBUG.print("host ip:%s\r\n", inet_ntoa(dfs));
+
+    ip_addr_t dnsserver;/* Create tcp_ip stack thread */
+    IP4_ADDR(&dnsserver,114,114,114,114);/* suozhang,add,2018年1月11日18:03:10 */
+    dns_setserver(0, &dnsserver);
+    IP4_ADDR(&dnsserver,223,5,5,5);    /* suozhang,add,2018年1月11日18:03:10 */
+    dns_setserver(1, &dnsserver);
+    dns_init(); /* 初始化 DNS 服务，2018年1月9日10:56:34 */
+
+    ip_addr_t serverIp;
+
+    dns_gethostbyname("www.baidu.com", &serverIp,my_found,nullptr);
 }
 
 //task2任务函数
 [[noreturn]] void task2_task(void *pvParameters)
 {
+    udp_demo.bind();    //UDP绑定
+    bool link = false;
+
+    vDnsClientTask();
     while(true)
     {
-        vTaskDelay(100/portTICK_RATE_MS );
-
-
-        udp_demo_test();    //UDP测试
-        tcp_client_test();  //TCP客户端测试
-
+        delay_ms(2);
+        //{"interval":60,"ip":"12.32.54.15","port":1883,"user":"XCSZ","passd":"12345678"}
+        if(udp_demo.available()){
+            cJSON *root = cJSON_Parse(udp_demo.read_data().data());
+            cJSON *interval = cJSON_GetObjectItem(root, "interval");
+            cJSON *ip = cJSON_GetObjectItem(root, "ip");
+            cJSON *port = cJSON_GetObjectItem(root, "port");
+            cJSON *user = cJSON_GetObjectItem(root, "user");
+            cJSON *passd = cJSON_GetObjectItem(root, "passd");
+            if(interval!= nullptr){
+                DEBUG<<"interval:"<<interval->valueint<<"\r\n";
+            }
+            if(ip!= nullptr){
+                DEBUG<<"ip:"<<ip->valuestring<<"\r\n";
+                link= true;
+            }
+            if(port!= nullptr){
+                DEBUG<<"port:"<<port->valueint<<"\r\n";
+            }
+            if(user!= nullptr){
+                DEBUG<<"user:"<<user->valuestring<<"\r\n";
+            }
+            if(passd!= nullptr){
+                DEBUG<<"passd:"<<passd->valuestring<<"\r\n";
+            }
+            cJSON_Delete(root);
+        }
+        if(link)link=tcp_demo.connect(udp_demo.get_remote_ip());
+        while (link){
+//            {
+//            "sensor":[{"id":1, "name":"温度","value":"20.3","type":"value"},{"id":2, "name":"光照","value":"1","type":"value"],
+//            "inside":[{"id":3, "name":"开关","value":"20.3","type":"power"},{"id":4, "name":"灯光","value":"1","type":"value"],
+//            "outside":[{"id":5, "name":"开关","value":"20.3","type":"power"},{"id":6, "name":"阀门","value":"1","type":"value"],
+//            }
+            tcp_demo.print("{\n"
+                      "\"sensor\":[{\"id\":1, \"name\":\"温度\",\"value\":\"20.3\",\"type\":\"value\"},{\"id\":2, \"name\":\"光照\",\"value\":\"%d\",\"type\":\"value\"],\n"
+                      "\"inside\":[{\"id\":3, \"name\":\"开关\",\"value\":\"1\",\"type\":\"power\"},{\"id\":4, \"name\":\"灯光\",\"value\":\"12.6\",\"type\":\"value\"],\n"
+                      "\"outside\":[{\"id\":5, \"name\":\"开关\",\"value\":\"1\",\"type\":\"power\"},{\"id\":6, \"name\":\"阀门\",\"value\":\"1.5\",\"type\":\"value\"],\n"
+                      "}",SUN.data_BUS.to_u16[0]);
+            delay_ms(1000);
+            if(!tcp_demo.islink()){
+                link = false;
+                break;
+            }
+            if("unlink"==tcp_demo.read_data()){
+                tcp_demo.close();
+                link = false;
+                break;
+            }
+        }
 
     }
 }
