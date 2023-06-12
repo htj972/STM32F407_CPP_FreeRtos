@@ -113,6 +113,8 @@ void start_task(void *pvParameters)
 
     }
 }
+// 0B 03 00 00 00 1C 44 A9 0B
+// 03 38 00 FF 01 08 03 E8 00 F4 00 33 13 88 00 00 00 02 42 FD 00 47 00 01 59 B0 00 00 02 92 00 03 00 00 01 93 00 00 00 00 00 00 00 00 00 1A 00 31 00 09 00 00 00 01 00 02 00 05 34 BB
 
 //task2任务函数
 [[noreturn]] void task2_task(void *pvParameters)
@@ -121,15 +123,42 @@ void start_task(void *pvParameters)
     {
         vTaskDelay(100/portTICK_RATE_MS );
 
-        string data =Lora.read_data();
+        string Interceptdata=Lora.read_data();
 
-        DEBUG<<data;
-        YU<<data;
+        DEBUG<<Interceptdata;
+        Lora<<DEBUG.read_data();
 
 
         Lora<<YU.read_data();
+        // 0B 03 00 00 00 1C 44 A9 0B
+        //比较前段数据
+        static string Intercept;
+        Intercept+=Interceptdata;
+        uint8_t headdata[]={0x0B,0x03,0x00,0x00,0x00,0x1C,0x44,0xA9,0x0B};
+        string headd=string((char*)headdata,9);
+        if(Intercept.find(headd)==string::npos){
+            Intercept.clear();
+            continue;
+        } else{
+            Intercept=Intercept.substr(Intercept.find(headd));
+        }
 
-        Lora<<DEBUG.read_data();
+        if((Intercept[0]==0x0B)&&((Intercept[1]==0x03)
+            &&(Intercept[2]==0x00)&&(Intercept[3]==0x00)
+            &&(Intercept[4]==0x00)&&(Intercept[5]==0x1C)
+            &&(Intercept[6]==0x44)&&(Intercept[7]==0xA9)
+            &&(Intercept[8]==0x0B))){
+            //打印原数据以及转换数据
+            DEBUG<<"解析数据\r\n";
+            DEBUG<<"数据序号  原始数据  十进制转换\r\n";
+            for(uint8_t i=0;i<Intercept[5];i++){
+                uint16_t data=Intercept[11+i*2]*256+Intercept[12+i*2];
+                DEBUG.print("data[%02d]:0x%04X  %d\r\n",i+1,data,data);
+            }
+            DEBUG<<"解析完毕\r\n";
+            Intercept.erase(0,69);
+        }
+
 
     }
 }
