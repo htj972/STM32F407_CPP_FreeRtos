@@ -113,12 +113,14 @@ void start_task(void *pvParameters)
 
     }
 }
-// 0B 03 00 00 00 1C 44 A9 0B
-// 03 38 00 FF 01 08 03 E8 00 F4 00 33 13 88 00 00 00 02 42 FD 00 47 00 01 59 B0 00 00 02 92 00 03 00 00 01 93 00 00 00 00 00 00 00 00 00 1A 00 31 00 09 00 00 00 01 00 02 00 05 34 BB
 
 //task2任务函数
 [[noreturn]] void task2_task(void *pvParameters)
 {
+    char dir[16][18]={{"东"},{"东南偏东"},{"东南"},{"东南偏南"},
+                      {"南"},{"西南偏南"},{"西南"},{"西南偏西"},
+                      {"西"},{"西北偏西"},{"西北"},{"西北偏北"},
+                      {"北"},{"东北偏北"},{"东北"},{"东北偏东"}};
     while(true)
     {
         vTaskDelay(100/portTICK_RATE_MS );
@@ -151,9 +153,59 @@ void start_task(void *pvParameters)
             //打印原数据以及转换数据
             DEBUG<<"解析数据\r\n";
             DEBUG<<"数据序号  原始数据  十进制转换\r\n";
+            uint16_t data_last=0;
             for(uint8_t i=0;i<Intercept[5];i++){
                 uint16_t data=Intercept[11+i*2]*256+Intercept[12+i*2];
-                DEBUG.print("data[%02d]:0x%04X  %d\r\n",i+1,data,data);
+//                DEBUG.print("data[%02d]:0x%04X  %d\r\n",i+1,data,data);
+                switch (i+1) {
+                    case 1:DEBUG.print("data[%02d]:湿度     :%.1f\r\n",i+1,data/10.0);
+                        break;
+                    case 2:DEBUG.print("data[%02d]:温度     :%.1f\r\n",i+1,data/10.0);
+                        break;
+                    case 3:DEBUG.print("data[%02d]:土壤湿度 :%.1f\r\n",i+1,data/10.0);
+                        break;
+                    case 4:DEBUG.print("data[%02d]:土壤温度 :%.1f\r\n",i+1,data/10.0);
+                        break;
+                    case 5:DEBUG.print("data[%02d]:PM2.5    :%d\r\n",i+1,data);
+                        break;
+                    case 8:
+                        data_last=data;
+                        break;
+                    case 9:DEBUG.print("data[%02d]:光照强度    :%d\r\n",i+1,(data_last<<16)+data);
+                        break;
+                    case 10:DEBUG.print("data[%02d]:PM10    :%d\r\n",i+1,data);
+                        break;
+                    case 11:data_last=data;
+                        break;
+                    case 12:DEBUG.print("data[%02d]:气压    :%d\r\n",i+1,(data_last<<16)+data);
+                        break;
+                    case 13:data_last=data;
+                        break;
+                    case 14:DEBUG.print("data[%02d]:PH      :%.1f\r\n",i+1,((data_last<<16)+data)/100.0);
+                        break;
+                    case 15:DEBUG.print("data[%02d]:雨量      :%.1f\r\n",i+1,data/10.0);
+                        break;
+                    case 16:
+                        data_last=data;
+                        break;
+                    case 17:DEBUG.print("data[%02d]:总辐射  :%d\r\n",i+1,(data_last<<16)+data);
+                        break;
+                    case 22:DEBUG.print("data[%02d]:电导率  :%d\r\n",i+1,data);
+                        break;
+                    case 23:DEBUG.print("data[%02d]:风向 0x%X %d  :%s\r\n",i+1,data,data,dir[data%16]);
+                        break;
+                    case 24:DEBUG.print("data[%02d]:风速    :%.1f\r\n",i+1,data/10.0);
+                        break;
+                    case 26:DEBUG.print("data[%02d]:氮     :%d\r\n",i+1,data);
+                        break;
+                    case 27:DEBUG.print("data[%02d]:磷     :%d\r\n",i+1,data);
+                        break;
+                    case 28:DEBUG.print("data[%02d]:钾     :%.d\r\n",i+1,data);
+                        break;
+                    default:
+                        DEBUG.print("data[%02d]:0x%04X   %d\r\n",i+1,data,data);
+                        break;
+                }
             }
             DEBUG<<"解析完毕\r\n";
             Intercept.erase(0,69);
