@@ -55,7 +55,6 @@ public:
     }
     void Callback(int  ,char** ) override{
         this->change();
-//        lwip_localtime+=10;
         lwip_setup();
     };
 }led(GPIOE5,TIM6,100);//运行指示灯定时器
@@ -98,10 +97,8 @@ int main()
 
 
     DEBUG<<"lwIP Initing...\r\n";
-    uint8_t ret =lwip_comm_init();
-    while(ret!=0)
+    while(lwip_comm_init()!=0)
     {
-        ret =lwip_comm_init();
         DEBUG<<"lwIP Init failed!\r\n";
         delay_ms(1200);
 //        my_mem_init(SRAMIN);		//初始化内部内存池
