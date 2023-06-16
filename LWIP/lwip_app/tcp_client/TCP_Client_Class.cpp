@@ -185,10 +185,30 @@ void TCP_Client_Class::connection_close(struct tcp_pcb *tpcb, struct tcp_client_
     link_flag[ii]&=~(1<<5);//标记连接断开了
 }
 
-bool TCP_Client_Class::connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4) {
+bool TCP_Client_Class::connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4,uint16_t port) {
     struct ip_addr rmtipaddr{};  	//远端ip地址
     IP4_ADDR(&rmtipaddr, ip1, ip2, ip3, ip4);
-    return connect(rmtipaddr);
+    return connect(rmtipaddr,port);
+}
+
+bool TCP_Client_Class::connect(ip_addr rmtipaddr,uint16_t port) {
+    uint8_t ret;
+    uint8_t tcp_link_num = TCP_NUM;
+    for (uint8_t i = 0; i < TCP_NUM; i++) {
+        if (tcppcb[i] == nullptr) {
+            tcp_link_num = i;
+            break;
+        }
+    }
+    if(tcp_link_num<TCP_NUM) {
+        this->mpcb = tcp_new();
+        tcppcb[tcp_link_num] = this->mpcb;
+    }
+    this->tcp_port=port;
+    this->tcp_Num = tcp_link_num;
+    ret=tcp_connect(tcppcb[tcp_link_num],&rmtipaddr,tcp_port,connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
+    if(ret==ERR_OK)return true;
+    else return false;
 }
 
 bool TCP_Client_Class::connect(ip_addr rmtipaddr) {
@@ -205,7 +225,7 @@ bool TCP_Client_Class::connect(ip_addr rmtipaddr) {
         tcppcb[tcp_link_num] = this->mpcb;
     }
     this->tcp_Num = tcp_link_num;
-    ret=tcp_connect(tcppcb[0],&rmtipaddr,tcp_port,connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
+    ret=tcp_connect(tcppcb[tcp_link_num],&rmtipaddr,tcp_port,connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
     if(ret==ERR_OK)return true;
     else return false;
 }
@@ -224,7 +244,7 @@ bool TCP_Client_Class::upset() const {
         return false;
 }
 
-bool TCP_Client_Class::islink() const {
+bool TCP_Client_Class::islink() {
     if (link_flag[this->tcp_Num] & 1 << 5)  //是否连接成功?
         return true;
     else
@@ -232,9 +252,9 @@ bool TCP_Client_Class::islink() const {
 }
 
 void TCP_Client_Class::send_data(char *data,uint16_t len) {
-    sendbuf[tcp_Num].clear();
-    sendbuf[tcp_Num].append(data,len);
-    link_flag[tcp_Num]|=1<<7;		//标记有数据要发送
+    sendbuf[this->tcp_Num].clear();
+    sendbuf[this->tcp_Num].append(data,len);
+    link_flag[this->tcp_Num]|=1<<7;		//标记有数据要发送
 }
 
 uint16_t TCP_Client_Class::available() const {
@@ -242,7 +262,7 @@ uint16_t TCP_Client_Class::available() const {
 }
 
 void TCP_Client_Class::write(const char *str, uint16_t len) {
-    send_data((char *)str,len);	//udp发送数据
+    send_data((char *)str,len);	//TCP发送数据
 }
 
 void TCP_Client_Class::write(uint8_t *str, uint16_t len) {
@@ -359,6 +379,7 @@ void TCP_Client_Class::extern_upset(uint8_t num)
         recvbuf[num].clear();
     }
 }
+
 
 
 

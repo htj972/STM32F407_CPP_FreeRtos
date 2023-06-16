@@ -7,6 +7,7 @@
 #define KOKIRIKA_MQTT_H
 #include "sys.h"
 #include "tcp_client/tcp_base.h"
+#include "malloc.h"
 
 class MQTT :public Call_Back{
 private:
@@ -21,10 +22,15 @@ private:
     void Send(char *buf,uint16_t len);
     void Send(const std::string& buf);
 public:
+    explicit MQTT(TCP_BASE *TCP);
+    MQTT()= default;
+    ~MQTT() = default;
     void Init(TCP_BASE *TCP);
-    uint8_t Connect(char *ClientID,char *Username,char *Password);
-    uint8_t SubscribeTopic(char *topic,uint8_t qos,uint8_t whether);
-    uint8_t PublishData(char *topic, char *message, uint8_t qos);
+    bool Connect(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port=1883);
+    bool Connect(ip_addr rmtipaddr,uint16_t port=1883);
+    bool config(char *ClientID,char *Username,char *Password);
+    bool SubscribeTopic(char *topic,uint8_t qos,uint8_t whether);
+    bool PublishData(char *topic, char *message, uint8_t qos);
     void SendHeart();
     void Disconnect();
     void Session(std::string str);

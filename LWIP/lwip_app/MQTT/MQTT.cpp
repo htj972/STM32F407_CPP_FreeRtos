@@ -50,13 +50,30 @@ uint8_t MQTT::BYTE1(uint16_t data_temp)
     return (data_temp&0xff00)>>8;
 }
 
+MQTT::MQTT(TCP_BASE *TCP) {
+    this->Init(TCP);
+}
+
 void MQTT::Init(TCP_BASE *TCP){
     this->tcp = TCP;
     this->tcp->upload_extern_fun(this);
 }
 
+bool MQTT::Connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4, uint16_t port) {
+    struct ip_addr rmtipaddr{};  	//远端ip地址
+    IP4_ADDR(&rmtipaddr, ip1, ip2, ip3, ip4);
+    return Connect(rmtipaddr,port);
+}
+
+bool MQTT::Connect(ip_addr rmtipaddr, uint16_t port) {
+    if(this->tcp!= nullptr){
+        return this->tcp->connect(rmtipaddr,port);
+    }
+    return false;
+}
+
 //连接服务器的打包函数
-uint8_t MQTT::Connect(char *ClientID,char *Username,char *Password){
+bool MQTT::config(char *ClientID,char *Username,char *Password){
     uint16_t ClientIDLen = strlen(ClientID);
     uint16_t UsernameLen = strlen(Username);
     uint16_t PasswordLen = strlen(Password);
@@ -68,7 +85,8 @@ uint8_t MQTT::Connect(char *ClientID,char *Username,char *Password){
     DataLen = 10 + (ClientIDLen+2) + (UsernameLen+2) + (PasswordLen+2);
     //固定报头
     //控制报文类型
-    this->txbuf[this->txlen++] = 0x10;		//MQTT Message Type CONNECT
+    this->txbuf.clear();
+    this->txbuf+=(char)0x10;		//MQTT Message Type CONNECT
     //剩余长度(不包括固定头部)
     do
     {
@@ -77,59 +95,64 @@ uint8_t MQTT::Connect(char *ClientID,char *Username,char *Password){
         // if there are more data to encode, set the top bit of this byte
         if ( DataLen > 0 )
             encodedByte = encodedByte | 128;
-        this->txbuf[this->txlen++] = encodedByte;
+        this->txbuf+=(char)encodedByte;
     }while ( DataLen > 0 );
 
     //可变报头
     //协议名
-    this->txbuf[this->txlen++] = 0;        		// Protocol Name Length MSB
-    this->txbuf[this->txlen++] = 4;        		// Protocol Name Length LSB
-    this->txbuf[this->txlen++] = 'M';        	// ASCII Code for M
-    this->txbuf[this->txlen++] = 'Q';        	// ASCII Code for Q
-    this->txbuf[this->txlen++] = 'T';        	// ASCII Code for T
-    this->txbuf[this->txlen++] = 'T';        	// ASCII Code for T
+    this->txbuf+=(char) 0x00;        		// Protocol Name Length MSB
+    this->txbuf+=(char) 0x04;        		// Protocol Name Length LSB
+    this->txbuf+=(char) 'M';        	// ASCII Code for M
+    this->txbuf+=(char) 'Q';        	// ASCII Code for Q
+    this->txbuf+=(char) 'T';        	// ASCII Code for T
+    this->txbuf+=(char) 'T';        	// ASCII Code for T
     //协议级别
-    this->txbuf[this->txlen++] = 4;        		// MQTT Protocol version = 4
+    this->txbuf+=(char) 0x04;        		// MQTT Protocol version = 4
     //连接标志
-    this->txbuf[this->txlen++] = 0xc2;        	// conn flags
-    this->txbuf[this->txlen++] = 0;        		// Keep-alive Time Length MSB
-    this->txbuf[this->txlen++] = 60;        	// Keep-alive Time Length LSB  60S心跳包
+    this->txbuf+=(char) 0xc2;        	// conn flags
+    this->txbuf+=(char) 0x00;        		// Keep-alive Time Length MSB
+    this->txbuf+=(char) 60;        	// Keep-alive Time Length LSB  60S心跳包
 
-    this->txbuf[this->txlen++] = BYTE1(ClientIDLen);// Client ID length MSB
-    this->txbuf[this->txlen++] = BYTE0(ClientIDLen);// Client ID length LSB
-    memcpy(&this->txbuf[this->txlen],ClientID,ClientIDLen);
+    this->txbuf+=(char) BYTE1(ClientIDLen);// Client ID length MSB
+    this->txbuf+=(char) BYTE0(ClientIDLen);// Client ID length LSB
+    this->txbuf.append(ClientID,ClientIDLen);
+//    memcpy(&this->txbuf[this->txlen],ClientID,ClientIDLen);
     this->txlen += ClientIDLen;
 
     if(UsernameLen > 0)
     {
-        this->txbuf[this->txlen++] = BYTE1(UsernameLen);		//username length MSB
-        this->txbuf[this->txlen++] = BYTE0(UsernameLen);    	//username length LSB
-        memcpy(&this->txbuf[this->txlen],Username,UsernameLen);
+        this->txbuf+= BYTE1(UsernameLen);		//username length MSB
+        this->txbuf+= BYTE0(UsernameLen);    	//username length LSB
+//        memcpy(&this->txbuf[this->txlen],Username,UsernameLen);
+        this->txbuf.append(Username,UsernameLen);
         this->txlen += UsernameLen;
     }
 
     if(PasswordLen > 0)
     {
-        this->txbuf[this->txlen++] = BYTE1(PasswordLen);		//password length MSB
-        this->txbuf[this->txlen++] = BYTE0(PasswordLen);    	//password length LSB
-        memcpy(&this->txbuf[this->txlen],Password,PasswordLen);
+        this->txbuf+= BYTE1(PasswordLen);		//password length MSB
+        this->txbuf+= BYTE0(PasswordLen);    	//password length LSB
+//        memcpy(&this->txbuf[this->txlen],Password,PasswordLen);
+        this->txbuf.append(Password,PasswordLen);
         this->txlen += PasswordLen;
     }
     while(cnt--)
     {
-        Send((char*)this->txbuf.data(),this->txlen);//this->txlen
+        this->Send((char*)this->txbuf.data(),this->txbuf.length());//this->txlen
         wait=30;//等待3s时间
         while(wait--)
         {
             //CONNECT
             if(this->rxbuf[0]==parket_connetAck[0] && this->rxbuf[1]==parket_connetAck[1]) //连接成功
             {
-                return 1;//连接成功
+                this->txbuf.clear();
+                return true;//连接成功
             }
             delay_ms(100);
         }
     }
-    return 0;
+    this->txbuf.clear();
+    return false;
 }
 
 
@@ -138,7 +161,7 @@ uint8_t MQTT::Connect(char *ClientID,char *Username,char *Password){
 //topic       主题
 //qos         消息等级
 //whether     订阅/取消订阅请求包
-uint8_t MQTT::SubscribeTopic(char *topic,uint8_t qos,uint8_t whether){
+bool MQTT::SubscribeTopic(char *topic,uint8_t qos,uint8_t whether){
     uint8_t cnt=10;
     uint8_t wait;
     uint16_t topiclen = strlen(topic);
@@ -146,6 +169,7 @@ uint8_t MQTT::SubscribeTopic(char *topic,uint8_t qos,uint8_t whether){
     this->txlen=0;
     //固定报头
     //控制报文类型
+    this->txbuf.clear();
     if(whether) this->txbuf[this->txlen++] = 0x82; //消息类型和标志订阅
     else	this->txbuf[this->txlen++] = 0xA2;    //取消订阅
     //剩余长度
@@ -180,20 +204,22 @@ uint8_t MQTT::SubscribeTopic(char *topic,uint8_t qos,uint8_t whether){
         {
             if(this->rxbuf[0]==parket_subAck[0] && this->rxbuf[1]==parket_subAck[1]) //订阅成功
             {
-                return 1;//订阅成功
+                this->txbuf.clear();
+                return true;//订阅成功
             }
             delay_ms(100);
         }
     }
     //if(cnt) return 1;	//订阅成功
-    return 0;
+    this->txbuf.clear();
+    return false;
 }
 
 //MQTT发布数据打包函数
 //topic   主题
 //message 消息
 //qos     消息等级
-uint8_t MQTT::PublishData(char *topic, char *message, uint8_t qos){
+bool MQTT::PublishData(char *topic, char *message, uint8_t qos){
     uint16_t topicLength = strlen(topic);
     uint16_t messageLength = strlen(message);
     static uint16_t id=0;
@@ -207,6 +233,7 @@ uint8_t MQTT::PublishData(char *topic, char *message, uint8_t qos){
 
     //固定报头
     //控制报文类型
+    this->txbuf.clear();
     this->txbuf[this->txlen++] = 0x30;    // MQTT Message Type PUBLISH
     //剩余长度
     do
@@ -259,6 +286,8 @@ void MQTT::Callback(std::string str) {
 void MQTT::Send(const std::string& buf) {
     this->tcp->send_data((char*)buf.data(),buf.length());
 }
+
+
 
 
 

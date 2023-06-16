@@ -58,28 +58,29 @@ protected:
     uint16_t tcp_port{};
     struct tcp_pcb *mpcb{};
 public:
-    explicit TCP_Client_Class(uint16_t port=8080):tcp_port(port){};
+    explicit TCP_Client_Class(uint16_t port):tcp_port(port){};
     TCP_Client_Class()=default;
     ~TCP_Client_Class()=default;
-    bool connect(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4);
+    bool connect(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port) override;
+    bool connect(ip_addr rmtipaddr,uint16_t port) override;
     bool connect(ip_addr rmtipaddr);
-    void close();//关闭TCP Client连接
+    void close() override;//关闭TCP Client连接
     bool upset() const;//处理LWIP协议的定时器
-    bool islink() const;//判断是否连接上服务器
+    bool islink() override;//判断是否连接上服务器
 
     void upload_extern_fun(Call_Back *extx) override;
     static void extern_upset(uint8_t num);
 
     void send_data(char *data,uint16_t len) override;
     uint16_t available() const;
-    virtual void write(const char *str,uint16_t len);
-    virtual void write(uint8_t *str,uint16_t len);
-    virtual void write(string String);
-    virtual uint16_t print(const char *fmt, ...);
-    virtual uint16_t print(const string& String);
-    virtual uint16_t print(const char *s);
-    virtual uint16_t print(char s);
-    virtual uint16_t print(int integer);
+    void write(const char *str,uint16_t len);
+    void write(uint8_t *str,uint16_t len);
+    void write(string String);
+    uint16_t print(const char *fmt, ...);
+    uint16_t print(const string& String);
+    uint16_t print(const char *s);
+    uint16_t print(char s);
+    uint16_t print(int integer);
     uint16_t println(const char *fmt, ...);
     uint16_t println(const string& String);
     uint16_t println(const char *s);

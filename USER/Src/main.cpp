@@ -12,8 +12,8 @@
 #include "udp/UDP_Class.h"
 #include "cJSON.h"
 #include "tcp_client/TCP_Client_Class.h"
-#include "lwip/inet.h"
-#include "lwip/dns.h"
+#include "MQTT/MQTT.h"
+
 
 
 
@@ -38,7 +38,7 @@ TaskHandle_t Task1Task_Handler;
 //任务优先级
 #define TASK2_TASK_PRIO		2
 //任务堆栈大小
-#define TASK2_STK_SIZE 		512
+#define TASK2_STK_SIZE 		512*2
 //任务句柄
 TaskHandle_t Task2Task_Handler;
 //任务函数
@@ -71,17 +71,19 @@ Communication SUN(USART3,GPIOB15,TIM7,100);//modbus通信
 
 UDP_Class udp_demo(8089);//UDP通信
 
-class TCP_Cxlient:public TCP_Client_Class,public Call_Back{
-public:
-    explicit TCP_Cxlient(uint16_t port):TCP_Client_Class(port){
-        this->upload_extern_fun(this);
-    }
-
-    void Callback(string str) override{
-        this->print(str);
-    };
-} tcp_demo(8090);//TCP通信
-
+//class TCP_Cxlient:public TCP_Client_Class,public Call_Back{
+//public:
+//    explicit TCP_Cxlient(uint16_t port):TCP_Client_Class(port){
+//        this->upload_extern_fun(this);
+//    }
+//
+//    void Callback(string str) override{
+//        this->print(str);
+//    };
+//}tcp_demo(8090);//TCP通信
+TCP_Client_Class  tcp_demo(8090);//TCP通信
+TCP_Client_Class  tcp_mq;//TCP通信
+MQTT    mqtt_demo(&tcp_mq);
 
 int main()
 {
@@ -90,43 +92,10 @@ int main()
 
     my_mem_init(SRAMIN);		//初始化内部内存池
 
-    BEEP.flicker(100,250,2);//蜂鸣器提示
+//    BEEP.flicker(100,250,2);//蜂鸣器提示
 
     delay_ms(1000);//延时1s
     SUN.RS485::config(GPIOD8,GPIOD9);//配置RS485 GPIO引脚
-
-
-    DEBUG<<"lwIP Initing...\r\n";
-    while(lwip_comm_init()!=0)
-    {
-        DEBUG<<"lwIP Init failed!\r\n";
-        delay_ms(1200);
-//        my_mem_init(SRAMIN);		//初始化内部内存池
-        DEBUG<<"Retrying...\r\n";
-    }
-    DEBUG<<"lwIP Init Successed\r\n";
-    //等待DHCP获取
-    DEBUG<<"DHCP IP configing...\r\n";
-    while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
-    {
-        lwip_periodic_handle();
-    }
-
-    uint8_t speed;
-    char buf[30];
-
-    DEBUG<<DHCP_str[0]<<DHCP_str[1]<<DHCP_str[2]<<DHCP_str[3]<<DHCP_str[4];
-
-    DEBUG<<"lwIP DHCP Successed\r\n";
-    if(lwipdev.dhcpstatus==2)sprintf((char*)buf,"DHCP IP:%d.%d.%d.%d\r\n",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印动态IP地址
-    else sprintf((char*)buf,"Static IP:%d.%d.%d.%d\r\n",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印静态IP地址
-    DEBUG<<buf;
-    speed=LAN8720_Get_Speed();//得到网速
-    if(speed&1<<1)DEBUG<<"Ethernet Speed:100M\r\n";
-    else DEBUG<<"Ethernet Speed:10M\r\n";
-
-
-
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -183,68 +152,85 @@ void start_task(void *pvParameters)
     }
 }
 
-void my_found(const char *name, ip_addr_t *ipaddr, void *arg){
-    uint8_t ip[4];
-    ip[0] = (ipaddr->addr)>>24;
-    ip[1] = (ipaddr->addr)>>16;
-    ip[2] = (ipaddr->addr)>>8;
-    ip[3] = (ipaddr->addr);
-    DEBUG.print("%s ip is :%d.%d.%d.%d.\r\n",name,ip[3], ip[2], ip[1], ip[0]);
-}
-
-void vDnsClientTask(){
-//    char dfs[]="www.baidu.com";//110.242.68.4
-//    DEBUG.print("host ip:%s\r\n", inet_ntoa(dfs));
-
-    ip_addr_t dnsserver;/* Create tcp_ip stack thread */
-    IP4_ADDR(&dnsserver,114,114,114,114);/* suozhang,add,2018年1月11日18:03:10 */
-    dns_setserver(0, &dnsserver);
-    IP4_ADDR(&dnsserver,223,5,5,5);    /* suozhang,add,2018年1月11日18:03:10 */
-    dns_setserver(1, &dnsserver);
-    dns_init(); /* 初始化 DNS 服务，2018年1月9日10:56:34 */
-
-    ip_addr_t serverIp;
-
-    dns_gethostbyname("www.baidu.com", &serverIp,my_found,nullptr);
-}
 
 //task2任务函数
 [[noreturn]] void task2_task(void *pvParameters)
 {
+    DEBUG<<"lwIP Initing...\r\n";
+    while(lwip_comm_init()!=0)
+    {
+        DEBUG<<"lwIP Init failed!\r\n";
+        delay_ms(1200);
+//        my_mem_init(SRAMIN);		//初始化内部内存池
+        DEBUG<<"Retrying...\r\n";
+    }
+    DEBUG<<"lwIP Init Successed\r\n";
+    //等待DHCP获取
+    DEBUG<<"DHCP IP configing...\r\n";
+    while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
+    {
+        lwip_periodic_handle();
+    }
+
+    uint8_t speed;
+    char buf[30];
+
+    DEBUG<<DHCP_str[0]<<DHCP_str[1]<<DHCP_str[2]<<DHCP_str[3]<<DHCP_str[4];
+
+    DEBUG<<"lwIP DHCP Successed\r\n";
+    if(lwipdev.dhcpstatus==2)sprintf((char*)buf,"DHCP IP:%d.%d.%d.%d\r\n",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印动态IP地址
+    else sprintf((char*)buf,"Static IP:%d.%d.%d.%d\r\n",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印静态IP地址
+    DEBUG<<buf;
+    speed=LAN8720_Get_Speed();//得到网速
+    if(speed&1<<1)DEBUG<<"Ethernet Speed:100M\r\n";
+    else DEBUG<<"Ethernet Speed:10M\r\n";
+
     udp_demo.bind();    //UDP绑定
     bool link = false;
 
-    vDnsClientTask();
+//    DEBUG<<DNS_get_ip("www.baidu.com");    //DNS解析
     while(true)
     {
         delay_ms(2);
-        //{"interval":60,"ip":"12.32.54.15","port":1883,"user":"XCSZ","passd":"12345678"}
+        //{"interval":60,"ip":"101.133.196.97","port":1883,"user":"XCSZ","passd":"12345678"}
         if(udp_demo.available()){
             cJSON *root = cJSON_Parse(udp_demo.read_data().data());
-            cJSON *interval = cJSON_GetObjectItem(root, "interval");
-            cJSON *ip = cJSON_GetObjectItem(root, "ip");
-            cJSON *port = cJSON_GetObjectItem(root, "port");
-            cJSON *user = cJSON_GetObjectItem(root, "user");
-            cJSON *passd = cJSON_GetObjectItem(root, "passd");
-            if(interval!= nullptr){
-                DEBUG<<"interval:"<<interval->valueint<<"\r\n";
-            }
-            if(ip!= nullptr){
-                DEBUG<<"ip:"<<ip->valuestring<<"\r\n";
-                link= true;
-            }
-            if(port!= nullptr){
-                DEBUG<<"port:"<<port->valueint<<"\r\n";
-            }
-            if(user!= nullptr){
-                DEBUG<<"user:"<<user->valuestring<<"\r\n";
-            }
-            if(passd!= nullptr){
-                DEBUG<<"passd:"<<passd->valuestring<<"\r\n";
+            //判断json数据是否有效
+//            if(!cJSON_GetErrorPtr())
+            {
+                cJSON *interval = cJSON_GetObjectItem(root, "interval");
+                cJSON *ip = cJSON_GetObjectItem(root, "ip");
+                cJSON *port = cJSON_GetObjectItem(root, "port");
+                cJSON *user = cJSON_GetObjectItem(root, "user");
+                cJSON *passd = cJSON_GetObjectItem(root, "passd");
+                if (interval != nullptr) {
+                    DEBUG << "interval:" << interval->valueint << "\r\n";
+                }
+                if (ip != nullptr) {
+                    DEBUG << "ip:" << ip->valuestring << "\r\n";
+                    link = true;
+                }
+                if (port != nullptr) {
+                    DEBUG << "port:" << port->valueint << "\r\n";
+                }
+                if (user != nullptr) {
+                    DEBUG << "user:" << user->valuestring << "\r\n";
+                }
+                if (passd != nullptr) {
+                    DEBUG << "passd:" << passd->valuestring << "\r\n";
+                }
             }
             cJSON_Delete(root);
         }
-        if(link)link=tcp_demo.connect(udp_demo.get_remote_ip());
+        if(link){
+            link=tcp_demo.connect(udp_demo.get_remote_ip());
+
+            mqtt_demo.Connect(101,133,196,97);
+
+            mqtt_demo.config((char*)"PC|securemode=2,signmethod=hmacsha1,timestamp=1686879756189|",
+                             (char*)"TEOM&a1LB0LOHx4m",(char*)"1B75CDA26EFBE9BB56267B450127F91930FC0ABC");
+
+        }
         while (link){
 //            {
 //            "sensor":[{"id":1, "name":"温度","value":"20.3","type":"value"},{"id":2, "name":"光照","value":"1","type":"value"],
