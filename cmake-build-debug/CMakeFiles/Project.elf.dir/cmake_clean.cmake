@@ -289,6 +289,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/EC20.cpp.obj"
+  "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/EC20.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj"

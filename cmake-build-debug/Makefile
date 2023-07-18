@@ -3608,6 +3608,30 @@ MIDDLEWARE/Src/DW_LCD.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.s
 .PHONY : MIDDLEWARE/Src/DW_LCD.cpp.s
 
+MIDDLEWARE/Src/EC20.obj: MIDDLEWARE/Src/EC20.cpp.obj
+.PHONY : MIDDLEWARE/Src/EC20.obj
+
+# target to build an object file
+MIDDLEWARE/Src/EC20.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/EC20.cpp.obj
+.PHONY : MIDDLEWARE/Src/EC20.cpp.obj
+
+MIDDLEWARE/Src/EC20.i: MIDDLEWARE/Src/EC20.cpp.i
+.PHONY : MIDDLEWARE/Src/EC20.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/EC20.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/EC20.cpp.i
+.PHONY : MIDDLEWARE/Src/EC20.cpp.i
+
+MIDDLEWARE/Src/EC20.s: MIDDLEWARE/Src/EC20.cpp.s
+.PHONY : MIDDLEWARE/Src/EC20.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/EC20.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/EC20.cpp.s
+.PHONY : MIDDLEWARE/Src/EC20.cpp.s
+
 MIDDLEWARE/Src/FM24Cxx.obj: MIDDLEWARE/Src/FM24Cxx.cpp.obj
 .PHONY : MIDDLEWARE/Src/FM24Cxx.obj
 
@@ -4972,6 +4996,9 @@ help:
 	@echo ... MIDDLEWARE/Src/DW_LCD.obj
 	@echo ... MIDDLEWARE/Src/DW_LCD.i
 	@echo ... MIDDLEWARE/Src/DW_LCD.s
+	@echo ... MIDDLEWARE/Src/EC20.obj
+	@echo ... MIDDLEWARE/Src/EC20.i
+	@echo ... MIDDLEWARE/Src/EC20.s
 	@echo ... MIDDLEWARE/Src/FM24Cxx.obj
 	@echo ... MIDDLEWARE/Src/FM24Cxx.i
 	@echo ... MIDDLEWARE/Src/FM24Cxx.s

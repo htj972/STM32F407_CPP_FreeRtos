@@ -1064,6 +1064,9 @@
 		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/DW_LCD.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/EC20.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/FM24Cxx.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -1119,6 +1122,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/DW_LCD.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/EC20.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/FM24Cxx.cpp">

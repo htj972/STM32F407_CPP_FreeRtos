@@ -208,6 +208,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/DHTxx.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DHTxx.cpp.obj.d"
   "E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/DS18B20.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DS18B20.cpp.obj.d"
   "E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/DW_LCD.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj.d"
+  "E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/EC20.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/EC20.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/EC20.cpp.obj.d"
   "E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/FM24Cxx.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj.d"
   "E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/IAP.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj.d"
   "E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/MAX31865.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj.d"
