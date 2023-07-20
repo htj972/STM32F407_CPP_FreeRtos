@@ -10,9 +10,6 @@
 #include "EC20.h"
 
 
-
-
-
 //任务优先级
 #define START_TASK_PRIO		1
 //任务堆栈大小
@@ -57,24 +54,31 @@ public:
 _OutPut_ run (GPIOE6);//运行指示灯
 _OutPut_ OUT(GPIOB0);            //输出
 
-//Timer_queue tIMS(TIM7,50000);                 //定时器队列
+//Timer_queue tIMS(TIM7,50000);            //定时器队列
 
-_USART_ DEBUG(USART2);                          //调试串口
-RS485   com(USART3,GPIOB15);                           //Lora串口
-_USART_ us(USART1);
-EC20    ET;                           //Lora串口
-
+_USART_ DEBUG(USART2);             //调试串口
+RS485   com(USART3,GPIOB15);
+//_USART_ us(USART1);
+EC20    ET(USART1);
 
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
     delay_init(168);	//初始化延时函数
+    delay_ms(1000);//延时1s
 
     my_mem_init(SRAMIN);		//初始化内部内存池
-    ET.init(&us);
-    DEBUG<<ET.init();
+//    ET.init(&us);
+    while (!ET.getrdy());
+    DEBUG<<(ET.init()?"OK":"error");
+    ET.setdebug(&DEBUG);
+    ET.Register();
 
-    delay_ms(1000);//延时1s
+
+    ET.mqttopen(1,"222.74.215.220",21883);
+    ET.mqttconn(1,"test","mqtt","123456");
+
+
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -123,13 +127,18 @@ void start_task(void *pvParameters)
 //task2任务函数
 [[noreturn]] void task2_task(void *pvParameters)
 {
+    string da;
     while(true) {
         vTaskDelay(100/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
 
+        da+=DEBUG.read_data();
+        if(da.find("\r\n") != string::npos) {
+            ET.mqttpub(1, "v1/devices/me/telemetry", da);
+            da.clear();
+        }
 
-
-        us<<DEBUG.read_data();
-        DEBUG<<us.read_data();
+//        us<<DEBUG.read_data();
+//        DEBUG<<us.read_data();
     }
 }
 
