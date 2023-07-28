@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="OCD TemplateF411" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="Project.elf" CONFIG_NAME="Debug" version="1" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="Project.elf">
-    <openocd version="1" gdb-port="3333" telnet-port="4444" board-config="E:\KOKIRIKA\STM\STM32F407_CPP_FreeRtos\stlink.cfg" reset-type="INIT" download-type="ALWAYS">
+    <openocd version="1" gdb-port="3333" telnet-port="4444" board-config="F:\code\STM32\STM32F407_CPP_FreeRtos\stlink.cfg" reset-type="INIT" download-type="ALWAYS">
       <debugger kind="GDB" isBundled="true" />
     </openocd>
     <method v="2">

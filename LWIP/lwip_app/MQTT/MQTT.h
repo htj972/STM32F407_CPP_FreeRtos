@@ -29,12 +29,17 @@ public:
     bool Connect(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port=1883);
     bool Connect(ip_addr rmtipaddr,uint16_t port=1883);
     bool config(char *ClientID,char *Username,char *Password);
+    bool config(const std::string& ClientID,const std::string& Username,const std::string& Password);
     bool SubscribeTopic(char *topic,uint8_t qos,uint8_t whether);
-    bool PublishData(char *topic, char *message, uint8_t qos);
+    bool SubscribeTopic(const std::string& topic,uint8_t qos,uint8_t whether);
+    bool PublishData(char *topic, char *message, uint8_t qos=0);
+    bool PublishData(const std::string& topic,const std::string& message, uint8_t qos=0);
     void SendHeart();
     void Disconnect();
     void Session(std::string str);
     void Callback(std::string str) override;
+    std::string  GetRxbuf();
+    bool islink();
 };
 
 

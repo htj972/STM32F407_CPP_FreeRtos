@@ -13,6 +13,7 @@
 #include "cJSON.h"
 #include "tcp_client/TCP_Client_Class.h"
 #include "MQTT/MQTT.h"
+#include "ff.h"
 
 
 
@@ -69,19 +70,6 @@ _USART_ Lora(USART6);                           //Lora串口
 
 Communication SUN(USART3,GPIOB15,TIM7,100);//modbus通信
 
-UDP_Class udp_demo(8089);//UDP通信
-
-//class TCP_Cxlient:public TCP_Client_Class,public Call_Back{
-//public:
-//    explicit TCP_Cxlient(uint16_t port):TCP_Client_Class(port){
-//        this->upload_extern_fun(this);
-//    }
-//
-//    void Callback(string str) override{
-//        this->print(str);
-//    };
-//}tcp_demo(8090);//TCP通信
-TCP_Client_Class  tcp_demo(8090);//TCP通信
 TCP_Client_Class  tcp_mq;//TCP通信
 MQTT    mqtt_demo(&tcp_mq);
 
@@ -128,30 +116,58 @@ void start_task(void *pvParameters)
     vTaskDelete(StartTask_Handler); //删除开始任务
     taskEXIT_CRITICAL();            //退出临界区
 }
+//#include <iconv.h>
 
-//{
-//"sensor":[{"id":1, "name":"温度","value":"20.3","type":"power"},{"id":1, "name":"光照","value":"1","type":"value"],
-//"inside":[{"id":1, "name":"开关","value":"20.3","type":"power"},{"id":1, "name":"灯光","value":"1","type":"value"],
-//"outside":[{"id":1, "name":"开关","value":"20.3","type":"power"},{"id":1, "name":"阀门","value":"1","type":"value"],
+
+//int u2g(char *inbuf, size_t inlen, char *outbuf, size_t outlen) {
+//    return code_convert("utf-8", "gb2312", inbuf, inlen, outbuf, outlen);
 //}
+
+//int g2u(char *inbuf, size_t inlen, char *outbuf, size_t *outlen) {
+//    char **pin = &inbuf;
+//    char **pout = &outbuf;
+//    size_t inlenTemp =  (size_t)inlen;
+//    return iconv(iconv_open("GBK","utf-8"),pin, &inlenTemp, pout, outlen);
+//}
+
+void data_splice(char * str,char * name,float value){
+//    "{\"%d%d\":\"%d\"}",ff_convert(*char1,1),ff_convert(*char2,1)
+    WCHAR  strname=name[1]<<8|name[0];
+    WCHAR unc = ff_convert(strname,0);
+    sprintf(str,"{\"");
+    str[0]='{';
+    str[1]='\"';
+    //E9 A3 8E E9 80 9F
+    str[2]=0xE9;
+    str[3]=0xA3;
+    str[4]=0x8E;
+    str[5]=0xE9;
+    str[6]=0x80;
+    str[7]=0x9F;
+    sprintf(&str[8],R"(":"%.0lf"})",value);
+//    char in[]="风速";
+//    char out[10];
+//    size_t outlen=0;
+//    g2u(in, sizeof(in),out,&outlen);
+//    for(int i=0;i<outlen;i++){
+//        DEBUG.print("0x%02X ",out[i]);
+//    }
+}
+
+
 
 //task1任务函数
 [[noreturn]] void task1_task(void *pvParameters)//alignas(8)
 {
+    string str;
     while(true)
     {
-        vTaskDelay(200/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+        vTaskDelay(500/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         run.change();       //运行指示灯
         OUT1.change();      //输出状态反转
         OUT2.change();      //输出状态反转
-        SUN.data_sync();    //modbus数据同步
-//        DEBUG<<"SUM:"<<(int )SUN.data_BUS.to_u16[0]<<"\r\n";
-//        u8 buf[30];
-//        sprintf((char*)buf,"{\"id\":1, \"name\":\"光照\",\"value\":\"%03.1d\"}",(int )SUN.data_BUS.to_u16[0]);
-//        tcp_send_data(buf);    //TCP发送数据
     }
 }
-
 
 //task2任务函数
 [[noreturn]] void task2_task(void *pvParameters)
@@ -185,73 +201,52 @@ void start_task(void *pvParameters)
     if(speed&1<<1)DEBUG<<"Ethernet Speed:100M\r\n";
     else DEBUG<<"Ethernet Speed:10M\r\n";
 
-    udp_demo.bind();    //UDP绑定
-    bool link = false;
-
 //    DEBUG<<DNS_get_ip("www.baidu.com");    //DNS解析
     while(true)
     {
-        delay_ms(2);
-        //{"interval":60,"ip":"101.133.196.97","port":1883,"user":"XCSZ","passd":"12345678"}
-        if(udp_demo.available()){
-            cJSON *root = cJSON_Parse(udp_demo.read_data().data());
-            //判断json数据是否有效
-//            if(!cJSON_GetErrorPtr())
-            {
-                cJSON *interval = cJSON_GetObjectItem(root, "interval");
-                cJSON *ip = cJSON_GetObjectItem(root, "ip");
-                cJSON *port = cJSON_GetObjectItem(root, "port");
-                cJSON *user = cJSON_GetObjectItem(root, "user");
-                cJSON *passd = cJSON_GetObjectItem(root, "passd");
-                if (interval != nullptr) {
-                    DEBUG << "interval:" << interval->valueint << "\r\n";
-                }
-                if (ip != nullptr) {
-                    DEBUG << "ip:" << ip->valuestring << "\r\n";
-                    link = true;
-                }
-                if (port != nullptr) {
-                    DEBUG << "port:" << port->valueint << "\r\n";
-                }
-                if (user != nullptr) {
-                    DEBUG << "user:" << user->valuestring << "\r\n";
-                }
-                if (passd != nullptr) {
-                    DEBUG << "passd:" << passd->valuestring << "\r\n";
-                }
+        string str,strjson;
+        uint8_t num=5;
+        uint8_t times=0;
+//        {clientId:"daocaoren",userName:"daocaoren",password:"daocaoren"}
+        mqtt_demo.Connect(222,74,215,220,31883);
+        mqtt_demo.config("daocaoren","daocaoren","daocaoren");
+        mqtt_demo.SubscribeTopic("v1/devices/me/rpc/request/+",0,1);
+        DEBUG<<"linking...\r\n";
+        while (true){
+            delay_ms(100);
+            times++;
+            if(times>100){
+                times=0;
+                data_splice(buf,(char*)"风速",num++);
+                if(num>30)num=5;
+                DEBUG<<buf;
+                mqtt_demo.PublishData("v1/devices/me/telemetry",buf,0);
             }
-            cJSON_Delete(root);
-        }
-        if(link){
-            link=tcp_demo.connect(udp_demo.get_remote_ip());
 
-            mqtt_demo.Connect(101,133,196,97);
 
-            mqtt_demo.config((char*)"PC|securemode=2,signmethod=hmacsha1,timestamp=1686879756189|",
-                             (char*)"TEOM&a1LB0LOHx4m",(char*)"1B75CDA26EFBE9BB56267B450127F91930FC0ABC");
+            str+=mqtt_demo.GetRxbuf();
+            strjson=str.substr(0,str.find((char*)'}')+1);
+            //字符串不空
+            if(strjson.length()>2){
+                str.erase(0,str.find('}')+1);
+                strjson=strjson.substr(strjson.find('{'));
+                DEBUG<<strjson;
+                cJSON *root = cJSON_Parse(strjson.c_str());
+                cJSON *item = cJSON_GetObjectItem(root,"params");
+                if(item!= nullptr) {
+                    DEBUG << item->valueint<<"\r\n";
+                    if (item->valueint==1) {
+                        BEEP.set(ON);
+                    } else if (item->valueint==0) {
+                        BEEP.set(OFF);
+                    }
+                }
+                cJSON_Delete(root);
+                strjson.clear();
+            }
 
-        }
-        while (link){
-//            {
-//            "sensor":[{"id":1, "name":"温度","value":"20.3","type":"value"},{"id":2, "name":"光照","value":"1","type":"value"],
-//            "inside":[{"id":3, "name":"开关","value":"20.3","type":"power"},{"id":4, "name":"灯光","value":"1","type":"value"],
-//            "outside":[{"id":5, "name":"开关","value":"20.3","type":"power"},{"id":6, "name":"阀门","value":"1","type":"value"],
-//            }
-            tcp_demo.print("{\n"
-                      "\"sensor\":[{\"id\":1, \"name\":\"温度\",\"value\":\"20.3\",\"type\":\"value\"},{\"id\":2, \"name\":\"光照\",\"value\":\"%d\",\"type\":\"value\"],\n"
-                      "\"inside\":[{\"id\":3, \"name\":\"开关\",\"value\":\"1\",\"type\":\"power\"},{\"id\":4, \"name\":\"灯光\",\"value\":\"12.6\",\"type\":\"value\"],\n"
-                      "\"outside\":[{\"id\":5, \"name\":\"开关\",\"value\":\"1\",\"type\":\"power\"},{\"id\":6, \"name\":\"阀门\",\"value\":\"1.5\",\"type\":\"value\"],\n"
-                      "}",SUN.data_BUS.to_u16[0]);
-            delay_ms(1000);
-            if(!tcp_demo.islink()){
-                link = false;
+            if(!mqtt_demo.islink())
                 break;
-            }
-            if("unlink"==tcp_demo.read_data()){
-                tcp_demo.close();
-                link = false;
-                break;
-            }
         }
 
     }

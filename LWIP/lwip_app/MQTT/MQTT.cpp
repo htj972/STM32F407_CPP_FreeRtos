@@ -155,7 +155,9 @@ bool MQTT::config(char *ClientID,char *Username,char *Password){
     return false;
 }
 
-
+bool MQTT::config(const std::string& ClientID, const std::string& Username, const std::string& Password) {
+    return this->config((char*)ClientID.data(),(char*)Username.data(),(char*)Password.data());
+}
 
 //MQTT订阅/取消订阅数据打包函数
 //topic       主题
@@ -215,6 +217,10 @@ bool MQTT::SubscribeTopic(char *topic,uint8_t qos,uint8_t whether){
     return false;
 }
 
+bool MQTT::SubscribeTopic(const std::string& topic, uint8_t qos, uint8_t whether) {
+    return this->SubscribeTopic((char*)topic.data(),qos,whether);
+}
+
 //MQTT发布数据打包函数
 //topic   主题
 //message 消息
@@ -263,6 +269,11 @@ bool MQTT::PublishData(char *topic, char *message, uint8_t qos){
     return this->txlen;
 }
 
+bool MQTT::PublishData(const std::string& topic, const std::string& message, uint8_t qos) {
+    return this->PublishData((char*)topic.data(),(char*)message.data(),qos);
+}
+
+
 void MQTT::SendHeart(){
     Send((char *)parket_heart,sizeof(parket_heart));
 }
@@ -286,6 +297,21 @@ void MQTT::Callback(std::string str) {
 void MQTT::Send(const std::string& buf) {
     this->tcp->send_data((char*)buf.data(),buf.length());
 }
+
+std::string MQTT::GetRxbuf() {
+    std::string str = this->rxbuf;
+    this->rxbuf.clear();
+    return str;
+}
+
+bool MQTT::islink() {
+    return this->tcp->islink();
+}
+
+
+
+
+
 
 
 
