@@ -13,7 +13,7 @@
 #include "cJSON.h"
 #include "tcp_client/TCP_Client_Class.h"
 #include "MQTT/MQTT.h"
-#include "ff.h"
+#include "Kstring.h"
 
 
 
@@ -85,6 +85,14 @@ int main()
     delay_ms(1000);//延时1s
     SUN.RS485::config(GPIOD8,GPIOD9);//配置RS485 GPIO引脚
 
+//    Kstring asdsad="风速";
+////    asdsad.append("风速");
+//    string ret=asdsad.GBK_to_utf8();
+//    //16进制打印RET
+//    for (char i : ret) {
+//        DEBUG.print("0x%02X ",i);
+//    }
+
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
                 (const char*    )"start_task",           //任务名称
@@ -116,43 +124,8 @@ void start_task(void *pvParameters)
     vTaskDelete(StartTask_Handler); //删除开始任务
     taskEXIT_CRITICAL();            //退出临界区
 }
-//#include <iconv.h>
 
 
-//int u2g(char *inbuf, size_t inlen, char *outbuf, size_t outlen) {
-//    return code_convert("utf-8", "gb2312", inbuf, inlen, outbuf, outlen);
-//}
-
-//int g2u(char *inbuf, size_t inlen, char *outbuf, size_t *outlen) {
-//    char **pin = &inbuf;
-//    char **pout = &outbuf;
-//    size_t inlenTemp =  (size_t)inlen;
-//    return iconv(iconv_open("GBK","utf-8"),pin, &inlenTemp, pout, outlen);
-//}
-
-void data_splice(char * str,char * name,float value){
-//    "{\"%d%d\":\"%d\"}",ff_convert(*char1,1),ff_convert(*char2,1)
-    WCHAR  strname=name[1]<<8|name[0];
-    WCHAR unc = ff_convert(strname,0);
-    sprintf(str,"{\"");
-    str[0]='{';
-    str[1]='\"';
-    //E9 A3 8E E9 80 9F
-    str[2]=0xE9;
-    str[3]=0xA3;
-    str[4]=0x8E;
-    str[5]=0xE9;
-    str[6]=0x80;
-    str[7]=0x9F;
-    sprintf(&str[8],R"(":"%.0lf"})",value);
-//    char in[]="风速";
-//    char out[10];
-//    size_t outlen=0;
-//    g2u(in, sizeof(in),out,&outlen);
-//    for(int i=0;i<outlen;i++){
-//        DEBUG.print("0x%02X ",out[i]);
-//    }
-}
 
 
 
@@ -215,17 +188,26 @@ void data_splice(char * str,char * name,float value){
         while (true){
             delay_ms(100);
             times++;
-            if(times>100){
-                times=0;
-                data_splice(buf,(char*)"风速",num++);
-                if(num>30)num=5;
-                DEBUG<<buf;
-                mqtt_demo.PublishData("v1/devices/me/telemetry",buf,0);
-            }
+//            if(times>100){
+//                times=0;
+////                data_splice(buf,(char*)"风速",num++);
+//                //创建JSON对象
+//                cJSON *root = cJSON_CreateObject();
+//                //添加键值对
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("风速").data(),num++);
+//                //将JSON对象转化为字符串
+//                sprintf(buf,"%s",cJSON_Print(root));
+//                //删除JSON对象
+//                cJSON_Delete(root);
+//                if(num>30)num=5;
+//                DEBUG<<buf<<"\r\n";
+//                mqtt_demo.PublishData("v1/devices/me/telemetry",buf,0);
+//
+//            }
 
 
             str+=mqtt_demo.GetRxbuf();
-            strjson=str.substr(0,str.find((char*)'}')+1);
+            strjson=str.substr(0,str.find('}')+1);
             //字符串不空
             if(strjson.length()>2){
                 str.erase(0,str.find('}')+1);

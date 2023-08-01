@@ -325,6 +325,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Kstring.cpp.obj"
+  "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Kstring.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj"
