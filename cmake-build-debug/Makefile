@@ -4064,6 +4064,30 @@ SOFTWARE/Src/Kstring.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Kstring.cpp.s
 .PHONY : SOFTWARE/Src/Kstring.cpp.s
 
+SOFTWARE/Src/mqtt_base.obj: SOFTWARE/Src/mqtt_base.cpp.obj
+.PHONY : SOFTWARE/Src/mqtt_base.obj
+
+# target to build an object file
+SOFTWARE/Src/mqtt_base.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/mqtt_base.cpp.obj
+.PHONY : SOFTWARE/Src/mqtt_base.cpp.obj
+
+SOFTWARE/Src/mqtt_base.i: SOFTWARE/Src/mqtt_base.cpp.i
+.PHONY : SOFTWARE/Src/mqtt_base.i
+
+# target to preprocess a source file
+SOFTWARE/Src/mqtt_base.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/mqtt_base.cpp.i
+.PHONY : SOFTWARE/Src/mqtt_base.cpp.i
+
+SOFTWARE/Src/mqtt_base.s: SOFTWARE/Src/mqtt_base.cpp.s
+.PHONY : SOFTWARE/Src/mqtt_base.s
+
+# target to generate assembly for a file
+SOFTWARE/Src/mqtt_base.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/mqtt_base.cpp.s
+.PHONY : SOFTWARE/Src/mqtt_base.cpp.s
+
 SOFTWARE/Src/pretreatment.obj: SOFTWARE/Src/pretreatment.cpp.obj
 .PHONY : SOFTWARE/Src/pretreatment.obj
 
@@ -5053,6 +5077,9 @@ help:
 	@echo ... SOFTWARE/Src/Kstring.obj
 	@echo ... SOFTWARE/Src/Kstring.i
 	@echo ... SOFTWARE/Src/Kstring.s
+	@echo ... SOFTWARE/Src/mqtt_base.obj
+	@echo ... SOFTWARE/Src/mqtt_base.i
+	@echo ... SOFTWARE/Src/mqtt_base.s
 	@echo ... SOFTWARE/Src/pretreatment.obj
 	@echo ... SOFTWARE/Src/pretreatment.i
 	@echo ... SOFTWARE/Src/pretreatment.s

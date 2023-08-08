@@ -175,16 +175,17 @@ void start_task(void *pvParameters)
     else DEBUG<<"Ethernet Speed:10M\r\n";
 
 //    DEBUG<<DNS_get_ip("www.baidu.com");    //DNS解析
+    MQTT::Subscribe request("v1/devices/me/rpc/request/+",0,1);
     while(true)
     {
-        string str,strjson;
         uint8_t num=5;
         uint8_t times=0;
 //        {clientId:"daocaoren",userName:"daocaoren",password:"daocaoren"}
         mqtt_demo.Connect(222,74,215,220,31883);
-        mqtt_demo.config("daocaoren","daocaoren","daocaoren");
-        mqtt_demo.SubscribeTopic("v1/devices/me/rpc/request/+",0,1);
+        mqtt_demo.config((string)"daocaoren",(string)"daocaoren",(string)"daocaoren");
+        mqtt_demo.SubscribeTopic(request);
         DEBUG<<"linking...\r\n";
+        mqtt_demo.Clear();
         while (true){
             delay_ms(100);
             times++;
@@ -206,25 +207,28 @@ void start_task(void *pvParameters)
 //            }
 
 
-            str+=mqtt_demo.GetRxbuf();
-            strjson=str.substr(0,str.find('}')+1);
-            //字符串不空
-            if(strjson.length()>2){
-                str.erase(0,str.find('}')+1);
-                strjson=strjson.substr(strjson.find('{'));
-                DEBUG<<strjson;
-                cJSON *root = cJSON_Parse(strjson.c_str());
-                cJSON *item = cJSON_GetObjectItem(root,"params");
-                if(item!= nullptr) {
-                    DEBUG << item->valueint<<"\r\n";
-                    if (item->valueint==1) {
-                        BEEP.set(ON);
-                    } else if (item->valueint==0) {
-                        BEEP.set(OFF);
+
+            if(mqtt_demo.available()){                              //接收到数据
+                mqtt_demo.Message_analyze(mqtt_demo.GetRxbuf());//分析接收到的数据
+
+                if(mqtt_demo.check_topic(request)){
+                    cJSON *root = cJSON_Parse(mqtt_demo.getMsg().data());
+                    //检查json是否正确cJSON_GetErrorPtr
+                    if (root == nullptr) {
+                        DEBUG<<"Error before: "<<cJSON_GetErrorPtr()<<"\r\n";
+                        break;
                     }
+                    cJSON *item = cJSON_GetObjectItem(root,"params");
+                    if(item!= nullptr) {
+                        if (item->valueint==1) {
+                            BEEP.set(ON);
+                        } else if (item->valueint==0) {
+                            BEEP.set(OFF);
+                        }
+                    }
+                    cJSON_Delete(item);
+                    cJSON_Delete(root);
                 }
-                cJSON_Delete(root);
-                strjson.clear();
             }
 
             if(!mqtt_demo.islink())

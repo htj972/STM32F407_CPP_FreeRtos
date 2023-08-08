@@ -221,6 +221,10 @@ bool MQTT::SubscribeTopic(const std::string& topic, uint8_t qos, uint8_t whether
     return this->SubscribeTopic((char*)topic.data(),qos,whether);
 }
 
+bool MQTT::SubscribeTopic(const MQTT::Subscribe& subscribe) {
+    return this->SubscribeTopic(subscribe.getTopic(),subscribe.getQos(),subscribe.getWhether());
+}
+
 //MQTT发布数据打包函数
 //topic   主题
 //message 消息
@@ -304,10 +308,17 @@ std::string MQTT::GetRxbuf() {
     return str;
 }
 
+bool MQTT::available() {
+    return !this->rxbuf.empty();
+}
+
 bool MQTT::islink() {
     return this->tcp->islink();
 }
 
+void MQTT::Clear() {
+    this->rxbuf.clear();
+}
 
 
 

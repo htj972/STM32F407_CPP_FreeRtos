@@ -5,14 +5,15 @@
 */
 #ifndef KOKIRIKA_MQTT_H
 #define KOKIRIKA_MQTT_H
+
 #include "sys.h"
 #include "tcp_client/tcp_base.h"
 #include "malloc.h"
+#include "mqtt_base.h"
 
-class MQTT :public Call_Back{
+class MQTT :public Call_Back,public mqtt_base{
 private:
     std::string rxbuf{};
-    uint16_t rxlen{};
     std::string txbuf{};
     uint16_t txlen{};
     TCP_BASE *tcp{};
@@ -31,14 +32,17 @@ public:
     bool config(char *ClientID,char *Username,char *Password);
     bool config(const std::string& ClientID,const std::string& Username,const std::string& Password);
     bool SubscribeTopic(char *topic,uint8_t qos,uint8_t whether);
+    bool SubscribeTopic(const MQTT::Subscribe& subscribe);
     bool SubscribeTopic(const std::string& topic,uint8_t qos,uint8_t whether);
     bool PublishData(char *topic, char *message, uint8_t qos=0);
     bool PublishData(const std::string& topic,const std::string& message, uint8_t qos=0);
     void SendHeart();
     void Disconnect();
+    void Clear();
     void Session(std::string str);
     void Callback(std::string str) override;
     std::string  GetRxbuf();
+    bool available();
     bool islink();
 };
 
