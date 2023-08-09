@@ -36,8 +36,12 @@ public:
     bool SubscribeTopic(const std::string& topic,uint8_t qos,uint8_t whether);
     bool PublishData(char *topic, char *message, uint8_t qos=0);
     bool PublishData(const std::string& topic,const std::string& message, uint8_t qos=0);
+    bool PublishData(const MQTT::Publish& publish);
+    bool PublishData(const Publish& publish, const std::string& message);
+    bool PublishData(const Publish& publish, const std::string& message, uint8_t qos);
     void SendHeart();
     void Disconnect();
+    void close();
     void Clear();
     void Session(std::string str);
     void Callback(std::string str) override;

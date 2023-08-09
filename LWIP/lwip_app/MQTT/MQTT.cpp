@@ -1,6 +1,6 @@
 /**
 * @Author kokirika
-* @Name ${PACKAGE_NAME}
+* @Name MQTT
 * @Date 2023-06-09
 */
 #include <cstring>
@@ -277,12 +277,27 @@ bool MQTT::PublishData(const std::string& topic, const std::string& message, uin
     return this->PublishData((char*)topic.data(),(char*)message.data(),qos);
 }
 
+bool MQTT::PublishData(const MQTT::Publish &publish) {
+    return this->PublishData(publish.getTopic(),publish.getMessage(),publish.getQos());
+}
+
+bool MQTT::PublishData(const Publish& publish, const std::string &message) {
+    return this->PublishData(publish.getTopic(),message,publish.getQos());
+}
+
+bool MQTT::PublishData(const Publish& publish, const std::string &message, uint8_t qos) {
+    return this->PublishData(publish.getTopic(),message,qos);
+}
 
 void MQTT::SendHeart(){
     Send((char *)parket_heart,sizeof(parket_heart));
 }
 
 void MQTT::Disconnect(){
+    this->tcp->close();
+}
+
+void MQTT::close() {
     Send((char *)parket_disconnet,sizeof(parket_disconnet));
 }
 
@@ -319,6 +334,13 @@ bool MQTT::islink() {
 void MQTT::Clear() {
     this->rxbuf.clear();
 }
+
+
+
+
+
+
+
 
 
 

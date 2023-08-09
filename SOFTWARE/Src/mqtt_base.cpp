@@ -1,6 +1,8 @@
-//
-// Created by 53105 on 2023/8/2.
-//
+/**
+* @Author kokirika
+* @Name MQTT_BASE
+* @Date 2023-06-09
+*/
 
 #include <regex>
 #include "mqtt_base.h"
@@ -24,7 +26,17 @@ void mqtt_base::Message_analyze(const std::string &str) {
 
 bool mqtt_base::isValidMQTT(const std::string& str) {
     // Check if the message is a PUBLISH message
-    return (str[0] >> 4) == 3;
+    if ((str[0] >> 4) != 3) {
+        return false;
+    }
+
+    // Check the length of the message
+    int remaining_length = str[1];
+    if (str.size() != remaining_length + 2) {
+        return false;
+    }
+
+    return true;
 }
 
 bool mqtt_base::Wildcard_recognition(const char *str) {

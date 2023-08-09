@@ -14,7 +14,8 @@
 #include "tcp_client/TCP_Client_Class.h"
 #include "MQTT/MQTT.h"
 #include "Kstring.h"
-
+#include "picosha2.h"
+#include "ThingsBoard.h"
 
 
 
@@ -72,6 +73,7 @@ Communication SUN(USART3,GPIOB15,TIM7,100);//modbus通信
 
 TCP_Client_Class  tcp_mq;//TCP通信
 MQTT    mqtt_demo(&tcp_mq);
+ThingsBoard tb(&DEBUG,&mqtt_demo);
 
 int main()
 {
@@ -145,94 +147,57 @@ void start_task(void *pvParameters)
 //task2任务函数
 [[noreturn]] void task2_task(void *pvParameters)
 {
-    DEBUG<<"lwIP Initing...\r\n";
-    while(lwip_comm_init()!=0)
-    {
-        DEBUG<<"lwIP Init failed!\r\n";
-        delay_ms(1200);
-//        my_mem_init(SRAMIN);		//初始化内部内存池
-        DEBUG<<"Retrying...\r\n";
-    }
-    DEBUG<<"lwIP Init Successed\r\n";
-    //等待DHCP获取
-    DEBUG<<"DHCP IP configing...\r\n";
-    while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
-    {
-        lwip_periodic_handle();
-    }
 
-    uint8_t speed;
-    char buf[30];
+    std::string src_str = "Hello, World!";
+    std::string hash_hex_str;
+    picosha2::hash256_hex_string(src_str, hash_hex_str);
+    DEBUG << "SHA256(" << src_str << ") = " << hash_hex_str << "\r\n";
 
-    DEBUG<<DHCP_str[0]<<DHCP_str[1]<<DHCP_str[2]<<DHCP_str[3]<<DHCP_str[4];
 
-    DEBUG<<"lwIP DHCP Successed\r\n";
-    if(lwipdev.dhcpstatus==2)sprintf((char*)buf,"DHCP IP:%d.%d.%d.%d\r\n",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印动态IP地址
-    else sprintf((char*)buf,"Static IP:%d.%d.%d.%d\r\n",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印静态IP地址
-    DEBUG<<buf;
-    speed=LAN8720_Get_Speed();//得到网速
-    if(speed&1<<1)DEBUG<<"Ethernet Speed:100M\r\n";
-    else DEBUG<<"Ethernet Speed:10M\r\n";
+    std::string src_str1 = "Hello,";
+    std::string src_str2 = " World!";
+    std::vector<unsigned char> hash(picosha2::k_digest_size);
 
-//    DEBUG<<DNS_get_ip("www.baidu.com");    //DNS解析
-    MQTT::Subscribe request("v1/devices/me/rpc/request/+",0,1);
+    picosha2::hash256_one_by_one hasher;
+    hasher.process(src_str1.begin(), src_str1.end());
+    hasher.process(src_str2.begin(), src_str2.end());
+    hasher.finish();
+    hasher.get_hash_bytes(hash.begin(), hash.end());
+
+    std::string hash_hex_str2 = picosha2::bytes_to_hex_string(hash.begin(), hash.end());
+
+    DEBUG << "SHA256(Hello, World!) = " << hash_hex_str2 << "\r\n";
+
+    tb.intel_link();
+
     while(true)
     {
+//        string buf;
         uint8_t num=5;
         uint8_t times=0;
-//        {clientId:"daocaoren",userName:"daocaoren",password:"daocaoren"}
-        mqtt_demo.Connect(222,74,215,220,31883);
-        mqtt_demo.config((string)"daocaoren",(string)"daocaoren",(string)"daocaoren");
-        mqtt_demo.SubscribeTopic(request);
+
+        tb.Connect(222,74,215,220,31883);
+        tb.config("daocaoren","daocaoren","daocaoren");
+        tb.SubscribeTopic();
+
         DEBUG<<"linking...\r\n";
         mqtt_demo.Clear();
         while (true){
             delay_ms(100);
             times++;
-//            if(times>100){
-//                times=0;
-////                data_splice(buf,(char*)"风速",num++);
-//                //创建JSON对象
-//                cJSON *root = cJSON_CreateObject();
-//                //添加键值对
-//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("风速").data(),num++);
-//                //将JSON对象转化为字符串
-//                sprintf(buf,"%s",cJSON_Print(root));
-//                //删除JSON对象
-//                cJSON_Delete(root);
-//                if(num>30)num=5;
-//                DEBUG<<buf<<"\r\n";
-//                mqtt_demo.PublishData("v1/devices/me/telemetry",buf,0);
-//
-//            }
-
-
-
-            if(mqtt_demo.available()){                              //接收到数据
-                mqtt_demo.Message_analyze(mqtt_demo.GetRxbuf());//分析接收到的数据
-
-                if(mqtt_demo.check_topic(request)){
-                    cJSON *root = cJSON_Parse(mqtt_demo.getMsg().data());
-                    //检查json是否正确cJSON_GetErrorPtr
-                    if (root == nullptr) {
-                        DEBUG<<"Error before: "<<cJSON_GetErrorPtr()<<"\r\n";
-                        break;
-                    }
-                    cJSON *item = cJSON_GetObjectItem(root,"params");
-                    if(item!= nullptr) {
-                        if (item->valueint==1) {
-                            BEEP.set(ON);
-                        } else if (item->valueint==0) {
-                            BEEP.set(OFF);
-                        }
-                    }
-                    cJSON_Delete(item);
-                    cJSON_Delete(root);
-                }
+            if(times>100){
+                times=0;
+                tb.PublishData("风速",num++);
             }
 
-            if(!mqtt_demo.islink())
+
+            tb.Getdatacheck();
+
+
+            if(!mqtt_demo.islink()) {
+                mqtt_demo.Disconnect();
                 break;
+            }
         }
 
     }

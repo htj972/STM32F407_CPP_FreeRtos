@@ -1181,6 +1181,9 @@
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Kstring.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/ThingsBoard.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/mqtt_base.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -1197,6 +1200,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Kstring.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/ThingsBoard.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/mqtt_base.cpp">
@@ -1218,6 +1224,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/malloc.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/picosha2.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/sys.h">

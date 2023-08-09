@@ -10,6 +10,7 @@
 #include "sys.h"
 #include "string"
 
+
 class CRC32_MPEG2 {
 private:
     static uint8_t init_flag;

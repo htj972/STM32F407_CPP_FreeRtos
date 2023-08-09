@@ -101,6 +101,11 @@ public:
         this->print(Str);
         return *this;
     }
+    _USART_& operator<<(const char s)
+    {
+        this->print("%c", s);
+        return *this;
+    }
 
     _USART_& operator>>(string& Str)
     {

@@ -25,6 +25,79 @@ public:
         this->append(Str1);
         return *this;
     }
+    Kstring& operator<<(int integer)
+    {
+        this->append(std::to_string(integer));
+        return *this;
+    }
+    Kstring& operator<<(const char *s)
+    {
+        this->append(s);
+        return *this;
+    }
+    Kstring& operator<<(char s)
+    {
+        this->append(1,s);
+        return *this;
+    }
+    Kstring& operator<<(double s)
+    {
+        this->append(std::to_string(s));
+        return *this;
+    }
+    Kstring& operator=(const std::string& Str)
+    {
+        this->assign(Str);
+        return *this;
+    }
+    Kstring& operator=(const char *s)
+    {
+        this->assign(s);
+        return *this;
+    }
+    Kstring& operator=(char s)
+    {
+        this->assign(1,s);
+        return *this;
+    }
+    Kstring& operator=(int integer)
+    {
+        this->assign(std::to_string(integer));
+        return *this;
+    }
+    Kstring& operator=(double s)
+    {
+        this->assign(std::to_string(s));
+        return *this;
+    }
+    Kstring& operator+=(const std::string& Str)
+    {
+        this->append(Str);
+        return *this;
+    }
+    Kstring& operator+=(const char *s)
+    {
+        this->append(s);
+        return *this;
+    }
+    Kstring& operator+=(char s)
+    {
+        this->append(1,s);
+        return *this;
+    }
+
+    Kstring& operator+=(int integer)
+    {
+        this->append(std::to_string(integer));
+        return *this;
+    }
+    Kstring& operator+=(double s)
+    {
+        this->append(std::to_string(s));
+        return *this;
+    }
+
+
 };
 
 
