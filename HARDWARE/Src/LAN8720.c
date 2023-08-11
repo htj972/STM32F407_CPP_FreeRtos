@@ -260,3 +260,15 @@ void ETH_IRQHandler(void)
     ETH_DMAClearITPendingBit(ETH_DMA_IT_NIS);
 }
 
+uint16_t LAN8720_ReadPHYRegister(uint16_t PHYReg) {
+    return ETH_ReadPHYRegister(LAN8720_PHY_ADDRESS, PHYReg);
+}
+
+uint8_t CheckLinkStatus() {
+    uint16_t regval = LAN8720_ReadPHYRegister(PHY_REG_BSR);
+    if(regval & 0x0004) {
+        return 1;
+    } else {
+        return 0;
+    }
+}

@@ -39,7 +39,7 @@ void ThingsBoard::topic_config() {
     this->upgrade=MQTT::Subscribe("v1/devices/me/attributes/response/+");//获取升级信息
     this->updata=MQTT::Subscribe("v2/fw/response/+/chunk/+");//获取升级分包数据
 
-    this->response=MQTT::Publish("v1/devices/me/attributes/request/1");//发布主题 升级请求
+    this->response=MQTT::Publish("v1/devices/me/attributes/request/5");//发布主题 升级请求
     //{"sharedKeys": "fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title,fw_version"}//请求信息
     this->telemetry=MQTT::Publish("v1/devices/me/telemetry");//发布主题 发送数据
     this->getupdata=MQTT::Publish("v2/fw/request/1/chunk/");//发布主题 获取升级分包数据
@@ -54,7 +54,15 @@ bool ThingsBoard::config(const string& ClientID, const string& Username, const s
 }
 
 bool ThingsBoard::SubscribeTopic() {
-    return this->mqtt->SubscribeTopic(this->request);
+    //订阅数据获取
+    bool ret;
+    ret = this->mqtt->SubscribeTopic(this->upgrade);
+    //订阅更新信息
+    ret &= this->mqtt->SubscribeTopic(this->request);
+    //订阅更新分包数据
+    ret &= this->mqtt->SubscribeTopic(this->updata);
+    //返回订阅结果
+    return ret;
 }
 
 void ThingsBoard::PublishData(const string &message, double value) {
@@ -74,19 +82,77 @@ extern _OutPut_ BEEP;
 
 void ThingsBoard::Getdatacheck() {
     if(this->mqtt->available()){                              //接收到数据
-        this->mqtt->Message_analyze(this->mqtt->GetRxbuf());//分析接收到的数据
+        string sdata=this->mqtt->GetRxbuf();
+        *this->Debug<<sdata<<"\r\n";
+        this->mqtt->Message_analyze(sdata);//分析接收到的数据
 
         if(this->mqtt->check_topic(this->request)){
             cJSON *root = cJSON_Parse(this->mqtt->getMsg().data());
             //检查json是否正确cJSON_GetErrorPtr
             if(root!= nullptr){
-                cJSON *item = cJSON_GetObjectItem(root,"params");
-                if(item!= nullptr) {
-                    if (item->valueint==1) {
-                        BEEP.set(ON);
-                    } else if (item->valueint==0) {
-                        BEEP.set(OFF);
+                //"method":"setValue"
+                cJSON *method = cJSON_GetObjectItem(root,"method");
+                if(method!= nullptr) {
+                    if (std::string(method->valuestring) == "setValue") {
+                        cJSON *item = cJSON_GetObjectItem(root,"params");
+                        if(item!= nullptr) {
+                            if (item->valueint==1) {
+//                                BEEP.set(ON);
+                            } else if (item->valueint==0) {
+//                                BEEP.set(OFF);
+                            }
+                        }
+                        cJSON_Delete(item);
+                    } else if(std::string(method->valuestring) == "updateFirmware") {
+                        cJSON *item = cJSON_GetObjectItem(root,"params");
+                        if(item!= nullptr) {
+                            if (item->valueint==1) {
+                                this->updata_step=3;
+                            }
+                        }
                     }
+                }
+                cJSON_Delete(method);
+            }
+            cJSON_Delete(root);
+        } else if(this->mqtt->check_topic(this->upgrade)){
+            cJSON *root = cJSON_Parse(this->mqtt->getMsg().data());
+            //检查json是否正确cJSON_GetErrorPtr
+            if(root!= nullptr){
+                cJSON *item = cJSON_GetObjectItem(root,"sharedKeys");
+                if(item!= nullptr) {
+                    cJSON *fw_checksum = cJSON_GetObjectItem(item,"fw_checksum");
+                    if(fw_checksum!= nullptr) {
+                        this->SHA256=fw_checksum->valuestring;
+                    }
+                    cJSON_Delete(fw_checksum);
+                    cJSON *fw_size = cJSON_GetObjectItem(item,"fw_size");
+                    if(fw_size!= nullptr) {
+                        this->size=fw_size->valueint;
+                    }
+                    cJSON_Delete(fw_size);
+                    cJSON *fw_title = cJSON_GetObjectItem(item,"fw_title");
+                    if(fw_title!= nullptr) {
+                        this->title=fw_title->valuestring;
+                    }
+                    cJSON_Delete(fw_title);
+                    cJSON *fw_version = cJSON_GetObjectItem(item,"fw_version");
+                    if(fw_version!= nullptr) {
+                        this->version=fw_version->valuestring;
+                        this->updata_step=2;
+                    }
+                    cJSON_Delete(fw_version);
+                }
+                cJSON_Delete(item);
+            }
+            cJSON_Delete(root);
+        } else if(this->mqtt->check_topic(this->updata)){
+            cJSON *root = cJSON_Parse(this->mqtt->getMsg().data());
+            //检查json是否正确cJSON_GetErrorPtr
+            if(root!= nullptr){
+                cJSON *item = cJSON_GetObjectItem(root,"chunk");
+                if(item!= nullptr) {
+                    this->GetUpdata_pack(item->valueint,this->pack_size);
                 }
                 cJSON_Delete(item);
             }
@@ -96,10 +162,24 @@ void ThingsBoard::Getdatacheck() {
 }
 
 void ThingsBoard::GetVersion() {
-    this->mqtt->PublishData(this->response,
-                            R"({"sharedKeys": "fw_version,
-                                        fw_checksum_algorithm,fw_checksum,
-                                        fw_size,fw_title,fw_version"})");
+    if(this->updata_step==3) {
+        //{"sharedKeys": "fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title,fw_version"}
+        *this->Debug<<R"({"sharedKeys": "fw_version,)"
+                      R"(fw_checksum_algorithm,fw_checksum,)"
+                      R"(fw_size,fw_title,fw_version"})"<<"\r\n";
+        this->mqtt->PublishData(this->telemetry,
+                                R"({"sharedKeys":"fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title,fw_version"})");
+        this->updata_step = 1;
+    }
+        //打印结果
+    if(this->updata_step==2) {
+        *this->Debug << "SHA256:" << this->SHA256 << "\r\n";
+        *this->Debug << "size:" << this->size << "\r\n";
+        *this->Debug << "title:" << this->title << "\r\n";
+        *this->Debug << "version:" << this->version << "\r\n";
+        this->updata_step = 0;
+    }
+
 }
 
 void ThingsBoard::GetUpdata_pack(uint16_t pack, uint16_t len) {
@@ -114,6 +194,18 @@ void ThingsBoard::GetUpdata() {
         this->GetUpdata_pack(ii,this->pack_size);
         delay_ms(100);
     }
+}
+
+bool ThingsBoard::PHY_islink() {
+    return CheckLinkStatus()==LAN8720_LINKED;
+}
+
+bool ThingsBoard::intel_islink() {
+    return this->mqtt->islink();
+}
+
+void ThingsBoard::inter_unlink() {
+    return this->mqtt->Disconnect();
 }
 
 

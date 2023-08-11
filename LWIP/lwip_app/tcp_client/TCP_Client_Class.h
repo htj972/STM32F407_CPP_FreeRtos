@@ -58,8 +58,8 @@ protected:
     uint16_t tcp_port{};
     struct tcp_pcb *mpcb{};
 public:
-    explicit TCP_Client_Class(uint16_t port):tcp_port(port){};
-    TCP_Client_Class()=default;
+    explicit TCP_Client_Class(uint16_t port):tcp_port(port){this->tcp_Num=TCP_NUM;};
+    TCP_Client_Class(){this->tcp_Num=TCP_NUM;};
     ~TCP_Client_Class()=default;
     bool connect(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port) override;
     bool connect(ip_addr rmtipaddr,uint16_t port) override;
@@ -75,7 +75,7 @@ public:
     uint16_t available() const;
     void write(const char *str,uint16_t len);
     void write(uint8_t *str,uint16_t len);
-    void write(string String);
+    void write(const string& String);
     uint16_t print(const char *fmt, ...);
     uint16_t print(const string& String);
     uint16_t print(const char *s);

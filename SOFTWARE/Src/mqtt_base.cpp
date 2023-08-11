@@ -16,12 +16,14 @@ void mqtt_base::Message_analyze(const std::vector<unsigned char> &bytes) {
 }
 
 //ĞÅÏ¢·ÖÎö
-void mqtt_base::Message_analyze(const std::string &str) {
+bool mqtt_base::Message_analyze(const std::string &str) {
     if(isValidMQTT(str)){
         int topic_length = str[2] * 256 + str[3];
         topic = str.substr(4, topic_length);
         message = str.substr(4 + topic_length);
+        return true;
     }
+    return false;
 }
 
 bool mqtt_base::isValidMQTT(const std::string& str) {

@@ -56,10 +56,10 @@ public:
         this->upload_extern_fun(this);
     }
     void Callback(int  ,char** ) override{
-        this->change();
+//        this->change();
         lwip_setup();
     };
-}led(GPIOE5,TIM6,100);//运行指示灯定时器
+}led(GPIOE5,TIM6,1000);//运行指示灯定时器
 
 _OutPut_ run (GPIOE6),BEEP (GPIOE4,HIGH);//运行指示灯
 _OutPut_ OUT1(GPIOE0),OUT2(GPIOE1);            //输出
@@ -141,6 +141,14 @@ void start_task(void *pvParameters)
         run.change();       //运行指示灯
         OUT1.change();      //输出状态反转
         OUT2.change();      //输出状态反转
+        if(ThingsBoard::PHY_islink())
+        {
+            led.set(ON);
+        }
+        else
+        {
+            led.set(OFF);
+        }
     }
 }
 
@@ -148,25 +156,25 @@ void start_task(void *pvParameters)
 [[noreturn]] void task2_task(void *pvParameters)
 {
 
-    std::string src_str = "Hello, World!";
-    std::string hash_hex_str;
-    picosha2::hash256_hex_string(src_str, hash_hex_str);
-    DEBUG << "SHA256(" << src_str << ") = " << hash_hex_str << "\r\n";
-
-
-    std::string src_str1 = "Hello,";
-    std::string src_str2 = " World!";
-    std::vector<unsigned char> hash(picosha2::k_digest_size);
-
-    picosha2::hash256_one_by_one hasher;
-    hasher.process(src_str1.begin(), src_str1.end());
-    hasher.process(src_str2.begin(), src_str2.end());
-    hasher.finish();
-    hasher.get_hash_bytes(hash.begin(), hash.end());
-
-    std::string hash_hex_str2 = picosha2::bytes_to_hex_string(hash.begin(), hash.end());
-
-    DEBUG << "SHA256(Hello, World!) = " << hash_hex_str2 << "\r\n";
+//    std::string src_str = "Hello, World!";
+//    std::string hash_hex_str;
+//    picosha2::hash256_hex_string(src_str, hash_hex_str);
+//    DEBUG << "SHA256(" << src_str << ") = " << hash_hex_str << "\r\n";
+//
+//
+//    std::string src_str1 = "Hello,";
+//    std::string src_str2 = " World!";
+//    std::vector<unsigned char> hash(picosha2::k_digest_size);
+//
+//    picosha2::hash256_one_by_one hasher;
+//    hasher.process(src_str1.begin(), src_str1.end());
+//    hasher.process(src_str2.begin(), src_str2.end());
+//    hasher.finish();
+//    hasher.get_hash_bytes(hash.begin(), hash.end());
+//
+//    std::string hash_hex_str2 = picosha2::bytes_to_hex_string(hash.begin(), hash.end());
+//
+//    DEBUG << "SHA256(Hello, World!) = " << hash_hex_str2 << "\r\n";
 
     tb.intel_link();
 
@@ -175,27 +183,33 @@ void start_task(void *pvParameters)
 //        string buf;
         uint8_t num=5;
         uint8_t times=0;
-
+        while(!ThingsBoard::PHY_islink());
         tb.Connect(222,74,215,220,31883);
         tb.config("daocaoren","daocaoren","daocaoren");
-        tb.SubscribeTopic();
+        DEBUG<<"订阅结果"<<tb.SubscribeTopic()<<"\r\n";
 
         DEBUG<<"linking...\r\n";
         mqtt_demo.Clear();
+        tb.updata_step=3;
         while (true){
-            delay_ms(100);
-            times++;
-            if(times>100){
-                times=0;
-                tb.PublishData("风速",num++);
-            }
+//            delay_ms(100);
+//            times++;
+//            if(times>100){
+//                times=0;
+//                tb.PublishData("风速",num++);
+//            }
 
 
             tb.Getdatacheck();
+            tb.GetVersion();
 
 
-            if(!mqtt_demo.islink()) {
-                mqtt_demo.Disconnect();
+
+            if(!tb.intel_islink()) {
+                tb.inter_unlink();
+                break;
+            }
+            if(!ThingsBoard::PHY_islink()){
                 break;
             }
         }

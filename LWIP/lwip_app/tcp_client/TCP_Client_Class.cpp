@@ -39,7 +39,7 @@ err_t TCP_Client_Class::connected(void *arg, struct tcp_pcb *tpcb, err_t err)
             tcp_err(tpcb,error); 	//初始化tcp_err()回调函数
             tcp_sent(tpcb,sent);		//初始化LwIP的tcp_sent回调功能
             tcp_poll(tpcb,poll,1); 	//初始化LwIP的tcp_poll回调功能
-            link_flag[ii]|=1<<5; 				//标记连接到服务器了
+            link_flag[ii]|=1 << 5; 				//标记连接到服务器了
             err=ERR_OK;
         }else
         {
@@ -83,7 +83,7 @@ err_t TCP_Client_Class::recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
             recvbuf[ii].append(reinterpret_cast<char *>(q->payload),q->len);
         }
         extern_upset(ii);
-        link_flag[ii]|=1<<6;		//标记接收到数据了
+        link_flag[ii]|=1 << 6;		//标记接收到数据了
         tcp_recved(tpcb,p->tot_len);//用于获取接收数据,通知LWIP可以获取更多数据
         pbuf_free(p);  	//释放内存
         ret_err=ERR_OK;
@@ -99,9 +99,19 @@ err_t TCP_Client_Class::recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 //lwIP tcp_err函数的回调函数
 void TCP_Client_Class::error(void *arg, err_t err)
 {
-    //标记断开连接
-    link_flag[0]&=~(1<<5);
-    //这里不做任何处理
+    //判断是那个连接出错了
+    struct tcp_client_struct *es;//定义一个结构体指针
+    es=(struct tcp_client_struct*)arg;//获取连接的结构体
+    if(es!=nullptr)  //连接处于空闲可以发送数据
+    {
+        uint8_t ii;
+        for (ii=0;ii<TCP_NUM;ii++)
+        {
+            if(es->pcb==tcppcb[ii])break;
+        }
+        if(ii>=TCP_NUM)return;//没有找到对应的TCP连接,直接返回
+        link_flag[ii]&=~(1 << 5);
+    }
 }
 //lwIP tcp_poll的回调函数
 err_t TCP_Client_Class::poll(void *arg, struct tcp_pcb *tpcb)
@@ -117,13 +127,13 @@ err_t TCP_Client_Class::poll(void *arg, struct tcp_pcb *tpcb)
             if(tpcb==tcppcb[ii])break;
         }
         if(ii>=TCP_NUM)return ERR_ARG;//没有找到对应的UDP连接,直接返回
-        if(link_flag[ii]&(1<<7))	//判断是否有数据要发送
+        if(link_flag[ii]&(1 << 7))	//判断是否有数据要发送
         {
             es->p=pbuf_alloc(PBUF_TRANSPORT, sendbuf[ii].length(),PBUF_POOL);	//申请内存
             //tcp_client_data[]中的数据拷贝到es->p_tx中
             pbuf_take(es->p,sendbuf[ii].data(),sendbuf[ii].length());
             send(tpcb,es);//将tcp_client_sentbuf[]里面复制给pbuf的数据发送出去
-            link_flag[ii]&=~(1<<7);	//清除数据发送标志
+            link_flag[ii]&=~(1 << 7);	//清除数据发送标志
             if(es->p)pbuf_free(es->p);	//释放内存
         }else if(es->state==ES_TCPCLIENT_CLOSING)
         {
@@ -182,7 +192,7 @@ void TCP_Client_Class::connection_close(struct tcp_pcb *tpcb, struct tcp_client_
     }
     if(ii>=TCP_NUM)return;
     tcppcb[ii] = nullptr;
-    link_flag[ii]&=~(1<<5);//标记连接断开了
+    link_flag[ii]&=~(1 << 5);//标记连接断开了
 }
 
 bool TCP_Client_Class::connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4,uint16_t port) {
@@ -193,44 +203,52 @@ bool TCP_Client_Class::connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip
 
 bool TCP_Client_Class::connect(ip_addr rmtipaddr,uint16_t port) {
     uint8_t ret;
-    uint8_t tcp_link_num = TCP_NUM;
-    for (uint8_t i = 0; i < TCP_NUM; i++) {
-        if (tcppcb[i] == nullptr) {
-            tcp_link_num = i;
-            break;
+    //这个连接已经存在了
+    if(this->tcp_Num == TCP_NUM){
+        uint8_t tcp_link_num = TCP_NUM;
+        for (uint8_t i = 0; i < TCP_NUM; i++) {
+            if (tcppcb[i] == nullptr) {
+                tcp_link_num = i;
+                break;
+            }
         }
-    }
-    if(tcp_link_num<TCP_NUM) {
-        this->mpcb = tcp_new();
-        tcppcb[tcp_link_num] = this->mpcb;
+        if(tcp_link_num<TCP_NUM) {
+            this->mpcb = tcp_new();
+            tcppcb[tcp_link_num] = this->mpcb;
+        }
+        this->tcp_Num = tcp_link_num;
     }
     this->tcp_port=port;
-    this->tcp_Num = tcp_link_num;
-    ret=tcp_connect(tcppcb[tcp_link_num],&rmtipaddr,tcp_port,connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
+    ret=tcp_connect(tcppcb[this->tcp_Num],&rmtipaddr,tcp_port,connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
     if(ret==ERR_OK)return true;
     else return false;
 }
 
 bool TCP_Client_Class::connect(ip_addr rmtipaddr) {
     uint8_t ret;
-    uint8_t tcp_link_num = TCP_NUM;
-    for (uint8_t i = 0; i < TCP_NUM; i++) {
-        if (tcppcb[i] == nullptr) {
-            tcp_link_num = i;
-            break;
+    if(this->tcp_Num == TCP_NUM) {
+        if (this->mpcb == nullptr) {
+            uint8_t tcp_link_num = TCP_NUM;
+            for (uint8_t i = 0; i < TCP_NUM; i++) {
+                if (tcppcb[i] == nullptr) {
+                    tcp_link_num = i;
+                    break;
+                }
+            }
+            if (tcp_link_num < TCP_NUM) {
+                this->mpcb = tcp_new();
+                tcppcb[tcp_link_num] = this->mpcb;
+            }
+            this->tcp_Num = tcp_link_num;
         }
     }
-    if(tcp_link_num<TCP_NUM) {
-        this->mpcb = tcp_new();
-        tcppcb[tcp_link_num] = this->mpcb;
-    }
-    this->tcp_Num = tcp_link_num;
-    ret=tcp_connect(tcppcb[tcp_link_num],&rmtipaddr,tcp_port,connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
+    ret=tcp_connect(tcppcb[this->tcp_Num],&rmtipaddr,tcp_port,connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
     if(ret==ERR_OK)return true;
     else return false;
 }
 
 void TCP_Client_Class::close() {
+    this->tcp_Num=TCP_NUM;
     connection_close(this->mpcb,nullptr);
 }
 
@@ -245,7 +263,13 @@ bool TCP_Client_Class::upset() const {
 }
 
 bool TCP_Client_Class::islink() {
-    if (link_flag[this->tcp_Num] & 1 << 5)  //是否连接成功?
+    //判断是否断开
+    if(this->mpcb->state==CLOSED)
+    {
+        link_flag[this->tcp_Num]&=~(1 << 5);//标记连接断开了
+        return false;
+    }
+    if (link_flag[this->tcp_Num] & (1 << 5))  //是否连接成功?
         return true;
     else
         return false;
@@ -254,7 +278,7 @@ bool TCP_Client_Class::islink() {
 void TCP_Client_Class::send_data(char *data,uint16_t len) {
     sendbuf[this->tcp_Num].clear();
     sendbuf[this->tcp_Num].append(data,len);
-    link_flag[this->tcp_Num]|=1<<7;		//标记有数据要发送
+    link_flag[this->tcp_Num]|=1 <<  7;		//标记有数据要发送
 }
 
 uint16_t TCP_Client_Class::available() const {
@@ -269,7 +293,7 @@ void TCP_Client_Class::write(uint8_t *str, uint16_t len) {
     this->write((char*)str,len);
 }
 
-void TCP_Client_Class::write(string String) {
+void TCP_Client_Class::write(const string& String) {
     const char* p=String.c_str();
     this->write(p,String.length());
 }

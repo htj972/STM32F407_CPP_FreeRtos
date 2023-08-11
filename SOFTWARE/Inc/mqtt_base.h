@@ -70,7 +70,7 @@ public:
         }
     };
     void Message_analyze(const std::vector<unsigned char>& bytes);
-    void Message_analyze(const std::string& str);
+    bool Message_analyze(const std::string& str);
     static bool isValidMQTT(const std::string& str);
     static bool Wildcard_recognition(const char *str);
     bool Wildcard_recognition(const std::string& str);
