@@ -56,11 +56,11 @@ bool ThingsBoard::config(const string& ClientID, const string& Username, const s
 bool ThingsBoard::SubscribeTopic() {
     //订阅数据获取
     bool ret;
-    ret = this->mqtt->SubscribeTopic(this->upgrade);
+    ret = this->mqtt->SubscribeTopic(this->request);
     //订阅更新信息
-    ret &= this->mqtt->SubscribeTopic(this->request);
-    //订阅更新分包数据
-    ret &= this->mqtt->SubscribeTopic(this->updata);
+//    ret &= this->mqtt->SubscribeTopic(this->upgrade);
+//    //订阅更新分包数据
+//    ret &= this->mqtt->SubscribeTopic(this->updata);
     //返回订阅结果
     return ret;
 }
@@ -78,11 +78,12 @@ void ThingsBoard::PublishData(const string &message, double value) {
     this->mqtt->PublishData(telemetry,buf);
 }
 //BEEP
-extern _OutPut_ BEEP;
+extern _OutPut_ OUT1,OUT2;
 
 void ThingsBoard::Getdatacheck() {
     if(this->mqtt->available()){                              //接收到数据
         string sdata=this->mqtt->GetRxbuf();
+//        if(sdata.empty())return;
         *this->Debug<<sdata<<"\r\n";
         this->mqtt->Message_analyze(sdata);//分析接收到的数据
 
@@ -93,13 +94,23 @@ void ThingsBoard::Getdatacheck() {
                 //"method":"setValue"
                 cJSON *method = cJSON_GetObjectItem(root,"method");
                 if(method!= nullptr) {
-                    if (std::string(method->valuestring) == "setValue") {
+                    if (std::string(method->valuestring) == "setinsect") {
                         cJSON *item = cJSON_GetObjectItem(root,"params");
                         if(item!= nullptr) {
                             if (item->valueint==1) {
-//                                BEEP.set(ON);
+                                OUT1.set(ON);
                             } else if (item->valueint==0) {
-//                                BEEP.set(OFF);
+                                OUT1.set(OFF);
+                            }
+                        }
+                        cJSON_Delete(item);
+                    } else if(std::string(method->valuestring) == "setbird_repellency") {
+                        cJSON *item = cJSON_GetObjectItem(root,"params");
+                        if(item!= nullptr) {
+                            if (item->valueint==1) {
+                                OUT2.set(ON);
+                            } else if (item->valueint==0) {
+                                OUT2.set(OFF);
                             }
                         }
                         cJSON_Delete(item);
@@ -110,54 +121,56 @@ void ThingsBoard::Getdatacheck() {
                                 this->updata_step=3;
                             }
                         }
+                        cJSON_Delete(item);
                     }
                 }
                 cJSON_Delete(method);
             }
             cJSON_Delete(root);
-        } else if(this->mqtt->check_topic(this->upgrade)){
-            cJSON *root = cJSON_Parse(this->mqtt->getMsg().data());
-            //检查json是否正确cJSON_GetErrorPtr
-            if(root!= nullptr){
-                cJSON *item = cJSON_GetObjectItem(root,"sharedKeys");
-                if(item!= nullptr) {
-                    cJSON *fw_checksum = cJSON_GetObjectItem(item,"fw_checksum");
-                    if(fw_checksum!= nullptr) {
-                        this->SHA256=fw_checksum->valuestring;
-                    }
-                    cJSON_Delete(fw_checksum);
-                    cJSON *fw_size = cJSON_GetObjectItem(item,"fw_size");
-                    if(fw_size!= nullptr) {
-                        this->size=fw_size->valueint;
-                    }
-                    cJSON_Delete(fw_size);
-                    cJSON *fw_title = cJSON_GetObjectItem(item,"fw_title");
-                    if(fw_title!= nullptr) {
-                        this->title=fw_title->valuestring;
-                    }
-                    cJSON_Delete(fw_title);
-                    cJSON *fw_version = cJSON_GetObjectItem(item,"fw_version");
-                    if(fw_version!= nullptr) {
-                        this->version=fw_version->valuestring;
-                        this->updata_step=2;
-                    }
-                    cJSON_Delete(fw_version);
-                }
-                cJSON_Delete(item);
-            }
-            cJSON_Delete(root);
-        } else if(this->mqtt->check_topic(this->updata)){
-            cJSON *root = cJSON_Parse(this->mqtt->getMsg().data());
-            //检查json是否正确cJSON_GetErrorPtr
-            if(root!= nullptr){
-                cJSON *item = cJSON_GetObjectItem(root,"chunk");
-                if(item!= nullptr) {
-                    this->GetUpdata_pack(item->valueint,this->pack_size);
-                }
-                cJSON_Delete(item);
-            }
-            cJSON_Delete(root);
         }
+//        else if(this->mqtt->check_topic(this->upgrade)){
+//            cJSON *root = cJSON_Parse(this->mqtt->getMsg().data());
+//            //检查json是否正确cJSON_GetErrorPtr
+//            if(root!= nullptr){
+//                cJSON *item = cJSON_GetObjectItem(root,"sharedKeys");
+//                if(item!= nullptr) {
+//                    cJSON *fw_checksum = cJSON_GetObjectItem(item,"fw_checksum");
+//                    if(fw_checksum!= nullptr) {
+//                        this->SHA256=fw_checksum->valuestring;
+//                    }
+//                    cJSON_Delete(fw_checksum);
+//                    cJSON *fw_size = cJSON_GetObjectItem(item,"fw_size");
+//                    if(fw_size!= nullptr) {
+//                        this->size=fw_size->valueint;
+//                    }
+//                    cJSON_Delete(fw_size);
+//                    cJSON *fw_title = cJSON_GetObjectItem(item,"fw_title");
+//                    if(fw_title!= nullptr) {
+//                        this->title=fw_title->valuestring;
+//                    }
+//                    cJSON_Delete(fw_title);
+//                    cJSON *fw_version = cJSON_GetObjectItem(item,"fw_version");
+//                    if(fw_version!= nullptr) {
+//                        this->version=fw_version->valuestring;
+//                        this->updata_step=2;
+//                    }
+//                    cJSON_Delete(fw_version);
+//                }
+//                cJSON_Delete(item);
+//            }
+//            cJSON_Delete(root);
+//        } else if(this->mqtt->check_topic(this->updata)){
+//            cJSON *root = cJSON_Parse(this->mqtt->getMsg().data());
+//            //检查json是否正确cJSON_GetErrorPtr
+//            if(root!= nullptr){
+//                cJSON *item = cJSON_GetObjectItem(root,"chunk");
+//                if(item!= nullptr) {
+//                    this->GetUpdata_pack(item->valueint,this->pack_size);
+//                }
+//                cJSON_Delete(item);
+//            }
+//            cJSON_Delete(root);
+//        }
     }
 }
 

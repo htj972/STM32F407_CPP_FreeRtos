@@ -62,14 +62,14 @@ public:
 }led(GPIOE5,TIM6,1000);//运行指示灯定时器
 
 _OutPut_ run (GPIOE6),BEEP (GPIOE4,HIGH);//运行指示灯
-_OutPut_ OUT1(GPIOE0),OUT2(GPIOE1);            //输出
+_OutPut_ OUT1(GPIOE0,HIGH),OUT2(GPIOE1,HIGH);            //输出
 
 //Timer_queue tIMS(TIM7,50000);                 //定时器队列
 
 _USART_ DEBUG(USART1);                          //调试串口
 _USART_ Lora(USART6);                           //Lora串口
 
-Communication SUN(USART3,GPIOB15,TIM7,100);//modbus通信
+Communication MB(USART3,GPIOB15,TIM7,100);//modbus通信
 
 TCP_Client_Class  tcp_mq;//TCP通信
 MQTT    mqtt_demo(&tcp_mq);
@@ -85,7 +85,7 @@ int main()
 //    BEEP.flicker(100,250,2);//蜂鸣器提示
 
     delay_ms(1000);//延时1s
-    SUN.RS485::config(GPIOD8,GPIOD9);//配置RS485 GPIO引脚
+    MB.RS485::config(GPIOD8,GPIOD9);//配置RS485 GPIO引脚
 
 //    Kstring asdsad="风速";
 ////    asdsad.append("风速");
@@ -139,8 +139,74 @@ void start_task(void *pvParameters)
     {
         vTaskDelay(500/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         run.change();       //运行指示灯
-        OUT1.change();      //输出状态反转
-        OUT2.change();      //输出状态反转
+//        OUT1.change();      //输出状态反转
+//        OUT2.change();      //输出状态反转
+        {
+            MB.set_id(0x0a);//五合一传感器
+            if(MB.modbus_03_send(0,5)==modbus::result::modbus_success)
+            {
+                uint16_t *data=MB.data_BUS.to_u16;
+                if(*data<0x8000){
+                    MB.env.temp=((float)*data/10.0f);
+                } else{
+                    MB.env.temp=((float)(0xffff-*data+1))/10.0f;
+                }
+                data++;
+                MB.env.humi=((float)*data/10.0f);
+                data++;
+                MB.env.press=((float)*data/10.0f);
+                data++;
+                MB.env.co2=((float)*data);
+                data++;
+                MB.env.light=((float)*data*10);
+            }
+            MB.set_id(0x0b);//PM传感器
+            if(MB.modbus_03_send(0,4)==modbus::result::modbus_success)
+            {
+                uint16_t *data=MB.data_BUS.to_u16;
+                MB.env.pm1=((float)*data);
+                data++;
+                MB.env.pm10=((float)*data);
+                data++;
+                MB.env.pm25=((float)*data);
+                data++;
+                MB.env.pm30=((float)*data);
+            }
+            MB.set_id(0x0c);//风向传感器
+            if(MB.modbus_03_send(0,1)==modbus::result::modbus_success)
+            {
+                uint16_t *data=MB.data_BUS.to_u16;
+                MB.env.wind_dir=((float)*data);
+            }
+            MB.set_id(0x0d);//风速传感器
+            if(MB.modbus_03_send(0,1)==modbus::result::modbus_success)
+            {
+                uint16_t *data=MB.data_BUS.to_u16;
+                MB.env.wind_speed=((float)*data/100.0f);
+            }
+            MB.set_id(0x0e);//总辐射传感器
+            if(MB.modbus_03_send(0,1)==modbus::result::modbus_success)
+            {
+                uint16_t *data=MB.data_BUS.to_u16;
+                MB.env.solar_rad=((float)*data);
+            }
+            MB.set_id(0x0f);//土壤传感器
+            if(MB.modbus_03_send(0,4)==modbus::result::modbus_success)
+            {
+                uint16_t *data=MB.data_BUS.to_u16;
+                if(*data<0x8000){
+                    MB.env.soil_temp=((float)*data/10.0f);
+                } else{
+                    MB.env.soil_temp=((float)(0xffff-*data+1))/10.0f;
+                }
+                data++;
+                MB.env.soil_humi=((float)*data/10.0f);
+                data++;
+                MB.env.soil_ec=((float)*data/100.0f);
+                data++;
+                MB.env.soil_salt=((float)*data);
+            }
+        }
         if(ThingsBoard::PHY_islink())
         {
             led.set(ON);
@@ -180,8 +246,6 @@ void start_task(void *pvParameters)
 
     while(true)
     {
-//        string buf;
-        uint8_t num=5;
         uint8_t times=0;
         while(!ThingsBoard::PHY_islink());
         tb.Connect(222,74,215,220,31883);
@@ -201,7 +265,7 @@ void start_task(void *pvParameters)
 
 
             tb.Getdatacheck();
-            tb.GetVersion();
+//            tb.GetVersion();
 
 
 
