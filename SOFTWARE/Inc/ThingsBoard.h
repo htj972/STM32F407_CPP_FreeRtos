@@ -20,6 +20,7 @@ private:
     uint16_t size{};
     string title;
     string version;
+    string jsonmessage;
     MQTT::Subscribe request;//获取指令
     MQTT::Subscribe upgrade;//获取升级信息
     MQTT::Subscribe updata;//获取升级分包数据
@@ -40,6 +41,7 @@ public:
     bool config(const string& ClientID,const string& Username,const string& Password);
     bool SubscribeTopic();
     void PublishData(const string& message,double value);
+    void PublishData(const string& message);
     void Getdatacheck();
     void GetVersion();
     void GetUpdata_pack(uint16_t pack,uint16_t len);

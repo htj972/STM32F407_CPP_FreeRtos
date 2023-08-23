@@ -77,6 +77,10 @@ void ThingsBoard::PublishData(const string &message, double value) {
     *this->Debug<<buf<<"\r\n";
     this->mqtt->PublishData(telemetry,buf);
 }
+
+void ThingsBoard::PublishData(const string& message) {
+    this->mqtt->PublishData(telemetry,message);
+}
 //BEEP
 extern _OutPut_ OUT1,OUT2;
 
@@ -86,6 +90,8 @@ void ThingsBoard::Getdatacheck() {
 //        if(sdata.empty())return;
         *this->Debug<<sdata<<"\r\n";
         this->mqtt->Message_analyze(sdata);//分析接收到的数据
+
+//        this->mqtt->Message_analyze(this->mqtt->GetRxbuf());//分析接收到的数据
 
         if(this->mqtt->check_topic(this->request)){
             cJSON *root = cJSON_Parse(this->mqtt->getMsg().data());
@@ -220,5 +226,7 @@ bool ThingsBoard::intel_islink() {
 void ThingsBoard::inter_unlink() {
     return this->mqtt->Disconnect();
 }
+
+
 
 

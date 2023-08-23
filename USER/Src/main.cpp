@@ -22,29 +22,29 @@
 //任务优先级
 #define START_TASK_PRIO		1
 //任务堆栈大小
-#define START_STK_SIZE 		128
+#define START_STK_SIZE 		64
 //任务句柄
 TaskHandle_t StartTask_Handler;
 //任务函数
 void start_task(void *pvParameters);
 
 //任务优先级
-#define TASK1_TASK_PRIO		2
+#define DATA_TASK_PRIO		2
 //任务堆栈大小
-#define TASK1_STK_SIZE 		512
+#define DATA_STK_SIZE 		128
 //任务句柄
-TaskHandle_t Task1Task_Handler;
+TaskHandle_t DATATask_Handler;
 //任务函数
-[[noreturn]] void task1_task(void *pvParameters);
+[[noreturn]] void DATA_task(void *pvParameters);
 
 //任务优先级
-#define TASK2_TASK_PRIO		2
+#define INTER_TASK_PRIO		2
 //任务堆栈大小
-#define TASK2_STK_SIZE 		512*2
+#define INTER_STK_SIZE 		(512*3)
 //任务句柄
-TaskHandle_t Task2Task_Handler;
+TaskHandle_t INTERTask_Handler;
 //任务函数
-[[noreturn]] void task2_task(void *pvParameters);
+[[noreturn]] void INTER_task(void *pvParameters);
 
 extern u32 lwip_localtime;		//lwip本地时间计数器,单位:ms
 //运行指示灯
@@ -67,7 +67,7 @@ _OutPut_ OUT1(GPIOE0,HIGH),OUT2(GPIOE1,HIGH);            //输出
 //Timer_queue tIMS(TIM7,50000);                 //定时器队列
 
 _USART_ DEBUG(USART1);                          //调试串口
-_USART_ Lora(USART6);                           //Lora串口
+//_USART_ Lora(USART6);                           //Lora串口
 
 Communication MB(USART3,GPIOB15,TIM7,100);//modbus通信
 
@@ -82,18 +82,10 @@ int main()
 
     my_mem_init(SRAMIN);		//初始化内部内存池
 
-//    BEEP.flicker(100,250,2);//蜂鸣器提示
+    BEEP.flicker(100,250,2);//蜂鸣器提示
 
     delay_ms(1000);//延时1s
     MB.RS485::config(GPIOD8,GPIOD9);//配置RS485 GPIO引脚
-
-//    Kstring asdsad="风速";
-////    asdsad.append("风速");
-//    string ret=asdsad.GBK_to_utf8();
-//    //16进制打印RET
-//    for (char i : ret) {
-//        DEBUG.print("0x%02X ",i);
-//    }
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -110,19 +102,19 @@ void start_task(void *pvParameters)
 {
     taskENTER_CRITICAL();           //进入临界区
     //创建TASK1任务
-    xTaskCreate((TaskFunction_t )task1_task,
-                (const char*    )"task1_task",
-                (uint16_t       )TASK1_STK_SIZE,
+    xTaskCreate((TaskFunction_t )DATA_task,
+                (const char*    )"DATA_task",
+                (uint16_t       )DATA_STK_SIZE,
                 (void*          )nullptr,
-                (UBaseType_t    )TASK1_TASK_PRIO,
-                (TaskHandle_t*  )&Task1Task_Handler);
+                (UBaseType_t    )DATA_TASK_PRIO,
+                (TaskHandle_t*  )&DATATask_Handler);
     //创建TASK2任务
-    xTaskCreate((TaskFunction_t )task2_task,
-                (const char*    )"task2_task",
-                (uint16_t       )TASK2_STK_SIZE,
+    xTaskCreate((TaskFunction_t )INTER_task,
+                (const char*    )"INTER_task",
+                (uint16_t       )INTER_STK_SIZE,
                 (void*          )nullptr,
-                (UBaseType_t    )TASK2_TASK_PRIO,
-                (TaskHandle_t*  )&Task2Task_Handler);
+                (UBaseType_t    )INTER_TASK_PRIO,
+                (TaskHandle_t*  )&INTERTask_Handler);
     vTaskDelete(StartTask_Handler); //删除开始任务
     taskEXIT_CRITICAL();            //退出临界区
 }
@@ -132,12 +124,12 @@ void start_task(void *pvParameters)
 
 
 //task1任务函数
-[[noreturn]] void task1_task(void *pvParameters)//alignas(8)
+[[noreturn]] void DATA_task(void *pvParameters)//alignas(8)
 {
     string str;
     while(true)
     {
-        vTaskDelay(500/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+        vTaskDelay(100/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         run.change();       //运行指示灯
 //        OUT1.change();      //输出状态反转
 //        OUT2.change();      //输出状态反转
@@ -219,7 +211,7 @@ void start_task(void *pvParameters)
 }
 
 //task2任务函数
-[[noreturn]] void task2_task(void *pvParameters)
+[[noreturn]] void INTER_task(void *pvParameters)
 {
 
 //    std::string src_str = "Hello, World!";
@@ -249,26 +241,14 @@ void start_task(void *pvParameters)
         uint8_t times=0;
         while(!ThingsBoard::PHY_islink());
         tb.Connect(222,74,215,220,31883);
-        tb.config("daocaoren","daocaoren","daocaoren");
+        tb.config("daocaoren","0001","0001");
         DEBUG<<"订阅结果"<<tb.SubscribeTopic()<<"\r\n";
 
         DEBUG<<"linking...\r\n";
         mqtt_demo.Clear();
         tb.updata_step=3;
         while (true){
-//            delay_ms(100);
-//            times++;
-//            if(times>100){
-//                times=0;
-//                tb.PublishData("风速",num++);
-//            }
-
-
-            tb.Getdatacheck();
-//            tb.GetVersion();
-
-
-
+            delay_ms(100);
             if(!tb.intel_islink()) {
                 tb.inter_unlink();
                 break;
@@ -276,6 +256,36 @@ void start_task(void *pvParameters)
             if(!ThingsBoard::PHY_islink()){
                 break;
             }
+            tb.Getdatacheck();
+//            tb.GetVersion();
+//            times++;
+//            if(times>100){
+//                times=0;
+////                tb.PublishData("风速",num++);
+//                cJSON *root = cJSON_CreateObject();
+//                //添加键值对
+//                cJSON_AddNumberToObject(root,"温度",MB.env.temp);
+//                cJSON_AddNumberToObject(root,"湿度",MB.env.humi);
+//                cJSON_AddNumberToObject(root,"气压",MB.env.press);
+//                cJSON_AddNumberToObject(root,"二氧化碳",MB.env.co2);
+//                cJSON_AddNumberToObject(root,"光照",MB.env.light);
+//                cJSON_AddNumberToObject(root,"PM1",MB.env.pm1);
+//                cJSON_AddNumberToObject(root,"PM10",MB.env.pm10);
+//                cJSON_AddNumberToObject(root,"PM2.5",MB.env.pm25);
+//                cJSON_AddNumberToObject(root,"PM3.0",MB.env.pm30);
+//                cJSON_AddNumberToObject(root,"风向",MB.env.wind_dir);
+//                cJSON_AddNumberToObject(root,"风速",MB.env.wind_speed);
+//                cJSON_AddNumberToObject(root,"总辐射",MB.env.solar_rad);
+//                cJSON_AddNumberToObject(root,"土壤温度",MB.env.soil_temp);
+//                cJSON_AddNumberToObject(root,"土壤湿度",MB.env.soil_humi);
+//                cJSON_AddNumberToObject(root,"土壤电导率",MB.env.soil_ec);
+//                cJSON_AddNumberToObject(root,"土壤盐分",MB.env.soil_salt);
+//                //将JSON对象转化为字符串
+//                string buf=cJSON_Print(root);
+//                //删除JSON对象
+//                cJSON_Delete(root);
+//                tb.PublishData(buf);
+//            }
         }
 
     }
