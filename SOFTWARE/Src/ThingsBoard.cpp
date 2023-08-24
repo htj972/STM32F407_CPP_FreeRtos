@@ -39,7 +39,7 @@ void ThingsBoard::topic_config() {
     this->upgrade=MQTT::Subscribe("v1/devices/me/attributes/response/+");//获取升级信息
     this->updata=MQTT::Subscribe("v2/fw/response/+/chunk/+");//获取升级分包数据
 
-    this->response=MQTT::Publish("v1/devices/me/attributes/request/5");//发布主题 升级请求
+    this->response=MQTT::Publish("v1/devices/me/attributes/request/1");//发布主题 升级请求
     //{"sharedKeys": "fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title,fw_version"}//请求信息
     this->telemetry=MQTT::Publish("v1/devices/me/telemetry");//发布主题 发送数据
     this->getupdata=MQTT::Publish("v2/fw/request/1/chunk/");//发布主题 获取升级分包数据
@@ -79,6 +79,7 @@ void ThingsBoard::PublishData(const string &message, double value) {
 }
 
 void ThingsBoard::PublishData(const string& message) {
+    *this->Debug<<message<<"\r\n";
     this->mqtt->PublishData(telemetry,message);
 }
 //BEEP

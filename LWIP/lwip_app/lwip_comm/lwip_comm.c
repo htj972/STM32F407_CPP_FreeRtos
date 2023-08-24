@@ -35,7 +35,7 @@ uint8_t lwip_comm_mem_malloc(void)
 	mempsize=memp_get_memorysize();			//得到memp_memory数组大小
 	memp_memory=mymalloc(SRAMIN,mempsize);	//为memp_memory申请内存
 	ramheapsize=LWIP_MEM_ALIGN_SIZE(MEM_SIZE)+2*LWIP_MEM_ALIGN_SIZE(4*3)+MEM_ALIGNMENT;//得到ram heap大小
-	ram_heap=mymalloc(SRAMIN,ramheapsize);	//为ram_heap申请内存 
+	ram_heap=mymalloc(SRAMIN,ramheapsize);	//为ram_heap申请内存
 	if(!memp_memory||!ram_heap)//有申请失败的
 	{
 		lwip_comm_mem_free();

@@ -9,7 +9,6 @@
 #include "malloc.h"
 #include "lwip_comm/lwip_comm.h"
 #include "Communication.h"
-#include "udp/UDP_Class.h"
 #include "cJSON.h"
 #include "tcp_client/TCP_Client_Class.h"
 #include "MQTT/MQTT.h"
@@ -81,6 +80,7 @@ int main()
     delay_init(168);	//初始化延时函数
 
     my_mem_init(SRAMIN);		//初始化内部内存池
+    my_mem_init(SRAMCCM);		//初始化内部内存池
 
     BEEP.flicker(100,250,2);//蜂鸣器提示
 
@@ -240,8 +240,9 @@ void start_task(void *pvParameters)
     {
         uint8_t times=0;
         while(!ThingsBoard::PHY_islink());
+//        tb.Connect(222,74,215,220,31883);
         tb.Connect(222,74,215,220,31883);
-        tb.config("daocaoren","0001","0001");
+        tb.config("daocaoren","daocaoren","daocaoren");
         DEBUG<<"订阅结果"<<tb.SubscribeTopic()<<"\r\n";
 
         DEBUG<<"linking...\r\n";
@@ -258,34 +259,53 @@ void start_task(void *pvParameters)
             }
             tb.Getdatacheck();
 //            tb.GetVersion();
-//            times++;
-//            if(times>100){
-//                times=0;
-////                tb.PublishData("风速",num++);
+            times++;
+            if(times>100){
+                times=0;
 //                cJSON *root = cJSON_CreateObject();
-//                //添加键值对
-//                cJSON_AddNumberToObject(root,"温度",MB.env.temp);
-//                cJSON_AddNumberToObject(root,"湿度",MB.env.humi);
-//                cJSON_AddNumberToObject(root,"气压",MB.env.press);
-//                cJSON_AddNumberToObject(root,"二氧化碳",MB.env.co2);
-//                cJSON_AddNumberToObject(root,"光照",MB.env.light);
+                Kstring jsdata;
+                jsdata<<"{";
+                jsdata<<"\""<<Kstring::GBK_to_utf8("温度")<<"\""<<":"<<MB.env.temp<<",";
+//                jsdata<<"\""<<Kstring::GBK_to_utf8("湿度")<<"\""<<":"<<MB.env.humi<<",";
+//                jsdata<<"\""<<Kstring::GBK_to_utf8("气压")<<"\""<<":"<<MB.env.press<<",";
+//                jsdata<<"\""<<Kstring::GBK_to_utf8("二氧化碳")<<"\""<<":"<<MB.env.co2<<",";
+//                jsdata<<"\""<<Kstring::GBK_to_utf8("光照")<<"\""<<":"<<MB.env.light<<",";
+//                jsdata<<"\"PM1\""<<":"<<MB.env.pm1<<",";
+//                jsdata<<"\"PM10\""<<":"<<MB.env.pm10<<",";
+//                jsdata<<"\"PM2.5\""<<":"<<MB.env.pm25<<",";
+//                jsdata<<"\"PM3.0\""<<":"<<MB.env.pm30<<",";
+//                jsdata<<"\""<<Kstring::GBK_to_utf8("风向")<<"\""<<":"<<MB.env.wind_dir<<",";
+                jsdata<<"\""<<Kstring::GBK_to_utf8("风速")<<"\""<<":"<<MB.env.wind_speed+5<<",";
+//                jsdata<<"\""<<Kstring::GBK_to_utf8("总辐射")<<"\""<<":"<<MB.env.solar_rad<<",";
+//                jsdata<<"\""<<Kstring::GBK_to_utf8("土壤温度")<<"\""<<":"<<MB.env.soil_temp<<",";
+//                jsdata<<"\""<<Kstring::GBK_to_utf8("土壤湿度")<<"\""<<":"<<MB.env.soil_humi<<",";
+//                jsdata<<"\""<<Kstring::GBK_to_utf8("土壤电导率")<<"\""<<":"<<MB.env.soil_ec<<",";
+                jsdata<<"\""<<Kstring::GBK_to_utf8("土壤盐分")<<"\""<<":"<<MB.env.soil_salt;
+                jsdata<<"}";
+
+                //添加键值对
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("温度").data(),MB.env.temp);
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("湿度").data(),MB.env.humi);
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("气压").data(),MB.env.press);
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("二氧化碳").data(),MB.env.co2);
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("光照").data(),MB.env.light);
 //                cJSON_AddNumberToObject(root,"PM1",MB.env.pm1);
 //                cJSON_AddNumberToObject(root,"PM10",MB.env.pm10);
 //                cJSON_AddNumberToObject(root,"PM2.5",MB.env.pm25);
 //                cJSON_AddNumberToObject(root,"PM3.0",MB.env.pm30);
-//                cJSON_AddNumberToObject(root,"风向",MB.env.wind_dir);
-//                cJSON_AddNumberToObject(root,"风速",MB.env.wind_speed);
-//                cJSON_AddNumberToObject(root,"总辐射",MB.env.solar_rad);
-//                cJSON_AddNumberToObject(root,"土壤温度",MB.env.soil_temp);
-//                cJSON_AddNumberToObject(root,"土壤湿度",MB.env.soil_humi);
-//                cJSON_AddNumberToObject(root,"土壤电导率",MB.env.soil_ec);
-//                cJSON_AddNumberToObject(root,"土壤盐分",MB.env.soil_salt);
-//                //将JSON对象转化为字符串
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("风向").data(),MB.env.wind_dir);
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("风速").data(),MB.env.wind_speed+2);
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("总辐射").data(),MB.env.solar_rad);
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("土壤温度").data(),MB.env.soil_temp);
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("土壤湿度").data(),MB.env.soil_humi);
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("土壤电导率").data(),MB.env.soil_ec);
+//                cJSON_AddNumberToObject(root,Kstring::GBK_to_utf8("土壤盐分").data(),MB.env.soil_salt);
+                //将JSON对象转化为字符串
 //                string buf=cJSON_Print(root);
 //                //删除JSON对象
 //                cJSON_Delete(root);
-//                tb.PublishData(buf);
-//            }
+                tb.PublishData(jsdata);
+            }
         }
 
     }

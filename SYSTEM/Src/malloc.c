@@ -10,30 +10,38 @@
 #define NULL 0
 #endif
 
-__attribute__((aligned(32))) uint8_t mem1base[MEM1_MAX_SIZE];
-//__attribute__((aligned(32))) uint8_t mem3base[MEM3_MAX_SIZE] __attribute__((section(".ccmram")));	//内部CCM内存池
-//内存池(32字节对齐)
-//__align(32) uint8_t mem1base[MEM1_MAX_SIZE];													//内部SRAM内存池
-//__align(32) uint8_t mem2base[MEM2_MAX_SIZE] __attribute__((at(0X68000000)));					//外部SRAM内存池
-//__align(32) uint8_t mem3base[MEM3_MAX_SIZE] __attribute__((at(0X10000000)));					//内部CCM内存池
-//内存管理表
-uint16_t mem1mapbase[MEM1_ALLOC_TABLE_SIZE];													//内部SRAM内存池MAP
-//uint16_t mem2mapbase[MEM2_ALLOC_TABLE_SIZE] __attribute__((at(0X68000000+MEM2_MAX_SIZE)));	//外部SRAM内存池MAP
-//uint16_t mem3mapbase[MEM3_ALLOC_TABLE_SIZE] __attribute__((at(0X10000000+MEM3_MAX_SIZE)));	//内部CCM内存池MAP
+
+typedef struct SRAMMemory {
+    __attribute__((aligned(32))) uint8_t base[SRAM_MAX_SIZE];  // padding for the offset
+    uint16_t mapbase[SRAM_ALLOC_TABLE_SIZE];
+}SRAMMemory;
+
+typedef struct CCMMemory {
+    __attribute__((aligned(32))) uint8_t base[CCM_MAX_SIZE];  // padding for the offset
+    uint16_t mapbase[CCM_ALLOC_TABLE_SIZE];
+}CCMMemory;
+
+__attribute__((aligned(32))) uint8_t RAMbase[RAM_MAX_SIZE];
+uint16_t RAMmapbase[RAM_ALLOC_TABLE_SIZE];
+
+//SRAMMemory  mem2  __attribute__((section(".sram2")));
+CCMMemory  CCM  __attribute__((section(".ccmram")));
+
+
 //内存管理参数
-const uint32_t memtblsize[SRAMBANK]={MEM1_ALLOC_TABLE_SIZE};	//内存表大小
-const uint32_t memblksize[SRAMBANK]={MEM1_BLOCK_SIZE};					//内存分块大小
-const uint32_t memsize[SRAMBANK]={MEM1_MAX_SIZE};							//内存总大小
+const uint32_t memtblsize[SRAMBANK]={RAM_ALLOC_TABLE_SIZE,CCM_ALLOC_TABLE_SIZE};	//内存表大小
+const uint32_t memblksize[SRAMBANK]={RAM_BLOCK_SIZE,CCM_BLOCK_SIZE};				//内存分块大小
+const uint32_t memsize[SRAMBANK]={RAM_MAX_SIZE,CCM_MAX_SIZE};						//内存总大小
 
 
 //内存管理控制器
-struct _m_mallco_dev mallco_dev=
+struct m_mallco_dev mallco_dev=
     {
         my_mem_init,						//内存初始化
         my_mem_perused,						//内存使用率
-        mem1base,			//内存池
-        mem1mapbase,//内存管理状态表
-        0,  		 					//内存管理未就绪
+        RAMbase,CCM.base,			//内存池
+        RAMmapbase,CCM.mapbase,    //内存管理状态表
+        0,0  		 					//内存管理未就绪
     };
 
 //复制内存
