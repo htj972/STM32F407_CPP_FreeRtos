@@ -33,17 +33,34 @@ uint8_t Kstring::unicode_to_utf8(unsigned int codepoint, char* out) {
     }
 }
 
-std::string Kstring::GBK_to_utf8(std::string str){
+std::string Kstring::GBK_to_utf8_one(std::string &str){
     std::string RET;
     char utf8_str[5];
-    uint8_t len;
-    for (int i = 0; i < str.length()/2; i++) {
-        len=unicode_to_utf8(ff_convert(((str[i*2]<<8)+str[i*2+1]),1), utf8_str);
-        for (int j = 0;j<len; j++) {
-            RET+=utf8_str[j];
-        }
+    uint8_t len=unicode_to_utf8(ff_convert(((str[0]<<8)+str[1]),1), utf8_str);
+    for (int j = 0;j<len; j++) {
+        RET+=utf8_str[j];
     }
     return RET;
+}
+
+std::string Kstring::GBK_to_utf8(std::string gbk_str) {
+    std::string utf8_str;
+    for (std::size_t i = 0; i < gbk_str.size(); ++i) {
+        std::string gbk_char;
+        // 如果是ASCII字符
+        if ((unsigned char)gbk_str[i] <= 0x7f) {
+            gbk_char = gbk_str.substr(i, 1);
+            utf8_str += gbk_char;
+        }
+            // 如果是GBK汉字
+        else {
+            gbk_char = gbk_str.substr(i, 2);
+            ++i;  // 跳过下一个字节
+            utf8_str += GBK_to_utf8_one(gbk_char);
+        }
+
+    }
+    return utf8_str;
 }
 
 std::string Kstring::GBK_to_utf8() {

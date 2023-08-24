@@ -15,7 +15,7 @@ class MQTT :public Call_Back,public mqtt_base{
 private:
     std::string rxbuf{};
     std::string txbuf{};
-    uint16_t txlen{};
+//    uint16_t txlen{};
     TCP_BASE *tcp{};
     static uint8_t BYTE0(uint16_t data_temp);
     static uint8_t BYTE1(uint16_t data_temp);

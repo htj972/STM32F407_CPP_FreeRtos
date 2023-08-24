@@ -12,13 +12,15 @@
 
 
 class Kstring: public std::string {
+private:
+    static std::string GBK_to_utf8_one(std::string &str);
 public:
     Kstring()= default;
     //可以使用  = 传递参数
 
     Kstring(const char * str):std::string(str){}
     static uint8_t unicode_to_utf8(unsigned int codepoint, char* out);
-    static std::string GBK_to_utf8(std::string str);
+    static std::string GBK_to_utf8(std::string gbk_str);
     std::string GBK_to_utf8();
     Kstring& operator<<(const std::string& Str1)
     {

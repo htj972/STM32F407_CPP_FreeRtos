@@ -56,7 +56,7 @@
 #define TCP_QUEUE_OOSEQ         0
 
 //最大TCP分段
-#define TCP_MSS                 (1500 - 40)	  //TCP_MSS = (MTU - IP报头大小 - TCP报头大小
+#define TCP_MSS                 (512 - 40)	  //TCP_MSS = (MTU - IP报头大小 - TCP报头大小
 
 //TCP发送缓冲区大小(bytes).
 #define TCP_SND_BUF             (4*TCP_MSS)

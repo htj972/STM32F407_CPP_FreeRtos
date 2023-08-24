@@ -184,8 +184,8 @@ void lwip_periodic_handle()
 void lwip_setup(){
 //    static uint8_t lwip_inited = 0;
 //    lwip_inited++;
-//    lwip_localtime+=10;
-    lwip_localtime++;
+    lwip_localtime+=10;
+//    lwip_localtime++;
 //    if(lwip_inited > 10){
 //        return;
 //    }

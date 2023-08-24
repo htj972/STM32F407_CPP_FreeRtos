@@ -80,7 +80,6 @@ bool MQTT::config(char *ClientID,char *Username,char *Password){
     uint8_t cnt=3;
     uint8_t wait;
     uint16_t DataLen;
-    this->txlen=0;
     //可变报头+Payload  每个字段包含两个字节的长度标识
     DataLen = 10 + (ClientIDLen+2) + (UsernameLen+2) + (PasswordLen+2);
     //固定报头
@@ -116,25 +115,20 @@ bool MQTT::config(char *ClientID,char *Username,char *Password){
     this->txbuf+=(char) BYTE1(ClientIDLen);// Client ID length MSB
     this->txbuf+=(char) BYTE0(ClientIDLen);// Client ID length LSB
     this->txbuf.append(ClientID,ClientIDLen);
-//    memcpy(&this->txbuf[this->txlen],ClientID,ClientIDLen);
-    this->txlen += ClientIDLen;
 
     if(UsernameLen > 0)
     {
         this->txbuf+= BYTE1(UsernameLen);		//username length MSB
         this->txbuf+= BYTE0(UsernameLen);    	//username length LSB
-//        memcpy(&this->txbuf[this->txlen],Username,UsernameLen);
         this->txbuf.append(Username,UsernameLen);
-        this->txlen += UsernameLen;
     }
 
     if(PasswordLen > 0)
     {
         this->txbuf+= BYTE1(PasswordLen);		//password length MSB
         this->txbuf+= BYTE0(PasswordLen);    	//password length LSB
-//        memcpy(&this->txbuf[this->txlen],Password,PasswordLen);
         this->txbuf.append(Password,PasswordLen);
-        this->txlen += PasswordLen;
+
     }
     while(cnt--)
     {
@@ -168,12 +162,11 @@ bool MQTT::SubscribeTopic(char *topic,uint8_t qos,uint8_t whether){
     uint8_t wait;
     uint16_t topiclen = strlen(topic);
     uint16_t DataLen = 2 + (topiclen+2) + (whether?1:0);//可变报头的长度（2字节）加上有效载荷的长度
-    this->txlen=0;
     //固定报头
     //控制报文类型
     this->txbuf.clear();
-    if(whether) this->txbuf[this->txlen++] = 0x82; //消息类型和标志订阅
-    else	this->txbuf[this->txlen++] = 0xA2;    //取消订阅
+    if (whether) this->txbuf+=(char)0x82; //消息类型和标志订阅
+    else	this->txbuf+=(char)0xA2;    //取消订阅
     //剩余长度
     do
     {
@@ -182,25 +175,22 @@ bool MQTT::SubscribeTopic(char *topic,uint8_t qos,uint8_t whether){
         // if there are more data to encode, set the top bit of this byte
         if ( DataLen > 0 )
             encodedByte = encodedByte | 128;
-        this->txbuf[this->txlen++] = encodedByte;
+        this->txbuf+=(char)encodedByte;
     }while ( DataLen > 0 );
     //可变报头
-    this->txbuf[this->txlen++] = 0;				//消息标识符 MSB
-    this->txbuf[this->txlen++] = 0x01;           //消息标识符 LSB
+    this->txbuf+=(char)0x00;		    //消息标识符 MSB
+    this->txbuf+=(char)0x01;            //消息标识符 LSB
     //有效载荷
-    this->txbuf[this->txlen++] = BYTE1(topiclen);//主题长度 MSB
-    this->txbuf[this->txlen++] = BYTE0(topiclen);//主题长度 LSB
-    memcpy(&this->txbuf[this->txlen],topic,topiclen);
-    this->txlen += topiclen;
+    this->txbuf+=(char)BYTE1(topiclen);//主题长度 MSB
+    this->txbuf+=(char)BYTE0(topiclen);//主题长度 LSB
+    this->txbuf.append(topic,topiclen);
 
     if(whether)
-    {
-        this->txbuf[this->txlen++] = qos;//QoS级别
-    }
+        this->txbuf+=(char)qos;//QoS级别
     while(cnt--)
     {
         rxbuf.clear();
-        Send((char*)this->txbuf.data(),this->txlen);
+        Send((char*)this->txbuf.data(),this->txbuf.length());
         wait=30;//等待3s时间
         while(wait--)
         {
@@ -212,7 +202,6 @@ bool MQTT::SubscribeTopic(char *topic,uint8_t qos,uint8_t whether){
             delay_ms(100);
         }
     }
-    //if(cnt) return 1;	//订阅成功
     this->txbuf.clear();
     return false;
 }
@@ -234,7 +223,6 @@ bool MQTT::PublishData(char *topic, char *message, uint8_t qos){
     uint16_t messageLength = strlen(message);
     static uint16_t id=0;
     uint16_t DataLen;
-    this->txlen=0;
     //有效载荷的长度这样计算：用固定报头中的剩余长度字段的值减去可变报头的长度
     //QOS为0时没有标识符
     //数据长度             主题名   报文标识符   有效载荷
@@ -244,7 +232,7 @@ bool MQTT::PublishData(char *topic, char *message, uint8_t qos){
     //固定报头
     //控制报文类型
     this->txbuf.clear();
-    this->txbuf[this->txlen++] = 0x30;    // MQTT Message Type PUBLISH
+    this->txbuf+=(char)0x30;    // MQTT Message Type PUBLISH
     //剩余长度
     do
     {
@@ -253,24 +241,22 @@ bool MQTT::PublishData(char *topic, char *message, uint8_t qos){
         // if there are more data to encode, set the top bit of this byte
         if ( DataLen > 0 )
             encodedByte = encodedByte | 128;
-        this->txbuf[this->txlen++] = encodedByte;
+        this->txbuf+=(char)encodedByte;
     }while ( DataLen > 0 );
-    this->txbuf[this->txlen++] = BYTE1(topicLength);//主题长度MSB
-    this->txbuf[this->txlen++] = BYTE0(topicLength);//主题长度LSB
-    memcpy(&this->txbuf[this->txlen],topic,topicLength);//拷贝主题
-    this->txlen += topicLength;
+    this->txbuf+=(char)BYTE1(topicLength);//主题长度MSB
+    this->txbuf+=(char)BYTE0(topicLength);//主题长度LSB
+    this->txbuf.append(topic,topicLength);
 
     //报文标识符
     if(qos)
     {
-        this->txbuf[this->txlen++] = BYTE1(id);
-        this->txbuf[this->txlen++] = BYTE0(id);
+        this->txbuf+=(char)BYTE1(id);
+        this->txbuf+=(char)BYTE0(id);
         id++;
     }
-    memcpy(&this->txbuf[this->txlen],message,messageLength);
-    this->txlen += messageLength;
-    Send((char*)this->txbuf.data(),this->txlen);
-    return this->txlen;
+    this->txbuf.append(message,messageLength);
+    Send((char*)this->txbuf.data(),this->txbuf.length());
+    return this->txbuf.length();
 }
 
 bool MQTT::PublishData(const std::string& topic, const std::string& message, uint8_t qos) {
