@@ -96,16 +96,16 @@ string EC20::getAPN_Name(const EC20::APN &apn) {
 bool EC20::getrdy() {
     getstring.clear();
     getstring+=this->USART->read_data();
-    if(Compare(getstring,"RDY"))
-    {
-        this->debug(getstring);
-        return true;
+    if(!getstring.empty()) {
+        if (Compare(getstring, "RDY")) {
+            this->debug("Copare:" + getstring);
+            return true;
+        } else {
+            this->debug(getstring);
+            return false;
+        }
     }
-    else
-    {
-        this->debug(getstring);
-        return false;
-    }
+    return false;
 }
 
 void EC20::setdebug(void (*debug)(const string& str)) {
@@ -209,6 +209,10 @@ bool EC20::mqttconn(uint8_t id, const string &clientid, const string &username, 
     return this->sendcom("AT+QMTCONN="+to_string(id)+",\""+clientid+"\",\""+username+"\",\""+password+"\"","OK");
 }
 
+//bool EC20::mqttconn(uint8_t id, const string &clientid, const string &token) {
+//    return this->sendcom("AT+QMTCONN="+to_string(id)+",\""+clientid+"\",\""+token+"\"","OK");
+//}
+
 bool EC20::mqttpub(uint8_t id, const string &topic, const string &message) {
     uint16_t len=message.length();
     if(this->sendcom("AT+QMTPUBEX="+to_string(id)+",0,0,0,\""+topic+"\","+to_string(len)+"\r\n"+message,">"))
@@ -224,6 +228,12 @@ bool EC20::mqttclose(uint8_t id) {
 bool EC20::mqttdisc(uint8_t id) {
     return this->sendcom("AT+QMTDISC="+to_string(id),"OK");
 }
+
+string EC20::read_data() {
+    return this->USART->read_data();
+}
+
+
 
 
 

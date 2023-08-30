@@ -38,6 +38,7 @@ public:
     bool init(USART_TypeDef* USARTx,int32_t bound=115200);
     bool init(_USART_* USARTx);
     bool init();
+    string read_data();
 
     bool getrdy();
     void setdebug(void (*debug)(const string& str));
@@ -55,6 +56,7 @@ public:
 
     bool mqttopen(uint8_t id,const string& ip,uint16_t port);
     bool mqttconn(uint8_t id,const string& clientid,const string& username,const string& password);
+//    bool mqttconn(uint8_t id,const string& clientid,const string& token);
     bool mqttpub(uint8_t id,const string& topic,const string& message);
     bool mqttclose(uint8_t id);
     bool mqttdisc(uint8_t id);
@@ -62,6 +64,13 @@ public:
 //    void write(const char *str,uint16_t len) override;
 //    void write(uint8_t *str,uint16_t len) override;
 //    void write(string String) override;
+
+    EC20& operator<<(const string& Str)
+    {
+        this->USART->print(Str);
+        return *this;
+    }
+
 };
 
 

@@ -69,15 +69,18 @@ int main()
 
     my_mem_init(SRAMIN);		//初始化内部内存池
 //    ET.init(&us);
-    while (!ET.getrdy());
-    DEBUG<<(ET.init()?"OK":"error");
+    while (!ET.getrdy()){
+        delay_ms(1000);
+        DEBUG<<".";
+    }
+    DEBUG<<"EC20:"<<(ET.init()?"OK":"error");
     ET.setdebug(&DEBUG);
-    ET.Register();
+    ET.Register(EC20::APN::APN_CMNET);
 
 
-    ET.mqttopen(1,"222.74.215.220",21883);
-    ET.mqttconn(1,"test","mqtt","123456");
-
+    ET.mqttopen(1,"222.74.215.220",31883);
+    ET.mqttconn(1,"EC20","EC20","EC20");
+//    ET.mqttconn(1,"75287960-4549-11ee-9a3c-af6ad99d76ae","123456");
 
 
     //创建开始任务
@@ -137,8 +140,8 @@ void start_task(void *pvParameters)
             da.clear();
         }
 
-//        us<<DEBUG.read_data();
-//        DEBUG<<us.read_data();
+//        ET<<DEBUG.read_data();
+//        DEBUG<<ET.read_data();
     }
 }
 

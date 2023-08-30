@@ -1,4 +1,4 @@
-# Install script for directory: E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos
+# Install script for directory: F:/code/STM32/STM32F407_CPP_FreeRtos
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "E:/KOKIRIKA/STM/STM32F407_CPP_FreeRtos/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "F:/code/STM32/STM32F407_CPP_FreeRtos/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
