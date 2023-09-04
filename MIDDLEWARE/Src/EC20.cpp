@@ -12,6 +12,7 @@ EC20::EC20(USART_TypeDef *USARTx, int32_t bound) {
     this->USART=new _USART_(USARTx,bound);
     this->CallBack_flag=false;
     this->init_flag=false;
+    set_freetime(5);
 }
 
 EC20::EC20(_USART_ *USARTx) {
@@ -19,6 +20,7 @@ EC20::EC20(_USART_ *USARTx) {
     this->USART=USARTx;
     this->CallBack_flag=false;
     this->init_flag=false;
+    set_freetime(5);
 }
 
 EC20::~EC20() {
@@ -39,6 +41,7 @@ bool EC20::init(_USART_* USARTx) {
 }
 
 bool EC20::init() {
+    set_freetime(5);
     if(this->USART!= nullptr)
         return this->attest();
     return false;
@@ -53,7 +56,7 @@ bool EC20::Compare(const string& target,const string& data) {
 
 bool EC20::sendcom(const string& CMD,const string& REC,uint8_t delay_time) {
     string data;
-    this->Call_back_set(OFF);
+    this->Call_back_set(false);
     this->USART->clear();
     do{
         this->USART->write(CMD+"\r\n");
@@ -62,29 +65,29 @@ bool EC20::sendcom(const string& CMD,const string& REC,uint8_t delay_time) {
         if(Compare(data,REC))
         {
             this->debug(data);
+            this->Call_back_set(true);
             return true;
         }
     } while (delay_time--);
     this->debug(data);
-    this->Call_back_set(ON);
+    this->Call_back_set(true);
     return false;
 }
 
 void EC20::debug(const string &str) {
     if(this->Debug_USART!= nullptr)
         this->Debug_USART->write(str);
-    else if(this->Debug!= nullptr)
-        this->Debug(str);
 }
 
 void EC20::Call_back_set(bool ON_OFF) {
     if(this->init_flag) {
-        static bool flag= this->CallBack_flag;
+        static bool flag=true;
         if (ON_OFF) {
             this->CallBack_flag = flag;
             if (this->CallBack_flag)
                 this->USART->upload_extern_fun(this);
         } else {
+            flag= this->CallBack_flag;
             this->CallBack_flag = false;
             this->USART->upload_extern_close();
         }
@@ -134,10 +137,6 @@ bool EC20::getrdy() {
         }
     }
     return false;
-}
-
-void EC20::setdebug(void (*debug)(const string& str)) {
-    this->Debug=debug;
 }
 
 void EC20::setdebug(_USART_ *USARTx) {
@@ -278,6 +277,8 @@ bool EC20::mqttunsub(uint8_t id, const string &topic) {
 }
 
 void EC20::Link_UART_CALLback() {
+    this->init_flag=true;
+    this->CallBack_flag=true;
     this->USART->upload_extern_fun(this);
 }
 
@@ -323,12 +324,16 @@ void EC20::Receive_data() {
 
     std::smatch match;
     if (std::regex_search(getstring, match, r)) {
-        *this << "Other: " << match[1] <<  "\r\n";
-        *this << "Topic: " << match[2] <<  "\r\n";
-        *this << "Info: "  << match[3] <<  "\r\n";
-    } else {
-        std::cout << "No match found.\n";
+        string info=match[3];
+        this->topic=match[2];
+        this->message = info.substr(1, info.size() - 2);
+        this->Otherstring="+QMTRECV:";
+        this->Otherstring.append(match[1]);
+//        this->debug("Other: "+this->Otherstring+"\r\n");
+//        this->debug("Topic: "+this->topic+"\r\n");
+//        this->debug("Info: "+this->message+"\r\n");
     }
+    getstring.clear();
 }
 
 bool EC20::Connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4, uint16_t port) {
@@ -356,7 +361,7 @@ bool EC20::PublishData(const std::string &publish, const std::string &Message, u
 }
 
 bool EC20::available() {
-    return !this->getstring.empty();
+    return !this->message.empty();
 }
 
 bool EC20::islink() {
@@ -364,8 +369,8 @@ bool EC20::islink() {
 }
 
 string EC20::GetRxbuf() {
-    std::string str = this->getstring;
-    this->getstring.clear();
+    std::string str = this->message;
+    this->message.clear();
     return str;
 }
 

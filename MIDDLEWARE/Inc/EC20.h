@@ -27,11 +27,11 @@ protected:
     _USART_ *USART{};
     _USART_ *Debug_USART{};
     string getstring{};
+    string Otherstring{};
     uint16_t reveive_len{};
     uint16_t freetime_t{};
     uint16_t freetime{};
 private:
-    void (*Debug)(const string& str){};
     bool  new_flag{};
     static bool Compare(const string& target,const string& data);
     bool sendcom(const string& CMD,const string& REC,uint8_t delay_time=5);
@@ -53,7 +53,6 @@ public:
     string read_data();
 
     bool getrdy();
-    void setdebug(void (*debug)(const string& str));
     void setdebug(_USART_* USARTx);
 
     bool reset();

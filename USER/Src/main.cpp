@@ -40,7 +40,6 @@ TaskHandle_t Task2Task_Handler;
 //任务函数
 [[noreturn]] void task2_task(void *pvParameters);
 
-extern u32 lwip_localtime;		//lwip本地时间计数器,单位:ms
 //运行指示灯
 class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
@@ -55,9 +54,11 @@ public:
 }led(GPIOE5,TIM6,2);//运行指示灯定时器
 
 _OutPut_ run (GPIOE6);//运行指示灯
-_OutPut_ OUT(GPIOB0);            //输出
+_OutPut_ OUT(GPIOB0,HIGH);            //输出
 
 //Timer_queue tIMS(TIM7,50000);            //定时器队列
+
+Timer tIM_EC(TIM5,100,8400,true);
 
 _USART_ DEBUG(USART2);             //调试串口
 RS485   com(USART3,GPIOB15);
@@ -77,9 +78,10 @@ int main()
 //        delay_ms(1000);
 //        DEBUG<<".";
 //    }
-    DEBUG<<"EC20:"<<(ET.init()?"OK":"error");
+    DEBUG<<"EC20:"<<(ET.init()?"OK":"error")<<"\r\n";
     ET.setdebug(&DEBUG);
     ET.Register(EC20::APN::APN_CMNET);
+    ET.Link_TIMER_CALLback(&tIM_EC);
 
     TB.Connect(222,74,215,220,31883);
     TB.config("EC20","EC20","EC20");
@@ -125,7 +127,7 @@ void start_task(void *pvParameters)
     {
         vTaskDelay(200/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         run.change();       //运行指示灯
-        OUT.change();      //输出状态反转
+//        OUT.change();      //输出状态反转
     }
 }
 
@@ -142,9 +144,8 @@ void start_task(void *pvParameters)
             TB.PublishData(da.GBK_to_utf8());
             da.clear();
         }
+        TB.Getdatacheck();
 
-        ET<<DEBUG.read_data();
-        DEBUG<<ET.read_data();
     }
 }
 

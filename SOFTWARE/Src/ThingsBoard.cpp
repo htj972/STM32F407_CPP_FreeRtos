@@ -40,7 +40,7 @@ void ThingsBoard::topic_config() {
     this->updata=mqtt_base::Subscribe("v2/fw/response/+/chunk/+");//获取升级分包数据
 
     this->response=mqtt_base::Publish("v1/devices/me/attributes/request/1");//发布主题 升级请求
-    //{"sharedKeys": "fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title,fw_version"}//请求信息
+    //{"sharedKeys": "fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title"}//请求信息
     this->telemetry=mqtt_base::Publish("v1/devices/me/telemetry");//发布主题 发送数据
     this->getupdata=mqtt_base::Publish("v2/fw/request/1/chunk/");//发布主题 获取升级分包数据
 }
@@ -83,41 +83,27 @@ void ThingsBoard::PublishData(const string& message) {
     this->mqtt->PublishData(telemetry,message);
 }
 //BEEP
-extern _OutPut_ OUT1,OUT2;
+extern _OutPut_ OUT;
 
 void ThingsBoard::Getdatacheck() {
     if(this->mqtt->available()){                              //接收到数据
         string sdata=this->mqtt->GetRxbuf();
-//        if(sdata.empty())return;
         *this->Debug<<sdata<<"\r\n";
-        this->mqtt->Message_analyze(sdata);//分析接收到的数据
-
-//        this->mqtt->Message_analyze(this->mqtt->GetRxbuf());//分析接收到的数据
 
         if(this->mqtt->check_topic(this->request)){
-            cJSON *root = cJSON_Parse(this->mqtt->getMsg().data());
+            cJSON *root = cJSON_Parse(sdata.data());
             //检查json是否正确cJSON_GetErrorPtr
             if(root!= nullptr){
-                //"method":"setValue"
+                //"method":"setinsect"
                 cJSON *method = cJSON_GetObjectItem(root,"method");
                 if(method!= nullptr) {
                     if (std::string(method->valuestring) == "setinsect") {
                         cJSON *item = cJSON_GetObjectItem(root,"params");
                         if(item!= nullptr) {
                             if (item->valueint==1) {
-                                OUT1.set(ON);
+                                OUT.set(ON);
                             } else if (item->valueint==0) {
-                                OUT1.set(OFF);
-                            }
-                        }
-                        cJSON_Delete(item);
-                    } else if(std::string(method->valuestring) == "setbird_repellency") {
-                        cJSON *item = cJSON_GetObjectItem(root,"params");
-                        if(item!= nullptr) {
-                            if (item->valueint==1) {
-                                OUT2.set(ON);
-                            } else if (item->valueint==0) {
-                                OUT2.set(OFF);
+                                OUT.set(OFF);
                             }
                         }
                         cJSON_Delete(item);
@@ -183,12 +169,12 @@ void ThingsBoard::Getdatacheck() {
 
 void ThingsBoard::GetVersion() {
     if(this->updata_step==3) {
-        //{"sharedKeys": "fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title,fw_version"}
+        //{"sharedKeys": "fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title"}
         *this->Debug<<R"({"sharedKeys": "fw_version,)"
                       R"(fw_checksum_algorithm,fw_checksum,)"
                       R"(fw_size,fw_title,fw_version"})"<<"\r\n";
         this->mqtt->PublishData(this->telemetry,
-                                R"({"sharedKeys":"fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title,fw_version"})");
+                                R"({"sharedKeys":"fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title"})");
         this->updata_step = 1;
     }
         //打印结果
