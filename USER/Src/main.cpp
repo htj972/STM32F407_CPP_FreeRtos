@@ -1,3 +1,4 @@
+#include <regex>
 #include "sys.h"
 #include "delay.h"
 #include "FreeRTOS.h"
@@ -8,6 +9,8 @@
 #include "RS485.h"
 #include "malloc.h"
 #include "EC20.h"
+#include "ThingsBoard.h"
+#include "Kstring.h"
 
 
 //任务优先级
@@ -58,8 +61,9 @@ _OutPut_ OUT(GPIOB0);            //输出
 
 _USART_ DEBUG(USART2);             //调试串口
 RS485   com(USART3,GPIOB15);
-//_USART_ us(USART1);
+
 EC20    ET(USART1);
+ThingsBoard TB(&DEBUG,&ET);
 
 int main()
 {
@@ -68,19 +72,18 @@ int main()
     delay_ms(1000);//延时1s
 
     my_mem_init(SRAMIN);		//初始化内部内存池
-//    ET.init(&us);
-    while (!ET.getrdy()){
-        delay_ms(1000);
-        DEBUG<<".";
-    }
+//    ET.reset();
+//    while (!ET.getrdy()){
+//        delay_ms(1000);
+//        DEBUG<<".";
+//    }
     DEBUG<<"EC20:"<<(ET.init()?"OK":"error");
     ET.setdebug(&DEBUG);
     ET.Register(EC20::APN::APN_CMNET);
 
-
-    ET.mqttopen(1,"222.74.215.220",31883);
-    ET.mqttconn(1,"EC20","EC20","EC20");
-//    ET.mqttconn(1,"75287960-4549-11ee-9a3c-af6ad99d76ae","123456");
+    TB.Connect(222,74,215,220,31883);
+    TB.config("EC20","EC20","EC20");
+    TB.SubscribeTopic();
 
 
     //创建开始任务
@@ -130,18 +133,18 @@ void start_task(void *pvParameters)
 //task2任务函数
 [[noreturn]] void task2_task(void *pvParameters)
 {
-    string da;
+    Kstring da;
     while(true) {
         vTaskDelay(100/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
 
         da+=DEBUG.read_data();
         if(da.find("\r\n") != string::npos) {
-            ET.mqttpub(1, "v1/devices/me/telemetry", da);
+            TB.PublishData(da.GBK_to_utf8());
             da.clear();
         }
 
-//        ET<<DEBUG.read_data();
-//        DEBUG<<ET.read_data();
+        ET<<DEBUG.read_data();
+        DEBUG<<ET.read_data();
     }
 }
 

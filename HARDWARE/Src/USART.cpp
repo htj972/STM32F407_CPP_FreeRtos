@@ -208,7 +208,7 @@ void _USART_::setStruct(uint16_t WordLength, uint16_t StopBits, uint16_t Parity)
     USART_Init(this->USART, &this->USART_InitStructure); //³õÊ¼»¯´®¿Ú
 }
 
-void _USART_::set_fifo_size(uint16_t size) {
+void _USART_::set_fifo_size(uint16_t size) const {
     if(UART_STRUCT.RX_MAX_LEN[this->USART_Num]>size)
     {
         uint16_t len_t=UART_STRUCT.RX_MAX_LEN[this->USART_Num]-size;
@@ -218,7 +218,7 @@ void _USART_::set_fifo_size(uint16_t size) {
     UART_STRUCT.RX_MAX_LEN[this->USART_Num]=size;
 }
 
-uint8_t _USART_::get_USART_Num() {
+uint8_t _USART_::get_USART_Num() const {
     return this->USART_Num;
 }
 
@@ -247,12 +247,16 @@ void _USART_::extern_upset(uint8_t num,uint8_t data)
     if(UART_STRUCT.run_mode[num%UART_Max_num]==Call_Back::MODE::C_fun) {
         UART_STRUCT.funC[num % UART_Max_num]();
         UART_STRUCT.RX_buffer[num%UART_Max_num] += data;
+        if(UART_STRUCT.RX_buffer[num%UART_Max_num].length()>UART_STRUCT.RX_MAX_LEN[num%UART_Max_num])
+            UART_STRUCT.RX_buffer[num%UART_Max_num].erase(0,1);
     }
     else if(UART_STRUCT.run_mode[num%UART_Max_num]==Call_Back::MODE::C_fun_r)
         UART_STRUCT.funC_r[num%UART_Max_num](data);
     else if(UART_STRUCT.run_mode[num%UART_Max_num]==Call_Back::MODE::CPP_fun) {
         UART_STRUCT.funCPP[num % UART_Max_num]();
         UART_STRUCT.RX_buffer[num%UART_Max_num] += data;
+        if(UART_STRUCT.RX_buffer[num%UART_Max_num].length()>UART_STRUCT.RX_MAX_LEN[num%UART_Max_num])
+            UART_STRUCT.RX_buffer[num%UART_Max_num].erase(0,1);
     }
     else if(UART_STRUCT.run_mode[num%UART_Max_num]==Call_Back::MODE::class_fun)
     {
@@ -285,19 +289,24 @@ void _USART_::upload_extern_fun(Call_Back *extx) const {
     UART_STRUCT.run_mode[this->USART_Num%UART_Max_num]=Call_Back::MODE::class_fun;
 }
 
+void _USART_::upload_extern_close() const {
+    UART_STRUCT.funC[this->USART_Num%UART_Max_num]=UART_RUN_VOID;
+    UART_STRUCT.run_mode[this->USART_Num%UART_Max_num]=Call_Back::MODE::C_fun;
+}
+
 void _USART_::send_re_data() {
     this->write(UART_STRUCT.RX_buffer[this->USART_Num]);
 }
 
-uint16_t _USART_::available() {
+uint16_t _USART_::available() const {
     return  UART_STRUCT.RX_buffer[this->USART_Num].length();
 }
 
-void _USART_::clear() {
+void _USART_::clear() const {
     UART_STRUCT.RX_buffer[this->USART_Num].clear();
 }
 
-string _USART_::read_data() {
+string _USART_::read_data() const {
     string  ret=UART_STRUCT.RX_buffer[this->USART_Num];
     UART_STRUCT.RX_buffer[this->USART_Num].clear();
     return ret;

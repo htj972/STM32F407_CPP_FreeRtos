@@ -5,16 +5,17 @@
 */
 #ifndef KOKIRIKA_MQTT_H
 #define KOKIRIKA_MQTT_H
-#include "sys.h"
-#include "tcp_client/tcp_base.h"
-#include "malloc.h"
 
-class MQTT :public Call_Back{
+#include "sys.h"
+#include "tcp_client/TCP_base.h"
+#include "malloc.h"
+#include "mqtt_base.h"
+
+class MQTT :public Call_Back,public mqtt_base{
 private:
     std::string rxbuf{};
-    uint16_t rxlen{};
     std::string txbuf{};
-    uint16_t txlen{};
+//    uint16_t txlen{};
     TCP_BASE *tcp{};
     static uint8_t BYTE0(uint16_t data_temp);
     static uint8_t BYTE1(uint16_t data_temp);
@@ -26,15 +27,27 @@ public:
     MQTT()= default;
     ~MQTT() = default;
     void Init(TCP_BASE *TCP);
-    bool Connect(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port=1883);
+    bool Connect(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port=1883) override;
     bool Connect(ip_addr rmtipaddr,uint16_t port=1883);
     bool config(char *ClientID,char *Username,char *Password);
+    bool config(const std::string& ClientID,const std::string& Username,const std::string& Password) override;
     bool SubscribeTopic(char *topic,uint8_t qos,uint8_t whether);
-    bool PublishData(char *topic, char *message, uint8_t qos);
+    bool SubscribeTopic(const MQTT::Subscribe& subscribe) override;
+    bool SubscribeTopic(const std::string& topic,uint8_t qos,uint8_t whether);
+    bool PublishData(char *topic, char *message, uint8_t qos=0);
+    bool PublishData(const std::string& topic,const std::string& message, uint8_t qos=0) override;
+    bool PublishData(const MQTT::Publish& publish) override;
+    bool PublishData(const Publish& publish, const std::string& message) override;
+    bool PublishData(const Publish& publish, const std::string& message, uint8_t qos);
     void SendHeart();
-    void Disconnect();
+    void Disconnect() override;
+    void close();
+    void Clear();
     void Session(std::string str);
     void Callback(std::string str) override;
+    std::string  GetRxbuf() override;
+    bool available() override;
+    bool islink() override;
 };
 
 

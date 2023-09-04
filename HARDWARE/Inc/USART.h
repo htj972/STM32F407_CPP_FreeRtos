@@ -31,7 +31,7 @@ private:
     bool DMA_send_flag= false;
     void default_config();
     void GPIO_AF_config();
-    void extern_init();
+    static void extern_init();
     static char Interrupt_data[2];
     static char Interrupt_channel[2];
     static char Interrupt_name[2];
@@ -49,9 +49,9 @@ public:
     void setNVIC_ENABLE(bool EnAble=true);
     void setCmd_ENABLE(bool EnAble=true);
     void setStruct(uint16_t WordLength,uint16_t StopBits,uint16_t Parity);
-    void set_fifo_size(uint16_t size);
+    void set_fifo_size(uint16_t size) const;
 
-    uint8_t get_USART_Num();
+    uint8_t get_USART_Num() const;
 
     void (*extern_IRQ_link)(){};
     void upload_extern_fun(void(* fun)());
@@ -60,13 +60,14 @@ public:
     std::function<void()> localfunxx;
     void upload_extern_fun(std::function<void()> fun);
     void upload_extern_fun(Call_Back *extx) const;
+    void upload_extern_close() const;
 
     static void extern_upset(uint8_t num,uint8_t data);
 
     void   send_re_data();
-    uint16_t available();
-    void   clear();
-    string read_data();
+    uint16_t available() const;
+    void   clear() const;
+    string read_data() const;
     string read_data(uint8_t len) const;
     string read_data(char c) const ;
     string read_data(const string& str) const ;

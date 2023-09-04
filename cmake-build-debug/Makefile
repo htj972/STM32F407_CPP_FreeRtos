@@ -4064,6 +4064,78 @@ SOFTWARE/Src/Fower_Ctrl.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Fower_Ctrl.cpp.s
 .PHONY : SOFTWARE/Src/Fower_Ctrl.cpp.s
 
+SOFTWARE/Src/Kstring.obj: SOFTWARE/Src/Kstring.cpp.obj
+.PHONY : SOFTWARE/Src/Kstring.obj
+
+# target to build an object file
+SOFTWARE/Src/Kstring.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Kstring.cpp.obj
+.PHONY : SOFTWARE/Src/Kstring.cpp.obj
+
+SOFTWARE/Src/Kstring.i: SOFTWARE/Src/Kstring.cpp.i
+.PHONY : SOFTWARE/Src/Kstring.i
+
+# target to preprocess a source file
+SOFTWARE/Src/Kstring.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Kstring.cpp.i
+.PHONY : SOFTWARE/Src/Kstring.cpp.i
+
+SOFTWARE/Src/Kstring.s: SOFTWARE/Src/Kstring.cpp.s
+.PHONY : SOFTWARE/Src/Kstring.s
+
+# target to generate assembly for a file
+SOFTWARE/Src/Kstring.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Kstring.cpp.s
+.PHONY : SOFTWARE/Src/Kstring.cpp.s
+
+SOFTWARE/Src/ThingsBoard.obj: SOFTWARE/Src/ThingsBoard.cpp.obj
+.PHONY : SOFTWARE/Src/ThingsBoard.obj
+
+# target to build an object file
+SOFTWARE/Src/ThingsBoard.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/ThingsBoard.cpp.obj
+.PHONY : SOFTWARE/Src/ThingsBoard.cpp.obj
+
+SOFTWARE/Src/ThingsBoard.i: SOFTWARE/Src/ThingsBoard.cpp.i
+.PHONY : SOFTWARE/Src/ThingsBoard.i
+
+# target to preprocess a source file
+SOFTWARE/Src/ThingsBoard.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/ThingsBoard.cpp.i
+.PHONY : SOFTWARE/Src/ThingsBoard.cpp.i
+
+SOFTWARE/Src/ThingsBoard.s: SOFTWARE/Src/ThingsBoard.cpp.s
+.PHONY : SOFTWARE/Src/ThingsBoard.s
+
+# target to generate assembly for a file
+SOFTWARE/Src/ThingsBoard.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/ThingsBoard.cpp.s
+.PHONY : SOFTWARE/Src/ThingsBoard.cpp.s
+
+SOFTWARE/Src/mqtt_base.obj: SOFTWARE/Src/mqtt_base.cpp.obj
+.PHONY : SOFTWARE/Src/mqtt_base.obj
+
+# target to build an object file
+SOFTWARE/Src/mqtt_base.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/mqtt_base.cpp.obj
+.PHONY : SOFTWARE/Src/mqtt_base.cpp.obj
+
+SOFTWARE/Src/mqtt_base.i: SOFTWARE/Src/mqtt_base.cpp.i
+.PHONY : SOFTWARE/Src/mqtt_base.i
+
+# target to preprocess a source file
+SOFTWARE/Src/mqtt_base.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/mqtt_base.cpp.i
+.PHONY : SOFTWARE/Src/mqtt_base.cpp.i
+
+SOFTWARE/Src/mqtt_base.s: SOFTWARE/Src/mqtt_base.cpp.s
+.PHONY : SOFTWARE/Src/mqtt_base.s
+
+# target to generate assembly for a file
+SOFTWARE/Src/mqtt_base.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/mqtt_base.cpp.s
+.PHONY : SOFTWARE/Src/mqtt_base.cpp.s
+
 SOFTWARE/Src/pretreatment.obj: SOFTWARE/Src/pretreatment.cpp.obj
 .PHONY : SOFTWARE/Src/pretreatment.obj
 
@@ -5053,6 +5125,15 @@ help:
 	@echo ... SOFTWARE/Src/Fower_Ctrl.obj
 	@echo ... SOFTWARE/Src/Fower_Ctrl.i
 	@echo ... SOFTWARE/Src/Fower_Ctrl.s
+	@echo ... SOFTWARE/Src/Kstring.obj
+	@echo ... SOFTWARE/Src/Kstring.i
+	@echo ... SOFTWARE/Src/Kstring.s
+	@echo ... SOFTWARE/Src/ThingsBoard.obj
+	@echo ... SOFTWARE/Src/ThingsBoard.i
+	@echo ... SOFTWARE/Src/ThingsBoard.s
+	@echo ... SOFTWARE/Src/mqtt_base.obj
+	@echo ... SOFTWARE/Src/mqtt_base.i
+	@echo ... SOFTWARE/Src/mqtt_base.s
 	@echo ... SOFTWARE/Src/pretreatment.obj
 	@echo ... SOFTWARE/Src/pretreatment.i
 	@echo ... SOFTWARE/Src/pretreatment.s

@@ -7,8 +7,10 @@
 #define KOKIRIKA_EC20_H
 
 #include "USART.h"
+#include "Timer.h"
+#include "mqtt_base.h"
 
-class EC20 {
+class EC20 :public mqtt_base,public Call_Back{
 public:
      enum APN:uint8_t {
         APN_CMNET =0,
@@ -20,16 +22,25 @@ public:
         APN_CTWAP ,
         APN_CTNET ,
      };
-private:
+protected:
+    Timer *TIMERX{};
     _USART_ *USART{};
     _USART_ *Debug_USART{};
+    string getstring{};
+    uint16_t reveive_len{};
+    uint16_t freetime_t{};
+    uint16_t freetime{};
+private:
     void (*Debug)(const string& str){};
     bool  new_flag{};
-    string getstring{};
     static bool Compare(const string& target,const string& data);
     bool sendcom(const string& CMD,const string& REC,uint8_t delay_time=5);
     static string getAPN_Name(const APN& apn);
     void debug(const string& str);
+    bool CallBack_flag{};
+    bool init_flag{};
+    void Call_back_set(bool ON_OFF);
+    void Call_back_set(bool ON_OFF,bool init);
 public:
     explicit EC20(USART_TypeDef* USARTx,int32_t bound=115200);
     explicit EC20(_USART_* USARTx);
@@ -38,12 +49,14 @@ public:
     bool init(USART_TypeDef* USARTx,int32_t bound=115200);
     bool init(_USART_* USARTx);
     bool init();
+    void set_freetime(uint16_t sfreetime);
     string read_data();
 
     bool getrdy();
     void setdebug(void (*debug)(const string& str));
     void setdebug(_USART_* USARTx);
 
+    bool reset();
     bool attest();
     bool getcpin();
     bool getcsq();
@@ -60,6 +73,27 @@ public:
     bool mqttpub(uint8_t id,const string& topic,const string& message);
     bool mqttclose(uint8_t id);
     bool mqttdisc(uint8_t id);
+    bool mqttsub(uint8_t id,const string& topic,uint8_t qos=0);
+    bool mqttunsub(uint8_t id,const string& topic);
+
+    bool Connect(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port) override;
+    bool config(const std::string& ClientID,const std::string& Username,const std::string& Password) override;
+    bool SubscribeTopic(const Subscribe& subscribe) override;
+    bool PublishData(const Publish& publish) override;
+    bool PublishData(const Publish& publish,const std::string& Message) override;
+    bool PublishData(const std::string& publish,const std::string& Message, uint8_t qos) override;
+    bool available() override;
+    bool islink() override;
+    std::string GetRxbuf() override;
+    void Disconnect() override;
+    bool PHY_status() override;
+
+    //串口数据回调
+    void Link_UART_CALLback();
+    void Link_TIMER_CALLback(Timer *TIMX);
+    void Callback(int, char **gdata) override;
+    void Receive_data();
+
 
 //    void write(const char *str,uint16_t len) override;
 //    void write(uint8_t *str,uint16_t len) override;
@@ -67,9 +101,10 @@ public:
 
     EC20& operator<<(const string& Str)
     {
-        this->USART->print(Str);
+        this->debug(Str);
         return *this;
     }
+
 
 };
 

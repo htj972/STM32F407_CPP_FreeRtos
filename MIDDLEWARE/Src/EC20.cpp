@@ -3,17 +3,22 @@
 * @Name EC20
 * @Date 2023-07-18
 */
+#include <regex>
 #include "EC20.h"
 #include "delay.h"
 
 EC20::EC20(USART_TypeDef *USARTx, int32_t bound) {
     this->new_flag = true;
     this->USART=new _USART_(USARTx,bound);
+    this->CallBack_flag=false;
+    this->init_flag=false;
 }
 
 EC20::EC20(_USART_ *USARTx) {
     this->new_flag = false;
     this->USART=USARTx;
+    this->CallBack_flag=false;
+    this->init_flag=false;
 }
 
 EC20::~EC20() {
@@ -48,6 +53,7 @@ bool EC20::Compare(const string& target,const string& data) {
 
 bool EC20::sendcom(const string& CMD,const string& REC,uint8_t delay_time) {
     string data;
+    this->Call_back_set(OFF);
     this->USART->clear();
     do{
         this->USART->write(CMD+"\r\n");
@@ -60,6 +66,7 @@ bool EC20::sendcom(const string& CMD,const string& REC,uint8_t delay_time) {
         }
     } while (delay_time--);
     this->debug(data);
+    this->Call_back_set(ON);
     return false;
 }
 
@@ -68,6 +75,27 @@ void EC20::debug(const string &str) {
         this->Debug_USART->write(str);
     else if(this->Debug!= nullptr)
         this->Debug(str);
+}
+
+void EC20::Call_back_set(bool ON_OFF) {
+    if(this->init_flag) {
+        static bool flag= this->CallBack_flag;
+        if (ON_OFF) {
+            this->CallBack_flag = flag;
+            if (this->CallBack_flag)
+                this->USART->upload_extern_fun(this);
+        } else {
+            this->CallBack_flag = false;
+            this->USART->upload_extern_close();
+        }
+    }
+}
+
+void EC20::Call_back_set(bool ON_OFF, bool init) {
+    this->init_flag=init;
+    if(this->init_flag)
+        this->CallBack_flag=ON_OFF;
+    this->Call_back_set(ON_OFF);
 }
 
 string EC20::getAPN_Name(const EC20::APN &apn) {
@@ -114,6 +142,10 @@ void EC20::setdebug(void (*debug)(const string& str)) {
 
 void EC20::setdebug(_USART_ *USARTx) {
     this->Debug_USART=USARTx;
+}
+
+bool EC20::reset() {
+    return this->sendcom("AT+CFUN=1,1","OK");
 }
 
 bool EC20::attest() {
@@ -194,6 +226,10 @@ bool EC20::Register(APN apn) {
                 else
                     return false;
                 break;
+            case 7:
+                this->Link_UART_CALLback();
+                Steps++;
+                break;
             default:    //注册成功
                 return true;
         }
@@ -233,14 +269,113 @@ string EC20::read_data() {
     return this->USART->read_data();
 }
 
+bool EC20::mqttsub(uint8_t id, const string &topic, uint8_t qos) {
+    return this->sendcom("AT+QMTSUB="+to_string(id)+",1,\""+topic+"\","+to_string(qos),"OK");
+}
 
+bool EC20::mqttunsub(uint8_t id, const string &topic) {
+    return this->sendcom("AT+QMTUNS="+to_string(id)+",1,\""+topic+"\"","OK");
+}
 
+void EC20::Link_UART_CALLback() {
+    this->USART->upload_extern_fun(this);
+}
 
+void EC20::Callback(int, char **gdata) {
+    if(gdata[0][0]==Call_Back::Name::uart)
+    {
+        this->getstring+=gdata[2][0];
+    }
+    else if(gdata[0][0]==Call_Back::Name::timer)
+    {
 
+        this->TIMERX->set_Cmd(false);
+        uint16_t len_t=this->getstring.length();
+        if(this->reveive_len!=len_t) {
+            this->reveive_len = len_t;
+            this->freetime_t=0;
+        }
+        else if(len_t!=0)
+        {
+            this->freetime_t++;
+            if(this->freetime_t==this->freetime) {
+                this->Receive_data();
+                this->getstring.clear();
+                this->freetime_t=0;
+            }
+        }
+        this->TIMERX->set_Cmd(true);
+    }
+}
 
+void EC20::Link_TIMER_CALLback(Timer *TIMX) {
+    this->TIMERX=TIMX;
+    TIMX->upload_extern_fun(this);
+}
 
+void EC20::set_freetime(uint16_t sfreetime) {
+    this->freetime=sfreetime;
+}
 
+void EC20::Receive_data() {
+    // 创建一个正则表达式来匹配主题和信息
+    std::regex r("\\+QMTRECV: ([\\d,]+),\"([^\"]*)\",(\".*\")");
 
+    std::smatch match;
+    if (std::regex_search(getstring, match, r)) {
+        *this << "Other: " << match[1] <<  "\r\n";
+        *this << "Topic: " << match[2] <<  "\r\n";
+        *this << "Info: "  << match[3] <<  "\r\n";
+    } else {
+        std::cout << "No match found.\n";
+    }
+}
+
+bool EC20::Connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4, uint16_t port) {
+    return mqttopen(0,to_string(ip1)+"."+to_string(ip2)+"."+to_string(ip3)+"."+to_string(ip4),port);
+}
+
+bool EC20::config(const std::string &ClientID, const std::string &Username, const std::string &Password) {
+    return mqttconn(0,ClientID,Username,Password);
+}
+
+bool EC20::SubscribeTopic(const EC20::Subscribe &subscribe) {
+    return mqttsub(0,subscribe.getTopic(),subscribe.getQos());
+}
+
+bool EC20::PublishData(const EC20::Publish &publish) {
+    return mqttpub(0,publish.getTopic(),publish.getMessage());
+}
+
+bool EC20::PublishData(const EC20::Publish &publish, const std::string &Message) {
+    return mqttpub(0,publish.getTopic(),Message);
+}
+
+bool EC20::PublishData(const std::string &publish, const std::string &Message, uint8_t qos) {
+    return mqttpub(0,publish,Message);
+}
+
+bool EC20::available() {
+    return !this->getstring.empty();
+}
+
+bool EC20::islink() {
+    return this->init_flag;
+}
+
+string EC20::GetRxbuf() {
+    std::string str = this->getstring;
+    this->getstring.clear();
+    return str;
+}
+
+void EC20::Disconnect() {
+    this->mqttdisc(0);
+}
+
+bool EC20::PHY_status() {
+    return this->init_flag;
+}
 
 
 
