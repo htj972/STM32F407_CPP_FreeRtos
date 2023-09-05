@@ -16,29 +16,29 @@
 //任务优先级
 #define START_TASK_PRIO		1
 //任务堆栈大小
-#define START_STK_SIZE 		128
+#define START_STK_SIZE 		64
 //任务句柄
 TaskHandle_t StartTask_Handler;
 //任务函数
 void start_task(void *pvParameters);
 
 //任务优先级
-#define TASK1_TASK_PRIO		2
+#define LOGIC_TASK_PRIO		2
 //任务堆栈大小
-#define TASK1_STK_SIZE 		512
+#define LOGIC_STK_SIZE 		128
 //任务句柄
-TaskHandle_t Task1Task_Handler;
+TaskHandle_t LOGICTask_Handler;
 //任务函数
-[[noreturn]] void task1_task(void *pvParameters);
+[[noreturn]] void LOGIC_task(void *pvParameters);
 
 //任务优先级
-#define TASK2_TASK_PRIO		2
+#define EC20_TASK_PRIO		2
 //任务堆栈大小
-#define TASK2_STK_SIZE 		512
+#define EC20_STK_SIZE 		(128*4)
 //任务句柄
-TaskHandle_t Task2Task_Handler;
+TaskHandle_t EC20Task_Handler;
 //任务函数
-[[noreturn]] void task2_task(void *pvParameters);
+[[noreturn]] void EC20_task(void *pvParameters);
 
 //运行指示灯
 class T_led_:public _OutPut_,public Call_Back,public Timer{
@@ -73,6 +73,7 @@ int main()
     delay_ms(1000);//延时1s
 
     my_mem_init(SRAMIN);		//初始化内部内存池
+    my_mem_init(SRAMCCM);		//初始化内部内存池
 //    ET.reset();
 //    while (!ET.getrdy()){
 //        delay_ms(1000);
@@ -103,41 +104,40 @@ void start_task(void *pvParameters)
 {
     taskENTER_CRITICAL();           //进入临界区
     //创建TASK1任务
-    xTaskCreate((TaskFunction_t )task1_task,
-                (const char*    )"task1_task",
-                (uint16_t       )TASK1_STK_SIZE,
+    xTaskCreate((TaskFunction_t )LOGIC_task,
+                (const char*    )"LOGIC_task",
+                (uint16_t       )LOGIC_STK_SIZE,
                 (void*          )nullptr,
-                (UBaseType_t    )TASK1_TASK_PRIO,
-                (TaskHandle_t*  )&Task1Task_Handler);
+                (UBaseType_t    )LOGIC_TASK_PRIO,
+                (TaskHandle_t*  )&LOGICTask_Handler);
     //创建TASK2任务
-    xTaskCreate((TaskFunction_t )task2_task,
-                (const char*    )"task2_task",
-                (uint16_t       )TASK2_STK_SIZE,
+    xTaskCreate((TaskFunction_t )EC20_task,
+                (const char*    )"EC20_task",
+                (uint16_t       )EC20_STK_SIZE,
                 (void*          )nullptr,
-                (UBaseType_t    )TASK2_TASK_PRIO,
-                (TaskHandle_t*  )&Task2Task_Handler);
+                (UBaseType_t    )EC20_TASK_PRIO,
+                (TaskHandle_t*  )&EC20Task_Handler);
     vTaskDelete(StartTask_Handler); //删除开始任务
     taskEXIT_CRITICAL();            //退出临界区
 }
 
 //task1任务函数
-[[noreturn]] void task1_task(void *pvParameters)//alignas(8)
+[[noreturn]] void LOGIC_task(void *pvParameters)//alignas(8)
 {
     while(true)
     {
-        vTaskDelay(200/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+        vTaskDelay(200/portTICK_RATE_MS );
         run.change();       //运行指示灯
-//        OUT.change();      //输出状态反转
     }
 }
 
 
 //task2任务函数
-[[noreturn]] void task2_task(void *pvParameters)
+[[noreturn]] void EC20_task(void *pvParameters)
 {
     Kstring da;
     while(true) {
-        vTaskDelay(100/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+        vTaskDelay(100/portTICK_RATE_MS );
 
         da+=DEBUG.read_data();
         if(da.find("\r\n") != string::npos) {
@@ -145,7 +145,6 @@ void start_task(void *pvParameters)
             da.clear();
         }
         TB.Getdatacheck();
-
     }
 }
 

@@ -34,7 +34,7 @@ protected:
 private:
     bool  new_flag{};
     static bool Compare(const string& target,const string& data);
-    bool sendcom(const string& CMD,const string& REC,uint8_t delay_time=5);
+    bool sendcom(const string& CMD,const string& REC,uint8_t delay_time=50);
     static string getAPN_Name(const APN& apn);
     void debug(const string& str);
     bool CallBack_flag{};

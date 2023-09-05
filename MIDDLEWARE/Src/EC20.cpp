@@ -48,7 +48,8 @@ bool EC20::init() {
 }
 
 bool EC20::Compare(const string& target,const string& data) {
-    if(target.find(data)>=0)
+//    this.debug("Compare: "+target+"\r\n");
+    if(target.find(data)!=string::npos)
         return true;
     else
         return false;
@@ -58,9 +59,9 @@ bool EC20::sendcom(const string& CMD,const string& REC,uint8_t delay_time) {
     string data;
     this->Call_back_set(false);
     this->USART->clear();
+    this->USART->write(CMD+"\r\n");
     do{
-        this->USART->write(CMD+"\r\n");
-        delay_ms(1000);
+        delay_ms(100);
         data+=this->USART->read_data();
         if(Compare(data,REC))
         {
@@ -148,7 +149,7 @@ bool EC20::reset() {
 }
 
 bool EC20::attest() {
-    return this->sendcom("AT","AT OK");
+    return this->sendcom("AT","OK");
 }
 
 bool EC20::getcpin() {
@@ -232,16 +233,17 @@ bool EC20::Register(APN apn) {
             default:    //×¢²á³É¹¦
                 return true;
         }
+        delay_ms(100);
     }
 
 }
 
 bool EC20::mqttopen(uint8_t id, const string &ip, uint16_t port) {
-    return this->sendcom("AT+QMTOPEN="+to_string(id)+",\""+ip+"\","+to_string(port),"OK");
+    return this->sendcom("AT+QMTOPEN="+to_string(id)+",\""+ip+"\","+to_string(port),"+QMTOPEN: "+to_string(id)+",0");
 }
 
 bool EC20::mqttconn(uint8_t id, const string &clientid, const string &username, const string &password) {
-    return this->sendcom("AT+QMTCONN="+to_string(id)+",\""+clientid+"\",\""+username+"\",\""+password+"\"","OK");
+    return this->sendcom("AT+QMTCONN="+to_string(id)+",\""+clientid+"\",\""+username+"\",\""+password+"\"","+QMTCONN: "+to_string(id)+",0,0");
 }
 
 //bool EC20::mqttconn(uint8_t id, const string &clientid, const string &token) {

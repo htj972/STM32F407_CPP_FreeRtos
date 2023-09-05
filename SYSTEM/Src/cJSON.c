@@ -47,8 +47,8 @@ static int cJSON_strcasecmp(const char *s1,const char *s2)
 //static void *(*cJSON_malloc)(size_t sz) = malloc;
 //static void (*cJSON_free)(void *ptr) = free;
 
-void *mymallocin(size_t size){return mymalloc(SRAMIN,size);}
-void myfreein(void *ptr){myfree(SRAMIN,ptr);}
+void *mymallocin(size_t size){return mymalloc(SRAMCCM,size);}
+void myfreein(void *ptr){myfree(SRAMCCM,ptr);}
 static void *(*cJSON_malloc)(size_t sz) = mymallocin;
 static void (*cJSON_free)(void *ptr) = myfreein;
 
