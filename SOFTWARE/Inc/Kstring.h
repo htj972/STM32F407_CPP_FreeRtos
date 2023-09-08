@@ -19,6 +19,7 @@ public:
     //可以使用  = 传递参数
 
     Kstring(const char * str):std::string(str){}
+    Kstring(std::string str):std::string(std::move(str)){}
     static uint8_t unicode_to_utf8(unsigned int codepoint, char* out);
     static std::string GBK_to_utf8(std::string gbk_str);
     std::string GBK_to_utf8();
@@ -48,6 +49,11 @@ public:
         return *this;
     }
     Kstring& operator=(const std::string& Str)
+    {
+        this->assign(Str);
+        return *this;
+    }
+    Kstring& operator=(std::string Str)
     {
         this->assign(Str);
         return *this;
@@ -98,7 +104,6 @@ public:
         this->append(std::to_string(s));
         return *this;
     }
-
 
 };
 

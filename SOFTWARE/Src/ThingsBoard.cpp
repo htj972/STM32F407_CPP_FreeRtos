@@ -50,7 +50,9 @@ bool ThingsBoard::Connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4, ui
 }
 
 bool ThingsBoard::config(const string& ClientID, const string& Username, const string& Password) {
-    return this->mqtt->config(ClientID,Username,Password);
+    bool ret=this->mqtt->config(ClientID,Username,Password);
+    this->mqtt->Clear();
+    return ret;
 }
 
 bool ThingsBoard::SubscribeTopic() {
@@ -79,7 +81,7 @@ void ThingsBoard::PublishData(const string &message, double value) {
 }
 
 void ThingsBoard::PublishData(const string& message) {
-    *this->Debug<<message<<"\r\n";
+    *this->Debug<<"MQTT:"<<message<<"\r\n";
     this->mqtt->PublishData(telemetry,message);
 }
 //BEEP
@@ -226,6 +228,64 @@ bool ThingsBoard::intel_islink() {
 
 void ThingsBoard::inter_unlink() {
     return this->mqtt->Disconnect();
+}
+
+bool ThingsBoard::TCP_data_check(TCP_Client_Class *tcp) {
+    bool ret= false;
+    if(tcp->available()>0){
+
+        string redate=tcp->read_data();
+        //删除前4位
+        redate.erase(0,4);
+        *this->Debug<<redate;
+        cJSON *root = cJSON_Parse(redate.data());
+        //检查json是否正确cJSON_GetErrorPtr
+        if(root!= nullptr) {
+            //"method":"setValue"
+            cJSON *method = cJSON_GetObjectItem(root, "switchId");
+            if (method != nullptr) {
+                if (std::string(method->valuestring) == "K1") {
+                    cJSON *item = cJSON_GetObjectItem(root, "status");
+                    if (item != nullptr) {
+                        if (item->valueint == 1) {
+                            OUT1.set(ON);
+                        } else if (item->valueint == 0) {
+                            OUT1.set(OFF);
+                        }
+                        ret = true;
+                    }
+                    cJSON_Delete(item);
+                } else if (std::string(method->valuestring) == "K2") {
+                    cJSON *item = cJSON_GetObjectItem(root, "status");
+                    if (item != nullptr) {
+                        if (item->valueint == 1) {
+                            OUT2.set(ON);
+                        } else if (item->valueint == 0) {
+                            OUT2.set(OFF);
+                        }
+                        ret = true;
+                    }
+                    cJSON_Delete(item);
+                }
+            }
+            cJSON_Delete(method);
+        }
+        cJSON_Delete(root);
+    }
+    return ret;
+}
+
+string ThingsBoard::TCP_data_process(string &data) {
+    string str;
+    str.append(R"({"sensor":)");
+    str.append(data);
+    str.append(R"(,"switch":[{)");
+    str.append(R"("switchId":"K1","status":)");
+    str.append(to_string(OUT1.get()));
+    str.append(R"(},{"switchId":"K2","status":)");
+    str.append(to_string(OUT2.get()));
+    str.append("}]}");
+    return str;
 }
 
 

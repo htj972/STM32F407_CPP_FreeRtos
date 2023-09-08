@@ -12,7 +12,19 @@ string TCP_Client_Class::recvbuf[TCP_NUM];	//TCP接收数据缓冲区
 string TCP_Client_Class::sendbuf[TCP_NUM];	//TCP接收数据缓冲区
 uint8_t TCP_Client_Class::link_flag[TCP_NUM];
 struct tcp_pcb *TCP_Client_Class::tcppcb[TCP_NUM];  	//定义一个TCP服务器控制块
+uint8_t TCP_Client_Class::TCP_link_num=0;
 
+TCP_Client_Class::TCP_Client_Class(uint16_t port):tcp_port(port) {
+   this->tcp_Num=TCP_link_num;
+   link_flag[this->tcp_Num]=0;
+   TCP_link_num++;
+}
+
+TCP_Client_Class::TCP_Client_Class() {
+    this->tcp_Num=TCP_link_num;
+    link_flag[this->tcp_Num]=0;
+    TCP_link_num++;
+}
 
 //lwIP TCP连接建立后调用回调函数
 err_t TCP_Client_Class::connected(void *arg, struct tcp_pcb *tpcb, err_t err)
@@ -203,53 +215,35 @@ bool TCP_Client_Class::connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip
 
 bool TCP_Client_Class::connect(ip_addr rmtipaddr,uint16_t port) {
     uint8_t ret;
-    //这个连接已经存在了
-    if(this->tcp_Num == TCP_NUM){
-        uint8_t tcp_link_num = TCP_NUM;
-        for (uint8_t i = 0; i < TCP_NUM; i++) {
-            if (tcppcb[i] == nullptr) {
-                tcp_link_num = i;
-                break;
-            }
-        }
-        if(tcp_link_num<TCP_NUM) {
-            this->mpcb = tcp_new();
-            tcppcb[tcp_link_num] = this->mpcb;
-        }
-        this->tcp_Num = tcp_link_num;
+    //这个连接不存在
+    if(this->mpcb== nullptr){
+        this->mpcb = tcp_new();
+        tcppcb[this->tcp_Num] = this->mpcb;
     }
     this->tcp_port=port;
-    ret=tcp_connect(tcppcb[this->tcp_Num],&rmtipaddr,tcp_port,connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
+    ret=tcp_connect(this->mpcb,&rmtipaddr,tcp_port,connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
     if(ret==ERR_OK)return true;
     else return false;
 }
 
 bool TCP_Client_Class::connect(ip_addr rmtipaddr) {
     uint8_t ret;
-    if(this->tcp_Num == TCP_NUM) {
-        if (this->mpcb == nullptr) {
-            uint8_t tcp_link_num = TCP_NUM;
-            for (uint8_t i = 0; i < TCP_NUM; i++) {
-                if (tcppcb[i] == nullptr) {
-                    tcp_link_num = i;
-                    break;
-                }
-            }
-            if (tcp_link_num < TCP_NUM) {
-                this->mpcb = tcp_new();
-                tcppcb[tcp_link_num] = this->mpcb;
-            }
-            this->tcp_Num = tcp_link_num;
-        }
+    if(this->mpcb== nullptr){
+        this->mpcb = tcp_new();
+        tcppcb[this->tcp_Num] = this->mpcb;
     }
-    ret=tcp_connect(tcppcb[this->tcp_Num],&rmtipaddr,tcp_port,connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
+    ret=tcp_connect(this->mpcb,&rmtipaddr,tcp_port,connected);  //连接到目的地址的指定端口上,当连接成功后回调tcp_client_connected()函数
     if(ret==ERR_OK)return true;
     else return false;
 }
 
 void TCP_Client_Class::close() {
-    this->tcp_Num=TCP_NUM;
-    connection_close(this->mpcb,nullptr);
+    if(tcppcb[this->tcp_Num]!= nullptr)
+    {
+        tcp_close(tcppcb[this->tcp_Num]);
+    }
+    link_flag[this->tcp_Num]=0;//标记连接断开了
+    this->mpcb = nullptr;
 }
 
 bool TCP_Client_Class::upset() const {
@@ -403,15 +397,6 @@ void TCP_Client_Class::extern_upset(uint8_t num)
         recvbuf[num].clear();
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 

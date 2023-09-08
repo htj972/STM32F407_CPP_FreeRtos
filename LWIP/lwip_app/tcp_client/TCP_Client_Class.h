@@ -45,6 +45,7 @@ private:
     static std::string recvbuf[TCP_NUM];
     static std::string sendbuf[TCP_NUM];
     static struct tcp_pcb *tcppcb[TCP_NUM];  	//定义一个TCP服务器控制块
+    static uint8_t TCP_link_num;
 
     static err_t recv(void *arg,struct tcp_pcb *tpcb,struct pbuf *p,err_t err);//tcp_recv()函数的回调函数
     static void error(void *arg,err_t err);//tcp_err()回调函数
@@ -58,10 +59,11 @@ protected:
     uint16_t tcp_port{};
     struct tcp_pcb *mpcb{};
 public:
-    explicit TCP_Client_Class(uint16_t port):tcp_port(port){this->tcp_Num=TCP_NUM;};
-    TCP_Client_Class(){this->tcp_Num=TCP_NUM;};
+    explicit TCP_Client_Class(uint16_t port);
+    TCP_Client_Class();
     ~TCP_Client_Class()=default;
     bool connect(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port) override;
+
     bool connect(ip_addr rmtipaddr,uint16_t port) override;
     bool connect(ip_addr rmtipaddr);
     void close() override;//关闭TCP Client连接

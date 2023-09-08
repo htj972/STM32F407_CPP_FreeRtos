@@ -10,6 +10,7 @@
 #include "sys.h"
 #include "USART.h"
 #include "MQTT/MQTT.h"
+#include "tcp_client/TCP_Client_Class.h"
 
 class ThingsBoard {
 private:
@@ -46,6 +47,10 @@ public:
     void GetVersion();
     void GetUpdata_pack(uint16_t pack,uint16_t len);
     void GetUpdata();
+
+    bool TCP_data_check(TCP_Client_Class *tcp);
+    static string TCP_data_process(string &data);
+
 
     uint8_t updata_step{};
 };

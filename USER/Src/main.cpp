@@ -9,12 +9,12 @@
 #include "malloc.h"
 #include "lwip_comm/lwip_comm.h"
 #include "Communication.h"
-#include "cJSON.h"
 #include "tcp_client/TCP_Client_Class.h"
 #include "MQTT/MQTT.h"
 #include "Kstring.h"
 #include "picosha2.h"
 #include "ThingsBoard.h"
+#include "cJSON.h"
 
 /*修改APP启动
  * /Bin/xxx.bin
@@ -92,9 +92,12 @@ _USART_ DEBUG(USART1);                          //调试串口
 
 Communication MB(USART3,GPIOB15,TIM7,100);//modbus通信
 
+
+TCP_Client_Class  tcp_sbc;
+
 TCP_Client_Class  tcp_mq;//TCP通信
-MQTT    mqtt_demo(&tcp_mq);
-ThingsBoard tb(&DEBUG,&mqtt_demo);
+MQTT        mqtt_demo(&tcp_mq);
+ThingsBoard tb(&DEBUG,&mqtt_demo);//
 
 int main()
 {
@@ -142,9 +145,6 @@ void start_task(void *pvParameters)
 }
 
 
-
-
-
 //task1任务函数
 [[noreturn]] void DATA_task(void *pvParameters)//alignas(8)
 {
@@ -153,74 +153,8 @@ void start_task(void *pvParameters)
     {
         vTaskDelay(100/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
         run.change();       //运行指示灯
-//        OUT1.change();      //输出状态反转
-//        OUT2.change();      //输出状态反转
-        {
-            MB.set_id(0x0a);//五合一传感器
-            if(MB.modbus_03_send(0,5)==modbus::result::modbus_success)
-            {
-                uint16_t *data=MB.data_BUS.to_u16;
-                if(*data<0x8000){
-                    MB.env.temp=((float)*data/10.0f);
-                } else{
-                    MB.env.temp=((float)(0xffff-*data+1))/10.0f;
-                }
-                data++;
-                MB.env.humi=((float)*data/10.0f);
-                data++;
-                MB.env.press=((float)*data/10.0f);
-                data++;
-                MB.env.co2=((float)*data);
-                data++;
-                MB.env.light=((float)*data*10);
-            }
-            MB.set_id(0x0b);//PM传感器
-            if(MB.modbus_03_send(0,4)==modbus::result::modbus_success)
-            {
-                uint16_t *data=MB.data_BUS.to_u16;
-                MB.env.pm1=((float)*data);
-                data++;
-                MB.env.pm10=((float)*data);
-                data++;
-                MB.env.pm25=((float)*data);
-                data++;
-                MB.env.pm30=((float)*data);
-            }
-            MB.set_id(0x0c);//风向传感器
-            if(MB.modbus_03_send(0,1)==modbus::result::modbus_success)
-            {
-                uint16_t *data=MB.data_BUS.to_u16;
-                MB.env.wind_dir=((float)*data);
-            }
-            MB.set_id(0x0d);//风速传感器
-            if(MB.modbus_03_send(0,1)==modbus::result::modbus_success)
-            {
-                uint16_t *data=MB.data_BUS.to_u16;
-                MB.env.wind_speed=((float)*data/100.0f);
-            }
-            MB.set_id(0x0e);//总辐射传感器
-            if(MB.modbus_03_send(0,1)==modbus::result::modbus_success)
-            {
-                uint16_t *data=MB.data_BUS.to_u16;
-                MB.env.solar_rad=((float)*data);
-            }
-            MB.set_id(0x0f);//土壤传感器
-            if(MB.modbus_03_send(0,4)==modbus::result::modbus_success)
-            {
-                uint16_t *data=MB.data_BUS.to_u16;
-                if(*data<0x8000){
-                    MB.env.soil_temp=((float)*data/10.0f);
-                } else{
-                    MB.env.soil_temp=((float)(0xffff-*data+1))/10.0f;
-                }
-                data++;
-                MB.env.soil_humi=((float)*data/10.0f);
-                data++;
-                MB.env.soil_ec=((float)*data/100.0f);
-                data++;
-                MB.env.soil_salt=((float)*data);
-            }
-        }
+        //modbus通信
+        MB.data_sync();
         if(ThingsBoard::PHY_islink())
         {
             led.set(ON);
@@ -230,6 +164,23 @@ void start_task(void *pvParameters)
             led.set(OFF);
         }
     }
+}
+
+//上位机TCP bug 需要在发送数据前加上4字节的数据长度
+void tcp_check_send(TCP_Client_Class *tcp,const string& str){
+    Kstring check;
+    union {
+        int len;
+        char data[4];
+    }da{};
+    da.len=(int)str.length();
+    check<<da.data[3];
+    check<<da.data[2];
+    check<<da.data[1];
+    check<<da.data[0];
+    check<<str;
+    DEBUG<<"TCP:"<<check<<"\r\n";
+    *tcp<<check;
 }
 
 //task2任务函数
@@ -257,78 +208,43 @@ void start_task(void *pvParameters)
 //    DEBUG << "SHA256(Hello, World!) = " << hash_hex_str2 << "\r\n";
 
     tb.intel_link();
-
     while(true)
     {
         uint8_t times=0;
         while(!ThingsBoard::PHY_islink());
-        tb.Connect(222,74,215,220,31883);
-//        tb.Connect(10,40,12,40,31883);
-        tb.config("daocaoren","daocaoren","daocaoren");
-        DEBUG<<"订阅结果"<<tb.SubscribeTopic()<<"\r\n";
-
+        if(!tb.intel_islink()) {
+            tb.Connect(222, 74, 215, 220, 31883);
+            tb.config("1234567", "1234567", "1234567");
+            DEBUG<<"订阅结果"<<tb.SubscribeTopic()<<"\r\n";
+        }
+        if(!tcp_sbc.islink()){
+            tcp_sbc.connect(10,40,12,57,50013);
+        }
         DEBUG<<"linking...\r\n";
-        mqtt_demo.Clear();
-        tb.updata_step=3;
+        if(tb.intel_islink()&&tcp_sbc.islink()&&ThingsBoard::PHY_islink())
         while (true){
             delay_ms(100);
-            if(!tb.intel_islink()) {
+
+            if((!tb.intel_islink())||(!tcp_sbc.islink())||(!ThingsBoard::PHY_islink())){
                 tb.inter_unlink();
+                tcp_sbc.close();
                 break;
             }
-            if(!ThingsBoard::PHY_islink()){
-                break;
-            }
+
             tb.Getdatacheck();
 //            tb.GetVersion();
+
+            if(tb.TCP_data_check(&tcp_sbc))times=100;
+
             times++;
             if(times>100){
                 times=0;
-//                cJSON *root = cJSON_CreateObject();
-//
-//                //添加键值对
-//                cJSON_AddNumberToObject(root,"温度",MB.env.temp);
-//                cJSON_AddNumberToObject(root,"湿度",MB.env.humi);
-//                cJSON_AddNumberToObject(root,"气压",MB.env.press);
-//                cJSON_AddNumberToObject(root,"二氧化碳",MB.env.co2);
-//                cJSON_AddNumberToObject(root,"光照",MB.env.light);
-//                cJSON_AddNumberToObject(root,"PM1",MB.env.pm1);
-//                cJSON_AddNumberToObject(root,"PM10",MB.env.pm10);
-//                cJSON_AddNumberToObject(root,"PM2.5",MB.env.pm25);
-//                cJSON_AddNumberToObject(root,"PM3.0",MB.env.pm30);
-//                cJSON_AddNumberToObject(root,"风向",MB.env.wind_dir);
-//                cJSON_AddNumberToObject(root,"风速",MB.env.wind_speed+5);
-//                cJSON_AddNumberToObject(root,"总辐射",MB.env.solar_rad);
-//                cJSON_AddNumberToObject(root,"土壤温度",MB.env.soil_temp);
-//                cJSON_AddNumberToObject(root,"土壤湿度",MB.env.soil_humi);
-//                cJSON_AddNumberToObject(root,"土壤电导率",MB.env.soil_ec);
-//                cJSON_AddNumberToObject(root,"土壤盐分",MB.env.soil_salt);
-////                将JSON对象转化为字符串
-//                Kstring buf=cJSON_Print(root);
-                //删除JSON对象
-//                cJSON_Delete(root);
-                Kstring buf;
-                buf<<"{";
-                buf<<"\"温度\":"<<MB.env.temp<<",";
-                buf<<"\"湿度\":"<<MB.env.humi<<",";
-                buf<<"\"气压\":"<<MB.env.press<<",";
-                buf<<"\"二氧化碳\":"<<MB.env.co2<<",";
-                buf<<"\"光照\":"<<MB.env.light<<",";
-                buf<<"\"PM1\":"<<MB.env.pm1<<",";
-                buf<<"\"PM10\":"<<MB.env.pm10<<",";
-                buf<<"\"PM2.5\":"<<MB.env.pm25<<",";
-                buf<<"\"PM30\":"<<MB.env.pm30<<",";
-                buf<<"\"风向\":"<<MB.env.wind_dir<<",";
-                buf<<"\"风速\":"<<MB.env.wind_speed+5<<",";
-                buf<<"\"总辐射\":"<<MB.env.solar_rad<<",";
-                buf<<"\"土壤温度\":"<<MB.env.soil_temp<<",";
-                buf<<"\"土壤湿度\":"<<MB.env.soil_humi<<",";
-                buf<<"\"土壤电导率\":"<<MB.env.soil_ec<<",";
-                buf<<"\"土壤盐分\":"<<MB.env.soil_salt;
-                buf<<"}";
-                DEBUG<<buf<<"\r\n";
-//                DEBUG<<buf.GBK_to_utf8()<<"\r\n";
+                string sensor_str=MB.data_to_json();
+                Kstring str=ThingsBoard::TCP_data_process(sensor_str);
+                tcp_check_send(&tcp_sbc,str.GBK_to_utf8());
+                Kstring buf=sensor_str;
                 tb.PublishData(buf.GBK_to_utf8());
+
             }
         }
 

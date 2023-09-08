@@ -6,7 +6,6 @@
 #include "ff.h"
 
 
-
 uint8_t Kstring::unicode_to_utf8(unsigned int codepoint, char* out) {
     if (codepoint <= 0x7f) {
         out[0] = codepoint;

@@ -58,6 +58,8 @@ public:
     K_POWER_DATA data_BUS;
     environment env{};
     void initial();
+    void sensordata_sync();
+    string data_to_json() const;
     uint16_t find_address(const float *data);
     void     data_set(float *data,float value);
     void     data_sync();

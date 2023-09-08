@@ -16,12 +16,13 @@ private:
     std::string rxbuf{};
     std::string txbuf{};
 //    uint16_t txlen{};
-    TCP_BASE *tcp{};
     static uint8_t BYTE0(uint16_t data_temp);
     static uint8_t BYTE1(uint16_t data_temp);
 
     void Send(char *buf,uint16_t len);
     void Send(const std::string& buf);
+protected:
+    TCP_BASE *tcp{};
 public:
     explicit MQTT(TCP_BASE *TCP);
     MQTT()= default;
