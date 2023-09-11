@@ -56,14 +56,13 @@ private:
     static err_t connected(void *arg, struct tcp_pcb *tpcb, err_t err);//TCP连接建立后调用回调函数
 protected:
     uint8_t tcp_Num{};
-    uint16_t tcp_port{};
     struct tcp_pcb *mpcb{};
 public:
     explicit TCP_Client_Class(uint16_t port);
     TCP_Client_Class();
     ~TCP_Client_Class()=default;
     bool connect(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port) override;
-
+    bool connect(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4);
     bool connect(ip_addr rmtipaddr,uint16_t port) override;
     bool connect(ip_addr rmtipaddr);
     void close() override;//关闭TCP Client连接

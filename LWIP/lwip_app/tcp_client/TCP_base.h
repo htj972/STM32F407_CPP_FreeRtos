@@ -11,6 +11,8 @@
 #include "lwip/ip_addr.h"
 
 class TCP_BASE {
+    protected:
+    uint16_t tcp_port{};
     public:
     virtual void send_data(char *data,uint16_t len){};
     virtual void upload_extern_fun(Call_Back *extx){};

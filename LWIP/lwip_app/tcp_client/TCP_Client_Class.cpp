@@ -14,10 +14,11 @@ uint8_t TCP_Client_Class::link_flag[TCP_NUM];
 struct tcp_pcb *TCP_Client_Class::tcppcb[TCP_NUM];  	//定义一个TCP服务器控制块
 uint8_t TCP_Client_Class::TCP_link_num=0;
 
-TCP_Client_Class::TCP_Client_Class(uint16_t port):tcp_port(port) {
-   this->tcp_Num=TCP_link_num;
-   link_flag[this->tcp_Num]=0;
-   TCP_link_num++;
+TCP_Client_Class::TCP_Client_Class(uint16_t port) {
+    this->tcp_port=port;
+    this->tcp_Num=TCP_link_num;
+    link_flag[this->tcp_Num]=0;
+    TCP_link_num++;
 }
 
 TCP_Client_Class::TCP_Client_Class() {
@@ -213,6 +214,12 @@ bool TCP_Client_Class::connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip
     return connect(rmtipaddr,port);
 }
 
+bool TCP_Client_Class::connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4) {
+    struct ip_addr rmtipaddr{};  	//远端ip地址
+    IP4_ADDR(&rmtipaddr, ip1, ip2, ip3, ip4);
+    return connect(rmtipaddr);
+}
+
 bool TCP_Client_Class::connect(ip_addr rmtipaddr,uint16_t port) {
     uint8_t ret;
     //这个连接不存在
@@ -397,7 +404,6 @@ void TCP_Client_Class::extern_upset(uint8_t num)
         recvbuf[num].clear();
     }
 }
-
 
 
 

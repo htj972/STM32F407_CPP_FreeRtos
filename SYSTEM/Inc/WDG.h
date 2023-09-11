@@ -18,7 +18,7 @@ extern "C"{
 //rlr:重装载值:低12位有效,最大值只能4095
 //Tout=((4*2^prer)*rlr)/32 (ms) 4ms~131s
 #define IWDG_prer	4
-#define IWDG_rlr	500
+#define IWDG_rlr	800
 void IWDG_Init(void); //1*1000ms
 void IWDG_Feed(void);
 

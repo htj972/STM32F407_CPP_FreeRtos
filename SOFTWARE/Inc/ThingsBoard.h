@@ -22,6 +22,15 @@ private:
     string title;
     string version;
     string jsonmessage;
+     struct server{
+        uint8_t ip[4]{};
+        uint16_t port{};
+    }mqtt_ser,tcp_ser;
+    struct {
+        string ClientID;
+        string Username;
+        string Password;
+    }mqtt_user;
     MQTT::Subscribe request;//获取指令
     MQTT::Subscribe upgrade;//获取升级信息
     MQTT::Subscribe updata;//获取升级分包数据
@@ -29,6 +38,13 @@ private:
     MQTT::Publish telemetry;//发送数据
     MQTT::Publish getupdata;//获取升级分包数据
 public:
+    enum LINK_STATE:uint8_t {
+        ALL_link_error=0x00,
+        TCP_link_success=0x01,
+        MQTT_link_success=0x02,
+        ALL_link_TCP_link_success=0x03,
+    };
+    uint8_t  link_sata;
     ~ThingsBoard() = default;
     ThingsBoard(_USART_ *Debug,MQTT *mqtt):Debug(Debug),mqtt(mqtt){
         this->topic_config();
@@ -51,6 +67,10 @@ public:
     bool TCP_data_check(TCP_Client_Class *tcp);
     static string TCP_data_process(string &data);
 
+    void relink(TCP_Client_Class *tcp);
+    void TCP_config(TCP_Client_Class *tcp,uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port);
+    void mqtt_config(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port);
+    void mqtt_config(const string& ClientID,const string& Username,const string& Password);
 
     uint8_t updata_step{};
 };

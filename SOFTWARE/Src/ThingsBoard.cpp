@@ -288,6 +288,68 @@ string ThingsBoard::TCP_data_process(string &data) {
     return str;
 }
 
+void ThingsBoard::relink(TCP_Client_Class *tcp) {
+    if(!this->intel_islink()) {
+        if((this->link_sata&ThingsBoard::MQTT_link_success)!=ThingsBoard::MQTT_link_success){
+            this->Connect(this->mqtt_ser.ip[0],this->mqtt_ser.ip[1],this->mqtt_ser.ip[2],this->mqtt_ser.ip[3],this->mqtt_ser.port);
+            this->config(this->mqtt_user.ClientID,this->mqtt_user.Username,this->mqtt_user.Password);
+            *this->Debug<<"订阅结果"<<this->SubscribeTopic()<<"\r\n";
+        }
+        else {
+            this->inter_unlink();
+            this->link_sata &=~ ThingsBoard::LINK_STATE::MQTT_link_success;
+        }
+        delay_ms(100);
+        if(this->intel_islink()){
+            this->link_sata|=ThingsBoard::MQTT_link_success;
+        }
+    }
+    if(!tcp->islink()){
+        if((this->link_sata&ThingsBoard::TCP_link_success)!=ThingsBoard::TCP_link_success){
+            tcp->connect(this->tcp_ser.ip[0],this->tcp_ser.ip[1],this->tcp_ser.ip[2],this->tcp_ser.ip[3],this->tcp_ser.port);
+            *this->Debug<<"relink"<<"\r\n";
+        }
+        else {
+            tcp->close();
+            this->link_sata &=~ ThingsBoard::LINK_STATE::TCP_link_success;
+        }
+        delay_ms(100);
+        if(tcp->islink()){
+            this->link_sata|=ThingsBoard::TCP_link_success;
+        }
+    }
+}
+
+void ThingsBoard::TCP_config(TCP_Client_Class *tcp,uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port) {
+    if(!tcp->islink()){
+        this->tcp_ser.ip[0]=ip1;
+        this->tcp_ser.ip[1]=ip2;
+        this->tcp_ser.ip[2]=ip3;
+        this->tcp_ser.ip[3]=ip4;
+        this->tcp_ser.port=port;
+        tcp->connect(ip1,ip2,ip3,ip4,port);
+    }
+}
+
+void ThingsBoard::mqtt_config(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4, uint16_t port) {
+    this->mqtt_ser.ip[0]=ip1;
+    this->mqtt_ser.ip[1]=ip2;
+    this->mqtt_ser.ip[2]=ip3;
+    this->mqtt_ser.ip[3]=ip4;
+    this->mqtt_ser.port=port;
+}
+
+void ThingsBoard::mqtt_config(const string &ClientID, const string &Username, const string &Password) {
+    if(!this->intel_islink()) {
+        this->mqtt_user.ClientID=ClientID;
+        this->mqtt_user.Username=Username;
+        this->mqtt_user.Password=Password;
+        this->Connect(this->mqtt_ser.ip[0],this->mqtt_ser.ip[1],this->mqtt_ser.ip[2],this->mqtt_ser.ip[3],this->mqtt_ser.port);
+        this->config(ClientID,Username,Password);
+        *this->Debug<<"订阅结果"<<this->SubscribeTopic()<<"\r\n";
+    }
+}
+
 
 
 

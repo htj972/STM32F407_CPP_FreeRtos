@@ -59,6 +59,7 @@ TaskHandle_t DATATask_Handler;
 //任务函数
 [[noreturn]] void DATA_task(void *pvParameters);
 
+
 //任务优先级
 #define INTER_TASK_PRIO		2
 //任务堆栈大小
@@ -223,24 +224,25 @@ void tcp_check_send(TCP_Client_Class *tcp,const string& str){
     while(true)
     {
         while(!ThingsBoard::PHY_islink());
-        if(!tcp_sbc.islink()){
-            tcp_sbc.connect(10,40,12,40,50013);
-        }
-        if(!tb.intel_islink()) {
-            tb.Connect(222, 74, 215, 220, 31883);
-            tb.config("1234567", "1234567", "1234567");
-            DEBUG<<"订阅结果"<<tb.SubscribeTopic()<<"\r\n";
-        }
+        //连接服务器
+        tb.TCP_config(&tcp_sbc,10,40,12,40,50013);
+        tb.mqtt_config(222, 74, 215, 220, 31883);
+        tb.mqtt_config("1234567", "1234567", "1234567");
+
+        tb.link_sata=ThingsBoard::LINK_STATE::ALL_link_TCP_link_success;
         DEBUG<<"linking...\r\n";
-        if(tb.intel_islink()&&tcp_sbc.islink()&&ThingsBoard::PHY_islink())
+//        if(tb.intel_islink()&&tcp_sbc.islink()&&ThingsBoard::PHY_islink())
         while (true){
             delay_ms(100);
-
-            if((!tb.intel_islink())||(!tcp_sbc.islink())||(!ThingsBoard::PHY_islink())){
+            //检查网络连接
+            if(!ThingsBoard::PHY_islink()){
                 tb.inter_unlink();
                 tcp_sbc.close();
                 break;
             }
+            tb.relink(&tcp_sbc);//网络重连
+
+
 
             tb.Getdatacheck();
 //            tb.GetVersion();
