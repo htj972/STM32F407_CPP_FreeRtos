@@ -81,7 +81,7 @@ void ThingsBoard::PublishData(const string &message, double value) {
 }
 
 void ThingsBoard::PublishData(const string& message) {
-    *this->Debug<<"MQTT:"<<message<<"\r\n";
+//    *this->Debug<<"MQTT:"<<message<<"\r\n";
     this->mqtt->PublishData(telemetry,message);
 }
 //BEEP

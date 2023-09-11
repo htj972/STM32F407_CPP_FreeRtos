@@ -67,8 +67,18 @@ TaskHandle_t INTERTask_Handler;
 //任务函数
 [[noreturn]] void INTER_task(void *pvParameters);
 
-extern u32 lwip_localtime;		//lwip本地时间计数器,单位:ms
-//运行指示灯
+uint8_t times=0;
+class lwip_:public Timer,public Call_Back{
+public:
+    lwip_(TIM_TypeDef *TIMx, uint16_t frq) {
+        Timer::init(TIMx,10000/frq,8400,true);
+        this->upload_extern_fun(this);
+    }
+    void Callback(int  ,char** ) override {
+        lwip_setup();
+    }
+}lwipw(TIM6,100);//运行指示灯定时器
+
 class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
     T_led_(GPIO_Pin param,TIM_TypeDef *TIMx, uint16_t frq) {
@@ -77,12 +87,12 @@ public:
         this->upload_extern_fun(this);
     }
     void Callback(int  ,char** ) override{
-//        this->change();
-        lwip_setup();
+        times++;
+        this->change();
     };
-}led(GPIOE5,TIM6,100);//运行指示灯定时器
+}run(GPIOE5,TIM5,2);//运行指示灯定时器
 
-_OutPut_ run (GPIOE6),BEEP (GPIOE4,HIGH);//运行指示灯
+_OutPut_ led (GPIOE6),BEEP (GPIOE4,HIGH);//运行指示灯
 _OutPut_ OUT1(GPIOE0,HIGH),OUT2(GPIOE1,HIGH);            //输出
 
 //Timer_queue tIMS(TIM7,50000);                 //定时器队列
@@ -179,7 +189,6 @@ void tcp_check_send(TCP_Client_Class *tcp,const string& str){
     check<<da.data[1];
     check<<da.data[0];
     check<<str;
-    DEBUG<<"TCP:"<<check<<"\r\n";
     *tcp<<check;
 }
 
@@ -210,7 +219,6 @@ void tcp_check_send(TCP_Client_Class *tcp,const string& str){
     tb.intel_link();
     while(true)
     {
-        uint8_t times=0;
         while(!ThingsBoard::PHY_islink());
         if(!tb.intel_islink()) {
             tb.Connect(222, 74, 215, 220, 31883);
@@ -218,7 +226,7 @@ void tcp_check_send(TCP_Client_Class *tcp,const string& str){
             DEBUG<<"订阅结果"<<tb.SubscribeTopic()<<"\r\n";
         }
         if(!tcp_sbc.islink()){
-            tcp_sbc.connect(10,40,12,57,50013);
+            tcp_sbc.connect(10,40,12,40,50013);
         }
         DEBUG<<"linking...\r\n";
         if(tb.intel_islink()&&tcp_sbc.islink()&&ThingsBoard::PHY_islink())
@@ -234,20 +242,22 @@ void tcp_check_send(TCP_Client_Class *tcp,const string& str){
             tb.Getdatacheck();
 //            tb.GetVersion();
 
-            if(tb.TCP_data_check(&tcp_sbc))times=100;
+            if(tb.TCP_data_check(&tcp_sbc))times=20;
 
-            times++;
-            if(times>100){
+            if(times>20){
                 times=0;
                 string sensor_str=MB.data_to_json();
-                Kstring str=ThingsBoard::TCP_data_process(sensor_str);
-                tcp_check_send(&tcp_sbc,str.GBK_to_utf8());
-                Kstring buf=sensor_str;
-                tb.PublishData(buf.GBK_to_utf8());
-
+                DEBUG<<"sensor:"<<sensor_str<<"\r\n";
+                if(tcp_sbc.islink()){
+                    Kstring str = ThingsBoard::TCP_data_process(sensor_str);
+                    tcp_check_send(&tcp_sbc, str.GBK_to_utf8());
+                }
+                if(tb.intel_islink()) {
+                    Kstring buf = sensor_str;
+                    tb.PublishData(buf.GBK_to_utf8());
+                }
             }
         }
-
     }
 }
 
