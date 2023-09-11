@@ -15,6 +15,7 @@
 #include "picosha2.h"
 #include "ThingsBoard.h"
 #include "cJSON.h"
+#include "WDG.h"
 
 /*修改APP启动
  * /Bin/xxx.bin
@@ -88,8 +89,9 @@ public:
     }
     void Callback(int  ,char** ) override{
         times++;
+        Feed_Dog();
         this->change();
-    };
+    }
 }run(GPIOE5,TIM5,2);//运行指示灯定时器
 
 _OutPut_ led (GPIOE6),BEEP (GPIOE4,HIGH);//运行指示灯
@@ -112,6 +114,7 @@ ThingsBoard tb(&DEBUG,&mqtt_demo);//
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
+    WDG_Init();
     delay_init(168);	//初始化延时函数
 
     my_mem_init(SRAMIN);		//初始化内部内存池
@@ -220,13 +223,13 @@ void tcp_check_send(TCP_Client_Class *tcp,const string& str){
     while(true)
     {
         while(!ThingsBoard::PHY_islink());
+        if(!tcp_sbc.islink()){
+            tcp_sbc.connect(10,40,12,40,50013);
+        }
         if(!tb.intel_islink()) {
             tb.Connect(222, 74, 215, 220, 31883);
             tb.config("1234567", "1234567", "1234567");
             DEBUG<<"订阅结果"<<tb.SubscribeTopic()<<"\r\n";
-        }
-        if(!tcp_sbc.islink()){
-            tcp_sbc.connect(10,40,12,40,50013);
         }
         DEBUG<<"linking...\r\n";
         if(tb.intel_islink()&&tcp_sbc.islink()&&ThingsBoard::PHY_islink())

@@ -12651,6 +12651,50 @@ CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj: F:/code/STM32/STM32F407_CPP_Fre
   F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_dcmi.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_fsmc.h
 
+CMakeFiles/Project.elf.dir/SYSTEM/Src/WDG.c.obj: F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/WDG.c \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/WDG.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/sys.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/USER/Inc/stm32f4xx.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/CORE/Inc/core_cm4.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/CORE/Inc/core_cmInstr.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/CORE/Inc/core_cmFunc.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/CORE/Inc/core_cm4_simd.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/USER/Inc/system_stm32f4xx.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/USER/Inc/stm32f4xx_conf.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_adc.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_crc.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_dbgmcu.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_dma.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_exti.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_flash.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_gpio.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_i2c.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_iwdg.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_pwr.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_rcc.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_rtc.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_sdio.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_spi.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_syscfg.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_tim.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_usart.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_wwdg.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/misc.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_cryp.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_hash.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_rng.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_can.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_dac.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_dcmi.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4xx_fsmc.h
+
 CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj: F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/cJSON.c \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
@@ -13897,7 +13941,9 @@ CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: F:/code/STM32/STM32F407_CPP_Fr
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++io.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/fstream.tcc \
   F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/ThingsBoard.h \
-  F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/cJSON.h
+  F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/cJSON.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/WDG.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/sys.h
 
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj: F:/code/STM32/STM32F407_CPP_FreeRtos/USER/Src/stm32f4xx_it.c \
   F:/code/STM32/STM32F407_CPP_FreeRtos/USER/Inc/stm32f4xx_it.h \
@@ -15145,6 +15191,10 @@ F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/pretreatment.cpp:
 F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/pretreatment.h:
 
 F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/DMA.c:
+
+F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/WDG.c:
+
+F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/WDG.h:
 
 E:/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/float.h:
 

@@ -1217,6 +1217,9 @@
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/DMA.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/WDG.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/cJSON.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -1233,6 +1236,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/DMA.c">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/WDG.c">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/cJSON.c">
