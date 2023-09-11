@@ -314,9 +314,16 @@ void ThingsBoard::relink(TCP_Client_Class *tcp) {
             this->link_sata &=~ ThingsBoard::LINK_STATE::TCP_link_success;
         }
         delay_ms(100);
+        if(error_link_flag)
+            if(error_link_count++>10*10){
+                error_link_count=0;
+                NVIC_SystemReset();
+            }
         if(tcp->islink()){
             this->link_sata|=ThingsBoard::TCP_link_success;
         }
+    } else{
+        error_link_flag= true;
     }
 }
 
@@ -328,6 +335,7 @@ void ThingsBoard::TCP_config(TCP_Client_Class *tcp,uint8_t ip1,uint8_t ip2,uint8
         this->tcp_ser.ip[3]=ip4;
         this->tcp_ser.port=port;
         tcp->connect(ip1,ip2,ip3,ip4,port);
+        error_link_flag= false;
     }
 }
 

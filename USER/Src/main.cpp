@@ -16,6 +16,7 @@
 #include "ThingsBoard.h"
 #include "cJSON.h"
 #include "WDG.h"
+#include "FM24Cxx.h"
 
 /*修改APP启动
  * /Bin/xxx.bin
@@ -111,6 +112,9 @@ TCP_Client_Class  tcp_sbc;
 TCP_Client_Class  tcp_mq;//TCP通信
 MQTT        mqtt_demo(&tcp_mq);
 ThingsBoard tb(&DEBUG,&mqtt_demo);//
+
+Software_IIC IIC1(GPIOB6,GPIOB7);       //IIC1
+FM24Cxx     eeprom(&IIC1);                        //eeprom
 
 int main()
 {
@@ -225,7 +229,7 @@ void tcp_check_send(TCP_Client_Class *tcp,const string& str){
     {
         while(!ThingsBoard::PHY_islink());
         //连接服务器
-        tb.TCP_config(&tcp_sbc,10,40,12,40,50013);
+        tb.TCP_config(&tcp_sbc,10,40,12,57,50013);
         tb.mqtt_config(222, 74, 215, 220, 31883);
         tb.mqtt_config("1234567", "1234567", "1234567");
 

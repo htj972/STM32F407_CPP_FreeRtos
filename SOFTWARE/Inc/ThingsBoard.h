@@ -45,6 +45,8 @@ public:
         ALL_link_TCP_link_success=0x03,
     };
     uint8_t  link_sata;
+    uint16_t error_link_count{};
+    bool     error_link_flag{};
     ~ThingsBoard() = default;
     ThingsBoard(_USART_ *Debug,MQTT *mqtt):Debug(Debug),mqtt(mqtt){
         this->topic_config();
