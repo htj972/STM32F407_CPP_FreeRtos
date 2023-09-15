@@ -14,7 +14,6 @@
 #include "Kstring.h"
 #include "picosha2.h"
 #include "ThingsBoard.h"
-#include "cJSON.h"
 #include "WDG.h"
 #include "FM24Cxx.h"
 
@@ -69,8 +68,8 @@ TaskHandle_t DATATask_Handler;
 TaskHandle_t INTERTask_Handler;
 //任务函数
 [[noreturn]] void INTER_task(void *pvParameters);
-
-uint8_t times=0;
+#define Updata_time (60*2)
+uint8_t times=Updata_time;
 class lwip_:public Timer,public Call_Back{
 public:
     lwip_(TIM_TypeDef *TIMx, uint16_t frq) {
@@ -229,7 +228,7 @@ void tcp_check_send(TCP_Client_Class *tcp,const string& str){
     {
         while(!ThingsBoard::PHY_islink());
         //连接服务器
-        tb.TCP_config(&tcp_sbc,10,40,12,57,50013);
+        tb.TCP_config(&tcp_sbc,192,168,8,100,50013);
         tb.mqtt_config(222, 74, 215, 220, 31883);
         tb.mqtt_config("1234567", "1234567", "1234567");
 
@@ -246,14 +245,13 @@ void tcp_check_send(TCP_Client_Class *tcp,const string& str){
             }
             tb.relink(&tcp_sbc);//网络重连
 
-
-
-            tb.Getdatacheck();
 //            tb.GetVersion();
 
-            if(tb.TCP_data_check(&tcp_sbc))times=20;
+            if(tb.TCP_data_check(&tcp_sbc)||
+                    tb.Getdatacheck())
+                times=Updata_time;
 
-            if(times>20){
+            if(times>Updata_time){
                 times=0;
                 string sensor_str=MB.data_to_json();
                 DEBUG<<"sensor:"<<sensor_str<<"\r\n";

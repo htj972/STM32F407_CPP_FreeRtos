@@ -11954,14 +11954,34 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/Kstring.cpp.obj: F:/code/STM32/STM32F407
 
 CMakeFiles/Project.elf.dir/SOFTWARE/Src/ThingsBoard.cpp.obj: F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/ThingsBoard.cpp \
   F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/ThingsBoard.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstring \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++config.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/os_defines.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/cpu_defines.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano/newlib.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/config.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/reent.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_types.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_types.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/lock.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/assert.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/cdefs.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_locale.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/strings.h \
+  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/sys.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/USER/Inc/stm32f4xx.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/CORE/Inc/core_cm4.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/features.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/CORE/Inc/core_cmInstr.h \
@@ -11998,9 +12018,6 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/ThingsBoard.cpp.obj: F:/code/STM32/STM32
   F:/code/STM32/STM32F407_CPP_FreeRtos/HARDWARE/Inc/USART.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/HARDWARE/Inc/GPIO.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/string \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++config.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/os_defines.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/cpu_defines.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/stringfwd.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/memoryfwd.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/char_traits.h \
@@ -12024,20 +12041,7 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/ThingsBoard.cpp.obj: F:/code/STM32/STM32
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/postypes.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cwchar \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/wchar.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano/newlib.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/config.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/reent.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_types.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_types.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/lock.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/assert.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/cdefs.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
-  E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_locale.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdint \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/allocator.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++allocator.h \
@@ -12177,6 +12181,7 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/ThingsBoard.cpp.obj: F:/code/STM32/STM32
   F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4x7_eth.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/FWLIB/inc/stm32f4x7_eth_conf.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/LWIP/lwip_app/tcp_client/TCP_base.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/delay.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/cJSON.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Kstring.h \
@@ -13941,9 +13946,11 @@ CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: F:/code/STM32/STM32F407_CPP_Fr
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+fp/hard/bits/c++io.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/fstream.tcc \
   F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/ThingsBoard.h \
-  F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/cJSON.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Inc/Storage_BASE.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/WDG.h \
-  F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/sys.h
+  F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Inc/sys.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/FM24Cxx.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/HARDWARE/Inc/IIC.h
 
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj: F:/code/STM32/STM32F407_CPP_FreeRtos/USER/Src/stm32f4xx_it.c \
   F:/code/STM32/STM32F407_CPP_FreeRtos/USER/Inc/stm32f4xx_it.h \

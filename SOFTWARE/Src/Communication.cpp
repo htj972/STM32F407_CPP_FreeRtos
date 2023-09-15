@@ -63,6 +63,12 @@ void Communication::data_sync() {
 }
 
 void Communication::sensordata_sync() {
+    this->set_id(0x05);//五合一传感器
+    if(this->modbus_03_send(0,5)==modbus::result::modbus_success)
+    {
+        uint16_t *data=this->data_BUS.to_u16;
+        this->env.rain=((float)*data/10.0f);
+    }
     this->set_id(0x0a);//五合一传感器
     if(this->modbus_03_send(0,5)==modbus::result::modbus_success)
     {
@@ -173,12 +179,12 @@ string Communication::data_to_json() const {
         buf.append(R"("风向":"北东偏北",)");
     }
     buf.append(R"("风速":)"+to_string(this->env.wind_speed)+",");
-    buf.append(R"("总辐射":)"+to_string(this->env.solar_rad)+",");
+    buf.append(R"("太阳辐射":)"+to_string(this->env.solar_rad)+",");
     buf.append(R"("土壤温度":)"+to_string(this->env.soil_temp)+",");
     buf.append(R"("土壤湿度":)"+to_string(this->env.soil_humi)+",");
     buf.append(R"("土壤电导率":)"+to_string(this->env.soil_ec)+",");
-    buf.append(R"("土壤盐分":)"+to_string(this->env.soil_salt)+"}");
-
+    buf.append(R"("土壤盐分":)"+to_string(this->env.soil_salt)+",");
+    buf.append(R"("降雨量":)"+to_string(this->env.rain)+"}");
     return buf;
 }
 

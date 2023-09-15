@@ -17,16 +17,17 @@ void mqtt_base::Message_analyze(const std::vector<unsigned char> &bytes) {
 
 //ÐÅÏ¢·ÖÎö
 bool mqtt_base::Message_analyze(const std::string &str) {
-    if(isValidMQTT(str)){
-        int topic_length = str[2] * 256 + str[3];
-        topic = str.substr(4, topic_length);
-        message = str.substr(4 + topic_length);
+    uint8_t len;
+    if(isValidMQTT(str,&len)){
+        int topic_length = str[len+1]*256+str[len+2];
+        topic = str.substr(len+3, topic_length);
+        message = str.substr(len+3 + topic_length);
         return true;
     }
     return false;
 }
 
-bool mqtt_base::isValidMQTT(const std::string& str) {
+bool mqtt_base::isValidMQTT(const std::string& str,uint8_t *len) {
     // Check if the message is a PUBLISH message
     if ((str[0] >> 4) != 3) {
         return false;
@@ -34,11 +35,19 @@ bool mqtt_base::isValidMQTT(const std::string& str) {
 
     // Check the length of the message
     int remaining_length = str[1];
-    if (str.size() != remaining_length + 2) {
-        return false;
+    if (str.size() == remaining_length + 2) {
+        *len=1;
+        return true;
+    }
+    else {
+        remaining_length = str[1]+str[2]*128;
+        if (str.size() == remaining_length + 3) {
+            *len=2;
+            return true;
+        }
     }
 
-    return true;
+    return false;
 }
 
 bool mqtt_base::Wildcard_recognition(const char *str) {

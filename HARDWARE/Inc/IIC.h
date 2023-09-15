@@ -11,9 +11,10 @@
 #include "HARD_BASE.h"
 
 class Software_IIC: public HARD_BASE {
-private:
+protected:
     _GPIO_ SCL;
     _GPIO_ SDA;
+private:
     enum {
         msec=1,
         usec=0,

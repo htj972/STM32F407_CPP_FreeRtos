@@ -87,13 +87,16 @@ void ThingsBoard::PublishData(const string& message) {
 //BEEP
 extern _OutPut_ OUT1,OUT2;
 
-void ThingsBoard::Getdatacheck() {
+bool ThingsBoard::Getdatacheck() {
     if(this->mqtt->available()){                              //接收到数据
         string sdata=this->mqtt->GetRxbuf();
 //        if(sdata.empty())return;
         *this->Debug<<sdata<<"\r\n";
-        this->mqtt->Message_analyze(sdata);//分析接收到的数据
-
+        if(this->mqtt->Message_analyze(sdata))//分析接收到的数据
+        {
+            *this->Debug <<"topic:" << this->mqtt->getTopic() << "\r\n";
+            *this->Debug <<"message:" << this->mqtt->getMsg() << "\r\n";
+        }
 //        this->mqtt->Message_analyze(this->mqtt->GetRxbuf());//分析接收到的数据
 
         if(this->mqtt->check_topic(this->request)){
@@ -111,6 +114,7 @@ void ThingsBoard::Getdatacheck() {
                             } else if (item->valueint==0) {
                                 OUT1.set(OFF);
                             }
+                            return true;
                         }
                         cJSON_Delete(item);
                     } else if(std::string(method->valuestring) == "setbird_repellency") {
@@ -121,13 +125,14 @@ void ThingsBoard::Getdatacheck() {
                             } else if (item->valueint==0) {
                                 OUT2.set(OFF);
                             }
+                            return true;
                         }
                         cJSON_Delete(item);
                     } else if(std::string(method->valuestring) == "updateFirmware") {
                         cJSON *item = cJSON_GetObjectItem(root,"params");
                         if(item!= nullptr) {
                             if (item->valueint==1) {
-                                this->updata_step=3;
+                                this->updata_step=UpData_sata::_new_version;
                             }
                         }
                         cJSON_Delete(item);
@@ -161,7 +166,7 @@ void ThingsBoard::Getdatacheck() {
 //                    cJSON *fw_version = cJSON_GetObjectItem(item,"fw_version");
 //                    if(fw_version!= nullptr) {
 //                        this->version=fw_version->valuestring;
-//                        this->updata_step=2;
+//                        this->updata_step=UpData_sata::_start;
 //                    }
 //                    cJSON_Delete(fw_version);
 //                }
@@ -181,20 +186,19 @@ void ThingsBoard::Getdatacheck() {
 //            cJSON_Delete(root);
 //        }
     }
+    return false;
 }
 
 void ThingsBoard::GetVersion() {
-    if(this->updata_step==3) {
-        //{"sharedKeys": "fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title,fw_version"}
-        *this->Debug<<R"({"sharedKeys": "fw_version,)"
-                      R"(fw_checksum_algorithm,fw_checksum,)"
-                      R"(fw_size,fw_title,fw_version"})"<<"\r\n";
-        this->mqtt->PublishData(this->telemetry,
-                                R"({"sharedKeys":"fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title,fw_version"})");
-        this->updata_step = 1;
+    if(this->updata_step==UpData_sata::_new_version) {
+        //{"sharedKeys": "fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title"}
+        string buf=R"({"sharedKeys":"fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title"})";
+        *this->Debug<<buf<<"\r\n";
+        this->mqtt->PublishData(this->response,buf);
+        this->updata_step = UpData_sata::_ready;
     }
         //打印结果
-    if(this->updata_step==2) {
+    if(this->updata_step==UpData_sata::_start) {
         *this->Debug << "SHA256:" << this->SHA256 << "\r\n";
         *this->Debug << "size:" << this->size << "\r\n";
         *this->Debug << "title:" << this->title << "\r\n";
@@ -291,7 +295,9 @@ string ThingsBoard::TCP_data_process(string &data) {
 void ThingsBoard::relink(TCP_Client_Class *tcp) {
     if(!this->intel_islink()) {
         if((this->link_sata&ThingsBoard::MQTT_link_success)!=ThingsBoard::MQTT_link_success){
-            this->Connect(this->mqtt_ser.ip[0],this->mqtt_ser.ip[1],this->mqtt_ser.ip[2],this->mqtt_ser.ip[3],this->mqtt_ser.port);
+            this->Connect(this->mqtt_ser.server_data.ip[0],this->mqtt_ser.server_data.ip[1],
+                          this->mqtt_ser.server_data.ip[2],this->mqtt_ser.server_data.ip[3],
+                          this->mqtt_ser.server_data.port);
             this->config(this->mqtt_user.ClientID,this->mqtt_user.Username,this->mqtt_user.Password);
             *this->Debug<<"订阅结果"<<this->SubscribeTopic()<<"\r\n";
         }
@@ -306,7 +312,9 @@ void ThingsBoard::relink(TCP_Client_Class *tcp) {
     }
     if(!tcp->islink()){
         if((this->link_sata&ThingsBoard::TCP_link_success)!=ThingsBoard::TCP_link_success){
-            tcp->connect(this->tcp_ser.ip[0],this->tcp_ser.ip[1],this->tcp_ser.ip[2],this->tcp_ser.ip[3],this->tcp_ser.port);
+            tcp->connect(this->tcp_ser.server_data.ip[0],this->tcp_ser.server_data.ip[1],
+                         this->tcp_ser.server_data.ip[2],this->tcp_ser.server_data.ip[3],
+                         this->tcp_ser.server_data.port);
             *this->Debug<<"relink"<<"\r\n";
         }
         else {
@@ -314,37 +322,45 @@ void ThingsBoard::relink(TCP_Client_Class *tcp) {
             this->link_sata &=~ ThingsBoard::LINK_STATE::TCP_link_success;
         }
         delay_ms(100);
-        if(error_link_flag)
-            if(error_link_count++>10*10){
+        if(error_link_flag) {
+            if (error_link_count++ > 10 * 10) {
+                error_link_count = 0;
+                NVIC_SystemReset();
+            }
+        }
+        else{
+            if(error_link_count++>10*60*10){
                 error_link_count=0;
                 NVIC_SystemReset();
             }
+        }
         if(tcp->islink()){
             this->link_sata|=ThingsBoard::TCP_link_success;
         }
     } else{
         error_link_flag= true;
+        error_link_count=0;
     }
 }
 
 void ThingsBoard::TCP_config(TCP_Client_Class *tcp,uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port) {
     if(!tcp->islink()){
-        this->tcp_ser.ip[0]=ip1;
-        this->tcp_ser.ip[1]=ip2;
-        this->tcp_ser.ip[2]=ip3;
-        this->tcp_ser.ip[3]=ip4;
-        this->tcp_ser.port=port;
+        this->tcp_ser.server_data.ip[0]=ip1;
+        this->tcp_ser.server_data.ip[1]=ip2;
+        this->tcp_ser.server_data.ip[2]=ip3;
+        this->tcp_ser.server_data.ip[3]=ip4;
+        this->tcp_ser.server_data.port=port;
         tcp->connect(ip1,ip2,ip3,ip4,port);
         error_link_flag= false;
     }
 }
 
 void ThingsBoard::mqtt_config(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4, uint16_t port) {
-    this->mqtt_ser.ip[0]=ip1;
-    this->mqtt_ser.ip[1]=ip2;
-    this->mqtt_ser.ip[2]=ip3;
-    this->mqtt_ser.ip[3]=ip4;
-    this->mqtt_ser.port=port;
+    this->mqtt_ser.server_data.ip[0]=ip1;
+    this->mqtt_ser.server_data.ip[1]=ip2;
+    this->mqtt_ser.server_data.ip[2]=ip3;
+    this->mqtt_ser.server_data.ip[3]=ip4;
+    this->mqtt_ser.server_data.port=port;
 }
 
 void ThingsBoard::mqtt_config(const string &ClientID, const string &Username, const string &Password) {
@@ -352,11 +368,145 @@ void ThingsBoard::mqtt_config(const string &ClientID, const string &Username, co
         this->mqtt_user.ClientID=ClientID;
         this->mqtt_user.Username=Username;
         this->mqtt_user.Password=Password;
-        this->Connect(this->mqtt_ser.ip[0],this->mqtt_ser.ip[1],this->mqtt_ser.ip[2],this->mqtt_ser.ip[3],this->mqtt_ser.port);
+        this->Connect(this->mqtt_ser.server_data.ip[0],this->mqtt_ser.server_data.ip[1],
+                      this->mqtt_ser.server_data.ip[2],this->mqtt_ser.server_data.ip[3],
+                      this->mqtt_ser.server_data.port);
         this->config(ClientID,Username,Password);
         *this->Debug<<"订阅结果"<<this->SubscribeTopic()<<"\r\n";
     }
 }
+
+void ThingsBoard::TCP_config(TCP_Client_Class *tcp) {
+    if(!tcp->islink()){
+        tcp->connect(this->tcp_ser.server_data.ip[0],this->tcp_ser.server_data.ip[1],
+                     this->tcp_ser.server_data.ip[2],this->tcp_ser.server_data.ip[3],
+                     this->tcp_ser.server_data.port);
+        error_link_flag= false;
+    }
+}
+
+void ThingsBoard::mqtt_config() {
+    if(!this->intel_islink()) {
+        this->Connect(this->mqtt_ser.server_data.ip[0],this->mqtt_ser.server_data.ip[1],
+                      this->mqtt_ser.server_data.ip[2],this->mqtt_ser.server_data.ip[3],
+                      this->mqtt_ser.server_data.port);
+        this->config(this->mqtt_user.ClientID,this->mqtt_user.Username,this->mqtt_user.Password);
+        *this->Debug<<"订阅结果"<<this->SubscribeTopic()<<"\r\n";
+    }
+}
+
+
+void ThingsBoard::Storage_Link(Storage_BASE *pStorageBase) {
+    this->storage=pStorageBase;
+}
+
+bool ThingsBoard::isASCII(const std::string& str) {
+    for (char c : str) {
+        if (c > 127) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void ThingsBoard::Storage_data_read() {
+    if(this->storage!= nullptr){
+        uint8_t len=12;
+        uint8_t last_len=0;
+        string data;
+        this->storage->read(0,mqtt_ser.data,6);
+        this->storage->read(6,tcp_ser.data,6);
+        //读取mqtt_user_ID
+        last_len=last_len+len;
+        len = this->storage->read(last_len);
+        if(len>0) {
+            data = this->storage->readstr(13, len);
+            if(ThingsBoard::isASCII(data))
+                mqtt_user.ClientID=data;
+            else
+                goto read_error;
+        }
+        else
+            goto read_error;
+        //读取mqtt_user_name
+        last_len=last_len+1+len;
+        len = this->storage->read(last_len);
+        if(len>0){
+            data = this->storage->readstr(last_len+1, len);
+            if(ThingsBoard::isASCII(data))
+                mqtt_user.Username=data;
+            else
+                goto read_error;
+        } else
+            goto read_error;
+        //读取mqtt_user_password
+        last_len=last_len+1+len;
+        len = this->storage->read(last_len);
+        if(len>0){
+            data = this->storage->readstr(last_len+1, len);
+            if(ThingsBoard::isASCII(data))
+                mqtt_user.Password=data;
+            else
+                goto read_error;
+        } else
+            goto read_error;
+
+        read_error:
+        this->mqtt_user.ClientID="1234567";
+        this->mqtt_user.Username="1234567";
+        this->mqtt_user.Password="1234567";
+        len=12;
+        last_len=mqtt_user.ClientID.length();
+        this->storage->write(len,last_len);
+        this->storage->writestr(len+1,mqtt_user.ClientID);
+        len=len+1+last_len;
+        last_len=mqtt_user.Username.length();
+        this->storage->write(len,last_len);
+        this->storage->writestr(len+1,mqtt_user.Username);
+        len=len+1+last_len;
+        last_len=mqtt_user.Password.length();
+        this->storage->write(len,last_len);
+        this->storage->writestr(len+1,mqtt_user.Password);
+    }
+}
+
+void ThingsBoard::Storage_data_write() {
+    if(this->storage!= nullptr) {
+        uint8_t len=12;
+        uint8_t last_len;
+        this->storage->write(0, mqtt_ser.data, 6);
+        this->storage->write(6, tcp_ser.data, 6);
+        last_len = mqtt_user.ClientID.length();
+        this->storage->write(len, last_len);
+        this->storage->writestr(len + 1, mqtt_user.ClientID);
+        len = len + 1 + last_len;
+        last_len = mqtt_user.Username.length();
+        this->storage->write(len, last_len);
+        this->storage->writestr(len + 1, mqtt_user.Username);
+        len = len + 1 + last_len;
+        last_len = mqtt_user.Password.length();
+        this->storage->write(len, last_len);
+        this->storage->writestr(len + 1, mqtt_user.Password);
+    }
+}
+
+void ThingsBoard::Storage_data_print() {
+    *this->Debug<<"tcp_ser:"<<this->tcp_ser.server_data.ip[0]<<"."
+                            <<this->tcp_ser.server_data.ip[1]<<"."
+                            <<this->tcp_ser.server_data.ip[2]<<"."
+                            <<this->tcp_ser.server_data.ip[3]<<":"
+                            <<this->tcp_ser.server_data.port<<"\r\n";
+    *this->Debug<<"mqtt_ser:"<<this->mqtt_ser.server_data.ip[0]<<"."
+                             <<this->mqtt_ser.server_data.ip[1]<<"."
+                             <<this->mqtt_ser.server_data.ip[2]<<"."
+                             <<this->mqtt_ser.server_data.ip[3]<<":"
+                             <<this->mqtt_ser.server_data.port<<"\r\n";
+    *this->Debug<<"mqtt_user:"<<this->mqtt_user.ClientID<<","
+                              <<this->mqtt_user.Username<<","
+                              <<this->mqtt_user.Password<<"\r\n";
+}
+
+
 
 
 

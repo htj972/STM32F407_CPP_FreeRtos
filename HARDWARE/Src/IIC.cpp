@@ -118,7 +118,7 @@ bool Software_IIC::Wait_Ack() {
     while(this->SDA.get_input())
     {
         err_temp--;
-        if(err_temp>0)
+        if(err_temp<1)
         {
             this->Stop();
             return false;

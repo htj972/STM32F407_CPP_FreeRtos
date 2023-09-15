@@ -80,4 +80,11 @@ void Storage_BASE::Set_Block_Size(uint32_t BLOCK) {
     this->BLOCK_SIZE=BLOCK;
 }
 
+std::string Storage_BASE::readstr(uint32_t addr, uint16_t len) {
+    std::string temp;
+    temp.resize(len);
+    this->readstr(addr,&temp,len);
+    return temp;
+}
+
 

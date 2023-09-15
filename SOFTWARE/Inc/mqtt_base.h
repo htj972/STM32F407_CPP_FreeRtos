@@ -71,12 +71,15 @@ public:
     };
     void Message_analyze(const std::vector<unsigned char>& bytes);
     bool Message_analyze(const std::string& str);
-    static bool isValidMQTT(const std::string& str);
+    static bool isValidMQTT(const std::string& str,uint8_t *len);
     static bool Wildcard_recognition(const char *str);
     bool Wildcard_recognition(const std::string& str);
     static bool check_topic(const std::string& subscribed_topic, const std::string& received_topic);
     bool check_topic(const std::string& subscribed_topic);
     bool check_topic(const Subscribe& subscribe);
+    std::string getTopic() const {
+        return topic;
+    }
     std::string getMsg() const {
         return message;
     }

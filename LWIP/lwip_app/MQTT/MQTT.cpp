@@ -191,7 +191,7 @@ bool MQTT::SubscribeTopic(char *topic,uint8_t qos,uint8_t whether){
     {
         rxbuf.clear();
         Send((char*)this->txbuf.data(),this->txbuf.length());
-        wait=30;//等待3s时间
+        wait=2*3;//等待3s时间
         while(wait--)
         {
             if(this->rxbuf[0]==parket_subAck[0] && this->rxbuf[1]==parket_subAck[1]) //订阅成功
@@ -199,7 +199,7 @@ bool MQTT::SubscribeTopic(char *topic,uint8_t qos,uint8_t whether){
                 this->txbuf.clear();
                 return true;//订阅成功
             }
-            delay_ms(100);
+            delay_ms(500);
         }
     }
     this->txbuf.clear();

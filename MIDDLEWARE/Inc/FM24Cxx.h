@@ -17,20 +17,20 @@ protected:
     Software_IIC *IIC{};
 public:
     enum TYPE{
-        AT24C01		=127,
-        AT24C02		=255,
-        AT24C04		=511,
-        AT24C08		=1023,
-        AT24C16		=2047,
-        AT24C32		=4095,
-        AT24C64	    =8191,
-        AT24C128	=16383,
-        AT24C256	=32767,
+        FM24C01		=127,
+        FM24C02		=255,
+        FM24C04		=511,
+        FM24C08		=1023,
+        FM24C16		=2047,
+        FM24C32		=4095,
+        FM24C64	    =8191,
+        FM24C128	=16383,
+        FM24C256	=32767,
     };
-    explicit FM24Cxx(Software_IIC *IICx,uint16_t TYPE=TYPE::AT24C64);
+    explicit FM24Cxx(Software_IIC *IICx,uint16_t TYPE=TYPE::FM24C64);
     FM24Cxx()=default;
     ~FM24Cxx()=default;
-    bool init(Software_IIC *IICx,uint16_t TYPE=TYPE::AT24C64);
+    bool init(Software_IIC *IICx,uint16_t TYPE=TYPE::FM24C64);
     bool init();
     bool check();
 

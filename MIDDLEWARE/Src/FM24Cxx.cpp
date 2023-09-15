@@ -9,7 +9,6 @@
 FM24Cxx::FM24Cxx(Software_IIC *IICx,uint16_t TYPE) {
     this->IIC=IICx;
     this->EE_TYPE=TYPE;
-    //this->init();
 }
 
 bool FM24Cxx::init(Software_IIC *IICx, uint16_t TYPE) {
@@ -33,6 +32,8 @@ bool FM24Cxx::init() {
 bool FM24Cxx::check()
 {
     uint8_t temp;
+    this->IIC->set_delay(80,0);
+//    this->IIC->pin_config(GPIOOType_TypeDef::GPIO_OType_PP,GPIOOType_TypeDef::GPIO_OType_OD);
     temp=this->read(this->EE_TYPE);//避免每次开机都写AT24CXX
     if(temp==0X55)return true;
     else//排除第一次初始化的情况
@@ -51,10 +52,10 @@ uint8_t FM24Cxx::read(uint32_t Addr)
 {
 //    OS_ERR err;
 //    OSMutexPend (&IIC_MUTEX,0,OS_OPT_PEND_BLOCKING,0,&err);//请求互斥信号量
-    uint8_t temp=0;
+    uint8_t temp;
     this->IIC->Queue_star();
     this->IIC->Start();
-    if(this->EE_TYPE>FM24Cxx::TYPE::AT24C16)
+    if(this->EE_TYPE>FM24Cxx::TYPE::FM24C16)
     {
         this->IIC->Send_Byte(0XA0);//发送写命令
         this->IIC->Wait_Ack();
@@ -98,7 +99,7 @@ uint16_t FM24Cxx::write(uint32_t Addr,uint8_t Data)
 //    OSMutexPend (&IIC_MUTEX,0,OS_OPT_PEND_BLOCKING,0,&err);//请求互斥信号量
     this->IIC->Queue_star();
     this->IIC->Start();
-    if(this->EE_TYPE>FM24Cxx::TYPE::AT24C16)
+    if(this->EE_TYPE>FM24Cxx::TYPE::FM24C16)
     {
         this->IIC->Send_Byte(0XA0);	    //发送写命令
         this->IIC->Wait_Ack();
