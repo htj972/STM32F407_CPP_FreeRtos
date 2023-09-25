@@ -170,11 +170,9 @@ void ThingsBoard::Getdatacheck() {
 void ThingsBoard::GetVersion() {
     if(this->updata_step==3) {
         //{"sharedKeys": "fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title"}
-        *this->Debug<<R"({"sharedKeys": "fw_version,)"
-                      R"(fw_checksum_algorithm,fw_checksum,)"
-                      R"(fw_size,fw_title,fw_version"})"<<"\r\n";
-        this->mqtt->PublishData(this->telemetry,
-                                R"({"sharedKeys":"fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title"})");
+        string buf=R"({"sharedKeys":"fw_version,fw_checksum_algorithm,fw_checksum,fw_size,fw_title"})";
+        *this->Debug<<buf<<"\r\n";
+        this->mqtt->PublishData(this->telemetry,buf);
         this->updata_step = 1;
     }
         //´òÓ¡½á¹û
