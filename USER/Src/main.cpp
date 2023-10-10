@@ -10,6 +10,8 @@
 #include "PWM.h"
 #include "Timer_queue.h"
 #include "RS485.h"
+#include "Communication.h"
+#include "WDG.h"
 
 
 
@@ -50,25 +52,29 @@ public:
         this->upload_extern_fun(this);
     }
     void Callback(int  ,char** ) override{
+        Feed_Dog();
         this->change();
-    };
-}led(GPIOE5,TIM6,2);
+    }
+}run(GPIOE5,TIM5,2);//运行指示灯定时器
 
-Timer_queue tIMS(TIM7,50000);
+_OutPut_ led (GPIOE6),BEEP (GPIOE4,HIGH);//运行指示灯
+_OutPut_ OUT1(GPIOE0,HIGH),OUT2(GPIOE1,HIGH);            //输出
 
 _USART_ DEBUG(USART1);
 _USART_ Lora(USART6);
-RS485   YU(USART3,GPIOB15,9600);
 
-
+Communication MB(USART3,GPIOB15,TIM7,100);//modbus通信
 
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
+    WDG_Init();
     delay_init(168);	//初始化延时函数
 
+    BEEP.flicker(100,250,2);//蜂鸣器提示
+
     delay_ms(1000);
-    YU.config(GPIOD8,GPIOD9);
+    MB.RS485::config(GPIOD8,GPIOD9);
 //    YU.init();
 
 
@@ -109,8 +115,10 @@ void start_task(void *pvParameters)
 {
     while(true)
     {
-        vTaskDelay(1000/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
-
+        vTaskDelay(100/portTICK_RATE_MS );			//延时10ms，模拟任务运行10ms，此函数不会引起任务调度
+        led.change();       //运行指示灯
+        //modbus通信
+//        MB.data_sync();
     }
 }
 
@@ -125,93 +133,8 @@ void start_task(void *pvParameters)
     {
         vTaskDelay(100/portTICK_RATE_MS );
 
-        string Interceptdata=Lora.read_data();
-
-        DEBUG<<Interceptdata;
+        DEBUG<<Lora.read_data();
         Lora<<DEBUG.read_data();
-
-
-        Lora<<YU.read_data();
-        // 0B 03 00 00 00 1C 44 A9 0B
-        //比较前段数据
-        static string Intercept;
-        Intercept+=Interceptdata;
-        uint8_t headdata[]={0x0B,0x03,0x00,0x00,0x00,0x1C,0x44,0xA9,0x0B};
-        string headd=string((char*)headdata,9);
-        if(Intercept.find(headd)==string::npos){
-            Intercept.clear();
-            continue;
-        } else{
-            Intercept=Intercept.substr(Intercept.find(headd));
-        }
-
-        if((Intercept[0]==0x0B)&&((Intercept[1]==0x03)
-            &&(Intercept[2]==0x00)&&(Intercept[3]==0x00)
-            &&(Intercept[4]==0x00)&&(Intercept[5]==0x1C)
-            &&(Intercept[6]==0x44)&&(Intercept[7]==0xA9)
-            &&(Intercept[8]==0x0B))){
-            //打印原数据以及转换数据
-            DEBUG<<"解析数据\r\n";
-            DEBUG<<"数据序号  原始数据  十进制转换\r\n";
-            uint16_t data_last=0;
-            for(uint8_t i=0;i<Intercept[5];i++){
-                uint16_t data=Intercept[11+i*2]*256+Intercept[12+i*2];
-//                DEBUG.print("data[%02d]:0x%04X  %d\r\n",i+1,data,data);
-                switch (i+1) {
-                    case 1:DEBUG.print("data[%02d]:湿度     :%.1f\r\n",i+1,data/10.0);
-                        break;
-                    case 2:DEBUG.print("data[%02d]:温度     :%.1f\r\n",i+1,data/10.0);
-                        break;
-                    case 3:DEBUG.print("data[%02d]:土壤湿度 :%.1f\r\n",i+1,data/10.0);
-                        break;
-                    case 4:DEBUG.print("data[%02d]:土壤温度 :%.1f\r\n",i+1,data/10.0);
-                        break;
-                    case 5:DEBUG.print("data[%02d]:PM2.5    :%d\r\n",i+1,data);
-                        break;
-                    case 8:
-                        data_last=data;
-                        break;
-                    case 9:DEBUG.print("data[%02d]:光照强度    :%d\r\n",i+1,(data_last<<16)+data);
-                        break;
-                    case 10:DEBUG.print("data[%02d]:PM10    :%d\r\n",i+1,data);
-                        break;
-                    case 11:data_last=data;
-                        break;
-                    case 12:DEBUG.print("data[%02d]:气压    :%d\r\n",i+1,(data_last<<16)+data);
-                        break;
-                    case 13:data_last=data;
-                        break;
-                    case 14:DEBUG.print("data[%02d]:PH      :%.1f\r\n",i+1,((data_last<<16)+data)/100.0);
-                        break;
-                    case 15:DEBUG.print("data[%02d]:雨量      :%.1f\r\n",i+1,data/10.0);
-                        break;
-                    case 16:
-                        data_last=data;
-                        break;
-                    case 17:DEBUG.print("data[%02d]:总辐射  :%d\r\n",i+1,(data_last<<16)+data);
-                        break;
-                    case 22:DEBUG.print("data[%02d]:电导率  :%d\r\n",i+1,data);
-                        break;
-                    case 23:DEBUG.print("data[%02d]:风向 0x%X %d  :%s\r\n",i+1,data,data,dir[data%16]);
-                        break;
-                    case 24:DEBUG.print("data[%02d]:风速    :%.1f\r\n",i+1,data/10.0);
-                        break;
-                    case 26:DEBUG.print("data[%02d]:氮     :%d\r\n",i+1,data);
-                        break;
-                    case 27:DEBUG.print("data[%02d]:磷     :%d\r\n",i+1,data);
-                        break;
-                    case 28:DEBUG.print("data[%02d]:钾     :%.d\r\n",i+1,data);
-                        break;
-                    default:
-                        DEBUG.print("data[%02d]:0x%04X   %d\r\n",i+1,data,data);
-                        break;
-                }
-            }
-            DEBUG<<"解析完毕\r\n";
-            Intercept.erase(0,69);
-        }
-
-
     }
 }
 

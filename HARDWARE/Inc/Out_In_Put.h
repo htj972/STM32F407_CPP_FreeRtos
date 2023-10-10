@@ -29,6 +29,8 @@ public:
     void set(uint8_t ON_OFF);
     void set_value(uint8_t Hi_Lo);
     void change();
+    void flicker(uint8_t time);
+    void flicker(uint8_t time,uint8_t interval,uint8_t num=2);
     uint8_t get() const;
 };
 

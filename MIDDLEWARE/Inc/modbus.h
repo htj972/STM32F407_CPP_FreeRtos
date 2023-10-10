@@ -12,19 +12,20 @@
 #include "Timer.h"
 
 class modbus: public CRC16_Modbus,public Call_Back{
-private:
+public:
     _USART_* USARTx{};
     Timer  * TIMERX{};
-    enum {
+    enum mode{
         HOST=1,
         SLAVE=0,
     };
-    enum {
+    enum result: uint8_t{
         modbus_success =0x00,
         modbus_03_error=0x03,
         modbus_06_error=0x06,
         modbus_10_error=0x10,
     };
+private:
     bool init_flag{};
     uint8_t run_mode{};
     uint8_t own_id{};
