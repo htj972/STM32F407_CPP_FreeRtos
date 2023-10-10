@@ -53,7 +53,7 @@ public:
     };
 }led(GPIOE5,TIM6,2);//运行指示灯定时器
 
-_OutPut_ run (GPIOE6);//运行指示灯
+_OutPut_ run (GPIOE6),RST(GPIOA11);//运行指示灯
 _OutPut_ OUT(GPIOB0,HIGH);            //输出
 
 //Timer_queue tIMS(TIM7,50000);            //定时器队列
@@ -74,20 +74,8 @@ int main()
 
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
-//    ET.reset();
-//    while (!ET.getrdy()){
-//        delay_ms(1000);
-//        DEBUG<<".";
-//    }
-    DEBUG<<"EC20:"<<(ET.init()?"OK":"error")<<"\r\n";
-    ET.setdebug(&DEBUG);
-    ET.Register(EC20::APN::APN_CMNET);
-    ET.Link_TIMER_CALLback(&tIM_EC);
-
-    TB.Connect(222,74,215,220,31883);
-    TB.config("EC20","EC20","EC20");
-    TB.SubscribeTopic();
-
+    ET.Link_RST_Pin(&RST);
+    ET.reset();
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -136,15 +124,36 @@ void start_task(void *pvParameters)
 [[noreturn]] void EC20_task(void *pvParameters)
 {
     Kstring da;
+    while (!ET.getrdy()){
+        delay_ms(1000);
+        DEBUG<<".";
+    }
     while(true) {
-        vTaskDelay(100/portTICK_RATE_MS );
+        DEBUG << "EC20:" << (ET.init() ? "OK" : "error") << "\r\n";
+        ET.setdebug(&DEBUG);
 
-        da+=DEBUG.read_data();
-        if(da.find("\r\n") != string::npos) {
+        ET.Register(EC20::APN::APN_CMNET);
+        ET.Link_TIMER_CALLback(&tIM_EC);
+
+        TB.Connect(222, 74, 215, 220, 31883);
+        TB.config("EC20", "EC20", "EC20");
+        TB.SubscribeTopic();
+        while (true) {
+            vTaskDelay(100 / portTICK_RATE_MS);
+
+            if (!ET.get_Link_Status())
+                break;
+
+            da += DEBUG.read_data();
+            if (da.find("\r\n") != string::npos) {
             TB.PublishData(da.GBK_to_utf8());
             da.clear();
-        }
+//                ET << da;
+//                da.clear();
+            }
+//            DEBUG << ET.read_data();
         TB.Getdatacheck();
+        }
     }
 }
 

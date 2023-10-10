@@ -145,7 +145,15 @@ void EC20::setdebug(_USART_ *USARTx) {
 }
 
 bool EC20::reset() {
-    return this->sendcom("AT+CFUN=1,1","OK");
+    if(RST_Pin!= nullptr)
+    {
+        RST_Pin->set(ON);
+        delay_ms(1000);
+        RST_Pin->set(OFF);
+        return true;
+    }
+    else
+        return this->sendcom("AT+CFUN=1,1","OK");
 }
 
 bool EC20::attest() {
@@ -157,7 +165,7 @@ bool EC20::getcpin() {
 }
 
 bool EC20::getcsq() {
-    return this->sendcom("AT+CSQ","+CSQ:");
+    return this->sendcom("AT+CSQ","+CSQ: ");
 }
 
 bool EC20::getcreg() {
@@ -183,48 +191,49 @@ bool EC20::setqiact() {
 bool EC20::Register(APN apn) {
     uint8_t Steps=0;
     while (true){
+        delay_ms(500);
         switch (Steps) {
             case 0:
                 if(this->getcpin())
                     Steps++;
                 else
-                    return false;
+                    continue;
                 break;
             case 1:
                 if(this->getcsq())
                     Steps++;
                 else
-                    return false;
+                    continue;
                 break;
             case 2:
                 if(this->getcreg())
                     Steps++;
                 else
-                    return false;
+                    continue;
                 break;
             case 3:
                 if(this->getcgreg())
                     Steps++;
                 else
-                    return false;
+                    continue;
                 break;
             case 4:
                 if(this->setqicgsp(apn))
                     Steps++;
                 else
-                    return false;
+                    continue;
                 break;
             case 5:
                 if(this->setqideact())
                     Steps++;
                 else
-                    return false;
+                    continue;
                 break;
             case 6:
                 if(this->setqiact())
                     Steps++;
                 else
-                    return false;
+                    continue;
                 break;
             case 7:
                 this->Link_UART_CALLback();
@@ -239,7 +248,16 @@ bool EC20::Register(APN apn) {
 }
 
 bool EC20::mqttopen(uint8_t id, const string &ip, uint16_t port) {
-    return this->sendcom("AT+QMTOPEN="+to_string(id)+",\""+ip+"\","+to_string(port),"+QMTOPEN: "+to_string(id)+",0");
+    if(this->sendcom("AT+QMTOPEN="+to_string(id)+",\""+ip+"\","+to_string(port),"+QMTOPEN: "+to_string(id)+",0"))
+    {
+        this->Link_s= true;
+        return true;
+    }
+    else
+    {
+        this->Link_s= false;
+        return false;
+    }
 }
 
 bool EC20::mqttconn(uint8_t id, const string &clientid, const string &username, const string &password) {
@@ -322,6 +340,8 @@ void EC20::set_freetime(uint16_t sfreetime) {
 
 void EC20::Receive_data() {
     // 创建一个正则表达式来匹配主题和信息
+    if(Compare(getstring,"+QMTSTAT: 1,1"))
+        this->Link_s= false;
     std::regex r("\\+QMTRECV: ([\\d,]+),\"([^\"]*)\",(\".*\")");
 
     std::smatch match;
@@ -339,27 +359,27 @@ void EC20::Receive_data() {
 }
 
 bool EC20::Connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4, uint16_t port) {
-    return mqttopen(0,to_string(ip1)+"."+to_string(ip2)+"."+to_string(ip3)+"."+to_string(ip4),port);
+    return mqttopen(1,to_string(ip1)+"."+to_string(ip2)+"."+to_string(ip3)+"."+to_string(ip4),port);
 }
 
 bool EC20::config(const std::string &ClientID, const std::string &Username, const std::string &Password) {
-    return mqttconn(0,ClientID,Username,Password);
+    return mqttconn(1,ClientID,Username,Password);
 }
 
 bool EC20::SubscribeTopic(const EC20::Subscribe &subscribe) {
-    return mqttsub(0,subscribe.getTopic(),subscribe.getQos());
+    return mqttsub(1,subscribe.getTopic(),subscribe.getQos());
 }
 
 bool EC20::PublishData(const EC20::Publish &publish) {
-    return mqttpub(0,publish.getTopic(),publish.getMessage());
+    return mqttpub(1,publish.getTopic(),publish.getMessage());
 }
 
 bool EC20::PublishData(const EC20::Publish &publish, const std::string &Message) {
-    return mqttpub(0,publish.getTopic(),Message);
+    return mqttpub(1,publish.getTopic(),Message);
 }
 
 bool EC20::PublishData(const std::string &publish, const std::string &Message, uint8_t qos) {
-    return mqttpub(0,publish,Message);
+    return mqttpub(1,publish,Message);
 }
 
 bool EC20::available() {
@@ -383,6 +403,51 @@ void EC20::Disconnect() {
 bool EC20::PHY_status() {
     return this->init_flag;
 }
+
+void EC20::Link_RST_Pin(_OutPut_ *RST_Pinx) {
+    this->RST_Pin=RST_Pinx;
+    this->RST_Pin->set(OFF);
+}
+
+bool EC20::RSSI_Status() {
+    uint8_t delay_time=50;
+    string data;
+    this->Call_back_set(false);
+    this->USART->clear();
+    this->USART->write("AT+CSQ\r\n");
+    do{
+        delay_ms(100);
+        data+=this->USART->read_data();
+        if(Compare(data,"\r\nOK"))
+        {
+            std::regex r(R"(\+CSQ: (\d+),(\d+))");
+            std::smatch match;
+
+            if (std::regex_search(data, match, r) && match.size() > 2) {
+                std::string signalStrength = match.str(1);
+//                std::string variable = match.str(2);
+                this->_4G_RSSI=std::stoi(signalStrength);
+//                this->GPRS_RSSI=std::stoi(variable);
+//                this->debug("Signal strength is: "+signalStrength);
+//                this->debug("Variable is: " + variable);
+            }
+            this->Call_back_set(true);
+            return true;
+        }
+    } while (delay_time--);
+    this->debug(data);
+    this->Call_back_set(true);
+    return false;
+}
+
+uint8_t EC20::get_4G_RSSI() const {
+    return this->_4G_RSSI;
+}
+
+bool EC20::get_Link_Status() const {
+    return this->Link_s;
+}
+
 
 
 

@@ -9,6 +9,7 @@
 #include "USART.h"
 #include "Timer.h"
 #include "mqtt_base.h"
+#include "Out_In_Put.h"
 
 class EC20 :public mqtt_base,public Call_Back{
 public:
@@ -26,19 +27,23 @@ protected:
     Timer *TIMERX{};
     _USART_ *USART{};
     _USART_ *Debug_USART{};
+    _OutPut_ *RST_Pin{};
     string getstring{};
     string Otherstring{};
     uint16_t reveive_len{};
     uint16_t freetime_t{};
     uint16_t freetime{};
+    uint8_t _4G_RSSI{};
+    uint8_t GPRS_RSSI{};
+    bool Link_s{};
 private:
     bool  new_flag{};
+    bool CallBack_flag{};
+    bool init_flag{};
     static bool Compare(const string& target,const string& data);
     bool sendcom(const string& CMD,const string& REC,uint8_t delay_time=50);
     static string getAPN_Name(const APN& apn);
     void debug(const string& str);
-    bool CallBack_flag{};
-    bool init_flag{};
     void Call_back_set(bool ON_OFF);
     void Call_back_set(bool ON_OFF,bool init);
 public:
@@ -88,10 +93,16 @@ public:
     bool PHY_status() override;
 
     //串口数据回调
+    void Link_RST_Pin(_OutPut_ *RST_Pinx);
     void Link_UART_CALLback();
     void Link_TIMER_CALLback(Timer *TIMX);
     void Callback(int, char **gdata) override;
     void Receive_data();
+
+    bool RSSI_Status();
+    uint8_t get_4G_RSSI() const;
+    bool get_Link_Status() const;
+
 
 
 //    void write(const char *str,uint16_t len) override;
@@ -100,7 +111,7 @@ public:
 
     EC20& operator<<(const string& Str)
     {
-        this->debug(Str);
+        this->USART->write(Str);
         return *this;
     }
 
