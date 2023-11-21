@@ -97,7 +97,7 @@ void ThingsBoard::Getdatacheck() {
                 //"method":"setinsect"
                 cJSON *method = cJSON_GetObjectItem(root,"method");
                 if(method!= nullptr) {
-                    if (std::string(method->valuestring) == "setinsect") {
+                    if (std::string(method->valuestring) == "setOUT") {
                         cJSON *item = cJSON_GetObjectItem(root,"params");
                         if(item!= nullptr) {
                             if (item->valueint==1) {

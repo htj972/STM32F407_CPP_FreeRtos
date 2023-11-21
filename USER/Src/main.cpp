@@ -11,6 +11,7 @@
 #include "EC20.h"
 #include "ThingsBoard.h"
 #include "Kstring.h"
+#include "FM24Cxx.h"
 
 
 //任务优先级
@@ -53,18 +54,21 @@ public:
     };
 }led(GPIOE5,TIM6,2);//运行指示灯定时器
 
-_OutPut_ run (GPIOE6),RST(GPIOA11);//运行指示灯
-_OutPut_ OUT(GPIOB0,HIGH);            //输出
+_OutPut_ run (GPIOE6),UP(GPIOE2),DW(GPIOE3),NET(GPIOE4);//运行指示灯
+_OutPut_ OUT(GPIOC10,HIGH);            //输出
+_OutPut_ RST(GPIOA8);//EC20复位引脚
 
-//Timer_queue tIMS(TIM7,50000);            //定时器队列
 
 Timer tIM_EC(TIM5,100,8400,true);
 
-_USART_ DEBUG(USART2);             //调试串口
-RS485   com(USART3,GPIOB15);
+_USART_ DEBUG(USART6);             //调试串口
+RS485   com(USART3,GPIOD10);
 
 EC20    ET(USART1);
 ThingsBoard TB(&DEBUG,&ET);
+
+Software_IIC IIC1(GPIOB14,GPIOB15);
+FM24Cxx FM24XX(&IIC1,FM24Cxx::AT24C256);
 
 int main()
 {
@@ -74,6 +78,13 @@ int main()
 
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
+    string sda;
+    FM24XX.init();
+    FM24XX.writestr(0,"1234567890");
+    FM24XX.readstr(0,&sda,10);
+    DEBUG <<"FMDATA:"<< sda << "\r\n";
+
+    while (true);
     ET.Link_RST_Pin(&RST);
     ET.reset();
 
@@ -116,6 +127,9 @@ void start_task(void *pvParameters)
     {
         vTaskDelay(200/portTICK_RATE_MS );
         run.change();       //运行指示灯
+        UP.change();        //上行指示灯
+        DW.change();        //下行指示灯
+        NET.change();       //网络指示灯
     }
 }
 
@@ -136,7 +150,7 @@ void start_task(void *pvParameters)
         ET.Link_TIMER_CALLback(&tIM_EC);
 
         TB.Connect(222, 74, 215, 220, 31883);
-        TB.config("EC20", "EC20", "EC20");
+        TB.config("gateway", "gateway", "gateway");
         TB.SubscribeTopic();
         while (true) {
             vTaskDelay(100 / portTICK_RATE_MS);
