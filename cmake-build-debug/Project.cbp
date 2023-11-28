@@ -1172,6 +1172,12 @@
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/modbus.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Gateway.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Gateway.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Communication.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -1179,6 +1185,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/DW_SITE_DATA.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Device_Node_Def.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Fower_Ctrl.h">
@@ -1200,6 +1209,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/DW_DIS.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Device_Node_Def.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Fower_Ctrl.cpp">

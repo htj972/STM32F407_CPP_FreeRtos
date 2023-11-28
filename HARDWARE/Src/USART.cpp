@@ -321,9 +321,8 @@ string _USART_::read_data(uint8_t len) const {
 string _USART_::read_data(char c) const {
     uint16_t len_t;
     string  ret;
-    len_t=UART_STRUCT.RX_buffer[this->USART_Num].find(c);
-    if(len_t!=65535)
-        len_t+=1;
+    if(UART_STRUCT.RX_buffer[this->USART_Num].find(c)!=string::npos)
+        len_t=UART_STRUCT.RX_buffer[this->USART_Num].find(c)+1;
     else
         len_t=0;
     ret=UART_STRUCT.RX_buffer[this->USART_Num].substr(0,len_t);
@@ -334,11 +333,11 @@ string _USART_::read_data(char c) const {
 string _USART_::read_data(const string& str) const {
     uint16_t len_t;
     string  ret;
-    len_t=UART_STRUCT.RX_buffer[this->USART_Num].find(str);
-    if(len_t!=65535)
-        len_t+=str.length();
+    if(UART_STRUCT.RX_buffer[this->USART_Num].find(str)!=string::npos)
+        len_t=UART_STRUCT.RX_buffer[this->USART_Num].find(str)+str.length();
     else
         len_t=0;
+
     ret=UART_STRUCT.RX_buffer[this->USART_Num].substr(0,len_t);
     UART_STRUCT.RX_buffer[this->USART_Num].erase(0,len_t);
     return ret;
@@ -349,7 +348,7 @@ void _USART_::write(const char *str, uint16_t len) {
         uint16_t ii = 0;
         while (ii != len) {
             while ((this->USART->SR & 0X40) == 0);
-//        while(USART_GetFlagStatus(this->USART, USART_FLAG_TXE)==RESET);
+//        while(USART_GetFlagStatus(this->USART, USART_FLAG_TC)==RESET);
             this->USART->DR = *str;
             str++;
             ii++;

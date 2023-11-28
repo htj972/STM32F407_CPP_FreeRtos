@@ -5,6 +5,7 @@
 **/
 
 #include "FM24Cxx.h"
+#include "delay.h"
 
 FM24Cxx::FM24Cxx(Software_IIC *IICx,uint16_t TYPE) {
     this->IIC=IICx;
@@ -34,12 +35,13 @@ bool FM24Cxx::check()
 {
     uint8_t temp;
     temp=this->read(this->EE_TYPE);//避免每次开机都写AT24CXX
-    if(temp==0X55)return true;
+    if(temp==0Xaa)return true;
     else//排除第一次初始化的情况
     {
-        this->write(this->EE_TYPE,0X55);
+        this->write(this->EE_TYPE,0Xaa);
+        delay_ms(10);
         temp=this->read(this->EE_TYPE);
-        if(temp==0X55)return true;
+        if(temp==0Xaa)return true;
     }
     return false;
 }
@@ -69,6 +71,7 @@ uint8_t FM24Cxx::read(uint32_t Addr)
     temp=this->IIC->Read_Byte(0);
     this->IIC->Stop();//产生一个停止条件
     this->IIC->Queue_end();
+    delay_ms(10);
 //    OSMutexPost(&IIC_MUTEX,OS_OPT_POST_NONE,&err);			//释放互斥信号量
     return temp;
 }
@@ -114,7 +117,7 @@ uint16_t FM24Cxx::write(uint32_t Addr,uint8_t Data)
     this->IIC->Wait_Ack();
     this->IIC->Stop();//产生一个停止条件
     this->IIC->Queue_end();
-    //delay_ms(10);
+    delay_ms(10);
 //    OSMutexPost(&IIC_MUTEX,OS_OPT_POST_NONE,&err);			//释放互斥信号量
     return 1;
 }

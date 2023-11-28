@@ -19,7 +19,7 @@ private:
         usec=0,
     };
     uint16_t err_times = 200;
-    uint16_t delay_time= 1;
+    uint16_t delay_time= 2;
     uint8_t dalay_mode= Software_IIC::usec;
     void SDA_config(GPIOMode_TypeDef Pin_mode);
     void SDA_OUT();

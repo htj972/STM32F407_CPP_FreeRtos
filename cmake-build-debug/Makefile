@@ -3992,6 +3992,30 @@ MIDDLEWARE/Src/modbus.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.s
 .PHONY : MIDDLEWARE/Src/modbus.cpp.s
 
+SOFTWARE/Gateway.obj: SOFTWARE/Gateway.cpp.obj
+.PHONY : SOFTWARE/Gateway.obj
+
+# target to build an object file
+SOFTWARE/Gateway.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Gateway.cpp.obj
+.PHONY : SOFTWARE/Gateway.cpp.obj
+
+SOFTWARE/Gateway.i: SOFTWARE/Gateway.cpp.i
+.PHONY : SOFTWARE/Gateway.i
+
+# target to preprocess a source file
+SOFTWARE/Gateway.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Gateway.cpp.i
+.PHONY : SOFTWARE/Gateway.cpp.i
+
+SOFTWARE/Gateway.s: SOFTWARE/Gateway.cpp.s
+.PHONY : SOFTWARE/Gateway.s
+
+# target to generate assembly for a file
+SOFTWARE/Gateway.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Gateway.cpp.s
+.PHONY : SOFTWARE/Gateway.cpp.s
+
 SOFTWARE/Src/Communication.obj: SOFTWARE/Src/Communication.cpp.obj
 .PHONY : SOFTWARE/Src/Communication.obj
 
@@ -4039,6 +4063,30 @@ SOFTWARE/Src/DW_DIS.s: SOFTWARE/Src/DW_DIS.cpp.s
 SOFTWARE/Src/DW_DIS.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.s
 .PHONY : SOFTWARE/Src/DW_DIS.cpp.s
+
+SOFTWARE/Src/Device_Node_Def.obj: SOFTWARE/Src/Device_Node_Def.cpp.obj
+.PHONY : SOFTWARE/Src/Device_Node_Def.obj
+
+# target to build an object file
+SOFTWARE/Src/Device_Node_Def.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Device_Node_Def.cpp.obj
+.PHONY : SOFTWARE/Src/Device_Node_Def.cpp.obj
+
+SOFTWARE/Src/Device_Node_Def.i: SOFTWARE/Src/Device_Node_Def.cpp.i
+.PHONY : SOFTWARE/Src/Device_Node_Def.i
+
+# target to preprocess a source file
+SOFTWARE/Src/Device_Node_Def.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Device_Node_Def.cpp.i
+.PHONY : SOFTWARE/Src/Device_Node_Def.cpp.i
+
+SOFTWARE/Src/Device_Node_Def.s: SOFTWARE/Src/Device_Node_Def.cpp.s
+.PHONY : SOFTWARE/Src/Device_Node_Def.s
+
+# target to generate assembly for a file
+SOFTWARE/Src/Device_Node_Def.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/Device_Node_Def.cpp.s
+.PHONY : SOFTWARE/Src/Device_Node_Def.cpp.s
 
 SOFTWARE/Src/Fower_Ctrl.obj: SOFTWARE/Src/Fower_Ctrl.cpp.obj
 .PHONY : SOFTWARE/Src/Fower_Ctrl.obj
@@ -5116,12 +5164,18 @@ help:
 	@echo ... MIDDLEWARE/Src/modbus.obj
 	@echo ... MIDDLEWARE/Src/modbus.i
 	@echo ... MIDDLEWARE/Src/modbus.s
+	@echo ... SOFTWARE/Gateway.obj
+	@echo ... SOFTWARE/Gateway.i
+	@echo ... SOFTWARE/Gateway.s
 	@echo ... SOFTWARE/Src/Communication.obj
 	@echo ... SOFTWARE/Src/Communication.i
 	@echo ... SOFTWARE/Src/Communication.s
 	@echo ... SOFTWARE/Src/DW_DIS.obj
 	@echo ... SOFTWARE/Src/DW_DIS.i
 	@echo ... SOFTWARE/Src/DW_DIS.s
+	@echo ... SOFTWARE/Src/Device_Node_Def.obj
+	@echo ... SOFTWARE/Src/Device_Node_Def.i
+	@echo ... SOFTWARE/Src/Device_Node_Def.s
 	@echo ... SOFTWARE/Src/Fower_Ctrl.obj
 	@echo ... SOFTWARE/Src/Fower_Ctrl.i
 	@echo ... SOFTWARE/Src/Fower_Ctrl.s

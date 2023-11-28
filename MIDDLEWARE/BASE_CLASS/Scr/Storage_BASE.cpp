@@ -38,7 +38,16 @@ void Storage_BASE::read(uint32_t addr, uint8_t *data, uint16_t len) {
 }
 
 void Storage_BASE::readstr(uint32_t addr, std::string *data, uint16_t len) {
-    this->read(addr,(uint8_t *)data->data(),len);
+    auto *temp=new uint8_t[len];
+    this->read(addr,temp,len);
+    data->append((char *)temp,len);
+    delete [] temp;
+}
+
+std::string Storage_BASE::readstr(uint32_t addr, uint16_t len) {
+    std::string ret;
+    this->readstr(addr,&ret,len);
+    return ret;
 }
 
 bool Storage_BASE::get_init_flag() const {
@@ -80,10 +89,6 @@ void Storage_BASE::Set_Block_Size(uint32_t BLOCK) {
     this->BLOCK_SIZE=BLOCK;
 }
 
-std::string Storage_BASE::readstr(uint32_t addr, uint16_t len) {
-    std::string ret;
-    this->readstr(addr,&ret,len);
-    return ret;
-}
+
 
 

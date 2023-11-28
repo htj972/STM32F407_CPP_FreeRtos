@@ -9,7 +9,7 @@ void DMA_Config(DMA_Stream_TypeDef *DMA_Streamx,uint32_t chx,uint32_t par,uint32
 {
     DMA_InitTypeDef  DMA_InitStructure;
 
-    if((u32)DMA_Streamx>(u32)DMA2)//得到当前stream是属于DMA2还是DMA1
+    if((u32)DMA_Streamx>=(u32)DMA2)//得到当前stream是属于DMA2还是DMA1
     {
         RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2,ENABLE);//DMA2时钟使能
 

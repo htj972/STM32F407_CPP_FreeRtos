@@ -12,6 +12,8 @@
 #include "ThingsBoard.h"
 #include "Kstring.h"
 #include "FM24Cxx.h"
+#include "Device_Node_Def.h"
+#include "../../SOFTWARE/Gateway.h"
 
 
 //任务优先级
@@ -33,9 +35,9 @@ TaskHandle_t LOGICTask_Handler;
 [[noreturn]] void LOGIC_task(void *pvParameters);
 
 //任务优先级
-#define EC20_TASK_PRIO		2
+#define EC20_TASK_PRIO		3
 //任务堆栈大小
-#define EC20_STK_SIZE 		(128*4)
+#define EC20_STK_SIZE 		(128*10)
 //任务句柄
 TaskHandle_t EC20Task_Handler;
 //任务函数
@@ -66,9 +68,9 @@ RS485   com(USART3,GPIOD10);
 
 EC20    ET(USART1);
 ThingsBoard TB(&DEBUG,&ET);
-
-Software_IIC IIC1(GPIOB14,GPIOB15);
-FM24Cxx FM24XX(&IIC1,FM24Cxx::AT24C256);
+//Software_IIC IIC1(GPIOB14,GPIOB15);
+//FM24Cxx FM24XX(&IIC1,FM24Cxx::AT24C128);
+Gateway GW(GPIOB14,GPIOB15,FM24Cxx::AT24C256);
 
 int main()
 {
@@ -78,13 +80,13 @@ int main()
 
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
-    string sda;
-    FM24XX.init();
-    FM24XX.writestr(0,"1234567890");
-    FM24XX.readstr(0,&sda,10);
-    DEBUG <<"FMDATA:"<< sda << "\r\n";
 
-    while (true);
+    if(GW.inital())DEBUG<<"GW OK\r\n";
+    else DEBUG<<"GW error\r\n";
+    GW.print_env(&DEBUG);
+
+
+
     ET.Link_RST_Pin(&RST);
     ET.reset();
 
@@ -133,11 +135,24 @@ void start_task(void *pvParameters)
     }
 }
 
-
 //task2任务函数
 [[noreturn]] void EC20_task(void *pvParameters)
 {
     Kstring da;
+    DEBUG << "\r\n<<";
+    while(true)
+    {
+        vTaskDelay(100/portTICK_RATE_MS );
+        if(DEBUG.available())
+            da = DEBUG.read_data("\r\n");
+        if (!da.empty()) {
+            DEBUG << da << ">>";
+            DEBUG << GW.Command(da);
+            DEBUG << "<<";
+            da.clear();
+        }
+    }
+
     while (!ET.getrdy()){
         delay_ms(1000);
         DEBUG<<".";

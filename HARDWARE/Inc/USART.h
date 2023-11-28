@@ -17,16 +17,16 @@ class _USART_ {
 protected:
     _GPIO_ RX_GPIO;
     _GPIO_ TX_GPIO;
-    USART_TypeDef* USART;
+    USART_TypeDef* USART{};
 private:
     uint8_t  config_flag=0;
-    uint32_t Bound;
-    USART_InitTypeDef USART_InitStructure;
-    NVIC_InitTypeDef NVIC_InitStructure;
-    DMA_Stream_TypeDef* DMAy_Streamx;
-    uint32_t DMA_FLAG;
-    uint32_t DMA_CHANNEL;
-    uint8_t USART_Num;
+    uint32_t Bound{};
+    USART_InitTypeDef USART_InitStructure{};
+    NVIC_InitTypeDef NVIC_InitStructure{};
+    DMA_Stream_TypeDef* DMAy_Streamx{};
+    uint32_t DMA_FLAG{};
+    uint32_t DMA_CHANNEL{};
+    uint8_t USART_Num{};
     bool DMA_Enable;
     bool DMA_send_flag= false;
     void default_config();

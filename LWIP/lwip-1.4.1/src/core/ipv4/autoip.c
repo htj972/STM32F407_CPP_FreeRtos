@@ -291,7 +291,7 @@ autoip_start(struct netif *netif)
     netif_set_down(netif);
   }
 
-  /* Set IP-Address, Netmask and Gateway to 0 to make sure that
+  /* Set IP-Address, Netmask and Device_Node_Def to 0 to make sure that
    * ARP Packets are formed correctly
    */
   ip_addr_set_zero(&netif->ip_addr);

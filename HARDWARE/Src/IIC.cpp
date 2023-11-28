@@ -110,15 +110,17 @@ void Software_IIC::Stop() {
 //返回值：false，接收应答失败
 //       true，接收应答成功
 bool Software_IIC::Wait_Ack() {
-    uint8_t err_temp=this->err_times;
+    uint8_t err_temp=0;
     this->SCL_OFF();
     this->SDA_IN();      //SDA设置为输入
     this->SDA_ON();
     this->SCL_ON();
+    this->delay();
     while(this->SDA.get_input())
     {
-        err_temp--;
-        if(err_temp>0)
+        this->delay();
+        err_temp++;
+        if(err_temp>this->err_times)
         {
             this->Stop();
             return false;
