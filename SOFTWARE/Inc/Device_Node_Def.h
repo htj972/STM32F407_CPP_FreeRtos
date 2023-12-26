@@ -74,7 +74,7 @@ public:
 
     std::string display_bus(Bus bus) const;
 
-    virtual std::string Command(const std::string &COM);
+    std::string Command(const std::string &COM);
 
     std::string outputNodes(Device_Node_Def::Bus bus) const;
     std::string inputNodes(const std::string &data,_USART_ *Debug);

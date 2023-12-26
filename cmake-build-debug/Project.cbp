@@ -1109,6 +1109,9 @@
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/W25QXX.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/WH_L101.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/modbus.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -1169,13 +1172,10 @@
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/W25QXX.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/WH_L101.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/modbus.cpp">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Gateway.cpp">
-			<Option target="Project.elf"/>
-		</Unit>
-		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Gateway.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Communication.h">
@@ -1193,10 +1193,16 @@
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Fower_Ctrl.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Gateway.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Kstring.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/ThingsBoard.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/WH_COM.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/mqtt_base.h">
@@ -1217,10 +1223,16 @@
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Fower_Ctrl.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Gateway.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Kstring.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/ThingsBoard.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/WH_COM.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/mqtt_base.cpp">

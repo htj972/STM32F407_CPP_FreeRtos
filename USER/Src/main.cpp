@@ -11,9 +11,10 @@
 #include "EC20.h"
 #include "ThingsBoard.h"
 #include "Kstring.h"
-#include "FM24Cxx.h"
-#include "Device_Node_Def.h"
-#include "../../SOFTWARE/Gateway.h"
+#include "Gateway.h"
+#include "WH_L101.h"
+#include "WH_COM.h"
+#include "Communication.h"
 
 
 //任务优先级
@@ -42,7 +43,7 @@ TaskHandle_t LOGICTask_Handler;
 TaskHandle_t EC20Task_Handler;
 //任务函数
 [[noreturn]] void EC20_task(void *pvParameters);
-
+uint16_t tims=0;
 //运行指示灯
 class T_led_:public _OutPut_,public Call_Back,public Timer{
 public:
@@ -53,24 +54,24 @@ public:
     }
     void Callback(int  ,char** ) override{
         this->change();
+        tims++;
     };
 }led(GPIOE5,TIM6,2);//运行指示灯定时器
 
-_OutPut_ run (GPIOE6),UP(GPIOE2),DW(GPIOE3),NET(GPIOE4);//运行指示灯
+_OutPut_ run (GPIOE6);//运行指示灯
+//_OutPut_ Beep(GPIOE4,LOW);          //蜂鸣器
 _OutPut_ OUT(GPIOC10,HIGH);            //输出
-_OutPut_ RST(GPIOA8);//EC20复位引脚
-
+_OutPut_ RST(GPIOA11);//EC20复位引脚
 
 Timer tIM_EC(TIM5,100,8400,true);
 
-_USART_ DEBUG(USART6);             //调试串口
-RS485   com(USART3,GPIOD10);
+_USART_ DEBUG(USART2);             //调试串口
+//RS485   com(USART3,GPIOD10);
 
 EC20    ET(USART1);
 ThingsBoard TB(&DEBUG,&ET);
-//Software_IIC IIC1(GPIOB14,GPIOB15);
-//FM24Cxx FM24XX(&IIC1,FM24Cxx::AT24C128);
-Gateway GW(GPIOB14,GPIOB15,FM24Cxx::AT24C256);
+
+Communication COM(USART3,GPIOB15,TIM7,100);
 
 int main()
 {
@@ -81,15 +82,10 @@ int main()
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
 
-    if(GW.inital())DEBUG<<"GW OK\r\n";
-    else DEBUG<<"GW error\r\n";
-    GW.print_env(&DEBUG);
-
-
+//    Beep.flicker(100,200,2);
 
     ET.Link_RST_Pin(&RST);
     ET.reset();
-
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
                 (const char*    )"start_task",           //任务名称
@@ -125,63 +121,47 @@ void start_task(void *pvParameters)
 //task1任务函数
 [[noreturn]] void LOGIC_task(void *pvParameters)//alignas(8)
 {
+    Kstring da;
     while(true)
     {
-        vTaskDelay(200/portTICK_RATE_MS );
-        run.change();       //运行指示灯
-        UP.change();        //上行指示灯
-        DW.change();        //下行指示灯
-        NET.change();       //网络指示灯
+        vTaskDelay(1000/portTICK_RATE_MS );
+        run.change();
+        COM.data_sync();
     }
 }
 
 //task2任务函数
 [[noreturn]] void EC20_task(void *pvParameters)
 {
-    Kstring da;
     DEBUG << "\r\n<<";
-    while(true)
-    {
-        vTaskDelay(100/portTICK_RATE_MS );
-        if(DEBUG.available())
-            da = DEBUG.read_data("\r\n");
-        if (!da.empty()) {
-            DEBUG << da << ">>";
-            DEBUG << GW.Command(da);
-            DEBUG << "<<";
-            da.clear();
-        }
-    }
-
-    while (!ET.getrdy()){
-        delay_ms(1000);
-        DEBUG<<".";
-    }
     while(true) {
-        DEBUG << "EC20:" << (ET.init() ? "OK" : "error") << "\r\n";
-        ET.setdebug(&DEBUG);
-
-        ET.Register(EC20::APN::APN_CMNET);
-        ET.Link_TIMER_CALLback(&tIM_EC);
-
-        TB.Connect(222, 74, 215, 220, 31883);
-        TB.config("gateway", "gateway", "gateway");
-        TB.SubscribeTopic();
+        while (!ET.getrdy()) {
+            delay_ms(1000);
+            DEBUG << ".";
+        }
         while (true) {
-            vTaskDelay(100 / portTICK_RATE_MS);
+            DEBUG << "EC20:" << (ET.init() ? "OK" : "error") << "\r\n";
+            ET.setdebug(&DEBUG);
 
-            if (!ET.get_Link_Status())
-                break;
+            ET.Register(EC20::APN::APN_CMNET);
+            ET.Link_TIMER_CALLback(&tIM_EC);
 
-            da += DEBUG.read_data();
-            if (da.find("\r\n") != string::npos) {
-            TB.PublishData(da.GBK_to_utf8());
-            da.clear();
-//                ET << da;
-//                da.clear();
+            TB.Connect(222, 74, 215, 220, 31883);
+            TB.config("QINGHUA", "XIAOXI", "XIAOXI");
+
+            TB.SubscribeTopic();
+            while (true) {
+                vTaskDelay(100 / portTICK_RATE_MS);
+                if (!ET.get_Link_Status())
+                    break;
+                TB.Getdatacheck();
+                if(tims>=60*2){
+                    tims=0;
+                    string sensor_str=COM.data_to_json();
+//                    DEBUG<<sensor_str<<"\r\n";
+                    TB.PublishData(Kstring::GBK_to_utf8(sensor_str));
+                }
             }
-//            DEBUG << ET.read_data();
-        TB.Getdatacheck();
         }
     }
 }
