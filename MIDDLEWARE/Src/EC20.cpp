@@ -270,7 +270,7 @@ bool EC20::mqttconn(uint8_t id, const string &clientid, const string &username, 
 
 bool EC20::mqttpub(uint8_t id, const string &topic, const string &message) {
     uint16_t len=message.length();
-    if(this->sendcom("AT+QMTPUBEX="+to_string(id)+",0,0,0,\""+topic+"\","+to_string(len)+"\r\n"+message,">"))
+    if(this->sendcom("AT+QMTPUBEX="+to_string(id)+",0,0,0,\""+topic+"\","+to_string(len)+"\r\n",">"))
         return this->sendcom(message,"OK");
     else
         return false;

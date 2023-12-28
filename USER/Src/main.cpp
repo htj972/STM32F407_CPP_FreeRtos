@@ -13,7 +13,7 @@
 #include "Kstring.h"
 #include "FM24Cxx.h"
 #include "Device_Node_Def.h"
-#include "../../SOFTWARE/Gateway.h"
+#include "Gateway.h"
 
 
 //任务优先级

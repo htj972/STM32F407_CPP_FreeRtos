@@ -43,7 +43,7 @@ public:
     bool SubscribeTopic();
     void PublishData(const string& message,double value);
     void PublishData(const string& message);
-    void Getdatacheck();
+    bool Getdatacheck();
     void GetVersion();
     void GetUpdata_pack(uint16_t pack,uint16_t len);
     void GetUpdata();

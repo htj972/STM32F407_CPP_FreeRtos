@@ -80,12 +80,13 @@ void ThingsBoard::PublishData(const string &message, double value) {
 
 void ThingsBoard::PublishData(const string& message) {
     *this->Debug<<message<<"\r\n";
-    this->mqtt->PublishData(telemetry,message);
+    this->mqtt->PublishData(telemetry,Kstring::GBK_to_utf8(message));
 }
 //BEEP
 extern _OutPut_ OUT;
 
-void ThingsBoard::Getdatacheck() {
+bool ThingsBoard::Getdatacheck() {
+    bool ret = false;
     if(this->mqtt->available()){                              //接收到数据
         string sdata=this->mqtt->GetRxbuf();
         *this->Debug<<sdata<<"\r\n";
@@ -94,16 +95,36 @@ void ThingsBoard::Getdatacheck() {
             cJSON *root = cJSON_Parse(sdata.data());
             //检查json是否正确cJSON_GetErrorPtr
             if(root!= nullptr){
-                //"method":"setinsect"
                 cJSON *method = cJSON_GetObjectItem(root,"method");
+                //{"method":"write_node","params":[{"deviceId":"self","setOUT":1}]}
                 if(method!= nullptr) {
-                    if (std::string(method->valuestring) == "setOUT") {
-                        cJSON *item = cJSON_GetObjectItem(root,"params");
-                        if(item!= nullptr) {
-                            if (item->valueint==1) {
-                                OUT.set(ON);
-                            } else if (item->valueint==0) {
-                                OUT.set(OFF);
+                    if(std::string(method->valuestring)== "write_node") {
+                        cJSON *item = cJSON_GetObjectItem(root, "params");
+                        if (item != nullptr && item->type == cJSON_Array) {
+                            int arraySize = cJSON_GetArraySize(item);
+                            for (int i = 0; i < arraySize; i++) {
+                                cJSON *paramItem = cJSON_GetArrayItem(item, i);
+                                if (paramItem != nullptr) {
+                                    // 解析 "deviceId"
+                                    cJSON *deviceId = cJSON_GetObjectItem(paramItem, "deviceId");
+                                    if (deviceId != nullptr) {
+                                        if (std::string(deviceId->valuestring) == "self") {
+                                            // 解析 "setOUT"
+                                            cJSON *setOUT = cJSON_GetObjectItem(paramItem, "setOUT");
+                                            if (setOUT != nullptr) {
+                                                if (setOUT->valueint == 1) {
+                                                    OUT.set(ON);
+                                                } else if (setOUT->valueint == 0) {
+                                                    OUT.set(OFF);
+                                                }
+                                                ret = true;
+                                            }
+                                            cJSON_Delete(setOUT);
+                                        }
+                                    }
+                                    cJSON_Delete(deviceId);
+                                }
+                                cJSON_Delete(paramItem);
                             }
                         }
                         cJSON_Delete(item);
@@ -165,6 +186,7 @@ void ThingsBoard::Getdatacheck() {
 //            cJSON_Delete(root);
 //        }
     }
+    return ret;
 }
 
 void ThingsBoard::GetVersion() {
@@ -175,7 +197,7 @@ void ThingsBoard::GetVersion() {
         this->mqtt->PublishData(this->telemetry,buf);
         this->updata_step = 1;
     }
-        //打印结果
+    //打印结果
     if(this->updata_step==2) {
         *this->Debug << "SHA256:" << this->SHA256 << "\r\n";
         *this->Debug << "size:" << this->size << "\r\n";
