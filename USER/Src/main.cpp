@@ -230,7 +230,7 @@ void tcp_check_send(TCP_Client_Class *tcp,const string& str){
         //连接服务器
         tb.TCP_config(&tcp_sbc,192,168,8,100,50013);
         tb.mqtt_config(222, 74, 215, 220, 31883);
-        tb.mqtt_config("daocaoren", "0007", "0007");
+        tb.mqtt_config("daocaoren", "0010", "0010");
 
         tb.link_sata=ThingsBoard::LINK_STATE::ALL_link_TCP_link_success;
         DEBUG<<"linking...\r\n";

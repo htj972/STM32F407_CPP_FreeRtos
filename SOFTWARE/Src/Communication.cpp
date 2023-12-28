@@ -76,7 +76,7 @@ void Communication::sensordata_sync() {
         if(*data<0x8000){
             this->env.temp=((float)*data/10.0f);
         } else{
-            this->env.temp=((float)(0xffff-*data+1))/10.0f;
+            this->env.temp=-((float)(0xffff-*data+1))/10.0f;
         }
         data++;
         this->env.humi=((float)*data/10.0f);
@@ -124,7 +124,7 @@ void Communication::sensordata_sync() {
         if(*data<0x8000){
             this->env.soil_temp=((float)*data/10.0f);
         } else{
-            this->env.soil_temp=((float)(0xffff-*data+1))/10.0f;
+            this->env.soil_temp=-((float)(0xffff-*data+1))/10.0f;
         }
         data++;
         this->env.soil_humi=((float)*data/10.0f);
