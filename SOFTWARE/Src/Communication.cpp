@@ -61,64 +61,32 @@ void Communication::data_sync() {
     }
 }
 void Communication::sensordata_sync() {
-    this->set_id(0x19);//辐射
-    if (this->modbus_03_send(2, 4) == modbus::modbus_success) {
-        uint16_t *data = &this->data_BUS.to_u16[2];
-        this->env.solar_rad = (float) *data;
-        data+=3;
-        this->env.light = (float) *data;
+    this->set_id(0x2);//盐分 电导率
+    if (this->modbus_03_send(0, 2) == modbus::modbus_success) {
+        uint16_t *data =this->data_BUS.to_u16;
+        this->env.soil_sa = (float) *data;// mg/L
+        data++;
+        this->env.soil_ec = (float) *data/100.0f;// mS/cm
     }
-    this->set_id(0x05);//温湿度
-    if (this->modbus_03_send(0, 10) == modbus::modbus_success) {
+    this->set_id(0x01);//温湿度
+    if (this->modbus_03_send(0, 3) == modbus::modbus_success) {
         uint16_t *data = this->data_BUS.to_u16;
-        this->env.humi = ((float) *data/ 10.0f);
+        this->env.soil_N = (float) *data;// mg/kg
         data++;
-        this->env.temp = ((float) *data/ 10.0f);
-        data+=3;
-        this->env.pm25 = (float) *data;
-        data+=5;
-        this->env.pm10 = (float) *data;
+        this->env.soil_P = (float) *data;
+        data++;
+        this->env.soil_K = (float) *data;
     }
-    this->set_id(0x0a);//温湿度
-    if (this->modbus_03_send(6, 1) == modbus::modbus_success) {
-        uint16_t *data = &this->data_BUS.to_u16[6];
-        this->env.soil_ph = ((float) *data / 100.0f);
-    }
-    if (this->modbus_03_send(18, 3) == modbus::modbus_success) {
-        uint16_t *data = &this->data_BUS.to_u16[18];
-        this->env.soil_humi = ((float) *data / 10.0f);
-        data++;
-        this->env.soil_temp = ((float) *data / 10.0f);
-        data++;
-        this->env.soil_ec = ((float) *data / 10.0f);
-    }
-    if (this->modbus_03_send(30, 3) == modbus::modbus_success) {
-        uint16_t *data = &this->data_BUS.to_u16[30];
-        this->env.soil_N = (float) *data ;
-        data++;
-        this->env.soil_P = (float) *data ;
-        data++;
-        this->env.soil_K = (float) *data ;
-    }
+
 }
 
 string Communication::data_to_json() const {
     string buf;
-    buf.append("{\"空气温度\":"+to_string(this->env.temp));
-    buf.append(",\"空气湿度\":"+to_string(this->env.humi));
-    buf.append(",\"空气压力\":"+to_string(this->env.press));
-    buf.append(",\"二氧化碳\":"+to_string(this->env.co2));
-    buf.append(",\"光照强度\":"+to_string(this->env.light));
-    buf.append(",\"PM2.5\":"+to_string(this->env.pm25));
-    buf.append(",\"PM10\":"+to_string(this->env.pm10));
-    buf.append(",\"太阳辐射\":"+to_string(this->env.solar_rad));
-    buf.append(",\"土壤温度\":"+to_string(this->env.soil_temp));
-    buf.append(",\"土壤湿度\":"+to_string(this->env.soil_humi));
+    buf.append("{\"土壤盐分\":"+to_string(this->env.soil_sa));
     buf.append(",\"土壤电导率\":"+to_string(this->env.soil_ec));
     buf.append(",\"土壤氮\":"+to_string(this->env.soil_N));
     buf.append(",\"土壤磷\":"+to_string(this->env.soil_P));
     buf.append(",\"土壤钾\":"+to_string(this->env.soil_K));
-    buf.append(",\"土壤PH\":"+to_string(this->env.soil_ph));
     buf.append("}");
     return buf;
 }

@@ -80,7 +80,7 @@ void ThingsBoard::PublishData(const string &message, double value) {
 
 void ThingsBoard::PublishData(const string& message) {
     *this->Debug<<message<<"\r\n";
-    this->mqtt->PublishData(telemetry,message);
+    this->mqtt->PublishData(telemetry,Kstring::GBK_to_utf8(message));
 }
 //BEEP
 extern _OutPut_ OUT;

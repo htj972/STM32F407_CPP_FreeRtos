@@ -4280,6 +4280,30 @@ SYSTEM/Src/DMA.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.s
 .PHONY : SYSTEM/Src/DMA.c.s
 
+SYSTEM/Src/WDG.obj: SYSTEM/Src/WDG.c.obj
+.PHONY : SYSTEM/Src/WDG.obj
+
+# target to build an object file
+SYSTEM/Src/WDG.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/WDG.c.obj
+.PHONY : SYSTEM/Src/WDG.c.obj
+
+SYSTEM/Src/WDG.i: SYSTEM/Src/WDG.c.i
+.PHONY : SYSTEM/Src/WDG.i
+
+# target to preprocess a source file
+SYSTEM/Src/WDG.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/WDG.c.i
+.PHONY : SYSTEM/Src/WDG.c.i
+
+SYSTEM/Src/WDG.s: SYSTEM/Src/WDG.c.s
+.PHONY : SYSTEM/Src/WDG.s
+
+# target to generate assembly for a file
+SYSTEM/Src/WDG.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SYSTEM/Src/WDG.c.s
+.PHONY : SYSTEM/Src/WDG.c.s
+
 SYSTEM/Src/cJSON.obj: SYSTEM/Src/cJSON.c.obj
 .PHONY : SYSTEM/Src/cJSON.obj
 
@@ -5248,6 +5272,9 @@ help:
 	@echo ... SYSTEM/Src/DMA.obj
 	@echo ... SYSTEM/Src/DMA.i
 	@echo ... SYSTEM/Src/DMA.s
+	@echo ... SYSTEM/Src/WDG.obj
+	@echo ... SYSTEM/Src/WDG.i
+	@echo ... SYSTEM/Src/WDG.s
 	@echo ... SYSTEM/Src/cJSON.obj
 	@echo ... SYSTEM/Src/cJSON.i
 	@echo ... SYSTEM/Src/cJSON.s

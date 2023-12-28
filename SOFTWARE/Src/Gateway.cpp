@@ -224,7 +224,7 @@ std::string Gateway::Command(const std::string &COM,bool save) {
             if(this->lora!= nullptr){
                 uint8_t id[4];
                 for (int i = 0; i < 4; ++i) {
-                    char num;
+                    char num=0;
                     uint8_t issp =value[i*2];
                     if ((issp>='A')&&(issp<='Z')){
                         num=issp-'A'+0x0a;

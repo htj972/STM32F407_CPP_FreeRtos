@@ -247,6 +247,13 @@ bool EC20::Register(APN apn) {
 
 }
 
+bool EC20::setGPS(bool EN) {
+    if(EN)
+        return this->sendcom("AT+QGPS=1","OK");
+    else
+        return this->sendcom("AT+QGPSEND","OK");
+}
+
 bool EC20::mqttopen(uint8_t id, const string &ip, uint16_t port) {
     if(this->sendcom("AT+QMTOPEN="+to_string(id)+",\""+ip+"\","+to_string(port),"+QMTOPEN: "+to_string(id)+",0"))
     {
@@ -270,7 +277,7 @@ bool EC20::mqttconn(uint8_t id, const string &clientid, const string &username, 
 
 bool EC20::mqttpub(uint8_t id, const string &topic, const string &message) {
     uint16_t len=message.length();
-    if(this->sendcom("AT+QMTPUBEX="+to_string(id)+",0,0,0,\""+topic+"\","+to_string(len)+"\r\n"+message,">"))
+    if(this->sendcom("AT+QMTPUBEX="+to_string(id)+",0,0,0,\""+topic+"\","+to_string(len)+"\r\n",">"))
         return this->sendcom(message,"OK");
     else
         return false;
@@ -342,20 +349,22 @@ void EC20::Receive_data() {
     // 创建一个正则表达式来匹配主题和信息
     if(Compare(getstring,"+QMTSTAT: 1,1"))
         this->Link_s= false;
-    std::regex r("\\+QMTRECV: ([\\d,]+),\"([^\"]*)\",(\".*\")");
-
-    std::smatch match;
-    if (std::regex_search(getstring, match, r)) {
-        string info=match[3];
-        this->topic=match[2];
-        this->message = info.substr(1, info.size() - 2);
-        this->Otherstring="+QMTRECV:";
-        this->Otherstring.append(match[1]);
+    else if(getstring.find("AT")!=string::npos){
+            this->AT_get=getstring;
+    }else{
+        std::regex r("\\+QMTRECV: ([\\d,]+),\"([^\"]*)\",(\".*\")");
+        std::smatch match;
+        if (std::regex_search(getstring, match, r)) {
+            string info=match[3];
+            this->topic=match[2];
+            this->message = info.substr(1, info.size() - 2);
+            this->Otherstring="+QMTRECV:";
+            this->Otherstring.append(match[1]);
 //        this->debug("Other: "+this->Otherstring+"\r\n");
 //        this->debug("Topic: "+this->topic+"\r\n");
 //        this->debug("Info: "+this->message+"\r\n");
+        }
     }
-    getstring.clear();
 }
 
 bool EC20::Connect(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4, uint16_t port) {
@@ -447,6 +456,62 @@ uint8_t EC20::get_4G_RSSI() const {
 bool EC20::get_Link_Status() const {
     return this->Link_s;
 }
+
+bool EC20::getGPS() {
+    this->USART->clear();
+    this->USART->write("AT+QGPSLOC=2\r\n");
+    uint16_t time=0;
+    string data;
+    while(time<5){
+        if(!this->AT_get.empty()){
+            //AT+QGPSLOC=2 +QGPSLOC: 024158.0,40.90340,111.78228,1.5,1125.0,2,307.37,0.0,0.0,271223,04
+            string das=this->AT_get;
+            if(das.find("ERROR")!=string::npos)
+                return false;
+            else {
+                size_t startPos = das.find("+QGPSLOC:");
+                if (startPos != std::string::npos) {
+                    // 截取 +QGPSLOC: 后面的部分，去掉 "AT+QGPSLOC=2  " 字符串
+                    std::string gpsInfo = das.substr(startPos + 9);
+                    // 使用字符串流分割数据
+                    std::istringstream ss(gpsInfo);
+                    std::string token;
+                    // 使用逗号作为分隔符
+                    std::vector<std::string> tokens;
+                    while (std::getline(ss, token, ',')) {
+                        tokens.push_back(token);
+                    }
+                    // 打印分隔的数据
+//                    for (const auto& t : tokens) {
+//                        std::cout << t << std::endl;
+//                    }
+                    //按顺序将tokens放入GPS_D结构体的每个数据
+                    this->GPS_D.UTC=tokens[0];
+                    this->GPS_D.latitude=tokens[1];
+                    this->GPS_D.longitude=tokens[2];
+                    this->GPS_D.HDOP=tokens[3];
+                    this->GPS_D.altitude=tokens[4];
+                    this->GPS_D.fix=tokens[5];
+                    this->GPS_D.cog=tokens[6];
+                    this->GPS_D.spkm=tokens[7];
+                    this->GPS_D.spkn=tokens[8];
+                    this->GPS_D.date=tokens[9];
+                    this->GPS_D.nsat=tokens[10];
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            return false;
+        }else{
+            delay_ms(100);
+            time++;
+        }
+    }
+    return false;
+}
+
+
 
 
 

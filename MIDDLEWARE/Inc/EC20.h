@@ -23,6 +23,19 @@ public:
         APN_CTWAP ,
         APN_CTNET ,
      };
+    struct {
+        string UTC;
+        string latitude;
+        string longitude;
+        string HDOP;
+        string altitude;
+        string fix;
+        string cog;
+        string spkm;
+        string spkn;
+        string date;
+        string nsat;
+    }GPS_D;
 protected:
     Timer *TIMERX{};
     _USART_ *USART{};
@@ -30,6 +43,7 @@ protected:
     _OutPut_ *RST_Pin{};
     string getstring{};
     string Otherstring{};
+    string AT_get{};
     uint16_t reveive_len{};
     uint16_t freetime_t{};
     uint16_t freetime{};
@@ -70,6 +84,8 @@ public:
     bool setqideact();
     bool setqiact();
     bool Register(APN apn=APN_UNINET);
+    bool setGPS(bool EN=true);
+    bool getGPS();
 
     bool mqttopen(uint8_t id,const string& ip,uint16_t port);
     bool mqttconn(uint8_t id,const string& clientid,const string& username,const string& password);

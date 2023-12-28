@@ -152,6 +152,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "F:/code/STM32/STM32F407_CPP_FreeRtos/LWIP/lwip-1.4.1/src/netif/slipif.c" "CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/slipif.c.obj" "gcc" "CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/slipif.c.obj.d"
   "F:/code/STM32/STM32F407_CPP_FreeRtos/LWIP/lwip_app/lwip_comm/lwip_comm.c" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/lwip_comm/lwip_comm.c.obj" "gcc" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/lwip_comm/lwip_comm.c.obj.d"
   "F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/DMA.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj.d"
+  "F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/WDG.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/WDG.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/WDG.c.obj.d"
   "F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/cJSON.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj.d"
   "F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/delay.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/delay.c.obj.d"
   "F:/code/STM32/STM32F407_CPP_FreeRtos/SYSTEM/Src/malloc.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/malloc.c.obj.d"
