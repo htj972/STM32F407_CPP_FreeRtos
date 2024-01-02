@@ -96,9 +96,9 @@ bool ThingsBoard::Getdatacheck() {
             //检查json是否正确cJSON_GetErrorPtr
             if(root!= nullptr){
                 cJSON *method = cJSON_GetObjectItem(root,"method");
-                //{"method":"write_node","params":[{"deviceId":"self","setOUT":1}]}
+                //"params": [{"deviceId": "1","set": 78}],"method": "self"
                 if(method!= nullptr) {
-                    if(std::string(method->valuestring)== "write_node") {
+                    if(std::string(method->valuestring)== "self") {
                         cJSON *item = cJSON_GetObjectItem(root, "params");
                         if (item != nullptr && item->type == cJSON_Array) {
                             int arraySize = cJSON_GetArraySize(item);
@@ -108,19 +108,16 @@ bool ThingsBoard::Getdatacheck() {
                                     // 解析 "deviceId"
                                     cJSON *deviceId = cJSON_GetObjectItem(paramItem, "deviceId");
                                     if (deviceId != nullptr) {
-                                        if (std::string(deviceId->valuestring) == "self") {
-                                            // 解析 "setOUT"
-                                            cJSON *setOUT = cJSON_GetObjectItem(paramItem, "setOUT");
-                                            if (setOUT != nullptr) {
-                                                if (setOUT->valueint == 1) {
-                                                    OUT.set(ON);
-                                                } else if (setOUT->valueint == 0) {
-                                                    OUT.set(OFF);
-                                                }
-                                                ret = true;
-                                            }
-                                            cJSON_Delete(setOUT);
+                                        // 解析 "setOUT"
+                                        cJSON *setOUT = cJSON_GetObjectItem(paramItem, "set");
+                                        if (setOUT != nullptr) {
+                                            this->cmd = "OUTPUT ";//OUTPUT 1 1
+                                            this->cmd += std::to_string(deviceId->valueint) +" ";
+                                            this->cmd += std::to_string(setOUT->valueint);
+                                            this->cmd += "\r\n";
+                                            ret = true;
                                         }
+                                        cJSON_Delete(setOUT);
                                     }
                                     cJSON_Delete(deviceId);
                                 }
@@ -128,7 +125,67 @@ bool ThingsBoard::Getdatacheck() {
                             }
                         }
                         cJSON_Delete(item);
-                    } else if(std::string(method->valuestring) == "updateFirmware") {
+                    } else if(std::string(method->valuestring)== "lora"){
+                        cJSON *item = cJSON_GetObjectItem(root, "params");
+                        if (item != nullptr && item->type == cJSON_Array) {
+                            int arraySize = cJSON_GetArraySize(item);
+                            for (int i = 0; i < arraySize; i++) {
+                                cJSON *paramItem = cJSON_GetArrayItem(item, i);
+                                if (paramItem != nullptr) {
+                                    // 解析 "deviceId"
+                                    cJSON *child = paramItem->child;
+                                    while (child != nullptr) {
+                                        // 检查是否为数字类型的键名
+                                        if (child->string != nullptr && child->type == cJSON_Number) {
+                                            cJSON *deviceId = cJSON_GetObjectItem(paramItem, "deviceId");
+                                            if (deviceId != nullptr) {
+                                                this->cmd = "lora send ";//lora 1 1
+                                                this->cmd += deviceId->valuestring;
+                                                this->cmd += string(" ") + child->string;
+                                                this->cmd += string(" ") + std::to_string(child->valueint);
+                                                this->cmd += "\r\n";
+                                            }
+                                            cJSON_Delete(deviceId);
+                                        }
+                                        child = child->next;
+                                    }
+                                    cJSON_Delete(child);
+                                }
+                                cJSON_Delete(paramItem);
+                            }
+                        }
+                        cJSON_Delete(item);
+                    }else if(std::string(method->valuestring) == "485"){
+                        cJSON *item = cJSON_GetObjectItem(root, "params");
+                        if (item != nullptr && item->type == cJSON_Array) {
+                            int arraySize = cJSON_GetArraySize(item);
+                            for (int i = 0; i < arraySize; i++) {
+                                cJSON *paramItem = cJSON_GetArrayItem(item, i);
+                                if (paramItem != nullptr) {
+                                    // 解析 "deviceId"
+                                    cJSON *child = paramItem->child;
+                                    while (child != nullptr) {
+                                        // 检查是否为数字类型的键名
+                                        if (child->string != nullptr && child->type == cJSON_Number) {
+                                            cJSON *deviceId = cJSON_GetObjectItem(paramItem, "deviceId");
+                                            if (deviceId != nullptr) {
+                                                this->cmd = "485 send ";//485 1 1
+                                                this->cmd += deviceId->valuestring;
+                                                this->cmd += string(" ") + child->string;
+                                                this->cmd += string(" ") + std::to_string(child->valueint);
+                                                this->cmd += "\r\n";
+                                            }
+                                            cJSON_Delete(deviceId);
+                                        }
+                                        child = child->next;
+                                    }
+                                    cJSON_Delete(child);
+                                }
+                                cJSON_Delete(paramItem);
+                            }
+                        }
+                        cJSON_Delete(item);
+                    }else if(std::string(method->valuestring) == "updateFirmware") {
                         cJSON *item = cJSON_GetObjectItem(root,"params");
                         if(item!= nullptr) {
                             if (item->valueint==1) {

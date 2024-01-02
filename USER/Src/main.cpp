@@ -28,7 +28,7 @@ void start_task(void *pvParameters);
 //任务优先级
 #define LOGIC_TASK_PRIO		2
 //任务堆栈大小
-#define LOGIC_STK_SIZE 		128
+#define LOGIC_STK_SIZE 		512
 //任务句柄
 TaskHandle_t LOGICTask_Handler;
 //任务函数
@@ -68,8 +68,6 @@ RS485   com(USART3,GPIOD10);
 
 EC20    ET(USART1);
 ThingsBoard TB(&DEBUG,&ET);
-//Software_IIC IIC1(GPIOB14,GPIOB15);
-//FM24Cxx FM24XX(&IIC1,FM24Cxx::AT24C128);
 Gateway GW(GPIOB14,GPIOB15,FM24Cxx::AT24C256);
 
 int main()
@@ -84,7 +82,8 @@ int main()
     if(GW.inital())DEBUG<<"GW OK\r\n";
     else DEBUG<<"GW error\r\n";
     GW.print_env(&DEBUG);
-
+    GW.run_cmd(&DEBUG);
+    GW.link_OUT(&OUT);
 
 
     ET.Link_RST_Pin(&RST);
@@ -125,24 +124,11 @@ void start_task(void *pvParameters)
 //task1任务函数
 [[noreturn]] void LOGIC_task(void *pvParameters)//alignas(8)
 {
+    Kstring da;
     while(true)
     {
         vTaskDelay(200/portTICK_RATE_MS );
         run.change();       //运行指示灯
-        UP.change();        //上行指示灯
-        DW.change();        //下行指示灯
-        NET.change();       //网络指示灯
-    }
-}
-
-//task2任务函数
-[[noreturn]] void EC20_task(void *pvParameters)
-{
-    Kstring da;
-    DEBUG << "\r\n<<";
-    while(true)
-    {
-        vTaskDelay(100/portTICK_RATE_MS );
         if(DEBUG.available())
             da = DEBUG.read_data("\r\n");
         if (!da.empty()) {
@@ -152,7 +138,12 @@ void start_task(void *pvParameters)
             da.clear();
         }
     }
+}
 
+//task2任务函数
+[[noreturn]] void EC20_task(void *pvParameters)
+{
+    DEBUG << "\r\n<<";
     while (!ET.getrdy()){
         delay_ms(1000);
         DEBUG<<".";
@@ -164,24 +155,24 @@ void start_task(void *pvParameters)
         ET.Register(EC20::APN::APN_CMNET);
         ET.Link_TIMER_CALLback(&tIM_EC);
 
-        TB.Connect(222, 74, 215, 220, 31883);
-        TB.config("gateway", "gateway", "gateway");
-        TB.SubscribeTopic();
+//        TB.Connect(222, 74, 215, 220, 31883);
+//        TB.config("gateway", "gateway", "gateway");
+//        TB.SubscribeTopic();
+        GW.link_thingsBoard(&TB);
         while (true) {
             vTaskDelay(100 / portTICK_RATE_MS);
 
             if (!ET.get_Link_Status())
                 break;
-
-            da += DEBUG.read_data();
-            if (da.find("\r\n") != string::npos) {
-            TB.PublishData(da.GBK_to_utf8());
-            da.clear();
-//                ET << da;
-//                da.clear();
+            if(TB.Getdatacheck()){
+                UP.change();        //上行指示灯
             }
-//            DEBUG << ET.read_data();
-        TB.Getdatacheck();
+            if(TB.cmd.find("\r\n")!=std::string::npos){
+                GW.Command(TB.cmd);
+                TB.cmd.clear();
+                DW.change();        //下行指示灯
+            }
+            NET.change();       //网络指示灯
         }
     }
 }

@@ -9,7 +9,6 @@
 
 #include "sys.h"
 #include "USART.h"
-//#include "MQTT/MQTT.h"
 #include "mqtt_base.h"
 
 class ThingsBoard {
@@ -33,6 +32,7 @@ public:
     ThingsBoard(_USART_ *Debug,mqtt_base *mqtt):Debug(Debug),mqtt(mqtt){
         this->topic_config();
     }
+    string cmd{};
     bool PHY_islink();
     bool intel_islink();
     void intel_link();

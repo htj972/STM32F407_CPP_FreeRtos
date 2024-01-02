@@ -28,7 +28,7 @@ char _USART_::Interrupt_data[2];
 char _USART_::Interrupt_channel[2];
 char* _USART_::Interrupt_ret[3];
 
-_USART_::_USART_(USART_TypeDef* USARTx,int32_t bound){
+_USART_::_USART_(USART_TypeDef* USARTx,int32_t bound,Queue mode){
     this->config_flag=0;
     this->init(USARTx,bound);
     this->DMA_Enable= false;
@@ -118,7 +118,7 @@ void _USART_::default_config() {
     }
 }
 
-void _USART_::init(USART_TypeDef* USARTx,int32_t bound) {
+void _USART_::init(USART_TypeDef* USARTx,int32_t bound,Queue mode) {
     this->Bound=bound;
     this->USART=USARTx;
     _USART_::extern_init();
@@ -171,6 +171,7 @@ void _USART_::init(USART_TypeDef* USARTx,int32_t bound) {
     this->NVIC_InitStructure.NVIC_IRQChannelSubPriority =3;		//子优先级3
     this->NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
 	NVIC_Init(&this->NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器、
+    this->set_Queue_mode(mode);
 }
 
 void _USART_::setBound(int32_t bound){

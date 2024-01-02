@@ -368,10 +368,10 @@ std::string Device_Node_Def::Command(const std::string &COM) {
         iss >> bus_str >> name;
         if (bus_str == "RS485") {
             ret +=display_error_code(
-            this->del_node(Device_Node_Def::Bus::RS485,name));
+                    this->del_node(Device_Node_Def::Bus::RS485,name));
         } else if (bus_str == "lora") {
             ret +=display_error_code(
-            this->del_node(Device_Node_Def::Bus::lora,name));
+                    this->del_node(Device_Node_Def::Bus::lora,name));
         } else {
             ret += "Invalid bus type: ";
             ret += bus_str;
@@ -388,20 +388,6 @@ std::string Device_Node_Def::Command(const std::string &COM) {
         bool isValid = true;
         uint16_t add = 0;
         float compute = 0.0f;
-//        try {
-//            add = std::stoi(mem_add);
-//            compute = std::stof(mem_compute);
-//        } catch (const std::invalid_argument& e) {
-//            ret+= "Invalid number format: ";
-//            ret+= e.what();
-//            ret+= "\r\n";
-//            isValid = false;
-//        } catch (const std::out_of_range& e) {
-//            ret+= "Number out of range: ";
-//            ret+= e.what();
-//            ret+= "\r\n";
-//            isValid = false;
-//        }
 
         std::istringstream issm(mem_add);
         int num;

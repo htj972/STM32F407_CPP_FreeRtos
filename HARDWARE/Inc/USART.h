@@ -13,7 +13,7 @@
 #include "HARD_BASE.h"
 using namespace std;
 
-class _USART_ {
+class _USART_: private HARD_BASE {
 protected:
     _GPIO_ RX_GPIO;
     _GPIO_ TX_GPIO;
@@ -38,10 +38,10 @@ private:
     static char* Interrupt_ret[3];
 
 public:
-    explicit _USART_(USART_TypeDef* USARTx,int32_t bound=115200);
+    explicit _USART_(USART_TypeDef* USARTx,int32_t bound=115200,Queue mode=OWN_Queue);
     _USART_();
     ~_USART_()=default;
-    void init(USART_TypeDef* USARTx,int32_t bound=115200);
+    void init(USART_TypeDef* USARTx,int32_t bound=115200,Queue mode=OWN_Queue);
     void config(GPIO_TypeDef* PORT_Tx,uint32_t Pin_Tx,GPIO_TypeDef* PORT_Rx,uint32_t Pin_Rx);
     void config(uint8_t Pin_Tx,uint8_t Pin_Rx);
     void setBound(int32_t bound);

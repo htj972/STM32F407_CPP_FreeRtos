@@ -1109,6 +1109,9 @@
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/W25QXX.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/WH_L101.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/modbus.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -1169,6 +1172,9 @@
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/W25QXX.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/WH_L101.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/modbus.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -1196,6 +1202,9 @@
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/ThingsBoard.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/WH_COM.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/mqtt_base.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -1221,6 +1230,9 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/ThingsBoard.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/WH_COM.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Src/mqtt_base.cpp">

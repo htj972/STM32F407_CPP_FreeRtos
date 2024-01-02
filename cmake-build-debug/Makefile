@@ -3968,6 +3968,30 @@ MIDDLEWARE/Src/W25QXX.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.s
 .PHONY : MIDDLEWARE/Src/W25QXX.cpp.s
 
+MIDDLEWARE/Src/WH_L101.obj: MIDDLEWARE/Src/WH_L101.cpp.obj
+.PHONY : MIDDLEWARE/Src/WH_L101.obj
+
+# target to build an object file
+MIDDLEWARE/Src/WH_L101.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/WH_L101.cpp.obj
+.PHONY : MIDDLEWARE/Src/WH_L101.cpp.obj
+
+MIDDLEWARE/Src/WH_L101.i: MIDDLEWARE/Src/WH_L101.cpp.i
+.PHONY : MIDDLEWARE/Src/WH_L101.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/WH_L101.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/WH_L101.cpp.i
+.PHONY : MIDDLEWARE/Src/WH_L101.cpp.i
+
+MIDDLEWARE/Src/WH_L101.s: MIDDLEWARE/Src/WH_L101.cpp.s
+.PHONY : MIDDLEWARE/Src/WH_L101.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/WH_L101.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/WH_L101.cpp.s
+.PHONY : MIDDLEWARE/Src/WH_L101.cpp.s
+
 MIDDLEWARE/Src/modbus.obj: MIDDLEWARE/Src/modbus.cpp.obj
 .PHONY : MIDDLEWARE/Src/modbus.obj
 
@@ -4159,6 +4183,30 @@ SOFTWARE/Src/ThingsBoard.s: SOFTWARE/Src/ThingsBoard.cpp.s
 SOFTWARE/Src/ThingsBoard.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/ThingsBoard.cpp.s
 .PHONY : SOFTWARE/Src/ThingsBoard.cpp.s
+
+SOFTWARE/Src/WH_COM.obj: SOFTWARE/Src/WH_COM.cpp.obj
+.PHONY : SOFTWARE/Src/WH_COM.obj
+
+# target to build an object file
+SOFTWARE/Src/WH_COM.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/WH_COM.cpp.obj
+.PHONY : SOFTWARE/Src/WH_COM.cpp.obj
+
+SOFTWARE/Src/WH_COM.i: SOFTWARE/Src/WH_COM.cpp.i
+.PHONY : SOFTWARE/Src/WH_COM.i
+
+# target to preprocess a source file
+SOFTWARE/Src/WH_COM.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/WH_COM.cpp.i
+.PHONY : SOFTWARE/Src/WH_COM.cpp.i
+
+SOFTWARE/Src/WH_COM.s: SOFTWARE/Src/WH_COM.cpp.s
+.PHONY : SOFTWARE/Src/WH_COM.s
+
+# target to generate assembly for a file
+SOFTWARE/Src/WH_COM.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/SOFTWARE/Src/WH_COM.cpp.s
+.PHONY : SOFTWARE/Src/WH_COM.cpp.s
 
 SOFTWARE/Src/mqtt_base.obj: SOFTWARE/Src/mqtt_base.cpp.obj
 .PHONY : SOFTWARE/Src/mqtt_base.obj
@@ -5161,6 +5209,9 @@ help:
 	@echo ... MIDDLEWARE/Src/W25QXX.obj
 	@echo ... MIDDLEWARE/Src/W25QXX.i
 	@echo ... MIDDLEWARE/Src/W25QXX.s
+	@echo ... MIDDLEWARE/Src/WH_L101.obj
+	@echo ... MIDDLEWARE/Src/WH_L101.i
+	@echo ... MIDDLEWARE/Src/WH_L101.s
 	@echo ... MIDDLEWARE/Src/modbus.obj
 	@echo ... MIDDLEWARE/Src/modbus.i
 	@echo ... MIDDLEWARE/Src/modbus.s
@@ -5185,6 +5236,9 @@ help:
 	@echo ... SOFTWARE/Src/ThingsBoard.obj
 	@echo ... SOFTWARE/Src/ThingsBoard.i
 	@echo ... SOFTWARE/Src/ThingsBoard.s
+	@echo ... SOFTWARE/Src/WH_COM.obj
+	@echo ... SOFTWARE/Src/WH_COM.i
+	@echo ... SOFTWARE/Src/WH_COM.s
 	@echo ... SOFTWARE/Src/mqtt_base.obj
 	@echo ... SOFTWARE/Src/mqtt_base.i
 	@echo ... SOFTWARE/Src/mqtt_base.s
