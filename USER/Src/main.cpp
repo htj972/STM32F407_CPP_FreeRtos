@@ -153,7 +153,7 @@ void start_task(void *pvParameters)
                 if (!ET.get_Link_Status())
                     break;
                 TB.Getdatacheck();
-                if(tims>=10*2){
+                if(tims>=60*2){
                     tims=0;
                     string sensor_str=COM.data_to_json();
                     if(ET.getGPS()){
