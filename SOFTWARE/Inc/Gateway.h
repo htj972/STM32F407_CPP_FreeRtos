@@ -11,6 +11,7 @@
 #include "ThingsBoard.h"
 #include "WH_COM.h"
 #include "Out_In_Put.h"
+#include "Communication.h"
 
 class Gateway: public Device_Node_Def,private Software_IIC,FM24Cxx {
 public:
@@ -26,6 +27,7 @@ protected:
     ThingsBoard *thingsBoard{};
     WH_COM *lora{};
     _OutPut_ *OUT{};
+    Communication *rs485{};
 public:
     Gateway(GPIO_Pin SCL,GPIO_Pin SDA,uint16_t TYPE):
             Software_IIC(SCL,SDA),FM24Cxx(this,TYPE){}
@@ -33,6 +35,7 @@ public:
     void link_thingsBoard(ThingsBoard *thingsBoard_t);
     void link_OUT(_OutPut_ *OUT_t);
     void Link_lora(WH_COM *lorax);
+    void Link_rs485(Communication *rs485x);
     void save_config();
     void set_ip(const uint8_t *ip_t);
     void set_port(uint16_t port_t);

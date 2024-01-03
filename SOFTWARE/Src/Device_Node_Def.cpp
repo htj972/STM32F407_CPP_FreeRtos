@@ -31,7 +31,7 @@ Device_Node_Def::error_code Device_Node_Def::add_device_to_bus(Device_Node_Def::
 
 Device_Node_Def::error_code Device_Node_Def::add_node(Device_Node_Def::Bus bus,Device_Node_Def::device_node *device) {
     switch (bus) {
-        case RS485:
+        case rs485:
             return add_device_to_bus(device, this->RS485_Bus);
         case lora:
             return add_device_to_bus(device,this->Lora_Bus);
@@ -53,7 +53,7 @@ Device_Node_Def::error_code Device_Node_Def::del_node(Device_Node_Def::Bus bus,c
     Device_Node_Def::device_node **device;
     uint16_t *bus_num;
     switch (bus) {
-        case RS485:
+        case rs485:
             device = &this->RS485_Bus.device;
             bus_num = &this->RS485_Bus.num;
             break;
@@ -89,7 +89,7 @@ Device_Node_Def::mem_node* Device_Node_Def::new_mem(const std::string& name, uin
 Device_Node_Def::error_code Device_Node_Def::add_mem(Bus bus, const std::string& device_name, mem_node* new_mem_node) const {
     device_node *device;
     switch (bus) {
-        case RS485:
+        case rs485:
             device = this->RS485_Bus.device;
             break;
         case lora:
@@ -124,7 +124,7 @@ Device_Node_Def::error_code Device_Node_Def::add_mem(Bus bus, const std::string&
 Device_Node_Def::error_code Device_Node_Def::del_mem(Bus bus, const std::string& device_name, const std::string& mem_name) const {
     device_node *device;
     switch (bus) {
-        case RS485:
+        case rs485:
             device = this->RS485_Bus.device;
             break;
         case lora:
@@ -155,7 +155,7 @@ Device_Node_Def::error_code Device_Node_Def::del_mem(Bus bus, const std::string&
 Device_Node_Def::error_code Device_Node_Def::del_all_mem(Bus bus, const std::string& device_name) const {
     device_node *device;
     switch (bus) {
-        case RS485:
+        case rs485:
             device = this->RS485_Bus.device;
             break;
         case lora:
@@ -194,7 +194,7 @@ void Device_Node_Def::clean_empty_nodes(Bus bus) {
     device_node **device;
     uint16_t *bus_num;
     switch (bus) {
-        case RS485:
+        case rs485:
             device = &this->RS485_Bus.device;
             bus_num = &this->RS485_Bus.num;
             break;
@@ -220,7 +220,7 @@ void Device_Node_Def::clean_empty_nodes(Bus bus) {
 
 uint16_t Device_Node_Def::get_Device_Num(Device_Node_Def::Bus bus) const {
     switch (bus) {
-        case RS485:
+        case rs485:
             return this->RS485_Bus.num;
         case lora:
             return this->Lora_Bus.num;
@@ -231,7 +231,7 @@ uint16_t Device_Node_Def::get_Device_Num(Device_Node_Def::Bus bus) const {
 uint16_t Device_Node_Def::get_Mem_Num(Device_Node_Def::Bus bus, const std::string &device_name) const{
     device_node *device;
     switch (bus) {
-        case RS485:
+        case rs485:
             device = this->RS485_Bus.device;
             break;
         case lora:
@@ -251,7 +251,7 @@ std::string Device_Node_Def::display_bus(Device_Node_Def::Bus bus) const {
     device_node *device;
     std::string result = "bus:";
     switch (bus) {
-        case RS485:
+        case rs485:
             device = this->RS485_Bus.device;
             result +="RS485\r\n";
             break;
@@ -352,7 +352,7 @@ std::string Device_Node_Def::Command(const std::string &COM) {
         if(isValid){
             if (bus_str == "RS485") {
                 ret +=display_error_code(
-                        this->new_node(Device_Node_Def::Bus::RS485,name,id));
+                        this->new_node(Device_Node_Def::Bus::rs485,name,id));
             } else if (bus_str == "lora") {
                 ret +=display_error_code(
                         this->new_node(Device_Node_Def::Bus::lora,name,id));
@@ -368,7 +368,7 @@ std::string Device_Node_Def::Command(const std::string &COM) {
         iss >> bus_str >> name;
         if (bus_str == "RS485") {
             ret +=display_error_code(
-                    this->del_node(Device_Node_Def::Bus::RS485,name));
+                    this->del_node(Device_Node_Def::Bus::rs485,name));
         } else if (bus_str == "lora") {
             ret +=display_error_code(
                     this->del_node(Device_Node_Def::Bus::lora,name));
@@ -427,7 +427,7 @@ std::string Device_Node_Def::Command(const std::string &COM) {
             if (bus_str == "RS485") {
                 mem_node *mem = new_mem(name, add, type,compute);
                 ret +=display_error_code(
-                        this->add_mem(Device_Node_Def::Bus::RS485, dev_str, mem));
+                        this->add_mem(Device_Node_Def::Bus::rs485, dev_str, mem));
             } else if (bus_str == "lora") {
                 mem_node *mem = new_mem(name, add, (data_type)type,compute);
                 ret +=display_error_code(
@@ -445,7 +445,7 @@ std::string Device_Node_Def::Command(const std::string &COM) {
         iss >> bus_str >> dev_str >> name;
         if (bus_str == "RS485") {
             ret +=display_error_code(
-                    this->del_mem(Device_Node_Def::Bus::RS485,dev_str,name));
+                    this->del_mem(Device_Node_Def::Bus::rs485,dev_str,name));
         } else if (bus_str == "lora") {
             ret +=display_error_code(
                     this->del_mem(Device_Node_Def::Bus::lora,dev_str, name));
@@ -459,7 +459,7 @@ std::string Device_Node_Def::Command(const std::string &COM) {
         std::string bus_str;
         iss  >> bus_str;
         if (bus_str == "RS485") {
-            ret +=this->display_bus(Device_Node_Def::Bus::RS485);
+            ret +=this->display_bus(Device_Node_Def::Bus::rs485);
 //            ret += Device_Node_Def::outputNodes(Device_Node_Def::Bus::RS485);
         } else if (bus_str == "lora") {
             ret +=this->display_bus(Device_Node_Def::Bus::lora);
@@ -482,7 +482,7 @@ std::string Device_Node_Def::outputNodes(Device_Node_Def::Bus bus) const {
     device_node *device;
     std::string name;
     switch (bus) {
-        case RS485:
+        case rs485:
             device = this->RS485_Bus.device;
             name = "RS485";
             break;

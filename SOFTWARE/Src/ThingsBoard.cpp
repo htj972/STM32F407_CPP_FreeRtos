@@ -111,8 +111,8 @@ bool ThingsBoard::Getdatacheck() {
                                         // ½âÎö "setOUT"
                                         cJSON *setOUT = cJSON_GetObjectItem(paramItem, "set");
                                         if (setOUT != nullptr) {
-                                            this->cmd = "OUTPUT ";//OUTPUT 1 1
-                                            this->cmd += std::to_string(deviceId->valueint) +" ";
+                                            this->cmd = "output ";//OUTPUT 1 1
+                                            this->cmd += deviceId->valuestring + (string)" ";
                                             this->cmd += std::to_string(setOUT->valueint);
                                             this->cmd += "\r\n";
                                             ret = true;

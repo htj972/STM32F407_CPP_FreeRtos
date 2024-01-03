@@ -31,13 +31,20 @@ private:
     bool queue_flag[COM_queue_num]{};
     float *datax[COM_queue_num]{};
     float valuex[COM_queue_num]{};
+    uint16_t *datau[COM_queue_num]{};
+    uint16_t valueu[COM_queue_num]{};
+    uint16_t address[COM_queue_num]{};
+    uint8_t float_falg[COM_queue_num]{};
 public:
     Communication(USART_TypeDef* USARTx,uint8_t DE,TIM_TypeDef *TIMx, uint16_t frq);
     K_POWER_DATA data_BUS;
     void initial();
     uint16_t find_address(const float *data);
+    uint16_t find_address(const uint16_t *data);
     void     data_set(float *data,float value);
-    void     data_sync();
+    void     data_set(uint16_t *data,uint16_t value);
+    void     data_set(uint16_t data,uint16_t value);
+    bool     data_sync();
 };
 
 

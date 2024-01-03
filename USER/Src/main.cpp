@@ -14,6 +14,7 @@
 #include "FM24Cxx.h"
 #include "Device_Node_Def.h"
 #include "Gateway.h"
+#include "Communication.h"
 
 
 //任务优先级
@@ -64,8 +65,8 @@ _OutPut_ RST(GPIOA8);//EC20复位引脚
 Timer tIM_EC(TIM5,100,8400,true);
 
 _USART_ DEBUG(USART6);             //调试串口
-RS485   com(USART3,GPIOD10);
-
+//RS485   com(USART3,GPIOD10);
+Communication com(USART3,GPIOD10,TIM7,100);
 EC20    ET(USART1);
 ThingsBoard TB(&DEBUG,&ET);
 Gateway GW(GPIOB14,GPIOB15,FM24Cxx::AT24C256);
@@ -84,7 +85,7 @@ int main()
     GW.print_env(&DEBUG);
     GW.run_cmd(&DEBUG);
     GW.link_OUT(&OUT);
-
+    GW.Link_rs485(&com);
 
     ET.Link_RST_Pin(&RST);
     ET.reset();
@@ -165,12 +166,14 @@ void start_task(void *pvParameters)
             if (!ET.get_Link_Status())
                 break;
             if(TB.Getdatacheck()){
-                UP.change();        //上行指示灯
+//                UP.change();
+                UP.flicker(50);//上行指示灯
             }
             if(TB.cmd.find("\r\n")!=std::string::npos){
-                GW.Command(TB.cmd);
+                DEBUG<<GW.Command(TB.cmd);
                 TB.cmd.clear();
-                DW.change();        //下行指示灯
+//                DW.change();
+                DW.flicker(50);//下行指示灯
             }
             NET.change();       //网络指示灯
         }

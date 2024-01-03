@@ -284,7 +284,44 @@ std::string Gateway::Command(const std::string &COM,bool save) {
         {
             return "Error: lora data should include 8 char\r\n";
         }
-    }else if(command == "485"){//485 send 00 0 1   name:send value:0012A920
+    }else if(command == "485"){//485 send 00 0 1   name:send value:00
+        std::string Nu, Sa;
+        if (!(iss >> Nu >> Sa)) {
+            return "Error: 485 data should include number and data\r\n";
+        }
+        //value:00 转换到uint8_t id[4]里面
+        if((value.length()==2)||(value.length()==1)){
+            if(this->rs485!= nullptr){
+                uint8_t id=0;
+                for (int i = 0; i < value.length(); ++i) {
+                    id<<=4;
+                    uint8_t issp =value[i*2];
+                    if ((issp>='A')&&(issp<='Z')){
+                        id=issp-'A'+0x0a;
+                    }
+                    else if ((issp>='a')&&(issp<='z')){
+                        id=issp-'a'+0x0a;
+                    }
+                    else if ((issp>='0')&&(issp<='9')){
+                        id=issp-'0'+0x0;
+                    }
+                }
+                //Nu转换num
+                uint16_t num = stoi(Nu);
+                this->rs485->set_id(id);
+                uint16_t va = stoi(Sa);
+                this->rs485->data_set(num,va);
+                if(this->rs485->data_sync())
+                    return "485 send ok\r\n";
+                return "485 send error\r\n";
+            } else{
+                return "Error: 485 not inital\r\n";
+            }
+        }
+        else
+        {
+            return "Error: 485 data should include 2 char\r\n";
+        }
 
     }else if(command == "help") {
         return "Available commands:\r\n"
@@ -373,6 +410,10 @@ void Gateway::set_reread() {
 
 void Gateway::Link_lora(WH_COM *lorax) {
     this->lora=lorax;
+}
+
+void Gateway::Link_rs485(Communication *rs485x) {
+    this->rs485=rs485x;
 }
 
 

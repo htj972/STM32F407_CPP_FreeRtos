@@ -25,7 +25,7 @@ public:
         bool_type,
     };
     enum Bus{
-        RS485=0,
+        rs485=0,
         lora,
     };
     //8bit¶ÔÆë

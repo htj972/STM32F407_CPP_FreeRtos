@@ -12685,6 +12685,9 @@ CMakeFiles/Project.elf.dir/SOFTWARE/Src/Gateway.cpp.obj: F:/code/STM32/STM32F407
   F:/code/STM32/STM32F407_CPP_FreeRtos/HARDWARE/Inc/CRC.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/HARDWARE/Inc/Timer.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/HARDWARE/Inc/Out_In_Put.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Communication.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/RS485.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/modbus.h \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/sstream \
   E:/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/sstream.tcc
 
@@ -14993,7 +14996,10 @@ CMakeFiles/Project.elf.dir/USER/Src/main.cpp.obj: F:/code/STM32/STM32F407_CPP_Fr
   F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/WH_COM.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/WH_L101.h \
   F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/modbus.h \
-  F:/code/STM32/STM32F407_CPP_FreeRtos/HARDWARE/Inc/CRC.h
+  F:/code/STM32/STM32F407_CPP_FreeRtos/HARDWARE/Inc/CRC.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Communication.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/modbus.h \
+  F:/code/STM32/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Communication.h
 
 CMakeFiles/Project.elf.dir/USER/Src/stm32f4xx_it.c.obj: F:/code/STM32/STM32F407_CPP_FreeRtos/USER/Src/stm32f4xx_it.c \
   F:/code/STM32/STM32F407_CPP_FreeRtos/USER/Inc/stm32f4xx_it.h \
