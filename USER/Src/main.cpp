@@ -146,14 +146,14 @@ void start_task(void *pvParameters)
             ET.Link_TIMER_CALLback(&tIM_EC);
 
             TB.Connect(222, 74, 215, 220, 31883);
-            TB.config("HELIN", "C001", "C001");
+            TB.config("XCGY", "XC001", "XC001");
             TB.SubscribeTopic();
             while (true) {
                 vTaskDelay(100 / portTICK_RATE_MS);
                 if (!ET.get_Link_Status())
                     break;
                 TB.Getdatacheck();
-                if(tims>=60*2){
+                if(tims>=10*2){
                     tims=0;
                     string sensor_str=COM.data_to_json();
                     if(ET.getGPS()){

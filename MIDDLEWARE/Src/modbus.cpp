@@ -228,7 +228,8 @@ void modbus::modbus_Host_03_uncoding() {
     {
         for(uint8_t ii=0;ii<modbus_03_receive->num/2;ii++)
         {
-            this->write_data(this->slave_address+ii,&modbus_03_receive->data[ii*2]);
+//            this->write_data(this->slave_address+ii,&modbus_03_receive->data[ii*2]);
+            this->write_data(ii,&modbus_03_receive->data[ii*2]);
         }
         if(this->send_flag==3)
             this->send_flag=0;

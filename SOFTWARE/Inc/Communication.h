@@ -31,12 +31,22 @@ private:
     }K_POWER_DATA;
 
     typedef struct environment{
-        //ян╥ж
-        float soil_sa;
-        float soil_ec;
+        float soil_PH;
+        float soil_Temp;
+        float soil_Humi;
+        float soil_EC;
+        float soil_Sa;
+        float soil_TDS;
         float soil_N;
         float soil_P;
         float soil_K;
+        uint8_t wind_dir;
+        float wind_speed;
+        float UV;
+        float air_Temp;
+        float air_Humi;
+        float air_ZS;
+        float light;
     }environment;
 
     bool queue_flag[COM_queue_num]{};

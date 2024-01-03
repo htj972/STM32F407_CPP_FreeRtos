@@ -51,10 +51,10 @@ protected:
     uint16_t freetime{};
     _USART_* USARTx{};
 public:
-    explicit modbus(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=500,uint16_t sfreetime=20);
+    explicit modbus(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=1000,uint16_t sfreetime=20);
     modbus()=default;
     ~modbus();
-    void init(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=500,uint16_t sfreetime=20);
+    void init(_USART_* USART,uint8_t mode =SLAVE,uint8_t id=1,uint16_t stimeout=1000,uint16_t sfreetime=20);
     void config(uint16_t* address,uint16_t len,uint16_t start=0);
     void set_id(uint8_t id=1);
     void set_mode(uint8_t mode =0);
