@@ -9,14 +9,14 @@ WH_COM::WH_COM(USART_TypeDef *USARTx, TIM_TypeDef *TIMx, uint16_t frq) {
     _USART_::init(USARTx);
     Timer::init(TIMx,10000/frq,8400,true);
     WH_L101::init(this);
-    this->initial();
+//    this->initial();
     for (bool & ii : this->queue_flag) {
         ii= false;
     }
 }
 
 void WH_COM::initial() {
-//    WH_L101::set_mode(4700,10);
+    WH_L101::set_mode(4330,10);
     WH_L101::Link_UART_CALLback();
     WH_L101::Link_TIMER_CALLback(this);
     WH_L101::config(this->data_BUS.to_u16,sizeof(this->data_BUS)/2-1);

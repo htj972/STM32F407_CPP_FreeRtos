@@ -87,7 +87,7 @@ extern _OutPut_ OUT;
 
 bool ThingsBoard::Getdatacheck() {
     bool ret = false;
-    if(this->mqtt->available()){                              //接收到数据
+    if(this->mqtt->available()){//接收到数据
         string sdata=this->mqtt->GetRxbuf();
         *this->Debug<<sdata<<"\r\n";
 
@@ -158,9 +158,9 @@ bool ThingsBoard::Getdatacheck() {
                     }else if(std::string(method->valuestring) == "485"){
                         cJSON *item = cJSON_GetObjectItem(root, "params");
                         if (item != nullptr && item->type == cJSON_Array) {
-                            int arraySize = cJSON_GetArraySize(item);
+                            int arraySize = cJSON_GetArraySize(item);//数组长度
                             for (int i = 0; i < arraySize; i++) {
-                                cJSON *paramItem = cJSON_GetArrayItem(item, i);
+                                cJSON *paramItem = cJSON_GetArrayItem(item, i);//获取数组元素
                                 if (paramItem != nullptr) {
                                     // 解析 "deviceId"
                                     cJSON *child = paramItem->child;

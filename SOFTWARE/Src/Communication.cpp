@@ -10,6 +10,7 @@
 Communication::Communication(USART_TypeDef *USARTx, uint8_t DE, TIM_TypeDef *TIMx, uint16_t frq) {
     RS485::init(USARTx,DE);
     RS485::config(GPIOD8,GPIOD9);
+    RS485::set_delay_times(2);
     Timer::init(TIMx,10000/frq,8400,true);
     modbus::init(this,modbus::HOST);
     this->initial();

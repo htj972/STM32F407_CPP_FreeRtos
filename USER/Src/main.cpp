@@ -6,13 +6,11 @@
 #include "Out_In_Put.h"
 #include "Timer.h"
 #include "USART.h"
-#include "RS485.h"
 #include "malloc.h"
 #include "EC20.h"
 #include "ThingsBoard.h"
 #include "Kstring.h"
 #include "FM24Cxx.h"
-#include "Device_Node_Def.h"
 #include "Gateway.h"
 #include "Communication.h"
 
@@ -60,16 +58,14 @@ public:
 _OutPut_ run (GPIOE6),UP(GPIOE2),DW(GPIOE3),NET(GPIOE4);//运行指示灯
 _OutPut_ OUT(GPIOC10,HIGH);            //输出
 _OutPut_ RST(GPIOA8);//EC20复位引脚
-
-
-Timer tIM_EC(TIM5,100,8400,true);
-
+EC20    ET(USART1);//EC20
+Timer tIM_EC(TIM5,100,8400,true);//EC20定时器
 _USART_ DEBUG(USART6);             //调试串口
-//RS485   com(USART3,GPIOD10);
-Communication com(USART3,GPIOD10,TIM7,100);
-EC20    ET(USART1);
-ThingsBoard TB(&DEBUG,&ET);
-Gateway GW(GPIOB14,GPIOB15,FM24Cxx::AT24C256);
+Communication com(USART3,GPIOD10,TIM7,100);//RS485
+WH_COM        lora(UART5,TIM4,100);//LORA
+
+ThingsBoard TB(&DEBUG,&ET);//TB
+Gateway GW(GPIOB14,GPIOB15,FM24Cxx::AT24C256);//网关
 
 int main()
 {
@@ -80,15 +76,17 @@ int main()
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
 
-    if(GW.inital())DEBUG<<"GW OK\r\n";
+    lora.initial();
+    if(GW.inital())DEBUG<<"GW OK\r\n";//初始化网关
     else DEBUG<<"GW error\r\n";
-    GW.print_env(&DEBUG);
-    GW.run_cmd(&DEBUG);
-    GW.link_OUT(&OUT);
-    GW.Link_rs485(&com);
+    GW.print_env(&DEBUG);//打印网关环境
+    GW.run_cmd(&DEBUG);//运行网关指令
+    GW.link_OUT(&OUT);//连接输出
+    GW.Link_rs485(&com);//连接RS485
+    GW.Link_lora(&lora);//连接LORA
 
-    ET.Link_RST_Pin(&RST);
-    ET.reset();
+    ET.Link_RST_Pin(&RST);//连接EC20复位引脚
+    ET.reset();//复位EC20
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -130,8 +128,9 @@ void start_task(void *pvParameters)
     {
         vTaskDelay(200/portTICK_RATE_MS );
         run.change();       //运行指示灯
-        if(DEBUG.available())
-            da = DEBUG.read_data("\r\n");
+        if(DEBUG.available())//获取串口有效
+            da = DEBUG.read_data("\r\n");//读取调试串口数据
+
         if (!da.empty()) {
             DEBUG << da << ">>";
             DEBUG << GW.Command(da);
@@ -155,24 +154,17 @@ void start_task(void *pvParameters)
 
         ET.Register(EC20::APN::APN_CMNET);
         ET.Link_TIMER_CALLback(&tIM_EC);
-
-//        TB.Connect(222, 74, 215, 220, 31883);
-//        TB.config("gateway", "gateway", "gateway");
-//        TB.SubscribeTopic();
         GW.link_thingsBoard(&TB);
         while (true) {
-            vTaskDelay(100 / portTICK_RATE_MS);
-
-            if (!ET.get_Link_Status())
+            vTaskDelay(100 / portTICK_RATE_MS);//延时100ms
+            if (!ET.get_Link_Status())//判断网络是否连接
                 break;
-            if(TB.Getdatacheck()){
-//                UP.change();
+            if(TB.Getdatacheck()){//判断是否有数据需要上传
                 UP.flicker(50);//上行指示灯
             }
-            if(TB.cmd.find("\r\n")!=std::string::npos){
-                DEBUG<<GW.Command(TB.cmd);
-                TB.cmd.clear();
-//                DW.change();
+            if(TB.cmd.find("\r\n")!=std::string::npos){//判断是否有指令需要执行
+                DEBUG<<GW.Command(TB.cmd);//执行指令
+                TB.cmd.clear();//清空指令
                 DW.flicker(50);//下行指示灯
             }
             NET.change();       //网络指示灯
