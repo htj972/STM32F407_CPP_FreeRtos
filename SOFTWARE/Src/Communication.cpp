@@ -63,8 +63,8 @@ void Communication::data_sync() {
 }
 
 void Communication::sensordata_sync() {
-    this->set_id(0x05);//五合一传感器
-    if(this->modbus_03_send(0,5)==modbus::result::modbus_success)
+    this->set_id(0x05);//雨量
+    if(this->modbus_03_send(0,1)==modbus::result::modbus_success)
     {
         uint16_t *data=this->data_BUS.to_u16;
         this->env.rain=((float)*data/10.0f);
