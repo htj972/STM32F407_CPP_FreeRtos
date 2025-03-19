@@ -13,6 +13,7 @@
 #include "Gateway.h"
 #include "Communication.h"
 #include "WDG.h"
+#include "lwip_comm/lwip_comm.h"
 
 
 //任务优先级
@@ -57,20 +58,22 @@ public:
     };
 }led(GPIOE5,TIM6,2);//运行指示灯定时器
 
-_OutPut_ run (GPIOE6);//运行指示灯
-//_OutPut_ Beep(GPIOE4,LOW);          //蜂鸣器
-_OutPut_ OUT(GPIOC10,HIGH);            //输出
-_OutPut_ RST(GPIOA11);//EC20复位引脚
+class lwip_:public Timer,public Call_Back{
+public:
+    lwip_(TIM_TypeDef *TIMx, uint16_t frq) {
+        Timer::init(TIMx,10000/frq,8400,true);
+        this->upload_extern_fun(this);
+    }
+    void Callback(int  ,char** ) override {
+        lwip_setup();
+    }
+}lwipw(TIM5,100);//运行指示灯定时器
 
-Timer tIM_EC(TIM5,100,8400,true);
+_OutPut_ error_led (GPIOE6);//运行指示灯
 
-_USART_ DEBUG(USART2);             //调试串口
-//RS485   com(USART3,GPIOD10);
-
-EC20    ET(USART1);
-ThingsBoard TB(&DEBUG,&ET);
-
-Communication COM(USART3,GPIOB15,TIM7,100);
+//_USART_ DEBUG(USART2);             //调试串口
+RS485   com(USART3,GPIOB15);
+//Communication COM(USART3,GPIOB15,TIM7,100);
 
 int main()
 {
@@ -79,13 +82,23 @@ int main()
     delay_init(168);	//初始化延时函数
     delay_ms(1000);//延时1s
 
+    com.config(GPIOD8,GPIOD9);
+
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
+    lwip_dhcp_process_handle();
 
-//    Beep.flicker(100,200,2);
+    while(lwip_comm_init()!=0)
+    {
+        delay_ms(1200);
+    }
 
-    ET.Link_RST_Pin(&RST);
-    ET.reset();
+    while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
+    {
+        lwip_periodic_handle();
+    }
+
+
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
                 (const char*    )"start_task",           //任务名称
@@ -125,8 +138,6 @@ void start_task(void *pvParameters)
     while(true)
     {
         vTaskDelay(1000/portTICK_RATE_MS );
-        run.change();
-        COM.data_sync();
     }
 }
 
@@ -134,47 +145,7 @@ void start_task(void *pvParameters)
 [[noreturn]] void EC20_task(void *pvParameters)
 {
     while(true) {
-        while (!ET.getrdy()) {
-            delay_ms(1000);
-            DEBUG << ".";
-        }
-        while (true) {
-            DEBUG << "EC20:" << (ET.init() ? "OK" : "error") << "\r\n";
-            ET.setdebug(&DEBUG);
-            ET.setGPS();
-            ET.Register(EC20::APN::APN_CMNET);
-            ET.Link_TIMER_CALLback(&tIM_EC);
-
-            TB.Connect(222, 74, 215, 220, 31883);
-            TB.config("XCGY", "XC001", "XC001");
-            TB.SubscribeTopic();
-            while (true) {
-                vTaskDelay(100 / portTICK_RATE_MS);
-                if (!ET.get_Link_Status())
-                    break;
-                TB.Getdatacheck();
-                if(tims>=60*2){
-                    tims=0;
-                    string sensor_str=COM.data_to_json();
-                    if(ET.getGPS()){
-                        //删除后面的“}”
-                        sensor_str.pop_back();
-                        sensor_str.append(R"(,"date":")");
-                        sensor_str.append(ET.GPS_D.date);
-                        sensor_str.append(R"(","UTC":")");
-                        sensor_str.append(ET.GPS_D.UTC);
-                        sensor_str.append(R"(","longitude":")");
-                        sensor_str.append(ET.GPS_D.longitude);
-                        sensor_str.append(R"(","latitude":")");
-                        sensor_str.append(ET.GPS_D.latitude);
-                        sensor_str.append(R"("})");
-                    }
-//                    DEBUG<<sensor_str<<"\r\n";
-                    TB.PublishData(sensor_str);
-
-                }
-            }
-        }
+        delay_ms(1000);
     }
 }
 
