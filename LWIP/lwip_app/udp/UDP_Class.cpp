@@ -40,6 +40,7 @@ void UDP_Class::receive(void *arg, struct udp_pcb *upcb, struct pbuf *p, struct 
 }
 
 void UDP_Class::close() {
+    this->udp_Num = 0;
     udp_disconnect(this->mpcb);
     udp_remove(this->mpcb);		//断开UDP连接
     this->mpcb=nullptr;
@@ -224,5 +225,16 @@ string UDP_Class::read_data(const string &str) const {
     string  ret=udp_recvbuf[this->udp_Num].substr(0,udp_recvbuf[this->udp_Num].find(str));
     udp_recvbuf[this->udp_Num].erase(0,udp_recvbuf[this->udp_Num].find(str));
     return ret;
+}
+
+void UDP_Class::set_romte_ip(uint8_t ip1, uint8_t ip2, uint8_t ip3, uint8_t ip4, uint16_t port) {
+    struct ip_addr rmtipaddr{};  	//远端ip地址
+    IP4_ADDR(&rmtipaddr, ip1, ip2, ip3, ip4);//设置远端IP地址
+    this->set_romte_ip(rmtipaddr,port);
+}
+
+void UDP_Class::set_romte_ip(ip_addr ipAddr, uint16_t port) {
+    this->mpcb->remote_ip=ipAddr;
+    this->mpcb->remote_port=port;
 }
 

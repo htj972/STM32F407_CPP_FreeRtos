@@ -50,6 +50,8 @@ public:
 
     void udp_senddata(char* data);
     uint16_t available() const;
+    void set_romte_ip(ip_addr ipAddr,uint16_t port);
+    void set_romte_ip(uint8_t ip1,uint8_t ip2,uint8_t ip3,uint8_t ip4,uint16_t port);
     virtual void write(const char *str,uint16_t len);
     virtual void write(uint8_t *str,uint16_t len);
     virtual void write(string String);
