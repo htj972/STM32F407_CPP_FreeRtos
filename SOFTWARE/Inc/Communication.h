@@ -30,24 +30,20 @@ private:
         };
     }K_POWER_DATA;
 
-    typedef struct environment{
-        float soil_PH;
-        float soil_Temp;
-        float soil_Humi;
-        float soil_EC;
-        float soil_Sa;
-        float soil_TDS;
-        float soil_N;
-        float soil_P;
-        float soil_K;
-        uint8_t wind_dir;
-        float wind_speed;
-        float UV;
-        float air_Temp;
-        float air_Humi;
-        float air_ZS;
-        float light;
-    }environment;
+    typedef struct CData{
+        //水泵状态
+        uint16_t water_pump_state;
+        //肥泵状态
+        uint16_t fertilizer_pump_state;
+        //水流量累计清零
+        uint16_t water_flow_clear;
+        //肥流量累计清零
+        uint16_t fertilizer_flow_clear;
+        //复位供水变频异常
+        uint16_t water_supply_reset;
+        //复位肥变频异常
+        uint16_t fertilizer_reset;
+    }CData;
 
     bool queue_flag[COM_queue_num]{};
     float *datax[COM_queue_num]{};
@@ -55,7 +51,7 @@ private:
 public:
     Communication(USART_TypeDef* USARTx,uint8_t DE,TIM_TypeDef *TIMx, uint16_t frq);
     K_POWER_DATA data_BUS;
-    environment env{};
+    CData env{};
     void initial();
     uint16_t find_address(const float *data);
     void     data_set(float *data,float value);

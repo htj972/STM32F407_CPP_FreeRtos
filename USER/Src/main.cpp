@@ -76,11 +76,12 @@ public:
 }lwipw(TIM5,100);//运行指示灯定时器
 
 _OutPut_ error_led (GPIOE6);//运行指示灯
-
-//_USART_ DEBUG(USART2);             //调试串口
-RS485   com(USART3,GPIOB15,115200);
-//Communication COM(USART3,GPIOB15,TIM7,100);
+//RS485   com(USART3,GPIOB15,115200);  //调试串口
+//modbus modbus1(&com,modbus::HOST,1,1000,20);
+Communication MB(USART3,GPIOB15,TIM7,100);//modbus通信
 UDP_Class udp_demo(8089);
+
+
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
@@ -88,36 +89,31 @@ int main()
     delay_init(168);	//初始化延时函数
     delay_ms(1000);//延时1s
 
-    com.config(GPIOD8,GPIOD9);
-
-    com<<"adsdasd";
-
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
     lwip_dhcp_process_handle();
 
-    {
-        com<<"lwIP Initing...\r\n";
-        while(lwip_comm_init()!=0)
-        {
-            com<<"lwIP Init failed!\r\n";
-            delay_ms(1200);
-            com<<"Retrying...\r\n";
-        }
-        com<<"lwIP Init Successed\r\n";
-        //等待DHCP获取
-        com<<"DHCP IP configing...\r\n";
-        while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
-        {
-            lwip_periodic_handle();
-        }
-        uint8_t speed;
-        com<<DHCP_str[0]<<DHCP_str[1]<<DHCP_str[2]<<DHCP_str[3]<<DHCP_str[4];
-        speed=LAN8720_Get_Speed();//得到网速
-        if(speed&1<<1)com<<"Ethernet Speed:100M\r\n";
-        else com<<"Ethernet Speed:10M\r\n";
-
-    }
+//    {
+//        com<<"lwIP Initing...\r\n";
+//        while(lwip_comm_init()!=0)
+//        {
+//            com<<"lwIP Init failed!\r\n";
+//            delay_ms(1200);
+//            com<<"Retrying...\r\n";
+//        }
+//        com<<"lwIP Init Successed\r\n";
+//        //等待DHCP获取
+//        com<<"DHCP IP configing...\r\n";
+//        while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
+//        {
+//            lwip_periodic_handle();
+//        }
+//        uint8_t speed;
+//        com<<DHCP_str[0]<<DHCP_str[1]<<DHCP_str[2]<<DHCP_str[3]<<DHCP_str[4];
+//        speed=LAN8720_Get_Speed();//得到网速
+//        if(speed&1<<1)com<<"Ethernet Speed:100M\r\n";
+//        else com<<"Ethernet Speed:10M\r\n";
+//    }
 
 
 //    while(lwip_comm_init()!=0)
@@ -129,7 +125,7 @@ int main()
 //    {
 //        lwip_periodic_handle();
 //    }
-    led.set_mode(true);
+//    led.set_mode(true);
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -189,7 +185,10 @@ void start_task(void *pvParameters)
             /*返回 {"data":{"water":{"press":6.3,"flow":80,"quantity":150.3,"PH":6.5,"EC":12.3},
             "fertilizer":{"flow":0.5,"quantity":7.8},"pail":{"fertilizer":0.1,"time":43.2}}}
             */
-            udp_demo.write(R"({"data":{"water":{"press":6.3,"flow":80,"quantity":150.3,"PH":6.5,"EC":12.3},"fertilizer":{"flow":0.5,"quantity":7.8},"pail":{"fertilizer":0.1,"time":43.2}}})");
+            udp_demo.write(R"({"data":{
+                                    "water":{"press":6.3,"flow":80,"quantity":150.3,"PH":6.5,"EC":12.3},
+                                    "fertilizer":{"flow":0.5,"quantity":7.8},
+                                    "pail":{"fertilizer":0.1,"time":43.2}}})");
         }
     }
 }

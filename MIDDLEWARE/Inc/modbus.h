@@ -43,7 +43,6 @@ protected:
     uint16_t slave_address{};
 
     bool  write_data(uint16_t address,const uint8_t* data);
-
     bool modbus_wait_rec() const;
 
     uint8_t run_mode{};
