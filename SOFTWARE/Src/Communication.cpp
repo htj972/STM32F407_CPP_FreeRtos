@@ -29,11 +29,29 @@ uint16_t Communication::find_address(const float *data) {
     return (uint16_t)(data - (float *)&this->data_BUS.to_float)*2;
 }
 
-void Communication::data_set(float *data,float value) {
+uint16_t Communication::find_address(const uint16_t *data) {
+    return (uint16_t)(data - this->data_BUS.to_u16)*2;
+}
+
+void Communication::data_set(uint16_t address,uint16_t data) {
     for(uint8_t ii=0;ii<COM_queue_num;ii++){
         if(!this->queue_flag[ii]){
-            this->datax[ii]  = data;
-            this->valuex[ii] = value;
+            this->datax[ii][0]  = data;
+            this->addx[ii][0] = address;
+            this->addx[ii][1] = 1;
+            this->queue_flag[ii]= true;
+            break;
+        }
+    }
+}
+
+void Communication::data_set(uint16_t address,const uint16_t *data) {
+    for(uint8_t ii=0;ii<COM_queue_num;ii++){
+        if(!this->queue_flag[ii]){
+            this->datax[ii][0]  = *data;
+            this->datax[ii][1]  = *(data+1);
+            this->addx[ii][0] = address;
+            this->addx[ii][1] = 2;
             this->queue_flag[ii]= true;
             break;
         }
@@ -47,15 +65,8 @@ void Communication::data_sync() {
             break;
     }
     if(ii<COM_queue_num){
-        union {
-            float _f;
-            uint16_t _u16[2];
-        }temp{
-                ._f=this->valuex[ii],
-        };
-        this->modbus_16_send(this->find_address(this->datax[ii]),
-                             temp._u16,2);
-        this->queue_flag[ii]= false;
+        this->modbus_16_send(this->addx[ii][0], this->datax[ii], this->addx[ii][1]);
+        this->queue_flag[ii] = false;
     }
     else {
         this->sensordata_sync();
@@ -63,7 +74,7 @@ void Communication::data_sync() {
 }
 void Communication::sensordata_sync() {
     this->set_id(1);//PH
-    if (this->modbus_03_send(0, 6) == modbus::modbus_success) {
+    if (this->modbus_03_send(0x101, 6) == modbus::modbus_success) {
         uint16_t *data =this->data_BUS.to_u16;
         this->env.water_pump_state = *data;
         this->env.fertilizer_pump_state = *(data+1);
@@ -72,15 +83,110 @@ void Communication::sensordata_sync() {
         this->env.water_supply_reset = *(data+4);
         this->env.fertilizer_reset = *(data+5);
     }
+    if(this->modbus_03_send(0x201, 15) == modbus::modbus_success) {
+        uint16_t *data = this->data_BUS.to_u16;
+        this->env.PLC_run_state = *data;
+        this->env.pressure = *(float *) (data + 1);
+        this->env.water_flow = *(float *) (data + 3);
+        this->env.water_flow_total = *(float *) (data + 5);
+        this->env.fertilizer_flow = *(float *) (data + 7);
+        this->env.fertilizer_flow_total = *(float *) (data + 9);
+        this->env.water_pump_inverter_state = *(data + 11);
+        this->env.water_pump_inverter_fault_code = *(data + 12);
+        this->env.fertilizer_pump_inverter_state = *(data + 13);
+        this->env.fertilizer_pump_inverter_fault_code = *(data + 14);
+    }
+    if(this->modbus_03_send(0x301, 13) == modbus::modbus_success) {
+        uint16_t *data = this->data_BUS.to_u16;
+        this->env.PLC_station_number = *data;
+        this->env.communication_rate = *(data + 1);
+        this->env.water_pump_working_mode = *(data + 2);
+        this->env.water_pump_working_parameter = *(data + 3);
+        this->env.fertilizer_pump_working_mode = *(data + 6);
+        this->env.fertilizer_pump_working_parameter = *(data + 7);
+        this->env.flowmeter1_caliber = *(data + 9);
+        this->env.flowmeter1_pulse = *(data + 10);
+        this->env.flowmeter2_caliber = *(data + 11);
+        this->env.flowmeter2_pulse = *(data + 12);
+    }
+    if(this->modbus_03_send(0x401, 2) == modbus::modbus_success) {
+        uint16_t *data = this->data_BUS.to_u16;
+        this->env.firmware_version = *data;
+        this->env.firmware_SN = *(data + 1);
+    }
 }
 
 string Communication::data_to_json() const {
     string buf;
-    buf.append("{\"水泵状态\":"+to_string(this->env.water_pump_state)+",");
-    buf.append("\"肥泵状态\":"+to_string(this->env.fertilizer_pump_state)+",");
-    buf.append("\"水流量累计清零\":"+to_string(this->env.water_flow_clear)+",");
-    buf.append("\"肥流量累计清零\":"+to_string(this->env.fertilizer_flow_clear)+",");
-    buf.append("\"复位供水变频异常\":"+to_string(this->env.water_supply_reset)+",");
-    buf.append("\"复位肥变频异常\":"+to_string(this->env.fertilizer_reset)+"}");
+//    buf.append("{\"水泵状态\":"+to_string(this->env.water_pump_state)+",");
+//    buf.append("\"肥泵状态\":"+to_string(this->env.fertilizer_pump_state)+",");
+//    buf.append("\"水流量累计清零\":"+to_string(this->env.water_flow_clear)+",");
+//    buf.append("\"肥流量累计清零\":"+to_string(this->env.fertilizer_flow_clear)+",");
+//    buf.append("\"复位供水变频异常\":"+to_string(this->env.water_supply_reset)+",");
+//    buf.append("\"复位肥变频异常\":"+to_string(this->env.fertilizer_reset)+",");
+//    buf.append("\"PLC运行状态\":"+to_string(this->env.PLC_run_state)+",");
+//    buf.append("\"压力值\":"+to_string(this->env.pressure)+",");
+//    buf.append("\"水实时流速\":"+to_string(this->env.water_flow)+",");
+//    buf.append("\"水累计流量\":"+to_string(this->env.water_flow_total)+",");
+//    buf.append("\"肥实时流速\":"+to_string(this->env.fertilizer_flow)+",");
+//    buf.append("\"肥累计流量\":"+to_string(this->env.fertilizer_flow_total)+",");
+//    buf.append("\"水泵变频器状态\":"+to_string(this->env.water_pump_inverter_state)+",");
+//    buf.append("\"水泵变频器故障码\":"+to_string(this->env.water_pump_inverter_fault_code)+",");
+//    buf.append("\"肥泵变频器状态\":"+to_string(this->env.fertilizer_pump_inverter_state)+",");
+//    buf.append("\"肥泵变频器故障码\":"+to_string(this->env.fertilizer_pump_inverter_fault_code)+",");
+//    buf.append("\"固件版本\":"+to_string(this->env.firmware_version)+",");
+//    buf.append("\"固件SN\":"+to_string(this->env.firmware_SN)+"}");
+
+    buf.append("{\"water_flowrate\":"+to_string(this->env.water_flow)+",");
+    buf.append("\"water_totalflow\":"+to_string(this->env.water_flow_total)+",");
+    buf.append("\"pressrate\":"+to_string(this->env.pressure)+",");
+    buf.append("\"fertilizer_flowrate\":"+to_string(this->env.fertilizer_flow)+",");
+    buf.append("\"fertilizer_totalflow\":"+to_string(this->env.water_flow_total)+",");
+    buf.append("\"EC\":"+to_string(0)+",");
+    buf.append("\"PH\":"+to_string(0)+",");
+    buf.append("\"water_openstatus\":"+to_string(this->env.water_pump_inverter_state)+",");
+    buf.append("\"water_workstatus\":"+to_string(this->env.water_pump_inverter_fault_code)+",");
+    buf.append("\"fertilizer_openstatus\":"+to_string(this->env.fertilizer_pump_inverter_state)+",");
+    buf.append("\"fertilizer_workstatus\":"+to_string(this->env.fertilizer_pump_inverter_fault_code)+",");
+    buf.append("\"firmware_version\":"+to_string(this->env.firmware_version)+",");
+    buf.append("\"firmware_SN\":"+to_string(this->env.firmware_SN)+",");
+    //判断fertilizer_flow_total是否大于500
+    buf.append("\"warn_fertilizer\":"+to_string((this->env.fertilizer_flow_total>=500)?1:0)+",");
+    buf.append("\"water_run_time\":"+to_string(this->env.water_run_time)+",");
+    buf.append("\"fertilizer_run_time\":"+to_string(this->env.fertilizer_run_time)+"}");
     return buf;
 }
+
+void Communication::run_time_sync() {
+    if(this->env.water_pump_state==1){
+        this->env.fertilizer_run_time++;
+        this->env.water_run_time++;
+    }
+}
+
+void Communication::send_fertilizermach(float Press, float Flow) {
+    uint16_t temp[2];
+    temp[0]=1;
+    temp[1]=(uint16_t)(Press*1000);
+    this->data_set(0x303, temp);
+    temp[1]=(uint16_t)(Flow*1000);
+    this->data_set(0x307, temp);
+
+}
+
+void Communication::send_fertilizerpump(uint16_t state) {
+    //清空肥累计流量
+    this->data_set(0x104, 1);
+    //控制肥泵
+    this->data_set(0x102, state);
+    this->env.fertilizer_run_time=0;
+}
+
+void Communication::send_waterpump(uint16_t state) {
+    //清空水累计流量
+    this->data_set(0x103, 1);
+    //控制水泵
+    this->data_set(0x101, state);
+    this->env.water_run_time=0;
+}
+

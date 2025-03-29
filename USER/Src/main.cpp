@@ -15,6 +15,8 @@
 #include "WDG.h"
 #include "lwip_comm/lwip_comm.h"
 #include "udp/UDP_Class.h"
+#include "fertilizer.h"
+#include "cJSON.h"
 
 
 //任务优先级
@@ -29,7 +31,7 @@ void start_task(void *pvParameters);
 //任务优先级
 #define LOGIC_TASK_PRIO		2
 //任务堆栈大小
-#define LOGIC_STK_SIZE 		128
+#define LOGIC_STK_SIZE 		(128*10)
 //任务句柄
 TaskHandle_t LOGICTask_Handler;
 //任务函数
@@ -38,7 +40,7 @@ TaskHandle_t LOGICTask_Handler;
 //任务优先级
 #define RS485_TASK_PRIO		3
 //任务堆栈大小
-#define RS485_STK_SIZE 		(128*10)
+#define RS485_STK_SIZE 		(128)
 //任务句柄
 TaskHandle_t RS485Task_Handler;
 //任务函数
@@ -76,56 +78,58 @@ public:
 }lwipw(TIM5,100);//运行指示灯定时器
 
 _OutPut_ error_led (GPIOE6);//运行指示灯
-//RS485   com(USART3,GPIOB15,115200);  //调试串口
-//modbus modbus1(&com,modbus::HOST,1,1000,20);
+
+//RS485   MB(USART3,GPIOB15,115200);  //调试串口
+//modbus modbus1(&MB,modbus::HOST,1,1000,20);
 Communication MB(USART3,GPIOB15,TIM7,100);//modbus通信
 UDP_Class udp_demo(8089);
 
+#define MD_Debug 0
 
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
-    WDG_Init();
+//    WDG_Init();
     delay_init(168);	//初始化延时函数
     delay_ms(1000);//延时1s
 
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
     lwip_dhcp_process_handle();
+#if MD_Debug
+    {
+        MB<<"lwIP Initing...\r\n";
+        while(lwip_comm_init()!=0)
+        {
+            MB<<"lwIP Init failed!\r\n";
+            delay_ms(1200);
+            MB<<"Retrying...\r\n";
+        }
+        MB<<"lwIP Init Successed\r\n";
+        //等待DHCP获取
+        MB<<"DHCP IP configing...\r\n";
+        while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
+        {
+            lwip_periodic_handle();
+        }
+        uint8_t speed;
+        MB<<DHCP_str[0]<<DHCP_str[1]<<DHCP_str[2]<<DHCP_str[3]<<DHCP_str[4];
+        speed=LAN8720_Get_Speed();//得到网速
+        if(speed&1<<1)MB<<"Ethernet Speed:100M\r\n";
+        else MB<<"Ethernet Speed:10M\r\n";
+    }
+#else
+    while(lwip_comm_init()!=0)
+    {
+        delay_ms(1200);
+    }
 
-//    {
-//        com<<"lwIP Initing...\r\n";
-//        while(lwip_comm_init()!=0)
-//        {
-//            com<<"lwIP Init failed!\r\n";
-//            delay_ms(1200);
-//            com<<"Retrying...\r\n";
-//        }
-//        com<<"lwIP Init Successed\r\n";
-//        //等待DHCP获取
-//        com<<"DHCP IP configing...\r\n";
-//        while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
-//        {
-//            lwip_periodic_handle();
-//        }
-//        uint8_t speed;
-//        com<<DHCP_str[0]<<DHCP_str[1]<<DHCP_str[2]<<DHCP_str[3]<<DHCP_str[4];
-//        speed=LAN8720_Get_Speed();//得到网速
-//        if(speed&1<<1)com<<"Ethernet Speed:100M\r\n";
-//        else com<<"Ethernet Speed:10M\r\n";
-//    }
-
-
-//    while(lwip_comm_init()!=0)
-//    {
-//        delay_ms(1200);
-//    }
-//
-//    while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
-//    {
-//        lwip_periodic_handle();
-//    }
-//    led.set_mode(true);
+    while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
+    {
+        lwip_periodic_handle();
+    }
+#endif
+    led.set_mode(true);
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -158,37 +162,63 @@ void start_task(void *pvParameters)
     vTaskDelete(StartTask_Handler); //删除开始任务
     taskEXIT_CRITICAL();            //退出临界区
 }
-
+QueueHandle_t xMailbox;
+//fertilizer FWmode;
 //task1任务函数
 [[noreturn]] void LOGIC_task(void *pvParameters)//alignas(8)
 {
-    udp_demo.bind();
+//    udp_demo.connect(192,168,31,173);
+    udp_demo.bind();//绑定端口
+    //发送准备就绪
+    udp_demo.write("{\"ready\":true}");
+    smatch result;
     while(true)
     {
-        delay_ms(2);
+        delay_ms(10);
         if(udp_demo.available()){
             error_led.change();
             udp_demo.set_romte_ip(udp_demo.get_remote_ip(),8089);
             string cmd=udp_demo.read_data();
-            /*{
-             * "cmd":{
-             * "water":{"mode":"press","value":6.5},
-             * "fertilizer":{"mode":"flow","value":0.6},
-             * "pail":{"fertilizer":5.2,"volume":500}
-             * }
-             * }
-             */
-            //解析json 获取cmd字段
+            //删除cmd内的/n后，对比数据
+            //使用正则表达式删除/n
+            regex reg(R"(\n)");
+            cmd=regex_replace(cmd,reg,"");
+            if(cmd==R"({"cmd":"q_fertilizermach"})")
+            {
+                udp_demo.write(MB.data_to_json());
+            }
+            //{"cmd":"c_fertilizermach""press": 5.2,"flow": 0.2}
+            else if(cmd.find(R"({"cmd":"c_fertilizermach")")!=string::npos)
+            {
+//               FWmode.get_cmd_str(cmd);
+                //只用正则表达式获取压力值和流量值
+                regex reg1(R"("press":\s*(\d+\.\d+),\s*"flow":\s*(\d+\.\d+))");
+                if(regex_search(cmd,result,reg1))
+                {
+                    float press=stof(result[1]);
+                    float flow=stof(result[2]);
+                    MB.send_fertilizermach(press,flow);
+                }
+            }
+            //{"cmd":"c_fertilizerpump"."type":1} //1开,2关,3暂停4恢复
+            else if(cmd.find(R"({"cmd":"c_fertilizerpump")")!=string::npos)
+            {
+                regex reg2(R"("type":\s*(\d+))");
+                if(regex_search(cmd,result,reg2))
+                {
+                    MB.send_fertilizerpump(stoi(result[1]));
+                }
+            }
+            //{"cmd":"c_waterpump"."type":1} //1开,2关,3暂停4恢复
+            else if(cmd.find(R"({"cmd":"c_waterpump")")!=string::npos)
+            {
+                regex reg3(R"("type":\s*(\d+))");
+                if(regex_search(cmd,result,reg3))
+                {
+                    MB.send_waterpump(stoi(result[1]));
+                }
+            }
 
-
-
-            /*返回 {"data":{"water":{"press":6.3,"flow":80,"quantity":150.3,"PH":6.5,"EC":12.3},
-            "fertilizer":{"flow":0.5,"quantity":7.8},"pail":{"fertilizer":0.1,"time":43.2}}}
-            */
-            udp_demo.write(R"({"data":{
-                                    "water":{"press":6.3,"flow":80,"quantity":150.3,"PH":6.5,"EC":12.3},
-                                    "fertilizer":{"flow":0.5,"quantity":7.8},
-                                    "pail":{"fertilizer":0.1,"time":43.2}}})");
         }
     }
 }
@@ -196,10 +226,29 @@ void start_task(void *pvParameters)
 //task2任务函数
 [[noreturn]] void RS485_task(void *pvParameters)
 {
+    uint8_t dsmi=0;
+    uint8_t times=0;
+    struct
+    {
+        float data;
+        float value;
+        uint16_t valuex;
+    }received_data{};
+    smatch gresult;
     while(true) {
-        delay_ms(1000);
+        delay_ms(100);
 
+        times++;
+        if(times>=0) {
+            MB.data_sync();
+            MB.run_time_sync();
+            times = 0;
+        }
 
+//        if (xQueueReceive(xMailbox, &gresult, portMAX_DELAY) == pdPASS) {
+//            MB<<"press:"<<gresult[1]<<" flow:"<<gresult[2]<<"\r\n";
+//
+//        }
     }
 }
 

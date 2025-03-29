@@ -9,7 +9,7 @@
 #include <cstring>
 #include "WH_L101.h"
 
-#define COM_queue_num 5
+#define COM_queue_num 10
 
 class WH_COM : public _USART_, private Timer, public WH_L101{
 private:

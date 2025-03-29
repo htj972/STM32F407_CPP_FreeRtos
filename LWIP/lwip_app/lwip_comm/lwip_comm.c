@@ -56,10 +56,10 @@ void lwip_comm_default_ip_set(__lwip_dev *lwipx)
 	uint32_t sn0;
 	sn0=*(vu32*)(0x1FFF7A10);//获取STM32的唯一ID的前24位作为MAC地址后三字节
 	//默认远端IP为:192.168.1.100
-	lwipx->remoteip[0]=10;	
-	lwipx->remoteip[1]=40;
-	lwipx->remoteip[2]=12;
-	lwipx->remoteip[3]=14;
+	lwipx->remoteip[0]=192;
+	lwipx->remoteip[1]=168;
+	lwipx->remoteip[2]=31;
+	lwipx->remoteip[3]=173;
 	//MAC地址设置(高三字节固定为:2.0.0,低三字节用STM32唯一ID)
 	lwipx->mac[0]=2;//高三字节(IEEE称之为组织唯一ID,OUI)地址固定为:2.0.0
 	lwipx->mac[1]=0;
@@ -68,20 +68,20 @@ void lwip_comm_default_ip_set(__lwip_dev *lwipx)
 	lwipx->mac[4]=(sn0>>8)&0XFFF;
 	lwipx->mac[5]=sn0&0XFF; 
 	//默认本地IP为:192.168.1.30
-	lwipx->ip[0]=10;	
-	lwipx->ip[1]=40;
-	lwipx->ip[2]=12;
-	lwipx->ip[3]=100;
+	lwipx->ip[0]=192;
+	lwipx->ip[1]=168;
+	lwipx->ip[2]=31;
+	lwipx->ip[3]=1;
 	//默认子网掩码:255.255.255.0
 	lwipx->netmask[0]=255;	
 	lwipx->netmask[1]=255;
 	lwipx->netmask[2]=255;
 	lwipx->netmask[3]=0;
 	//默认网关:192.168.1.1
-	lwipx->gateway[0]=10;	
-	lwipx->gateway[1]=40;
-	lwipx->gateway[2]=12;
-	lwipx->gateway[3]=1;	
+	lwipx->gateway[0]=192;
+	lwipx->gateway[1]=168;
+	lwipx->gateway[2]=31;
+	lwipx->gateway[3]=162;
 	lwipx->dhcpstatus=0;//没有DHCP	
 } 
 

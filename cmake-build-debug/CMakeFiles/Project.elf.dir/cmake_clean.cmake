@@ -339,6 +339,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/ThingsBoard.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/WH_COM.cpp.obj"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/WH_COM.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/SOFTWARE/Src/fertilizer.cpp.obj"
+  "CMakeFiles/Project.elf.dir/SOFTWARE/Src/fertilizer.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/mqtt_base.cpp.obj"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/mqtt_base.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/pretreatment.cpp.obj"
