@@ -89,7 +89,7 @@ UDP_Class udp_demo(8089);
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
-//    WDG_Init();
+    WDG_Init();
     delay_init(168);	//初始化延时函数
     delay_ms(1000);//延时1s
 
@@ -198,24 +198,27 @@ QueueHandle_t xMailbox;
                     float press=stof(result[1]);
                     float flow=stof(result[2]);
                     MB.send_fertilizermach(press,flow);
+                    udp_demo.write(R"({"cmd_result":"ok"})");
                 }
             }
-            //{"cmd":"c_fertilizerpump"."type":1} //1开,2关,3暂停4恢复
+            //{"cmd":"c_fertilizerpump","type":1} //1开,2关,3暂停4恢复
             else if(cmd.find(R"({"cmd":"c_fertilizerpump")")!=string::npos)
             {
                 regex reg2(R"("type":\s*(\d+))");
                 if(regex_search(cmd,result,reg2))
                 {
                     MB.send_fertilizerpump(stoi(result[1]));
+                    udp_demo.write(R"({"cmd_result":"ok"})");
                 }
             }
-            //{"cmd":"c_waterpump"."type":1} //1开,2关,3暂停4恢复
+            //{"cmd":"c_waterpump","type":1} //1开,2关,3暂停4恢复
             else if(cmd.find(R"({"cmd":"c_waterpump")")!=string::npos)
             {
                 regex reg3(R"("type":\s*(\d+))");
                 if(regex_search(cmd,result,reg3))
                 {
                     MB.send_waterpump(stoi(result[1]));
+                    udp_demo.write(R"({"cmd_result":"ok"})");
                 }
             }
 
