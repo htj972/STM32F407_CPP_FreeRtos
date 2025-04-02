@@ -112,6 +112,7 @@ public:
     void    sensordata_sync();
     void    run_time_sync();
     string data_to_json() const;
+    string data_to_json(const string& db,const string& str) const;
     void   send_fertilizermach(float Press,float Flow);
     void   send_fertilizerpump(uint16_t state);
     void   send_waterpump(uint16_t state);

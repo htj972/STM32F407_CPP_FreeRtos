@@ -183,11 +183,23 @@ QueueHandle_t xMailbox;
             //使用正则表达式删除/n
             regex reg(R"(\n)");
             cmd=regex_replace(cmd,reg,"");
-            if(cmd==R"({"cmd":"q_fertilizermach"})")
+            if(cmd.find(R"({"cmd":"q_fertilizermach")")!=string::npos)
             {
-                udp_demo.write(MB.data_to_json());
+                if(cmd.find(R"("call":")")!=string::npos)
+                {
+                    //find获取call的值
+                    uint16_t pos=cmd.find(R"("call":")")+7;
+                    uint16_t pot=cmd.find(R"("})");
+                    uint16_t poe=cmd.find(R"("db":)")+5;
+                    uint16_t pof=cmd.find(R"(,"call)");
+                    udp_demo.write(MB.data_to_json(cmd.substr(poe,pof-poe),cmd.substr(pos,pot-pos)));
+                }
+                else
+                {
+                    udp_demo.write(MB.data_to_json());
+                }
             }
-            //{"cmd":"c_fertilizermach""press": 5.2,"flow": 0.2}
+            //{"cmd":"c_fertilizermach","press": 5.2,"flow": 0.2,"call":"asdasd","db":4}
             else if(cmd.find(R"({"cmd":"c_fertilizermach")")!=string::npos)
             {
 //               FWmode.get_cmd_str(cmd);
@@ -198,7 +210,19 @@ QueueHandle_t xMailbox;
                     float press=stof(result[1]);
                     float flow=stof(result[2]);
                     MB.send_fertilizermach(press,flow);
-                    udp_demo.write(R"({"cmd_result":"ok"})");
+                    if(cmd.find(R"("call":")")!=string::npos)
+                    {
+                        //find获取call的值
+                        uint16_t pos=cmd.find(R"("call":")")+7;
+                        uint16_t pot=cmd.find(R"("})");
+                        uint16_t poe=cmd.find(R"("db":)")+5;
+                        uint16_t pof=cmd.find(R"(,"call)");
+                        udp_demo.write(R"({"cmd_result":"ok","db":)"+cmd.substr(poe,pof-poe)+R"(,"call":")"+cmd.substr(pos,pot-pos)+R"("})");
+                    }
+                    else
+                    {
+                        udp_demo.write(R"({"cmd_result":"ok"})");
+                    }
                 }
             }
             //{"cmd":"c_fertilizerpump","type":1} //1开,2关,3暂停4恢复
@@ -208,7 +232,19 @@ QueueHandle_t xMailbox;
                 if(regex_search(cmd,result,reg2))
                 {
                     MB.send_fertilizerpump(stoi(result[1]));
-                    udp_demo.write(R"({"cmd_result":"ok"})");
+                    if(cmd.find(R"("call":")")!=string::npos)
+                    {
+                        //find获取call的值
+                        uint16_t pos=cmd.find(R"("call":")")+7;
+                        uint16_t pot=cmd.find(R"("})");
+                        uint16_t poe=cmd.find(R"("db":)")+5;
+                        uint16_t pof=cmd.find(R"(,"call)");
+                        udp_demo.write(R"({"cmd_result":"ok","db":)"+cmd.substr(poe,pof-poe)+R"(,"call":")"+cmd.substr(pos,pot-pos)+R"("})");
+                    }
+                    else
+                    {
+                        udp_demo.write(R"({"cmd_result":"ok"})");
+                    }
                 }
             }
             //{"cmd":"c_waterpump","type":1} //1开,2关,3暂停4恢复
@@ -218,7 +254,18 @@ QueueHandle_t xMailbox;
                 if(regex_search(cmd,result,reg3))
                 {
                     MB.send_waterpump(stoi(result[1]));
-                    udp_demo.write(R"({"cmd_result":"ok"})");
+                    if(cmd.find(R"("call":")")!=string::npos)
+                    {
+                        //find获取call的值
+                        uint16_t pos=cmd.find(R"("call":")")+7;
+                        uint16_t pot=cmd.find(R"("})");
+                        uint16_t poe=cmd.find(R"("db":)")+5;
+                        uint16_t pof=cmd.find(R"(,"call)");
+                        udp_demo.write(R"({"cmd_result":"ok","db":)"+cmd.substr(poe,pof-poe)+R"(,"call":")"+cmd.substr(pos,pot-pos)+R"("})");
+                    }
+                    else {
+                        udp_demo.write(R"({"cmd_result":"ok"})");
+                    }
                 }
             }
 

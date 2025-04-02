@@ -118,25 +118,6 @@ void Communication::sensordata_sync() {
 
 string Communication::data_to_json() const {
     string buf;
-//    buf.append("{\"水泵状态\":"+to_string(this->env.water_pump_state)+",");
-//    buf.append("\"肥泵状态\":"+to_string(this->env.fertilizer_pump_state)+",");
-//    buf.append("\"水流量累计清零\":"+to_string(this->env.water_flow_clear)+",");
-//    buf.append("\"肥流量累计清零\":"+to_string(this->env.fertilizer_flow_clear)+",");
-//    buf.append("\"复位供水变频异常\":"+to_string(this->env.water_supply_reset)+",");
-//    buf.append("\"复位肥变频异常\":"+to_string(this->env.fertilizer_reset)+",");
-//    buf.append("\"PLC运行状态\":"+to_string(this->env.PLC_run_state)+",");
-//    buf.append("\"压力值\":"+to_string(this->env.pressure)+",");
-//    buf.append("\"水实时流速\":"+to_string(this->env.water_flow)+",");
-//    buf.append("\"水累计流量\":"+to_string(this->env.water_flow_total)+",");
-//    buf.append("\"肥实时流速\":"+to_string(this->env.fertilizer_flow)+",");
-//    buf.append("\"肥累计流量\":"+to_string(this->env.fertilizer_flow_total)+",");
-//    buf.append("\"水泵变频器状态\":"+to_string(this->env.water_pump_inverter_state)+",");
-//    buf.append("\"水泵变频器故障码\":"+to_string(this->env.water_pump_inverter_fault_code)+",");
-//    buf.append("\"肥泵变频器状态\":"+to_string(this->env.fertilizer_pump_inverter_state)+",");
-//    buf.append("\"肥泵变频器故障码\":"+to_string(this->env.fertilizer_pump_inverter_fault_code)+",");
-//    buf.append("\"固件版本\":"+to_string(this->env.firmware_version)+",");
-//    buf.append("\"固件SN\":"+to_string(this->env.firmware_SN)+"}");
-
     buf.append("{\"water_flowrate\":"+to_string(this->env.water_flow)+",");
     buf.append("\"water_totalflow\":"+to_string(this->env.water_flow_total)+",");
     buf.append("\"pressrate\":"+to_string(this->env.pressure)+",");
@@ -154,6 +135,30 @@ string Communication::data_to_json() const {
     buf.append("\"warn_fertilizer\":"+to_string((this->env.fertilizer_flow_total>=500)?1:0)+",");
     buf.append("\"water_run_time\":"+to_string(this->env.water_run_time)+",");
     buf.append("\"fertilizer_run_time\":"+to_string(this->env.fertilizer_run_time)+"}");
+    return buf;
+}
+
+string Communication::data_to_json(const string& db,const string& str) const {
+    string buf;
+    buf.append("{\"water_flowrate\":"+to_string(this->env.water_flow)+",");
+    buf.append("\"water_totalflow\":"+to_string(this->env.water_flow_total)+",");
+    buf.append("\"pressrate\":"+to_string(this->env.pressure)+",");
+    buf.append("\"fertilizer_flowrate\":"+to_string(this->env.fertilizer_flow)+",");
+    buf.append("\"fertilizer_totalflow\":"+to_string(this->env.water_flow_total)+",");
+    buf.append("\"EC\":"+to_string(0)+",");
+    buf.append("\"PH\":"+to_string(0)+",");
+    buf.append("\"water_openstatus\":"+to_string(this->env.water_pump_inverter_state)+",");
+    buf.append("\"water_workstatus\":"+to_string(this->env.water_pump_inverter_fault_code)+",");
+    buf.append("\"fertilizer_openstatus\":"+to_string(this->env.fertilizer_pump_inverter_state)+",");
+    buf.append("\"fertilizer_workstatus\":"+to_string(this->env.fertilizer_pump_inverter_fault_code)+",");
+    buf.append("\"firmware_version\":"+to_string(this->env.firmware_version)+",");
+    buf.append("\"firmware_SN\":"+to_string(this->env.firmware_SN)+",");
+    //判断fertilizer_flow_total是否大于500
+    buf.append("\"warn_fertilizer\":"+to_string((this->env.fertilizer_flow_total>=500)?1:0)+",");
+    buf.append("\"water_run_time\":"+to_string(this->env.water_run_time)+",");
+    buf.append("\"fertilizer_run_time\":"+to_string(this->env.fertilizer_run_time)+",");
+    buf.append("\"db\":"+db+",");
+    buf.append("\"call\":"+str+"\"}");
     return buf;
 }
 
@@ -189,4 +194,6 @@ void Communication::send_waterpump(uint16_t state) {
     this->data_set(0x101, state);
     this->env.water_run_time=0;
 }
+
+
 
