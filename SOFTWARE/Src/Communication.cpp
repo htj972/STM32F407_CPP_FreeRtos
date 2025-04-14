@@ -158,7 +158,7 @@ string Communication::data_to_json(const string& db,const string& str) const {
     buf.append("\"water_run_time\":"+to_string(this->env.water_run_time)+",");
     buf.append("\"fertilizer_run_time\":"+to_string(this->env.fertilizer_run_time)+",");
     buf.append("\"db\":"+db+",");
-    buf.append("\"call\":"+str+"\"}");
+    buf.append(R"("call":")"+str+"\"}");
     return buf;
 }
 
@@ -172,7 +172,7 @@ void Communication::run_time_sync() {
 void Communication::send_fertilizermach(float Press, float Flow) {
     uint16_t temp[2];
     temp[0]=1;
-    temp[1]=(uint16_t)(Press*1000);
+    temp[1]=(uint16_t)(Press*100);
     this->data_set(0x303, temp);
     temp[1]=(uint16_t)(Flow*1000);
     this->data_set(0x307, temp);
