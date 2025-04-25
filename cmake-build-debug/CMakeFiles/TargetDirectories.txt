@@ -1,3 +1,3 @@
-G:/stm32_project/STM32F407_CPP_FreeRtos/cmake-build-debug/CMakeFiles/Project.elf.dir
-G:/stm32_project/STM32F407_CPP_FreeRtos/cmake-build-debug/CMakeFiles/edit_cache.dir
-G:/stm32_project/STM32F407_CPP_FreeRtos/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/hutongjia/Documents/Clion/STM32F407_CPP_FreeRtos/cmake-build-debug/CMakeFiles/Project.elf.dir
+/Users/hutongjia/Documents/Clion/STM32F407_CPP_FreeRtos/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/hutongjia/Documents/Clion/STM32F407_CPP_FreeRtos/cmake-build-debug/CMakeFiles/rebuild_cache.dir

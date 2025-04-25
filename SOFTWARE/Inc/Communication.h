@@ -94,11 +94,14 @@ private:
         //运行时间
         uint16_t water_run_time;
         uint16_t fertilizer_run_time;
+        uint16_t PH;
+        uint16_t EC;
     }CData;
 
     bool queue_flag[COM_queue_num]{};
     uint16_t addx[COM_queue_num][2]{};
     uint16_t datax[COM_queue_num][2]{};
+    uint8_t  queue_num=0;
 public:
     Communication(USART_TypeDef* USARTx,uint8_t DE,TIM_TypeDef *TIMx, uint16_t frq);
     K_POWER_DATA data_BUS;

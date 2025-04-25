@@ -26,11 +26,15 @@ private:
     //bit6:0,没有收到数据;1,收到数据了.
     //bit5:0,没有连接上;1,连接上了.
     //bit4~0:保留
-    static uint8_t link_flag[UDP_NUM];
-    static std::string udp_recvbuf[UDP_NUM];
-    static struct udp_pcb *udppcb[UDP_NUM];  	//定义一个TCP服务器控制块
+    // static uint8_t link_flag[UDP_NUM];
+    // static std::string udp_recvbuf[UDP_NUM];
+    // static struct udp_pcb *udppcb[UDP_NUM];  	//定义一个TCP服务器控制块
 
-    uint8_t udp_Num{};
+    static uint8_t link_flag;
+    static std::string udp_recvbuf;
+    // static struct udp_pcb *udppcb;  	//定义一个TCP服务器控制块
+
+    // uint8_t udp_Num{};
     uint16_t udp_port{};
     struct udp_pcb *mpcb{};
     static void receive(void *arg,struct udp_pcb *upcb,struct pbuf *p,struct ip_addr *addr,u16_t port);
@@ -65,10 +69,10 @@ public:
     uint16_t println(const char *s);
     uint16_t println(int integer);
 
-    string read_data() const;
-    string read_data(uint8_t len) const;
-    string read_data(char c) const ;
-    string read_data(const string& str) const ;
+    static string read_data() ;
+    static string read_data(uint8_t len) ;
+    static string read_data(char c) ;
+    static string read_data(const string& str) ;
 
 
     UDP_Class& operator<<(const int integer)

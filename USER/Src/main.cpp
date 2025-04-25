@@ -29,7 +29,7 @@ TaskHandle_t StartTask_Handler;
 void start_task(void *pvParameters);
 
 //任务优先级
-#define LOGIC_TASK_PRIO		2
+#define LOGIC_TASK_PRIO		3
 //任务堆栈大小
 #define LOGIC_STK_SIZE 		(128*10)
 //任务句柄
@@ -54,7 +54,7 @@ public:
     T_led_(GPIO_Pin param,TIM_TypeDef *TIMx, uint16_t frq) {
         _OutPut_::init(param,LOW);
         Timer::init(TIMx,10000/frq,8400,true);
-        this->upload_extern_fun(this);
+        this->Timer::upload_extern_fun(this);
     }
     void set_mode(bool modex){
         this->mode=modex;
@@ -70,7 +70,7 @@ class lwip_:public Timer,public Call_Back{
 public:
     lwip_(TIM_TypeDef *TIMx, uint16_t frq) {
         Timer::init(TIMx,10000/frq,8400,true);
-        this->upload_extern_fun(this);
+        this->Timer::upload_extern_fun(this);
     }
     void Callback(int  ,char** ) override {
         lwip_setup();
@@ -170,7 +170,7 @@ QueueHandle_t xMailbox;
 //    udp_demo.connect(192,168,31,173);
     udp_demo.bind();//绑定端口
     //发送准备就绪
-    udp_demo.write("{\"ready\":true}");
+    // udp_demo.write("{\"ready\":true}");
     smatch result;
     while(true)
     {
@@ -276,29 +276,15 @@ QueueHandle_t xMailbox;
 //task2任务函数
 [[noreturn]] void RS485_task(void *pvParameters)
 {
-    uint8_t dsmi=0;
     uint8_t times=0;
-    struct
-    {
-        float data;
-        float value;
-        uint16_t valuex;
-    }received_data{};
-    smatch gresult;
     while(true) {
-        delay_ms(100);
-
+        vTaskDelay(200 / portTICK_PERIOD_MS);
         times++;
-        if(times>=0) {
+        if(times>=1) {
             MB.data_sync();
             MB.run_time_sync();
             times = 0;
         }
-
-//        if (xQueueReceive(xMailbox, &gresult, portMAX_DELAY) == pdPASS) {
-//            MB<<"press:"<<gresult[1]<<" flow:"<<gresult[2]<<"\r\n";
-//
-//        }
     }
 }
 
