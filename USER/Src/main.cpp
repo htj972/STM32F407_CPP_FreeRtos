@@ -194,10 +194,10 @@ QueueHandle_t xMailbox;
                     uint16_t pof=cmd.find(R"(,"call)");
                     udp_demo.write(MB.data_to_json(cmd.substr(poe,pof-poe),cmd.substr(pos,pot-pos)));
                 }
-                else
-                {
-                    udp_demo.write(MB.data_to_json());
-                }
+                // else
+                // {
+                //     udp_demo.write(MB.data_to_json());
+                // }
             }
             //{"cmd":"c_fertilizermach","press": 5.2,"flow": 0.2,"call":"asdasd","db":4}
             else if(cmd.find(R"({"cmd":"c_fertilizermach")")!=string::npos)

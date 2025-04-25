@@ -100,7 +100,7 @@ private:
 
     bool queue_flag[COM_queue_num]{};
     uint16_t addx[COM_queue_num][2]{};
-    uint16_t datax[COM_queue_num][2]{};
+    uint16_t datax[COM_queue_num][10]{};
     uint8_t  queue_num=0;
 public:
     Communication(USART_TypeDef* USARTx,uint8_t DE,TIM_TypeDef *TIMx, uint16_t frq);
@@ -110,11 +110,11 @@ public:
     uint16_t find_address(const float *data);
     uint16_t find_address(const uint16_t *data);
     void     data_set(uint16_t address,uint16_t data);
-    void     data_set(uint16_t address,const uint16_t* data);
+    void     data_set(uint16_t address,const uint16_t* data,uint8_t num);
     void     data_sync();
     void    sensordata_sync();
     void    run_time_sync();
-    string data_to_json() const;
+    // string data_to_json() const;
     string data_to_json(const string& db,const string& str) const;
     void   send_fertilizermach(float Press,float Flow);
     void   send_fertilizerpump(uint16_t state);
