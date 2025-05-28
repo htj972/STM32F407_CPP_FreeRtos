@@ -171,13 +171,12 @@ QueueHandle_t xMailbox;
     udp_demo.bind();//绑定端口
     //发送准备就绪
     // udp_demo.write("{\"ready\":true}");
-    smatch result;
     while(true)
     {
         delay_ms(10);
         if(udp_demo.available()){
             error_led.change();
-            udp_demo.set_romte_ip(udp_demo.get_remote_ip(),8089);
+            //udp_demo.set_romte_ip(udp_demo.get_remote_ip(),8089);
             string cmd=udp_demo.read_data();
             //删除cmd内的/n后，对比数据
             //使用正则表达式删除/n
@@ -194,16 +193,13 @@ QueueHandle_t xMailbox;
                     uint16_t pof=cmd.find(R"(,"call)");
                     udp_demo.write(MB.data_to_json(cmd.substr(poe,pof-poe),cmd.substr(pos,pot-pos)));
                 }
-                // else
-                // {
-                //     udp_demo.write(MB.data_to_json());
-                // }
             }
             //{"cmd":"c_fertilizermach","press": 5.2,"flow": 0.2,"call":"asdasd","db":4}
             else if(cmd.find(R"({"cmd":"c_fertilizermach")")!=string::npos)
             {
 //               FWmode.get_cmd_str(cmd);
                 //只用正则表达式获取压力值和流量值
+                smatch result;
                 regex reg1(R"("press":\s*(\d+\.\d+),\s*"flow":\s*(\d+\.\d+))");
                 if(regex_search(cmd,result,reg1))
                 {
@@ -219,15 +215,12 @@ QueueHandle_t xMailbox;
                         uint16_t pof=cmd.find(R"(,"call)");
                         udp_demo.write(R"({"cmd_result":"ok","db":)"+cmd.substr(poe,pof-poe)+R"(,"call":")"+cmd.substr(pos,pot-pos)+R"("})");
                     }
-                    else
-                    {
-                        udp_demo.write(R"({"cmd_result":"ok"})");
-                    }
                 }
             }
             //{"cmd":"c_fertilizerpump","type":1} //1开,2关,3暂停4恢复
             else if(cmd.find(R"({"cmd":"c_fertilizerpump")")!=string::npos)
             {
+                smatch result;
                 regex reg2(R"("type":\s*(\d+))");
                 if(regex_search(cmd,result,reg2))
                 {
@@ -241,15 +234,12 @@ QueueHandle_t xMailbox;
                         uint16_t pof=cmd.find(R"(,"call)");
                         udp_demo.write(R"({"cmd_result":"ok","db":)"+cmd.substr(poe,pof-poe)+R"(,"call":")"+cmd.substr(pos,pot-pos)+R"("})");
                     }
-                    else
-                    {
-                        udp_demo.write(R"({"cmd_result":"ok"})");
-                    }
                 }
             }
             //{"cmd":"c_waterpump","type":1} //1开,2关,3暂停4恢复
             else if(cmd.find(R"({"cmd":"c_waterpump")")!=string::npos)
             {
+                smatch result;
                 regex reg3(R"("type":\s*(\d+))");
                 if(regex_search(cmd,result,reg3))
                 {
@@ -263,9 +253,6 @@ QueueHandle_t xMailbox;
                         uint16_t pof=cmd.find(R"(,"call)");
                         udp_demo.write(R"({"cmd_result":"ok","db":)"+cmd.substr(poe,pof-poe)+R"(,"call":")"+cmd.substr(pos,pot-pos)+R"("})");
                     }
-                    else {
-                        udp_demo.write(R"({"cmd_result":"ok"})");
-                    }
                 }
             }
 
@@ -278,10 +265,10 @@ QueueHandle_t xMailbox;
 {
     uint8_t times=0;
     while(true) {
-        vTaskDelay(200 / portTICK_PERIOD_MS);
+        vTaskDelay(100 / portTICK_PERIOD_MS);
         times++;
-        if(times>=1) {
-            MB.data_sync();
+        MB.data_sync();
+        if(times>=5) {
             MB.run_time_sync();
             times = 0;
         }

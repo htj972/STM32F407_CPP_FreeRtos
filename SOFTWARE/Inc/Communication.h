@@ -50,14 +50,14 @@ private:
         //压力值
         float pressure;
         //水实时流速
-        float water_flow;
+        float water_flow=0;
         //水累计流量
         float water_flow_total;
         //肥实时流速
         float fertilizer_flow;
         //肥累计流量
         float fertilizer_flow_total;
-        //水泵变频器状态
+//        //水泵变频器状态
         uint16_t water_pump_inverter_state;
         //水泵变频器故障码
         uint16_t water_pump_inverter_fault_code;
@@ -66,40 +66,44 @@ private:
         //肥泵变频器故障码
         uint16_t fertilizer_pump_inverter_fault_code;
         //0x301
-        //PLC站号
-        uint16_t PLC_station_number;
-        //通信速率
-        uint16_t communication_rate;
-        //水泵工作模式
-        uint16_t water_pump_working_mode;
-        //水泵工作参数
-        uint16_t water_pump_working_parameter;
-        //肥泵工作模式
-        uint16_t fertilizer_pump_working_mode;
-        //肥泵工作参数
-        uint16_t fertilizer_pump_working_parameter;
-        //流量计1-口径
-        uint16_t flowmeter1_caliber;
-        //流量计1-脉冲数
-        uint16_t flowmeter1_pulse;
-        //流量计2-口径
-        uint16_t flowmeter2_caliber;
-        //流量计2-脉冲数
-        uint16_t flowmeter2_pulse;
+//        //PLC站号
+//        uint16_t PLC_station_number;
+//        //通信速率
+//        uint16_t communication_rate;
+//        //水泵工作模式
+//        uint16_t water_pump_working_mode;
+//        //水泵工作参数
+//        uint16_t water_pump_working_parameter;
+//        //肥泵工作模式
+//        uint16_t fertilizer_pump_working_mode;
+//        //肥泵工作参数
+//        uint16_t fertilizer_pump_working_parameter;
+//        //流量计1-口径
+//        uint16_t flowmeter1_caliber;
+//        //流量计1-脉冲数
+//        uint16_t flowmeter1_pulse;
+//        //流量计2-口径
+//        uint16_t flowmeter2_caliber;
+//        //流量计2-脉冲数
+//        uint16_t flowmeter2_pulse;
         //0x401
         //固件版本
         uint16_t firmware_version;
         //固件SN
-        uint16_t firmware_SN;
+//        uint16_t firmware_SN;
         //运行时间
         uint16_t water_run_time;
         uint16_t fertilizer_run_time;
+        uint32_t water_flow_last;
         uint16_t PH;
         uint16_t EC;
     }CData;
+    bool get_version_flag=false;
+    string firmware_SNSTR;
+    float flow_sum[5]={0,0,0,0,0};
 
     bool queue_flag[COM_queue_num]{};
-    uint16_t addx[COM_queue_num][2]{};
+    uint16_t addx[COM_queue_num][3]{};
     uint16_t datax[COM_queue_num][10]{};
     uint8_t  queue_num=0;
 public:
@@ -109,8 +113,8 @@ public:
     void initial();
     uint16_t find_address(const float *data);
     uint16_t find_address(const uint16_t *data);
-    void     data_set(uint16_t address,uint16_t data);
-    void     data_set(uint16_t address,const uint16_t* data,uint8_t num);
+    void     data_set(uint8_t id,uint16_t address,uint16_t data);
+    void     data_set(uint8_t id,uint16_t address,const uint16_t* data,uint8_t num);
     void     data_sync();
     void    sensordata_sync();
     void    run_time_sync();

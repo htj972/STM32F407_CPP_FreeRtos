@@ -33,19 +33,20 @@ uint16_t Communication::find_address(const uint16_t *data) {
     return (uint16_t)(data - this->data_BUS.to_u16)*2;
 }
 
-void Communication::data_set(uint16_t address,uint16_t data) {
+void Communication::data_set(uint8_t id,uint16_t address,uint16_t data) {
     for(uint8_t ii=0;ii<COM_queue_num;ii++){
         if(!this->queue_flag[ii]){
             this->datax[ii][0]  = data;
             this->addx[ii][0] = address;
             this->addx[ii][1] = 1;
+            this->addx[ii][2] = id;
             this->queue_flag[ii]= true;
             break;
         }
     }
 }
 
-void Communication::data_set(uint16_t address,const uint16_t* data,uint8_t num){
+void Communication::data_set(uint8_t id,uint16_t address,const uint16_t* data,uint8_t num){
     for(uint8_t ii=0;ii<COM_queue_num;ii++){
         if(!this->queue_flag[ii]){
             // this->datax[ii][0]  = *data;
@@ -56,6 +57,7 @@ void Communication::data_set(uint16_t address,const uint16_t* data,uint8_t num){
             }
             this->addx[ii][0] = address;
             this->addx[ii][1] = num;
+            this->addx[ii][2] = id;
             this->queue_flag[ii]= true;
             break;
         }
@@ -69,7 +71,7 @@ void Communication::data_sync() {
             break;
     }
     if(ii<COM_queue_num){
-        this->set_id(1);//PH
+        this->set_id(this->addx[ii][2]);
         this->modbus_16_send(this->addx[ii][0], this->datax[ii], this->addx[ii][1]);
         this->queue_flag[ii] = false;
     }
@@ -94,15 +96,13 @@ void Communication::sensordata_sync() {
     break;
     case 1:
         this->set_id(1);
-        if(this->modbus_03_send(0x201, 15) == modbus::modbus_success) {
+        if(this->modbus_03_send(0x201, 24) == modbus::modbus_success) {
             uint16_t *data = this->data_BUS.to_u16;
             this->env.PLC_run_state = *data;//201
             this->env.pressure =  (float)(*(data + 1))/1000.0f;//202
-            // this->env.water_flow = *(float *) (data + 3);//204
-            // this->env.water_flow_total = *(float *) (data + 5);//206
             uint32_t flow_t=0;
             //data [7]-[8] 为流量计流量float 4字节小端
-            flow_t = (*(data + 7) << 16) + *(data + 8);
+            flow_t = *(data + 7) + (*(data + 8)<<16);
             //使用unoin 指针转换为float
             union {
                 uint32_t u32;
@@ -110,64 +110,110 @@ void Communication::sensordata_sync() {
             } flow{};
             flow.u32 = flow_t;
             this->env.fertilizer_flow = flow.f;//208
-            flow_t = (*(data + 9) << 16) + *(data + 10);
+            flow_t = *(data + 9) + (*(data + 10)<<16);
             flow.u32 = flow_t;
             this->env.fertilizer_flow_total = flow.f;//20A
             this->env.water_pump_inverter_state = *(data + 11);//20C
-            this->env.water_pump_inverter_fault_code = *(data + 12);
-            this->env.fertilizer_pump_inverter_state = *(data + 13);
-            this->env.fertilizer_pump_inverter_fault_code = *(data + 14);
+            this->env.water_pump_inverter_fault_code = *(data + 13);//20E
+            this->env.fertilizer_pump_inverter_state = *(data + 20);//215
+            this->env.fertilizer_pump_inverter_fault_code = *(data + 21);//216
         }
     break;
+//    case 2:
+//        this->set_id(1);
+//        if(this->modbus_03_send(0x301, 23) == modbus::modbus_success) {
+//            uint16_t *data = this->data_BUS.to_u16;
+////            this->env.PLC_station_number = *data;//301
+////            this->env.communication_rate = *(data + 1);//302
+////            this->env.water_pump_working_mode = *(data + 2);//303
+////            this->env.water_pump_working_parameter = *(data + 3);//304
+////            this->env.fertilizer_pump_working_mode = *(data + 6);//307
+////            this->env.fertilizer_pump_working_parameter = *(data + 7);//308
+////            this->env.flowmeter1_caliber = *(data + 9);//30A
+////            this->env.flowmeter1_pulse = *(data + 10);//30B
+////            this->env.flowmeter2_caliber = *(data + 11);//30C
+////            this->env.flowmeter2_pulse = *(data + 12);//30D
+////            //读取启动流量0x316 0x317 数据
+////            this->env.water_flow_last = *(data + 21) + (*(data + 22)<<16);
+//
+//        }
+//    break;
     case 2:
-        this->set_id(1);
-        if(this->modbus_03_send(0x301, 13) == modbus::modbus_success) {
-            uint16_t *data = this->data_BUS.to_u16;
-            this->env.PLC_station_number = *data;//301
-            this->env.communication_rate = *(data + 1);//302
-            this->env.water_pump_working_mode = *(data + 2);//303
-            this->env.water_pump_working_parameter = *(data + 3);//304
-            this->env.fertilizer_pump_working_mode = *(data + 6);//307
-            this->env.fertilizer_pump_working_parameter = *(data + 7);//308
-            this->env.flowmeter1_caliber = *(data + 9);//30A
-            this->env.flowmeter1_pulse = *(data + 10);//30B
-            this->env.flowmeter2_caliber = *(data + 11);//30C
-            this->env.flowmeter2_pulse = *(data + 12);//30D
+        this->set_id(2);
+        if (this->modbus_03_send(0x0, 10) == modbus::modbus_success) {
+            uint16_t *data =this->data_BUS.to_u16;
+            union {
+                uint32_t u32;
+                float f;
+            } flow{};
+            flow.u32 = *data + (*(data + 1)<<16);
+            //保留>0的值
+            if(flow.f<0){
+                flow.f=0;
+            }
+            //求五位均值
+            //            this->flow_sum[0]=flow.f;
+            float sum=0;
+            for(uint8_t i=5;i>0;i--){
+                this->flow_sum[i]=this->flow_sum[i-1];
+                sum+=this->flow_sum[i];
+            }
+            sum+=this->flow_sum[0];
+            this->env.water_flow = sum/5.0f; //平均流量
+//            this->env.water_flow = (this->env.water_flow*5+flow.f)/6;
+
+            flow.u32 = *(data + 8) + (*(data + 9)<<16);
+            this->env.water_flow_total = float(flow.u32-this->env.water_flow_last);
         }
-    break;
+        break;
+//    case 3:
+//        this->set_id(1);
+//        if(this->modbus_03_send(0x501, 1) == modbus::modbus_success) {
+//            uint16_t *data = this->data_BUS.to_u16;
+//            this->env.firmware_version = *data;
+//        }
+//    break;
     case 3:
         this->set_id(1);
-        if(this->modbus_03_send(0x501, 1) == modbus::modbus_success) {
-            uint16_t *data = this->data_BUS.to_u16;
-            this->env.firmware_version = *data;
+        if(!get_version_flag) {
+            if (this->modbus_03_send(0x511, 8) == modbus::modbus_success) {
+                uint16_t *data = this->data_BUS.to_u16;
+                uint16_t dstr = *data;
+                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+                this->firmware_SNSTR.push_back(dstr & 0xff);
+                dstr = *(data + 1);
+                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+                this->firmware_SNSTR.push_back(dstr & 0xff);
+                dstr = *(data + 2);
+                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+                this->firmware_SNSTR.push_back(dstr & 0xff);
+                dstr = *(data + 3);
+                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+                this->firmware_SNSTR.push_back(dstr & 0xff);
+                dstr = *(data + 4);
+                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+                this->firmware_SNSTR.push_back(dstr & 0xff);
+                dstr = *(data + 5);
+                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+                this->firmware_SNSTR.push_back(dstr & 0xff);
+                dstr = *(data + 6);
+                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+                this->firmware_SNSTR.push_back(dstr & 0xff);
+                dstr = *(data + 7);
+                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+            }
+            this->env.firmware_version = 2;
+            this->env.PH = 67;
+            this->env.EC = 15;
+            get_version_flag = true;
         }
     break;
-    case 4:
-        this->set_id(1);
-        if(this->modbus_03_send(0x511, 1) == modbus::modbus_success) {
-            uint16_t *data = this->data_BUS.to_u16;
-            this->env.firmware_SN = *data;
-        }
-        this->env.PH=67;
-        this->env.EC=15;
-    break;
-    case 5:
-        this->set_id(2);
-        if (this->modbus_03_send(0x0, 2) == modbus::modbus_success) {
-            uint16_t *data =this->data_BUS.to_u16;
-            // this->env.water_flow = (float ) ((*data << 16)+(*(data+1)));
-        }
-    break;
-    case 6:
-        this->set_id(2);//PH
-        if (this->modbus_03_send(137, 2) == modbus::modbus_success) {
-            uint16_t *data =this->data_BUS.to_u16;
-            this->env.water_flow_total = (float ) ((*data << 16)+(*(data+1)));
-        }
+    default:
+        queue_num=0;
     break;
     }
     queue_num++;
-    if(queue_num>=7){queue_num=0;}
+    if(queue_num>=5){queue_num=0;}
 }
 
 // string Communication::data_to_json() const {
@@ -198,7 +244,7 @@ string Communication::data_to_json(const string& db,const string& str) const {
     buf.append("\"water_totalflow\":"+to_string(this->env.water_flow_total)+",");
     buf.append("\"pressrate\":"+to_string(this->env.pressure)+",");
     buf.append("\"fertilizer_flowrate\":"+to_string(this->env.fertilizer_flow)+",");
-    buf.append("\"fertilizer_totalflow\":"+to_string(this->env.water_flow_total)+",");
+    buf.append("\"fertilizer_totalflow\":"+to_string(this->env.fertilizer_flow_total)+",");
     buf.append("\"EC\":"+to_string(this->env.EC/10.0)+",");
     buf.append("\"PH\":"+to_string(this->env.PH/10.0)+",");
     buf.append("\"water_openstatus\":"+to_string(this->env.water_pump_state)+",");
@@ -206,7 +252,7 @@ string Communication::data_to_json(const string& db,const string& str) const {
     buf.append("\"fertilizer_openstatus\":"+to_string(this->env.fertilizer_pump_state)+",");
     buf.append("\"fertilizer_workstatus\":"+to_string(this->env.fertilizer_pump_inverter_fault_code)+",");
     buf.append("\"firmware_version\":"+to_string(this->env.firmware_version)+",");
-    buf.append("\"firmware_SN\":"+to_string(this->env.firmware_SN)+",");
+    buf.append(R"("firmware_SN":")"+firmware_SNSTR+"\",");
     //判断fertilizer_flow_total是否大于500
     buf.append("\"warn_fertilizer\":"+to_string((this->env.fertilizer_flow_total>=500)?1:0)+",");
     buf.append("\"water_run_time\":"+to_string(this->env.water_run_time)+",");
@@ -230,9 +276,9 @@ void Communication::send_fertilizermach(float Press, float Flow) {
     uint16_t temp[2];
     temp[0]=1;
     temp[1]=(uint16_t)(Press*100);
-    this->data_set(0x303, temp,2);
+    this->data_set(1,0x303, temp,2);
     temp[1]=(uint16_t)(Flow*1000);
-    this->data_set(0x307, temp,2);
+    this->data_set(1,0x307, temp,2);
 
 }
 
@@ -244,23 +290,19 @@ void Communication::send_fertilizerpump(uint16_t state) {
     temp[3]=1;//水异常 105
     temp[4]=1;//肥异常 106
     temp[5]=state;//搅拌 107
-    // //清空肥累计流量
-    // this->data_set(0x104, 1);
-    // //打开搅拌
-    // this->data_set(0x107, state);
-    // //控制肥泵
-    // this->data_set(0x102, state);
-    this->data_set(0x102, temp,6);
+    this->data_set(1,0x102, temp,6);
     this->env.fertilizer_run_time=0;
     // this->env.fertilizer_pump_state=state;
 }
 
 void Communication::send_waterpump(uint16_t state) {
-    //清空水累计流量
-    // this->data_set(0x103, 1);
-    //控制水泵
-    this->data_set(0x101, state);
+    this->data_set(1,0x101, state);
     this->env.water_run_time=0;
+    this->env.water_flow_total=0;
+    uint16_t temp[2];
+    temp[0]= this->env.water_flow_last&0x00ff;
+    temp[1]= (this->env.water_flow_last>>16)&0x00ff;
+    this->data_set(1,0x316,temp,2);
     // this->env.water_pump_state=state;
 }
 

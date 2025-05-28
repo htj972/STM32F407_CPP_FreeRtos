@@ -21,7 +21,8 @@ void UDP_Class::receive(void *arg, struct udp_pcb *upcb, struct pbuf *p, struct 
     if(p!=nullptr)	//接收到不为空的数据时
     {
         udp_recvbuf.clear();//数据接收缓冲区清零
-        udp_recvbuf.append(reinterpret_cast<char *>(p->payload),p->len);
+//        udp_recvbuf.append(reinterpret_cast<char *>(p->payload),p->len);
+        udp_recvbuf.append((char *)(p->payload),p->len);
         upcb->remote_ip=*addr; 				//记录远程主机的IP地址
         upcb->remote_port=port;  			//记录远程主机的端口号
         link_flag|=1<<6;	//标记接收到数据了
