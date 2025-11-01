@@ -57,7 +57,7 @@ private:
         float fertilizer_flow;
         //肥累计流量
         float fertilizer_flow_total;
-//        //水泵变频器状态
+        //水泵变频器状态
         uint16_t water_pump_inverter_state;
         //水泵变频器故障码
         uint16_t water_pump_inverter_fault_code;
@@ -86,12 +86,12 @@ private:
 //        uint16_t flowmeter2_caliber;
 //        //流量计2-脉冲数
 //        uint16_t flowmeter2_pulse;
-        //0x401
-        //固件版本
+//        0x401
+//        固件版本
         uint16_t firmware_version;
-        //固件SN
+//        固件SN
 //        uint16_t firmware_SN;
-        //运行时间
+//        运行时间
         uint16_t water_run_time;
         uint16_t fertilizer_run_time;
         uint32_t water_flow_last;
@@ -106,6 +106,7 @@ private:
     uint16_t addx[COM_queue_num][3]{};
     uint16_t datax[COM_queue_num][10]{};
     uint8_t  queue_num=0;
+    uint8_t    queue_len=3;
 public:
     Communication(USART_TypeDef* USARTx,uint8_t DE,TIM_TypeDef *TIMx, uint16_t frq);
     K_POWER_DATA data_BUS;
@@ -123,6 +124,7 @@ public:
     void   send_fertilizermach(float Press,float Flow);
     void   send_fertilizerpump(uint16_t state);
     void   send_waterpump(uint16_t state);
+    void   set_id_PHEC(string id,uint16_t PH=67,uint16_t EC=15);
 };
 
 

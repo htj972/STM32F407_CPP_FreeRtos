@@ -7,6 +7,8 @@
 
 #include "Communication.h"
 
+#include <utility>
+
 Communication::Communication(USART_TypeDef *USARTx, uint8_t DE, TIM_TypeDef *TIMx, uint16_t frq) {
     RS485::init(USARTx,DE,9600);
     RS485::config(GPIOD8,GPIOD9);
@@ -80,6 +82,13 @@ void Communication::data_sync() {
     }
 }
 void Communication::sensordata_sync() {
+    static uint16_t times=0;
+    times++;
+    if(times>100)
+    {
+        queue_len=5;
+        times=0;
+    }
     switch (queue_num)
     {
     case 0:
@@ -98,12 +107,12 @@ void Communication::sensordata_sync() {
         this->set_id(1);
         if(this->modbus_03_send(0x201, 24) == modbus::modbus_success) {
             uint16_t *data = this->data_BUS.to_u16;
-            this->env.PLC_run_state = *data;//201
-            this->env.pressure =  (float)(*(data + 1))/1000.0f;//202
+//            this->env.PLC_run_state = *data;//201
+            this->env.pressure =  (float)(*(data))/1000.0f;//202
             uint32_t flow_t=0;
             //data [7]-[8] 为流量计流量float 4字节小端
             flow_t = *(data + 7) + (*(data + 8)<<16);
-            //使用unoin 指针转换为float
+            //使用unoin 指针转换为floato
             union {
                 uint32_t u32;
                 float f;
@@ -152,18 +161,19 @@ void Communication::sensordata_sync() {
                 flow.f=0;
             }
             //求五位均值
-            //            this->flow_sum[0]=flow.f;
             float sum=0;
-            for(uint8_t i=5;i>0;i--){
+            for(uint8_t i=4;i>0;i--){
                 this->flow_sum[i]=this->flow_sum[i-1];
                 sum+=this->flow_sum[i];
             }
+            this->flow_sum[0]=flow.f;
             sum+=this->flow_sum[0];
             this->env.water_flow = sum/5.0f; //平均流量
 //            this->env.water_flow = (this->env.water_flow*5+flow.f)/6;
 
             flow.u32 = *(data + 8) + (*(data + 9)<<16);
-            this->env.water_flow_total = float(flow.u32-this->env.water_flow_last);
+            //this->env.water_flow_total = float(flow.u32-this->env.water_flow_last);
+            this->env.water_flow_total = flow.u32/10.0f;
         }
         break;
 //    case 3:
@@ -173,47 +183,73 @@ void Communication::sensordata_sync() {
 //            this->env.firmware_version = *data;
 //        }
 //    break;
+//    case 3:
+//        this->set_id(1);
+//        if(!get_version_flag) {
+//            if (this->modbus_03_send(0x511, 8) == modbus::modbus_success) {
+//                uint16_t *data = this->data_BUS.to_u16;
+//                uint16_t dstr = *data;
+//                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+//                this->firmware_SNSTR.push_back(dstr & 0xff);
+//                dstr = *(data + 1);
+//                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+//                this->firmware_SNSTR.push_back(dstr & 0xff);
+//                dstr = *(data + 2);
+//                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+//                this->firmware_SNSTR.push_back(dstr & 0xff);
+//                dstr = *(data + 3);
+//                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+//                this->firmware_SNSTR.push_back(dstr & 0xff);
+//                dstr = *(data + 4);
+//                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+//                this->firmware_SNSTR.push_back(dstr & 0xff);
+//                dstr = *(data + 5);
+//                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+//                this->firmware_SNSTR.push_back(dstr & 0xff);
+//                dstr = *(data + 6);
+//                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+//                this->firmware_SNSTR.push_back(dstr & 0xff);
+//                dstr = *(data + 7);
+//                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
+//            }
+//            if (this->firmware_SNSTR[0]==' ' || this->firmware_SNSTR.length() < 16) {
+//                typedef struct {
+//                    uint32_t id[3]; // 存储96位ID
+//                } ChipID;
+//                ChipID chipid = {0};
+//                chipid.id[0] = *(__I uint32_t *)(0x1FFF7A10);
+//                chipid.id[1] = *(__I uint32_t *)(0x1FFF7A14);
+//                chipid.id[2] = *(__I uint32_t *)(0x1FFF7A18);
+//                firmware_SNSTR.clear();
+//                sprintf((char*)firmware_SNSTR.data(), "%lu%lu%lu", chipid.id[2], chipid.id[1], chipid.id[0]);
+//            }
+//            this->env.firmware_version = 2;
+//            this->env.PH = 67;
+//            this->env.EC = 15;
+//            get_version_flag = true;
+//        }
+//    break;
     case 3:
-        this->set_id(1);
-        if(!get_version_flag) {
-            if (this->modbus_03_send(0x511, 8) == modbus::modbus_success) {
-                uint16_t *data = this->data_BUS.to_u16;
-                uint16_t dstr = *data;
-                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
-                this->firmware_SNSTR.push_back(dstr & 0xff);
-                dstr = *(data + 1);
-                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
-                this->firmware_SNSTR.push_back(dstr & 0xff);
-                dstr = *(data + 2);
-                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
-                this->firmware_SNSTR.push_back(dstr & 0xff);
-                dstr = *(data + 3);
-                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
-                this->firmware_SNSTR.push_back(dstr & 0xff);
-                dstr = *(data + 4);
-                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
-                this->firmware_SNSTR.push_back(dstr & 0xff);
-                dstr = *(data + 5);
-                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
-                this->firmware_SNSTR.push_back(dstr & 0xff);
-                dstr = *(data + 6);
-                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
-                this->firmware_SNSTR.push_back(dstr & 0xff);
-                dstr = *(data + 7);
-                this->firmware_SNSTR.push_back((dstr >> 8) & 0xff);
-            }
-            this->env.firmware_version = 2;
-            this->env.PH = 67;
-            this->env.EC = 15;
-            get_version_flag = true;
+        this->set_id(3);
+        if(this->modbus_03_send(00, 1) == modbus::modbus_success) {
+            uint16_t *data = this->data_BUS.to_u16;
+            this->env.EC=*data;
         }
     break;
+
+    case 4:
+        this->set_id(4);
+        if(this->modbus_03_send(00, 1) == modbus::modbus_success) {
+            uint16_t *data = this->data_BUS.to_u16;
+            this->env.PH=*data;
+            queue_len=3;
+        }
     default:
         queue_num=0;
     break;
     }
     queue_num++;
-    if(queue_num>=5){queue_num=0;}
+    if(queue_num>=queue_len){queue_num=0;}
 }
 
 // string Communication::data_to_json() const {
@@ -246,7 +282,7 @@ string Communication::data_to_json(const string& db,const string& str) const {
     buf.append("\"fertilizer_flowrate\":"+to_string(this->env.fertilizer_flow)+",");
     buf.append("\"fertilizer_totalflow\":"+to_string(this->env.fertilizer_flow_total)+",");
     buf.append("\"EC\":"+to_string(this->env.EC/10.0)+",");
-    buf.append("\"PH\":"+to_string(this->env.PH/10.0)+",");
+    buf.append("\"PH\":"+to_string(this->env.PH/100.0)+",");
     buf.append("\"water_openstatus\":"+to_string(this->env.water_pump_state)+",");
     buf.append("\"water_workstatus\":"+to_string(this->env.water_pump_inverter_fault_code)+",");
     buf.append("\"fertilizer_openstatus\":"+to_string(this->env.fertilizer_pump_state)+",");
@@ -285,7 +321,7 @@ void Communication::send_fertilizermach(float Press, float Flow) {
 void Communication::send_fertilizerpump(uint16_t state) {
     uint16_t temp[6];
     temp[0]=state;//肥泵状态 102
-    temp[1]=1;//水清零 103
+    temp[1]=0;//水清零 103
     temp[2]=1;//肥清零 104
     temp[3]=1;//水异常 105
     temp[4]=1;//肥异常 106
@@ -299,11 +335,31 @@ void Communication::send_waterpump(uint16_t state) {
     this->data_set(1,0x101, state);
     this->env.water_run_time=0;
     this->env.water_flow_total=0;
-    uint16_t temp[2];
-    temp[0]= this->env.water_flow_last&0x00ff;
-    temp[1]= (this->env.water_flow_last>>16)&0x00ff;
-    this->data_set(1,0x316,temp,2);
+//    uint16_t temp[2];
+//    temp[0]= this->env.water_flow_last&0x00ff;
+//    temp[1]= (this->env.water_flow_last>>16)&0x00ff;
+//    this->data_set(1,0x316,temp,2);
     // this->env.water_pump_state=state;
+}
+
+void Communication::set_id_PHEC(string id, uint16_t PH, uint16_t EC) {
+    if(id.empty())
+    {
+        typedef struct {
+            uint32_t id[3]; // 存储96位ID
+        } ChipID;
+        ChipID chipid = {0};
+        chipid.id[0] = *(__I uint32_t *)(0x1FFF7A10);
+        chipid.id[1] = *(__I uint32_t *)(0x1FFF7A14);
+        chipid.id[2] = *(__I uint32_t *)(0x1FFF7A18);
+        id.clear();
+        id.append(std::to_string(chipid.id[2]));
+        id.append(std::to_string(chipid.id[1]));
+        id.append(std::to_string(chipid.id[0]));
+    }
+    this->firmware_SNSTR = std::move(id);
+    this->env.PH = PH;
+    this->env.EC = EC;
 }
 
 

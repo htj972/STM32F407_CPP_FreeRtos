@@ -264,6 +264,7 @@ QueueHandle_t xMailbox;
 [[noreturn]] void RS485_task(void *pvParameters)
 {
     uint8_t times=0;
+    MB.set_id_PHEC("",670,15);//设置设备ID和PH,EC值
     while(true) {
         vTaskDelay(100 / portTICK_PERIOD_MS);
         times++;
