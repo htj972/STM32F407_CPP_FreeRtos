@@ -95,8 +95,9 @@ void Communication::sensordata_sync() {
         this->set_id(1);
         if (this->modbus_03_send(0x101, 6) == modbus::modbus_success) {
             uint16_t *data =this->data_BUS.to_u16;
-            this->env.water_pump_state = *data;
-            this->env.fertilizer_pump_state = *(data+1);
+            //this->env.water_pump_state = *data;
+            //this->env.fertilizer_pump_state = *(data+1);
+            data+=2;
             this->env.water_flow_clear = *(data+2);
             this->env.fertilizer_flow_clear = *(data+3);
             this->env.water_supply_reset = *(data+4);
@@ -109,6 +110,10 @@ void Communication::sensordata_sync() {
             uint16_t *data = this->data_BUS.to_u16;
 //            this->env.PLC_run_state = *data;//201
             this->env.pressure =  (float)(*(data))/1000.0f;//202
+            if(this->env.pressure>=0.06)
+                this->env.water_pump_state|=0x02;
+            else
+                this->env.water_pump_state&=~0x02;
             uint32_t flow_t=0;
             //data [7]-[8] 为流量计流量float 4字节小端
             flow_t = *(data + 7) + (*(data + 8)<<16);
@@ -121,11 +126,20 @@ void Communication::sensordata_sync() {
             this->env.fertilizer_flow = flow.f;//208
             flow_t = *(data + 9) + (*(data + 10)<<16);
             flow.u32 = flow_t;
+//            if(this->env.fertilizer_flow>0.25)
+//                this->env.fertilizer_pump_state=1;
+//            else
+//                this->env.fertilizer_pump_state=0;
             this->env.fertilizer_flow_total = flow.f;//20A
             this->env.water_pump_inverter_state = *(data + 11);//20C
             this->env.water_pump_inverter_fault_code = *(data + 13);//20E
             this->env.fertilizer_pump_inverter_state = *(data + 20);//215
             this->env.fertilizer_pump_inverter_fault_code = *(data + 21);//216
+            if(this->env.fertilizer_pump_inverter_fault_code>3)
+                this->env.fertilizer_pump_state=1;
+            else
+                this->env.fertilizer_pump_state=0;
+
         }
     break;
 //    case 2:
@@ -170,7 +184,10 @@ void Communication::sensordata_sync() {
             sum+=this->flow_sum[0];
             this->env.water_flow = sum/5.0f; //平均流量
 //            this->env.water_flow = (this->env.water_flow*5+flow.f)/6;
-
+            if(this->env.water_flow>10)
+                this->env.water_pump_state|=0x01;
+            else
+                this->env.water_pump_state&=~0x01;
             flow.u32 = *(data + 8) + (*(data + 9)<<16);
             //this->env.water_flow_total = float(flow.u32-this->env.water_flow_last);
             this->env.water_flow_total = flow.u32/10.0f;
@@ -283,7 +300,7 @@ string Communication::data_to_json(const string& db,const string& str) const {
     buf.append("\"fertilizer_totalflow\":"+to_string(this->env.fertilizer_flow_total)+",");
     buf.append("\"EC\":"+to_string(this->env.EC/10.0)+",");
     buf.append("\"PH\":"+to_string(this->env.PH/100.0)+",");
-    buf.append("\"water_openstatus\":"+to_string(this->env.water_pump_state)+",");
+    buf.append("\"water_openstatus\":"+to_string(this->env.water_pump_state>0)+",");
     buf.append("\"water_workstatus\":"+to_string(this->env.water_pump_inverter_fault_code)+",");
     buf.append("\"fertilizer_openstatus\":"+to_string(this->env.fertilizer_pump_state)+",");
     buf.append("\"fertilizer_workstatus\":"+to_string(this->env.fertilizer_pump_inverter_fault_code)+",");
