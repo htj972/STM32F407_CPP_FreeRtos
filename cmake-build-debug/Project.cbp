@@ -1070,6 +1070,12 @@
 		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/FM24Cxx.h">
 			<Option target="Project.elf"/>
 		</Unit>
+		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/HC165.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/HC595.h">
+			<Option target="Project.elf"/>
+		</Unit>
 		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Inc/IAP.h">
 			<Option target="Project.elf"/>
 		</Unit>
@@ -1131,6 +1137,12 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/FM24Cxx.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/HC165.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/HC595.cpp">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/IAP.cpp">

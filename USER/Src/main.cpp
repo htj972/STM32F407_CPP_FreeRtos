@@ -17,6 +17,8 @@
 #include "udp/UDP_Class.h"
 #include "fertilizer.h"
 #include "cJSON.h"
+#include "HC595.h"
+#include "HC165.h"
 
 
 //任务优先级
@@ -64,38 +66,54 @@ public:
         Feed_Dog();
         tims++;
     };
-}led(GPIOE5,TIM6,2);//运行指示灯定时器
+}led(GPIOD10,TIM6,2);//运行指示灯定时器
 
-class lwip_:public Timer,public Call_Back{
-public:
-    lwip_(TIM_TypeDef *TIMx, uint16_t frq) {
-        Timer::init(TIMx,10000/frq,8400,true);
-        this->Timer::upload_extern_fun(this);
-    }
-    void Callback(int  ,char** ) override {
-        lwip_setup();
-    }
-}lwipw(TIM5,100);//运行指示灯定时器
+_OutPut_ error_led (GPIOD11);//运行指示灯
 
-_OutPut_ error_led (GPIOE6);//运行指示灯
+_OutPut_ TrmLED[6]={
+    _OutPut_(GPIOE2,HIGH),
+    _OutPut_(GPIOE6,HIGH),
+    _OutPut_(GPIOE4,HIGH),
+    _OutPut_(GPIOE3,HIGH),
+    _OutPut_(GPIOC13,HIGH),
+    _OutPut_(GPIOE5,HIGH)
+};
 
-//RS485   MB(USART3,GPIOB15,115200);  //调试串口
-//modbus modbus1(&MB,modbus::HOST,1,1000,20);
-Communication MB(USART3,GPIOB15,TIM7,100);//modbus通信
-UDP_Class udp_demo(8089);
+_USART_ Debug(USART1,115200);
+
+HC595 OUT_driver(GPIOC6,GPIOD14,GPIOD13,GPIOD15,GPIOD14,2);//74HC595驱动
+HC165 IN_driver(GPIOE12,GPIOE13,GPIOE14,GPIOE15,2);//74HC165驱动
+
+//class lwip_:public Timer,public Call_Back{
+//public:
+//    lwip_(TIM_TypeDef *TIMx, uint16_t frq) {
+//        Timer::init(TIMx,10000/frq,8400,true);
+//        this->Timer::upload_extern_fun(this);
+//    }
+//    void Callback(int  ,char** ) override {
+//        lwip_setup();
+//    }
+//}lwipw(TIM5,100);//运行指示灯定时器
+
+
 
 #define MD_Debug 0
 
 int main()
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
-    WDG_Init();
+    //WDG_Init();
     delay_init(168);	//初始化延时函数
     delay_ms(1000);//延时1s
 
+    OUT_driver.init();
+    IN_driver.init();
+    IN_driver.set_shift(0,(const char[]){3,2,1,0,4,5,6,7});
+    IN_driver.set_shift(1,(const char[]){7,6,5,4,0,1,2,3});
+    OUT_driver.set_shift(1,(const char[]){7,6,5,4,3,2,1,0});
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
-    lwip_dhcp_process_handle();
+    //lwip_dhcp_process_handle();
 #if MD_Debug
     {
         MB<<"lwIP Initing...\r\n";
@@ -119,15 +137,15 @@ int main()
         else MB<<"Ethernet Speed:10M\r\n";
     }
 #else
-    while(lwip_comm_init()!=0)
-    {
-        delay_ms(1200);
-    }
-
-    while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
-    {
-        lwip_periodic_handle();
-    }
+//    while(lwip_comm_init()!=0)
+//    {
+//        delay_ms(1200);
+//    }
+//
+//    while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
+//    {
+//        lwip_periodic_handle();
+//    }
 #endif
     led.set_mode(true);
 
@@ -167,95 +185,24 @@ QueueHandle_t xMailbox;
 //task1任务函数
 [[noreturn]] void LOGIC_task(void *pvParameters)//alignas(8)
 {
-//    udp_demo.connect(192,168,31,173);
-    udp_demo.bind();//绑定端口
-    //发送准备就绪
-    // udp_demo.write("{\"ready\":true}");
+    uint8_t ii=0;
+    uint8_t times=0;
+    uint8_t hex[2]={0x01,0x55};
+    OUT_driver.Set_on(8);
     while(true)
     {
-        delay_ms(10);
-        if(udp_demo.available()){
-            error_led.change();
-            //udp_demo.set_romte_ip(udp_demo.get_remote_ip(),8089);
-            string cmd=udp_demo.read_data();
-            //删除cmd内的/n后，对比数据
-            //使用正则表达式删除/n
-            regex reg(R"(\n)");
-            cmd=regex_replace(cmd,reg,"");
-            if(cmd.find(R"({"cmd":"q_fertilizermach")")!=string::npos)
-            {
-                if(cmd.find(R"("call":")")!=string::npos)
-                {
-                    //find获取call的值
-                    uint16_t pos=cmd.find(R"("call":")")+8;
-                    uint16_t pot=cmd.find(R"("})");
-                    uint16_t poe=cmd.find(R"("db":)")+5;
-                    uint16_t pof=cmd.find(R"(,"call)");
-                    udp_demo.write(MB.data_to_json(cmd.substr(poe,pof-poe),cmd.substr(pos,pot-pos)));
-                }
-            }
-            //{"cmd":"c_fertilizermach","press": 5.2,"flow": 0.2,"call":"asdasd","db":4}
-            else if(cmd.find(R"({"cmd":"c_fertilizermach")")!=string::npos)
-            {
-//               FWmode.get_cmd_str(cmd);
-                //只用正则表达式获取压力值和流量值
-                smatch result;
-                regex reg1(R"("press":\s*(\d+\.\d+),\s*"flow":\s*(\d+\.\d+))");
-                if(regex_search(cmd,result,reg1))
-                {
-                    float press=stof(result[1]);
-                    float flow=stof(result[2]);
-                    MB.send_fertilizermach(press,flow);
-                    if(cmd.find(R"("call":")")!=string::npos)
-                    {
-                        //find获取call的值
-                        uint16_t pos=cmd.find(R"("call":")")+8;
-                        uint16_t pot=cmd.find(R"("})");
-                        uint16_t poe=cmd.find(R"("db":)")+5;
-                        uint16_t pof=cmd.find(R"(,"call)");
-                        udp_demo.write(R"({"cmd_result":"ok","db":)"+cmd.substr(poe,pof-poe)+R"(,"call":")"+cmd.substr(pos,pot-pos)+R"("})");
-                    }
-                }
-            }
-            //{"cmd":"c_fertilizerpump","type":1} //1开,2关,3暂停4恢复
-            else if(cmd.find(R"({"cmd":"c_fertilizerpump")")!=string::npos)
-            {
-                smatch result;
-                regex reg2(R"("type":\s*(\d+))");
-                if(regex_search(cmd,result,reg2))
-                {
-                    MB.send_fertilizerpump(stoi(result[1]));
-                    if(cmd.find(R"("call":")")!=string::npos)
-                    {
-                        //find获取call的值
-                        uint16_t pos=cmd.find(R"("call":")")+8;
-                        uint16_t pot=cmd.find(R"("})");
-                        uint16_t poe=cmd.find(R"("db":)")+5;
-                        uint16_t pof=cmd.find(R"(,"call)");
-                        udp_demo.write(R"({"cmd_result":"ok","db":)"+cmd.substr(poe,pof-poe)+R"(,"call":")"+cmd.substr(pos,pot-pos)+R"("})");
-                    }
-                }
-            }
-            //{"cmd":"c_waterpump","type":1} //1开,2关,3暂停4恢复
-            else if(cmd.find(R"({"cmd":"c_waterpump")")!=string::npos)
-            {
-                smatch result;
-                regex reg3(R"("type":\s*(\d+))");
-                if(regex_search(cmd,result,reg3))
-                {
-                    MB.send_waterpump(stoi(result[1]));
-                    if(cmd.find(R"("call":")")!=string::npos)
-                    {
-                        //find获取call的值
-                        uint16_t pos=cmd.find(R"("call":")")+8;
-                        uint16_t pot=cmd.find(R"("})");
-                        uint16_t poe=cmd.find(R"("db":)")+5;
-                        uint16_t pof=cmd.find(R"(,"call)");
-                        udp_demo.write(R"({"cmd_result":"ok","db":)"+cmd.substr(poe,pof-poe)+R"(,"call":")"+cmd.substr(pos,pot-pos)+R"("})");
-                    }
-                }
-            }
+        delay_ms(800);
+        error_led.change();
+        TrmLED[ii++].change();
+        if(ii>=6)ii=0;
 
+        OUT_driver.Set_Hex(hex);
+        hex[0]<<=1;
+        times++;
+        if(times>=8){
+            times=0;
+            hex[0]=0x01;
+            //OUT_driver.clear();
         }
     }
 }
@@ -263,15 +210,16 @@ QueueHandle_t xMailbox;
 //task2任务函数
 [[noreturn]] void RS485_task(void *pvParameters)
 {
-    uint8_t times=0;
-    MB.set_id_PHEC("",670,15);//设置设备ID和PH,EC值
+    uint8_t ptemp=0;
+    uint8_t Idata[2];
     while(true) {
-        vTaskDelay(100 / portTICK_PERIOD_MS);
-        times++;
-        MB.data_sync();
-        if(times>=5) {
-            MB.run_time_sync();
-            times = 0;
+        delay_ms(50);
+        IN_driver.upset();
+        IN_driver.Get_input(Idata);
+        //Debug.print("IN data: %02X %02X\r\n",Idata[0],Idata[1]);
+        if(Idata[1]!=ptemp) {
+            ptemp = Idata[1];
+            Debug.print("IN data high byte: %02X\r\n", Idata[1]);
         }
     }
 }

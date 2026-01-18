@@ -211,6 +211,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/DW_LCD.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/DW_LCD.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/EC20.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/EC20.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/EC20.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/FM24Cxx.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.obj.d"
+  "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/HC165.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/HC165.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/HC165.cpp.obj.d"
+  "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/HC595.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/HC595.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/HC595.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/IAP.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/IAP.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/MAX31865.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MAX31865.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/MS5805.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/MS5805.cpp.obj.d"

@@ -3656,6 +3656,54 @@ MIDDLEWARE/Src/FM24Cxx.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/FM24Cxx.cpp.s
 .PHONY : MIDDLEWARE/Src/FM24Cxx.cpp.s
 
+MIDDLEWARE/Src/HC165.obj: MIDDLEWARE/Src/HC165.cpp.obj
+.PHONY : MIDDLEWARE/Src/HC165.obj
+
+# target to build an object file
+MIDDLEWARE/Src/HC165.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/HC165.cpp.obj
+.PHONY : MIDDLEWARE/Src/HC165.cpp.obj
+
+MIDDLEWARE/Src/HC165.i: MIDDLEWARE/Src/HC165.cpp.i
+.PHONY : MIDDLEWARE/Src/HC165.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/HC165.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/HC165.cpp.i
+.PHONY : MIDDLEWARE/Src/HC165.cpp.i
+
+MIDDLEWARE/Src/HC165.s: MIDDLEWARE/Src/HC165.cpp.s
+.PHONY : MIDDLEWARE/Src/HC165.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/HC165.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/HC165.cpp.s
+.PHONY : MIDDLEWARE/Src/HC165.cpp.s
+
+MIDDLEWARE/Src/HC595.obj: MIDDLEWARE/Src/HC595.cpp.obj
+.PHONY : MIDDLEWARE/Src/HC595.obj
+
+# target to build an object file
+MIDDLEWARE/Src/HC595.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/HC595.cpp.obj
+.PHONY : MIDDLEWARE/Src/HC595.cpp.obj
+
+MIDDLEWARE/Src/HC595.i: MIDDLEWARE/Src/HC595.cpp.i
+.PHONY : MIDDLEWARE/Src/HC595.i
+
+# target to preprocess a source file
+MIDDLEWARE/Src/HC595.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/HC595.cpp.i
+.PHONY : MIDDLEWARE/Src/HC595.cpp.i
+
+MIDDLEWARE/Src/HC595.s: MIDDLEWARE/Src/HC595.cpp.s
+.PHONY : MIDDLEWARE/Src/HC595.s
+
+# target to generate assembly for a file
+MIDDLEWARE/Src/HC595.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/HC595.cpp.s
+.PHONY : MIDDLEWARE/Src/HC595.cpp.s
+
 MIDDLEWARE/Src/IAP.obj: MIDDLEWARE/Src/IAP.cpp.obj
 .PHONY : MIDDLEWARE/Src/IAP.obj
 
@@ -5218,6 +5266,12 @@ help:
 	@echo ... MIDDLEWARE/Src/FM24Cxx.obj
 	@echo ... MIDDLEWARE/Src/FM24Cxx.i
 	@echo ... MIDDLEWARE/Src/FM24Cxx.s
+	@echo ... MIDDLEWARE/Src/HC165.obj
+	@echo ... MIDDLEWARE/Src/HC165.i
+	@echo ... MIDDLEWARE/Src/HC165.s
+	@echo ... MIDDLEWARE/Src/HC595.obj
+	@echo ... MIDDLEWARE/Src/HC595.i
+	@echo ... MIDDLEWARE/Src/HC595.s
 	@echo ... MIDDLEWARE/Src/IAP.obj
 	@echo ... MIDDLEWARE/Src/IAP.i
 	@echo ... MIDDLEWARE/Src/IAP.s
