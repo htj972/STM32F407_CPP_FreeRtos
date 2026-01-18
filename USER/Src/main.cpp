@@ -83,6 +83,7 @@ _USART_ Debug(USART1,115200);
 
 HC595 OUT_driver(GPIOC6,GPIOD14,GPIOD13,GPIOD15,GPIOD14,2);//74HC595Çý¶¯
 HC165 IN_driver(GPIOE12,GPIOE13,GPIOE14,GPIOE15,2);//74HC165Çý¶¯
+Software_IIC IIC(GPIOE0,GPIOE1);//Ó²¼þIIC1
 
 //class lwip_:public Timer,public Call_Back{
 //public:
@@ -186,8 +187,6 @@ QueueHandle_t xMailbox;
 [[noreturn]] void LOGIC_task(void *pvParameters)//alignas(8)
 {
     uint8_t ii=0;
-    uint8_t times=0;
-    uint8_t hex[2]={0x01,0x55};
     OUT_driver.Set_on(8);
     while(true)
     {
@@ -195,15 +194,7 @@ QueueHandle_t xMailbox;
         error_led.change();
         TrmLED[ii++].change();
         if(ii>=6)ii=0;
-
-        OUT_driver.Set_Hex(hex);
-        hex[0]<<=1;
-        times++;
-        if(times>=8){
-            times=0;
-            hex[0]=0x01;
-            //OUT_driver.clear();
-        }
+//        OUT_driver.Set_Hex(hex);
     }
 }
 
