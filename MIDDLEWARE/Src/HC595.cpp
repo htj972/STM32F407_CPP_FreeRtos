@@ -20,6 +20,7 @@ void HC595::init() {
     if(this->Output_data == nullptr)
     {
         this->Output_data=new uint8_t[this->len];
+        this->data_clear();
         this->HC_change = new uint8_t[len][8];
         for (int i = 0; i < len; ++i) {
             for (int j = 0; j < 8; ++j) {
@@ -27,9 +28,8 @@ void HC595::init() {
             }
         }
     }
-
-    this->clear(false);
     this->set_en(true);
+    this->clear(ON);
 }
 
 void HC595::set_shift(const char data[][8]) {
@@ -56,10 +56,8 @@ void HC595::set_en(bool onoff) {
 
 void HC595::clear(bool dis) {
     this->clr.set( ON);
-    for (int i = 0; i < len; ++i) {
-        this->Output_data[i]=0x00;
-    }
-    delay_ms(1);
+    this->data_clear();
+    delay_ms(10);
     this->clr.set( OFF);
     if(dis)this->upset();
 }
@@ -73,12 +71,12 @@ void HC595::upset() {
             paragraph=((this->Output_data[j]>>i)&0x01)==0x01?Bit_SET:Bit_RESET;
             this->dio.set(paragraph);
 
-            this->rck.set( HIGH);
-            this->rck.set( LOW);
+            this->rck.set( ON);
+            this->rck.set( OFF);
         }
     }
-    this->clk.set( HIGH);
-    this->clk.set( LOW);
+    this->clk.set( ON);
+    this->clk.set( OFF);
 }
 
 void HC595::Set_Hex(const uint8_t *data) {
@@ -143,6 +141,12 @@ bool HC595::Get_output_bit(uint8_t num) {
 
 HC595::~HC595() {
     delete[] this->Output_data;
+}
+
+void HC595::data_clear() {
+    for (int i = 0; i < len; ++i) {
+        this->Output_data[i]=0x00;
+    }
 }
 
 

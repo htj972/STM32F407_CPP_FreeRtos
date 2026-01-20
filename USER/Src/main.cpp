@@ -1,4 +1,3 @@
-#include <regex>
 #include "sys.h"
 #include "delay.h"
 #include "FreeRTOS.h"
@@ -7,18 +6,18 @@
 #include "Timer.h"
 #include "USART.h"
 #include "malloc.h"
-#include "EC20.h"
-#include "ThingsBoard.h"
 #include "Kstring.h"
 #include "Gateway.h"
 #include "Communication.h"
 #include "WDG.h"
 #include "lwip_comm/lwip_comm.h"
-#include "udp/UDP_Class.h"
 #include "fertilizer.h"
 #include "cJSON.h"
 #include "HC595.h"
 #include "HC165.h"
+#include "SPI.h"
+#include "W25QXX.h"
+#include "Storage_Link.h"
 
 
 //任务优先级
@@ -81,9 +80,15 @@ _OutPut_ TrmLED[6]={
 
 _USART_ Debug(USART1,115200);
 
-HC595 OUT_driver(GPIOC6,GPIOD14,GPIOD13,GPIOD15,GPIOD14,2);//74HC595驱动
+HC595 OUT_driver(GPIOC6,GPIOD14,GPIOD13,GPIOD15,GPIOD12,2);//74HC595驱动
 HC165 IN_driver(GPIOE12,GPIOE13,GPIOE14,GPIOE15,2);//74HC165驱动
 Software_IIC IIC(GPIOE0,GPIOE1);//硬件IIC1
+FM24Cxx eeprom(&IIC,FM24Cxx::AT24C16);//FM24C16驱动
+SPI SPI1_driver;//硬件SPI1
+W25QXX Flash(&SPI1_driver,GPIOD7);//W25Q64驱动
+Storage_Link flash_fatfs(&Flash);
+SDIO_CARD SD;
+Storage_Link SD_fatfs(&SD);
 
 //class lwip_:public Timer,public Call_Back{
 //public:
@@ -106,6 +111,8 @@ int main()
     //WDG_Init();
     delay_init(168);	//初始化延时函数
     delay_ms(1000);//延时1s
+    SPI1_driver.config(GPIOE3,GPIOE4,GPIOE5);
+    SPI1_driver.init();
 
     OUT_driver.init();
     IN_driver.init();
@@ -114,6 +121,10 @@ int main()
     OUT_driver.set_shift(1,(const char[]){7,6,5,4,3,2,1,0});
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
+    eeprom.write(0,(uint8_t*)"KOKIRIKA",8);
+    uint8_t Kstring_buf[10];
+    eeprom.read(0,Kstring_buf,8);
+    Debug.print("EEPROM read:%s\r\n",Kstring_buf);
     //lwip_dhcp_process_handle();
 #if MD_Debug
     {
@@ -187,14 +198,12 @@ QueueHandle_t xMailbox;
 [[noreturn]] void LOGIC_task(void *pvParameters)//alignas(8)
 {
     uint8_t ii=0;
-    OUT_driver.Set_on(8);
     while(true)
     {
         delay_ms(800);
         error_led.change();
         TrmLED[ii++].change();
         if(ii>=6)ii=0;
-//        OUT_driver.Set_Hex(hex);
     }
 }
 

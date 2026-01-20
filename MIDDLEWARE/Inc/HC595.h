@@ -16,6 +16,7 @@ private:
     uint8_t len=1;
     uint8_t (*HC_change)[8];
     uint8_t *Output_data=nullptr;
+    void data_clear();
 public:
     HC595(GPIO_Pin en, GPIO_Pin clk, GPIO_Pin rck, GPIO_Pin dio, GPIO_Pin clr,uint8_t len=1);
     void init();

@@ -27,8 +27,8 @@ private:
     void     Write_NoCheck(uint32_t Addr,uint8_t* pBuffer,uint16_t NumByte) const;
     void     Wait_Busy() const;
 protected:
-    _GPIO_ CSPin;
-    SPI    *spix{};
+    _GPIO_   CSPin;
+    SPI      *spix{};
     void     Erase_Chip();
     void     PowerDown() const;
     void     WAKEUP() const;
