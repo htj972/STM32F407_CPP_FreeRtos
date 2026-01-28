@@ -16,10 +16,12 @@ private:
     uint8_t delay_time{};
 public:
     RS485(USART_TypeDef* USARTx,GPIO_TypeDef *PORT,uint32_t Pinx,int32_t bound=9600);
+    RS485(USART_TypeDef* USARTx,uint8_t TX,uint8_t RX,uint8_t DE,int32_t bound=9600);
     RS485(USART_TypeDef* USARTx,uint8_t Pinx,int32_t bound=9600);
     RS485()=default;
     ~RS485()=default;
     void init(USART_TypeDef* USARTx,GPIO_TypeDef *PORT,uint32_t Pinx,int32_t bound=9600);
+    void init(USART_TypeDef* USARTx,uint8_t TX,uint8_t RX,uint8_t DE,int32_t bound=9600);
     void init(USART_TypeDef* USARTx,uint8_t Pinx,int32_t bound=9600);
     void init();
     void set_delay_times(uint8_t delay_times);

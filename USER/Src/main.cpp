@@ -18,6 +18,11 @@
 #include "SPI.h"
 #include "W25QXX.h"
 #include "Storage_Link.h"
+#include "ADC.h"
+#include "USB_MSC.h"
+#include "tcp_server/TCP_Server.h"
+
+
 
 
 //任务优先级
@@ -32,7 +37,7 @@ void start_task(void *pvParameters);
 //任务优先级
 #define LOGIC_TASK_PRIO		3
 //任务堆栈大小
-#define LOGIC_STK_SIZE 		(128*10)
+#define LOGIC_STK_SIZE 		(128)
 //任务句柄
 TaskHandle_t LOGICTask_Handler;
 //任务函数
@@ -41,7 +46,7 @@ TaskHandle_t LOGICTask_Handler;
 //任务优先级
 #define RS485_TASK_PRIO		3
 //任务堆栈大小
-#define RS485_STK_SIZE 		(128)
+#define RS485_STK_SIZE 		(128*10)
 //任务句柄
 TaskHandle_t RS485Task_Handler;
 //任务函数
@@ -65,9 +70,9 @@ public:
         Feed_Dog();
         tims++;
     };
-}led(GPIOD10,TIM6,2);//运行指示灯定时器
+}led(GPIOD11,TIM6,2);//运行指示灯定时器
 
-_OutPut_ error_led (GPIOD11);//运行指示灯
+_OutPut_ error_led (GPIOD10);//运行指示灯
 
 _OutPut_ TrmLED[6]={
     _OutPut_(GPIOE2,HIGH),
@@ -82,28 +87,35 @@ _USART_ Debug(USART1,115200);
 
 HC595 OUT_driver(GPIOC6,GPIOD14,GPIOD13,GPIOD15,GPIOD12,2);//74HC595驱动
 HC165 IN_driver(GPIOE12,GPIOE13,GPIOE14,GPIOE15,2);//74HC165驱动
+_ADC_ ADC1_driver(ADC1,4),ADC2_driver(ADC1,5),
+         ADC3_driver(ADC1,8),ADC4_driver(ADC1,9);//ADC驱动
 Software_IIC IIC(GPIOE0,GPIOE1);//硬件IIC1
 FM24Cxx eeprom(&IIC,FM24Cxx::AT24C16);//FM24C16驱动
-SPI SPI1_driver;//硬件SPI1
-W25QXX Flash(&SPI1_driver,GPIOD7);//W25Q64驱动
-Storage_Link flash_fatfs(&Flash);
-SDIO_CARD SD;
-Storage_Link SD_fatfs(&SD);
 
-//class lwip_:public Timer,public Call_Back{
-//public:
-//    lwip_(TIM_TypeDef *TIMx, uint16_t frq) {
-//        Timer::init(TIMx,10000/frq,8400,true);
-//        this->Timer::upload_extern_fun(this);
-//    }
-//    void Callback(int  ,char** ) override {
-//        lwip_setup();
-//    }
-//}lwipw(TIM5,100);//运行指示灯定时器
+SPI SPI1_driver(SPI1,GPIOB3,GPIOB4,GPIOB5);//硬件SPI1
+//W25QXX W25Q(&SPI1_driver,GPIOD7);
+//Storage_Link flash_fatfs(&W25Q);
+
+RS485 RS485A(USART3,GPIOD8,GPIOD9,GPIOB15);//RS485A驱动
+RS485 RS485B(USART2,GPIOD5,GPIOD6,GPIOD4);//RS485A驱动
+
+TcpServer& srv = TcpServer::instance();
 
 
+class lwip_:public Timer,public Call_Back{
+public:
+    lwip_(TIM_TypeDef *TIMx, uint16_t frq) {
+        Timer::init(TIMx,10000/frq,8400,true);
+        this->Timer::upload_extern_fun(this);
+    }
+    void Callback(int  ,char** ) override {
+        lwip_setup();
+    }
+}lwipw(TIM5,100);//运行指示灯定时器
 
-#define MD_Debug 0
+
+
+#define MD_Debug 1
 
 int main()
 {
@@ -111,55 +123,101 @@ int main()
     //WDG_Init();
     delay_init(168);	//初始化延时函数
     delay_ms(1000);//延时1s
-    SPI1_driver.config(GPIOE3,GPIOE4,GPIOE5);
-    SPI1_driver.init();
 
     OUT_driver.init();
     IN_driver.init();
     IN_driver.set_shift(0,(const char[]){3,2,1,0,4,5,6,7});
     IN_driver.set_shift(1,(const char[]){7,6,5,4,0,1,2,3});
     OUT_driver.set_shift(1,(const char[]){7,6,5,4,3,2,1,0});
+    OUT_driver.Set_on(0);
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
-    eeprom.write(0,(uint8_t*)"KOKIRIKA",8);
-    uint8_t Kstring_buf[10];
-    eeprom.read(0,Kstring_buf,8);
-    Debug.print("EEPROM read:%s\r\n",Kstring_buf);
-    //lwip_dhcp_process_handle();
+    led.set_mode(true);
+
+//    eeprom.write(0,(uint8_t*)"KOKIRIKA",8);
+//    uint8_t Kstring_buf[10];
+//    eeprom.read(0,Kstring_buf,8);
+//    Debug.print("EEPROM read:%s\r\n",Kstring_buf);
+
+//    uint8_t *buf= (uint8_t*)mymalloc(SRAMIN,100);
+//    sprintf((char*)buf,"KOKIRIKA MEM");
+//    Debug.print("MEM read:%s\r\n",buf);
+
+
+//    W25Q.init();
+////    Debug<<"W25Q ID:"<<W25Q.GetID()<<"\r\n";
+//    char dasda[50];
+//
+////    sprintf(dasda,"qwe%d.txt",1);
+////    W25Q.write(0,(uint8_t*)dasda,strlen(dasda));
+//
+//    char read_buf1[50]{};
+//    W25Q.read(0,(uint8_t*)read_buf1,8);
+//    Debug.print("read flash:%s\r\n",read_buf1);
+//    Debug.print("flash init %d! disk:%s\r\n",flash_fatfs.init(),flash_fatfs.get_name());
+//
+////    FATFS fs1;
+////    if(FR_OK!=f_mount(&fs1,"0:",1))
+////        Debug<<"Flash mount failed!\r\n";
+//    f_mkfs(flash_fatfs.get_name(),1,4096);
+//    //获取文件系统信息
+//    uint32_t  filetotal,filefree;
+//    Storage_Link::exf_getfree((uint8_t*)flash_fatfs.get_name(),&filetotal,&filefree);
+//
+//    Debug.print("Total Size:%d MB  Free Size:%d MB\r\n",filetotal<<10,filefree<<10);
+////    char dasda[50];
+//    sprintf(dasda,"qwe%d.txt",1);
+//    Debug<<"1\r\n";
+//
+//    while (f_open(&flash_fatfs.fp,flash_fatfs.setdir(dasda),FA_WRITE | FA_OPEN_ALWAYS) != FR_OK);
+//    Debug<<"2\r\n";
+//    f_lseek(&flash_fatfs.fp,flash_fatfs.fp.fsize);                                                                        //??????±ê????????
+//    f_write(&flash_fatfs.fp, dasda, strlen(dasda), &flash_fatfs.plen);
+//    f_close(&flash_fatfs.fp);
+//    Debug<<"3\r\n";
+//    while(f_open(&flash_fatfs.fp,flash_fatfs.setdir(dasda),FA_READ) != FR_OK);
+//    char read_buf[50]{};
+//    f_read(&flash_fatfs.fp, read_buf, strlen(dasda), &flash_fatfs.plen);
+//    f_close(&flash_fatfs.fp);
+
+
+    lwip_dhcp_process_handle();
 #if MD_Debug
     {
-        MB<<"lwIP Initing...\r\n";
+        Debug<<"lwIP Initing...\r\n";
         while(lwip_comm_init()!=0)
         {
-            MB<<"lwIP Init failed!\r\n";
+            Debug<<"lwIP Init failed!\r\n";
             delay_ms(1200);
-            MB<<"Retrying...\r\n";
+            Debug<<"Retrying...\r\n";
         }
-        MB<<"lwIP Init Successed\r\n";
+        Debug<<"lwIP Init Successed\r\n";
         //等待DHCP获取
-        MB<<"DHCP IP configing...\r\n";
+        Debug<<"DHCP IP configing...\r\n";
         while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
         {
             lwip_periodic_handle();
         }
         uint8_t speed;
-        MB<<DHCP_str[0]<<DHCP_str[1]<<DHCP_str[2]<<DHCP_str[3]<<DHCP_str[4];
+        Debug<<DHCP_str[0]<<DHCP_str[1]<<DHCP_str[2]<<DHCP_str[3]<<DHCP_str[4];
         speed=LAN8720_Get_Speed();//得到网速
-        if(speed&1<<1)MB<<"Ethernet Speed:100M\r\n";
-        else MB<<"Ethernet Speed:10M\r\n";
+        if(speed&1<<1)Debug<<"Ethernet Speed:100M\r\n";
+        else Debug<<"Ethernet Speed:10M\r\n";
     }
+    srv.init();
+
 #else
-//    while(lwip_comm_init()!=0)
-//    {
-//        delay_ms(1200);
-//    }
-//
-//    while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
-//    {
-//        lwip_periodic_handle();
-//    }
+    while(lwip_comm_init()!=0)
+    {
+        delay_ms(1200);
+    }
+
+    while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
+    {
+        lwip_periodic_handle();
+    }
 #endif
-    led.set_mode(true);
+
 
     //创建开始任务
     xTaskCreate((TaskFunction_t )start_task,          //任务函数
@@ -204,6 +262,16 @@ QueueHandle_t xMailbox;
         error_led.change();
         TrmLED[ii++].change();
         if(ii>=6)ii=0;
+//        Debug.print("ADC1:%4.2lf ADC2:%4.2lf  ADC3:%4.2lf ADC4:%4.2lf\r\n",
+//                    ADC1_driver.Get_v_value(),
+//                    ADC2_driver.Get_v_value(),
+//                    ADC3_driver.Get_v_value(),
+//                    ADC4_driver.Get_v_value());
+
+        RS485A<<"KOKIRIKA A RS485 TEST\r\n";
+        RS485B<<"KOKIRIKA B RS485 TEST\r\n";
+
+
     }
 }
 
@@ -220,6 +288,25 @@ QueueHandle_t xMailbox;
         if(Idata[1]!=ptemp) {
             ptemp = Idata[1];
             Debug.print("IN data high byte: %02X\r\n", Idata[1]);
+        }
+//        SERVER.tcp_server_test(502);
+//        tcp_server_init();
+
+        for (uint8_t ii=0;ii<3;ii++)
+        {
+            /* 查询并读取 */
+            if (srv.hasData(ii))
+            {
+                char buf[128];
+                uint16_t n = srv.read(ii, buf, sizeof(buf));
+                Debug<<buf;
+                srv.send(ii, "OK\r\n", 4);
+                uint8_t idn='0'+ii;
+                uint8_t id[3]={idn,0x0d,0x0a};
+                srv.send(ii, id, 3);
+                //srv.clientRef(ii)<<"Hello Client 0\r\n";
+                /* 处理 buf */
+            }
         }
     }
 }

@@ -342,7 +342,7 @@ bool Storage_Link::exfuns_init(const char *name,Storage_BASE *Storage)
 
 Storage_Link::Storage_Link() {
     this->disk_n=Storage_Link::disk_num;
-    Storage_Link::fs[disk_num]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));
+//    Storage_Link::fs[disk_num]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));
     this->mount_ret= false;
     disk_num++;
     if(disk_num>=_VOLUMES)disk_num=0;
@@ -351,7 +351,7 @@ Storage_Link::Storage_Link() {
 Storage_Link::Storage_Link(Storage_BASE *Storage) {
     Storage_Link::Storage_L[disk_num]=Storage;
     this->disk_n=Storage_Link::disk_num;
-    Storage_Link::fs[disk_num]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));
+//    Storage_Link::fs[disk_num]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));
     this->mount_ret= false;
     disk_num++;
     if(disk_num>=_VOLUMES)disk_num=0;
@@ -362,6 +362,7 @@ bool Storage_Link::init(Storage_BASE *Storage) {
     disk_name[this->disk_n][0]='0'+this->disk_n;
     disk_name[this->disk_n][1]=':';
     disk_name[this->disk_n][2]=0;
+    Storage_Link::fs[disk_num]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));
     if(FR_OK!=f_mount(fs[this->disk_n],disk_name[this->disk_n],1))
         this->mount_ret = false;
     else
@@ -374,6 +375,7 @@ bool Storage_Link::init() {
         disk_name[this->disk_n][0]='0'+this->disk_n;
         disk_name[this->disk_n][1]=':';
         disk_name[this->disk_n][2]=0;
+        Storage_Link::fs[disk_num]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));
         if(FR_OK!=f_mount(fs[this->disk_n],disk_name[this->disk_n],1))
             this->mount_ret = false;
         else

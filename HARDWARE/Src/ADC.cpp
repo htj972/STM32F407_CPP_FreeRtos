@@ -7,6 +7,10 @@
 #include "ADC.h"
 #include "delay.h"
 
+_ADC_::_ADC_(ADC_TypeDef *ADCX, uint8_t channel) {
+    this->init(ADCX,channel);
+}
+
 void _ADC_::default_config() {
     this->GPIO.set_PuPD(GPIO_PuPd_NOPULL);
     switch (this->channel) {
@@ -161,6 +165,8 @@ float _ADC_::Get_v_value() {
     float value=this->get_value();
     return (value/4096.0f*3.3f);
 }
+
+
 
 
 

@@ -12,16 +12,18 @@
 class _ADC_ {
 private:
     _GPIO_  GPIO;
-    ADC_TypeDef* ADCx;
-    uint8_t channel;
+    ADC_TypeDef* ADCx{};
+    uint8_t channel{};
     uint16_t delay_time= 5;
-    ADC_CommonInitTypeDef ADC_CommonInitStructure;
-    ADC_InitTypeDef       ADC_InitStructure;
+    ADC_CommonInitTypeDef ADC_CommonInitStructure{};
+    ADC_InitTypeDef       ADC_InitStructure{};
     void default_config();
     void RCC_config();
     void delay() const;
 
 public:
+    _ADC_(ADC_TypeDef* ADCX,uint8_t channel);
+    _ADC_()=default;
     void init(ADC_TypeDef* ADCX,uint8_t channel);
     uint16_t get_value();
     void set_delay_time(uint16_t delay);

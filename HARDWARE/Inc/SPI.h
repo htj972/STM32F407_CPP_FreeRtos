@@ -30,6 +30,7 @@ protected:
 
 public:
     explicit SPI(SPI_TypeDef* SPI,Queue mode =Queue::OWN_Queue,uint16_t DataSize=SPI_DataSize_8b,uint8_t SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_8);
+    explicit SPI(SPI_TypeDef* SPI,uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI,Queue mode =Queue::OWN_Queue,uint16_t DataSize=SPI_DataSize_8b,uint8_t SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_8);
     SPI();
     ~SPI()=default;
     void init(SPI_TypeDef* SPI,Queue mode =Queue::OWN_Queue,uint16_t DataSize=SPI_DataSize_8b,uint8_t SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_8);

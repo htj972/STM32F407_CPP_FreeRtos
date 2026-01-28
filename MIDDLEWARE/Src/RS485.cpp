@@ -12,6 +12,10 @@ RS485::RS485(USART_TypeDef* USARTx,GPIO_TypeDef *PORT,uint32_t Pinx,int32_t boun
     this->init(USARTx,PORT,Pinx,bound);
 }
 
+RS485::RS485(USART_TypeDef* USARTx,uint8_t TX, uint8_t RX, uint8_t DE, int32_t bound) {
+    this->init(USARTx,TX,RX,DE,bound);
+}
+
 RS485::RS485(USART_TypeDef* USARTx, uint8_t Pinx,int32_t bound) {
     this->init(USARTx,Pinx,bound);
 }
@@ -19,13 +23,19 @@ RS485::RS485(USART_TypeDef* USARTx, uint8_t Pinx,int32_t bound) {
 void RS485::init(USART_TypeDef* USARTx,GPIO_TypeDef *PORT,uint32_t Pinx,int32_t bound) {
     _USART_::init(USARTx,bound);
     this->De.init(PORT,Pinx,HIGH);
-    this->set_delay_times(1);
+    this->set_delay_times(2);
+}
+
+void RS485::init(USART_TypeDef* USARTx,uint8_t TX, uint8_t RX, uint8_t DE, int32_t bound) {
+    _USART_::init(USARTx,TX,RX,bound);
+    this->De.init(DE,HIGH);
+    this->set_delay_times(2);
 }
 
 void RS485::init(USART_TypeDef* USARTx,uint8_t Pinx,int32_t bound) {
     _USART_::init(USARTx,bound);
     this->De.init(Pinx,HIGH);
-    this->set_delay_times(1);
+    this->set_delay_times(2);
 }
 
 void RS485::init() {
@@ -55,6 +65,9 @@ void RS485::write(uint8_t *str, uint16_t len) {
 void RS485::write(string String) {
     this->write(String.c_str(),String.length());
 }
+
+
+
 
 
 

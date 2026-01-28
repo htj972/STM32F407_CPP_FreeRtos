@@ -10,6 +10,7 @@
 #include "Storage_BASE.h"
 #include "GPIO.h"
 #include "SPI.h"
+#include "Out_In_Put.h"
 
 class W25QXX: public Storage_BASE{
 private:
@@ -18,20 +19,20 @@ private:
     uint16_t BaudRatex{};
     uint32_t Sectosize{};
 
-    uint16_t ReadID() const;
-    uint8_t  ReadSR() const;
-    void     Write_SR(uint8_t SR) const;
-    void     Write_Enable() const;
-    void     Write_Disable() const;
-    void     Write_Page(uint32_t Addr, uint8_t* pBuffer, uint16_t NumByte) const;
-    void     Write_NoCheck(uint32_t Addr,uint8_t* pBuffer,uint16_t NumByte) const;
-    void     Wait_Busy() const;
+    uint16_t ReadID();
+    uint8_t  ReadSR();
+    void     Write_SR(uint8_t SR);
+    void     Write_Enable();
+    void     Write_Disable();
+    void     Write_Page(uint32_t Addr, uint8_t* pBuffer, uint16_t NumByte);
+    void     Write_NoCheck(uint32_t Addr,uint8_t* pBuffer,uint16_t NumByte);
+    void     Wait_Busy();
 protected:
-    _GPIO_   CSPin;
+    _OutPut_   CSPin;
     SPI      *spix{};
     void     Erase_Chip();
-    void     PowerDown() const;
-    void     WAKEUP() const;
+    void     PowerDown();
+    void     WAKEUP();
 public:
     enum TYPE{
         W25Q80 	=0XEF13,
@@ -41,8 +42,8 @@ public:
         W25Q128	=0XEF17,
     };
 
-    W25QXX(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx,uint16_t BaudRate=0,Queue mode=Queue::OWN_Queue);
-    W25QXX(SPI *SPIx,uint8_t CSpin,uint16_t BaudRate=0,Queue mode=Queue::OWN_Queue);
+    W25QXX(SPI *SPIx,GPIO_TypeDef* PORTx,uint32_t Pinx,uint16_t BaudRate=SPI_BaudRatePrescaler_2,Queue mode=Queue::OWN_Queue);
+    W25QXX(SPI *SPIx,uint8_t CSpin,uint16_t BaudRate=SPI_BaudRatePrescaler_2,Queue mode=Queue::OWN_Queue);
     explicit W25QXX(Queue mode=Queue::OWN_Queue);
     ~W25QXX()=default;
     void init();

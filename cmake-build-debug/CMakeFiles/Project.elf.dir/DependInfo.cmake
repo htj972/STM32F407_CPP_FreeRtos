@@ -42,6 +42,8 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip-1.4.1/src/include/ipv4"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/arch"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip_app"
+  "G:/stm32_project/STM32F407_CPP_FreeRtos/MODBUS/ModeBus_Tcp"
+  "G:/stm32_project/STM32F407_CPP_FreeRtos/MODBUS/BASE_CLASS"
   )
 
 # The set of dependency files which are needed:
@@ -151,6 +153,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip-1.4.1/src/netif/ppp/vj.c" "CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/vj.c.obj" "gcc" "CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/ppp/vj.c.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip-1.4.1/src/netif/slipif.c" "CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/slipif.c.obj" "gcc" "CMakeFiles/Project.elf.dir/LWIP/lwip-1.4.1/src/netif/slipif.c.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip_app/lwip_comm/lwip_comm.c" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/lwip_comm/lwip_comm.c.obj" "gcc" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/lwip_comm/lwip_comm.c.obj.d"
+  "G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip_app/tcp_server/TCP_GPT.c" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_GPT.c.obj" "gcc" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_GPT.c.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/SYSTEM/Src/DMA.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/DMA.c.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/SYSTEM/Src/WDG.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/WDG.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/WDG.c.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/SYSTEM/Src/cJSON.c" "CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj" "gcc" "CMakeFiles/Project.elf.dir/SYSTEM/Src/cJSON.c.obj.d"
@@ -191,6 +194,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "G:/stm32_project/STM32F407_CPP_FreeRtos/HARDWARE/Src/USART.cpp" "CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/HARDWARE/Src/USART.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip_app/MQTT/MQTT.cpp" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/MQTT/MQTT.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/MQTT/MQTT.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.obj.d"
+  "G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip_app/tcp_server/TCP_Server.cpp" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_Server.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_Server.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip_app/udp/UDP_Class.cpp" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp/UDP_Class.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp/UDP_Class.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/Humidity_BASE.cpp.obj.d"
@@ -228,6 +232,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/W25QXX.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/W25QXX.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/WH_L101.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/WH_L101.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/WH_L101.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/MIDDLEWARE/Src/modbus.cpp" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.obj.d"
+  "G:/stm32_project/STM32F407_CPP_FreeRtos/MODBUS/BASE_CLASS/ModbusBase.cpp" "CMakeFiles/Project.elf.dir/MODBUS/BASE_CLASS/ModbusBase.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MODBUS/BASE_CLASS/ModbusBase.cpp.obj.d"
+  "G:/stm32_project/STM32F407_CPP_FreeRtos/MODBUS/ModeBus_Tcp/ModbusTcp.cpp" "CMakeFiles/Project.elf.dir/MODBUS/ModeBus_Tcp/ModbusTcp.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/MODBUS/ModeBus_Tcp/ModbusTcp.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Communication.cpp" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/SOFTWARE/Src/DW_DIS.cpp" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj.d"
   "G:/stm32_project/STM32F407_CPP_FreeRtos/SOFTWARE/Src/Device_Node_Def.cpp" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Device_Node_Def.cpp.obj" "gcc" "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Device_Node_Def.cpp.obj.d"

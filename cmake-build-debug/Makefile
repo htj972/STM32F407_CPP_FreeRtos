@@ -3176,6 +3176,54 @@ LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.s
 .PHONY : LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.s
 
+LWIP/lwip_app/tcp_server/TCP_GPT.obj: LWIP/lwip_app/tcp_server/TCP_GPT.c.obj
+.PHONY : LWIP/lwip_app/tcp_server/TCP_GPT.obj
+
+# target to build an object file
+LWIP/lwip_app/tcp_server/TCP_GPT.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_GPT.c.obj
+.PHONY : LWIP/lwip_app/tcp_server/TCP_GPT.c.obj
+
+LWIP/lwip_app/tcp_server/TCP_GPT.i: LWIP/lwip_app/tcp_server/TCP_GPT.c.i
+.PHONY : LWIP/lwip_app/tcp_server/TCP_GPT.i
+
+# target to preprocess a source file
+LWIP/lwip_app/tcp_server/TCP_GPT.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_GPT.c.i
+.PHONY : LWIP/lwip_app/tcp_server/TCP_GPT.c.i
+
+LWIP/lwip_app/tcp_server/TCP_GPT.s: LWIP/lwip_app/tcp_server/TCP_GPT.c.s
+.PHONY : LWIP/lwip_app/tcp_server/TCP_GPT.s
+
+# target to generate assembly for a file
+LWIP/lwip_app/tcp_server/TCP_GPT.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_GPT.c.s
+.PHONY : LWIP/lwip_app/tcp_server/TCP_GPT.c.s
+
+LWIP/lwip_app/tcp_server/TCP_Server.obj: LWIP/lwip_app/tcp_server/TCP_Server.cpp.obj
+.PHONY : LWIP/lwip_app/tcp_server/TCP_Server.obj
+
+# target to build an object file
+LWIP/lwip_app/tcp_server/TCP_Server.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_Server.cpp.obj
+.PHONY : LWIP/lwip_app/tcp_server/TCP_Server.cpp.obj
+
+LWIP/lwip_app/tcp_server/TCP_Server.i: LWIP/lwip_app/tcp_server/TCP_Server.cpp.i
+.PHONY : LWIP/lwip_app/tcp_server/TCP_Server.i
+
+# target to preprocess a source file
+LWIP/lwip_app/tcp_server/TCP_Server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_Server.cpp.i
+.PHONY : LWIP/lwip_app/tcp_server/TCP_Server.cpp.i
+
+LWIP/lwip_app/tcp_server/TCP_Server.s: LWIP/lwip_app/tcp_server/TCP_Server.cpp.s
+.PHONY : LWIP/lwip_app/tcp_server/TCP_Server.s
+
+# target to generate assembly for a file
+LWIP/lwip_app/tcp_server/TCP_Server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_Server.cpp.s
+.PHONY : LWIP/lwip_app/tcp_server/TCP_Server.cpp.s
+
 LWIP/lwip_app/udp/UDP_Class.obj: LWIP/lwip_app/udp/UDP_Class.cpp.obj
 .PHONY : LWIP/lwip_app/udp/UDP_Class.obj
 
@@ -4063,6 +4111,54 @@ MIDDLEWARE/Src/modbus.s: MIDDLEWARE/Src/modbus.cpp.s
 MIDDLEWARE/Src/modbus.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MIDDLEWARE/Src/modbus.cpp.s
 .PHONY : MIDDLEWARE/Src/modbus.cpp.s
+
+MODBUS/BASE_CLASS/ModbusBase.obj: MODBUS/BASE_CLASS/ModbusBase.cpp.obj
+.PHONY : MODBUS/BASE_CLASS/ModbusBase.obj
+
+# target to build an object file
+MODBUS/BASE_CLASS/ModbusBase.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MODBUS/BASE_CLASS/ModbusBase.cpp.obj
+.PHONY : MODBUS/BASE_CLASS/ModbusBase.cpp.obj
+
+MODBUS/BASE_CLASS/ModbusBase.i: MODBUS/BASE_CLASS/ModbusBase.cpp.i
+.PHONY : MODBUS/BASE_CLASS/ModbusBase.i
+
+# target to preprocess a source file
+MODBUS/BASE_CLASS/ModbusBase.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MODBUS/BASE_CLASS/ModbusBase.cpp.i
+.PHONY : MODBUS/BASE_CLASS/ModbusBase.cpp.i
+
+MODBUS/BASE_CLASS/ModbusBase.s: MODBUS/BASE_CLASS/ModbusBase.cpp.s
+.PHONY : MODBUS/BASE_CLASS/ModbusBase.s
+
+# target to generate assembly for a file
+MODBUS/BASE_CLASS/ModbusBase.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MODBUS/BASE_CLASS/ModbusBase.cpp.s
+.PHONY : MODBUS/BASE_CLASS/ModbusBase.cpp.s
+
+MODBUS/ModeBus_Tcp/ModbusTcp.obj: MODBUS/ModeBus_Tcp/ModbusTcp.cpp.obj
+.PHONY : MODBUS/ModeBus_Tcp/ModbusTcp.obj
+
+# target to build an object file
+MODBUS/ModeBus_Tcp/ModbusTcp.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MODBUS/ModeBus_Tcp/ModbusTcp.cpp.obj
+.PHONY : MODBUS/ModeBus_Tcp/ModbusTcp.cpp.obj
+
+MODBUS/ModeBus_Tcp/ModbusTcp.i: MODBUS/ModeBus_Tcp/ModbusTcp.cpp.i
+.PHONY : MODBUS/ModeBus_Tcp/ModbusTcp.i
+
+# target to preprocess a source file
+MODBUS/ModeBus_Tcp/ModbusTcp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MODBUS/ModeBus_Tcp/ModbusTcp.cpp.i
+.PHONY : MODBUS/ModeBus_Tcp/ModbusTcp.cpp.i
+
+MODBUS/ModeBus_Tcp/ModbusTcp.s: MODBUS/ModeBus_Tcp/ModbusTcp.cpp.s
+.PHONY : MODBUS/ModeBus_Tcp/ModbusTcp.s
+
+# target to generate assembly for a file
+MODBUS/ModeBus_Tcp/ModbusTcp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.elf.dir\build.make CMakeFiles/Project.elf.dir/MODBUS/ModeBus_Tcp/ModbusTcp.cpp.s
+.PHONY : MODBUS/ModeBus_Tcp/ModbusTcp.cpp.s
 
 SOFTWARE/Src/Communication.obj: SOFTWARE/Src/Communication.cpp.obj
 .PHONY : SOFTWARE/Src/Communication.obj
@@ -5206,6 +5302,12 @@ help:
 	@echo ... LWIP/lwip_app/tcp_client/TCP_Client_Class.obj
 	@echo ... LWIP/lwip_app/tcp_client/TCP_Client_Class.i
 	@echo ... LWIP/lwip_app/tcp_client/TCP_Client_Class.s
+	@echo ... LWIP/lwip_app/tcp_server/TCP_GPT.obj
+	@echo ... LWIP/lwip_app/tcp_server/TCP_GPT.i
+	@echo ... LWIP/lwip_app/tcp_server/TCP_GPT.s
+	@echo ... LWIP/lwip_app/tcp_server/TCP_Server.obj
+	@echo ... LWIP/lwip_app/tcp_server/TCP_Server.i
+	@echo ... LWIP/lwip_app/tcp_server/TCP_Server.s
 	@echo ... LWIP/lwip_app/udp/UDP_Class.obj
 	@echo ... LWIP/lwip_app/udp/UDP_Class.i
 	@echo ... LWIP/lwip_app/udp/UDP_Class.s
@@ -5317,6 +5419,12 @@ help:
 	@echo ... MIDDLEWARE/Src/modbus.obj
 	@echo ... MIDDLEWARE/Src/modbus.i
 	@echo ... MIDDLEWARE/Src/modbus.s
+	@echo ... MODBUS/BASE_CLASS/ModbusBase.obj
+	@echo ... MODBUS/BASE_CLASS/ModbusBase.i
+	@echo ... MODBUS/BASE_CLASS/ModbusBase.s
+	@echo ... MODBUS/ModeBus_Tcp/ModbusTcp.obj
+	@echo ... MODBUS/ModeBus_Tcp/ModbusTcp.i
+	@echo ... MODBUS/ModeBus_Tcp/ModbusTcp.s
 	@echo ... SOFTWARE/Src/Communication.obj
 	@echo ... SOFTWARE/Src/Communication.i
 	@echo ... SOFTWARE/Src/Communication.s

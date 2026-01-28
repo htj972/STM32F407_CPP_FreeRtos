@@ -35,7 +35,7 @@ extern "C"{
 
 //mem3内存参数设定.mem3处于CCM,用于管理CCM(特别注意,这部分SRAM,仅CPU可以访问!!)
 #define CCM_BLOCK_SIZE			32  	  						//内存块大小为32字节
-#define CCM_MAX_SIZE			(50 *1024 ) 						//最大管理内存60K
+#define CCM_MAX_SIZE			(40 *1024 ) 						//最大管理内存60K
 #define CCM_ALLOC_TABLE_SIZE	(CCM_MAX_SIZE/CCM_BLOCK_SIZE) 	//内存表大小
 
 

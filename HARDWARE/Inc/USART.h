@@ -38,10 +38,12 @@ private:
     static char* Interrupt_ret[3];
 
 public:
-    explicit _USART_(USART_TypeDef* USARTx,int32_t bound=115200);
+    _USART_(USART_TypeDef* USARTx,int32_t bound=115200);
+    _USART_(USART_TypeDef* USARTx,uint8_t Pin_Tx,uint8_t Pin_Rx,int32_t bound=115200);
     _USART_();
     ~_USART_()=default;
     void init(USART_TypeDef* USARTx,int32_t bound=115200);
+    void init(USART_TypeDef* USARTx,uint8_t Pin_Tx,uint8_t Pin_Rx,int32_t bound=115200);
     void config(GPIO_TypeDef* PORT_Tx,uint32_t Pin_Tx,GPIO_TypeDef* PORT_Rx,uint32_t Pin_Rx);
     void config(uint8_t Pin_Tx,uint8_t Pin_Rx);
     void setBound(int32_t bound);

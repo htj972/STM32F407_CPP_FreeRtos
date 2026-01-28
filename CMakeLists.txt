@@ -38,14 +38,14 @@ add_definitions(-DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx)
 
 file(GLOB_RECURSE SOURCES "startup/*.*" "USER/*.*" "CORE/*.*" "FWLIB/*.*" "FATFS/*.*"
         "SYSTEM/*.*" "HARDWARE/*.*" "FreeRTOS/*.*" "MIDDLEWARE/*.*"
-        "SOFTWARE/*.*" "USB/*.*" "LWIP/*.*")
+        "SOFTWARE/*.*" "USB/*.*" "LWIP/*.*" "MODBUS/*.*")
 
 include_directories(Core/Inc FWLIB/inc SYSTEM/Inc USER/Inc HARDWARE/Inc FATFS/Inc
         FreeRTOS/FreeRTOS_Inc MIDDLEWARE/Inc MIDDLEWARE/BASE_CLASS/Inc
         HARDWARE/BASE_CLASS/Inc SOFTWARE/Inc
         USB/USB_HOST/Inc USB/USB_OTG/Inc USB/CLASS/Inc
         LWIP/lwip-1.4.1/src/include LWIP/lwip-1.4.1/src/include/ipv4
-        LWIP/arch LWIP/lwip_app)
+        LWIP/arch LWIP/lwip_app MODBUS/ModeBus_Tcp MODBUS/BASE_CLASS)
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 

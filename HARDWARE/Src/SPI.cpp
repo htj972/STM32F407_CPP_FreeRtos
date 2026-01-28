@@ -13,6 +13,13 @@ SPI::SPI(SPI_TypeDef* SPI,Queue mode,uint16_t DataSize,uint8_t SPI_BaudRatePresc
     this->config_flag = 0;
 }
 
+SPI::SPI(SPI_TypeDef *SPI, uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI, HARD_BASE::Queue mode,
+         uint16_t DataSize, uint8_t SPI_BaudRatePrescaler) {
+    this->SPIx=SPI;
+    this->config(Pin_SCK, Pin_MISO, Pin_MOSI);
+    this->init(SPI,mode,DataSize,SPI_BaudRatePrescaler);
+}
+
 SPI::SPI() {
     this->config_flag = 0;
 }
@@ -42,12 +49,6 @@ void SPI::config(GPIO_TypeDef *PORT_SCK,uint32_t Pin_SCK,\
 }
 
 void SPI::config(uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI) {
-    this->SCK.set_pinmode(GPIO_Mode_IN);
-    this->MISO.set_pinmode(GPIO_Mode_IN);
-    this->MOSI.set_pinmode(GPIO_Mode_IN);
-    this->SCK.set_PuPD(GPIO_PuPd_NOPULL);
-    this->MISO.set_PuPD(GPIO_PuPd_NOPULL);
-    this->MOSI.set_PuPD(GPIO_PuPd_NOPULL);
     this->SCK.init(Pin_SCK,GPIO_Mode_AF);
     this->MISO.init(Pin_MISO,GPIO_Mode_AF);
     this->MOSI.init(Pin_MOSI,GPIO_Mode_AF);
@@ -94,7 +95,7 @@ void SPI::init(SPI_TypeDef* SPI,Queue mode,uint16_t DataSize,uint8_t SPI_BaudRat
         RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI3, ENABLE);
 
     SPI_I2S_DeInit(this->SPIx);
-    SPI_Cmd(this->SPIx, DISABLE); //使能SPI外设
+    //SPI_Cmd(this->SPIx, DISABLE); //使能SPI外设
 
     this->SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;  //设置SPI单向或者双向的数据模式:SPI设置为双线双向全双工
     this->SPI_InitStructure.SPI_Mode = SPI_Mode_Master;		//设置SPI工作模式:设置为主SPI
@@ -182,7 +183,6 @@ void SPI::DMA_WriteData(uint16_t *TxData, uint16_t len) {
         (u32)&this->SPIx->DR,(uint32_t)TxData,len,\
         DMA_DIR_MemoryToPeripheral,8);
 }
-
 
 SPI_S::SPI_S(uint8_t Pin_SCK, uint8_t Pin_MISO, uint8_t Pin_MOSI,HARD_BASE::Queue mode) {
     this->init(Pin_SCK, Pin_MISO,Pin_MOSI,mode);

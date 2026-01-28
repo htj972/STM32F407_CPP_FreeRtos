@@ -75,6 +75,9 @@ public:
     /*ÏµÍ³¹ÒÔØ²Ù×÷*/
     bool init(Storage_BASE *Storage);
     bool init();
+    FIL fp;
+    UINT plen;
+    DIR dr;
     bool get_mount_ret() const;
     char* get_name() const;
     char * setdir(const std::string& dir);

@@ -35,6 +35,13 @@ _USART_::_USART_(USART_TypeDef* USARTx,int32_t bound){
     DMA_send_flag= false;
 }
 
+_USART_::_USART_(USART_TypeDef *USARTx, uint8_t Pin_Tx, uint8_t Pin_Rx, int32_t bound) {
+    this->config_flag=0;
+    this->init(USARTx,Pin_Tx,Pin_Rx,bound);
+    this->DMA_Enable= false;
+    DMA_send_flag= false;
+}
+
 _USART_::_USART_(){
     this->DMA_Enable= false;
     DMA_send_flag= false;
@@ -116,6 +123,13 @@ void _USART_::default_config() {
                 this->config(GPIOC6, GPIOC7);
         }
     }
+}
+
+void _USART_::init(USART_TypeDef *USARTx, uint8_t Pin_Tx, uint8_t Pin_Rx, int32_t bound) {
+    this->USART=USARTx;
+    _USART_::extern_init();
+    this->config(Pin_Tx,Pin_Rx);
+    this->init(USARTx,bound);
 }
 
 void _USART_::init(USART_TypeDef* USARTx,int32_t bound) {

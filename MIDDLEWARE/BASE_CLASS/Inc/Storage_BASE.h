@@ -13,7 +13,7 @@
 
 class Storage_BASE: public HARD_BASE {
 protected:
-    bool init_flag{};
+    bool init_flag=false;
     uint32_t SECTOR_SIZE{};
     uint32_t BLOCK_SIZE{};
 public:

@@ -389,7 +389,8 @@ uint8_t SD_SPI::ReadDisk(uint8_t *buf,uint32_t sector,uint8_t cnt)
 //buf:数据缓存区
 //sector:起始扇区
 //cnt:扇区数
-uint8_t SD_SPI::WriteDisk(uint8_t*buf,uint32_t sector,uint8_t cnt)
+uint8_t SD_SPI::
+WriteDisk(uint8_t*buf,uint32_t sector,uint8_t cnt)
 {
     uint8_t r1;
     this->Queue_star();
