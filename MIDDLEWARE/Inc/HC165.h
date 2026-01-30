@@ -27,10 +27,12 @@ public:
     void upset();
 
     void Get_input(uint8_t *data);//获取当前输出状态
+    void Get_input_bits(uint8_t *data);//获取当前输出状态
     bool Get_input_bit(uint8_t num);//获取当前输出状态某一位
     ~HC165();
 
 };
+
 
 
 #endif //STM32F407_CPP_FREERTOS_HC165_H

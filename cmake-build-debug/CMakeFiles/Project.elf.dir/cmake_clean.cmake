@@ -335,6 +335,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/MODBUS/BASE_CLASS/ModbusBase.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MODBUS/ModeBus_Tcp/ModbusTcp.cpp.obj"
   "CMakeFiles/Project.elf.dir/MODBUS/ModeBus_Tcp/ModbusTcp.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/SOFTWARE/Base/USER_Register.cpp.obj"
+  "CMakeFiles/Project.elf.dir/SOFTWARE/Base/USER_Register.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/Communication.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/SOFTWARE/Src/DW_DIS.cpp.obj"
@@ -399,7 +401,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj.d"
   "CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj"
   "Project.elf"
-  "Project.elf.manifest"
   "Project.elf.pdb"
 )
 

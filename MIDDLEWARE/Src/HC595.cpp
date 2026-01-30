@@ -86,6 +86,28 @@ void HC595::Set_Hex(const uint8_t *data) {
     this->upset();
 }
 
+void HC595::set_output(const uint8_t* data)
+{
+    uint8_t udata;
+    for (int i = 0; i < len; ++i)
+    {
+        udata=0;
+        for (int j = 0; j < 8; ++j)
+        {
+            if (data[i] & (1 << j))
+            {
+                udata |= (1 << HC_change[i][j]);
+            }
+            else
+            {
+                udata &= ~(1 << HC_change[i][j]);
+            }
+        }
+        this->Output_data[i] = udata;
+    }
+    this->upset();
+}
+
 void HC595::Set_output(uint8_t num, uint8_t onoff) {
     if(num>=len*8)return;
     uint8_t site=num/8;

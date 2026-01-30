@@ -85,6 +85,14 @@ void HC165::Get_input(uint8_t *data) {
     }
 }
 
+void HC165::Get_input_bits(uint8_t* data)
+{
+    for(uint8_t i=0;i<this->len*8;i++)
+    {
+        data[i]=(this->Input_data[i/8]>>(i%8))&0x01;
+    }
+}
+
 bool HC165::Get_input_bit(uint8_t num) {
     if(num>=len*8)return false;
     return (this->Input_data[num/8]>>(num%8))&0x01;

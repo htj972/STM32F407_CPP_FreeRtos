@@ -6,20 +6,17 @@
 #include "Timer.h"
 #include "USART.h"
 #include "malloc.h"
-#include "Kstring.h"
 #include "Gateway.h"
 #include "Communication.h"
 #include "WDG.h"
 #include "lwip_comm/lwip_comm.h"
-#include "fertilizer.h"
-#include "cJSON.h"
 #include "HC595.h"
 #include "HC165.h"
 #include "SPI.h"
 #include "W25QXX.h"
 #include "Storage_Link.h"
 #include "ADC.h"
-#include "USB_MSC.h"
+#include "ModbusTcp.h"
 #include "tcp_server/TCP_Server.h"
 
 
@@ -101,6 +98,7 @@ RS485 RS485B(USART2,GPIOD5,GPIOD6,GPIOD4);//RS485A驱动
 
 TcpServer& srv = TcpServer::instance();
 
+ModbusTCP MDTCP;
 
 class lwip_:public Timer,public Call_Back{
 public:
@@ -129,7 +127,6 @@ int main()
     IN_driver.set_shift(0,(const char[]){3,2,1,0,4,5,6,7});
     IN_driver.set_shift(1,(const char[]){7,6,5,4,0,1,2,3});
     OUT_driver.set_shift(1,(const char[]){7,6,5,4,3,2,1,0});
-    OUT_driver.Set_on(0);
     my_mem_init(SRAMIN);		//初始化内部内存池
     my_mem_init(SRAMCCM);		//初始化内部内存池
     led.set_mode(true);
@@ -278,34 +275,24 @@ QueueHandle_t xMailbox;
 //task2任务函数
 [[noreturn]] void RS485_task(void *pvParameters)
 {
-    uint8_t ptemp=0;
-    uint8_t Idata[2];
+    uint8_t Coil[2]={0};
+    MDTCP.bindCoils(Coil,16);
+    MDTCP.bindHoldingStorage(0,&eeprom,0,(FM24Cxx::AT24C16+1)/2);//绑定保持寄存器到eeprom
+
     while(true) {
         delay_ms(50);
         IN_driver.upset();
-        IN_driver.Get_input(Idata);
-        //Debug.print("IN data: %02X %02X\r\n",Idata[0],Idata[1]);
-        if(Idata[1]!=ptemp) {
-            ptemp = Idata[1];
-            Debug.print("IN data high byte: %02X\r\n", Idata[1]);
-        }
-//        SERVER.tcp_server_test(502);
-//        tcp_server_init();
-
+        //IN_driver.Get_input_bits(Coil);
+        OUT_driver.Set_Hex(Coil);
         for (uint8_t ii=0;ii<3;ii++)
         {
             /* 查询并读取 */
             if (srv.hasData(ii))
             {
-                char buf[128];
-                uint16_t n = srv.read(ii, buf, sizeof(buf));
-                Debug<<buf;
-                srv.send(ii, "OK\r\n", 4);
-                uint8_t idn='0'+ii;
-                uint8_t id[3]={idn,0x0d,0x0a};
-                srv.send(ii, id, 3);
-                //srv.clientRef(ii)<<"Hello Client 0\r\n";
-                /* 处理 buf */
+                string RXBUF = srv.read(ii);
+                string TXBUF;
+                MDTCP.handleFrame(RXBUF,TXBUF);
+                srv.send(ii,TXBUF);
             }
         }
     }

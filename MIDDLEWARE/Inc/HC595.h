@@ -26,6 +26,7 @@ public:
     void clear(bool dis=true);
     void upset();
     void Set_Hex(const uint8_t *data);//发送hex数据
+    void set_output(const uint8_t *data);
     void Set_output(uint8_t num,uint8_t onoff);//发送bin数据
     void Set_on(uint8_t num);
     void Set_off(uint8_t num);
