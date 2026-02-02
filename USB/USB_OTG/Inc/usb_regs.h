@@ -93,7 +93,7 @@ typedef struct _USB_OTG_GREGS  //000h
   __IO uint32_t GRXSTSP;      /* Receive Sts Q Read & POP Register  020h*/
   __IO uint32_t GRXFSIZ;      /* Receive FIFO Size Register         024h*/
   __IO uint32_t DIEPTXF0_HNPTXFSIZ;   /* EP0 / Non Periodic Tx FIFO Size Register 028h*/
-  __IO uint32_t HNPTXSTS;     /* Non Periodic Tx FIFO/Queue Sts reg 02Ch*/
+  __IO uint32_t HNPTXSTS;     /* Non Periodic Tx FIFO/Queue Sts kokirika 02Ch*/
   uint32_t Reserved30[2];     /* Reserved                           030h*/
   __IO uint32_t GCCFG;        /* General Purpose IO Register        038h*/
   __IO uint32_t CID;          /* User ID Register                   03Ch*/

@@ -368,17 +368,32 @@ void _USART_::write(const char *str, uint16_t len) {
             ii++;
         }
     }
-    else {
-        if(!this->DMA_send_flag)
-            this->DMA_send_flag = true;
-        else if(DMA_GetFlagStatus(this->DMAy_Streamx,this->DMA_FLAG)!=RESET)//等待DMA2_Steam7传输完成
-            {
-                DMA_ClearFlag(this->DMAy_Streamx, this->DMA_FLAG);//清除DMA2_Steam7传输完成标志
-            }
-        DMA_send(this->DMAy_Streamx,this->DMA_CHANNEL,\
-        (u32)&this->USART->DR,(uint32_t)str,len,\
-        DMA_DIR_MemoryToPeripheral,8);
+    else
+    {
+        // ★ 1. 如果 DMA 还在跑，直接返回 or 等
+        while (DMA_GetFlagStatus(this->DMAy_Streamx,this->DMA_FLAG)!=RESET);
+
+        // ★ 2. 清所有相关 flag（必须在 DISABLE 后）
+        DMA_ClearFlag(this->DMAy_Streamx,
+                      this->DMA_FLAG);
+
+        // ★ 3. 启动新 DMA
+        DMA_send(this->DMAy_Streamx, this->DMA_CHANNEL,
+                 (u32)&this->USART->DR,
+                 (uint32_t)str, len,
+                 DMA_DIR_MemoryToPeripheral, 8);
     }
+//    else {
+//        if(!this->DMA_send_flag)
+//            this->DMA_send_flag = true;
+//        else if(DMA_GetFlagStatus(this->DMAy_Streamx,this->DMA_FLAG)!=RESET)//等待DMAx_Steamx传输完成
+//            {
+//                DMA_ClearFlag(this->DMAy_Streamx, this->DMA_FLAG);//清除DMAx_Steamx传输完成标志
+//            }
+//        DMA_send(this->DMAy_Streamx,this->DMA_CHANNEL,\
+//        (u32)&this->USART->DR,(uint32_t)str,len,\
+//        DMA_DIR_MemoryToPeripheral,8);
+//    }
 }
 
 void _USART_::write(uint8_t *str, uint16_t len) {
@@ -487,6 +502,10 @@ void  _USART_::set_send_DMA(FunctionalState enable) {
             this->DMA_CHANNEL=DMA_Channel_5;
             break;
     }
+}
+
+bool _USART_::get_send_DMA() const   {
+    return this->DMA_Enable;
 }
 
 extern "C" void USART1_IRQHandler()  {              	//串口1中断服务程序

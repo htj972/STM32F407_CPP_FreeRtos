@@ -401,6 +401,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj.d"
   "CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj"
   "Project.elf"
+  "Project.elf.manifest"
   "Project.elf.pdb"
 )
 

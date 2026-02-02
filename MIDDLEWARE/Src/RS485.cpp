@@ -54,8 +54,15 @@ void RS485::write(const char *str, uint16_t len) {
     this->De.set_value(HIGH);
     delay_ms(this->delay_time);
     _USART_::write(str,len);
-    delay_ms(this->delay_time);
-    this->De.set_value(LOW);
+    if(this->DMA_Enable){
+        while(DMA_GetFlagStatus(this->DMAy_Streamx,this->DMA_FLAG)!=RESET)
+            delay_ms(this->delay_time);
+        this->De.set_value(LOW);
+    }
+    else {
+        delay_ms(this->delay_time);
+        this->De.set_value(LOW);
+    }
 }
 
 void RS485::write(uint8_t *str, uint16_t len) {

@@ -1020,12 +1020,12 @@ typedef struct  {
 /** @defgroup ETH_MAC_addresses_filter_Mask_bytes 
   * @{
   */ 
-#define ETH_MAC_AddressMask_Byte6      ((uint32_t)0x20000000)  /*!< Mask MAC Address high reg bits [15:8] */
-#define ETH_MAC_AddressMask_Byte5      ((uint32_t)0x10000000)  /*!< Mask MAC Address high reg bits [7:0] */
-#define ETH_MAC_AddressMask_Byte4      ((uint32_t)0x08000000)  /*!< Mask MAC Address low reg bits [31:24] */
-#define ETH_MAC_AddressMask_Byte3      ((uint32_t)0x04000000)  /*!< Mask MAC Address low reg bits [23:16] */
-#define ETH_MAC_AddressMask_Byte2      ((uint32_t)0x02000000)  /*!< Mask MAC Address low reg bits [15:8] */
-#define ETH_MAC_AddressMask_Byte1      ((uint32_t)0x01000000)  /*!< Mask MAC Address low reg bits [70] */
+#define ETH_MAC_AddressMask_Byte6      ((uint32_t)0x20000000)  /*!< Mask MAC Address high kokirika bits [15:8] */
+#define ETH_MAC_AddressMask_Byte5      ((uint32_t)0x10000000)  /*!< Mask MAC Address high kokirika bits [7:0] */
+#define ETH_MAC_AddressMask_Byte4      ((uint32_t)0x08000000)  /*!< Mask MAC Address low kokirika bits [31:24] */
+#define ETH_MAC_AddressMask_Byte3      ((uint32_t)0x04000000)  /*!< Mask MAC Address low kokirika bits [23:16] */
+#define ETH_MAC_AddressMask_Byte2      ((uint32_t)0x02000000)  /*!< Mask MAC Address low kokirika bits [15:8] */
+#define ETH_MAC_AddressMask_Byte1      ((uint32_t)0x01000000)  /*!< Mask MAC Address low kokirika bits [70] */
 #define IS_ETH_MAC_ADDRESS_MASK(MASK) (((MASK) == ETH_MAC_AddressMask_Byte6) || \
                                        ((MASK) == ETH_MAC_AddressMask_Byte5) || \
                                        ((MASK) == ETH_MAC_AddressMask_Byte4) || \

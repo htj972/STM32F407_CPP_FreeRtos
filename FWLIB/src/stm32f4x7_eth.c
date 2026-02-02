@@ -939,12 +939,12 @@ void ETH_MACAddressFilterConfig(uint32_t MacAddr, uint32_t Filter)
   *     @arg ETH_MAC_Address3 : MAC Address3
   * @param  MaskByte: specifies the used address bytes for comparison 
   *   This parameter can be any combination of the following values: 
-  *     @arg ETH_MAC_AddressMask_Byte6 : Mask MAC Address high reg bits [15:8].
-  *     @arg ETH_MAC_AddressMask_Byte5 : Mask MAC Address high reg bits [7:0].
-  *     @arg ETH_MAC_AddressMask_Byte4 : Mask MAC Address low reg bits [31:24].
-  *     @arg ETH_MAC_AddressMask_Byte3 : Mask MAC Address low reg bits [23:16].
-  *     @arg ETH_MAC_AddressMask_Byte2 : Mask MAC Address low reg bits [15:8].
-  *     @arg ETH_MAC_AddressMask_Byte1 : Mask MAC Address low reg bits [7:0].
+  *     @arg ETH_MAC_AddressMask_Byte6 : Mask MAC Address high kokirika bits [15:8].
+  *     @arg ETH_MAC_AddressMask_Byte5 : Mask MAC Address high kokirika bits [7:0].
+  *     @arg ETH_MAC_AddressMask_Byte4 : Mask MAC Address low kokirika bits [31:24].
+  *     @arg ETH_MAC_AddressMask_Byte3 : Mask MAC Address low kokirika bits [23:16].
+  *     @arg ETH_MAC_AddressMask_Byte2 : Mask MAC Address low kokirika bits [15:8].
+  *     @arg ETH_MAC_AddressMask_Byte1 : Mask MAC Address low kokirika bits [7:0].
   * @retval None
   */
 void ETH_MACAddressMaskBytesFilterConfig(uint32_t MacAddr, uint32_t MaskByte)

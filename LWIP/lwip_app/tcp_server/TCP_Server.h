@@ -157,6 +157,12 @@ public:
     void broadcast(const void* data, uint16_t len);
     /* 获取连接数量 */
     uint8_t clientCount() const;
+    /* 主动断开某个客户端 */
+    bool disconnect(uint8_t clientId);
+    /* 主动断开所有客户端 */
+    void disconnectAll();
+    /* 关闭整个 TCP Server（包括 listen） */
+    bool shutdown();
 
 
 

@@ -191,6 +191,37 @@ void lwip_setup(){
     lwip_periodic_handle();
 }
 
+void lwip_net_close(void)
+{
+    // 1. 告诉 lwIP：接口不可用
+    netif_set_down(&lwip_netif);
+
+#if LWIP_DHCP
+    // 2. 停止 DHCP（防止后台一直跑）
+    dhcp_stop(&lwip_netif);
+    lwipdev.dhcpstatus = 0;
+#endif
+
+    // 3. 清空 IP（可选，但推荐）
+    lwip_netif.ip_addr.addr = 0;
+    lwip_netif.netmask.addr = 0;
+    lwip_netif.gw.addr = 0;
+}
+
+void lwip_net_open(void)
+{
+    // 1. 接口重新启用
+    netif_set_up(&lwip_netif);
+
+#if LWIP_DHCP
+    // 2. DHCP 模式：重新获取 IP
+    lwipdev.dhcpstatus = 0;
+    dhcp_start(&lwip_netif);
+#endif
+}
+
+
+
 void DNS_init(){
     ip_addr_t dnsserver;/* Create tcp_ip stack thread */
     IP4_ADDR(&dnsserver,114,114,114,114);/* suozhang,add,2018年1月11日18:03:10 */
@@ -283,9 +314,31 @@ void lwip_dhcp_process_handle(void)
 		default : break;
 	}
 }
-#endif 
+#endif
 
+/* 强制 abort 全部 TCP：active + timewait
+ * 注意：abort 会直接断开，不走四次挥手（链路都断了也没法挥手）
+ */
+void tcp_abort_all(void)
+{
+    struct tcp_pcb *pcb, *next;
 
+    /* active pcbs */
+    for (pcb = tcp_active_pcbs; pcb != NULL; pcb = next) {
+        next = pcb->next;
+        tcp_abort(pcb);
+    }
+
+    /* time-wait pcbs */
+    for (pcb = tcp_tw_pcbs; pcb != NULL; pcb = next) {
+        next = pcb->next;
+        tcp_abort(pcb);
+    }
+
+#if LWIP_TCP_PCB_NUM_EXT_ARGS
+    /* 如果你启用了 ext args，一般不需要你额外处理 */
+#endif
+}
 
 
 

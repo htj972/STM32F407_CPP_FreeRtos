@@ -65,7 +65,7 @@ void HC165::upset() {
     for(uint8_t i=0;i<this->len;i++)
     {
         data=0;
-        for(unsigned char j : this->HC_change[i])
+        for(unsigned char j : this->HC_change[len-1-i])
         {
             if(this->SO.get_state())
             {
@@ -74,7 +74,7 @@ void HC165::upset() {
             this->CLK.set(ON);
             this->CLK.set(OFF);
         }
-        this->Input_data[i]=~data;
+        this->Input_data[len-1-i]=~data;
     }
 }
 

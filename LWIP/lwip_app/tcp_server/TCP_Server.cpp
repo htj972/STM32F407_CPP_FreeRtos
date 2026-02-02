@@ -468,7 +468,70 @@ uint16_t TcpServer::Client::println(int integer) {
     return this->print("%d\r\n",integer);
 }
 
+bool TcpServer::disconnect(uint8_t clientId)
+{
+    if (clientId >= TCP_SERVER_MAX_CLIENTS)
+        return false;
 
+    Conn& c = m_conns[clientId];
+    if (!c.used || !c.pcb)
+        return false;
+
+    /* 解除回调，防止 race */
+    tcp_arg(c.pcb, nullptr);
+    tcp_recv(c.pcb, nullptr);
+    tcp_sent(c.pcb, nullptr);
+    tcp_err (c.pcb, nullptr);
+    tcp_poll(c.pcb, nullptr, 0);
+
+    /* 释放待发送数据 */
+    if (c.tx)
+    {
+        pbuf_free(c.tx);
+        c.tx = nullptr;
+    }
+
+    /* 优先尝试优雅关闭 */
+    err_t e = tcp_close(c.pcb);
+    if (e != ERR_OK)
+    {
+        /* 1.4.1 下 close 失败很常见，兜底 abort */
+        tcp_abort(c.pcb);
+    }
+
+    freeConn(&c);
+    return true;
+}
+
+void TcpServer::disconnectAll()
+{
+    for (uint8_t i = 0; i < TCP_SERVER_MAX_CLIENTS; ++i)
+    {
+        if (m_conns[i].used)
+        {
+            disconnect(i);
+        }
+    }
+}
+
+bool TcpServer::shutdown()
+{
+    /* 先踢掉所有客户端 */
+    disconnectAll();
+
+    if (!m_listen)
+        return true;
+
+    /* listen pcb 没有回调，但也要 close */
+    err_t e = tcp_close(m_listen);
+    if (e != ERR_OK)
+    {
+        tcp_abort(m_listen);
+    }
+
+    m_listen = nullptr;
+    return true;
+}
 
 
 

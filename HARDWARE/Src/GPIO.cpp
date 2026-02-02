@@ -112,4 +112,14 @@ void _GPIO_::set_AFConfig(uint8_t AF_MODE) const {
     GPIO_PinAFConfig(this->PORTx,Pin_Source,AF_MODE);
 }
 
+uint8_t _GPIO_::get_GPIOx_num(uint32_t Pinx) {
+    u8 ii=0;
+    for(;ii<16;ii++)
+    {
+        if((Pinx>>ii)==GPIO_Pin_0)
+            break;
+    }
+    return ii;
+}
+
 

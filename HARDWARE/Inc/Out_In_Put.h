@@ -60,6 +60,7 @@ public:
     void set_EXTI();
     void setNVIC(uint8_t Priority=3,uint8_t SubPriority=3,bool EnAble=true);
     void setNVIC_ENABLE(bool EnAble=true) ;
+    void set_Trigger(EXTITrigger_TypeDef Triggers);
 
     void (*extern_IRQ_link)(){};
     void upload_extern_fun(void(* fun)());

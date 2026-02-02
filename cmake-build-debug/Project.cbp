@@ -50,6 +50,7 @@
 					<Add directory="G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip_app"/>
 					<Add directory="G:/stm32_project/STM32F407_CPP_FreeRtos/MODBUS/ModeBus_Tcp"/>
 					<Add directory="G:/stm32_project/STM32F407_CPP_FreeRtos/MODBUS/BASE_CLASS"/>
+					<Add directory="G:/stm32_project/STM32F407_CPP_FreeRtos/SOFTWARE/Base"/>
 					<Add directory="g:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="g:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="g:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -97,6 +98,7 @@
 					<Add directory="G:/stm32_project/STM32F407_CPP_FreeRtos/LWIP/lwip_app"/>
 					<Add directory="G:/stm32_project/STM32F407_CPP_FreeRtos/MODBUS/ModeBus_Tcp"/>
 					<Add directory="G:/stm32_project/STM32F407_CPP_FreeRtos/MODBUS/BASE_CLASS"/>
+					<Add directory="G:/stm32_project/STM32F407_CPP_FreeRtos/SOFTWARE/Base"/>
 					<Add directory="g:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="g:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="g:\cubemx\gcc-arm-none-eabi-10.3-2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -1216,6 +1218,12 @@
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/MODBUS/ModeBus_Tcp/ModbusTcp.h">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/SOFTWARE/Base/USER_Register.cpp">
+			<Option target="Project.elf"/>
+		</Unit>
+		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/SOFTWARE/Base/USER_Register.h">
 			<Option target="Project.elf"/>
 		</Unit>
 		<Unit filename="G:/stm32_project/STM32F407_CPP_FreeRtos/SOFTWARE/Inc/Communication.h">

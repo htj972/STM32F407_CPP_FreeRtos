@@ -142,7 +142,7 @@ void _InPut_::set_EXTI() {
     if(this->Down_level==LOW)
         this->EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling; //下降沿触发
     else
-        this->EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising; //下降沿触发
+        this->EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising; //上升沿触发
     this->EXTI_InitStructure.EXTI_LineCmd = ENABLE;//使能LINEx
     EXTI_Init(&this->EXTI_InitStructure);//配置
 
@@ -173,6 +173,11 @@ void _InPut_::setNVIC(uint8_t Priority, uint8_t SubPriority, bool EnAble) {
 
 void _InPut_::setNVIC_ENABLE(bool EnAble) {
     this->EXTI_InitStructure.EXTI_LineCmd = EnAble ? ENABLE : DISABLE;//使能LINEx
+    EXTI_Init(&this->EXTI_InitStructure);//配置
+}
+
+void _InPut_::set_Trigger(EXTITrigger_TypeDef Triggers) {
+    this->EXTI_InitStructure.EXTI_Trigger = Triggers; //上升沿触发
     EXTI_Init(&this->EXTI_InitStructure);//配置
 }
 
@@ -261,7 +266,6 @@ bool _InPut_::get_NVIC_state() const {
 uint8_t _InPut_::get_pin_num() const {
     return this->pin_num;
 }
-
 
 extern "C" void EXTI0_IRQHandler(){                    //外部中断0
     if(EXTI_GetITStatus(EXTI_Line0)==SET){

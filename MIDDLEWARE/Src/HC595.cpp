@@ -66,9 +66,9 @@ void HC595::upset() {
     BitAction paragraph;
     for(uint8_t j=0;j<len;j++)
     {
-        for(unsigned char i : HC_change[j])
+        for(unsigned char i : HC_change[len-1-j])
         {
-            paragraph=((this->Output_data[j]>>i)&0x01)==0x01?Bit_SET:Bit_RESET;
+            paragraph=((this->Output_data[len-j-1]>>i)&0x01)==0x01?Bit_SET:Bit_RESET;
             this->dio.set(paragraph);
 
             this->rck.set( ON);

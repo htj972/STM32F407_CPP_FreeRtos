@@ -369,7 +369,7 @@ USB_OTG_STS USB_OTG_CoreInit(USB_OTG_CORE_HANDLE *pdev)
 }
 /**
 * @brief  USB_OTG_EnableGlobalInt
-*         Enables the controller's Global Int in the AHB Config reg
+ *         Enables the controller's Global Int in the AHB Config kokirika
 * @param  pdev : Selected device
 * @retval USB_OTG_STS : status
 */
@@ -387,7 +387,7 @@ USB_OTG_STS USB_OTG_EnableGlobalInt(USB_OTG_CORE_HANDLE *pdev)
 
 /**
 * @brief  USB_OTG_DisableGlobalInt
-*         Enables the controller's Global Int in the AHB Config reg
+*         Enables the controller's Global Int in the AHB Config kokirika
 * @param  pdev : Selected device
 * @retval USB_OTG_STS : status
 */

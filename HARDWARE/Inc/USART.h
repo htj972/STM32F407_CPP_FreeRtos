@@ -18,16 +18,16 @@ protected:
     _GPIO_ RX_GPIO;
     _GPIO_ TX_GPIO;
     USART_TypeDef* USART{};
+    DMA_Stream_TypeDef* DMAy_Streamx{};
+    uint32_t DMA_FLAG{};
+    bool DMA_Enable;
 private:
     uint8_t  config_flag=0;
     uint32_t Bound{};
     USART_InitTypeDef USART_InitStructure{};
     NVIC_InitTypeDef NVIC_InitStructure{};
-    DMA_Stream_TypeDef* DMAy_Streamx{};
-    uint32_t DMA_FLAG{};
     uint32_t DMA_CHANNEL{};
     uint8_t USART_Num{};
-    bool DMA_Enable;
     bool DMA_send_flag= false;
     void default_config();
     void GPIO_AF_config();
@@ -88,6 +88,7 @@ public:
     uint16_t println(int integer);
 
     void set_send_DMA(FunctionalState enable=ENABLE);
+    bool get_send_DMA() const;
 
     _USART_& operator<<(const int integer)
     {

@@ -37,9 +37,12 @@ void lwip_comm_mem_free(void);
 uint8_t lwip_comm_init(void);
 void lwip_dhcp_process_handle(void);
 void  lwip_setup();
+void lwip_net_close(void);
+void lwip_net_open(void);
 void DNS_init();
 ip_addr_t DNS_get_ip(const char *name);
 uint8_t *get_dns_ip();
+void tcp_abort_all(void);
 
 #ifdef __cplusplus
 }
