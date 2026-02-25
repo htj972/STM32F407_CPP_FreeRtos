@@ -253,10 +253,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/LWIP/lwip_app/lwip_comm/lwip_comm.c.obj.d"
   "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.obj"
   "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_client/TCP_Client_Class.cpp.obj.d"
-  "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_GPT.c.obj"
-  "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_GPT.c.obj.d"
   "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_Server.cpp.obj"
   "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_Server.cpp.obj.d"
+  "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_Server_App.cpp.obj"
+  "CMakeFiles/Project.elf.dir/LWIP/lwip_app/tcp_server/TCP_Server_App.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp/UDP_Class.cpp.obj"
   "CMakeFiles/Project.elf.dir/LWIP/lwip_app/udp/UDP_Class.cpp.obj.d"
   "CMakeFiles/Project.elf.dir/MIDDLEWARE/BASE_CLASS/Scr/FuzzyPID.cpp.obj"
@@ -401,7 +401,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.elf.dir/USER/Src/system_stm32f4xx.c.obj.d"
   "CMakeFiles/Project.elf.dir/startup/startup_stm32f407xx.s.obj"
   "Project.elf"
-  "Project.elf.manifest"
   "Project.elf.pdb"
 )
 

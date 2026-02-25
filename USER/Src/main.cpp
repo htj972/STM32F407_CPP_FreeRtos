@@ -19,8 +19,7 @@
 #include "ModbusTcp.h"
 #include "tcp_server/TCP_Server.h"
 #include "USER_Register.h"
-
-
+#include "tcp_server/TCP_Server_App.h"
 
 
 //任务优先级
@@ -117,7 +116,8 @@ _InPut_ INput1(GPIOE10),INput2(GPIOE9);
 
 ModbusTCP MDTCP;
 auto& kokirika = USER_Register::instance(SRAMCCM);
-auto& srv = TcpServer::instance();
+// auto& srv = TcpServer::instance();
+auto& srv = TcpServer_APP::instance();
 
 int main()
 {
@@ -149,7 +149,6 @@ int main()
                              0,(FM24Cxx::AT24C16+1)/2);
     kokirika.Add_Pulse_Pin(&INput1);//上传脉冲输入引脚1
     kokirika.Add_Pulse_Pin(&INput2);//上传脉冲输入引脚2
-    Debug.set_send_DMA();
 
 
 //    W25Q.init();
@@ -236,11 +235,11 @@ void start_task(void *pvParameters)
 [[noreturn]] void LOGIC_task(void *pvParameters)//alignas(8)
 {
     uint8_t ii=0;
-//    RS485A.set_send_DMA();
+    //RS485A.set_send_DMA();
     //RS485B.set_send_DMA();
     while(true)
     {
-        delay_ms(800);
+        delay_ms(1000);
         error_led.change();
         TrmLED[ii++].change();
         if(ii>=6)ii=0;
@@ -303,7 +302,7 @@ void start_task(void *pvParameters)
     {
         delay_ms(1200);
     }
-
+    netinit:
     while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
     {
         lwip_periodic_handle();
@@ -318,7 +317,9 @@ void start_task(void *pvParameters)
             lwip_net_open();
             goto netinit;
         }
-        for (uint8_t ii=0;ii<3;ii++)
+        // srv.pollOnce(MDTCP);
+        // vTaskDelay(1);
+        for (uint8_t ii=0;ii<TCP_SERVER_MAX_CLIENTS;ii++)
         {
             /* 查询并读取 */
             if (srv.hasData(ii))
