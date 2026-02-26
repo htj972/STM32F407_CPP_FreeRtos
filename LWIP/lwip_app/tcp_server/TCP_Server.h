@@ -62,6 +62,10 @@ protected:
     explicit TcpServer(uint16_t port);
     TcpServer(const TcpServer&) = delete;
     TcpServer& operator=(const TcpServer&) = delete;
+
+    /* ★ 关键：当前实例指针（支持派生类） */
+    static TcpServer* s_inst;
+
     /* ===== lwIP callbacks（static） ===== */
     static err_t onAccept(void* arg, tcp_pcb* newpcb, err_t err);
     static err_t onRecv(void* arg, tcp_pcb* pcb, pbuf* p, err_t err);
@@ -76,6 +80,7 @@ protected:
 
     void  queueSend(Conn* c, const void* data, uint16_t len);
     void  flushSend(tcp_pcb* pcb, Conn* c);
+
 public:
     class Client
     {
@@ -86,6 +91,7 @@ public:
         bool hasData() const;
         uint16_t read(void* out, uint16_t maxLen);
         string  read();
+
         /* 发送 */
         bool send(const void* data, uint16_t len);
         bool send(const string& str);
@@ -155,6 +161,8 @@ public:
     bool send(uint8_t clientId, const string& str);
     /* 广播发送 */
     void broadcast(const void* data, uint16_t len);
+    /* 获取client 链接状态*/
+    bool isConnected(uint8_t clientId) const;
     /* 获取连接数量 */
     uint8_t clientCount() const;
     /* 主动断开某个客户端 */

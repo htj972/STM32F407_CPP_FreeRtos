@@ -89,6 +89,17 @@ void Storage_BASE::Set_Block_Size(uint32_t BLOCK) {
     this->BLOCK_SIZE=BLOCK;
 }
 
+bool Storage_BASE::DISwrite(uint32_t sector, uint8_t* buf, uint32_t count)
+{
+    this->write(sector,buf,count);
+    return true;
+}
+bool Storage_BASE::DISread(uint32_t sector, uint8_t* buf, uint32_t count)
+{
+    this->read(sector,buf,count);
+    return true;
+}
+
 
 
 

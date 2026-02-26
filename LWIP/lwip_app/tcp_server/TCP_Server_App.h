@@ -65,40 +65,35 @@ void TcpServer_APP::pollOnce(ModbusHandler& MDTCP)
 {
     for (uint8_t i = 0; i < TCP_SERVER_MAX_CLIENTS; ++i)
     {
-        // Client* cl = this->client(i);
-        // bool nowConn = (cl != nullptr);
-        //
-        // /* 断线边沿检测 */
-        // if (m_lastConn[i] && !nowConn)
-        // {
-        //     onClientDisconnected(i);
-        // }
-        //
-        // m_lastConn[i] = nowConn;
-        //
-        // if (!nowConn)
-        //     continue;
-
+        /* ===== 1. 连接判断 ===== */
+        if (!this->isConnected(i))
+        {
+            /* 未连接 → 恢复默认模式 */
+            m_ctx[i].reset();
+            continue;
+        }
+        /* ===== 2. 没数据就跳过 ===== */
         if (!this->hasData(i))
             continue;
-
         std::string rx = this->read(i);
         if (rx.empty())
             continue;
 
-        /* 整包 +++ 进入 CMD */
+        /* ===== 3. 整包 +++ 进入 CMD ===== */
         if (isTrimPlusOnly(rx))
         {
             m_ctx[i].mode   = ChanMode::CMD;
             m_ctx[i].marked = true;
+
             this->send(i, "OK\r\nCMD>\r\n");
             continue;
         }
-
+        /* ===== 4. 模式分流 ===== */
         if (m_ctx[i].mode == ChanMode::CMD)
         {
             std::string out;
             handleCmd(i, rx, out);
+
             if (!out.empty())
                 this->send(i, out);
         }
@@ -106,6 +101,7 @@ void TcpServer_APP::pollOnce(ModbusHandler& MDTCP)
         {
             std::string tx;
             MDTCP.handleFrame(rx, tx);
+
             if (!tx.empty())
                 this->send(i, tx);
         }

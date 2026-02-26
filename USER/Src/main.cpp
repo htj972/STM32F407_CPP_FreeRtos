@@ -108,8 +108,8 @@ _ADC_ ADC1_driver(ADC1,4),ADC2_driver(ADC1,5),
 Software_IIC IIC(GPIOE0,GPIOE1);//硬件IIC1
 FM24Cxx eeprom(&IIC,FM24Cxx::AT24C16);//FM24C16驱动
 SPI SPI1_driver(SPI1,GPIOB3,GPIOB4,GPIOB5);//硬件SPI1
-//W25QXX W25Q(&SPI1_driver,GPIOD7);
-//Storage_Link flash_fatfs(&W25Q);
+W25QXX W25Q(&SPI1_driver,GPIOD7);
+Storage_Link flash_fatfs(&W25Q);
 RS485 RS485A(USART3,GPIOD8,GPIOD9,GPIOB15);//RS485A驱动
 RS485 RS485B(USART2,GPIOD5,GPIOD6,GPIOD4);//RS485A驱动
 _InPut_ INput1(GPIOE10),INput2(GPIOE9);
@@ -151,41 +151,42 @@ int main()
     kokirika.Add_Pulse_Pin(&INput2);//上传脉冲输入引脚2
 
 
-//    W25Q.init();
-////    Debug<<"W25Q ID:"<<W25Q.GetID()<<"\r\n";
-//    char dasda[50];
+    W25Q.init();
+    flash_fatfs.init();
+    // Debug<<"W25Q ID:"<<W25Q.GetID()<<"\r\n";
+    // char dasda[50];
+
+    // sprintf(dasda,"qwe%d.txt",1);
+    // W25Q.write(0,(uint8_t*)dasda,strlen(dasda));
+
+    // char read_buf1[50]{};
+    // W25Q.read(0,(uint8_t*)read_buf1,8);
+    // Debug.print("read flash:%s\r\n",read_buf1);
+    // Debug.print("flash init %d! disk:%s\r\n",flash_fatfs.init(),flash_fatfs.get_name());
+
+    // FATFS fs1;
+    // if(FR_OK!=f_mount(&fs1,"0:",1))
+    //     Debug<<"Flash mount failed!\r\n";
+    // f_mkfs(flash_fatfs.get_name(),1,4096);
+    // //获取文件系统信息
+    // uint32_t  filetotal,filefree;
+    // Storage_Link::exf_getfree((uint8_t*)flash_fatfs.get_name(),&filetotal,&filefree);
+
+//     Debug.print("Total Size:%d MB  Free Size:%d MB\r\n",filetotal<<10,filefree<<10);
+// //    char dasda[50];
+//     sprintf(dasda,"qwe%d.txt",1);
+//     Debug<<"1\r\n";
 //
-////    sprintf(dasda,"qwe%d.txt",1);
-////    W25Q.write(0,(uint8_t*)dasda,strlen(dasda));
-//
-//    char read_buf1[50]{};
-//    W25Q.read(0,(uint8_t*)read_buf1,8);
-//    Debug.print("read flash:%s\r\n",read_buf1);
-//    Debug.print("flash init %d! disk:%s\r\n",flash_fatfs.init(),flash_fatfs.get_name());
-//
-////    FATFS fs1;
-////    if(FR_OK!=f_mount(&fs1,"0:",1))
-////        Debug<<"Flash mount failed!\r\n";
-//    f_mkfs(flash_fatfs.get_name(),1,4096);
-//    //获取文件系统信息
-//    uint32_t  filetotal,filefree;
-//    Storage_Link::exf_getfree((uint8_t*)flash_fatfs.get_name(),&filetotal,&filefree);
-//
-//    Debug.print("Total Size:%d MB  Free Size:%d MB\r\n",filetotal<<10,filefree<<10);
-////    char dasda[50];
-//    sprintf(dasda,"qwe%d.txt",1);
-//    Debug<<"1\r\n";
-//
-//    while (f_open(&flash_fatfs.fp,flash_fatfs.setdir(dasda),FA_WRITE | FA_OPEN_ALWAYS) != FR_OK);
-//    Debug<<"2\r\n";
-//    f_lseek(&flash_fatfs.fp,flash_fatfs.fp.fsize);                                                                        //??????±ê????????
-//    f_write(&flash_fatfs.fp, dasda, strlen(dasda), &flash_fatfs.plen);
-//    f_close(&flash_fatfs.fp);
-//    Debug<<"3\r\n";
-//    while(f_open(&flash_fatfs.fp,flash_fatfs.setdir(dasda),FA_READ) != FR_OK);
-//    char read_buf[50]{};
-//    f_read(&flash_fatfs.fp, read_buf, strlen(dasda), &flash_fatfs.plen);
-//    f_close(&flash_fatfs.fp);
+//     while (f_open(&flash_fatfs.fp,flash_fatfs.setdir(dasda),FA_WRITE | FA_OPEN_ALWAYS) != FR_OK);
+//     Debug<<"2\r\n";
+//     f_lseek(&flash_fatfs.fp,flash_fatfs.fp.fsize);                                                                        //??????±ê????????
+//     f_write(&flash_fatfs.fp, dasda, strlen(dasda), &flash_fatfs.plen);
+//     f_close(&flash_fatfs.fp);
+//     Debug<<"3\r\n";
+//     while(f_open(&flash_fatfs.fp,flash_fatfs.setdir(dasda),FA_READ) != FR_OK);
+//     char read_buf[50]{};
+//     f_read(&flash_fatfs.fp, read_buf, strlen(dasda), &flash_fatfs.plen);
+//     f_close(&flash_fatfs.fp);
 
 
 
@@ -317,19 +318,8 @@ void start_task(void *pvParameters)
             lwip_net_open();
             goto netinit;
         }
-        // srv.pollOnce(MDTCP);
-        // vTaskDelay(1);
-        for (uint8_t ii=0;ii<TCP_SERVER_MAX_CLIENTS;ii++)
-        {
-            /* 查询并读取 */
-            if (srv.hasData(ii))
-            {
-                string RXBUF = srv.read(ii);
-                string TXBUF;
-                MDTCP.handleFrame(RXBUF,TXBUF);
-                srv.send(ii,TXBUF);
-            }
-        }
+        srv.pollOnce(MDTCP);
+        vTaskDelay(1);
     }
 }
 

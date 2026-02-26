@@ -446,7 +446,7 @@ bool Storage_Link::disk_write(BYTE name, const BYTE *buff, DWORD sector, UINT co
             break;
     if(ii==_VOLUMES)return false;
 
-    if(Storage_L[ii]->write(sector,(BYTE *)buff,count)>0)
+    if(Storage_L[ii]->DISwrite(sector,(BYTE *)buff,count)>0)
         return true;
     return false;
 }
@@ -458,7 +458,7 @@ bool Storage_Link::disk_read(BYTE name, BYTE *buff, DWORD sector, UINT count) {
             break;
     if(ii==_VOLUMES)return false;
 
-    Storage_L[ii]->read(sector,buff,count);
+    Storage_L[ii]->DISread(sector,buff,count);
     return true;
 }
 

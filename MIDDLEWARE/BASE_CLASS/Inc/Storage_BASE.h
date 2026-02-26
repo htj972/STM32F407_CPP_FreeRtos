@@ -34,6 +34,8 @@ public:
     virtual void     read(uint32_t addr,uint8_t *data,uint16_t len);
     void    readstr(uint32_t addr,std::string *data,uint16_t len);
     std::string readstr(uint32_t addr,uint16_t len);
+    virtual bool DISwrite(uint32_t sector, uint8_t* buf, uint32_t count);
+    virtual bool DISread(uint32_t sector, uint8_t* buf, uint32_t count);
 };
 
 

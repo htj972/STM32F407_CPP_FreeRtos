@@ -1,10 +1,17 @@
 #include "Tcp_Server.h"
 #include <cstdarg>
 
+/* ★ 关键：当前实例指针 */
+TcpServer* TcpServer::s_inst = nullptr;
+
 /* ================= 单例 ================= */
 
 TcpServer& TcpServer::instance(uint16_t port)
 {
+    /* ★ 优先返回“已注册实例”（派生类构造时会注册） */
+    if (s_inst) return *s_inst;
+
+    /* 兜底：没人创建派生类时，仍可用基类单例 */
     static TcpServer s(port);
     return s;
 }
@@ -12,6 +19,9 @@ TcpServer& TcpServer::instance(uint16_t port)
 TcpServer::TcpServer(uint16_t port)
         : m_listen(nullptr)
 {
+    /* ★ 关键：注册当前实例（支持派生类 this） */
+    s_inst = this;
+
     mport = port;
     std::memset(m_conns, 0, sizeof(m_conns));
 }
@@ -75,12 +85,14 @@ void TcpServer::freeConn(Conn* c)
     c->used = false;
     c->state = State::FREE;
     c->rx_ready = false;
+    c->rx_len = 0;
 }
 
 /* ================= lwIP callbacks ================= */
 
 err_t TcpServer::onAccept(void*, tcp_pcb* newpcb, err_t)
 {
+    /* ★ 关键：这里拿到的是“当前实例”（可能是派生类对象） */
     TcpServer& s = TcpServer::instance();
     Conn* c = s.allocConn();
     if (!c)
@@ -144,7 +156,11 @@ err_t TcpServer::onRecv(void* arg, tcp_pcb* pcb, pbuf* p, err_t err)
     }
 
     c->rx_len   = copied;
-    c->rx[c->rx_len++ ]= 0;  // Null-terminate for convenience
+    if (c->rx_len < TCP_SERVER_RX_BUFSIZE)
+        c->rx[c->rx_len++] = 0;  // Null-terminate for convenience
+    else
+        c->rx[TCP_SERVER_RX_BUFSIZE - 1] = 0;
+
     c->rx_ready = true;
 
     tcp_recved(pcb, p->tot_len);
@@ -267,6 +283,23 @@ void TcpServer::broadcast(const void* data, uint16_t len)
 {
     for (uint8_t i = 0; i < TCP_SERVER_MAX_CLIENTS; ++i)
         send(i, data, len);
+}
+
+bool TcpServer::isConnected(uint8_t clientId) const
+{
+    if (clientId >= TCP_SERVER_MAX_CLIENTS)
+        return false;
+
+    const Conn& c = m_conns[clientId];
+
+    /* 必须：
+       - used == true
+       - state == ACTIVE
+       - pcb != nullptr
+    */
+    return (c.used &&
+            c.state == State::ACTIVE &&
+            c.pcb  != nullptr);
 }
 
 uint16_t TcpServer::read(uint8_t clientId, void* out, uint16_t maxLen)

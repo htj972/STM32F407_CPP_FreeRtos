@@ -62,6 +62,8 @@ public:
     uint8_t  read(uint32_t addr) override;
     void     read(uint32_t addr,uint8_t *data) override;
     void     read (uint32_t Addr , uint8_t *pBuffer, uint16_t NumByte) override;
+    bool DISwrite(uint32_t sector, uint8_t* buf, uint32_t count) override;
+    bool DISread(uint32_t sector, uint8_t* buf, uint32_t count) override;
 };
 
 

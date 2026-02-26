@@ -25,7 +25,7 @@ extern "C"{
 
 //mem1内存参数设定.mem1完全处于内部SRAM里面.
 #define RAM_BLOCK_SIZE			32  	  						//内存块大小为32字节
-#define RAM_MAX_SIZE			(60*1024)  						//最大管理内存 100K
+#define RAM_MAX_SIZE			(64*1024)  						//最大管理内存 100K
 #define RAM_ALLOC_TABLE_SIZE	(RAM_MAX_SIZE/RAM_BLOCK_SIZE) 	//内存表大小
 
 //mem2内存参数设定.mem2的内存池处于外部SRAM里面

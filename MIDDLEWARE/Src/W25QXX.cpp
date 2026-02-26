@@ -55,8 +55,8 @@ void W25QXX::init() {
         this->Set_Block_Size(8);
         this->CSPin.set(OFF);
         this->spix->SetSpeed(this->BaudRatex);
-//        this->PowerDown();
-//        this->WAKEUP();
+        this->PowerDown();
+        this->WAKEUP();
         this->init_flag= true;
         this->set_FAT_Sectosize(10);//设置FATFS 大小 单位:MB
         W25QXX_TYPE=this->ReadID();	//读取FLASH ID.
@@ -263,6 +263,8 @@ void W25QXX::Write_Page(uint32_t Addr, uint8_t* pBuffer, uint16_t NumByte)
 //CHECK OK
 void W25QXX::Write_NoCheck(uint32_t Addr,uint8_t* pBuffer,uint16_t NumByte)
 {
+    this->Queue_star();
+    this->spix->Queue_star();
     uint16_t pageremain=256-Addr%256; //单页剩余的字节数
     if(NumByte<=pageremain)pageremain=NumByte;//不大于256个字节
     while(true)
@@ -279,6 +281,8 @@ void W25QXX::Write_NoCheck(uint32_t Addr,uint8_t* pBuffer,uint16_t NumByte)
             else pageremain=NumByte; 	   //不够256个字节了
         }
     }
+    this->spix->Queue_end();
+    this->Queue_end();
 }
 //写SPI FLASH
 //在指定地址开始写入指定长度的数据
@@ -292,8 +296,6 @@ uint16_t W25QXX::write(uint32_t Addr, uint8_t *pBuffer, uint16_t NumByte) {
     uint16_t secoff;
     uint16_t secremain;
     uint16_t i;
-    this->Queue_star();
-    this->spix->Queue_star();
     secpos=Addr/4096;//扇区地址
     secoff=Addr%4096;//在扇区内的偏移
     secremain=4096-secoff;//扇区剩余空间大小
@@ -330,8 +332,6 @@ uint16_t W25QXX::write(uint32_t Addr, uint8_t *pBuffer, uint16_t NumByte) {
             else secremain=NumByte;			//下一个扇区可以写完了
         }
     }
-    this->spix->Queue_end();
-    this->Queue_end();
     return NumByte;
 }
 
@@ -358,6 +358,34 @@ void W25QXX::read(uint32_t Addr , uint8_t *pBuffer, uint16_t NumByte) {
     this->CSPin.set(OFF);    //取消片选
     this->spix->Queue_end();
     this->Queue_end();
+}
+
+bool W25QXX::DISwrite(uint32_t sector, uint8_t* buf, uint32_t count)
+{
+    uint32_t addr = sector * 512;
+    uint32_t bytes = count * 512;
+
+    uint32_t off = 0;
+    while (off < bytes) {
+        uint16_t chunk = (bytes - off > 4096) ? 4096 : (bytes - off);
+        this->write(addr + off, buf + off, chunk);  // ← 调你已有的字节写
+        off += chunk;
+    }
+    return true;
+}
+
+bool W25QXX::DISread(uint32_t sector, uint8_t* buf, uint32_t count)
+{
+    uint32_t addr = sector * 512;
+    uint32_t bytes = count * 512;
+
+    uint32_t off = 0;
+    while (off < bytes) {
+        uint16_t chunk = (bytes - off > 4096) ? 4096 : (bytes - off);
+        this->read(addr + off, buf + off, chunk);
+        off += chunk;
+    }
+    return true;
 }
 
 uint8_t W25QXX::read(uint32_t addr) {
