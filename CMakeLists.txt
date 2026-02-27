@@ -45,7 +45,7 @@ include_directories(Core/Inc FWLIB/inc SYSTEM/Inc USER/Inc HARDWARE/Inc FATFS/In
         HARDWARE/BASE_CLASS/Inc SOFTWARE/Inc
         USB/USB_HOST/Inc USB/USB_OTG/Inc USB/CLASS/Inc
         LWIP/lwip-1.4.1/src/include LWIP/lwip-1.4.1/src/include/ipv4
-        LWIP/arch LWIP/lwip_app MODBUS/ModeBus_Tcp MODBUS/BASE_CLASS SOFTWARE/Base)
+        LWIP/arch LWIP/lwip_app MODBUS/Modbus_Tcp MODBUS/BASE_CLASS SOFTWARE/Base)
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 

@@ -140,7 +140,7 @@ int main()
     MDTCP.bindCoils(kokirika.getCoils(), kokirika.getCoilCount());
     //绑定离散输入,范围:离散输入0~18 0x0000-0x000F 0~15为物理输入 0x00-0x0F 16~18为高频输入 0x10-0x12
     MDTCP.bindDiscrete(kokirika.getDiscrete(), kokirika.getDiscreteCount());
-    //绑定输入寄存器,范围:输入寄存器0~12 0x0000-0x000B 0~8为ADC输入 0x00-0x08 9~12为高频输入 0x09-0x0B
+    //绑定输入寄存器,范围:输入寄存器0~12 0x0000-0x000B 0~8为ADC输入 0x00-0x08 9~12为虚拟输入 0x09-0x0B
     MDTCP.bindInput(kokirika.getInput(), kokirika.getInputCount());
     //绑定保持寄存器,范围:保持寄存器0~127 0x0000-0x007F
     MDTCP.bindHoldingRam(0, kokirika.getHolding(), kokirika.getHoldingCount());

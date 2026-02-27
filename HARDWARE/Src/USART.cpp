@@ -371,8 +371,10 @@ void _USART_::write(const char *str, uint16_t len) {
     else
     {
         // ★ 1. 如果 DMA 还在跑，直接返回 or 等
-        while (DMA_GetFlagStatus(this->DMAy_Streamx,this->DMA_FLAG)!=RESET);
-
+        while (DMA_GetFlagStatus(this->DMAy_Streamx, this->DMA_FLAG) == RESET)
+        {
+            vTaskDelay(1);   // 让出 CPU 给别的任务
+        }
         // ★ 2. 清所有相关 flag（必须在 DISABLE 后）
         DMA_ClearFlag(this->DMAy_Streamx,
                       this->DMA_FLAG);
